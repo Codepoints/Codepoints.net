@@ -1,6 +1,5 @@
 <?php
 
-require_once "lib/unicodedb.php";
 require_once "lib/codepoint.class.php";
 require_once "lib/unicoderange.class.php";
 require_once "lib/unicodeblock.class.php";
@@ -8,8 +7,6 @@ require_once "lib/unicodeplane.class.php";
 require_once "lib/views.php";
 
 $db = new PDO('sqlite:'.dirname(__FILE__).'/ucd.sqlite');
-$unidb = new UnicodeDB($db);
-
 $name = isset($_GET['name'])? $_GET['name'] : NULL;
 
 if ($name !== NULL) {
@@ -19,19 +16,7 @@ if ($name !== NULL) {
         $plane = NULL;
     }
     if ($plane) {
-        $planes = $unidb->getPlanes();
-        $prev = $next = NULL;
-        for ($i = 0; $i < count($planes); $i++) {
-            $b = $planes[$i];
-            if (str_replace(' ', '_', strtolower($b['name'])) === $name) {
-                if (isset($planes[$i+1])) {
-                    $next = $planes[$i+1];
-                }
-                break;
-            }
-            $prev = $b;
-        }
-        print_view('plane.html', compact('plane', 'prev', 'next'));
+        print_view('plane.html', compact('plane'));
         exit;
     }
 }

@@ -74,11 +74,11 @@ include "header.php";
     <table>
       <tbody>
         <?php foreach ($props as $k => $v):
-              if ($v !== NULL && $k !== 'cp'):?>
+              if ($v !== NULL && $v !== '' && $k !== 'cp'):?>
           <tr class="p_<?php echo $k?>">
-            <td><?php echo array_key_exists($k, $properties)?
+            <th><?php echo array_key_exists($k, $properties)?
                             str_replace('_', ' ', $properties[$k]) :
-                            $k?></td>
+                            $k?></th>
             <td>
               <?php echo $v?>
             </td>

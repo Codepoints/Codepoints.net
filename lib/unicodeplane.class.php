@@ -8,6 +8,8 @@ class UnicodePlane {
     public $last;
     protected $db;
     protected $blocks;
+    protected $prev;
+    protected $next;
     protected static $type = 'plane';
 
     public function __construct($name, $db, $r=NULL) {
@@ -52,6 +54,48 @@ class UnicodePlane {
             $this->blocks = $r;
         }
         return $this->blocks;
+    }
+
+    public function getPrev() {
+        if ($this->prev === NULL) {
+            $query = $this->db->prepare('SELECT name, first, last
+                FROM blocks
+                WHERE last < :first
+                AND `type` = :type
+                ORDER BY first DESC
+                LIMIT 1');
+            $query->execute(array(':type' => self::$type,
+                                  ':first' => $this->first));
+            $r = $query->fetch(PDO::FETCH_ASSOC);
+            $query->closeCursor();
+            if ($r === False) {
+                $this->prev = False;
+            } else {
+                $this->prev = new self('', $this->db, $r);
+            }
+        }
+        return $this->prev;
+    }
+
+    public function getNext() {
+        if ($this->next === NULL) {
+            $query = $this->db->prepare('SELECT name, first, last
+                FROM blocks
+                WHERE first > :last
+                AND `type` = :type
+                ORDER BY first ASC
+                LIMIT 1');
+            $query->execute(array(':type' => self::$type,
+                                  ':last' => $this->last));
+            $r = $query->fetch(PDO::FETCH_ASSOC);
+            $query->closeCursor();
+            if ($r === False) {
+                $this->next = False;
+            } else {
+                $this->next = new self('', $this->db, $r);
+            }
+        }
+        return $this->next;
     }
 
     public static function getForCodepoint($cp, $db=NULL) {
