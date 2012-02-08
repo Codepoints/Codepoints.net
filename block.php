@@ -1,6 +1,5 @@
 <?php
 
-require_once "lib/helpers.php";
 require_once "lib/unicodedb.php";
 require_once "lib/codepoint.class.php";
 require_once "lib/unicoderange.class.php";
