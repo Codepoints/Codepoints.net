@@ -5,7 +5,6 @@ class UnicodeRange implements Iterator {
 
     protected $set = array();
     protected $names;
-    protected $position = 0;
 
     public function __construct(Array $set=array()) {
         $this->set = array_unique($set);
@@ -15,6 +14,7 @@ class UnicodeRange implements Iterator {
      * get the current set of codepoints
      */
     public function get() {
+        reset($this->set);
         return $this->set;
     }
 
@@ -26,23 +26,27 @@ class UnicodeRange implements Iterator {
     }
 
     public function rewind() {
-        $this->position = 0;
+        reset($this->set);
     }
 
     public function current() {
-        return $this->set[$this->position];
+        return current($this->set);
     }
 
     public function key() {
-        return $this->position;
+        return key($this->set);
     }
 
     public function next() {
-        ++$this->position;
+        return next($this->set);
     }
 
     public function valid() {
-        return isset($this->set[$this->position]);
+        $state = each($this->set);
+        if ($state !== False) {
+            prev($this->set);
+        }
+        return $state;
     }
 
     /**
