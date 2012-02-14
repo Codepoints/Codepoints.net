@@ -57,65 +57,81 @@ body {
 
 
 
-#next {
+.slide {
   position: absolute;
   top: 10px;
   left: 10px;
   right: 10px;
   bottom: 10px;
-  z-index: 100;
-  display: none;
-}
-
-
-#transition {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  right: 10px;
-  bottom: 10px;
-  z-index: 90;
+  z-index: 10;
   -moz-animation-duration: 3s;
-  -moz-transform-origin: 50% 50%;
+  -moz-transform-origin: 0 0;
   -moz-animation-fill-mode: forwards;
 }
 
-#transition.active .cp {
+.slide.top {
+  z-index: 100;
+}
+
+
+.slide.middle {
+  z-index: 90;
+}
+
+.slide.bottom {
+}
+
+
+.slide.zoomin {
+  -moz-animation-name: zoomin;
+}
+
+.slide.zoomout .cp {
+  -moz-animation-duration: 3s;
+  -moz-transform-origin: 0 0;
+  -moz-animation-name: show;
+  -moz-animation-fill-mode: forwards;
+}
+
+.slide.zoomin .cp {
   -moz-animation-duration: 3s;
   -moz-transform-origin: 0 0;
   -moz-animation-name: hide;
   -moz-animation-fill-mode: forwards;
 }
 
-#transition.active {
-  -moz-animation-name: zoomin;
-}
-
-#transition.inverse {
+.slide.zoomout {
   -moz-animation-name: zoomout;
 }
 
-#minimize {
-  -moz-animation-duration: 3s;
-  -moz-transform-origin: 50% 50%;
+.slide.minimize {
   -moz-animation-name: minimize;
-  -moz-animation-fill-mode: forwards;
+}
+
+.slide.maximize {
+  -moz-animation-name: maximize;
 }
 
 @-moz-keyframes zoomin {
-  from {
+  0% {
     -moz-transform: scale(1);
   }
-  to {
+  99.99% {
     -moz-transform: scale(50);
+  }
+  100% {
+    display: none;
   }
 }
 
 @-moz-keyframes zoomout {
-  from {
-    -moz-transform: scale(100);
+  0% {
+    display: none;
   }
-  to {
+  0.01% {
+    -moz-transform: scale(50);
+  }
+  100% {
     -moz-transform: scale(1);
   }
 }
@@ -124,7 +140,7 @@ body {
   0% {
     -moz-transform: scale(1);
   }
-  99.9% {
+  99.99% {
     -moz-transform: scale(.02);
   }
   100% {
@@ -136,7 +152,7 @@ body {
   0% {
     display: none;
   }
-  0.1% {
+  0.01% {
     -moz-transform: scale(.02);
   }
   100% {
@@ -150,5 +166,14 @@ body {
   }
   to {
     opacity: 0;
+  }
+}
+
+@-moz-keyframes show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

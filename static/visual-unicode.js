@@ -25,17 +25,20 @@ $(function() {
     $.get(url, function(data) {
       history.pushState({}, '', url);
       document.title = /<title>([\s\S]*)<\/title>/.exec(data)[1];
-      var tr = $('body>*').wrapAll('<div id="transition"></div>').closest('#transition');
-      tr.css('MozTransformOrigin',
+      var tr = $('body>*').wrapAll('<div class="slide middle"></div>')
+                .closest('div');
+      data = $(data.replace(/[\s\S]*<body\b[^>]*>([\s\S]*)<\/body>[\s\S]*/,
+                            '$1'))
+      var tmp = $('<div class="slide bottom maximize"></div>').html(data)
+                 .appendTo('body');
+      tr.add(tmp).css('MozTransformOrigin',
         "" + ($this.offset().left) + "px " +
-        "" + ($this.offset().top) + "px")
-        .addClass('active');
-      data = $(data.replace(/[\s\S]*<body\b[^>]*>([\s\S]*)<\/body>[\s\S]*/, '$1'))
-      var tmp = $('<div id="next"></div>').html(data).appendTo('body');
-      tmp.fadeIn(3000, function() {
+        "" + ($this.offset().top) + "px");
+      tr.addClass('zoomin');
+      window.setTimeout(function() {
         tr.remove();
         tmp.replaceWith(tmp.contents());
-      });
+      }, 3000);
     });
     return false;
   });
@@ -45,10 +48,16 @@ $(function() {
     $.get(url, function(data) {
       history.pushState({}, '', url);
       document.title = /<title>([\s\S]*)<\/title>/.exec(data)[1];
-      var tr = $('body>*').wrapAll('<div id="minimize"></div>').closest('#minimize');
-      data = $(data.replace(/[\s\S]*<body\b[^>]*>([\s\S]*)<\/body>[\s\S]*/, '$1'))
-      var tmp = $('<div id="transition"></div>').html(data).appendTo('body');
-      tmp.addClass('inverse');
+      var tr = $('body>*').wrapAll('<div class="slide middle"></div>')
+                .closest('div');
+      data = $(data.replace(/[\s\S]*<body\b[^>]*>([\s\S]*)<\/body>[\s\S]*/,
+                            '$1'))
+      var tmp = $('<div class="slide top zoomout"></div>').html(data)
+                 .appendTo('body');
+      tr.add(tmp).css('MozTransformOrigin',
+        "" + ($this.offset().left) + "px " +
+        "" + ($this.offset().top) + "px");
+      tr.addClass('minimize');
       window.setTimeout(function() {
         tr.remove();
         tmp.replaceWith(tmp.contents());
