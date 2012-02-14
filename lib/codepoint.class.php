@@ -6,18 +6,26 @@ class Codepoint {
     protected $id;
     protected $db;
     protected $properties;
+    protected $name;
     protected $block;
     protected $plane;
     protected $alias;
     protected $prev;
     protected $next;
+    protected $image;
 
     /**
      * Construct with PDO object of database
+     *
+     * $info can be used to pre-fill data, e.g., when it was bulk-loaded in a
+     * block
      */
-    public function __construct($id, $db) {
+    public function __construct($id, $db, $info=array()) {
         $this->id = $id;
         $this->db = $db;
+        foreach ($info as $k => $v) {
+            $this->$k = $v;
+        }
     }
 
     /**
@@ -40,7 +48,7 @@ class Codepoint {
      * get the official Unicode ID
      */
     public function __toString() {
-        return 'U+' . self::hex($this->id);
+        return self::hex($this->id);
     }
 
     public function getDB() {
@@ -51,7 +59,7 @@ class Codepoint {
      * get the character representation in a specific encoding
      */
     public function getChar($coding='UTF-8') {
-        return mb_convert_encoding('&#'.$cp.';', $coding, 'HTML-ENTITIES');
+        return mb_convert_encoding('&#'.$this->id.';', $coding, 'HTML-ENTITIES');
     }
 
     /**
@@ -65,17 +73,36 @@ class Codepoint {
     }
 
     /**
+     * get an image representing the character
+     */
+    public function getImage() {
+        if ($this->image === NULL) {
+            $q = $this->db->prepare('SELECT data FROM img WHERE id = ?');
+            $q->execute(array($this->id));
+            $r = $q->fetch();
+            if ($r) {
+                $r = 'image/png;base64,' . $r[0];
+            }
+            $this->image = $r;
+        }
+        return $this->image;
+    }
+
+    /**
      * fetch name
      */
     public function getName() {
-        $props = $this->getProperties();
-        if (isset($props['na']) && $props['na']) {
-            return $props['na'];
-        } elseif (isset($props['na1']) && $props['na1']) {
-            return $props['na1'];
-        } else {
-            throw new Exception('This Codepoint doesnt exist: '.$this->cp);
+        if ($this->name === NULL) {
+            $props = $this->getProperties();
+            if (isset($props['na']) && $props['na']) {
+                $this->name = $props['na'];
+            } elseif (isset($props['na1']) && $props['na1']) {
+                $this->name = $props['na1'].'*';
+            } else {
+                throw new Exception('This Codepoint doesnt exist: '.$this->cp);
+            }
         }
+        return $this->name;
     }
 
     /**
