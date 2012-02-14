@@ -1,19 +1,20 @@
 <?php
 
 
+/**
+ * A block of characters as defined by Unicode
+ */
 class UnicodeBlock extends UnicodeRange {
 
     protected $name;
-    protected $db;
     protected $prev;
     protected $next;
     protected $plane;
     protected static $type = 'block';
 
     public function __construct($name, $db, $r=NULL) {
-        $this->db = $db;
         if ($r === NULL) { // performance: allow to specify range
-            $query = $this->db->prepare("
+            $query = $db->prepare("
                 SELECT name, first, last FROM blocks
                 WHERE replace(replace(lower(name), '_', ''), ' ', '') = :name
                 AND `type` = :type
@@ -28,7 +29,7 @@ class UnicodeBlock extends UnicodeRange {
             }
         }
         $this->name = $r['name']; // use canonical name
-        $this->set = range($r['first'], $r['last']);
+        parent::__construct(range($r['first'], $r['last']), $db);
     }
 
     public function getName() {
@@ -44,7 +45,7 @@ class UnicodeBlock extends UnicodeRange {
           ORDER BY last DESC
              LIMIT 1");
             $query->execute(array(':type' => self::$type,
-                                  ':cp' => $this->set[0]));
+                                  ':cp' => $this->getFirst()));
             $r = $query->fetch(PDO::FETCH_ASSOC);
             $query->closeCursor();
             if ($r === False) {
@@ -65,7 +66,7 @@ class UnicodeBlock extends UnicodeRange {
           ORDER BY first ASC
              LIMIT 1");
             $query->execute(array(':type' => self::$type,
-                                  ':cp' => end($this->set)));
+                                  ':cp' => $this->getLast()));
             $r = $query->fetch(PDO::FETCH_ASSOC);
             $query->closeCursor();
             if ($r === False) {
@@ -84,8 +85,8 @@ class UnicodeBlock extends UnicodeRange {
              WHERE first <= :first AND last >= :last
                AND `type` = 'plane'
              LIMIT 1");
-            $query->execute(array(':first' => $this->set[0],
-                                  ':last' => end($this->set)));
+            $query->execute(array(':first' => $this->getFirst(),
+                                  ':last' => $this->getLast()));
             $r = $query->fetch(PDO::FETCH_ASSOC);
             $query->closeCursor();
             if ($r === False) {
@@ -113,7 +114,7 @@ class UnicodeBlock extends UnicodeRange {
         if ($r === False) {
             throw new Exception('No block contains this codepoint: ' . $cp);
         }
-        return new self($name, $db, $r);
+        return new self('', $db, $r);
     }
 
 }

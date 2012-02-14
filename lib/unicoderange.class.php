@@ -1,13 +1,20 @@
 <?php
 
 
+/**
+ * an arbitrary range of Unicode characters
+ *
+ * may have gaps
+ */
 class UnicodeRange implements Iterator {
 
+    protected $db;
     protected $set = array();
-    protected $names;
 
-    public function __construct(Array $set=array()) {
-        $this->set = array_unique($set);
+    public function __construct(Array $set=array(), $db) {
+        $this->db = $db;
+        $set = array_unique($set);
+        $this->set = $this->fetchNames($set);
     }
 
     /**
@@ -16,13 +23,6 @@ class UnicodeRange implements Iterator {
     public function get() {
         reset($this->set);
         return $this->set;
-    }
-
-    public function getBoundaries() {
-        return array(
-            $this->set[0],
-            end($this->set)
-        );
     }
 
     public function rewind() {
@@ -42,20 +42,31 @@ class UnicodeRange implements Iterator {
     }
 
     public function valid() {
-        $state = each($this->set);
-        if ($state !== False) {
-            prev($this->set);
-        }
-        return $state;
+        return key($this->set) !== NULL;
+    }
+
+    public function getBoundaries() {
+        $indices = array_keys($this->set);
+        return array($indices[0], end($indices));
+    }
+
+    public function getFirst() {
+        $r = array_keys($this->set);
+        return $r[0];
+    }
+
+    public function getLast() {
+        $r = array_keys($this->set);
+        return end($r);
     }
 
     /**
      * add a codepoint to the set
      */
     public function add($cp) {
-        if (! in_array($cp, $this->set)) {
-            $this->set[] = $cp;
-            $this->names = NULL;
+        $cp = intval($cp);
+        if (! array_key_exists($cp, $this->set)) {
+            $this->set += $this->fetchNames(array($cp));
         }
         return $this;
     }
@@ -64,8 +75,7 @@ class UnicodeRange implements Iterator {
      * add several codepoints to the set
      */
     public function addSet(Array $set) {
-        $this->set = array_unique(array_merge($this->set, $set));
-        $this->names = NULL;
+        $this->set += $this->fetchNames(array_diff(array_unique($set), array_keys($this->set)));
         return $this;
     }
 
@@ -75,37 +85,47 @@ class UnicodeRange implements Iterator {
     public function addRange(UnicodeRange $range) {
         $set = $range->get();
         $this->set = array_unique(array_merge($this->set, $set));
-        $this->names = NULL;
         return $this;
     }
 
     /**
      * get the names of all characters in the set
      */
-    public function getSetNames() {
-        if ($this->names === NULL) {
+    protected function fetchNames($set) {
+        $this->sanitizeSet(&$set);
+        $names = array();
+        if (count($set) > 0) {
             $query = $this->db->prepare("
-            SELECT cp, na, na1 FROM data
-            WHERE cp >= :first
-            AND cp <= :last
-            ");
-            $query->execute(array(':first' => $this->set[0],
-                                  ':last' => end($this->set)));
+            SELECT data.cp cp, data.na na, data.na1 na1, img.data data FROM data JOIN img ON data.cp = img.id
+            WHERE cp IN (" . join(',', $set) . ")");
+            $query->execute();
             $r = $query->fetchAll(PDO::FETCH_ASSOC);
             $query->closeCursor();
-            if ($r === False) {
-                $this->names = array();
-            } else {
-                $x = array();
+            if ($r !== False) {
                 foreach ($r as $cp) {
-                    if (in_array($cp['cp'], $this->set)) {
-                        $x[intval($cp['cp'])] = $cp['na']? $cp['na'] : $cp['na1'].'*';
-                    }
+                    $names[intval($cp['cp'])] = new Codepoint(intval($cp['cp']),
+                        $this->db, array('name' => $cp['na']? $cp['na'] : $cp['na1'].'*',
+                        'block' => $this, 'image' => 'image/png;base64,' . $cp['data']));
                 }
-                $this->names = $x;
             }
         }
-        return $this->names;
+        return $names;
+    }
+
+    /**
+     * remove non-integer values from a set
+     */
+    protected function sanitizeSet($set) {
+        foreach ($set as $k => $v) {
+            if (! is_int($v)) {
+                if (is_string($v) && ctype_digit($v)) {
+                    $set[$k] = intval($v);
+                } else {
+                    unset($set[$k]);
+                }
+            }
+        }
+        return $set;
     }
 
     /**
