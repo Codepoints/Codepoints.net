@@ -12,7 +12,7 @@ if ($next):
 endif;
 include "header.php";
 ?>
-    <h1>Codepoint <?php echo $title?></h1>
+    <h1><img src="data:<?php echo $codepoint->getImage()?>" alt="" width="16" height="16" /> Codepoint <?php echo $title?></h1>
     <p><?php if ($props['gc'][0] === 'C'):?>
       <span class="Cc">&lt;control&gt;</span>
     <?php else:?>
@@ -30,19 +30,19 @@ include "header.php";
       <dd><?php echo $codepoint->getRepr('UTF-32')?></dd>
       <?php if ($prev):?>
         <dt>Previous</dt>
-        <dd><a href="<?php echo $prev?>"><?php echo $prev?></a></dd>
+        <dd><a class="cp" href="U+<?php echo $prev?>"><?php echo $prev?><img src="data:<?php echo $prev->getImage()?>" alt="" width="16" height="16" /></a></dd>
       <?php endif?>
       <?php if ($next):?>
         <dt>Next</dt>
-        <dd><a href="<?php echo $next?>"><?php echo $next?></a></dd>
+        <dd><a class="cp" href="U+<?php echo $next?>"><?php echo $next?><img src="data:<?php echo $next->getImage()?>" alt="" width="16" height="16" /></a></dd>
       <?php endif?>
       <dt>Block</dt>
       <dd><?php $block = $codepoint->getBlock();
-        printf('<a href="%s">%s</a>', u($block->getName()), $block->getName());
+        printf('<a class="bl" href="%s">%s</a>', u($block->getName()), $block->getName());
       ?></dd>
       <dt>Plane</dt>
       <dd><?php $plane = $codepoint->getPlane();
-        printf('<a href="%s">%s</a>', u($plane->name), $plane->name);
+        printf('<a class="pl" href="%s">%s</a>', u($plane->name), $plane->name);
       ?></dd>
       <dt>Aliases</dt>
       <dd>

@@ -12,19 +12,19 @@ $plane = $block->getPlane();
   <dl>
     <?php if ($prev):?>
       <dt>Previous</dt>
-      <dd><a href="<?php echo str_replace(' ', '_', strtolower($prev->getName()))?>"><?php echo $prev->getName()?></a></dd>
+      <dd><a class="bl" href="<?php echo str_replace(' ', '_', strtolower($prev->getName()))?>"><?php echo $prev->getName()?></a></dd>
     <?php endif?>
     <?php if ($next):?>
       <dt>Next</dt>
-      <dd><a href="<?php echo str_replace(' ', '_', strtolower($next->getName()))?>"><?php echo $next->getName()?></a></dd>
+      <dd><a class="bl" href="<?php echo str_replace(' ', '_', strtolower($next->getName()))?>"><?php echo $next->getName()?></a></dd>
     <?php endif?>
     <dt>Plane</dt>
-    <dd><a href="<?php echo str_replace(' ', '_', strtolower($plane->getName()))?>"><?php echo $plane->getName()?></a></dd>
+    <dd><a class="pl" href="<?php echo str_replace(' ', '_', strtolower($plane->getName()))?>"><?php echo $plane->getName()?></a></dd>
   </dl>
-  <ol>
-    <?php foreach ($block->getSetNames() as $cp => $na):
-      printf('<li value="%s"><a href="U+%04X">U+%04X, %s</a></li>',
-              $cp, $cp, $cp, $na);
+  <ol class="block">
+    <?php foreach ($block as $cp => $na):
+      printf('<li value="%s"><a class="cp" href="U+%04X" title="%s">%04X<img src="data:%s" alt="" width="16" height="16" /></a></li>',
+              $cp, $cp, $na, $cp, $na->getImage());
     endforeach ?>
   </ol>
 <?php include "footer.php"?>
