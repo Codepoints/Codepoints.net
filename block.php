@@ -1,5 +1,6 @@
 <?php
 
+require_once "lib/pagination.class.php";
 require_once "lib/codepoint.class.php";
 require_once "lib/unicoderange.class.php";
 require_once "lib/unicodeblock.class.php";

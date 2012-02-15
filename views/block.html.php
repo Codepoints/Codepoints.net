@@ -5,6 +5,9 @@ $bounds = $block->getBoundaries();
 $prev = $block->getPrev();
 $next = $block->getNext();
 $plane = $block->getPlane();
+$pagination = new Pagination($block->get());
+$page = isset($_GET['page'])? intval($_GET['page']) : 1;
+$pagination->setPage($page);
 ?>
   <h1><?php echo $title;?></h1>
   <p>From U+<?php printf('%04X', $bounds[0])?>
@@ -21,10 +24,12 @@ $plane = $block->getPlane();
     <dt>Plane</dt>
     <dd><a class="pl" href="<?php echo str_replace(' ', '_', strtolower($plane->getName()))?>"><?php echo $plane->getName()?></a></dd>
   </dl>
+  <?php echo $pagination?>
   <ol class="block">
-    <?php foreach ($block as $cp => $na):
+    <?php foreach ($pagination->getSet() as $cp => $na):
       printf('<li value="%s"><a class="cp" href="U+%04X" title="%s">%04X<img src="data:%s" alt="" width="16" height="16" /></a></li>',
               $cp, $cp, $na, $cp, $na->getImage());
     endforeach ?>
   </ol>
+  <?php echo $pagination?>
 <?php include "footer.php"?>
