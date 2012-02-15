@@ -1,7 +1,16 @@
+
+@font-face {
+  font-family: LastResort;
+  src: url(LastResort.ttf);
+}
+
 body {
   margin: 0;
+  font: 1em/1.5 Arial,sans-serif;
+}
+
+.stage {
   padding: 10px;
-  font: 1em/1.33 Arial,sans-serif;
 }
 
 .cp {
@@ -33,6 +42,7 @@ body {
 }
 
 .cp:hover img {
+  image-rendering: optimizeSpeed;
   -moz-transform: scale(1.9);
 }
 
@@ -55,6 +65,43 @@ body {
 }
 
 
+nav li,
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav .prev,
+nav .next {
+  width: 34px;
+}
+
+nav .prev {
+  float: left;
+  margin-right: 10px;
+}
+
+nav .next {
+  float: right;
+  margin-top: -25px;
+  margin-left: 10px;
+}
+
+nav .up {
+  height: 15px;
+  text-align: center;
+  margin: 0 44px 10px;
+}
+
+nav .up a {
+  color: #05a;
+  text-decoration: none;
+}
+
+
+
+
 
 
 .slide {
@@ -65,6 +112,7 @@ body {
   bottom: 10px;
   z-index: 10;
   -moz-animation-duration: 3s;
+  -moz-animation-timing-function: ease-in;
   -moz-transform-origin: 0 0;
   -moz-animation-fill-mode: forwards;
 }
@@ -86,6 +134,10 @@ body {
   -moz-animation-name: zoomin;
 }
 
+.slide .cp {
+  image-rendering: optimizeSpeed;
+}
+
 .slide.zoomout .cp {
   -moz-animation-duration: 3s;
   -moz-transform-origin: 0 0;
@@ -94,6 +146,7 @@ body {
 }
 
 .slide.zoomin .cp {
+  visibility:hidden;
   -moz-animation-duration: 3s;
   -moz-transform-origin: 0 0;
   -moz-animation-name: hide;

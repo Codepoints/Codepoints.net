@@ -12,13 +12,32 @@ if ($next):
 endif;
 include "header.php";
 ?>
-    <h1><img src="data:<?php echo $codepoint->getImage()?>" alt="" width="16" height="16" /> Codepoint <?php echo $title?></h1>
-    <p><?php if ($props['gc'][0] === 'C'):?>
+    <nav>
+      <ul>
+        <li class="prev">
+          <?php if ($prev):?>
+            <a class="cp" href="U+<?php echo $prev?>"><?php echo $prev?><img src="data:<?php echo $prev->getImage()?>" alt="" width="16" height="16" /></a>
+          <?php endif?>
+        </li>
+        <li class="up">
+          <?php $block = $codepoint->getBlock();
+            printf('<a class="bl" href="%s">%s</a>', u($block->getName()), $block->getName()); ?>
+        </li>
+        <li class="next">
+          <?php if ($next):?>
+            <a class="cp" href="U+<?php echo $next?>"><?php echo $next?><img src="data:<?php echo $next->getImage()?>" alt="" width="16" height="16" /></a>
+          <?php endif?>
+        </li>
+      </ul>
+    </nav>
+    <h1><img src="data:<?php echo $codepoint->getImage()?>" alt="" width="16" height="16" /> <?php echo $title?><br/>
+      <?php echo $codepoint->getName()?></h1>
+    <!--p><?php if ($props['gc'][0] === 'C'):?>
       <span class="Cc">&lt;control&gt;</span>
     <?php else:?>
       <b>&#<?php echo $codepoint->getId()?>;</b>
     <?php endif?>
-    </p>
+    </p-->
     <dl>
       <dt>Nº</dt>
       <dd><?php echo $codepoint->getId()?></dd>
@@ -28,18 +47,6 @@ include "header.php";
       <dd><?php echo $codepoint->getRepr('UTF-16')?></dd>
       <dt>UTF-32</dt>
       <dd><?php echo $codepoint->getRepr('UTF-32')?></dd>
-      <?php if ($prev):?>
-        <dt>Previous</dt>
-        <dd><a class="cp" href="U+<?php echo $prev?>"><?php echo $prev?><img src="data:<?php echo $prev->getImage()?>" alt="" width="16" height="16" /></a></dd>
-      <?php endif?>
-      <?php if ($next):?>
-        <dt>Next</dt>
-        <dd><a class="cp" href="U+<?php echo $next?>"><?php echo $next?><img src="data:<?php echo $next->getImage()?>" alt="" width="16" height="16" /></a></dd>
-      <?php endif?>
-      <dt>Block</dt>
-      <dd><?php $block = $codepoint->getBlock();
-        printf('<a class="bl" href="%s">%s</a>', u($block->getName()), $block->getName());
-      ?></dd>
       <dt>Plane</dt>
       <dd><?php $plane = $codepoint->getPlane();
         printf('<a class="pl" href="%s">%s</a>', u($plane->name), $plane->name);
