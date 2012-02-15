@@ -12,3 +12,4 @@
     <?php echo isset($headdata)? $headdata : ''?>
   </head>
   <body>
+    <div class="stage">
