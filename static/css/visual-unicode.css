@@ -52,9 +52,15 @@ body {
   line-height: 0;
 }
 
+.block:after {
+  display: block;
+  height: 0;
+  clear: left;
+  content: " ";
+}
+
 .block li {
   list-style: none;
-  x-display: inline-block;
   float: left;
   margin: 0 3px 3px 0;
   padding: 0;
@@ -62,6 +68,44 @@ body {
 
 .block li:nth-of-type(16n+1) {
   clear: left;
+}
+
+
+.pagination {
+  list-style: none;
+  margin: 10px 0;
+  padding: 0;
+  text-align: center;
+  width: 590px;
+}
+
+.pagination li {
+  display: inline-block;
+  margin: 0 3px 0 0;
+  padding: 0;
+}
+
+.pagination .prev {
+  float: left;
+}
+
+.pagination .next {
+  float: right;
+}
+
+.pagination span,
+.pagination a {
+  display: block;
+  min-width: 32px;
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.pagination a {
+  background: #9cf;
+  color: #05a;
 }
 
 
