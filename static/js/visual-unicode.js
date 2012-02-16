@@ -53,7 +53,7 @@ $(function() {
     }
     return false;
   });
-  stage.on('click', 'a.bl', function() {
+  stage.on('click', 'a.bl, a.pl', function() {
     var $this = $(this),
         url = this.href;
     if (url in Cache) {
