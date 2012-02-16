@@ -8,22 +8,22 @@ class Pagination {
 
     protected $page = 1;
     protected $pagesize = 100;
-    protected $set;
+    protected $setCount;
     protected $showPages = 5;
     protected $showPrevNext = true;
     protected $urlTemplate = '?page=%s';
 
-    public function __construct($set, $pagesize=100) {
+    public function __construct($set, $pagesize=256) {
         $this->pagesize = $pagesize;
-        $this->set = $set;
+        $this->setCount = $set;
     }
 
     public function setPage($page) {
         $this->page = $page;
     }
 
-    public function getSet() {
-        return array_slice($this->set, ($this->page - 1) * $this->pagesize,
+    public function getSet($set) {
+        return array_slice($set, ($this->page - 1) * $this->pagesize,
                            $this->pagesize, true);
     }
 
@@ -32,7 +32,7 @@ class Pagination {
     }
 
     public function getNumberOfPages() {
-        return intval(ceil(count($this->set) / $this->pagesize));
+        return intval(ceil($this->setCount / $this->pagesize));
     }
 
     public function __toString() {

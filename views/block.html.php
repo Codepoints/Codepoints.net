@@ -5,7 +5,7 @@ $bounds = $block->getBoundaries();
 $prev = $block->getPrev();
 $next = $block->getNext();
 $plane = $block->getPlane();
-$pagination = new Pagination($block->get());
+$pagination = new Pagination(count($block->get()));
 $page = isset($_GET['page'])? intval($_GET['page']) : 1;
 $pagination->setPage($page);
 ?>
@@ -26,7 +26,7 @@ $pagination->setPage($page);
   </dl>
   <?php echo $pagination?>
   <ol class="block">
-    <?php foreach ($pagination->getSet() as $cp => $na):
+    <?php foreach ($pagination->getSet($block->get()) as $cp => $na):
       printf('<li value="%s"><a class="cp" href="U+%04X" title="%s">%04X<img src="data:%s" alt="" width="16" height="16" /></a></li>',
               $cp, $cp, $na, $cp, $na->getImage());
     endforeach ?>
