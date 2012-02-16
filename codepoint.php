@@ -16,7 +16,9 @@ $codepoint = NULL;
 if ($cp >= 0) {
     try {
         $codepoint = new Codepoint($cp, $db);
+        $codepoint->getName();
     } catch (Exception $e) {
+        $codepoint = NULL;
     }
 }
 
