@@ -1,12 +1,11 @@
-
 @font-face {
   font-family: LastResort;
-  src: url(LastResort.ttf);
+  src: url(../LastResort.ttf);
 }
 
 body {
   margin: 0;
-  font: 1em/1.5 Arial,sans-serif;
+  font: 1em/1.5 Arial, sans-serif;
 }
 
 .stage {
@@ -70,7 +69,6 @@ body {
   clear: left;
 }
 
-
 .pagination {
   list-style: none;
   margin: 10px 0;
@@ -108,7 +106,6 @@ body {
   color: #05a;
 }
 
-
 nav li,
 nav ul {
   list-style: none;
@@ -143,11 +140,6 @@ nav .up a {
   text-decoration: none;
 }
 
-
-
-
-
-
 .slide {
   position: absolute;
   top: 10px;
@@ -165,14 +157,9 @@ nav .up a {
   z-index: 100;
 }
 
-
 .slide.middle {
   z-index: 90;
 }
-
-.slide.bottom {
-}
-
 
 .slide.zoomin {
   -moz-animation-name: zoomin;
@@ -190,7 +177,7 @@ nav .up a {
 }
 
 .slide.zoomin .cp {
-  visibility:hidden;
+  visibility: hidden;
   -moz-animation-duration: 3s;
   -moz-transform-origin: 0 0;
   -moz-animation-name: hide;
@@ -213,9 +200,11 @@ nav .up a {
   0% {
     -moz-transform: scale(1);
   }
+
   99.99% {
     -moz-transform: scale(50);
   }
+
   100% {
     display: none;
   }
@@ -225,9 +214,11 @@ nav .up a {
   0% {
     display: none;
   }
+
   0.01% {
     -moz-transform: scale(50);
   }
+
   100% {
     -moz-transform: scale(1);
   }
@@ -237,9 +228,11 @@ nav .up a {
   0% {
     -moz-transform: scale(1);
   }
+
   99.99% {
-    -moz-transform: scale(.02);
+    -moz-transform: scale(0.02);
   }
+
   100% {
     display: none;
   }
@@ -249,9 +242,11 @@ nav .up a {
   0% {
     display: none;
   }
+
   0.01% {
-    -moz-transform: scale(.02);
+    -moz-transform: scale(0.02);
   }
+
   100% {
     -moz-transform: scale(1);
   }
@@ -261,6 +256,7 @@ nav .up a {
   from {
     opacity: 1;
   }
+
   to {
     opacity: 0;
   }
@@ -270,6 +266,7 @@ nav .up a {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
