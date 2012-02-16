@@ -96,7 +96,7 @@ class UnicodeRange implements Iterator {
         $names = array();
         if (count($set) > 0) {
             $query = $this->db->prepare("
-            SELECT data.cp cp, data.na na, data.na1 na1, img.data data FROM data JOIN img ON data.cp = img.id
+            SELECT cp, na, na1, (SELECT img.data FROM img WHERE img.id = cp) data FROM data
             WHERE cp IN (" . join(',', $set) . ")");
             $query->execute();
             $r = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -131,7 +131,7 @@ class UnicodeRange implements Iterator {
     /**
      * parse a string of form U+A..U+B,U+C in a UnicodeRange
      */
-    public static function parse($str) {
+    public static function parse($str, $db) {
         $set = array();
         $junks = preg_split('/\s*(?:,\s*)+/', trim($str));
         foreach ($junks as $j) {
@@ -171,7 +171,7 @@ class UnicodeRange implements Iterator {
                     }
             }
         }
-        return new self($set);
+        return new self($set, $db);
     }
 
     /**
@@ -183,6 +183,21 @@ class UnicodeRange implements Iterator {
             return intval($matches[1], 16);
         }
         return NULL;
+    }
+
+    /**
+     * get a range of codepoints with same property
+     */
+    public static function getForProperty($prop, $val, $db) {
+        $query = $db->prepare('SELECT cp FROM data
+            WHERE `'.str_replace(array('`', "\0"), '', $prop).'` = :val');
+        $query->execute(array(':val' => $val));
+        $r = $query->fetchAll(PDO::FETCH_ASSOC);
+        $set = array();
+        foreach ($r as $v) {
+            $set[] = intval($r['cp']);
+        }
+        return new self($set, $db);
     }
 
 }
