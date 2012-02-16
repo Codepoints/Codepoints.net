@@ -117,6 +117,20 @@ class UnicodePlane {
         return new self('', $db, $r);
     }
 
+    public static function getAll($db) {
+        $query = $db->prepare("
+            SELECT * FROM blocks
+             WHERE `type` = :type");
+        $query->execute(array(':type' => self::$type));
+        $r = $query->fetchAll(PDO::FETCH_ASSOC);
+        $query->closeCursor();
+        $planes = array();
+        foreach ($r as $pl) {
+            $planes[] = new self($pl['name'], $db, $pl);
+        }
+        return $planes;
+    }
+
 }
 
 

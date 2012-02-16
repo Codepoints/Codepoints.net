@@ -194,6 +194,27 @@ class Codepoint {
         return sprintf("%04X", $int);
     }
 
+    /**
+     * search database by name
+     */
+    public static function getByName($name, $db) {
+        $query = $db->prepare("
+            SELECT * FROM data
+            WHERE replace(replace(lower(na), '_', ''), ' ', '') = :name
+               OR replace(replace(lower(na1), '_', ''), ' ', '') = :name
+            LIMIT 1");
+        $query->execute(array(':name' => str_replace(array(' ', '_'), '',
+                                strtolower($name))));
+        $r = $query->fetch(PDO::FETCH_ASSOC);
+        $query->closeCursor();
+        if ($r === False) {
+            throw new Exception('No codepoint named ' . $name);
+        }
+        return new self($r['cp'], $db, array(
+            'properties' => $r
+        ));
+    }
+
 }
 
 
