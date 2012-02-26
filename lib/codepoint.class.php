@@ -94,12 +94,16 @@ class Codepoint {
     public function getName() {
         if ($this->name === NULL) {
             $props = $this->getProperties();
-            if (isset($props['na']) && $props['na']) {
-                $this->name = $props['na'];
-            } elseif (isset($props['na1']) && $props['na1']) {
-                $this->name = $props['na1'].'*';
+            if ($props === False) {
+                throw new Exception('This Codepoint doesnt exist: '.$this->id);
             } else {
-                throw new Exception('This Codepoint doesnt exist: '.$this->cp);
+                if (isset($props['na']) && $props['na']) {
+                    $this->name = $props['na'];
+                } elseif (isset($props['na1']) && $props['na1']) {
+                    $this->name = $props['na1'].'*';
+                } else {
+                    $this->name = '<control>';
+                }
             }
         }
         return $this->name;
