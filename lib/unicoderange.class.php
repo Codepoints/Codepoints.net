@@ -92,7 +92,7 @@ class UnicodeRange implements Iterator {
      * get the names of all characters in the set
      */
     protected function fetchNames($set) {
-        $this->sanitizeSet(&$set);
+        $this->sanitizeSet($set);
         $names = array();
         if (count($set) > 0) {
             $query = $this->db->prepare("
@@ -115,7 +115,7 @@ class UnicodeRange implements Iterator {
     /**
      * remove non-integer values from a set
      */
-    protected function sanitizeSet($set) {
+    protected function sanitizeSet(&$set) {
         foreach ($set as $k => $v) {
             if (! is_int($v)) {
                 if (is_string($v) && ctype_digit($v)) {
