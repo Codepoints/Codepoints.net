@@ -26,7 +26,7 @@ $router->registerAction(function ($url) {
     }
     return False;
 }, function($url, $plane) {
-    $view = new View('plane');
+    $view = new View('plane.html');
     echo $view->render(compact('plane'));
 })
 ->registerAction(function ($url) {
@@ -61,7 +61,7 @@ $router->registerAction(function ($url) {
     }
     return False;
 }, function($url, $block) {
-    $view = new View('block');
+    $view = new View('block.html');
     echo $view->render(compact('block'));
 })
 ->registerAction(function ($url) {
