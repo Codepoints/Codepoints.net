@@ -1,6 +1,10 @@
 @font-face {
-  font-family: LastResort;
+  font-family: "LastResort";
   src: url(../LastResort.ttf);
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
 }
 
 body {
@@ -10,13 +14,23 @@ body {
 
 .stage {
   padding: 10px;
+  position: relative;
 }
 
 .cp {
   background: white;
   border: 1px solid #333;
+  -moz-border-radius: 1px;
+  -webkit-border-radius: 1px;
+  -o-border-radius: 1px;
+  -ms-border-radius: 1px;
+  -khtml-border-radius: 1px;
   border-radius: 1px;
+  display: -moz-inline-box;
+  -moz-box-orient: vertical;
   display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
   width: 32px;
   padding: 4px 0 0;
   font-size: 10px;
@@ -25,15 +39,30 @@ body {
   color: #333;
   text-decoration: none;
   -moz-transition-property: box-shadow;
-  -moz-transition-duration: .3s;
+  -webkit-transition-property: box-shadow;
+  -o-transition-property: box-shadow;
+  transition-property: box-shadow;
+  -moz-transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
   outline: none;
+}
+.cp {
+  *display: inline;
 }
 
 .cp img {
   display: block;
   margin: 4px auto 8px;
-  -moz-transition-property: -moz-transform;
-  -moz-transition-duration: .5s;
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
 }
 
 .cp:hover {
@@ -43,29 +72,32 @@ body {
 .cp:hover img {
   image-rendering: optimizeSpeed;
   -moz-transform: scale(1.9);
+  -webkit-transform: scale(1.9);
+  -o-transform: scale(1.9);
+  -ms-transform: scale(1.9);
+  transform: scale(1.9);
 }
 
-.block {
+.block-data {
   margin: 0;
   padding: 0;
   line-height: 0;
+  *zoom: 1;
+}
+.block-data:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
-.block:after {
-  display: block;
-  height: 0;
-  clear: left;
-  content: " ";
-}
-
-.block li {
+.block-data li {
   list-style: none;
   float: left;
   margin: 0 3px 3px 0;
   padding: 0;
 }
 
-.block li:nth-of-type(16n+1) {
+.block-data li:nth-of-type(16n+1) {
   clear: left;
 }
 
@@ -78,17 +110,16 @@ body {
 }
 
 .pagination li {
+  display: -moz-inline-box;
+  -moz-box-orient: vertical;
   display: inline-block;
-  margin: 0 3px 0 0;
+  vertical-align: middle;
+  *vertical-align: auto;
+  margin: 0 1px 0 0;
   padding: 0;
 }
-
-.pagination .prev {
-  float: left;
-}
-
-.pagination .next {
-  float: right;
+.pagination li {
+  *display: inline;
 }
 
 .pagination span,
@@ -99,11 +130,63 @@ body {
   line-height: 32px;
   text-align: center;
   text-decoration: none;
+  text-shadow: 0 1px #def;
 }
 
 .pagination a {
   background: #9cf;
   color: #05a;
+  outline: none;
+  -moz-transition-property: background, color;
+  -webkit-transition-property: background, color;
+  -o-transition-property: background, color;
+  transition-property: background, color;
+  -moz-transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+.pagination a:hover, .pagination a:focus {
+  background: #05a;
+  color: #9cf;
+}
+
+.pagination .prev a,
+.pagination .next a,
+.pagination .prev span,
+.pagination .next span {
+  text-indent: -9999px;
+}
+
+.pagination .prev a:after,
+.pagination .next a:after,
+.pagination .prev span:after,
+.pagination .next span:after {
+  border-color: transparent;
+  border-style: solid;
+  border-width: 12px;
+  width: 0;
+  height: 0;
+  display: block;
+  margin-top: -28px;
+  content: " ";
+}
+
+.pagination .prev {
+  float: left;
+}
+.pagination .prev a:after {
+  border-color: transparent white transparent transparent;
+  margin-left: -4px;
+}
+
+.pagination .next {
+  float: right;
+}
+.pagination .next a:after {
+  border-color: transparent transparent transparent white;
+  margin-left: 12px;
+  margin-right: -12px;
 }
 
 nav li,
@@ -113,8 +196,8 @@ nav ul {
   padding: 0;
 }
 
-nav .prev,
-nav .next {
+.codepoint nav .prev,
+.codepoint nav .next {
   width: 34px;
 }
 
@@ -148,9 +231,28 @@ nav .up a {
   bottom: 10px;
   z-index: 10;
   -moz-animation-duration: 3s;
+  -webkit-animation-duration: 3s;
+  -o-animation-duration: 3s;
+  -ms-animation-duration: 3s;
+  -khtml-animation-duration: 3s;
+  animation-duration: 3s;
   -moz-animation-timing-function: ease-in;
+  -webkit-animation-timing-function: ease-in;
+  -o-animation-timing-function: ease-in;
+  -ms-animation-timing-function: ease-in;
+  -khtml-animation-timing-function: ease-in;
+  animation-timing-function: ease-in;
   -moz-transform-origin: 0 0;
+  -webkit-transform-origin: 0 0;
+  -o-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  transform-origin: 0 0;
   -moz-animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  -ms-animation-fill-mode: forwards;
+  -khtml-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
 }
 
 .slide.top {
@@ -163,6 +265,11 @@ nav .up a {
 
 .slide.zoomin {
   -moz-animation-name: zoomin;
+  -webkit-animation-name: zoomin;
+  -o-animation-name: zoomin;
+  -ms-animation-name: zoomin;
+  -khtml-animation-name: zoomin;
+  animation-name: zoomin;
 }
 
 .slide .cp {
@@ -171,38 +278,100 @@ nav .up a {
 
 .slide.zoomout .cp {
   -moz-animation-duration: 3s;
+  -webkit-animation-duration: 3s;
+  -o-animation-duration: 3s;
+  -ms-animation-duration: 3s;
+  -khtml-animation-duration: 3s;
+  animation-duration: 3s;
   -moz-transform-origin: 0 0;
+  -webkit-transform-origin: 0 0;
+  -o-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  transform-origin: 0 0;
   -moz-animation-name: show;
+  -webkit-animation-name: show;
+  -o-animation-name: show;
+  -ms-animation-name: show;
+  -khtml-animation-name: show;
+  animation-name: show;
   -moz-animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  -ms-animation-fill-mode: forwards;
+  -khtml-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
 }
 
 .slide.zoomin .cp {
   visibility: hidden;
   -moz-animation-duration: 3s;
+  -webkit-animation-duration: 3s;
+  -o-animation-duration: 3s;
+  -ms-animation-duration: 3s;
+  -khtml-animation-duration: 3s;
+  animation-duration: 3s;
   -moz-transform-origin: 0 0;
+  -webkit-transform-origin: 0 0;
+  -o-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  transform-origin: 0 0;
   -moz-animation-name: hide;
+  -webkit-animation-name: hide;
+  -o-animation-name: hide;
+  -ms-animation-name: hide;
+  -khtml-animation-name: hide;
+  animation-name: hide;
   -moz-animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  -ms-animation-fill-mode: forwards;
+  -khtml-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
 }
 
 .slide.zoomout {
   -moz-animation-name: zoomout;
+  -webkit-animation-name: zoomout;
+  -o-animation-name: zoomout;
+  -ms-animation-name: zoomout;
+  -khtml-animation-name: zoomout;
+  animation-name: zoomout;
 }
 
 .slide.minimize {
   -moz-animation-name: minimize;
+  -webkit-animation-name: minimize;
+  -o-animation-name: minimize;
+  -ms-animation-name: minimize;
+  -khtml-animation-name: minimize;
+  animation-name: minimize;
 }
 
 .slide.maximize {
   -moz-animation-name: maximize;
+  -webkit-animation-name: maximize;
+  -o-animation-name: maximize;
+  -ms-animation-name: maximize;
+  -khtml-animation-name: maximize;
+  animation-name: maximize;
 }
 
 @-moz-keyframes zoomin {
   0% {
     -moz-transform: scale(1);
+    -webkit-transform: scale(1);
+    -o-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
   }
 
   99.99% {
     -moz-transform: scale(50);
+    -webkit-transform: scale(50);
+    -o-transform: scale(50);
+    -ms-transform: scale(50);
+    transform: scale(50);
+    display: none;
   }
 
   100% {
@@ -217,20 +386,36 @@ nav .up a {
 
   0.01% {
     -moz-transform: scale(50);
+    -webkit-transform: scale(50);
+    -o-transform: scale(50);
+    -ms-transform: scale(50);
+    transform: scale(50);
   }
 
   100% {
     -moz-transform: scale(1);
+    -webkit-transform: scale(1);
+    -o-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
   }
 }
 
 @-moz-keyframes minimize {
   0% {
     -moz-transform: scale(1);
+    -webkit-transform: scale(1);
+    -o-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
   }
 
   99.99% {
     -moz-transform: scale(0.02);
+    -webkit-transform: scale(0.02);
+    -o-transform: scale(0.02);
+    -ms-transform: scale(0.02);
+    transform: scale(0.02);
   }
 
   100% {
@@ -245,10 +430,18 @@ nav .up a {
 
   0.01% {
     -moz-transform: scale(0.02);
+    -webkit-transform: scale(0.02);
+    -o-transform: scale(0.02);
+    -ms-transform: scale(0.02);
+    transform: scale(0.02);
   }
 
   100% {
     -moz-transform: scale(1);
+    -webkit-transform: scale(1);
+    -o-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
   }
 }
 
