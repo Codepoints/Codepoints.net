@@ -30,23 +30,23 @@ function u($s) {
 }
 
 
-function load_view($view, $params=array(), $safe=array()) {
-    //foreach ($params as $k => $v) {
-    //    if (!in_array($k, $safe)) {
-    //        $params[$k] = q($v);
-    //    }
-    //}
-    extract($params);
-    ob_start();
-    include(dirname(__file__)."/../views/$view.php");
-    $out = ob_get_contents();
-    @ob_end_clean();
-    return $out;
-}
+class View {
 
+    protected $file;
 
-function print_view($view, $params=array(), $safe=array()) {
-    echo load_view($view, $params, $safe);
+    public function __construct($view) {
+        $this->file = dirname(__FILE__)."/../views/$view.php";
+    }
+
+    public function render($params) {
+        extract($params);
+        ob_start();
+        include($this->file);
+        $out = ob_get_contents();
+        @ob_end_clean();
+        return $out;
+    }
+
 }
 
 

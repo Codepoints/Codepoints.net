@@ -2,11 +2,5 @@ RewriteEngine On
 
 RewriteRule ^index.php - [L]
 
-RewriteRule ^[uU]\+(.*) codepoint.php?cp=$1 [L,QSA]
-
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^([a-z0-9_-]+_plane)$ plane.php?name=$1 [L,QSA]
-
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^([a-z0-9_-]+)$ block.php?name=$1 [L,QSA]
-
+RewriteRule .* index.php [L]
