@@ -51,6 +51,9 @@ class Codepoint {
         return self::hex($this->id);
     }
 
+    /**
+     * access db for dependency injection
+     */
     public function getDB() {
         return $this->db;
     }
@@ -59,7 +62,8 @@ class Codepoint {
      * get the character representation in a specific encoding
      */
     public function getChar($coding='UTF-8') {
-        return mb_convert_encoding('&#'.$this->id.';', $coding, 'HTML-ENTITIES');
+        return mb_convert_encoding('&#'.$this->id.';', $coding,
+                                   'HTML-ENTITIES');
     }
 
     /**
@@ -77,13 +81,14 @@ class Codepoint {
      */
     public function getImage() {
         if ($this->image === NULL) {
-            $q = $this->db->prepare('SELECT data FROM img WHERE id = ?');
-            $q->execute(array($this->id));
-            $r = $q->fetch();
-            if ($r) {
-                $r = 'image/png;base64,' . $r[0];
+            $props = $this->getProperties();
+            $r = $props['image'];
+            if (! $r) {
+                $r = 'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQAAAAA3iMLMAAAAIUlE'.
+                     'QVQI12P4/58Bghr/M8z8z7AUjFr/M3SCUSMSA6wMAI8sGvs6OjZh'.
+                     'AAAAAElFTkSuQmCC';
             }
-            $this->image = $r;
+            $this->image = 'image/png;base64,' . $r;
         }
         return $this->image;
     }
@@ -114,8 +119,10 @@ class Codepoint {
      */
     public function getProperties() {
         if ($this->properties === NULL) {
-            $query = $this->db->prepare('SELECT * FROM data
-                                        WHERE cp = :cp LIMIT 1');
+            $query = $this->db->prepare('
+                SELECT *, (SELECT img.data FROM img WHERE img.id = cp) image
+                FROM data
+                WHERE cp = :cp LIMIT 1');
             $query->execute(array(':cp' => $this->id));
             $codepoint = $query->fetch(PDO::FETCH_ASSOC);
             $query->closeCursor();
@@ -124,6 +131,105 @@ class Codepoint {
         return $this->properties;
     }
 
+    /**
+     * fetch one property, possibly already as new self
+     */
+    public function getProp($prop, $default=NULL) {
+        $props = $this->getProperties();
+        if (array_key_exists($prop, $props)) {
+            if (in_array($prop, array('bmg','suc','slc','stc','scf'))) {
+                if (intval($v) === $this->id) {
+                    return $this;
+                } else {
+                    return new Codepoint(intval($props[$prop]), $this->db);
+                }
+            } elseif (in_array($prop, array('uc','lc','tc','cf','dm',
+                                            'FC_NFKC','NFKC_CF'))) {
+                $r = array();
+                $s = explode(' ', $props[$prop]);
+                foreach ($s as $v) {
+                    if (intval($v) === $this->id) {
+                        $r[] = $this;
+                    } else {
+                        $r[] = new Codepoint(intval($v), $this->db);
+                    }
+                }
+                return $r;
+            } elseif (in_array($prop, array(
+                'Bidi_M', 'Bidi_C', 'CE', 'Comp_Ex', 'XO_NFC', 'XO_NFD', 'XO_NFKC',
+                'XO_NFKD', 'Join_C', 'Upper', 'Lower', 'OUpper', 'OLower', 'CI', 'Cased',
+                'CWCF', 'CWCM', 'CWL', 'CWKCF', 'CWT', 'CWU', 'IDS', 'OIDS', 'XIDS',
+                'IDC', 'OIDC', 'XIDC', 'Pat_Syn', 'Pat_WS', 'Dash', 'Hyphen', 'QMark',
+                'Term', 'STerm', 'Dia', 'Ext', 'SD', 'Alpha', 'OAlpha', 'Math', 'OMath',
+                'Hex', 'AHex', 'DI', 'ODI', 'LOE', 'WSpace', 'Gr_Base', 'Gr_Ext',
+                'OGr_Ext', 'Gr_Link', 'Ideo', 'UIdeo', 'IDSB', 'IDST', 'Radical', 'Dep',
+                'VS', 'NChar'))) {
+                if ($props[$prop] === '1') {
+                    return true;
+                } elseif ($props[$prop] === '0') {
+                    return false;
+                } else {
+                    return null;
+            }
+            } else {
+                return $props[$prop];
+            }
+        }
+        return $default;
+    }
+
+    /**
+     * get pronounciation of a codepoint (Pinyin)
+     */
+    public function getPronunciation() {
+        $props = $this->getProperties();
+        $pr = '';
+        $toPinyin = false;
+        if ($props['kHanyuPinlu']) {
+            $toPinyin = true;
+            $pr = preg_replace('/^([a-z0-9]+).*/', '$1',
+                               $props['kHanyuPinlu']);
+        }
+        if (! $pr && $props['kXHC1983']) {
+            $pr = preg_replace('/^[0-9.*,]+:([^ ,]+)(?:[ ,].*)?$/', '$1',
+                               $props['kXHC1983']);
+        }
+        if (! $pr && $props['kHanyuPinyin']) {
+            $pr = preg_replace('/^[0-9.*,]+:([^ ,]+)(?:[ ,].*)?$/', '$1',
+                               $props['kHanyuPinyin']);
+        }
+        if (! $pr && $props['kMandarin']) {
+            $toPinyin = true;
+            $pr = strtolower(preg_replace('/^([A-Z0-9]+).*/', '$1',
+                               $props['kMandarin']));
+        }
+        if ($toPinyin) {
+            $pr = preg_replace_callback('/([aeiouü])([^aeiouü12345]*)([12345])/',
+                function($matches) {
+                    $map = array(
+                        'a' => array(1 => '0101', 2 => '00E1', 3 => '01CE', 4 => '00E0'),
+                        'e' => array(1 => '0113', 2 => '00E9', 3 => '011B', 4 => '00E8'),
+                        'i' => array(1 => '012B', 2 => '00ED', 3 => '01D0', 4 => '00EC'),
+                        'o' => array(1 => '014D', 2 => '00F3', 3 => '01D2', 4 => '00F2'),
+                        'u' => array(1 => '016B', 2 => '00FA', 3 => '01D4', 4 => '00F9'),
+                        'ü' => array(1 => '01D6', 2 => '01D8', 3 => '01DA', 4 => '01DC'),
+                    );
+                    if (array_key_exists($matches[1], $map) &&
+                        array_key_exists($matches[3], $map[$matches[1]])) {
+                        $mod = mb_convert_encoding('&#x'.$map[$matches[1]][$matches[3]].';', 'UTF-8',
+                                'HTML-ENTITIES');
+                    } else {
+                        $mod = $matches[1];
+                    }
+                    return $mod.$matches[2];
+                }, $pr);
+        }
+        return $pr;
+    }
+
+    /**
+     * get the containing Unicode Block
+     */
     public function getBlock() {
         if ($this->block === NULL) {
             $this->block = UnicodeBlock::getForCodepoint($this);
@@ -131,6 +237,9 @@ class Codepoint {
         return $this->block;
     }
 
+    /**
+     * get the containing Unicode Plane
+     */
     public function getPlane() {
         if ($this->plane === NULL) {
             $this->plane = UnicodePlane::getForCodepoint($this);
@@ -152,6 +261,9 @@ class Codepoint {
         return $this->alias;
     }
 
+    /**
+     * get the previous codepoint (or False)
+     */
     public function getPrev() {
         if ($this->prev === NULL) {
             $query = $this->db->prepare('SELECT cp FROM data
@@ -170,6 +282,9 @@ class Codepoint {
         return $this->prev;
     }
 
+    /**
+     * get the next codepoint (or False)
+     */
     public function getNext() {
         if ($this->next === NULL) {
             $query = $this->db->prepare('SELECT cp, na, na1 FROM data
