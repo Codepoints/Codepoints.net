@@ -105,52 +105,38 @@ function getPage(url, callback) {
   action(url, function(data) {
     history.pushState({}, '', url);
     data = $(data);
-    document.title = data.find('title').text();
+    document.title = data.filter('title').text();
     callback(data);
   });
 }
 
+var stage;
+
+function animatePage($this, url, a1, a2) {
+  var offset = "" + ($this.offset().left) + "px " + ($this.offset().top) + "px",
+      tr = $('>*', stage).wrapAll('<div class="slide bottom"></div>')
+            .closest('.slide').css('MozTransformOrigin', offset)
+            .addClass(a1),
+      tmp;
+  getPage(url, function (data) {
+    data = data.filter('.stage').contents();
+    tmp = $('<div class="slide top '+a2+'"></div>').html(data)
+               .appendTo(stage).css('MozTransformOrigin', offset);
+    window.setTimeout(function() {
+      tr.remove();
+      tmp.replaceWith(tmp.contents());
+    }, 3000);
+  });
+  return false;
+}
+
 $(function() {
-  var stage = $('.stage');
+  stage = $('.stage');
   stage.on('click', 'a.cp', function() {
-    var $this = $(this),
-        url = this.href;
-    getPage(url, function (data) {
-      var tr = $('>*', stage).wrapAll('<div class="slide top"></div>')
-                .closest('.slide');
-      data = data.filter('.stage').contents();
-      var tmp = $('<div class="slide bottom maximize"></div>').html(data)
-                 .appendTo(stage);
-      tr.add(tmp).css('MozTransformOrigin',
-        "" + ($this.offset().left) + "px " +
-        "" + ($this.offset().top) + "px");
-      tr.addClass('zoomin');
-      window.setTimeout(function() {
-        tr.remove();
-        tmp.replaceWith(tmp.contents());
-      }, 3000);
-    });
-    return false;
+    return animatePage($(this), this.href, 'zoomin', 'maximize');
   });
   stage.on('click', 'a.bl, a.pl', function() {
-    var $this = $(this),
-        url = this.href;
-    getPage(url, function (data) {
-      var tr = $('>*', stage).wrapAll('<div class="slide bottom"></div>')
-                .closest('.slide');
-      data = data.filter('.stage').contents();
-      var tmp = $('<div class="slide top zoomout"></div>').html(data)
-                 .appendTo(stage);
-      tr.add(tmp).css('MozTransformOrigin',
-        "" + ($this.offset().left) + "px " +
-        "" + ($this.offset().top) + "px");
-      tr.addClass('minimize');
-      window.setTimeout(function() {
-        tr.remove();
-        tmp.replaceWith(tmp.contents());
-      }, 3000);
-    });
-    return false;
+    return animatePage($(this), this.href, 'minimize', 'zoomout');
   });
   $(document).on('keydown', function(e) {
     console.log(e.which);
