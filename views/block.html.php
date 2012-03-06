@@ -36,8 +36,7 @@ include "header.php";
   <?php echo $pagination?>
   <ol class="block-data">
     <?php foreach ($pagination->getSet($block->get()) as $cp => $na):
-      f('<li value="%s"><a class="cp" href="U+%04X" title="%s">%04X<img src="data:%s" alt="" width="16" height="16" /></a></li>',
-              $cp, $cp, $na, $cp, $na->getImage());
+      echo '<li value="' . $cp . '">'; cp($na); echo '</li>';
     endforeach ?>
   </ol>
   <?php echo $pagination?>

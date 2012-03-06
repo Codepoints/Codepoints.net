@@ -16,18 +16,14 @@ include "header.php";
   <nav>
     <ul>
       <li class="prev">
-        <?php if ($prev):?>
-          <a class="cp" rel="prev" href="U+<?php e($prev)?>"><?php e($prev)?><img src="data:<?php e($prev->getImage())?>" alt="" width="16" height="16" /></a>
-        <?php endif?>
+        <?php if ($prev): cp($prev, 'prev'); endif?>
       </li>
       <li class="up">
         <?php $block = $codepoint->getBlock();
           f('<a class="bl" rel="up" href="%s">%s</a>', u($block->getName()), $block->getName()); ?>
       </li>
       <li class="next">
-        <?php if ($next):?>
-          <a class="cp" rel="next" href="U+<?php e($next)?>"><?php e($next)?><img src="data:<?php e($next->getImage())?>" alt="" width="16" height="16" /></a>
-        <?php endif?>
+        <?php if ($next): cp($next, 'next'); endif?>
       </li>
     </ul>
   </nav>
@@ -61,6 +57,11 @@ include "header.php";
               echo ';';
           }?></dd>
       <?php endforeach?>
+      <?php $pronunciation = $codepoint->getPronunciation();
+      if ($pronunciation):?>
+        <dt>Pronunciation</dt>
+        <dd><?php e($pronunciation)?></dd>
+      <?php endif?>
     </dl>
   </section>
   <section>
@@ -74,8 +75,21 @@ include "header.php";
       <dd><?php e($props['gc'])?></dd>
       <dt>Bidi Class</dt>
       <dd><?php e($props['bc'])?></dd>
-      <dt></dt>
-      <dd><?php e($props['age'])?></dd>
+      <?php if ($defn = $codepoint->getProp('kDefinition')):?>
+        <dt>Definition</dt>
+        <dd><?php
+          echo preg_replace_callback('/U\+([0-9A-F]{4,6})/', function($m) {
+              global $db;
+              return _cp(array($m[1], $db));
+          }, $defn);
+        ?></dd>
+      <?php endif?>
+      <?php if($props['nt'] !== 'None'):?>
+        <dt>Numeric Value</dt>
+        <dd>
+          <?php e($props['nv'])?>
+        </dd>
+      <?php endif?>
     </dl>
   </section>
   <section>
@@ -91,11 +105,21 @@ include "header.php";
       ?></dd>
       <?php if($props['uc'] && $props['uc'] != $codepoint->getId('hex')):?>
         <dt>Uppercase</dt>
-        <dd></dd>
+        <dd>
+          <?php cp(array($props['uc'], $codepoint->getDB()))?>
+        </dd>
       <?php endif?>
-      <?php if($props['lc'] && $props['lc'] != $codepoint->getId('hex')):?>
+      <?php if($props['lc'] && $props['lc'] != $codepoint->getId('hex')): ?>
         <dt>Lowercase</dt>
-        <dd></dd>
+        <dd>
+          <?php cp(array($props['lc'], $codepoint->getDB()))?>
+        </dd>
+      <?php endif?>
+      <?php if($props['tc'] && $props['tc'] != $codepoint->getId('hex')):?>
+        <dt>Titlecase</dt>
+        <dd>
+          <?php cp(array($props['tc'], $codepoint->getDB()))?>
+        </dd>
       <?php endif?>
     </dl>
   </section>
