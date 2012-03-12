@@ -4,14 +4,14 @@
 /**
  * an arbitrary range of Unicode characters
  *
- * may have gaps
+ * the range may have gaps
  */
 class UnicodeRange implements Iterator {
 
     protected $db;
     protected $set = array();
 
-    public function __construct(Array $set=array(), $db) {
+    public function __construct(Array $set/*=array()*/, $db) {
         $this->db = $db;
         $set = array_unique($set);
         $this->set = $this->fetchNames($set);
@@ -96,8 +96,11 @@ class UnicodeRange implements Iterator {
         $names = array();
         if (count($set) > 0) {
             $query = $this->db->prepare("
-            SELECT cp, na, na1, (SELECT img.data FROM img WHERE img.id = cp) data FROM data
-            WHERE cp IN (" . join(',', $set) . ")");
+              SELECT cp, na, na1, (SELECT codepoint_image.image
+                                     FROM codepoint_image
+                                    WHERE codepoint_image.cp = codepoints.cp) image
+                FROM codepoints
+               WHERE cp IN (" . join(',', $set) . ")");
             $query->execute();
             $r = $query->fetchAll(PDO::FETCH_ASSOC);
             $query->closeCursor();
@@ -105,7 +108,7 @@ class UnicodeRange implements Iterator {
                 foreach ($r as $cp) {
                     $names[intval($cp['cp'])] = new Codepoint(intval($cp['cp']),
                         $this->db, array('name' => $cp['na']? $cp['na'] : ($cp['na1']? $cp['na1'].'*' : '<control>'),
-                        'block' => $this, 'image' => 'image/png;base64,' . $cp['data']));
+                        'block' => $this, 'image' => 'image/png;base64,' . $cp['image']));
                 }
             }
         }
@@ -189,7 +192,7 @@ class UnicodeRange implements Iterator {
      * get a range of codepoints with same property
      */
     public static function getForProperty($prop, $val, $db) {
-        $query = $db->prepare('SELECT cp FROM data
+        $query = $db->prepare('SELECT cp FROM codepoints
             WHERE `'.str_replace(array('`', "\0"), '', $prop).'` = :val');
         $query->execute(array(':val' => $val));
         $r = $query->fetchAll(PDO::FETCH_ASSOC);

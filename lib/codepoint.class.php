@@ -120,13 +120,34 @@ class Codepoint {
     public function getProperties() {
         if ($this->properties === NULL) {
             $query = $this->db->prepare('
-                SELECT *, (SELECT img.data FROM img WHERE img.id = cp) image
-                FROM data
+                SELECT *, (SELECT codepoint_image.image
+                             FROM codepoint_image
+                            WHERE codepoint_image.cp = codepoints.cp) image,
+                          (SELECT codepoint_script.sc
+                             FROM codepoint_script
+                            WHERE codepoint_script.cp = codepoints.cp) sc
+                FROM codepoints
                 WHERE cp = :cp LIMIT 1');
             $query->execute(array(':cp' => $this->id));
             $codepoint = $query->fetch(PDO::FETCH_ASSOC);
             $query->closeCursor();
             $this->properties = $codepoint;
+            $query = $this->db->prepare('SELECT *
+                                           FROM codepoint_relation
+                                          WHERE cp = :cp');
+            $query->execute(array(':cp' => $this->id));
+            $rel = $query->fetchAll(PDO::FETCH_ASSOC);
+            $query->closeCursor();
+            foreach ($rel as $v) {
+                if ($v['order'] == 0) {
+                    $this->properties[$v['relation']] = new Codepoint($v['other'], $this->db);
+                } else {
+                    if (! array_key_exists($v['relation'], $this->properties)) {
+                        $this->properties[$v['relation']] = array();
+                    }
+                    $this->properties[$v['relation']][$v['order'] - 1] = new Codepoint($v['other'], $this->db);
+                }
+            }
         }
         return $this->properties;
     }
@@ -266,7 +287,7 @@ class Codepoint {
      */
     public function getPrev() {
         if ($this->prev === NULL) {
-            $query = $this->db->prepare('SELECT cp FROM data
+            $query = $this->db->prepare('SELECT cp FROM codepoints
                     WHERE cp < :cp
                     ORDER BY cp DESC
                     LIMIT 1');
@@ -287,7 +308,7 @@ class Codepoint {
      */
     public function getNext() {
         if ($this->next === NULL) {
-            $query = $this->db->prepare('SELECT cp, na, na1 FROM data
+            $query = $this->db->prepare('SELECT cp FROM codepoints
                     WHERE cp > :cp
                     ORDER BY cp ASC
                     LIMIT 1');
@@ -318,7 +339,7 @@ class Codepoint {
      */
     public static function getByName($name, $db) {
         $query = $db->prepare("
-            SELECT * FROM data
+            SELECT * FROM codepoints
             WHERE replace(replace(lower(na), '_', ''), ' ', '') = :name
                OR replace(replace(lower(na1), '_', ''), ' ', '') = :name
             LIMIT 1");

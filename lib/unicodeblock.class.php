@@ -10,18 +10,15 @@ class UnicodeBlock extends UnicodeRange {
     protected $prev;
     protected $next;
     protected $plane;
-    protected static $type = 'block';
 
     public function __construct($name, $db, $r=NULL) {
         if ($r === NULL) { // performance: allow to specify range
             $query = $db->prepare("
                 SELECT name, first, last FROM blocks
                 WHERE replace(replace(lower(name), '_', ''), ' ', '') = :name
-                AND `type` = :type
                 LIMIT 1");
-            $query->execute(array(':type' => self::$type,
-                ':name' => str_replace(array(' ', '_'), '',
-                                    strtolower($name))));
+            $query->execute(array(':name' => str_replace(array(' ', '_'), '',
+                                  strtolower($name))));
             $r = $query->fetch(PDO::FETCH_ASSOC);
             $query->closeCursor();
             if ($r === False) {
@@ -41,11 +38,9 @@ class UnicodeBlock extends UnicodeRange {
             $query = $this->db->prepare("
             SELECT name, first, last FROM blocks
              WHERE first < :cp AND last < :cp
-               AND `type` = :type
           ORDER BY last DESC
              LIMIT 1");
-            $query->execute(array(':type' => self::$type,
-                                  ':cp' => $this->getFirst()));
+            $query->execute(array(':cp' => $this->getFirst()));
             $r = $query->fetch(PDO::FETCH_ASSOC);
             $query->closeCursor();
             if ($r === False) {
@@ -62,11 +57,9 @@ class UnicodeBlock extends UnicodeRange {
             $query = $this->db->prepare("
             SELECT name, first, last FROM blocks
              WHERE first > :cp AND last > :cp
-               AND `type` = :type
           ORDER BY first ASC
              LIMIT 1");
-            $query->execute(array(':type' => self::$type,
-                                  ':cp' => $this->getLast()));
+            $query->execute(array(':cp' => $this->getLast()));
             $r = $query->fetch(PDO::FETCH_ASSOC);
             $query->closeCursor();
             if ($r === False) {
@@ -81,9 +74,8 @@ class UnicodeBlock extends UnicodeRange {
     public function getPlane() {
         if ($this->plane === NULL) {
             $query = $this->db->prepare("
-            SELECT name, first, last FROM blocks
+            SELECT name, first, last FROM planes
              WHERE first <= :first AND last >= :last
-               AND `type` = 'plane'
              LIMIT 1");
             $query->execute(array(':first' => $this->getFirst(),
                                   ':last' => $this->getLast()));
@@ -106,9 +98,8 @@ class UnicodeBlock extends UnicodeRange {
         $query = $db->prepare("
             SELECT name, first, last FROM blocks
              WHERE first <= :cp AND last >= :cp
-               AND `type` = :type
              LIMIT 1");
-        $query->execute(array(':type' => self::$type, ':cp' => $cp));
+        $query->execute(array(':cp' => $cp));
         $r = $query->fetch(PDO::FETCH_ASSOC);
         $query->closeCursor();
         if ($r === False) {

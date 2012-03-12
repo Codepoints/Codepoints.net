@@ -10,18 +10,15 @@ class UnicodePlane {
     protected $blocks;
     protected $prev;
     protected $next;
-    protected static $type = 'plane';
 
     public function __construct($name, $db, $r=NULL) {
         $this->db = $db;
         if ($r === NULL) {
             $query = $this->db->prepare("
-                SELECT name, first, last FROM blocks
+                SELECT name, first, last FROM planes
                 WHERE replace(replace(lower(name), '_', ''), ' ', '') = :name
-                AND `type` = :type
                 LIMIT 1");
-                $query->execute(array(':type' => self::$type,
-                    ':name' => str_replace(array(' ', '_'), '',
+                $query->execute(array(':name' => str_replace(array(' ', '_'), '',
                                         strtolower($name))));
             $r = $query->fetch(PDO::FETCH_ASSOC);
             $query->closeCursor();
@@ -42,8 +39,7 @@ class UnicodePlane {
         if ($this->blocks === NULL) {
         $query = $this->db->prepare("
             SELECT name, first, last FROM blocks
-             WHERE first >= :first AND last <= :last
-               AND `type` = 'block'");
+             WHERE first >= :first AND last <= :last");
         $query->execute(array(':first' => $this->first,
                               ':last' => $this->last));
         $r = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -59,13 +55,11 @@ class UnicodePlane {
     public function getPrev() {
         if ($this->prev === NULL) {
             $query = $this->db->prepare('SELECT name, first, last
-                FROM blocks
-                WHERE last < :first
-                AND `type` = :type
+                FROM planes
+                WHERE last < ?
                 ORDER BY first DESC
                 LIMIT 1');
-            $query->execute(array(':type' => self::$type,
-                                  ':first' => $this->first));
+            $query->execute(array($this->first));
             $r = $query->fetch(PDO::FETCH_ASSOC);
             $query->closeCursor();
             if ($r === False) {
@@ -80,13 +74,11 @@ class UnicodePlane {
     public function getNext() {
         if ($this->next === NULL) {
             $query = $this->db->prepare('SELECT name, first, last
-                FROM blocks
-                WHERE first > :last
-                AND `type` = :type
+                FROM planes
+                WHERE first > ?
                 ORDER BY first ASC
                 LIMIT 1');
-            $query->execute(array(':type' => self::$type,
-                                  ':last' => $this->last));
+            $query->execute(array($this->last));
             $r = $query->fetch(PDO::FETCH_ASSOC);
             $query->closeCursor();
             if ($r === False) {
@@ -104,11 +96,10 @@ class UnicodePlane {
             $cp = $cp->getId();
         }
         $query = $db->prepare("
-            SELECT name, first, last FROM blocks
+            SELECT name, first, last FROM planes
              WHERE first <= :cp AND last >= :cp
-               AND `type` = :type
              LIMIT 1");
-        $query->execute(array(':type' => self::$type, ':cp' => $cp));
+        $query->execute(array(':cp' => $cp));
         $r = $query->fetch(PDO::FETCH_ASSOC);
         $query->closeCursor();
         if ($r === False) {
@@ -118,10 +109,7 @@ class UnicodePlane {
     }
 
     public static function getAll($db) {
-        $query = $db->prepare("
-            SELECT * FROM blocks
-             WHERE `type` = :type");
-        $query->execute(array(':type' => self::$type));
+        $query = $db->query("SELECT * FROM planes");
         $r = $query->fetchAll(PDO::FETCH_ASSOC);
         $query->closeCursor();
         $planes = array();

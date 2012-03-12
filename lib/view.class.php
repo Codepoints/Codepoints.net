@@ -38,15 +38,15 @@ function _cp($cp, $rel='') {
     if ($rel) {
         $rel = ' rel="'.q($rel).'"';
     }
-    if (! $cp instanceof Codepoint) {
-        if (is_array($cp)) {
-            $cp = new Codepoint(hexdec($cp[0]), $cp[1]);
-        } else {
-            throw new Exception('Parameter 1 must be Codepoint or Array');
-        }
+    $r = array();
+    if ($cp instanceof Codepoint) {
+        $cp = array($cp);
     }
-    return sprintf('<a class="cp"%s href="U+%s" title="%s">%s<img src="data:%s" alt="" /></a>',
-           $rel, $cp, q($cp->getName()), $cp, $cp->getImage());
+    foreach ($cp as $c) {
+        $r[] = sprintf('<a class="cp"%s href="U+%s" title="%s">%s<img src="data:%s" alt="" /></a>',
+           $rel, $c, q($c->getName()), $c, $c->getImage());
+    }
+    return join(' ', $r);
 }
 
 

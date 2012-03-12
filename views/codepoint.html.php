@@ -103,22 +103,32 @@ include "header.php";
       <dd><?php $block = $codepoint->getBlock();
           f('<a class="bl" href="%s">%s</a>', u($block->getName()), $block->getName());
       ?></dd>
-      <?php if($props['uc'] && $props['uc'] != $codepoint->getId('hex')):?>
+      <?php if($props['uc'] && (is_array($props['uc']) ||
+               $props['uc']->getId() != $codepoint->getId())):?>
         <dt>Uppercase</dt>
         <dd>
-          <?php cp(array($props['uc'], $codepoint->getDB()))?>
+          <?php cp($props['uc'])?>
         </dd>
       <?php endif?>
-      <?php if($props['lc'] && $props['lc'] != $codepoint->getId('hex')): ?>
+      <?php if($props['lc'] && (is_array($props['lc']) ||
+               $props['lc']->getId() != $codepoint->getId())):?>
         <dt>Lowercase</dt>
         <dd>
-          <?php cp(array($props['lc'], $codepoint->getDB()))?>
+          <?php cp($props['lc'])?>
         </dd>
       <?php endif?>
-      <?php if($props['tc'] && $props['tc'] != $codepoint->getId('hex')):?>
+      <?php if($props['tc'] && (is_array($props['tc']) ||
+               $props['tc']->getId() != $codepoint->getId())):?>
         <dt>Titlecase</dt>
         <dd>
-          <?php cp(array($props['tc'], $codepoint->getDB()))?>
+          <?php cp($props['tc'])?>
+        </dd>
+      <?php endif?>
+      <?php if($props['dm'] && (is_array($props['dm']) ||
+               $props['dm']->getId() != $codepoint->getId())):?>
+        <dt>Decomposition</dt>
+        <dd>
+          <?php cp($props['dm'])?>
         </dd>
       <?php endif?>
     </dl>
