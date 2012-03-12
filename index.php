@@ -65,6 +65,19 @@ $router->registerAction(function ($url) {
     echo $view->render(compact('block'));
 })
 ->registerAction(function ($url) {
+    return (substr($url, 0, 7) === 'search?');
+}, function ($url, $data) {
+    global $db;
+    $result = new SearchResult(array(), $db);
+    foreach ($_GET as $k => $v) {
+        if (in_array($k, array('bc'))) {
+            $result->addQuery($k, $v);
+        }
+    }
+    $view = new View('search');
+    echo $view->render(compact('result'));
+})
+->registerAction(function ($url) {
     return ($url === '' || $url === 'index.php');
 }, function ($url, $data) {
     global $db;
