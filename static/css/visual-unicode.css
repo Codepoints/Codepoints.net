@@ -138,6 +138,98 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
+.pagination {
+  list-style: none;
+  margin: 10px 0;
+  padding: 0;
+  text-align: center;
+  width: 590px;
+}
+
+.pagination li {
+  display: -moz-inline-box;
+  -moz-box-orient: vertical;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  margin: 0 1px 0 0;
+  padding: 0;
+}
+.pagination li {
+  *display: inline;
+}
+
+.pagination .ellipsis {
+  min-width: 32px;
+}
+
+.pagination span,
+.pagination a {
+  display: block;
+  min-width: 32px;
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 0 1px #def;
+}
+
+.pagination a {
+  background: #9cf;
+  color: #05a;
+  outline: none;
+  -moz-transition-property: background, color;
+  -webkit-transition-property: background, color;
+  -o-transition-property: background, color;
+  transition-property: background, color;
+  -moz-transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+.pagination a:hover, .pagination a:focus {
+  background: #05a;
+  color: #9cf;
+}
+
+.pagination .prev a,
+.pagination .next a,
+.pagination .prev span,
+.pagination .next span {
+  text-indent: -9999px;
+}
+
+.pagination .prev a:after,
+.pagination .next a:after,
+.pagination .prev span:after,
+.pagination .next span:after {
+  border-color: transparent;
+  border-style: solid;
+  border-width: 12px;
+  width: 0;
+  height: 0;
+  display: block;
+  margin-top: -28px;
+  content: " ";
+}
+
+.pagination .prev {
+  float: left;
+}
+.pagination .prev a:after {
+  border-color: transparent white transparent transparent;
+  margin-left: -4px;
+}
+
+.pagination .next {
+  float: right;
+}
+.pagination .next a:after {
+  border-color: transparent transparent transparent white;
+  margin-left: 12px;
+  margin-right: -12px;
+}
+
 body {
   margin: 0;
   font: 1em/1.5 Arial, sans-serif;
@@ -230,94 +322,6 @@ body {
 
 .block-data li:nth-of-type(16n+1) {
   clear: left;
-}
-
-.pagination {
-  list-style: none;
-  margin: 10px 0;
-  padding: 0;
-  text-align: center;
-  width: 590px;
-}
-
-.pagination li {
-  display: -moz-inline-box;
-  -moz-box-orient: vertical;
-  display: inline-block;
-  vertical-align: middle;
-  *vertical-align: auto;
-  margin: 0 1px 0 0;
-  padding: 0;
-}
-.pagination li {
-  *display: inline;
-}
-
-.pagination span,
-.pagination a {
-  display: block;
-  min-width: 32px;
-  height: 32px;
-  line-height: 32px;
-  text-align: center;
-  text-decoration: none;
-  text-shadow: 0 1px #def;
-}
-
-.pagination a {
-  background: #9cf;
-  color: #05a;
-  outline: none;
-  -moz-transition-property: background, color;
-  -webkit-transition-property: background, color;
-  -o-transition-property: background, color;
-  transition-property: background, color;
-  -moz-transition-duration: 0.3s;
-  -webkit-transition-duration: 0.3s;
-  -o-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-}
-.pagination a:hover, .pagination a:focus {
-  background: #05a;
-  color: #9cf;
-}
-
-.pagination .prev a,
-.pagination .next a,
-.pagination .prev span,
-.pagination .next span {
-  text-indent: -9999px;
-}
-
-.pagination .prev a:after,
-.pagination .next a:after,
-.pagination .prev span:after,
-.pagination .next span:after {
-  border-color: transparent;
-  border-style: solid;
-  border-width: 12px;
-  width: 0;
-  height: 0;
-  display: block;
-  margin-top: -28px;
-  content: " ";
-}
-
-.pagination .prev {
-  float: left;
-}
-.pagination .prev a:after {
-  border-color: transparent white transparent transparent;
-  margin-left: -4px;
-}
-
-.pagination .next {
-  float: right;
-}
-.pagination .next a:after {
-  border-color: transparent transparent transparent white;
-  margin-left: 12px;
-  margin-right: -12px;
 }
 
 nav li,
