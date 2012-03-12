@@ -16,6 +16,11 @@ class Pagination {
     public function __construct($set, $pagesize=256) {
         $this->pagesize = $pagesize;
         $this->setCount = $set;
+        $r = $_GET;
+        $r['page'] = '___page___';
+        $r = str_replace('___page___', '%s', str_replace('%', '%%',
+             http_build_query($r)));
+        $this->setUrl('?'.$r);
     }
 
     public function setPage($page) {
@@ -72,7 +77,7 @@ class Pagination {
         return $html;
     }
 
-    public function getHtml() {
+    public function render() {
         return $this->__toString();
     }
 
