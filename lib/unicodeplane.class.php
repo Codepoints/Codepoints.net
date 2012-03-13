@@ -11,6 +11,9 @@ class UnicodePlane {
     protected $prev;
     protected $next;
 
+    /**
+     * create a new plae instance, optionally prefilled
+     */
     public function __construct($name, $db, $r=NULL) {
         $this->db = $db;
         if ($r === NULL) {
@@ -31,27 +34,38 @@ class UnicodePlane {
         $this->last = $r['last'];
     }
 
+    /**
+     * get the plane name
+     */
     public function getName() {
         return $this->name;
     }
 
+    /**
+     * get all blocks belonging to this plane
+     */
     public function getBlocks() {
         if ($this->blocks === NULL) {
-        $query = $this->db->prepare("
-            SELECT name, first, last FROM blocks
-             WHERE first >= :first AND last <= :last");
-        $query->execute(array(':first' => $this->first,
-                              ':last' => $this->last));
-        $r = $query->fetchAll(PDO::FETCH_ASSOC);
-        $query->closeCursor();
-        if ($r === False) {
+            $query = $this->db->prepare("
+                SELECT name, first, last FROM blocks
+                WHERE first >= :first AND last <= :last");
+            $query->execute(array(':first' => $this->first,
+                                ':last' => $this->last));
+            $r = $query->fetchAll(PDO::FETCH_ASSOC);
+            $query->closeCursor();
             $this->blocks = array();
-        }
-            $this->blocks = $r;
+            if ($r !== False) {
+                foreach ($r as $b) {
+                    $this->blocks[] = new UnicodeBlock('', $this->db, $b);
+                }
+            }
         }
         return $this->blocks;
     }
 
+    /**
+     * get previous plane or False
+     */
     public function getPrev() {
         if ($this->prev === NULL) {
             $query = $this->db->prepare('SELECT name, first, last
@@ -71,6 +85,9 @@ class UnicodePlane {
         return $this->prev;
     }
 
+    /**
+     * get next plane or False
+     */
     public function getNext() {
         if ($this->next === NULL) {
             $query = $this->db->prepare('SELECT name, first, last
@@ -90,6 +107,9 @@ class UnicodePlane {
         return $this->next;
     }
 
+    /**
+     * get plane of a specific codepoint
+     */
     public static function getForCodepoint($cp, $db=NULL) {
         if ($cp instanceof Codepoint) {
             $db = $cp->getDB();
@@ -108,6 +128,9 @@ class UnicodePlane {
         return new self('', $db, $r);
     }
 
+    /**
+     * get all defined Unicode planes
+     */
     public static function getAll($db) {
         $query = $db->query("SELECT * FROM planes");
         $r = $query->fetchAll(PDO::FETCH_ASSOC);

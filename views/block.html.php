@@ -14,15 +14,15 @@ include "header.php";
     <ul>
       <li class="prev">
         <?php if ($prev):?>
-          <a class="bl" rel="prev" href="<?php e(str_replace(' ', '_', strtolower($prev->getName())))?>"><?php e($prev->getName())?></a>
+          <a class="bl" rel="prev" href="<?php e($router->getUrl($prev))?>"><?php e($prev->getName())?></a>
         <?php endif?>
       </li>
       <li class="up">
-        <a class="pl" rel="up" href="<?php e(str_replace(' ', '_', strtolower($plane->getName())))?>"><?php e($plane->getName())?></a>
+        <a class="pl" rel="up" href="<?php e($router->getUrl($plane))?>"><?php e($plane->getName())?></a>
       </li>
       <li class="next">
         <?php if ($next):?>
-          <a class="bl" rel="next" href="<?php e(str_replace(' ', '_', strtolower($next->getName())))?>"><?php e($next->getName())?></a>
+          <a class="bl" rel="next" href="<?php e($router->getUrl($next))?>"><?php e($next->getName())?></a>
         <?php endif?>
       </li>
     </ul>

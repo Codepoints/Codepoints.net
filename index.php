@@ -11,6 +11,7 @@ $router = Router::getRouter();
 
 
 $router->registerAction(function ($url) {
+    // Planes
     global $db;
     if (substr($url, -6) === '_plane') {
         try {
@@ -31,6 +32,7 @@ $router->registerAction(function ($url) {
 })
 
 ->registerAction(function ($url) {
+    // Codepoints
     global $db;
     if (substr($url, 0, 2) === 'U+' && ctype_xdigit(substr($url, 2))) {
         try {
@@ -52,6 +54,7 @@ $router->registerAction(function ($url) {
 })
 
 ->registerAction(function ($url) {
+    // Blocks
     global $db;
     if (! preg_match('/[^a-z0-9_-]/', $url)) {
         try {
@@ -68,6 +71,7 @@ $router->registerAction(function ($url) {
 })
 
 ->registerAction(function ($url) {
+    // Search
     return (substr($url, 0, 7) === 'search?');
 }, function ($url, $data) {
     global $db, $router;
@@ -93,6 +97,7 @@ $router->registerAction(function ($url) {
 })
 
 ->registerAction(function ($url) {
+    // Index page
     return ($url === '' || $url === 'index.php');
 }, function ($url, $data) {
     global $db;
@@ -112,17 +117,21 @@ $router->registerUrl('Codepoint', function ($object) {
         $path .= '_plane';
     }
     return $path;
+})
+->registerUrl('SearchResult', function ($object) {
+    $path = 'search';
+    if ($object instanceof SearchResult) {
+        $q = $object->getQuery;
+        $path .= http_build_query($q);
+    }
+    return $path;
 });
 
 
-$action = $router->getAction();
-if ($action !== Null) {
-    $action[0]($action[1], $action[2]);
-} else {
+if ($router->callAction() === False) {
     header('HTTP/1.0 404 Not Found');
     $view = new View('error404');
-    echo $view->render(array(
-        'planes' => UnicodePlane::getAll($db)));
+    echo $view->render(array('planes' => UnicodePlane::getAll($db)));
 }
 
 

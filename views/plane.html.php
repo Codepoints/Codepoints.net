@@ -11,17 +11,17 @@ include "header.php";
   <dl>
     <?php if ($prev):?>
       <dt>Previous</dt>
-      <dd><a href="<?php e(str_replace(' ', '_', strtolower($prev->name)))?>"><?php e($prev->name)?></a></dd>
+      <dd><a href="<?php e($router->getUrl($prev))?>"><?php e($prev->name)?></a></dd>
     <?php endif?>
     <?php if ($next):?>
       <dt>Next</dt>
-      <dd><a href="<?php e(str_replace(' ', '_', strtolower($next->name)))?>"><?php e($next->name)?></a></dd>
+      <dd><a href="<?php e($router->getUrl($next))?>"><?php e($next->name)?></a></dd>
     <?php endif?>
   </dl>
   <h2>Blocks in this plane</h2>
   <ol>
     <?php foreach ($blocks as $b):?>
-      <li><a href="<?php e(strtolower(u($b['name'])))?>"><?php e($b['name'])?></a></li>
+      <li><a href="<?php e($router->getUrl($b))?>"><?php e($b->getName())?></a></li>
     <?php endforeach?>
   </ol>
 <?php include "footer.php"?>

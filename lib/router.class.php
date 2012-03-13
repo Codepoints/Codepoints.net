@@ -6,7 +6,7 @@
  */
 class Router {
 
-    public $baseURL = '/projekte/visual-unicode/';
+    protected $baseURL = '/';
 
     protected $actions = array();
 
@@ -20,6 +20,7 @@ class Router {
     public static function getRouter() {
         if (! self::$defaultRouter) {
             self::$defaultRouter = new self();
+            self::$defaultRouter->base(dirname($_SERVER['PHP_SELF']).'/');
         }
         return self::$defaultRouter;
     }
@@ -38,6 +39,9 @@ class Router {
     public function getAction($url=Null) {
         if ($url === Null) {
             $url = substr($_SERVER['REQUEST_URI'], strlen($this->baseURL));
+            if ($url === False) {
+                $url = '';
+            }
         }
         foreach ($this->actions as $action) {
             $r = $action[0]($url);
@@ -46,6 +50,18 @@ class Router {
             }
         }
         return Null;
+    }
+
+    /**
+     * call the registered action for an URL
+     */
+    public function callAction($url=Null) {
+        $action = $this->getAction($url);
+        if ($action !== Null) {
+            $action[0]($action[1], $action[2]);
+            return True;
+        }
+        return False;
     }
 
     /**
@@ -61,11 +77,26 @@ class Router {
      */
     public function getUrl($object) {
         $path = '';
-        $class = get_class($object);
+        if (is_string($object)) {
+            $class = $object;
+        } else {
+            $class = get_class($object);
+        }
         if (array_key_exists($class, $this->urls)) {
             $path = $this->urls[$class]($object);
         }
         return $this->baseURL . $path;
+    }
+
+    /**
+     * get or set the base URL
+     */
+    public function base($val=NULL) {
+        $b = $this->baseURL;
+        if ($val !== NULL) {
+            $this->baseURL = $val;
+        }
+        return $b;
     }
 
     /**
