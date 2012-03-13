@@ -145,7 +145,7 @@ $.fn.tooltip = function() {
         offset: '0 8px',
         collision: 'fit'
       });
-    }).on('mouseleave', function() {
+    }).on('mouseleave click', function() {
       tip.hide();
     });
   });
