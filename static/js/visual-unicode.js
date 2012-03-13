@@ -130,6 +130,28 @@ function animatePage($this, url, a1, a2) {
   return false;
 }
 
+$.fn.tooltip = function() {
+  $('[title]', this).each(function() {
+    var $this = $(this),
+        title = $this.attr('title'),
+        tip = $('<p class="tooltip"></p>').text(title);
+    $this.removeAttr('title');
+    tip.hide().appendTo('body');
+    $this.on('mouseenter', function() {
+      tip.fadeIn('slow').position({
+        my: 'top',
+        at: 'bottom',
+        of: $this,
+        offset: '0 8px',
+        collision: 'fit'
+      });
+    }).on('mouseleave', function() {
+      tip.hide();
+    });
+  });
+  return this;
+};
+
 $(function() {
   stage = $('.stage');
   stage.on('click', 'a.cp', function() {
@@ -140,7 +162,7 @@ $(function() {
   });
   $(document).on('keydown', function(e) {
     console.log(e.which);
-  });
+  }).tooltip();
 });
 
 })(this, jQuery);

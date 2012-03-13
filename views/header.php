@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <title><?php e($title)?></title>
     <script src="static/js/jquery.js"></script>
+    <script src="static/js/jquery.ui.js"></script>
     <script src="static/js/json2.js"></script>
     <script src="static/js/underscore.js"></script>
     <script src="static/js/backbone.js"></script>

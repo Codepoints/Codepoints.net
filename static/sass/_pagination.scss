@@ -4,7 +4,19 @@
   margin: 10px 0;
   padding: 0;
   text-align: center;
-  width: 590px;
+  width: 1182px;
+}
+
+@media (max-width: 1220px) {
+  .pagination {
+    width: 590px;
+  }
+}
+
+@media (max-width: 620px) {
+  .pagination {
+    width: 294px;
+  }
 }
 
 .pagination li {
