@@ -14,6 +14,8 @@ class Codepoint {
     protected $next;
     protected $image;
 
+    public static $defaultImage = 'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQAAAAA3iMLMAAAAIUlEQVQI12P4/58Bghr/M8z8z7AUjFr/M3SCUSMSA6wMAI8sGvs6OjZhAAAAAElFTkSuQmCC';
+
     /**
      * Construct with PDO object of database
      *
@@ -84,9 +86,7 @@ class Codepoint {
             $props = $this->getProperties();
             $r = $props['image'];
             if (! $r) {
-                $r = 'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQAAAAA3iMLMAAAAIUlE'.
-                     'QVQI12P4/58Bghr/M8z8z7AUjFr/M3SCUSMSA6wMAI8sGvs6OjZh'.
-                     'AAAAAElFTkSuQmCC';
+                $r = self::$defaultImage;
             }
             $this->image = 'image/png;base64,' . $r;
         }

@@ -46,7 +46,9 @@ class Router {
         foreach ($this->actions as $action) {
             $r = $action[0]($url);
             if ($r !== False) {
-                return array($action[1], $url, $r);
+                $req = new Request($url);
+                $req->data = $r;
+                return array($action[1], $req);
             }
         }
         return Null;
@@ -58,7 +60,7 @@ class Router {
     public function callAction($url=Null) {
         $action = $this->getAction($url);
         if ($action !== Null) {
-            $action[0]($action[1], $action[2]);
+            $action[0]($action[1]);
             return True;
         }
         return False;

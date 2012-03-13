@@ -7,8 +7,11 @@
 class SearchResult extends UnicodeRange {
 
     protected $query = array();
+
     public $pageLength = 128;
+
     public $page = 0;
+
     protected $count = 0;
 
     public function addQuery($field, $value, $op='=') {
@@ -22,20 +25,27 @@ class SearchResult extends UnicodeRange {
     public function search($query=Null) {
         if (! $query) {
             $query = $this->query;
+        } else {
+            $this->query = $query;
+        }
+        if (count($query) === 0) {
+            // nothing specified, we return an empty set
+            $this->set = array();
+            $this->count = 0;
+            return $this;
         }
         $params = array();
         $search = array();
-        $sql = 'SELECT cp, na, na1, (SELECT codepoint_image.image
-                                     FROM codepoint_image
-                                    WHERE codepoint_image.cp = codepoints.cp) image
-                FROM codepoints
-               WHERE ';
         foreach ($query as $i => $q) {
             $search[] = " `${q[0]}` ${q[1]} :q$i ";
             $params[':q'.$i] = $q[2];
         }
-        $sql .= join('AND', $search);
-        $sql .= ' LIMIT '.($this->page*$this->pageLength).','.$this->pageLength;
+        $sql = 'SELECT cp, na, na1, (SELECT codepoint_image.image
+                                     FROM codepoint_image
+                                    WHERE codepoint_image.cp = codepoints.cp) image
+                  FROM codepoints
+                 WHERE ' . join('AND', $search) . '
+                 LIMIT '.($this->page * $this->pageLength).','.$this->pageLength;
         $stm = $this->db->prepare($sql);
         $stm->execute($params);
         $r = $stm->fetchAll(PDO::FETCH_ASSOC);
@@ -43,25 +53,27 @@ class SearchResult extends UnicodeRange {
         $stm->closeCursor();
         if ($r !== False) {
             foreach ($r as $cp) {
+                if (! $cp['image']) {
+                    $cp['image'] = Codepoint::$defaultImage;
+                }
                 $names[intval($cp['cp'])] = new Codepoint(intval($cp['cp']),
                     $this->db, array('name' => $cp['na']? $cp['na'] : ($cp['na1']? $cp['na1'].'*' : '<control>'),
                     'image' => 'image/png;base64,' . $cp['image']));
             }
         }
         $this->set = $names;
-        $sql = 'SELECT COUNT(*) as c
-                FROM codepoints
-               WHERE ';
-        foreach ($query as $i => $q) {
-            $search[] = " `${q[0]}` ${q[1]} :q$i ";
-            $params[':q'.$i] = $q[2];
+        $c = count($this->set);
+        if ($c === $this->pageLength) {
+            $sql = 'SELECT COUNT(*) as c
+                      FROM codepoints
+                     WHERE ' . join('AND', $search);
+            $stm = $this->db->prepare($sql);
+            $stm->execute($params);
+            $r = $stm->fetch(PDO::FETCH_ASSOC);
+            $stm->closeCursor();
+            $c = $r['c'];
         }
-        $sql .= join('AND', $search);
-        $stm = $this->db->prepare($sql);
-        $stm->execute($params);
-        $r = $stm->fetch(PDO::FETCH_ASSOC);
-        $stm->closeCursor();
-        $this->count = $r['c'];
+        $this->count = $c;
         return $this;
     }
 

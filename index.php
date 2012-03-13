@@ -26,7 +26,8 @@ $router->registerAction(function ($url) {
         return $plane;
     }
     return False;
-}, function($url, $plane) {
+}, function($request) {
+    $plane = $request->data;
     $view = new View('plane.html');
     echo $view->render(compact('plane'));
 })
@@ -44,13 +45,13 @@ $router->registerAction(function ($url) {
         return $codepoint;
     }
     return False;
-}, function ($url, $codepoint) {
+}, function ($request) {
     global $db;
     $unidb = new UnicodeDB($db);
     $view = new View('codepoint.html');
     echo $view->render(array(
         'properties' => $unidb->getProperties(),
-        'codepoint' => $codepoint));
+        'codepoint' => $request->data));
 })
 
 ->registerAction(function ($url) {
@@ -65,15 +66,16 @@ $router->registerAction(function ($url) {
         return $block;
     }
     return False;
-}, function($url, $block) {
+}, function($request) {
+    $block = $request->data;
     $view = new View('block.html');
     echo $view->render(compact('block'));
 })
 
 ->registerAction(function ($url) {
     // Search
-    return (substr($url, 0, 7) === 'search?');
-}, function ($url, $data) {
+    return ($url === 'search' || substr($url, 0, 7) === 'search?');
+}, function ($request) {
     global $db, $router;
     $result = new SearchResult(array(), $db);
     $info = UnicodeInfo::get();
@@ -90,7 +92,7 @@ $router->registerAction(function ($url) {
         $cp = $result->get();
         $router->redirect('U+'.next($cp));
     }
-    $pagination = new Pagination($result->getCount());
+    $pagination = new Pagination($result->getCount(), 128);
     $pagination->setPage($page);
     $view = new View('search');
     echo $view->render(compact('result', 'pagination', 'page'));
@@ -99,7 +101,7 @@ $router->registerAction(function ($url) {
 ->registerAction(function ($url) {
     // Index page
     return ($url === '' || $url === 'index.php');
-}, function ($url, $data) {
+}, function ($request) {
     global $db;
     $view = new View('front');
     echo $view->render(array('planes' => UnicodePlane::getAll($db)));
