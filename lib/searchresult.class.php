@@ -15,6 +15,10 @@ class SearchResult extends UnicodeRange {
         $this->query[] = array($field, $op, $value);
     }
 
+    public function getQuery() {
+        return $this->query;
+    }
+
     public function search($query=Null) {
         if (! $query) {
             $query = $this->query;

@@ -1,14 +1,23 @@
 <?php
 $title = 'Result';
-$page = isset($_GET['page'])? intval($_GET['page']) : 1;
-$result->page = $page - 1;
-$result->search();
-$pagination = new Pagination($result->getCount());
-$pagination->setPage($page);
 include "header.php";
+$query = $result->getQuery();
 ?>
 <div class="payload search">
   <h1><?php e($title);?></h1>
+  <p>Codepoints where
+    <?php foreach ($query as $i => $q):
+    $sep = ', ';
+    if (in_array(count($query), array(1, $i+1))) {
+        $sep = '';
+    } elseif ($i === count($query) - 2) {
+        $sep = ' and ';
+    }
+    echo '<span class="where"><em>' . $info->getCategory($q[0]) .
+        '</em> is <strong>' . ($q[2]? $info->getLabel($q[0], $q[2]) : 'empty') .
+        '</strong></span>' . $sep;
+    endforeach ?>.
+  </p>
   <?php echo $pagination?>
   <ol class="block-data">
     <?php foreach ($result->get() as $cp => $na):

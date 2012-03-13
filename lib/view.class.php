@@ -35,6 +35,7 @@ function cp($cp, $rel='') {
 }
 
 function _cp($cp, $rel='') {
+    $router = Router::getRouter();
     if ($rel) {
         $rel = ' rel="'.q($rel).'"';
     }
@@ -43,8 +44,8 @@ function _cp($cp, $rel='') {
         $cp = array($cp);
     }
     foreach ($cp as $c) {
-        $r[] = sprintf('<a class="cp"%s href="U+%s" title="%s">%s<img src="data:%s" alt="" /></a>',
-           $rel, $c, q($c->getName()), $c, $c->getImage());
+        $r[] = sprintf('<a class="cp"%s href="%s" title="%s">%s<img src="data:%s" alt="" /></a>',
+           $rel, $router->getUrl($c), q($c->getName()), $c, $c->getImage());
     }
     return join(' ', $r);
 }
@@ -59,6 +60,8 @@ class View {
     }
 
     public function render($params) {
+        $info = UnicodeInfo::get();
+        $router = Router::getRouter();
         extract($params);
         ob_start();
         include($this->file);

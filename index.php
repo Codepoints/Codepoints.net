@@ -29,6 +29,7 @@ $router->registerAction(function ($url) {
     $view = new View('plane.html');
     echo $view->render(compact('plane'));
 })
+
 ->registerAction(function ($url) {
     global $db;
     if (substr($url, 0, 2) === 'U+' && ctype_xdigit(substr($url, 2))) {
@@ -49,6 +50,7 @@ $router->registerAction(function ($url) {
         'properties' => $unidb->getProperties(),
         'codepoint' => $codepoint));
 })
+
 ->registerAction(function ($url) {
     global $db;
     if (! preg_match('/[^a-z0-9_-]/', $url)) {
@@ -64,19 +66,32 @@ $router->registerAction(function ($url) {
     $view = new View('block.html');
     echo $view->render(compact('block'));
 })
+
 ->registerAction(function ($url) {
     return (substr($url, 0, 7) === 'search?');
 }, function ($url, $data) {
-    global $db;
+    global $db, $router;
     $result = new SearchResult(array(), $db);
+    $info = UnicodeInfo::get();
+    $cats = $info->getAllCategories();
     foreach ($_GET as $k => $v) {
-        if (in_array($k, array('bc'))) {
+        if (in_array($k, $cats)) {
             $result->addQuery($k, $v);
         }
     }
+    $page = isset($_GET['page'])? intval($_GET['page']) : 1;
+    $result->page = $page - 1;
+    $result->search();
+    if ($result->getCount() === 1) {
+        $cp = $result->get();
+        $router->redirect('U+'.next($cp));
+    }
+    $pagination = new Pagination($result->getCount());
+    $pagination->setPage($page);
     $view = new View('search');
-    echo $view->render(compact('result'));
+    echo $view->render(compact('result', 'pagination', 'page'));
 })
+
 ->registerAction(function ($url) {
     return ($url === '' || $url === 'index.php');
 }, function ($url, $data) {
@@ -86,7 +101,7 @@ $router->registerAction(function ($url) {
 });
 
 $router->registerUrl('Codepoint', function ($object) {
-    return sprintf("U+%04X", $object);
+    return sprintf("U+%s", $object->getId('hex'));
 })
 ->registerUrl('UnicodeBlock', function ($object) {
     return str_replace(' ', '_', strtolower($object->getName()));
@@ -96,7 +111,7 @@ $router->registerUrl('Codepoint', function ($object) {
     if (substr($path, -6) !== '_plane') {
         $path .= '_plane';
     }
-    return $plane;
+    return $path;
 });
 
 

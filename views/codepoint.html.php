@@ -20,7 +20,7 @@ include "header.php";
       </li>
       <li class="up">
         <?php $block = $codepoint->getBlock();
-          f('<a class="bl" rel="up" href="%s">%s</a>', u($block->getName()), $block->getName()); ?>
+          f('<a class="bl" rel="up" href="%s">%s</a>', $router->getUrl($block), $block->getName()); ?>
       </li>
       <li class="next">
         <?php if ($next): cp($next, 'next'); endif?>
@@ -97,11 +97,11 @@ include "header.php";
     <dl>
       <dt>Plane</dt>
       <dd><?php $plane = $codepoint->getPlane();
-          f('<a class="pl" href="%s">%s</a>', u($plane->name), $plane->name);
+          f('<a class="pl" href="%s">%s</a>', $router->getUrl($plane), $plane->name);
       ?></dd>
       <dt>Block</dt>
       <dd><?php $block = $codepoint->getBlock();
-          f('<a class="bl" href="%s">%s</a>', u($block->getName()), $block->getName());
+          f('<a class="bl" href="%s">%s</a>', $router->getUrl($block), $block->getName());
       ?></dd>
       <?php if($props['uc'] && (is_array($props['uc']) ||
                $props['uc']->getId() != $codepoint->getId())):?>
