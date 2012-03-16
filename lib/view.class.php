@@ -44,7 +44,7 @@ function _cp($cp, $rel='') {
         $cp = array($cp);
     }
     foreach ($cp as $c) {
-        $r[] = sprintf('<a class="cp"%s href="%s" title="%s">%s<img src="data:%s" alt="" /></a>',
+        $r[] = sprintf('<a class="cp"%s href="%s" title="%s">%s<img src="data:%s" alt="" height="16" width="16" /></a>',
            $rel, $router->getUrl($c), q($c->getName()), $c, $c->getImage());
     }
     return join(' ', $r);

@@ -28,7 +28,7 @@ include "header.php";
     </ul>
   </nav>
   <figure>
-    <img src="static/images/blocks/<?php e(str_replace(' ', '_', $block->getName()))?>.png" alt=""/>
+    <img src="static/images/blocks/<?php e(str_replace(' ', '_', $block->getName()))?>.png" alt="" width="128" height="128" />
   </figure>
   <h1><?php e($block->getName());?></h1>
   <p>Block from U+<?php f('%04X', $bounds[0])?>
@@ -39,7 +39,7 @@ include "header.php";
     $limits = $pagination->getLimits();
     $block_limits = $block->getBoundaries();
     $cps = $block->get();
-    for ($i = $limits[0]; $i <= $limits[1]; $i++) {
+    for ($i = $limits[0]; $i < $limits[1]; $i++) {
         if ($i + $block_limits[0] > $block_limits[1]) {
             break;
         }
