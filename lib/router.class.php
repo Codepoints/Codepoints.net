@@ -45,11 +45,12 @@ class Router {
      */
     public function getAction($url=Null) {
         if ($url === Null) {
-            $url = strstr(substr($_SERVER['REQUEST_URI'],
-                                 strlen($this->baseURL)),
-                          '?', True);
+            $url = substr($_SERVER['REQUEST_URI'],
+                                 strlen($this->baseURL));
             if ($url === False) {
                 $url = '';
+            } elseif (strpos($url, '?') !== False) {
+                $url = strstr($url, '?', True);
             }
         }
         foreach ($this->actions as $action) {
