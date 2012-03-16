@@ -28,7 +28,7 @@ include "header.php";
     </ul>
   </nav>
   <figure>
-    <img src="static/blocks/<?php e(str_replace(' ', '_', $block->getName()))?>.png" alt=""/>
+    <img src="static/images/blocks/<?php e(str_replace(' ', '_', $block->getName()))?>.png" alt=""/>
   </figure>
   <h1><?php e($block->getName());?></h1>
   <p>Block from U+<?php f('%04X', $bounds[0])?>
