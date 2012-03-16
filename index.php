@@ -70,10 +70,7 @@ $router->addSetting('db', $db)
     echo $view->render(compact('block'));
 })
 
-->registerAction(function ($url) {
-    // Search
-    return ($url === 'search' || substr($url, 0, 7) === 'search?');
-}, function ($request, $o) {
+->registerAction('search', function ($request, $o) {
     $router = Router::getRouter();
     $result = new SearchResult(array(), $o['db']);
     $info = UnicodeInfo::get();

@@ -45,7 +45,9 @@ class Router {
      */
     public function getAction($url=Null) {
         if ($url === Null) {
-            $url = substr($_SERVER['REQUEST_URI'], strlen($this->baseURL));
+            $url = strstr(substr($_SERVER['REQUEST_URI'],
+                                 strlen($this->baseURL)),
+                          '?', True);
             if ($url === False) {
                 $url = '';
             }
