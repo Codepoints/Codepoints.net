@@ -68,6 +68,21 @@ body {
   padding: 0;
 }
 
+.block-data li.missing span {
+  background: white;
+  background: -moz-linear-gradient(top, white, #f3f3f3);
+  border: 1px solid #bbb;
+  @include border-radius(1px);
+  @include inline-block;
+  width: 32px;
+  height: 43px;
+  padding: 4px 0 0;
+  font-size: 10px;
+  line-height: 15px;
+  text-align: center;
+  color: #666;
+}
+
 .block-data li:nth-of-type(32n+1) {
   clear: left;
 }

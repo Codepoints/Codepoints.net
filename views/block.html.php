@@ -35,9 +35,20 @@ include "header.php";
      to U+<?php f('%04X', $bounds[1])?></p>
   <?php echo $pagination?>
   <ol class="block-data">
-    <?php foreach ($pagination->getSet($block->get()) as $cp => $na):
-      echo '<li value="' . $cp . '">'; cp($na); echo '</li>';
-    endforeach ?>
+    <?php
+    $limits = $pagination->getLimits();
+    $block_limits = $block->getLimits();
+    $cps = $block->get();
+    for ($i = $limits[0]; $i <= $limits[1]; $i++) {
+        if ($i + $block_limits[0] > $block_limits[1]) {
+            break;
+        }
+        if (array_key_exists($i + $block_limits[0], $cps)) {
+            echo '<li value="' . ($i + $block_limits[0]) . '">'; cp($cps[$i + $block_limits[0]]); echo '</li>';
+        } else {
+            echo '<li class="missing" value="'.($i + $block_limits[0]).'"><span>'.sprintf('%04X', $i + $block_limits[0]).'</span></li>';
+        }
+    } ?>
   </ol>
   <?php echo $pagination?>
 </div>

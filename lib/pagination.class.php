@@ -32,6 +32,11 @@ class Pagination {
                            $this->pagesize, true);
     }
 
+    public function getLimits() {
+        return array(($this->page - 1) * $this->pagesize,
+                     $this->page * $this->pagesize);
+    }
+
     public function setUrl($url) {
         $this->urlTemplate = $url;
     }

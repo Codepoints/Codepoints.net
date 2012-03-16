@@ -10,6 +10,7 @@ class UnicodeBlock extends UnicodeRange {
     protected $prev;
     protected $next;
     protected $plane;
+    protected $limits;
 
     public function __construct($name, $db, $r=NULL) {
         if ($r === NULL) { // performance: allow to specify range
@@ -26,11 +27,16 @@ class UnicodeBlock extends UnicodeRange {
             }
         }
         $this->name = $r['name']; // use canonical name
+        $this->limits = array($r['first'], $r['last']);
         parent::__construct(range($r['first'], $r['last']), $db);
     }
 
     public function getName() {
         return $this->name;
+    }
+
+    public function getLimits() {
+        return $this->limits;
     }
 
     public function getPrev() {

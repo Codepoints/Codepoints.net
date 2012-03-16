@@ -160,9 +160,7 @@ $(function() {
   stage.on('click', 'a.bl, a.pl', function() {
     return animatePage($(this), this.href, 'minimize', 'zoomout');
   });
-  $(document).on('keydown', function(e) {
-    console.log(e.which);
-  }).tooltip();
+  $(document).tooltip();
 });
 
 })(this, jQuery);
