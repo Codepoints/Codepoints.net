@@ -35,10 +35,6 @@ class UnicodeBlock extends UnicodeRange {
         return $this->name;
     }
 
-    public function getLimits() {
-        return $this->limits;
-    }
-
     public function getPrev() {
         if ($this->prev === NULL) {
             $query = $this->db->prepare("

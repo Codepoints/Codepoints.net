@@ -28,16 +28,16 @@ include "header.php";
     </ul>
   </nav>
   <figure>
-  <img src="static/blocks/<?php e(str_replace(' ', '_', $block->getName()))?>.png" alt=""/>
+    <img src="static/blocks/<?php e(str_replace(' ', '_', $block->getName()))?>.png" alt=""/>
   </figure>
-  <h1><?php e($title);?></h1>
-  <p>From U+<?php f('%04X', $bounds[0])?>
+  <h1><?php e($block->getName());?></h1>
+  <p>Block from U+<?php f('%04X', $bounds[0])?>
      to U+<?php f('%04X', $bounds[1])?></p>
   <?php echo $pagination?>
   <ol class="block-data">
     <?php
     $limits = $pagination->getLimits();
-    $block_limits = $block->getLimits();
+    $block_limits = $block->getBoundaries();
     $cps = $block->get();
     for ($i = $limits[0]; $i <= $limits[1]; $i++) {
         if ($i + $block_limits[0] > $block_limits[1]) {
