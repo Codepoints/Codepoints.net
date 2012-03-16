@@ -12,6 +12,8 @@ class Router {
 
     protected $urls = array();
 
+    protected $settings = array();
+
     protected static $defaultRouter;
 
     /**
@@ -27,6 +29,9 @@ class Router {
 
     /**
      * register an action for an URL
+     *
+     * A test can be a function, an array or a string. The final URL will be
+     * matched against that test (or the test will be called with it).
      */
     public function registerAction($test, $action) {
         $this->actions[] = array($test, $action);
@@ -35,6 +40,8 @@ class Router {
 
     /**
      * get the action for an URL
+     *
+     * If no URL matches, the function returns Null
      */
     public function getAction($url=Null) {
         if ($url === Null) {
@@ -44,7 +51,13 @@ class Router {
             }
         }
         foreach ($this->actions as $action) {
-            $r = $action[0]($url);
+            if (is_callable($action[0])) {
+                $r = $action[0]($url, $this->settings);
+            } elseif (is_array($action[0])) {
+                $r = in_array($url, $action[0]);
+            } else {
+                $r = ($action[0] === $url);
+            }
             if ($r !== False) {
                 $req = new Request($url);
                 $req->data = $r;
@@ -56,14 +69,33 @@ class Router {
 
     /**
      * call the registered action for an URL
+     *
+     * If no registered action is found, the function returns False.
      */
     public function callAction($url=Null) {
         $action = $this->getAction($url);
         if ($action !== Null) {
-            $action[0]($action[1]);
+            $action[0]($action[1], $this->settings);
             return True;
         }
         return False;
+    }
+
+    /**
+     * add a setting, that applies to all possible actions
+     */
+    public function addSetting($key, $value) {
+        $this->settings[$key] = $value;
+    }
+
+    /**
+     * get a setting, that applies to all possible actions
+     */
+    public function getSetting($key, $default=Null) {
+        if (array_key_exists($key, $this->settings)) {
+            return $this->settings[$key];
+        }
+        return $default;
     }
 
     /**
@@ -92,6 +124,8 @@ class Router {
 
     /**
      * get or set the base URL
+     *
+     * When setting, returns the old base URL
      */
     public function base($val=NULL) {
         $b = $this->baseURL;

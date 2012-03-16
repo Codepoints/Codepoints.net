@@ -10,15 +10,16 @@ $db = new PDO('sqlite:'.dirname(__FILE__).'/ucd.sqlite');
 $router = Router::getRouter();
 
 
-$router->registerAction(function ($url) {
+$router->addSetting('db', $db)
+
+->registerAction(function ($url, $o) {
     // Planes
-    global $db;
     if (substr($url, -6) === '_plane') {
         try {
-            $plane = new UnicodePlane($url, $db);
+            $plane = new UnicodePlane($url, $o['db']);
         } catch(Exception $e) {
             try {
-                $plane = new UnicodePlane(substr($url, 0, -6), $db);
+                $plane = new UnicodePlane(substr($url, 0, -6), $o['db']);
             } catch(Exception $e) {
                 return False;
             }
@@ -32,12 +33,11 @@ $router->registerAction(function ($url) {
     echo $view->render(compact('plane'));
 })
 
-->registerAction(function ($url) {
+->registerAction(function ($url, $o) {
     // Codepoints
-    global $db;
     if (substr($url, 0, 2) === 'U+' && ctype_xdigit(substr($url, 2))) {
         try {
-            $codepoint = new Codepoint(hexdec(substr($url, 2)), $db);
+            $codepoint = new Codepoint(hexdec(substr($url, 2)), $o['db']);
             $codepoint->getName();
         } catch (Exception $e) {
             return False;
@@ -45,21 +45,19 @@ $router->registerAction(function ($url) {
         return $codepoint;
     }
     return False;
-}, function ($request) {
-    global $db;
-    $unidb = new UnicodeDB($db);
+}, function ($request, $o) {
+    $unidb = UnicodeInfo::get();
     $view = new View('codepoint.html');
     echo $view->render(array(
-        'properties' => $unidb->getProperties(),
+        'properties' => $unidb->getAllCategories(),
         'codepoint' => $request->data));
 })
 
-->registerAction(function ($url) {
+->registerAction(function ($url, $o) {
     // Blocks
-    global $db;
     if (! preg_match('/[^a-z0-9_-]/', $url)) {
         try {
-            $block = new UnicodeBlock($url, $db);
+            $block = new UnicodeBlock($url, $o['db']);
         } catch(Exception $e) {
             return False;
         }
@@ -75,11 +73,11 @@ $router->registerAction(function ($url) {
 ->registerAction(function ($url) {
     // Search
     return ($url === 'search' || substr($url, 0, 7) === 'search?');
-}, function ($request) {
-    global $db, $router;
-    $result = new SearchResult(array(), $db);
+}, function ($request, $o) {
+    $router = Router::getRouter();
+    $result = new SearchResult(array(), $o['db']);
     $info = UnicodeInfo::get();
-    $cats = $info->getAllCategories();
+    $cats = $info->getCategoryKeys();
     foreach ($_GET as $k => $v) {
         if (in_array($k, $cats)) {
             $result->addQuery($k, $v);
@@ -101,10 +99,9 @@ $router->registerAction(function ($url) {
 ->registerAction(function ($url) {
     // Index page
     return ($url === '' || $url === 'index.php');
-}, function ($request) {
-    global $db;
+}, function ($request, $o) {
     $view = new View('front');
-    echo $view->render(array('planes' => UnicodePlane::getAll($db)));
+    echo $view->render(array('planes' => UnicodePlane::getAll($o['db'])));
 });
 
 $router->registerUrl('Codepoint', function ($object) {

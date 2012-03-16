@@ -19,15 +19,15 @@ class UnicodeInfo {
         'dm' => 'Decomposition Mapping',
         'CE' => 'Composition Exclusion',
         'Comp_Ex' => 'Full Composition Exclusion',
-        'NFC_QC' => '',
-        'NFD_QC' => '',
-        'NFKC_QC' => '',
-        'NFKD_QC' => '',
-        'XO_NFC' => '',
-        'XO_NFD' => '',
-        'XO_NFKC' => '',
-        'XO_NFKD' => '',
-        'FC_NFKC' => '',
+        'NFC_QC' => 'NFC Quick Check',
+        'NFD_QC' => 'NFD Quick Check',
+        'NFKC_QC' => 'NFKC Quick Check',
+        'NFKD_QC' => 'NFKD Quick Check',
+        'XO_NFC' => 'Expands On NFC',
+        'XO_NFD' => 'Expands On NFD',
+        'XO_NFKC' => 'Expands On NFKC',
+        'XO_NFKD' => 'Expands On NFKD',
+        'FC_NFKC' => 'FC NFKC Closure',
         'nt' => 'Numeric Type',
         'nv' => 'Numeric Value',
         'jt' => 'Joining Class',
@@ -524,6 +524,10 @@ class UnicodeInfo {
     }
 
     public function getAllCategories() {
+        return $this->categories;
+    }
+
+    public function getCategoryKeys() {
         return array_keys($this->categories);
     }
 

@@ -79,8 +79,9 @@ include "header.php";
         <dt>Definition</dt>
         <dd><?php
           echo preg_replace_callback('/U\+([0-9A-F]{4,6})/', function($m) {
-              global $db;
-              return _cp(array($m[1], $db));
+              $router = Router::getRouter();
+              $db = $router->getSetting('db');
+              return _cp(new Codepoint(hexdec($m[1]), $db));
           }, $defn);
         ?></dd>
       <?php endif?>
@@ -138,8 +139,8 @@ include "header.php";
       <?php foreach ($props as $k => $v):
             if ($v !== NULL && $v !== '' && $k !== 'cp'):?>
         <tr class="p_<?php e($k)?>">
-          <th><?php e( array_key_exists($k, $properties)?
-                          str_replace('_', ' ', $properties[$k]) . ' ('.$k.')' :
+          <th><?php e( array_key_exists($k, $properties) && $properties[$k]?
+                          $properties[$k] . ' ('.$k.')' :
                           $k)?></th>
           <td>
             <?php e($v)?>
