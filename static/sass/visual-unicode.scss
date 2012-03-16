@@ -54,11 +54,17 @@ body {
   @include transform(scale(2));
 }
 
+.block figure {
+  margin: 0 10px 10px 0;
+  float: left;
+}
+
 .block-data {
   margin: 0;
   padding: 0;
   line-height: 0;
   @include pie-clearfix;
+  clear: left;
 }
 
 .block-data li {
@@ -93,7 +99,7 @@ body {
   }
 }
 
-@media (max-width: 620px) {
+@media (max-width: 630px) {
   .block-data li:nth-of-type(8n+1) {
     clear: left;
   }
