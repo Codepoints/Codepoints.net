@@ -46,10 +46,10 @@ $router->addSetting('db', $db)
     }
     return False;
 }, function ($request, $o) {
-    $unidb = UnicodeInfo::get();
+    $info = UnicodeInfo::get();
     $view = new View('codepoint.html');
     echo $view->render(array(
-        'properties' => $unidb->getAllCategories(),
+        'info' => $info,
         'codepoint' => $request->data));
 })
 
@@ -96,10 +96,8 @@ $router->addSetting('db', $db)
     echo $view->render(compact('result', 'pagination', 'page'));
 })
 
-->registerAction(function ($url) {
-    // Index page
-    return ($url === '' || $url === 'index.php');
-}, function ($request, $o) {
+->registerAction(array('', 'index.php'),
+function ($request, $o) {
     $view = new View('front');
     echo $view->render(array('planes' => UnicodePlane::getAll($o['db'])));
 });

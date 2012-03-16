@@ -86,6 +86,7 @@ class Router {
      */
     public function addSetting($key, $value) {
         $this->settings[$key] = $value;
+        return $this;
     }
 
     /**

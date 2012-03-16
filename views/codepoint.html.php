@@ -134,20 +134,18 @@ include "header.php";
       <?php endif?>
     </dl>
   </section>
-  <table>
+  <!--table>
     <tbody>
       <?php foreach ($props as $k => $v):
             if ($v !== NULL && $v !== '' && $k !== 'cp'):?>
         <tr class="p_<?php e($k)?>">
-          <th><?php e( array_key_exists($k, $properties) && $properties[$k]?
-                          $properties[$k] . ' ('.$k.')' :
-                          $k)?></th>
+          <th><?php e($info->getCategory($k))?></th>
           <td>
             <?php e($v)?>
           </td>
         </tr>
       <?php endif; endforeach?>
     </tbody>
-  </table>
+  </table-->
 </div>
 <?php include "footer.php"?>

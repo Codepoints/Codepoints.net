@@ -523,21 +523,36 @@ class UnicodeInfo {
         return self::$inst;
     }
 
+    /**
+     * get the list of all categories
+     */
     public function getAllCategories() {
         return $this->categories;
     }
 
+    /**
+     * get all defined category fields
+     */
     public function getCategoryKeys() {
         return array_keys($this->categories);
     }
 
+    /**
+     * get the full name for a category
+     */
     public function getCategory($cat) {
-        if (array_key_exists($cat, $this->categories)) {
+        if (array_key_exists($cat, $this->categories) &&
+            $this->categories[$cat]) {
             return $this->categories[$cat];
         }
         return $cat;
     }
 
+    /**
+     * get the full text label for an abbreviated key
+     *
+     * The key is qualified by the category (e.g., 'sc')
+     */
     public function getLabel($cat, $abbr) {
         if (array_key_exists($cat, $this->legend)) {
             if (array_key_exists($abbr, $this->legend[$cat])) {
@@ -545,6 +560,16 @@ class UnicodeInfo {
             }
         }
         return $abbr;
+    }
+
+    /**
+     * get all labels for a certain category
+     */
+    public function getLegendForCategory($cat) {
+        if (array_key_exists($cat, $this->legend)) {
+            return $this->legend[$cat];
+        }
+        return array();
     }
 
 }
