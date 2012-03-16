@@ -8,50 +8,20 @@
 
 @import "pagination";
 @import "tooltip";
+@import "codepoint";
 
 body {
   margin: 0;
   font: 1em/1.5 Arial,sans-serif;
 }
 
+img {
+  background: white;
+}
+
 .stage {
   padding: 10px;
   position: relative;
-}
-
-.cp {
-  background: white;
-  background: -moz-linear-gradient(top, white, #e3e3e3);
-  border: 1px solid #666;
-  @include border-radius(1px);
-  @include inline-block;
-  width: 32px;
-  padding: 4px 0 0;
-  font-size: 10px;
-  line-height: 15px;
-  text-align: center;
-  color: #333;
-  text-decoration: none;
-  @include transition-property('box-shadow, border-color');
-  @include transition-duration(.3s);
-  outline: none;
-}
-
-.cp img {
-  display: block;
-  margin: 4px auto 8px;
-  @include transition-property(all);
-  @include transition-duration(.5s);
-}
-
-.cp:hover {
-  box-shadow: 0 0 2px 1px #acf;
-  border-color: #333;
-}
-
-.cp:hover img {
-  image-rendering: optimizeSpeed;
-  @include transform(scale(2));
 }
 
 .block figure {
@@ -136,7 +106,7 @@ nav .up {
   margin: 0 44px 10px;
 }
 
-nav .up a {
+nav a {
   color: #05a;
   text-decoration: none;
 }

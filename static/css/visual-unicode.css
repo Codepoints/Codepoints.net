@@ -144,6 +144,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   padding: 0;
   text-align: center;
   width: 1182px;
+  clear: left;
 }
 
 @media (max-width: 1220px) {
@@ -255,7 +256,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   margin: 0;
 }
 
-.tooltip:before {
+.tooltip i {
   position: absolute;
   left: 50%;
   top: -1px;
@@ -270,14 +271,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   text-shadow: none;
 }
 
-body {
-  margin: 0;
-  font: 1em/1.5 Arial, sans-serif;
-}
-
-.stage {
-  padding: 10px;
-  position: relative;
+.tooltip i.down {
+  top: auto;
+  bottom: -1px;
+  margin: 0 0 -8px -8px;
+  border-width: 8px 8px 0;
+  border-top-color: black;
+  border-top-color: rgba(0, 0, 0, 0.8);
 }
 
 .cp {
@@ -341,6 +341,20 @@ body {
   -o-transform: scale(2);
   -ms-transform: scale(2);
   transform: scale(2);
+}
+
+body {
+  margin: 0;
+  font: 1em/1.5 Arial, sans-serif;
+}
+
+img {
+  background: white;
+}
+
+.stage {
+  padding: 10px;
+  position: relative;
 }
 
 .block figure {
@@ -438,7 +452,7 @@ nav .up {
   margin: 0 44px 10px;
 }
 
-nav .up a {
+nav a {
   color: #05a;
   text-decoration: none;
 }
