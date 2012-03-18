@@ -84,8 +84,8 @@ $router->addSetting('db', $db)
     $result->page = $page - 1;
     $result->search();
     if ($result->getCount() === 1) {
-        $cp = $result->get();
-        $router->redirect('U+'.next($cp));
+        $cp = $result->current();
+        $router->redirect('U+'.$cp);
     }
     $pagination = new Pagination($result->getCount(), 128);
     $pagination->setPage($page);
