@@ -113,9 +113,11 @@ class Router {
     /**
      * get the URL for an object based on registerUrl input
      */
-    public function getUrl($object) {
+    public function getUrl($object=Null) {
         $path = '';
-        if (is_string($object)) {
+        if ($object === Null) {
+            return $this->baseURL;
+        } elseif (is_string($object)) {
             $class = $object;
         } else {
             $class = get_class($object);
