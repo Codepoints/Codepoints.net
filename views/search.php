@@ -15,9 +15,12 @@ include "header.php";
         } elseif ($i === $cQuery - 2) {
             $sep = ' and ';
         }
+        $tmp = array();
+        foreach ((array)$q[2] as $q2) {
+            $tmp[] = ($q2? $info->getLabel($q[0], $q2) : 'empty');
+        }
         printf('<span class="where"><em>%s</em> is <strong>%s</strong></span>%s',
-            $info->getCategory($q[0]), ($q[2]? $info->getLabel($q[0], $q[2]) : 'empty'),
-            $sep);
+            $info->getCategory($q[0]), join('</strong> or <strong>', $tmp), $sep);
       endforeach ?>
     </p>
     <?php echo $pagination?>
