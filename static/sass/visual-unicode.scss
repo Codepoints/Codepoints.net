@@ -9,6 +9,7 @@
 @import "pagination";
 @import "tooltip";
 @import "codepoint";
+@import "search";
 
 body {
   margin: 0;
@@ -86,7 +87,6 @@ nav ul {
 
 .codepoint nav .prev,
 .codepoint nav .next {
-  width: 34px;
 }
 
 nav .prev {

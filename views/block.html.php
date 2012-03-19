@@ -14,7 +14,9 @@ include "header.php";
     <ul>
       <li class="prev">
         <?php if ($prev):?>
-          <a class="bl" rel="prev" href="<?php e($router->getUrl($prev))?>"><?php e($prev->getName())?></a>
+          <a class="bl" rel="prev" href="<?php e($router->getUrl($prev))?>">
+            <img src="static/images/blocks.min/<?php e(str_replace(' ', '_', $prev->getName()))?>.png" alt="" width="16" height="16" />
+            <?php e($prev->getName())?></a>
         <?php endif?>
       </li>
       <li class="up">
@@ -22,7 +24,9 @@ include "header.php";
       </li>
       <li class="next">
         <?php if ($next):?>
-          <a class="bl" rel="next" href="<?php e($router->getUrl($next))?>"><?php e($next->getName())?></a>
+          <a class="bl" rel="next" href="<?php e($router->getUrl($next))?>">
+            <img src="static/images/blocks.min/<?php e(str_replace(' ', '_', $next->getName()))?>.png" alt="" width="16" height="16" />
+            <?php e($next->getName())?></a>
         <?php endif?>
       </li>
     </ul>

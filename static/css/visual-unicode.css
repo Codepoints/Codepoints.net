@@ -343,6 +343,26 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   transform: scale(2);
 }
 
+.min.cp {
+  width: 48px;
+  padding: 0 0 0 4px;
+  line-height: 16px;
+  text-align: left;
+}
+
+.min.cp img {
+  float: right;
+  margin: 0;
+}
+
+.searchform fieldset p {
+  display: inline-block;
+  margin: 0 0 0 1em;
+  padding: 0 0 0 1em;
+  border-left: 1px solid gray;
+  min-width: 200px;
+}
+
 body {
   margin: 0;
   font: 1em/1.5 Arial, sans-serif;
@@ -428,11 +448,6 @@ nav ul {
   list-style: none;
   margin: 0;
   padding: 0;
-}
-
-.codepoint nav .prev,
-.codepoint nav .next {
-  width: 34px;
 }
 
 nav .prev {

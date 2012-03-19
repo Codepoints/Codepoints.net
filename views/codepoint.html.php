@@ -16,14 +16,16 @@ include "header.php";
   <nav>
     <ul>
       <li class="prev">
-        <?php if ($prev): cp($prev, 'prev'); endif?>
+        <?php if ($prev): cp($prev, 'prev', 'min'); endif?>
       </li>
       <li class="up">
         <?php $block = $codepoint->getBlock();
-          f('<a class="bl" rel="up" href="%s">%s</a>', $router->getUrl($block), $block->getName()); ?>
+        f('<a class="bl" rel="up" href="%s"><img src="static/images/blocks.min/%s.png" alt="" width="16" height="16" /> %s</a>', $router->getUrl($block),
+          str_replace(' ', '_', $block->getName()),
+          $block->getName()); ?>
       </li>
       <li class="next">
-        <?php if ($next): cp($next, 'next'); endif?>
+        <?php if ($next): cp($next, 'next', 'min'); endif?>
       </li>
     </ul>
   </nav>
@@ -81,7 +83,7 @@ include "header.php";
           echo preg_replace_callback('/U\+([0-9A-F]{4,6})/', function($m) {
               $router = Router::getRouter();
               $db = $router->getSetting('db');
-              return _cp(new Codepoint(hexdec($m[1]), $db));
+              return _cp(new Codepoint(hexdec($m[1]), $db), '', 'min');
           }, $defn);
         ?></dd>
       <?php endif?>
