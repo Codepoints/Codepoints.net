@@ -11,6 +11,7 @@ $router = Router::getRouter();
 
 
 $router->addSetting('db', $db)
+       ->addSetting('info', UnicodeInfo::get())
 
 ->registerAction(function ($url, $o) {
     // Planes
@@ -46,10 +47,8 @@ $router->addSetting('db', $db)
     }
     return False;
 }, function ($request, $o) {
-    $info = UnicodeInfo::get();
     $view = new View('codepoint.html');
     echo $view->render(array(
-        'info' => $info,
         'codepoint' => $request->data));
 })
 
@@ -71,12 +70,13 @@ $router->addSetting('db', $db)
 })
 
 ->registerAction('search', function ($request, $o) {
+    // Search
     $router = Router::getRouter();
     $result = new SearchResult(array(), $o['db']);
     $info = UnicodeInfo::get();
     $cats = $info->getCategoryKeys();
     foreach ($_GET as $k => $v) {
-        if (in_array($k, $cats)) {
+        if ($v && in_array($k, $cats)) {
             $result->addQuery($k, $v);
         }
     }
