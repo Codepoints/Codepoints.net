@@ -14,14 +14,23 @@ class SearchResult extends UnicodeRange {
 
     protected $count = 0;
 
-    public function addQuery($field, $value, $op='=') {
-        $this->query[] = array($field, $op, $value);
+    /**
+     * add a query, connect it to previous via $connector
+     */
+    public function addQuery($field, $value, $op='=', $connector='AND') {
+        $this->query[] = array($field, $op, $value, $connector);
     }
 
+    /**
+     * get the query list
+     */
     public function getQuery() {
         return $this->query;
     }
 
+    /**
+     * do the search
+     */
     public function search($query=Null) {
         if (! $query) {
             $query = $this->query;
@@ -34,17 +43,15 @@ class SearchResult extends UnicodeRange {
             $this->count = 0;
             return $this;
         }
-        $params = array();
-        $search = array();
-        foreach ($query as $i => $q) {
-            $search[] = " `${q[0]}` ${q[1]} :q$i ";
-            $params[':q'.$i] = $q[2];
-        }
+
+        list($search, $params) = $this->_getQuerySQL();
+
         $sql = 'SELECT cp, na, na1, (SELECT codepoint_image.image
                                      FROM codepoint_image
                                     WHERE codepoint_image.cp = codepoints.cp) image
                   FROM codepoints
-                 WHERE ' . join('AND', $search) . '
+                  JOIN codepoint_script USING ( cp )
+                 WHERE ' . $search . '
                  LIMIT '.($this->page * $this->pageLength).','.$this->pageLength;
         $stm = $this->db->prepare($sql);
         $stm->execute($params);
@@ -62,11 +69,14 @@ class SearchResult extends UnicodeRange {
             }
         }
         $this->set = $names;
+
+        // we need to get the count separately, because the above
+        // query is LIMITed
         $c = count($this->set);
         if ($c === $this->pageLength) {
             $sql = 'SELECT COUNT(*) as c
                       FROM codepoints
-                     WHERE ' . join('AND', $search);
+                     WHERE ' . $search;
             $stm = $this->db->prepare($sql);
             $stm->execute($params);
             $r = $stm->fetch(PDO::FETCH_ASSOC);
@@ -74,11 +84,44 @@ class SearchResult extends UnicodeRange {
             $c = $r['c'];
         }
         $this->count = $c;
+
         return $this;
     }
 
+    /**
+     * get the result count
+     */
     public function getCount() {
         return $this->count;
+    }
+
+    /**
+     * generate the SQL needed for the query
+     */
+    protected function _getQuerySQL() {
+        $params = array();
+        $search = '';
+        foreach ($this->query as $i => $q) {
+            if ($search !== '') {
+                $search .= " ${q[3]} ";
+            }
+            if (is_array($q[2])) {
+                $tmp = array_map(array($this->db, 'quote'), $q[2]);
+                if ($q[1] === '=') {
+                    $q[1] = 'IN';
+                } elseif ($q[1] === '!=') {
+                    $q[1] = 'NOT IN';
+                }
+                $search .= " `${q[0]}` ${q[1]} ( " . join(',', $tmp) . " )";
+            } elseif ($q[0] === 'na' || $q[0] === 'na1') {
+                $search .= " `${q[0]}` LIKE :q$i ";
+                $params[':q'.$i] = "%${q[2]}%";
+            } else {
+                $search .= " `${q[0]}` ${q[1]} :q$i ";
+                $params[':q'.$i] = $q[2];
+            }
+        }
+        return array($search, $params);
     }
 
 }
