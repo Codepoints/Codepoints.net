@@ -30,22 +30,25 @@ function u($s) {
 }
 
 
-function cp($cp, $rel='') {
-    echo _cp($cp, $rel);
+function cp($cp, $rel='', $class='') {
+    echo _cp($cp, $rel, $class);
 }
 
-function _cp($cp, $rel='') {
+function _cp($cp, $rel='', $class='') {
     $router = Router::getRouter();
     if ($rel) {
         $rel = ' rel="'.q($rel).'"';
+    }
+    if ($class) {
+        $class = ' '.q($class);
     }
     $r = array();
     if ($cp instanceof Codepoint) {
         $cp = array($cp);
     }
     foreach ($cp as $c) {
-        $r[] = sprintf('<a class="cp"%s href="%s" title="%s">%s<img src="data:%s" alt="" height="16" width="16" /></a>',
-           $rel, $router->getUrl($c), q($c->getName()), $c, $c->getImage());
+        $r[] = sprintf('<a class="cp%s"%s href="%s" title="%s">%s<img src="data:%s" alt="" height="16" width="16" /></a>',
+           $class, $rel, $router->getUrl($c), q($c->getName()), $c, $c->getImage());
     }
     return join(' ', $r);
 }
