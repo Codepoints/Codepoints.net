@@ -1,13 +1,14 @@
 <?php
 $query = $result->getQuery();
 $cQuery = count($query);
+$fQuery = $result->getCount();
 $title = $cQuery > 0? 'Result' : 'Search';
 include "header.php";
 ?>
 <div class="payload search">
   <h1><?php e($title)?></h1>
   <?php if ($cQuery > 0):?>
-    <p>Codepoints where
+  <p>There are <strong><?php e($fQuery)?></strong> codepoints where
       <?php foreach ($query as $i => $q):
         $sep = ', ';
         if (in_array($cQuery, array(1, $i+1))) {

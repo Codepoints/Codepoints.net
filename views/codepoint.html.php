@@ -70,13 +70,13 @@ include "header.php";
     <h2>Properties</h2>
     <dl>
       <dt>Unicode version</dt>
-      <dd><?php e($props['age'])?></dd>
+      <dd><a href="<?php e('search?age='.$props['age'])?>"><?php e($props['age'])?></a></dd>
       <dt>Script</dt>
-      <dd><?php e($props['sc'])?></dd>
+      <dd><a href="<?php e('search?sc='.$props['sc'])?>"><?php e($info->getLabel('sc', $props['sc']))?></a></dd>
       <dt>General Category</dt>
-      <dd><?php e($props['gc'])?></dd>
+      <dd><a href="<?php e('search?gc='.$props['gc'])?>"><?php e($info->getLabel('gc', $props['gc']))?></a></dd>
       <dt>Bidi Class</dt>
-      <dd><?php e($props['bc'])?></dd>
+      <dd><a href="<?php e('search?bc='.$props['bc'])?>"><?php e($info->getLabel('bc', $props['bc']))?></a></dd>
       <?php if ($defn = $codepoint->getProp('kDefinition')):?>
         <dt>Definition</dt>
         <dd><?php
@@ -89,9 +89,7 @@ include "header.php";
       <?php endif?>
       <?php if($props['nt'] !== 'None'):?>
         <dt>Numeric Value</dt>
-        <dd>
-          <?php e($props['nv'])?>
-        </dd>
+        <dd><a href="<?php e('search?nt='.$props['nt'])?>"><?php e($info->getLabel('nt', $props['nt']).': '.$props['nv'])?></a></dd>
       <?php endif?>
     </dl>
   </section>
