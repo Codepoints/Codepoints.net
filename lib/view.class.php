@@ -47,10 +47,31 @@ function _cp($cp, $rel='', $class='') {
         $cp = array($cp);
     }
     foreach ($cp as $c) {
-        $r[] = sprintf('<a class="cp%s"%s href="%s" title="%s">%s<img src="data:%s" alt="" height="16" width="16" /></a>',
-           $class, $rel, $router->getUrl($c), q($c->getName()), $c, $c->getImage());
+        $r[] = sprintf('<a class="cp%s"%s href="%s" title="%s">%s<img src="'.
+            'data:%s" alt="" height="16" width="16" /></a>',
+            $class, $rel, q($router->getUrl($c)), q($c->getName()), q($c),
+            q($c->getImage()));
     }
     return join(' ', $r);
+}
+
+function bl($bl, $rel='', $class='') {
+    echo _bl($bl, $rel, $class);
+}
+
+function _bl($bl, $rel='', $class='') {
+    $router = Router::getRouter();
+    if ($rel) {
+        $rel = ' rel="'.q($rel).'"';
+    }
+    if ($class) {
+        $class = ' '.q($class);
+    }
+    $r = sprintf('<a class="bl%s"%s href="%s"><img src="%sstatic/images/'.
+            'blocks.min/%s.png" alt="" width="16" height="16" /> %s</a>',
+            $class, $rel, q($router->getUrl($bl)), q($router->getUrl()),
+            q(str_replace(' ', '_', $bl->getName())), q($bl->getName()));
+    return $r;
 }
 
 function _get($key, $default='') {
