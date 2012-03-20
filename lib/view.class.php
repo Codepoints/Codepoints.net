@@ -53,6 +53,13 @@ function _cp($cp, $rel='', $class='') {
     return join(' ', $r);
 }
 
+function _get($key, $default='') {
+    if (array_key_exists($key, $_GET)) {
+        return q($_GET[$key]);
+    }
+    return q($default);
+}
+
 
 class View {
 
