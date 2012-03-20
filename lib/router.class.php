@@ -119,8 +119,10 @@ class Router {
             return $this->baseURL;
         } elseif (is_string($object)) {
             $class = $object;
-        } else {
+        } elseif (is_object($object)) {
             $class = get_class($object);
+        } else {
+            throw new Exception("Unsupported type ".gettype($object));
         }
         if (array_key_exists($class, $this->urls)) {
             $path = $this->urls[$class]($object);
