@@ -1,34 +1,35 @@
 <?php
 $title = 'U+' . $codepoint->getId('hex'). ' ' . $codepoint->getName();
-$headdata = '';
 $prev = $codepoint->getPrev();
 $next = $codepoint->getNext();
 $props = $codepoint->getProperties();
+$block = $codepoint->getBlock();
+$headdata = sprintf('<link rel="up" href="%s"/>', q($router->getUrl($block)));
 if ($prev):
-    $headdata .= '<link href="' . $prev . '" rel="prev">';
+    $headdata .= '<link rel="prev" href="' . q($router->getUrl($prev)) . '" />';
 endif;
 if ($next):
-    $headdata .= '<link href="' . $next . '" rel="next">';
+    $headdata .= '<link rel="next" href="' . q($router->getUrl($next)) . '" />';
 endif;
 include "header.php";
 ?>
+<nav>
+  <ul>
+    <li class="prev">
+      <?php if ($prev): cp($prev, 'prev', 'min'); endif?>
+    </li>
+    <li class="up">
+      <?php
+      f('<a class="bl" rel="up" href="%s"><img src="static/images/blocks.min/%s.png" alt="" width="16" height="16" /> %s</a>', $router->getUrl($block),
+        str_replace(' ', '_', $block->getName()),
+        $block->getName()); ?>
+    </li>
+    <li class="next">
+      <?php if ($next): cp($next, 'next', 'min'); endif?>
+    </li>
+  </ul>
+</nav>
 <div class="payload codepoint">
-  <nav>
-    <ul>
-      <li class="prev">
-        <?php if ($prev): cp($prev, 'prev', 'min'); endif?>
-      </li>
-      <li class="up">
-        <?php $block = $codepoint->getBlock();
-        f('<a class="bl" rel="up" href="%s"><img src="static/images/blocks.min/%s.png" alt="" width="16" height="16" /> %s</a>', $router->getUrl($block),
-          str_replace(' ', '_', $block->getName()),
-          $block->getName()); ?>
-      </li>
-      <li class="next">
-        <?php if ($next): cp($next, 'next', 'min'); endif?>
-      </li>
-    </ul>
-  </nav>
   <h1><img src="data:<?php e($codepoint->getImage())?>" alt="" width="16" height="16" /> U+<?php e($codepoint->getId('hex'))?>
     <?php e($codepoint->getName())?></h1>
   <section>
