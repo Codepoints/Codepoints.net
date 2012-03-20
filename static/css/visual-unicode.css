@@ -392,7 +392,7 @@ nav li {
   line-height: 24px;
   border: 1px solid black;
   border-radius: 3px;
-  padding: 0 3px;
+  padding: 0 5px;
   text-shadow: 1px 1px black;
 }
 nav li {
@@ -402,19 +402,35 @@ nav li img {
   vertical-align: middle;
 }
 
+nav .start:before {
+  color: black;
+  content: url(../images/logo.png);
+  vertical-align: middle;
+  padding-right: .3em;
+}
+
+nav .search:before {
+  color: black;
+  content: "\1F50D";
+  padding-right: .3em;
+}
+
 nav .prev:before {
   color: black;
-  content: "\25C0 ";
+  content: "\25C0";
+  padding-right: .3em;
 }
 
 nav .next:after {
   color: black;
-  content: " \25B6";
+  content: "\25B6";
+  padding-left: .3em;
 }
 
 nav .up:before {
   color: black;
-  content: "\25B2 ";
+  content: "\25B2";
+  padding-right: .3em;
 }
 
 nav a {
@@ -425,10 +441,6 @@ nav a {
 body {
   margin: 0;
   font: 1em/1.5 Arial, sans-serif;
-}
-
-img {
-  background: white;
 }
 
 .stage {
