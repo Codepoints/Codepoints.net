@@ -13,6 +13,37 @@ $router = Router::getRouter();
 $router->addSetting('db', $db)
        ->addSetting('info', UnicodeInfo::get())
 
+->registerAction('', function ($request, $o) {
+    // Index
+    $view = new View('front');
+    echo $view->render(array('planes' => UnicodePlane::getAll($o['db'])));
+})
+
+->registerAction('search', function ($request, $o) {
+    // Search
+    $router = Router::getRouter();
+    $result = new SearchResult(array(), $o['db']);
+    $info = UnicodeInfo::get();
+    $cats = $info->getCategoryKeys();
+    $cats = array_merge($cats, array('int'));
+    foreach ($_GET as $k => $v) {
+        if ($v && in_array($k, $cats)) {
+            $result->addQuery($k, $v);
+        }
+    }
+    $page = isset($_GET['page'])? intval($_GET['page']) : 1;
+    $result->page = $page - 1;
+    $result->search();
+    if ($result->getCount() === 1) {
+        $cp = $result->current();
+        $router->redirect('U+'.$cp);
+    }
+    $pagination = new Pagination($result->getCount(), 128);
+    $pagination->setPage($page);
+    $view = new View('search');
+    echo $view->render(compact('result', 'pagination', 'page'));
+})
+
 ->registerAction(function ($url, $o) {
     // Planes
     if (substr($url, -6) === '_plane') {
@@ -69,35 +100,19 @@ $router->addSetting('db', $db)
     echo $view->render(compact('block'));
 })
 
-->registerAction('search', function ($request, $o) {
-    // Search
+->registerAction(function ($url, $o) {
+    // Single characters
+    $c = rawurldecode($url);
+    if (mb_strlen($c, 'UTF-8') === 1) {
+        return unpack('N', mb_convert_encoding($c, 'UCS-4BE', 'UTF-8'));
+    }
+    return False;
+}, function($request) {
     $router = Router::getRouter();
-    $result = new SearchResult(array(), $o['db']);
-    $info = UnicodeInfo::get();
-    $cats = $info->getCategoryKeys();
-    foreach ($_GET as $k => $v) {
-        if ($v && in_array($k, $cats)) {
-            $result->addQuery($k, $v);
-        }
-    }
-    $page = isset($_GET['page'])? intval($_GET['page']) : 1;
-    $result->page = $page - 1;
-    $result->search();
-    if ($result->getCount() === 1) {
-        $cp = $result->current();
-        $router->redirect('U+'.$cp);
-    }
-    $pagination = new Pagination($result->getCount(), 128);
-    $pagination->setPage($page);
-    $view = new View('search');
-    echo $view->render(compact('result', 'pagination', 'page'));
+    $router->redirect(sprintf('U+%04X', $request->data[1]));
 })
 
-->registerAction(array('', 'index.php'),
-function ($request, $o) {
-    $view = new View('front');
-    echo $view->render(array('planes' => UnicodePlane::getAll($o['db'])));
-});
+;
 
 $router->registerUrl('Codepoint', function ($object) {
     return sprintf("U+%s", $object->getId('hex'));
