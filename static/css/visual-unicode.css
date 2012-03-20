@@ -281,6 +281,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 }
 
 .cp {
+  text-shadow: none;
   background: white;
   background: -moz-linear-gradient(top, white, #e3e3e3);
   border: 1px solid #666;
@@ -315,7 +316,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 .cp {
   *display: inline;
 }
-
 .cp img {
   display: block;
   margin: 4px auto 8px;
@@ -328,13 +328,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   -o-transition-duration: 0.5s;
   transition-duration: 0.5s;
 }
-
-.cp:hover {
+.cp:focus, .cp:hover {
   box-shadow: 0 0 2px 1px #acf;
   border-color: #333;
 }
-
-.cp:hover img {
+.cp:focus img, .cp:hover img {
   image-rendering: optimizeSpeed;
   -moz-transform: scale(2);
   -webkit-transform: scale(2);
@@ -363,6 +361,67 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   min-width: 200px;
 }
 
+nav {
+  color: #ddd;
+  background: #33302a;
+  background: -moz-linear-gradient(top, #43402a, #33302a);
+  padding: 3px;
+  line-height: 18px;
+  *zoom: 1;
+}
+nav:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+nav li,
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  display: -moz-inline-box;
+  -moz-box-orient: vertical;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  height: 24px;
+  line-height: 24px;
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 0 3px;
+  text-shadow: 1px 1px black;
+}
+nav li {
+  *display: inline;
+}
+nav li img {
+  vertical-align: middle;
+}
+
+nav .prev:before {
+  color: black;
+  content: "\25C0 ";
+}
+
+nav .next:after {
+  color: black;
+  content: " \25B6";
+}
+
+nav .up:before {
+  color: black;
+  content: "\25B2 ";
+}
+
+nav a {
+  color: #ddd;
+  text-decoration: none;
+}
+
 body {
   margin: 0;
   font: 1em/1.5 Arial, sans-serif;
@@ -373,8 +432,11 @@ img {
 }
 
 .stage {
-  padding: 10px;
   position: relative;
+}
+
+.payload {
+  padding: 10px;
 }
 
 .block figure {
@@ -443,35 +505,6 @@ img {
     clear: left;
   }
 }
-nav li,
-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-nav .prev {
-  float: left;
-  margin-right: 10px;
-}
-
-nav .next {
-  float: right;
-  margin-top: -25px;
-  margin-left: 10px;
-}
-
-nav .up {
-  height: 15px;
-  text-align: center;
-  margin: 0 44px 10px;
-}
-
-nav a {
-  color: #05a;
-  text-decoration: none;
-}
-
 .slide {
   position: absolute;
   top: 10px;

@@ -1,0 +1,55 @@
+nav {
+  color: #ddd;
+  background: #33302a;
+  background: -moz-linear-gradient(top, #43402a, #33302a);
+  padding: 3px;
+  line-height: 18px;
+  @include pie-clearfix;
+}
+
+nav li,
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  @include inline-block;
+  height: 24px;
+  line-height: 24px;
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 0 3px;
+  text-shadow: 1px 1px black;
+  img {
+    vertical-align: middle;
+  }
+}
+
+nav .prev {
+  &:before {
+    color: black;
+    content: "\25C0 ";
+  }
+}
+
+nav .next {
+  &:after {
+    color: black;
+    content: " \25B6";
+  }
+}
+
+nav .up {
+  &:before {
+    color: black;
+    content: "\25B2 ";
+  }
+}
+
+nav a {
+  color: #ddd;
+  text-decoration: none;
+}
+

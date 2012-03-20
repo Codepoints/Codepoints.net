@@ -10,6 +10,7 @@
 @import "tooltip";
 @import "codepoint";
 @import "search";
+@import "nav";
 
 body {
   margin: 0;
@@ -21,8 +22,11 @@ img {
 }
 
 .stage {
-  padding: 10px;
   position: relative;
+}
+
+.payload {
+  padding: 10px;
 }
 
 .block figure {
@@ -76,40 +80,6 @@ img {
   }
 }
 
-
-
-nav li,
-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.codepoint nav .prev,
-.codepoint nav .next {
-}
-
-nav .prev {
-  float: left;
-  margin-right: 10px;
-}
-
-nav .next {
-  float: right;
-  margin-top: -25px;
-  margin-left: 10px;
-}
-
-nav .up {
-  height: 15px;
-  text-align: center;
-  margin: 0 44px 10px;
-}
-
-nav a {
-  color: #05a;
-  text-decoration: none;
-}
 
 
 
