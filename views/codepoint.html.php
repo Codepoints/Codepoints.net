@@ -1,5 +1,5 @@
 <?php
-$title = 'U+' . $codepoint->getId('hex');
+$title = 'U+' . $codepoint->getId('hex'). ' ' . $codepoint->getName();
 $headdata = '';
 $prev = $codepoint->getPrev();
 $next = $codepoint->getNext();
@@ -29,7 +29,7 @@ include "header.php";
       </li>
     </ul>
   </nav>
-  <h1><img src="data:<?php e($codepoint->getImage())?>" alt="" width="16" height="16" /> <?php e($title)?><br/>
+  <h1><img src="data:<?php e($codepoint->getImage())?>" alt="" width="16" height="16" /> U+<?php e($codepoint->getId('hex'))?>
     <?php e($codepoint->getName())?></h1>
   <section>
     <h2>Representations</h2>
@@ -133,6 +133,14 @@ include "header.php";
         </dd>
       <?php endif?>
     </dl>
+  </section>
+  <section>
+    <h2>Elsewhere</h2>
+    <ul>
+      <li><a href="http://decodeunicode.org/en/U+<?php e($codepoint->getId('hex'))?>">Decode Unicode</a></li>
+      <li><a href="http://fileformat.info/info/unicode/char/<?php e($codepoint->getId('hex'))?>/index.htm">Fileformat.info</a></li>
+      <li><a href="http://www.unicode.org/cgi-bin/refglyph?24-<?php e($codepoint->getId('hex'))?>">Reference rendering on Unicode.org</a></li>
+    </ul>
   </section>
   <!--table>
     <tbody>
