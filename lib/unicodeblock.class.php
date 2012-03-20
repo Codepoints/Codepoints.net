@@ -42,7 +42,7 @@ class UnicodeBlock extends UnicodeRange {
              WHERE first < :cp AND last < :cp
           ORDER BY last DESC
              LIMIT 1");
-            $query->execute(array(':cp' => $this->getFirst()));
+            $query->execute(array(':cp' => $this->limits[0]));
             $r = $query->fetch(PDO::FETCH_ASSOC);
             $query->closeCursor();
             if ($r === False) {
@@ -61,7 +61,7 @@ class UnicodeBlock extends UnicodeRange {
              WHERE first > :cp AND last > :cp
           ORDER BY first ASC
              LIMIT 1");
-            $query->execute(array(':cp' => $this->getLast()));
+            $query->execute(array(':cp' => $this->limits[1]));
             $r = $query->fetch(PDO::FETCH_ASSOC);
             $query->closeCursor();
             if ($r === False) {
@@ -79,8 +79,8 @@ class UnicodeBlock extends UnicodeRange {
             SELECT name, first, last FROM planes
              WHERE first <= :first AND last >= :last
              LIMIT 1");
-            $query->execute(array(':first' => $this->getFirst(),
-                                  ':last' => $this->getLast()));
+            $query->execute(array(':first' => $this->limits[0],
+                                  ':last' => $this->limits[1]));
             $r = $query->fetch(PDO::FETCH_ASSOC);
             $query->closeCursor();
             if ($r === False) {

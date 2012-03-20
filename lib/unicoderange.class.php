@@ -47,11 +47,17 @@ class UnicodeRange implements Iterator {
 
     public function getBoundaries() {
         $indices = array_keys($this->set);
+        if (! count($indices)) {
+            return Null;
+        }
         return array($indices[0], end($indices));
     }
 
     public function getFirst() {
         $r = array_keys($this->set);
+        if (! count($r)) {
+            return Null;
+        }
         return $r[0];
     }
 
