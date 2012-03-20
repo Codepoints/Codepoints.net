@@ -1,4 +1,5 @@
 .cp {
+  text-shadow: none;
   background: white;
   background: -moz-linear-gradient(top, white, #e3e3e3);
   border: 1px solid #666;
@@ -14,23 +15,26 @@
   @include transition-property('box-shadow, border-color');
   @include transition-duration(.3s);
   outline: none;
-}
 
-.cp img {
-  display: block;
-  margin: 4px auto 8px;
-  @include transition-property(all);
-  @include transition-duration(.5s);
-}
+  img {
+    display: block;
+    margin: 4px auto 8px;
+    @include transition-property(all);
+    @include transition-duration(.5s);
+  }
 
-.cp:hover {
-  box-shadow: 0 0 2px 1px #acf;
-  border-color: #333;
-}
+  &:focus,
+  &:hover {
+    box-shadow: 0 0 2px 1px #acf;
+    border-color: #333;
 
-.cp:hover img {
-  image-rendering: optimizeSpeed;
-  @include transform(scale(2));
+    img {
+      image-rendering: optimizeSpeed;
+      @include transform(scale(2));
+    }
+
+  }
+
 }
 
 .min.cp {
