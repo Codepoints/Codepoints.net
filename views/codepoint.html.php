@@ -12,23 +12,16 @@ if ($next):
     $headdata .= '<link rel="next" href="' . q($router->getUrl($next)) . '" />';
 endif;
 include "header.php";
+$nav = array();
+if ($prev) {
+    $nav['prev'] = _cp($prev, 'prev', 'min');
+}
+$nav["up"] = _bl($block);
+if ($next) {
+    $nav['next'] = _cp($next, 'next', 'min');
+}
+include "nav.php";
 ?>
-<nav>
-  <ul>
-    <li class="prev">
-      <?php if ($prev): cp($prev, 'prev', 'min'); endif?>
-    </li>
-    <li class="up">
-      <?php
-      f('<a class="bl" rel="up" href="%s"><img src="static/images/blocks.min/%s.png" alt="" width="16" height="16" /> %s</a>', $router->getUrl($block),
-        str_replace(' ', '_', $block->getName()),
-        $block->getName()); ?>
-    </li>
-    <li class="next">
-      <?php if ($next): cp($next, 'next', 'min'); endif?>
-    </li>
-  </ul>
-</nav>
 <div class="payload codepoint">
   <h1><img src="data:<?php e($codepoint->getImage())?>" alt="" width="16" height="16" /> U+<?php e($codepoint->getId('hex'))?>
     <?php e($codepoint->getName())?></h1>
@@ -102,9 +95,7 @@ include "header.php";
           f('<a class="pl" href="%s">%s</a>', $router->getUrl($plane), $plane->name);
       ?></dd>
       <dt>Block</dt>
-      <dd><?php $block = $codepoint->getBlock();
-          f('<a class="bl" href="%s">%s</a>', $router->getUrl($block), $block->getName());
-      ?></dd>
+      <dd><?php bl($block)?></dd>
       <?php if($props['uc'] && (is_array($props['uc']) ||
                $props['uc']->getId() != $codepoint->getId())):?>
         <dt>Uppercase</dt>

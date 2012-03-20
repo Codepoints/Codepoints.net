@@ -1,5 +1,7 @@
 <?php $title = 'Visual Unicode';
-include "header.php"?>
+include "header.php";
+include "nav.php";
+?>
   <h1><?php e($title)?></h1>
   <ol>
     <?php foreach ($planes as $plane):?>
