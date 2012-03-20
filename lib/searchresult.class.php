@@ -117,6 +117,9 @@ class SearchResult extends UnicodeRange {
             } elseif ($q[0] === 'na' || $q[0] === 'na1') {
                 $search .= " `${q[0]}` LIKE :q$i ";
                 $params[':q'.$i] = "%${q[2]}%";
+            } elseif ($q[0] === 'int') {
+                $search .= " cp = :q$i ";
+                $params[':q'.$i] = $q[2];
             } else {
                 $search .= " `${q[0]}` ${q[1]} :q$i ";
                 $params[':q'.$i] = $q[2];

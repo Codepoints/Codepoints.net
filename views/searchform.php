@@ -2,6 +2,17 @@
       class="extended searchform">
   <p><label for="s_na">Name:</label>
      <input type="text" name="na" id="s_na" value="" /></p>
+  <p><label for="s_int">Decimal:</label>
+     <input type="text" name="int" id="s_int" value="<?php echo _get('int')?>" /></p>
+  <fieldset><legend><?php e($info->getCategory('blk'))?>:</legend>
+    <?php foreach($info->getLegendForCategory('blk') as $k => $v):?>
+      <p>
+        <input type="checkbox" name="blk[]" value="<?php e($k)?>"
+               id="s_blk_<?php e($k)?>" />
+        <label for="s_blk_<?php e($k)?>"><?php e($v)?></label>
+      </p>
+    <?php endforeach?>
+  </fieldset>
   <fieldset><legend><?php e($info->getCategory('gc'))?>:</legend>
     <?php foreach($info->getLegendForCategory('gc') as $k => $v):?>
       <p>
