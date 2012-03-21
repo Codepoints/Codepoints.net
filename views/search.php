@@ -4,6 +4,7 @@ $cQuery = count($query);
 $fQuery = $result->getCount();
 $title = $cQuery > 0? 'Result' : 'Search';
 include "header.php";
+include "nav.php";
 ?>
 <div class="payload search">
   <h1><?php e($title)?></h1>
