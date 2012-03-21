@@ -27,17 +27,56 @@ include "nav.php";
     <span class="fig"><?php e($codepoint->getSafeChar())?></span>
   </figure>
   <h1>U+<?php e($codepoint->getId('hex'))?> <?php e($codepoint->getName())?></h1>
+  <p class="prosa">
+    This codepoint is categorized as <a href="<?php e($router->getUrl('search?gc='.$props['gc']))?>"><?php e($info->getLabel('gc', $props['gc']))?></a>
+    and belongs to the  <a href="<?php e($router->getUrl('search?sc='.$props['sc']))?>"><?php e($info->getLabel('sc', $props['sc']))?></a> <?php e($info->getCategory('sc'))?>.
+    It was added to Unicode in version <a href="<?php e($router->getUrl('search?age='.$props['age']))?>"><?php e($info->getLabel('age', $props['age']))?></a>.
+    The glyph is
+    <?php if ($props['dt'] === 'none'):?>
+      <a href="<?php e($router->getUrl('search?dt=none'))?>">not a composition</a>.
+    <?php else:?>
+      is a <a href="<?php e($router->getUrl('search?dt='.$props['dt']))?>"><?php e($info->getLabel('dt', $props['dt']))?></a> composition of the glyphs
+      <?php cp($props['dm'], '', 'min')?>.
+    <?php endif?>
+    The codepoint is located in the block
+    <?php bl($block)?> in the
+    <?php $plane = $codepoint->getPlane();
+          f('<a class="pl" href="%s">%s</a>', $router->getUrl($plane), $plane->name);
+      ?>.
+    <?php
+    $hasUC = ($props['uc'] && (is_array($props['uc']) || $props['uc']->getId() != $codepoint->getId()));
+    $hasLC = ($props['lc'] && (is_array($props['lc']) || $props['lc']->getId() != $codepoint->getId()));
+    $hasTC = ($props['tc'] && (is_array($props['tc']) || $props['tc']->getId() != $codepoint->getId()));
+    if ($hasUC || $hasLC || $hasTC):?>
+        It is related to
+        <?php if ($hasUC):?>its uppercase variant <?php cp($props['uc'], '', 'min')?><?php endif?>
+        <?php if ($hasLC): if ($hasUC) { echo $hasTC? ', ' : ' and '; }?> its lowercase variant <?php cp($props['lc'], '', 'min')?><?php endif?>
+        <?php if ($hasTC): if ($hasUC || $hasLC) { echo ' and '; }?> its titlecase variant <?php cp($props['tc'], '', 'min')?><?php endif?>.
+    <?php endif?>
+  </p>
+  <p>
+    The codepoint has a <?php e($info->getLabel('ea', $props['ea']))?> <?php e($info->getCategory('ea'))?>.
+    <?php $defn = $codepoint->getProp('kDefinition');
+      if ($defn):?>
+      The Unihan Database defines its glyph as <em><?php
+        echo preg_replace_callback('/U\+([0-9A-F]{4,6})/', function($m) {
+            $router = Router::getRouter();
+            $db = $router->getSetting('db');
+            return _cp(new Codepoint(hexdec($m[1]), $db), '', 'min');
+        }, $defn);
+      ?></em>.
+    <?php endif?>
+    <?php $pronunciation = $codepoint->getPronunciation();
+      if ($pronunciation):?>
+      Its Pīnyīn pronunciation is
+      <em><?php e($pronunciation)?></em>.
+    <?php endif?>
+  </p>
   <section>
     <h2>Representations</h2>
     <dl>
       <dt>Nº</dt>
       <dd><?php e($codepoint->getId())?></dd>
-      <dt>Your System</dt>
-      <dd><?php if ($props['gc'][0] === 'C'):?>
-          <span class="Cc">&lt;control&gt;</span>
-      <?php else:?>
-          <span>&#<?php e($codepoint->getId())?>;</span>
-      <?php endif?></dd>
       <dt>UTF-8</dt>
       <dd><?php e($codepoint->getRepr('UTF-8'))?></dd>
       <dt>UTF-16</dt>
