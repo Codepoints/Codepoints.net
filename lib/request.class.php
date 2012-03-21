@@ -24,7 +24,7 @@ class Request {
         if ($url === Null) {
             $url = $_SERVER['REQUEST_URI'];
         }
-        $this->url = $url;
+        $this->url = $this->trunkUrl = $url;
         if (array_key_exists('HTTP_ACCEPT', $_SERVER)) {
             $types = explode(',', $_SERVER['HTTP_ACCEPT']);
             for ($i = 0, $j = count($types); $i < $j; $i++) {
@@ -48,17 +48,19 @@ class Request {
             }
         }
         $ext = pathinfo($url, PATHINFO_EXTENSION);
-        $this->trunkUrl = substr($url, 0, -strlen($ext)-1);
-        $ext = strtolower(ltrim($ext, '.'));
-        switch ($ext) {
-            case "js":
-            case "json":
-                $this->type = 'application/json';
-                break;
-            case "htm":
-            case "html":
-                $this->type = 'text/html';
-                break;
+        if ($ext) {
+            $this->trunkUrl = substr($url, 0, -strlen($ext)-1);
+            $ext = strtolower(ltrim($ext, '.'));
+            switch ($ext) {
+                case "js":
+                case "json":
+                    $this->type = 'application/json';
+                    break;
+                case "htm":
+                case "html":
+                    $this->type = 'text/html';
+                    break;
+            }
         }
     }
 
