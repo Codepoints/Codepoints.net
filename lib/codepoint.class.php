@@ -69,6 +69,22 @@ class Codepoint {
     }
 
     /**
+     * get the character representation with controls escaped
+     */
+    public function getSafeChar($coding='UTF-8') {
+        $props = $this->getProperties();
+        if ($props['gc'][0] === 'C') {
+            if ($this->id < 33) {
+                return mb_convert_encoding('&#'.($this->id + 9216).';',
+                                           $coding, 'HTML-ENTITIES');
+            }
+            return mb_convert_encoding('&#xFFFD;', $coding, 'HTML-ENTITIES');
+        }
+        return mb_convert_encoding('&#'.$this->id.';', $coding,
+                                   'HTML-ENTITIES');
+    }
+
+    /**
      * get representation in a certain encoding
      */
     public function getRepr($coding='UTF-8') {
