@@ -53,16 +53,17 @@ class Router {
                 $url = strstr($url, '?', True);
             }
         }
+        $req = new Request($url);
+        $tUrl = $req->trunkUrl;
         foreach ($this->actions as $action) {
             if (is_callable($action[0])) {
-                $r = $action[0]($url, $this->settings);
+                $r = $action[0]($tUrl, $this->settings);
             } elseif (is_array($action[0])) {
-                $r = in_array($url, $action[0]);
+                $r = in_array($tUrl, $action[0]);
             } else {
-                $r = ($action[0] === $url);
+                $r = ($action[0] === $tUrl);
             }
             if ($r !== False) {
-                $req = new Request($url);
                 $req->data = $r;
                 return array($action[1], $req);
             }
