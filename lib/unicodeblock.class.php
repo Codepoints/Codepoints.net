@@ -6,12 +6,37 @@
  */
 class UnicodeBlock extends UnicodeRange {
 
+    /**
+     * the block's name
+     */
     protected $name;
+
+    /**
+     * the previous block
+     */
     protected $prev;
+
+    /**
+     * the next block
+     */
     protected $next;
+
+    /**
+     * the plane this block belongs to
+     */
     protected $plane;
+
+    /**
+     * the first and last codepoint of this block
+     */
     protected $limits;
 
+    /**
+     * create a new UnicodeBlock
+     *
+     * If $name is given and $r is Null, the block is looked up in the
+     * database. If $r is set, the relevant items are taken from there.
+     */
     public function __construct($name, $db, $r=NULL) {
         if ($r === NULL) { // performance: allow to specify range
             $query = $db->prepare("
@@ -31,10 +56,26 @@ class UnicodeBlock extends UnicodeRange {
         parent::__construct(range($r['first'], $r['last']), $db);
     }
 
+    /**
+     * get the block's official name
+     */
     public function getName() {
         return $this->name;
     }
 
+    /**
+     * return first and last codepoint of block definition
+     *
+     * contrary to UnicodeRange::getBoundaries the returned values don't
+     * need to exist as valid CPs
+     */
+    public function getBlockLimits() {
+        return $this->limits;
+    }
+
+    /**
+     * get the previous block or False
+     */
     public function getPrev() {
         if ($this->prev === NULL) {
             $query = $this->db->prepare("
@@ -54,6 +95,9 @@ class UnicodeBlock extends UnicodeRange {
         return $this->prev;
     }
 
+    /**
+     * get the next block or False
+     */
     public function getNext() {
         if ($this->next === NULL) {
             $query = $this->db->prepare("
@@ -73,6 +117,9 @@ class UnicodeBlock extends UnicodeRange {
         return $this->next;
     }
 
+    /**
+     * get the plane this block belongs to
+     */
     public function getPlane() {
         if ($this->plane === NULL) {
             $query = $this->db->prepare("
@@ -84,7 +131,7 @@ class UnicodeBlock extends UnicodeRange {
             $r = $query->fetch(PDO::FETCH_ASSOC);
             $query->closeCursor();
             if ($r === False) {
-                $this->plane = False;
+                throw new Exception("No plane found for block.");
             } else {
                 $this->plane = new UnicodePlane('', $this->db, $r);
             }
@@ -92,6 +139,9 @@ class UnicodeBlock extends UnicodeRange {
         return $this->plane;
     }
 
+    /**
+     * get the block for a specific codepoint
+     */
     public static function getForCodepoint($cp, $db=NULL) {
         if ($cp instanceof Codepoint) {
             $db = $cp->getDB();

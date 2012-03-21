@@ -8,9 +8,21 @@
  */
 class UnicodeRange implements Iterator {
 
+    /**
+     * the database from which CP info is fetched
+     */
     protected $db;
+
+    /**
+     * the set of codepoint instances
+     */
     protected $set = array();
 
+    /**
+     * construct a new Unicode range
+     *
+     * The set may be an empty range and can be filled later.
+     */
     public function __construct(Array $set/*=array()*/, $db) {
         $this->db = $db;
         $set = array_unique($set);
@@ -45,6 +57,10 @@ class UnicodeRange implements Iterator {
         return key($this->set) !== NULL;
     }
 
+    /**
+     * get the IDs of the first and last valid codepoints
+     * in the set
+     */
     public function getBoundaries() {
         $indices = array_keys($this->set);
         if (! count($indices)) {
@@ -53,6 +69,9 @@ class UnicodeRange implements Iterator {
         return array($indices[0], end($indices));
     }
 
+    /**
+     * get the first codepoint ID from the set
+     */
     public function getFirst() {
         $r = array_keys($this->set);
         if (! count($r)) {
@@ -61,13 +80,16 @@ class UnicodeRange implements Iterator {
         return $r[0];
     }
 
+    /**
+     * get the last codepoint ID from the set
+     */
     public function getLast() {
         $r = array_keys($this->set);
         return end($r);
     }
 
     /**
-     * add a codepoint to the set
+     * add a single codepoint to the set
      */
     public function add($cp) {
         $cp = intval($cp);
@@ -195,21 +217,6 @@ class UnicodeRange implements Iterator {
             return intval($matches[1], 16);
         }
         return NULL;
-    }
-
-    /**
-     * get a range of codepoints with same property
-     */
-    public static function getForProperty($prop, $val, $db) {
-        $query = $db->prepare('SELECT cp FROM codepoints
-            WHERE `'.str_replace(array('`', "\0"), '', $prop).'` = :val');
-        $query->execute(array(':val' => $val));
-        $r = $query->fetchAll(PDO::FETCH_ASSOC);
-        $set = array();
-        foreach ($r as $v) {
-            $set[] = intval($r['cp']);
-        }
-        return new self($set, $db);
     }
 
 }
