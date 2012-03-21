@@ -353,6 +353,50 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   margin: 0;
 }
 
+.bl {
+  text-shadow: none;
+  background: white;
+  background: -moz-linear-gradient(top, white, #e3e3e3);
+  border: 1px solid #666;
+  -moz-border-radius: 1px;
+  -webkit-border-radius: 1px;
+  -o-border-radius: 1px;
+  -ms-border-radius: 1px;
+  -khtml-border-radius: 1px;
+  border-radius: 1px;
+  display: -moz-inline-box;
+  -moz-box-orient: vertical;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  font-size: 0.75em;
+  color: #333;
+  text-decoration: none;
+  -moz-transition-property: box-shadow, border-color;
+  -webkit-transition-property: box-shadow, border-color;
+  -o-transition-property: box-shadow, border-color;
+  transition-property: box-shadow, border-color;
+  -moz-transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  outline: none;
+  padding: 2px 4px;
+  height: 16px;
+  line-height: 16px;
+  text-align: left;
+}
+.bl {
+  *display: inline;
+}
+.bl img {
+  vertical-align: bottom;
+}
+.bl:focus, .bl:hover {
+  box-shadow: 0 0 2px 1px #acf;
+  border-color: #333;
+}
+
 .searchform fieldset p {
   display: inline-block;
   margin: 0 0 0 1em;
@@ -552,6 +596,26 @@ figure .fig {
   float: left;
   width: 300px;
   margin: 0 10px 10px 0;
+}
+
+dl {
+  *zoom: 1;
+}
+dl:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+dt {
+  float: left;
+  clear: left;
+  font-style: italic;
+  margin: 10px 1em 0 0;
+}
+
+dd {
+  margin: 10px 0 0;
 }
 
 .slide {

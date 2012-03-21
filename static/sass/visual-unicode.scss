@@ -9,6 +9,7 @@
 @import "pagination";
 @import "tooltip";
 @import "codepoint";
+@import "block";
 @import "search";
 @import "nav";
 
@@ -107,6 +108,25 @@ figure .fig {
   width: 300px;
   margin: 0 10px 10px 0;
 }
+
+
+
+
+dl {
+  @include pie-clearfix;
+}
+
+dt {
+  float: left;
+  clear: left;
+  font-style: italic;
+  margin: 10px 1em 0 0;
+}
+
+dd {
+  margin: 10px 0 0;
+}
+
 
 
 
