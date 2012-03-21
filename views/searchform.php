@@ -1,4 +1,4 @@
-<form method="get" action="<?php $router->getUrl('SearchResult')?>"
+<form method="get" action="<?php e($router->getUrl('SearchResult'))?>"
       class="extended searchform">
   <p><label for="s_na">Name:</label>
      <input type="text" name="na" id="s_na" value="" /></p>
