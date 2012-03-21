@@ -14,7 +14,15 @@ nav ul {
   padding: 0;
 }
 
+nav ul {
+  text-align: center;
+}
+
 nav li {
+  display: inline;
+}
+
+nav li a {
   @include inline-block;
   height: 24px;
   line-height: 24px;
@@ -27,9 +35,18 @@ nav li {
   }
 }
 
+nav li a:after,
+nav li a:before {
+  color: black;
+  text-shadow: none;
+}
+
+nav li .min.cp {
+  width: auto;
+}
+
 nav .start {
-  &:before {
-    color: black;
+  a:before {
     content: url(../images/logo.png);
     vertical-align: middle;
     padding-right: .3em;
@@ -37,33 +54,36 @@ nav .start {
 }
 
 nav .search {
-  &:before {
-    color: black;
+  a:before {
     content: "\1F50D";
     padding-right: .3em;
   }
 }
 
 nav .prev {
-  &:before {
-    color: black;
+  a:before {
     content: "\25C0";
     padding-right: .3em;
   }
 }
 
 nav .next {
-  &:after {
-    color: black;
+  a:after {
     content: "\25B6";
     padding-left: .3em;
   }
 }
 
 nav .up {
-  &:before {
-    color: black;
+  a:before {
     content: "\25B2";
+    padding-right: .3em;
+  }
+}
+
+nav .about {
+  a:before {
+    content: "\2139";
     padding-right: .3em;
   }
 }
@@ -73,3 +93,7 @@ nav a {
   text-decoration: none;
 }
 
+nav a:hover,
+nav a:focus {
+  background: #555;
+}

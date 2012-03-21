@@ -426,7 +426,15 @@ nav ul {
   padding: 0;
 }
 
+nav ul {
+  text-align: center;
+}
+
 nav li {
+  display: inline;
+}
+
+nav li a {
   display: -moz-inline-box;
   -moz-box-orient: vertical;
   display: inline-block;
@@ -439,47 +447,62 @@ nav li {
   padding: 0 5px;
   text-shadow: 1px 1px black;
 }
-nav li {
+nav li a {
   *display: inline;
 }
-nav li img {
+nav li a img {
   vertical-align: middle;
 }
 
-nav .start:before {
+nav li a:after,
+nav li a:before {
   color: black;
+  text-shadow: none;
+}
+
+nav li .min.cp {
+  width: auto;
+}
+
+nav .start a:before {
   content: url(../images/logo.png);
   vertical-align: middle;
   padding-right: .3em;
 }
 
-nav .search:before {
-  color: black;
+nav .search a:before {
   content: "\1F50D";
   padding-right: .3em;
 }
 
-nav .prev:before {
-  color: black;
+nav .prev a:before {
   content: "\25C0";
   padding-right: .3em;
 }
 
-nav .next:after {
-  color: black;
+nav .next a:after {
   content: "\25B6";
   padding-left: .3em;
 }
 
-nav .up:before {
-  color: black;
+nav .up a:before {
   content: "\25B2";
+  padding-right: .3em;
+}
+
+nav .about a:before {
+  content: "\2139";
   padding-right: .3em;
 }
 
 nav a {
   color: #ddd;
   text-decoration: none;
+}
+
+nav a:hover,
+nav a:focus {
+  background: #555;
 }
 
 body {
