@@ -28,21 +28,25 @@ include "nav.php";
   </figure>
   <h1>U+<?php e($codepoint->getId('hex'))?> <?php e($codepoint->getName())?></h1>
   <p class="prosa">
-    This codepoint is categorized as <a href="<?php e($router->getUrl('search?gc='.$props['gc']))?>"><?php e($info->getLabel('gc', $props['gc']))?></a>
-    and belongs to the  <a href="<?php e($router->getUrl('search?sc='.$props['sc']))?>"><?php e($info->getLabel('sc', $props['sc']))?></a> <?php e($info->getCategory('sc'))?>.
-    It was added to Unicode in version <a href="<?php e($router->getUrl('search?age='.$props['age']))?>"><?php e($info->getLabel('age', $props['age']))?></a>.
+    This codepoint is categorized as
+    <a href="<?php e($router->getUrl('search?gc='.$props['gc']))?>"><?php e($info->getLabel('gc', $props['gc']))?></a>
+    and belongs to the
+    <a href="<?php e($router->getUrl('search?sc='.$props['sc']))?>"><?php e($info->getLabel('sc', $props['sc']))?></a>
+    <?php e($info->getCategory('sc'))?>.
+    It was added to Unicode in version
+    <a href="<?php e($router->getUrl('search?age='.$props['age']))?>"><?php e($info->getLabel('age', $props['age']))?></a>.
     The glyph is
     <?php if ($props['dt'] === 'none'):?>
       <a href="<?php e($router->getUrl('search?dt=none'))?>">not a composition</a>.
     <?php else:?>
-      is a <a href="<?php e($router->getUrl('search?dt='.$props['dt']))?>"><?php e($info->getLabel('dt', $props['dt']))?></a> composition of the glyphs
+      a <a href="<?php e($router->getUrl('search?dt='.$props['dt']))?>"><?php e($info->getLabel('dt', $props['dt']))?></a>
+      composition of the glyphs
       <?php cp($props['dm'], '', 'min')?>.
     <?php endif?>
     The codepoint is located in the block
     <?php bl($block)?> in the
     <?php $plane = $codepoint->getPlane();
-          f('<a class="pl" href="%s">%s</a>', $router->getUrl($plane), $plane->name);
-      ?>.
+    f('<a class="pl" href="%s">%s</a>', $router->getUrl($plane), $plane->name); ?>.
     <?php
     $hasUC = ($props['uc'] && (is_array($props['uc']) || $props['uc']->getId() != $codepoint->getId()));
     $hasLC = ($props['lc'] && (is_array($props['lc']) || $props['lc']->getId() != $codepoint->getId()));
@@ -50,12 +54,15 @@ include "nav.php";
     if ($hasUC || $hasLC || $hasTC):?>
         It is related to
         <?php if ($hasUC):?>its uppercase variant <?php cp($props['uc'], '', 'min')?><?php endif?>
-        <?php if ($hasLC): if ($hasUC) { echo $hasTC? ', ' : ' and '; }?> its lowercase variant <?php cp($props['lc'], '', 'min')?><?php endif?>
-        <?php if ($hasTC): if ($hasUC || $hasLC) { echo ' and '; }?> its titlecase variant <?php cp($props['tc'], '', 'min')?><?php endif?>.
+        <?php if ($hasLC): if ($hasUC) { echo $hasTC? ', ' : ' and '; }?>
+            its lowercase variant <?php cp($props['lc'], '', 'min')?><?php endif?>
+        <?php if ($hasTC): if ($hasUC || $hasLC) { echo ' and '; }?>
+            its titlecase variant <?php cp($props['tc'], '', 'min')?><?php endif?>.
     <?php endif?>
   </p>
   <p>
-    The codepoint has a <?php e($info->getLabel('ea', $props['ea']))?> <?php e($info->getCategory('ea'))?>.
+    The codepoint has a <a href="<?php e($router->getUrl('search?ea='.$props['ea']))?>"><?php e($info->getLabel('ea', $props['ea']))?></a>
+    <?php e($info->getCategory('ea'))?>.
     <?php $defn = $codepoint->getProp('kDefinition');
       if ($defn):?>
       The Unihan Database defines its glyph as <em><?php
@@ -72,6 +79,34 @@ include "nav.php";
       <em><?php e($pronunciation)?></em>.
     <?php endif?>
   </p>
+  <p>
+    In text U+<?php e($codepoint->getId('hex'))?> acts as
+    <a href="<?php e($router->getUrl('search?lb='.$props['lb']))?>"><?php
+    e($info->getLabel('lb', $props['lb']))?></a> regarding line breaks.
+    It has type <a href="<?php e($router->getUrl('search?SB='.$props['SB']))?>"><?php
+    e($info->getLabel('SB', $props['SB']))?></a> for sentence and
+    <a href="<?php e($router->getUrl('search?WB='.$props['WB']))?>"><?php
+    e($info->getLabel('WB', $props['WB']))?></a> for word breaks.
+  </p>
+  <section>
+    <h2>Boolean Properties</h2>
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Property</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach ($info->getBooleanCategories() as $cat):?>
+          <tr>
+            <td><?php if ($props[$cat]):?>Y<?php else:?>N<?php endif?></td>
+            <td><?php e($info->getCategory($cat))?></td>
+          </tr>
+        <?php endforeach?>
+      </tbody>
+    </table>
+  </section>
   <section>
     <h2>Representations</h2>
     <dl>
