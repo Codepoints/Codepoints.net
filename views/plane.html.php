@@ -21,7 +21,7 @@ include "nav.php";
   <h2>Blocks in this plane</h2>
   <ol>
     <?php foreach ($blocks as $b):?>
-      <li><a href="<?php e($router->getUrl($b))?>"><?php e($b->getName())?></a></li>
+      <li><?php bl($b)?> <small>(U+<?php $l = $b->getBlockLimits(); f('%04X', $l[0])?> to <?php f('%04X', $l[1])?>)</small></li>
     <?php endforeach?>
   </ol>
 </div>
