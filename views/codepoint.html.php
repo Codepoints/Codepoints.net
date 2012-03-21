@@ -23,8 +23,10 @@ if ($next) {
 include "nav.php";
 ?>
 <div class="payload codepoint">
-  <h1><img src="data:<?php e($codepoint->getImage())?>" alt="" width="16" height="16" /> U+<?php e($codepoint->getId('hex'))?>
-    <?php e($codepoint->getName())?></h1>
+  <figure>
+    <span class="fig"><?php e($codepoint->getSafeChar())?></span>
+  </figure>
+  <h1>U+<?php e($codepoint->getId('hex'))?> <?php e($codepoint->getName())?></h1>
   <section>
     <h2>Representations</h2>
     <dl>
@@ -65,12 +67,10 @@ include "nav.php";
     <dl>
       <dt>Unicode version</dt>
       <dd><a href="<?php e('search?age='.$props['age'])?>"><?php e($props['age'])?></a></dd>
-      <dt>Script</dt>
-      <dd><a href="<?php e('search?sc='.$props['sc'])?>"><?php e($info->getLabel('sc', $props['sc']))?></a></dd>
-      <dt>General Category</dt>
-      <dd><a href="<?php e('search?gc='.$props['gc'])?>"><?php e($info->getLabel('gc', $props['gc']))?></a></dd>
-      <dt>Bidi Class</dt>
-      <dd><a href="<?php e('search?bc='.$props['bc'])?>"><?php e($info->getLabel('bc', $props['bc']))?></a></dd>
+      <?php foreach(array('sc', 'gc', 'bc', 'dt', 'lb', 'ea', 'SB', 'WB') as $cat):?>
+        <dt><?php e($info->getCategory($cat))?></dt>
+        <dd><a href="<?php e('search?'.$cat.'='.$props[$cat])?>"><?php e($info->getLabel($cat, $props[$cat]))?></a></dd>
+      <?php endforeach?>
       <?php if ($defn = $codepoint->getProp('kDefinition')):?>
         <dt>Definition</dt>
         <dd><?php
@@ -132,6 +132,7 @@ include "nav.php";
       <li><a href="http://decodeunicode.org/en/U+<?php e($codepoint->getId('hex'))?>">Decode Unicode</a></li>
       <li><a href="http://fileformat.info/info/unicode/char/<?php e($codepoint->getId('hex'))?>/index.htm">Fileformat.info</a></li>
       <li><a href="http://www.unicode.org/cgi-bin/refglyph?24-<?php e($codepoint->getId('hex'))?>">Reference rendering on Unicode.org</a></li>
+      <li><a href="http://www.unicode.org/cgi-bin/GetUnihanData.pl?codepoint=<?php e(rawurlencode($codepoint->getChar()))?>">Unihan Database</a></li>
       <li><a href="http://www.isthisthingon.org/unicode/index.phtml?glyph=<?php e($codepoint->getId('hex'))?>">The UniSearcher</a></li>
       <li><a href="http://ctext.org/dictionary.pl?if=en&amp;char=<?php e(rawurlencode($codepoint->getChar()))?>">Chinese Text Project</a></li>
     </ul>

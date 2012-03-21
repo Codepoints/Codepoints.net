@@ -17,6 +17,18 @@ body {
   font: 1em/1.5 Arial,sans-serif;
 }
 
+h1 {
+  margin: 0 0 (20em/24);
+  font-size: (24em/16);
+  line-height: (20em/24);
+}
+
+h2 {
+  margin: 0 0 1em;
+  font-size: (20em/16);
+  line-height: 1em;
+}
+
 .stage {
   position: relative;
 }
@@ -25,9 +37,21 @@ body {
   padding: 10px;
 }
 
-.block figure {
+.payload figure {
   margin: 0 10px 10px 0;
   float: left;
+}
+
+figure .fig {
+  width: 128px;
+  height: 128px;
+  @include inline-block;
+  line-height: 128px;
+  text-align: center;
+  font-size: 110px;
+  box-shadow: inset 0 0 20px rgba(0,0,0,.9);
+  text-shadow: 2px 0 white, 0 2px white, -2px 0 white, 0 -2px white;
+  border-radius: 10px;
 }
 
 .block-data {
@@ -76,6 +100,13 @@ body {
   }
 }
 
+
+
+.payload.codepoint section {
+  float: left;
+  width: 300px;
+  margin: 0 10px 10px 0;
+}
 
 
 
