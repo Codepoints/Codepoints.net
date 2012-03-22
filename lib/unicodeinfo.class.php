@@ -485,7 +485,22 @@ class UnicodeInfo {
             'Zzzz' => 'Unknown',
         ),
 
-        'SB' => array(
+        'GCB' => array( # tr29
+            'CN' => 'Control',
+            'CR' => 'CR',
+            'EX' => 'Extend',
+            'L' => 'L',
+            'LF' => 'LF',
+            'LV' => 'LV',
+            'LVT' => 'LVT',
+            'PP' => 'Prepend',
+            'SM' => 'SpacingMark',
+            'T' => 'T',
+            'V' => 'V',
+            'XX' => 'Any',
+        ),
+
+        'SB' => array( # tr29
             'AT' => 'ATerm',
             'CL' => 'Close',
             'CR' => 'CR',
@@ -503,7 +518,7 @@ class UnicodeInfo {
             'XX' => 'Other',
         ),
 
-        'WB' => array(
+        'WB' => array( # tr29
             'CR' => 'CR',
             'EX' => 'ExtendNumLet',
             'Extend' => 'Extend',
