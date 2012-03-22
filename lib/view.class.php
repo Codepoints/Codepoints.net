@@ -30,11 +30,11 @@ function u($s) {
 }
 
 
-function cp($cp, $rel='', $class='') {
-    echo _cp($cp, $rel, $class);
+function cp($cp, $rel='', $class='', $wrap='') {
+    echo _cp($cp, $rel, $class, $wrap);
 }
 
-function _cp($cp, $rel='', $class='') {
+function _cp($cp, $rel='', $class='', $wrap='') {
     $router = Router::getRouter();
     if ($rel) {
         $rel = ' rel="'.q($rel).'"';
@@ -47,19 +47,26 @@ function _cp($cp, $rel='', $class='') {
         $cp = array($cp);
     }
     foreach ($cp as $c) {
-        $r[] = sprintf('<a class="cp%s"%s href="%s" title="%s">%s<img src="'.
-            'data:%s" alt="" height="16" width="16" /></a>',
-            $class, $rel, q($router->getUrl($c)), q($c->getName()), q($c),
-            q($c->getImage()));
+        if ($wrap) {
+            $r[] = sprintf('<a%s href="%s" title="%s"><%s class="cp%s">%s<img src="'.
+                'data:%s" alt="" height="16" width="16" /></%s></a>',
+                $rel, q($router->getUrl($c)), q($c->getName()), $wrap, $class,
+                q($c), q($c->getImage()), $wrap);
+        } else {
+            $r[] = sprintf('<a class="cp%s"%s href="%s" title="%s">%s<img src="'.
+                'data:%s" alt="" height="16" width="16" /></a>',
+                $class, $rel, q($router->getUrl($c)), q($c->getName()), q($c),
+                q($c->getImage()));
+        }
     }
     return join(' ', $r);
 }
 
-function bl($bl, $rel='', $class='') {
-    echo _bl($bl, $rel, $class);
+function bl($bl, $rel='', $class='', $wrap='') {
+    echo _bl($bl, $rel, $class, $wrap);
 }
 
-function _bl($bl, $rel='', $class='') {
+function _bl($bl, $rel='', $class='', $wrap='') {
     $router = Router::getRouter();
     if ($rel) {
         $rel = ' rel="'.q($rel).'"';
@@ -67,10 +74,17 @@ function _bl($bl, $rel='', $class='') {
     if ($class) {
         $class = ' '.q($class);
     }
-    $r = sprintf('<a class="bl%s"%s href="%s"><img src="%sstatic/images/'.
-            'blocks.min/%s.png" alt="" width="16" height="16" /> %s</a>',
-            $class, $rel, q($router->getUrl($bl)), q($router->getUrl()),
-            q(str_replace(' ', '_', $bl->getName())), q($bl->getName()));
+    if ($wrap) {
+        $r = sprintf('<a%s href="%s"><%s class="bl%s"><img src="%sstatic/images/'.
+                'blocks.min/%s.png" alt="" width="16" height="16" /> %s</%s></a>',
+                $rel, q($router->getUrl($bl)), $wrap, $class, q($router->getUrl()),
+                q(str_replace(' ', '_', $bl->getName())), q($bl->getName()), $wrap);
+    } else {
+        $r = sprintf('<a class="bl%s"%s href="%s"><img src="%sstatic/images/'.
+                'blocks.min/%s.png" alt="" width="16" height="16" /> %s</a>',
+                $class, $rel, q($router->getUrl($bl)), q($router->getUrl()),
+                q(str_replace(' ', '_', $bl->getName())), q($bl->getName()));
+    }
     return $r;
 }
 
