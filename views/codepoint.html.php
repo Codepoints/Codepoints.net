@@ -59,6 +59,13 @@ include "nav.php";
         <?php if ($hasTC): if ($hasUC || $hasLC) { echo ' and '; }?>
             its titlecase variant <?php cp($props['tc'], '', 'min')?><?php endif?>.
     <?php endif?>
+    In bidirectional context it acts as
+    <a href="<?php e($router->getUrl('search?bc='.$props['bc']))?>"><?php e($info->getLabel('bc', $props['bc']))?></a>
+    and is
+    <a href="<?php e($router->getUrl('search?bc='.$props['bc'].'&bm='.(int)$props['Bidi_M']))?>"><?php if (! $props['Bidi_M']):?>not <?php endif?>mirrored</a>.
+    <?php if (array_key_exists('bmg', $props) && $props['bmg']->getId() != $codepoint->getId()):?>
+    Its corresponding mirrored character is <?php cp($props['bmg'], '', 'min')?>.
+    <?php endif?>
   </p>
   <p>
     The codepoint has a <a href="<?php e($router->getUrl('search?ea='.$props['ea']))?>"><?php e($info->getLabel('ea', $props['ea']))?></a>
@@ -80,17 +87,26 @@ include "nav.php";
     <?php endif?>
   </p>
   <p>
-    In text U+<?php e($codepoint->getId('hex'))?> acts as
+    In text U+<?php e($codepoint->getId('hex'))?> behaves as
     <a href="<?php e($router->getUrl('search?lb='.$props['lb']))?>"><?php
     e($info->getLabel('lb', $props['lb']))?></a> regarding line breaks.
     It has type <a href="<?php e($router->getUrl('search?SB='.$props['SB']))?>"><?php
     e($info->getLabel('SB', $props['SB']))?></a> for sentence and
     <a href="<?php e($router->getUrl('search?WB='.$props['WB']))?>"><?php
-    e($info->getLabel('WB', $props['WB']))?></a> for word breaks.
+    e($info->getLabel('WB', $props['WB']))?></a> for word breaks. The
+    <?php e($info->getCategory('GCB'))?> property is
+    <a href="<?php e($router->getUrl('search?GCB='.$props['GCB']))?>"><?php
+    e($info->getLabel('GCB', $props['GCB']))?></a>.
+    <?php if($props['nt'] !== 'None'):?>
+    The codepoint has a
+    <a href="<?php e($router->getUrl('search?nt='.$props['nt']))?>"><?php e($info->getLabel('nt', $props['nt']))?></a>
+    numeric value of
+    <a href="<?php e($router->getUrl('search?nv='.$props['nv']))?>"><?php e($props['nv'])?></a>
+    <?php endif?>
   </p>
   <section>
     <h2>Boolean Properties</h2>
-    <table>
+    <table class="props boolprops">
       <thead>
         <tr>
           <th></th>
@@ -100,8 +116,12 @@ include "nav.php";
       <tbody>
         <?php foreach ($info->getBooleanCategories() as $cat):?>
           <tr>
-            <td><?php if ($props[$cat]):?>Y<?php else:?>N<?php endif?></td>
-            <td><?php e($info->getCategory($cat))?></td>
+            <td<?php if ($props[$cat]):?>
+              class="y">✔
+            <?php else:?>
+              class="n">✘
+            <?php endif?></td>
+            <td><?php e($info->getCategory($cat).' '.$cat)?></td>
           </tr>
         <?php endforeach?>
       </tbody>
@@ -109,32 +129,52 @@ include "nav.php";
   </section>
   <section>
     <h2>Representations</h2>
-    <dl>
-      <dt>Nº</dt>
-      <dd><?php e($codepoint->getId())?></dd>
-      <dt>UTF-8</dt>
-      <dd><?php e($codepoint->getRepr('UTF-8'))?></dd>
-      <dt>UTF-16</dt>
-      <dd><?php e($codepoint->getRepr('UTF-16'))?></dd>
-      <dt>UTF-32</dt>
-      <dd><?php e($codepoint->getRepr('UTF-32'))?></dd>
-      <?php $alias = $codepoint->getALias();
-      foreach ($alias as $a):?>
-        <dt><?php e($a['type'])?></dt>
-        <dd><?php if ($a['type'] === 'html') {
-              echo '&amp;';
-          }
-          e($a['name']);
-          if ($a['type'] === 'html') {
-              echo ';';
-          }?></dd>
-      <?php endforeach?>
-      <?php $pronunciation = $codepoint->getPronunciation();
-      if ($pronunciation):?>
-        <dt>Pronunciation</dt>
-        <dd><?php e($pronunciation)?></dd>
-      <?php endif?>
-    </dl>
+    <table class="props">
+      <thead>
+        <tr>
+          <th>System</th>
+          <th>Representation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Nº</td>
+          <td><?php e($codepoint->getId())?></td>
+        </tr>
+        <tr>
+          <th>UTF-8</th>
+          <td><?php e($codepoint->getRepr('UTF-8'))?></td>
+        </tr>
+        <tr>
+          <th>UTF-16</th>
+          <td><?php e($codepoint->getRepr('UTF-16'))?></td>
+        </tr>
+        <tr>
+          <th>UTF-32</th>
+          <td><?php e($codepoint->getRepr('UTF-32'))?></td>
+        </tr>
+        <?php $alias = $codepoint->getALias();
+        foreach ($alias as $a):?>
+          <tr>
+            <th><?php e($a['type'])?></th>
+            <td><?php if ($a['type'] === 'html') {
+                echo '&amp;';
+            }
+            e($a['name']);
+            if ($a['type'] === 'html') {
+                echo ';';
+            }?></td>
+          </tr>
+        <?php endforeach?>
+        <?php $pronunciation = $codepoint->getPronunciation();
+        if ($pronunciation):?>
+          <tr>
+            <th>Pronunciation</th>
+            <td><?php e($pronunciation)?></td>
+          </tr>
+        <?php endif?>
+      </tbody>
+    </table>
   </section>
   <section>
     <h2>Properties</h2>
@@ -162,67 +202,39 @@ include "nav.php";
     </dl>
   </section>
   <section>
-    <h2>Relations</h2>
-    <dl>
-      <dt>Plane</dt>
-      <dd><?php $plane = $codepoint->getPlane();
-          f('<a class="pl" href="%s">%s</a>', $router->getUrl($plane), $plane->name);
-      ?></dd>
-      <dt>Block</dt>
-      <dd><?php bl($block)?></dd>
-      <?php if($props['uc'] && (is_array($props['uc']) ||
-               $props['uc']->getId() != $codepoint->getId())):?>
-        <dt>Uppercase</dt>
-        <dd>
-          <?php cp($props['uc'])?>
-        </dd>
-      <?php endif?>
-      <?php if($props['lc'] && (is_array($props['lc']) ||
-               $props['lc']->getId() != $codepoint->getId())):?>
-        <dt>Lowercase</dt>
-        <dd>
-          <?php cp($props['lc'])?>
-        </dd>
-      <?php endif?>
-      <?php if($props['tc'] && (is_array($props['tc']) ||
-               $props['tc']->getId() != $codepoint->getId())):?>
-        <dt>Titlecase</dt>
-        <dd>
-          <?php cp($props['tc'])?>
-        </dd>
-      <?php endif?>
-      <?php if($props['dm'] && (is_array($props['dm']) ||
-               $props['dm']->getId() != $codepoint->getId())):?>
-        <dt>Decomposition</dt>
-        <dd>
-          <?php cp($props['dm'])?>
-        </dd>
-      <?php endif?>
-    </dl>
-  </section>
-  <section>
     <h2>Elsewhere</h2>
     <ul>
       <li><a href="http://decodeunicode.org/en/U+<?php e($codepoint->getId('hex'))?>">Decode Unicode</a></li>
       <li><a href="http://fileformat.info/info/unicode/char/<?php e($codepoint->getId('hex'))?>/index.htm">Fileformat.info</a></li>
+      <li><a href="http://unicode.org/cldr/utility/character.jsp?a=<?php e($codepoint->getId('hex'))?>">Unicode website</a></li>
       <li><a href="http://www.unicode.org/cgi-bin/refglyph?24-<?php e($codepoint->getId('hex'))?>">Reference rendering on Unicode.org</a></li>
       <li><a href="http://www.unicode.org/cgi-bin/GetUnihanData.pl?codepoint=<?php e(rawurlencode($codepoint->getChar()))?>">Unihan Database</a></li>
+      <li><a href="http://graphemica.com/<?php e(rawurlencode($codepoint->getChar()))?>">Graphemica</a></li>
       <li><a href="http://www.isthisthingon.org/unicode/index.phtml?glyph=<?php e($codepoint->getId('hex'))?>">The UniSearcher</a></li>
       <li><a href="http://ctext.org/dictionary.pl?if=en&amp;char=<?php e(rawurlencode($codepoint->getChar()))?>">Chinese Text Project</a></li>
     </ul>
   </section>
-  <!--table>
-    <tbody>
-      <?php foreach ($props as $k => $v):
-            if ($v !== NULL && $v !== '' && $k !== 'cp'):?>
-        <tr class="p_<?php e($k)?>">
-          <th><?php e($info->getCategory($k))?></th>
-          <td>
-            <?php e($v)?>
-          </td>
+  <section>
+    <h2>Complete Record</h2>
+    <table class="props">
+      <thead>
+        <tr>
+          <th>Property</th>
+          <th>Value</th>
         </tr>
-      <?php endif; endforeach?>
-    </tbody>
-  </table-->
+      </thead>
+      <tbody>
+        <?php foreach ($props as $k => $v):
+              if ($v !== NULL && $v !== '' && $k !== 'cp' && $k !== 'image'):?>
+          <tr class="p_<?php e($k)?>">
+            <th><?php e($info->getCategory($k).' ('.$k.')')?></th>
+            <td>
+              <?php e($v)?>
+            </td>
+          </tr>
+        <?php endif; endforeach?>
+      </tbody>
+    </table>
+  </section>
 </div>
 <?php include "footer.php"?>
