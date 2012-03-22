@@ -16,7 +16,12 @@ class UnicodeRange implements Iterator {
     /**
      * the set of codepoint instances
      */
-    protected $set = array();
+    protected $set;
+
+    /**
+     * the provisional set of codepoints
+     */
+    protected $_set;
 
     /**
      * construct a new Unicode range
@@ -26,34 +31,50 @@ class UnicodeRange implements Iterator {
     public function __construct(Array $set/*=array()*/, $db) {
         $this->db = $db;
         $set = array_unique($set);
-        $this->set = $this->fetchNames($set);
+        //$this->set = $this->fetchNames($set);
+        $this->_set = $set;
+    }
+
+    /**
+     * prepare the set by fetching codepoints
+     */
+    protected function _prepare() {
+        if ($this->set === Null) {
+            $this->set = $this->fetchNames($this->_set);
+        }
     }
 
     /**
      * get the current set of codepoints
      */
     public function get() {
+        $this->_prepare();
         reset($this->set);
         return $this->set;
     }
 
     public function rewind() {
+        $this->_prepare();
         reset($this->set);
     }
 
     public function current() {
+        $this->_prepare();
         return current($this->set);
     }
 
     public function key() {
+        $this->_prepare();
         return key($this->set);
     }
 
     public function next() {
+        $this->_prepare();
         return next($this->set);
     }
 
     public function valid() {
+        $this->_prepare();
         return key($this->set) !== NULL;
     }
 
@@ -62,6 +83,7 @@ class UnicodeRange implements Iterator {
      * in the set
      */
     public function getBoundaries() {
+        $this->_prepare();
         $indices = array_keys($this->set);
         if (! count($indices)) {
             return Null;
@@ -73,6 +95,7 @@ class UnicodeRange implements Iterator {
      * get the first codepoint ID from the set
      */
     public function getFirst() {
+        $this->_prepare();
         $r = array_keys($this->set);
         if (! count($r)) {
             return Null;
@@ -84,6 +107,7 @@ class UnicodeRange implements Iterator {
      * get the last codepoint ID from the set
      */
     public function getLast() {
+        $this->_prepare();
         $r = array_keys($this->set);
         return end($r);
     }
@@ -92,6 +116,7 @@ class UnicodeRange implements Iterator {
      * add a single codepoint to the set
      */
     public function add($cp) {
+        $this->_prepare();
         $cp = intval($cp);
         if (! array_key_exists($cp, $this->set)) {
             $this->set += $this->fetchNames(array($cp));
@@ -103,6 +128,7 @@ class UnicodeRange implements Iterator {
      * add several codepoints to the set
      */
     public function addSet(Array $set) {
+        $this->_prepare();
         $this->set += $this->fetchNames(array_diff(array_unique($set), array_keys($this->set)));
         return $this;
     }
@@ -111,6 +137,7 @@ class UnicodeRange implements Iterator {
      * add another range to the set
      */
     public function addRange(UnicodeRange $range) {
+        $this->_prepare();
         $set = $range->get();
         $this->set = array_unique(array_merge($this->set, $set));
         return $this;
