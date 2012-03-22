@@ -6,6 +6,7 @@
   @include border-radius(1px);
   @include inline-block;
   font-size: (12em/16);
+  font-family: Arial,sans-serif;
   color: #333;
   text-decoration: none;
   @include transition-property('box-shadow, border-color');

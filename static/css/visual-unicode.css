@@ -299,6 +299,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   width: 32px;
   padding: 4px 0 0;
   font-size: 10px;
+  font-family: Arial,sans-serif;
   line-height: 15px;
   text-align: center;
   color: #333;
@@ -370,6 +371,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   vertical-align: middle;
   *vertical-align: auto;
   font-size: 0.75em;
+  font-family: Arial,sans-serif;
   color: #333;
   text-decoration: none;
   -moz-transition-property: box-shadow, border-color;
@@ -507,7 +509,7 @@ nav a:focus {
 
 body {
   margin: 0;
-  font: 1em/1.5 Arial, sans-serif;
+  font: 1em/1.5 "Droid Serif", Georgia, serif;
 }
 
 h1 {
@@ -639,6 +641,54 @@ dt {
 
 dd {
   margin: 10px 0 0;
+}
+
+.props {
+  border-collapse: collapse;
+  border-spacing: 0px;
+}
+.props th,
+.props td {
+  padding: 2px 8px;
+  vertical-align: top;
+  text-shadow: 1px 1px white;
+  border: 1px dotted #666;
+}
+.props th:first-child,
+.props td:first-child {
+  border-left-width: 0;
+}
+.props th:last-child,
+.props td:last-child {
+  border-right-width: 0;
+}
+.props tbody tr:last-child td,
+.props tbody tr:last-child th {
+  border-bottom-width: 0;
+}
+.props th {
+  color: #666;
+}
+.props thead th {
+  text-align: left;
+  background: none;
+  text-shadow: none;
+  border-top-width: 0;
+}
+.props tbody th {
+  text-align: right;
+  font-weight: normal;
+  font-style: italic;
+}
+.props tr:nth-child(2n) th,
+.props tr:nth-child(2n) td {
+  x-background: #e9e9e9;
+}
+.props tr td.y {
+  color: #090;
+}
+.props tr td.n {
+  color: #900;
 }
 
 .slide {
