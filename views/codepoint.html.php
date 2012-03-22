@@ -14,11 +14,11 @@ endif;
 include "header.php";
 $nav = array();
 if ($prev) {
-    $nav['prev'] = _cp($prev, 'prev', 'min');
+    $nav['prev'] = _cp($prev, 'prev', 'min', 'span');
 }
-$nav["up"] = _bl($block);
+$nav["up"] = _bl($block, 'up', 'min', 'span');
 if ($next) {
-    $nav['next'] = _cp($next, 'next', 'min');
+    $nav['next'] = _cp($next, 'next', 'min', 'span');
 }
 include "nav.php";
 ?>

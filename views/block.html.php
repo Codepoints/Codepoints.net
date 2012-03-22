@@ -10,11 +10,11 @@ $pagination->setPage($page);
 include "header.php";
 $nav = array();
 if ($prev) {
-    $nav['prev'] = _bl($prev);
+    $nav['prev'] = _bl($prev, 'prev', 'min', 'span');
 }
 $nav["up"] = '<a class="pl" rel="up" href="'.q($router->getUrl($plane)).'">'.q($plane->getName()).'</a>';
 if ($next) {
-    $nav['next'] = _bl($next);
+    $nav['next'] = _bl($next, 'prev', 'min', 'span');
 }
 include "nav.php";
 ?>
