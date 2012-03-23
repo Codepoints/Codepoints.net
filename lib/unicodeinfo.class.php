@@ -120,7 +120,7 @@ class UnicodeInfo {
         'kCompatibilityVariant' => '',
         'kCowles' => '',
         'kDaeJaweon' => '',
-        'kDefinition' => '',
+        'kDefinition' => 'Unihan Definition',
         'kEACC' => '',
         'kFenn' => '',
         'kFennIndex' => '',
@@ -193,8 +193,8 @@ class UnicodeInfo {
         'kSpecializedSemanticVariant' => '',
         'kTaiwanTelegraph' => '',
         'kTang' => '',
-        'kTotalStrokes' => '',
-        'kTraditionalVariant' => '',
+        'kTotalStrokes' => 'Stroke Number',
+        'kTraditionalVariant' => 'Traditional Variant',
         'kVietnamese' => '',
         'kXHC1983' => '',
         'kWubi' => '',
@@ -534,6 +534,46 @@ class UnicodeInfo {
             'XX' => 'Other',
         ),
 
+        'jt' => array(
+            'R' => 'Right Joining',
+            'L' => 'Left Joining',
+            'D' => 'Dual Joining',
+            'C' => 'Join Causing',
+            'U' => 'Non Joining',
+            'T' => 'Transparent',
+        ),
+
+        'hst' => array(
+            'L' =>   'Leading Jamo',
+            'LV' =>  'LV Syllable',
+            'LVT' => 'LVT Syllable',
+            'NA' =>  'Not Applicable',
+            'T' =>   'Trailing Jamo',
+            'V' =>   'Vowel Jamo',
+        ),
+
+        'NFC_QC' => array(
+            'M' => 'Maybe',
+            'N' => 'No',
+            'Y' => 'Yes',
+        ),
+
+        'NFD_QC' => array(
+            'N' => 'No',
+            'Y' => 'Yes',
+        ),
+
+        'NFKC_QC' => array(
+            'M' => 'Maybe',
+            'N' => 'No',
+            'Y' => 'Yes',
+        ),
+
+        'NFKD_QC' => array(
+            'N' => 'No',
+            'Y' => 'Yes',
+        ),
+
         'blk' => array(
             'basic_latin' => 'Basic Latin',
             'latin-1_supplement' => 'Latin-1 Supplement',
@@ -807,10 +847,14 @@ class UnicodeInfo {
      *
      * The key is qualified by the category (e.g., 'sc')
      */
-    public function getLabel($cat, $abbr) {
+    public function getLabel($cat, $abbr, $i=0) {
         if (array_key_exists($cat, $this->legend)) {
             if (array_key_exists($abbr, $this->legend[$cat])) {
-                return $this->legend[$cat][$abbr];
+                $r = $this->legend[$cat][$abbr];
+                if (is_array($r)) {
+                    return $r[min($i, count($r)-1)];
+                }
+                return $r;
             }
         }
         return $abbr;
