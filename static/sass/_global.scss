@@ -1,0 +1,17 @@
+@mixin user-select($select) {
+  $select: unquote($select);
+  @include experimental(user-select, $select,
+    -moz, -webkit, not -o, not -ms, -khtml, official
+  );
+}
+
+::-webkit-selection {
+  text-shadow: none !important;
+  background: #333;
+  color: #ddd;
+}
+::-moz-selection {
+  text-shadow: none !important;
+  background: #333;
+  color: #ddd;
+}
