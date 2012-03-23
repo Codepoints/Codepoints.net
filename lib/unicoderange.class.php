@@ -231,7 +231,7 @@ class UnicodeRange implements Iterator {
                     }
             }
         }
-        return new self($set, $db);
+        return new static($set, $db);
     }
 
     /**
