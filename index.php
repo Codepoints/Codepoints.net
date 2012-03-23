@@ -83,7 +83,29 @@ $router->addSetting('db', $db)
 })
 
 ->registerAction(function ($url, $o) {
-    // Blocks
+    // Codepoint Range
+    if (preg_match('/^U\+[0-9a-f]{4,6}\.\.U\+[0-9a-f]{4,6}$/i', $url)) {
+        return True;
+    }
+    return False;
+}, function ($request, $o) {
+    $range = $request->trunkUrl;
+    $router = Router::getRouter();
+    $result = SearchResult::parse($range, $o['db']);
+    $page = isset($_GET['page'])? intval($_GET['page']) : 1;
+    $result->page = $page - 1;
+    if ($result->getCount() === 1) {
+        $cp = $result->current();
+        $router->redirect('U+'.$cp);
+    }
+    $pagination = new Pagination($result->getCount(), 128);
+    $pagination->setPage($page);
+    $view = new View('search');
+    echo $view->render(compact('range', 'result', 'pagination', 'page'));
+})
+
+->registerAction(function ($url, $o) {
+    // Block
     if (! preg_match('/[^a-z0-9_-]/', $url)) {
         try {
             $block = new UnicodeBlock($url, $o['db']);

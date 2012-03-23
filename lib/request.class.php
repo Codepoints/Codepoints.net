@@ -10,6 +10,13 @@ class Request {
 
     public $availableTypes = array('text/html', 'application/json');
 
+    public $extensionTypeMap = array(
+        'htm' => 'text/html',
+        'html' => 'text/html',
+        'json' => 'application/json',
+        'js' => 'application/json',
+    );
+
     public $lang = 'en';
 
     public $availableLanguages = array('en');
@@ -48,19 +55,10 @@ class Request {
             }
         }
         $ext = pathinfo($url, PATHINFO_EXTENSION);
-        if ($ext) {
+        $ext = strtolower(ltrim($ext, '.'));
+        if ($ext && array_key_exists($ext, $this->extensionTypeMap)) {
             $this->trunkUrl = substr($url, 0, -strlen($ext)-1);
-            $ext = strtolower(ltrim($ext, '.'));
-            switch ($ext) {
-                case "js":
-                case "json":
-                    $this->type = 'application/json';
-                    break;
-                case "htm":
-                case "html":
-                    $this->type = 'text/html';
-                    break;
-            }
+            $this->type = $this->extensionTypeMap[$ext];
         }
     }
 
