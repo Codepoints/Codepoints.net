@@ -87,8 +87,8 @@ class Codepoint {
     /**
      * get representation in a certain encoding
      */
-    public function getRepr($coding='UTF-8') {
-        return join(' ',
+    public function getRepr($coding='UTF-8', $join=' ') {
+        return join($join,
             str_split(
                 strtoupper(
                     bin2hex($this->getChar($coding))), 2));
