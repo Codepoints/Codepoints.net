@@ -73,7 +73,7 @@ class SearchResult extends UnicodeRange {
         // we need to get the count separately, because the above
         // query is LIMITed
         $c = count($this->set);
-        if ($c === $this->pageLength) {
+        if ($this->page > 1 || $c === $this->pageLength) {
             $sql = 'SELECT COUNT(*) as c
                       FROM codepoints
                       JOIN codepoint_script USING ( cp )
