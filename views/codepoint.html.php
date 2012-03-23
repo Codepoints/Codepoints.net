@@ -105,29 +105,6 @@ include "nav.php";
     <?php endif?>
   </p>
   <section>
-    <h2>Boolean Properties</h2>
-    <table class="props boolprops">
-      <thead>
-        <tr>
-          <th></th>
-          <th>Property</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php foreach ($info->getBooleanCategories() as $cat):?>
-          <tr>
-            <td<?php if ($props[$cat]):?>
-              class="y">✔
-            <?php else:?>
-              class="n">✘
-            <?php endif?></td>
-            <td><?php e($info->getCategory($cat).' '.$cat)?></td>
-          </tr>
-        <?php endforeach?>
-      </tbody>
-    </table>
-  </section>
-  <section>
     <h2>Representations</h2>
     <table class="props">
       <thead>
@@ -152,6 +129,14 @@ include "nav.php";
         <tr>
           <th>UTF-32</th>
           <td><?php e($codepoint->getRepr('UTF-32'))?></td>
+        </tr>
+        <tr>
+          <th>URL-Quoted</th>
+          <td>%<?php e($codepoint->getRepr('UTF-8', '%'))?></td>
+        </tr>
+        <tr>
+          <th>HTML-Escape</th>
+          <td>&amp;#x<?php e($codepoint->getId('hex'))?>;</td>
         </tr>
         <?php $alias = $codepoint->getALias();
         foreach ($alias as $a):?>
@@ -224,12 +209,19 @@ include "nav.php";
         </tr>
       </thead>
       <tbody>
-        <?php foreach ($props as $k => $v):
+        <?php $bools = $info->getBooleanCategories();
+        foreach ($props as $k => $v):
               if ($v !== NULL && $v !== '' && $k !== 'cp' && $k !== 'image'):?>
           <tr class="p_<?php e($k)?>">
-            <th><?php e($info->getCategory($k).' ('.$k.')')?></th>
+            <th><?php e($info->getCategory($k))?> <small>(<?php e($k)?>)</small></th>
             <td>
-              <?php e($v)?>
+            <?php if (in_array($k, $bools)):?>
+              <span class="<?php if ($v):?>y">✔<?php else:?>n">✘<?php endif?></span>
+            <?php elseif (is_array($v) || $v instanceof Codepoint):?>
+              <?php cp($v, '', 'min') ?>
+            <?php else:?>
+              <?php e($info->getLabel($k, $v))?>
+            <?php endif?>
             </td>
           </tr>
         <?php endif; endforeach?>

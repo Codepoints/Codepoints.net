@@ -22,27 +22,59 @@ nav li {
   display: inline;
 }
 
-nav li a {
+nav a:link,
+nav a:visited {
   @include inline-block;
   height: 24px;
   line-height: 24px;
-  border: 1px solid black;
+  border: 1px solid rgba(0,0,0,.5);
   border-radius: 3px;
+  box-shadow: 0 1px rgba(255,255,255,.1),
+              inset 0 1px 0 rgba(255,255,255,.15),
+              inset 1px 0 rgba(255,255,255,.05),
+              inset -1px 0 rgba(255,255,255,.05);
+  @include background(linear-gradient(top, rgba(0,0,0,0),
+    rgba(0,0,0,.2)));
   padding: 0 5px;
-  text-shadow: 1px 1px black;
+  text-shadow: 0 -1px rgba(0,0,0,1);
   img {
     vertical-align: middle;
   }
+  color: #ddd;
+  text-decoration: none;
+  @include user-select(none);
 }
 
-nav li a:after,
-nav li a:before {
+nav a:hover,
+nav a:focus {
+  color: #fff;
+  @include background(
+  radial-gradient(center top, rgba(255,255,255,.15), rgba(255,255,255,0)),
+  linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,.2)));
+  outline: none;
+}
+
+nav a:active {
+  @include background(
+  linear-gradient(top, rgba(0,0,0,.3), rgba(0,0,0,0))
+  );
+}
+
+nav a:after,
+nav a:before {
   color: black;
-  text-shadow: none;
+  text-shadow: 0 1px rgba(255,255,255,.1);
 }
 
-nav li .min.cp {
+nav .min.cp {
   width: auto;
+}
+
+nav .bl,
+nav .cp {
+  border: none;
+  background: none;
+  color: #ddd;
 }
 
 nav .start {
@@ -88,12 +120,3 @@ nav .about {
   }
 }
 
-nav a {
-  color: #ddd;
-  text-decoration: none;
-}
-
-nav a:hover,
-nav a:focus {
-  background: #555;
-}

@@ -1,3 +1,15 @@
+::-webkit-selection {
+  text-shadow: none !important;
+  background: #333;
+  color: #ddd;
+}
+
+::-moz-selection {
+  text-shadow: none !important;
+  background: #333;
+  color: #ddd;
+}
+
 @-moz-keyframes zoomin {
   0% {
     -moz-transform: scale(1);
@@ -136,6 +148,40 @@
 
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
+}
+
+body {
+  margin: 0;
+  font: 1em/1.5 "Droid Serif", Georgia, serif;
+}
+
+h1 {
+  margin: 0 0 0.833em;
+  font-size: 1.5em;
+  line-height: 0.833em;
+}
+
+h2 {
+  margin: 0 0 1em;
+  font-size: 1.25em;
+  line-height: 1em;
+}
+
+a:link {
+  color: #800;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #600;
+  text-decoration: none;
+}
+
+a:focus,
+a:hover {
+  color: #F00;
+  text-decoration: none;
+  border-bottom: 1px solid;
 }
 
 .pagination {
@@ -280,8 +326,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   border-top-color: rgba(0, 0, 0, 0.8);
 }
 
-.cp {
-  text-shadow: none;
+a.cp, a .cp {
   background: white;
   background: -moz-linear-gradient(top, white, #e3e3e3);
   border: 1px solid #666;
@@ -300,10 +345,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   padding: 4px 0 0;
   font-size: 10px;
   font-family: Arial,sans-serif;
+  font-style: normal;
   line-height: 15px;
   text-align: center;
-  color: #333;
+  text-shadow: none;
   text-decoration: none;
+  color: #333;
   -moz-transition-property: box-shadow, border-color;
   -webkit-transition-property: box-shadow, border-color;
   -o-transition-property: box-shadow, border-color;
@@ -314,10 +361,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   transition-duration: 0.3s;
   outline: none;
 }
-.cp {
+a.cp, a .cp {
   *display: inline;
 }
-.cp img {
+a.cp img, a .cp img {
   display: block;
   margin: 4px auto 8px;
   -moz-transition-property: all;
@@ -329,11 +376,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   -o-transition-duration: 0.5s;
   transition-duration: 0.5s;
 }
-.cp:focus, .cp:hover {
+a.cp:focus, a.cp:hover, a .cp:focus, a .cp:hover {
   box-shadow: 0 0 2px 1px #acf;
   border-color: #333;
 }
-.cp:focus img, .cp:hover img {
+a.cp:focus img, a.cp:hover img, a .cp:focus img, a .cp:hover img {
   image-rendering: optimizeSpeed;
   -moz-transform: scale(2);
   -webkit-transform: scale(2);
@@ -436,7 +483,8 @@ nav li {
   display: inline;
 }
 
-nav li a {
+nav a:link,
+nav a:visited {
   display: -moz-inline-box;
   -moz-box-orient: vertical;
   display: inline-block;
@@ -444,26 +492,69 @@ nav li a {
   *vertical-align: auto;
   height: 24px;
   line-height: 24px;
-  border: 1px solid black;
+  border: 1px solid rgba(0, 0, 0, 0.5);
   border-radius: 3px;
+  box-shadow: 0 1px rgba(255, 255, 255, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.15), inset 1px 0 rgba(255, 255, 255, 0.05), inset -1px 0 rgba(255, 255, 255, 0.05);
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.2)));
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+  background: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+  background: -o-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+  background: -ms-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+  background: linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
   padding: 0 5px;
-  text-shadow: 1px 1px black;
+  text-shadow: 0 -1px black;
+  color: #ddd;
+  text-decoration: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
 }
-nav li a {
+nav a:link,
+nav a:visited {
   *display: inline;
 }
-nav li a img {
+nav a:link img,
+nav a:visited img {
   vertical-align: middle;
 }
 
-nav li a:after,
-nav li a:before {
-  color: black;
-  text-shadow: none;
+nav a:hover,
+nav a:focus {
+  color: #fff;
+  background: -webkit-gradient(radial, 50% 0%, 0, 50% 0%, 100, color-stop(0%, rgba(255, 255, 255, 0.15)), color-stop(100%, rgba(255, 255, 255, 0))), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.2)));
+  background: -webkit-radial-gradient(center top, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0)), -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+  background: -moz-radial-gradient(center top, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0)), -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+  background: -o-radial-gradient(center top, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0)), -o-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+  background: -ms-radial-gradient(center top, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0)), -ms-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+  background: radial-gradient(center top, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0)), linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+  outline: none;
 }
 
-nav li .min.cp {
+nav a:active {
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(0, 0, 0, 0.3)), color-stop(100%, rgba(0, 0, 0, 0)));
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
+  background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
+  background: -o-linear-gradient(top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
+  background: -ms-linear-gradient(top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
+  background: linear-gradient(top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
+}
+
+nav a:after,
+nav a:before {
+  color: black;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.1);
+}
+
+nav .min.cp {
   width: auto;
+}
+
+nav .bl,
+nav .cp {
+  border: none;
+  background: none;
+  color: #ddd;
 }
 
 nav .start a:before {
@@ -495,33 +586,6 @@ nav .up a:before {
 nav .about a:before {
   content: "\2139";
   padding-right: .3em;
-}
-
-nav a {
-  color: #ddd;
-  text-decoration: none;
-}
-
-nav a:hover,
-nav a:focus {
-  background: #555;
-}
-
-body {
-  margin: 0;
-  font: 1em/1.5 "Droid Serif", Georgia, serif;
-}
-
-h1 {
-  margin: 0 0 0.833em;
-  font-size: 1.5em;
-  line-height: 0.833em;
-}
-
-h2 {
-  margin: 0 0 1em;
-  font-size: 1.25em;
-  line-height: 1em;
 }
 
 .stage {
@@ -618,9 +682,11 @@ figure .fig {
   }
 }
 .payload.codepoint section {
-  float: left;
-  width: 300px;
-  margin: 0 10px 10px 0;
+  x-float: left;
+  x-width: 300px;
+  x-margin: 0 10px 10px 0;
+  margin: 0 auto 2em;
+  max-width: 800px;
 }
 
 dl {
@@ -646,13 +712,14 @@ dd {
 .props {
   border-collapse: collapse;
   border-spacing: 0px;
+  margin: 0 auto;
 }
 .props th,
 .props td {
   padding: 2px 8px;
   vertical-align: top;
   text-shadow: 1px 1px white;
-  border: 1px dotted #666;
+  border: 1px solid #ddd;
 }
 .props th:first-child,
 .props td:first-child {
@@ -668,6 +735,8 @@ dd {
 }
 .props th {
   color: #666;
+  font-weight: normal;
+  font-style: italic;
 }
 .props thead th {
   text-align: left;
@@ -677,17 +746,15 @@ dd {
 }
 .props tbody th {
   text-align: right;
-  font-weight: normal;
-  font-style: italic;
 }
 .props tr:nth-child(2n) th,
 .props tr:nth-child(2n) td {
   x-background: #e9e9e9;
 }
-.props tr td.y {
+.props tr .y {
   color: #090;
 }
-.props tr td.n {
+.props tr .n {
   color: #900;
 }
 

@@ -1,17 +1,11 @@
 
 @import "compass";
+@import "global";
 @import "animation";
 
 @include font-face(LastResort, url(../LastResort.ttf));
 
 @include reset-html5;
-
-@import "pagination";
-@import "tooltip";
-@import "codepoint";
-@import "block";
-@import "search";
-@import "nav";
 
 body {
   margin: 0;
@@ -29,6 +23,30 @@ h2 {
   font-size: (20em/16);
   line-height: 1em;
 }
+
+a:link {
+  color: #800;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #600;
+  text-decoration: none;
+}
+
+a:focus,
+a:hover {
+  color: #F00;
+  text-decoration: none;
+  border-bottom: 1px solid;
+}
+
+@import "pagination";
+@import "tooltip";
+@import "codepoint";
+@import "block";
+@import "search";
+@import "nav";
 
 .stage {
   position: relative;
@@ -104,9 +122,11 @@ figure .fig {
 
 
 .payload.codepoint section {
-  float: left;
-  width: 300px;
-  margin: 0 10px 10px 0;
+  x-float: left;
+  x-width: 300px;
+  x-margin: 0 10px 10px 0;
+  margin: 0 auto 2em;
+  max-width: 800px;
 }
 
 
@@ -132,12 +152,13 @@ dd {
 .props {
   border-collapse: collapse;
   border-spacing: 0px;
+  margin: 0 auto;
   th,
   td {
     padding: 2px 8px;
     vertical-align: top;
     text-shadow: 1px 1px white;
-    border: 1px dotted #666;
+    border: 1px solid #ddd;
   }
   th:first-child,
   td:first-child {
@@ -153,6 +174,8 @@ dd {
   }
   th {
     color: #666;
+    font-weight: normal;
+    font-style: italic;
   }
   thead th {
     text-align: left;
@@ -162,8 +185,6 @@ dd {
   }
   tbody th {
     text-align: right;
-    font-weight: normal;
-    font-style: italic;
   }
   td {
   }
@@ -171,10 +192,10 @@ dd {
   tr:nth-child(2n) td {
     x-background: #e9e9e9;
   }
-  tr td.y {
+  tr .y {
     color: #090;
   }
-  tr td.n {
+  tr .n {
     color: #900;
   }
 }
