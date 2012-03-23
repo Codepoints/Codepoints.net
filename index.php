@@ -33,7 +33,6 @@ $router->addSetting('db', $db)
     }
     $page = isset($_GET['page'])? intval($_GET['page']) : 1;
     $result->page = $page - 1;
-    $result->search();
     if ($result->getCount() === 1) {
         $cp = $result->current();
         $router->redirect('U+'.$cp);
@@ -45,7 +44,7 @@ $router->addSetting('db', $db)
 })
 
 ->registerAction(function ($url, $o) {
-    // Planes
+    // Plane
     if (substr($url, -6) === '_plane') {
         try {
             $plane = new UnicodePlane($url, $o['db']);
@@ -66,7 +65,7 @@ $router->addSetting('db', $db)
 })
 
 ->registerAction(function ($url, $o) {
-    // Codepoints
+    // Single Codepoint
     if (substr($url, 0, 2) === 'U+' && ctype_xdigit(substr($url, 2))) {
         try {
             $codepoint = new Codepoint(hexdec(substr($url, 2)), $o['db']);

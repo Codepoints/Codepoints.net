@@ -31,8 +31,7 @@ class UnicodeRange implements Iterator {
     public function __construct(Array $set/*=array()*/, $db) {
         $this->db = $db;
         $set = array_unique($set);
-        //$this->set = $this->fetchNames($set);
-        $this->_set = $set;
+        $this->_set = $set; # cache set for later lazy loading
     }
 
     /**

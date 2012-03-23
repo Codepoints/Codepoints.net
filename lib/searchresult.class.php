@@ -31,17 +31,11 @@ class SearchResult extends UnicodeRange {
     /**
      * do the search
      */
-    public function search($query=Null) {
-        if (! $query) {
-            $query = $this->query;
-        } else {
-            $this->query = $query;
-        }
-        if (count($query) === 0) {
-            // nothing specified, we return an empty set
-            $this->set = array();
-            $this->count = 0;
-            return $this;
+    protected function fetchNames($set=Null) {
+        $query = $this->query;
+        if ($set !== Null) {
+            $this->sanitizeSet($set);
+            $this->_set = $set;
         }
 
         list($search, $params) = $this->_getQuerySQL();
@@ -86,13 +80,14 @@ class SearchResult extends UnicodeRange {
         }
         $this->count = $c;
 
-        return $this;
+        return $this->set;
     }
 
     /**
      * get the result count
      */
     public function getCount() {
+        $this->_prepare();
         return $this->count;
     }
 
@@ -102,27 +97,31 @@ class SearchResult extends UnicodeRange {
     protected function _getQuerySQL() {
         $params = array();
         $search = '';
-        foreach ($this->query as $i => $q) {
-            if ($search !== '') {
-                $search .= " ${q[3]} ";
-            }
-            if (is_array($q[2])) {
-                $tmp = array_map(array($this->db, 'quote'), $q[2]);
-                if ($q[1] === '=') {
-                    $q[1] = 'IN';
-                } elseif ($q[1] === '!=') {
-                    $q[1] = 'NOT IN';
+        if (count($this->query) === 0) {
+            $search = "cp IN (" . join(',', $this->_set) . ")";
+        } else {
+            foreach ($this->query as $i => $q) {
+                if ($search !== '') {
+                    $search .= " ${q[3]} ";
                 }
-                $search .= " `${q[0]}` ${q[1]} ( " . join(',', $tmp) . " )";
-            } elseif ($q[0] === 'na' || $q[0] === 'na1') {
-                $search .= " `${q[0]}` LIKE :q$i ";
-                $params[':q'.$i] = "%${q[2]}%";
-            } elseif ($q[0] === 'int') {
-                $search .= " cp = :q$i ";
-                $params[':q'.$i] = $q[2];
-            } else {
-                $search .= " `${q[0]}` ${q[1]} :q$i ";
-                $params[':q'.$i] = $q[2];
+                if (is_array($q[2])) {
+                    $tmp = array_map(array($this->db, 'quote'), $q[2]);
+                    if ($q[1] === '=') {
+                        $q[1] = 'IN';
+                    } elseif ($q[1] === '!=') {
+                        $q[1] = 'NOT IN';
+                    }
+                    $search .= " `${q[0]}` ${q[1]} ( " . join(',', $tmp) . " )";
+                } elseif ($q[0] === 'na' || $q[0] === 'na1') {
+                    $search .= " `${q[0]}` LIKE :q$i ";
+                    $params[':q'.$i] = "%${q[2]}%";
+                } elseif ($q[0] === 'int') {
+                    $search .= " cp = :q$i ";
+                    $params[':q'.$i] = $q[2];
+                } else {
+                    $search .= " `${q[0]}` ${q[1]} :q$i ";
+                    $params[':q'.$i] = $q[2];
+                }
             }
         }
         return array($search, $params);
