@@ -26,8 +26,22 @@ include "nav.php";
   <figure>
     <span class="fig"><?php e($codepoint->getSafeChar())?></span>
   </figure>
+  <aside>
+    <!--h3>Properties</h3-->
+    <dl>
+      <?php foreach(array('gc', 'sc', 'bc', 'dt', 'ea') as $cat):?>
+        <dt><?php e($info->getCategory($cat))?></dt>
+        <dd><a href="<?php e('search?'.$cat.'='.$props[$cat])?>"><?php e($info->getLabel($cat, $props[$cat]))?></a></dd>
+      <?php endforeach?>
+      <?php if($props['nt'] !== 'None'):?>
+        <dt>Numeric Value</dt>
+        <dd><a href="<?php e('search?nt='.$props['nt'])?>"><?php e($info->getLabel('nt', $props['nt']).' '.$props['nv'])?></a></dd>
+      <?php endif?>
+    </dl>
+  </aside>
   <h1>U+<?php e($codepoint->getId('hex'))?> <?php e($codepoint->getName())?></h1>
-  <p class="prosa">
+  <section class="abstract">
+  <p>
     This codepoint is categorized as
     <a href="<?php e($router->getUrl('search?gc='.$props['gc']))?>"><?php e($info->getLabel('gc', $props['gc']))?></a>
     and belongs to the
@@ -104,6 +118,7 @@ include "nav.php";
     <a href="<?php e($router->getUrl('search?nv='.$props['nv']))?>"><?php e($props['nv'])?></a>
     <?php endif?>
   </p>
+  </section>
   <section>
     <h2>Representations</h2>
     <table class="props">
@@ -160,31 +175,6 @@ include "nav.php";
         <?php endif?>
       </tbody>
     </table>
-  </section>
-  <section>
-    <h2>Properties</h2>
-    <dl>
-      <dt>Unicode version</dt>
-      <dd><a href="<?php e('search?age='.$props['age'])?>"><?php e($props['age'])?></a></dd>
-      <?php foreach(array('sc', 'gc', 'bc', 'dt', 'lb', 'ea', 'SB', 'WB') as $cat):?>
-        <dt><?php e($info->getCategory($cat))?></dt>
-        <dd><a href="<?php e('search?'.$cat.'='.$props[$cat])?>"><?php e($info->getLabel($cat, $props[$cat]))?></a></dd>
-      <?php endforeach?>
-      <?php if ($defn = $codepoint->getProp('kDefinition')):?>
-        <dt>Definition</dt>
-        <dd><?php
-          echo preg_replace_callback('/U\+([0-9A-F]{4,6})/', function($m) {
-              $router = Router::getRouter();
-              $db = $router->getSetting('db');
-              return _cp(new Codepoint(hexdec($m[1]), $db), '', 'min');
-          }, $defn);
-        ?></dd>
-      <?php endif?>
-      <?php if($props['nt'] !== 'None'):?>
-        <dt>Numeric Value</dt>
-        <dd><a href="<?php e('search?nt='.$props['nt'])?>"><?php e($info->getLabel('nt', $props['nt']).': '.$props['nv'])?></a></dd>
-      <?php endif?>
-    </dl>
   </section>
   <section>
     <h2>Elsewhere</h2>

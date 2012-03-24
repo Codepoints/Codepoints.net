@@ -78,6 +78,7 @@ nav .cp {
 }
 
 nav .start {
+  float: left;
   a:before {
     content: url(../images/logo.png);
     vertical-align: middle;

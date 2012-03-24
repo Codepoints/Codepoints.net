@@ -16,12 +16,20 @@ h1 {
   margin: 0 0 (20em/24);
   font-size: (24em/16);
   line-height: (20em/24);
+  letter-spacing: .05em;
+  word-spacing: .1em;
 }
 
 h2 {
   margin: 0 0 1em;
   font-size: (20em/16);
   line-height: 1em;
+}
+
+h3 {
+  margin: 0 0 1em;
+  font-size: (18em/16);
+  line-height: (20/18);
 }
 
 a:link {
@@ -54,11 +62,37 @@ a:hover {
 
 .payload {
   padding: 10px;
+  margin: 30px auto 0;
 }
 
+.payload.codepoint {
+  max-width: 800px;
+}
+
+.payload.codepoint section {
+  margin: 0 0 2em;
+}
+
+.payload aside,
 .payload figure {
   margin: 0 10px 10px 0;
+  width: 130px;
   float: left;
+  clear: left;
+}
+
+.payload.codepoint aside,
+.payload.codepoint figure {
+  margin-left: -160px;
+  margin-bottom: 2em;
+}
+
+.payload aside {
+  font-size: (12em/16);
+}
+
+.payload aside h3 {
+  font-size: (18em/12);
 }
 
 figure .fig {
@@ -68,9 +102,12 @@ figure .fig {
   line-height: 128px;
   text-align: center;
   font-size: 110px;
-  box-shadow: inset 0 0 20px rgba(0,0,0,.9);
-  text-shadow: 2px 0 white, 0 2px white, -2px 0 white, 0 -2px white;
-  border-radius: 10px;
+  box-shadow: inset 0 8px 8px -8px rgba(0,0,0,.2),
+              inset 8px 0 8px -8px rgba(0,0,0,.1),
+              inset -8px 0 8px -8px rgba(0,0,0,.1);
+  text-shadow: 0 2px 2px rgba(0,0,0,.4);
+  border-radius: 2px;
+  border: 1px solid #ddd;
 }
 
 .block-data {
@@ -121,30 +158,24 @@ figure .fig {
 
 
 
-.payload.codepoint section {
-  x-float: left;
-  x-width: 300px;
-  x-margin: 0 10px 10px 0;
-  margin: 0 auto 2em;
-  max-width: 800px;
-}
-
 
 
 
 dl {
+  margin: 0;
   @include pie-clearfix;
 }
 
 dt {
+  font-style: italic;
   float: left;
   clear: left;
-  font-style: italic;
-  margin: 10px 1em 0 0;
+  color: #666;
+  margin: 0 .5em 0 0;
 }
 
 dd {
-  margin: 10px 0 0;
+  margin: 0 0 .5em;
 }
 
 

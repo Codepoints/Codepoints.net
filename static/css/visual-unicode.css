@@ -159,12 +159,20 @@ h1 {
   margin: 0 0 0.833em;
   font-size: 1.5em;
   line-height: 0.833em;
+  letter-spacing: .05em;
+  word-spacing: .1em;
 }
 
 h2 {
   margin: 0 0 1em;
   font-size: 1.25em;
   line-height: 1em;
+}
+
+h3 {
+  margin: 0 0 1em;
+  font-size: 1.125em;
+  line-height: 1.111;
 }
 
 a:link {
@@ -557,6 +565,9 @@ nav .cp {
   color: #ddd;
 }
 
+nav .start {
+  float: left;
+}
 nav .start a:before {
   content: url(../images/logo.png);
   vertical-align: middle;
@@ -594,11 +605,37 @@ nav .about a:before {
 
 .payload {
   padding: 10px;
+  margin: 30px auto 0;
 }
 
+.payload.codepoint {
+  max-width: 800px;
+}
+
+.payload.codepoint section {
+  margin: 0 0 2em;
+}
+
+.payload aside,
 .payload figure {
   margin: 0 10px 10px 0;
+  width: 130px;
   float: left;
+  clear: left;
+}
+
+.payload.codepoint aside,
+.payload.codepoint figure {
+  margin-left: -160px;
+  margin-bottom: 2em;
+}
+
+.payload aside {
+  font-size: 0.75em;
+}
+
+.payload aside h3 {
+  font-size: 1.5em;
 }
 
 figure .fig {
@@ -612,9 +649,10 @@ figure .fig {
   line-height: 128px;
   text-align: center;
   font-size: 110px;
-  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.9);
-  text-shadow: 2px 0 white, 0 2px white, -2px 0 white, 0 -2px white;
-  border-radius: 10px;
+  box-shadow: inset 0 8px 8px -8px rgba(0, 0, 0, 0.2), inset 8px 0 8px -8px rgba(0, 0, 0, 0.1), inset -8px 0 8px -8px rgba(0, 0, 0, 0.1);
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
+  border-radius: 2px;
+  border: 1px solid #ddd;
 }
 figure .fig {
   *display: inline;
@@ -681,15 +719,8 @@ figure .fig {
     clear: left;
   }
 }
-.payload.codepoint section {
-  x-float: left;
-  x-width: 300px;
-  x-margin: 0 10px 10px 0;
-  margin: 0 auto 2em;
-  max-width: 800px;
-}
-
 dl {
+  margin: 0;
   *zoom: 1;
 }
 dl:after {
@@ -699,14 +730,15 @@ dl:after {
 }
 
 dt {
+  font-style: italic;
   float: left;
   clear: left;
-  font-style: italic;
-  margin: 10px 1em 0 0;
+  color: #666;
+  margin: 0 .5em 0 0;
 }
 
 dd {
-  margin: 10px 0 0;
+  margin: 0 0 .5em;
 }
 
 .props {
