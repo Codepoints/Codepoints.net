@@ -104,7 +104,7 @@ class View {
         $this->file = dirname(__FILE__)."/../views/$view.php";
     }
 
-    public function render($params) {
+    public function render($params=array()) {
         $info = UnicodeInfo::get();
         $router = Router::getRouter();
         extract($params);
