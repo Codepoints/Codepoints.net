@@ -54,6 +54,7 @@ class Router {
             }
         }
         $req = new Request($url);
+        $this->addSetting('request', $req);
         $tUrl = $req->trunkUrl;
         foreach ($this->actions as $action) {
             if (is_callable($action[0])) {
