@@ -71,6 +71,8 @@ $router->addSetting('db', $db)
             $codepoint = new Codepoint(hexdec(substr($url, 2)), $o['db']);
             $codepoint->getName();
         } catch (Exception $e) {
+            $router = Router::getRouter();
+            $router->addSetting('noCP', true);
             return False;
         }
         return $codepoint;
@@ -160,8 +162,17 @@ $router->registerUrl('Codepoint', function ($object) {
 
 if ($router->callAction() === False) {
     header('HTTP/1.0 404 Not Found');
+    $block = Null;
+    $planes = UnicodePlane::getAll($db);
+    if ($router->getSetting('noCP')) {
+        try {
+            $block = UnicodeBlock::getForCodepoint(
+                hexdec(substr($router->getSetting('request')->trunkUrl, 2)),
+                $router->getSetting('db'));
+        } catch(Exception $e) {}
+    }
     $view = new View('error404');
-    echo $view->render(array('planes' => UnicodePlane::getAll($db)));
+    echo $view->render(compact('planes', 'block'));
 }
 
 
