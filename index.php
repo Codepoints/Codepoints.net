@@ -19,6 +19,12 @@ $router->addSetting('db', $db)
     echo $view->render(array('planes' => UnicodePlane::getAll($o['db'])));
 })
 
+->registerAction(array('about'), function ($request, $o) {
+    // static pages
+    $view = new View($request->trunkUrl);
+    echo $view->render();
+})
+
 ->registerAction('search', function ($request, $o) {
     // Search
     $router = Router::getRouter();
