@@ -89,7 +89,7 @@ class UnicodeBlock extends UnicodeRange {
             if ($r === False) {
                 $this->prev = False;
             } else {
-                $this->prev = new self('', $this->db, $r);
+                $this->prev = new static('', $this->db, $r);
             }
         }
         return $this->prev;
@@ -111,7 +111,7 @@ class UnicodeBlock extends UnicodeRange {
             if ($r === False) {
                 $this->next = False;
             } else {
-                $this->next = new self('', $this->db, $r);
+                $this->next = new static('', $this->db, $r);
             }
         }
         return $this->next;
@@ -157,7 +157,7 @@ class UnicodeBlock extends UnicodeRange {
         if ($r === False) {
             throw new Exception('No block contains this codepoint: ' . $cp);
         }
-        return new self('', $db, $r);
+        return new static('', $db, $r);
     }
 
 }
