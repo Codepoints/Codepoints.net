@@ -56,7 +56,7 @@ class UnicodeInfo {
         'CWKCF' => 'Changes When NFKC Casefolded',
         'CWT' => 'Changes When Titlecased',
         'CWU' => 'Changes When Uppercased',
-        'NFKC_CF' => 'NKFC Casefold',
+        'NFKC_CF' => 'NFKC Casefold',
         'sc' => 'Script',
         'isc' => 'ISO 10646 Comment',
         'hst' => 'Hangul Syllable Type',
