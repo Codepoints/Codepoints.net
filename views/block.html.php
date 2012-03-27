@@ -29,7 +29,7 @@ include "nav.php";
     <p>Block from U+<?php f('%04X', $block_limits[0])?>
        to U+<?php f('%04X', $block_limits[1])?></p>
     <?php echo $pagination?>
-      <ol class="block-data">
+      <ol class="block data">
         <?php
         $limits = $pagination->getLimits();
         $cps = $block->get();

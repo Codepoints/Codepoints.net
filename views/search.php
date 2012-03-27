@@ -46,7 +46,7 @@ include "nav.php";
     <?php endif?>
   </p>
   <?php echo $pagination?>
-  <ol class="block-data">
+  <ol class="block data">
     <?php foreach ($result->get() as $cp => $na):
       echo '<li value="' . $cp . '">'; cp($na); echo '</li>';
     endforeach ?>

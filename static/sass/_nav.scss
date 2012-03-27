@@ -121,3 +121,88 @@ nav .about {
   }
 }
 
+
+
+#footer_search {
+  position: absolute;
+  color: #ddd;
+  background: #33302a;
+  background: -moz-linear-gradient(top, #43402a, #33302a);
+  padding: 10px;
+  border: 1px solid #22201a;
+  border-top-width: 0;
+  @include border-bottom-radius(2px);
+  max-width: 308px;
+}
+
+#footer_search label {
+  display: none;
+}
+
+#footer_search p {
+  margin: 5px 0 0;
+  text-align: right;
+}
+
+#footer_search a {
+  color: #ddd;
+  border-bottom: 1px solid;
+  border-bottom-color: rgba(255,255,255,.4);
+  &:before {
+    color: black;
+    content: "» ";
+  }
+}
+
+#footer_search form p {
+  display: inline;
+  margin: 0;
+}
+
+#footer_search input {
+  max-width: 308px;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 1px solid #222;
+  border-radius: 3px;
+  @include background(linear-gradient(top, rgba(0,0,0,.2),
+  rgba(0,0,0,0)));
+  background-color: white;
+}
+
+#footer_search button {
+  @include inline-block;
+  height: 26px;
+  line-height: 24px;
+  border: 1px solid rgba(0,0,0,.5);
+  border-radius: 3px;
+  box-shadow: 0 1px rgba(255,255,255,.1),
+              inset 0 1px 0 rgba(255,255,255,.15),
+              inset 1px 0 rgba(255,255,255,.05),
+              inset -1px 0 rgba(255,255,255,.05);
+  @include background(linear-gradient(top, rgba(0,0,0,0),
+    rgba(0,0,0,.2)));
+  padding: 0 5px;
+  text-shadow: 0 -1px rgba(0,0,0,1);
+  img {
+    vertical-align: middle;
+  }
+  color: #ddd;
+  text-decoration: none;
+  @include user-select(none);
+
+  &:hover,
+  &:focus {
+    color: #fff;
+    @include background(
+    radial-gradient(center top, rgba(255,255,255,.15), rgba(255,255,255,0)),
+    linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,.2)));
+    outline: none;
+  }
+
+  &:active {
+    @include background(
+    linear-gradient(top, rgba(0,0,0,.3), rgba(0,0,0,0))
+    );
+  }
+}

@@ -110,7 +110,7 @@ figure .fig {
   border: 1px solid #ddd;
 }
 
-.block-data {
+.data {
   margin: 0;
   padding: 0;
   line-height: 0;
@@ -118,14 +118,14 @@ figure .fig {
   clear: left;
 }
 
-.block-data li {
+.data li {
   list-style: none;
   float: left;
   margin: 0 3px 3px 0;
   padding: 0;
 }
 
-.block-data li.missing span {
+.data .missing span {
   background: white;
   background: -moz-linear-gradient(top, white, #f3f3f3);
   border: 1px solid #bbb;
@@ -140,22 +140,29 @@ figure .fig {
   color: #666;
 }
 
-.block-data li:nth-of-type(32n+1) {
+.block.data li:nth-of-type(32n+1) {
   clear: left;
 }
 
 @media (max-width: 1220px) {
-  .block-data li:nth-of-type(16n+1) {
+  .block.data li:nth-of-type(16n+1) {
     clear: left;
   }
 }
 
 @media (max-width: 630px) {
-  .block-data li:nth-of-type(8n+1) {
+  .block.data li:nth-of-type(8n+1) {
     clear: left;
   }
 }
 
+
+
+
+
+.hidden {
+  display: none;
+}
 
 
 

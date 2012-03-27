@@ -100,6 +100,30 @@ $(function() {
   //  return animatePage($(this), this.href, 'minimize', 'zoomout');
   //});
   $(document).tooltip();
+  $('nav a[rel="search"]').on('click', function() {
+    var $this = $(this),
+        el = $('#footer_search').css({
+          right: $(window).width() - $this.offset().left - $this.outerWidth(),
+          top: $this.offset().top + $this.outerHeight() + 4
+        });
+    if (! el.data('extended')) {
+      el.data('extended',
+        true).append($('<p></p>').append($('<a></a>').attr('href',
+              $this.attr('href')).text('Extended Search')));
+    }
+    if (el.is(':hidden')) {
+      el.slideDown('normal').find(':text:eq(0)').focus();
+      $(document).one('click keydown', function __hideMe(e) {
+        if (el.find(e.target).length === 0 &&
+            (e.type === 'click' || e.which === 27)) {
+          el.slideUp('normal');
+        } else {
+          $(document).one('click keydown', __hideMe);
+        }
+      });
+    }
+    return false;
+  });
 });
 
 })(this, jQuery);

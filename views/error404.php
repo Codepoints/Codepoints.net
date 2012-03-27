@@ -12,6 +12,6 @@ include "nav.php";
     <p>This codepoint doesn’t exist. You can find surrounding codepoints in
       the block <?php bl($block, '', 'min')?>.</p>
   <?php endif?>
-  <?php include "quicksearch.php"?>
+  <?php $searchprefix = 'err_'; include "quicksearch.php"; unset($searchprefix); ?>
 </div>
 <?php include "footer.php"?>
