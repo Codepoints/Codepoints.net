@@ -32,8 +32,40 @@ $router->addSetting('db', $db)
     $info = UnicodeInfo::get();
     $cats = $info->getCategoryKeys();
     $cats = array_merge($cats, array('int'));
+    $blocks = array();
     foreach ($_GET as $k => $v) {
-        if ($v && in_array($k, $cats)) {
+        if ($k === 'q' && $v) {
+            if (mb_strlen($v, 'UTF-8') === 1) {
+                $result->addQuery('cp', unpack('N', mb_convert_encoding($v,
+                                        'UCS-4BE', 'UTF-8')));
+            } else {
+                if (ctype_xdigit($v) && in_array(strlen($v), array(4,5,6))) {
+                    $result->addQuery('cp', hexdec($v), '=', 'OR');
+                }
+                if (substr(strtolower($v), 0, 2) === 'u+' &&
+                    ctype_xdigit(substr($v, 2))) {
+                    $result->addQuery('cp', hexdec(substr($v, 2)), '=', 'OR');
+                }
+                if (ctype_digit($v) && strlen($v) < 8) {
+                    $result->addQuery('cp', intval($v), '=', 'OR');
+                }
+                $v = "%$v%";
+                $result->addQuery('na', $v, 'LIKE', 'OR');
+                $result->addQuery('na1', $v, 'LIKE', 'OR');
+                $result->addQuery('isc', $v, 'LIKE', 'OR');
+                $result->addQuery('kDefinition', $v, 'LIKE', 'OR');
+                if (preg_match('/\blowercase\b/i', $v)) {
+                    $result->addQuery('gc', 'lc', '=', 'OR');
+                }
+                if (preg_match('/\buppercase\b/i', $v)) {
+                    $result->addQuery('gc', 'uc', '=', 'OR');
+                }
+                if (preg_match('/\btitlecase\b/i', $v)) {
+                    $result->addQuery('gc', 'tc', '=', 'OR');
+                }
+                $blocks = UnicodeBlock::search($v, $o['db']);
+            }
+        } elseif ($v && in_array($k, $cats)) {
             $result->addQuery($k, $v);
         }
     }
@@ -46,7 +78,7 @@ $router->addSetting('db', $db)
     $pagination = new Pagination($result->getCount(), 128);
     $pagination->setPage($page);
     $view = new View('search');
-    echo $view->render(compact('result', 'pagination', 'page'));
+    echo $view->render(compact('result', 'blocks', 'pagination', 'page'));
 })
 
 ->registerAction(function ($url, $o) {
