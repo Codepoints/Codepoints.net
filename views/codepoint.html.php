@@ -200,6 +200,7 @@ include "nav.php";
       </thead>
       <tbody>
         <?php $bools = $info->getBooleanCategories();
+        ksort($props);
         foreach ($props as $k => $v):
               if ($v !== NULL && $v !== '' && $k !== 'cp' && $k !== 'image'):?>
           <tr class="p_<?php e($k)?>">
@@ -209,8 +210,20 @@ include "nav.php";
               <span class="<?php if ($v):?>y">✔<?php else:?>n">✘<?php endif?></span>
             <?php elseif (is_array($v) || $v instanceof Codepoint):?>
               <?php cp($v, '', 'min') ?>
-            <?php else:?>
-              <?php e($info->getLabel($k, $v))?>
+            <?php elseif ($k === 'scx'):
+            foreach(explode(' ', $v) as $sc):?>
+                <a href="<?php e($router->getUrl('search?'.$k.'='.$v))?>"><?php e($info->getLabel('sc', $sc))?></a>
+            <?php endforeach;
+            elseif (in_array($k, array('kCompatibilityVariant', 'kDefinition',
+                'kSemanticVariant', 'kSimplifiedVariant',
+                'kSpecializedSemanticVariant', 'kTraditionalVariant', 'kZVariant'))):
+              echo preg_replace_callback('/U\+([0-9A-F]{4,6})/', function($m) {
+                $router = Router::getRouter();
+                $db = $router->getSetting('db');
+                return _cp(new Codepoint(hexdec($m[1]), $db), '', 'min');
+              }, $v);
+            else:?>
+              <a href="<?php e($router->getUrl('search?'.$k.'='.$v))?>"><?php e($info->getLabel($k, $v))?></a>
             <?php endif?>
             </td>
           </tr>
