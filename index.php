@@ -106,7 +106,7 @@ $router->addSetting('db', $db)
     // Single Codepoint
     if (substr($url, 0, 2) === 'U+' && ctype_xdigit(substr($url, 2))) {
         try {
-            $codepoint = new Codepoint(hexdec(substr($url, 2)), $o['db']);
+            $codepoint = Codepoint::getCP(hexdec(substr($url, 2)), $o['db']);
             $codepoint->getName();
         } catch (Exception $e) {
             $router = Router::getRouter();

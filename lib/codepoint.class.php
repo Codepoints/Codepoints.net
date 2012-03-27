@@ -13,6 +13,7 @@ class Codepoint {
     protected $prev;
     protected $next;
     protected $image;
+    protected static $cp_cache = array();
 
     public static $defaultImage = 'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQAAAAA3iMLMAAAAIUlEQVQI12P4/58Bghr/M8z8z7AUjFr/M3SCUSMSA6wMAI8sGvs6OjZhAAAAAElFTkSuQmCC';
 
@@ -20,9 +21,10 @@ class Codepoint {
      * Construct with PDO object of database
      *
      * $info can be used to pre-fill data, e.g., when it was bulk-loaded in a
-     * block
+     * block.
+     * This method is protected. Go via self::getCP to use caching feature.
      */
-    public function __construct($id, $db, $info=array()) {
+    protected function __construct($id, $db, $info=array()) {
         $this->id = $id;
         $this->db = $db;
         foreach ($info as $k => $v) {
@@ -159,12 +161,12 @@ class Codepoint {
             $query->closeCursor();
             foreach ($rel as $v) {
                 if ($v['order'] == 0) {
-                    $this->properties[$v['relation']] = new Codepoint($v['other'], $this->db);
+                    $this->properties[$v['relation']] = self::getCP($v['other'], $this->db);
                 } else {
                     if (! array_key_exists($v['relation'], $this->properties)) {
                         $this->properties[$v['relation']] = array();
                     }
-                    $this->properties[$v['relation']][$v['order'] - 1] = new Codepoint($v['other'], $this->db);
+                    $this->properties[$v['relation']][$v['order'] - 1] = self::getCP($v['other'], $this->db);
                 }
             }
         }
@@ -181,7 +183,7 @@ class Codepoint {
                 if (intval($v) === $this->id) {
                     return $this;
                 } else {
-                    return new Codepoint(intval($props[$prop]), $this->db);
+                    return self::getCP(intval($props[$prop]), $this->db);
                 }
             } elseif (in_array($prop, array('uc','lc','tc','cf','dm',
                                             'FC_NFKC','NFKC_CF'))) {
@@ -191,7 +193,7 @@ class Codepoint {
                     if (intval($v) === $this->id) {
                         $r[] = $this;
                     } else {
-                        $r[] = new Codepoint(intval($v), $this->db);
+                        $r[] = self::getCP(intval($v), $this->db);
                     }
                 }
                 return $r;
@@ -314,7 +316,7 @@ class Codepoint {
             $prev = $query->fetch(PDO::FETCH_ASSOC);
             $query->closeCursor();
             if ($prev) {
-                $this->prev = new Codepoint($prev['cp'], $this->db);
+                $this->prev = self::getCP($prev['cp'], $this->db);
             } else {
                 $this->prev = false;
             }
@@ -335,12 +337,25 @@ class Codepoint {
             $next = $query->fetch(PDO::FETCH_ASSOC);
             $query->closeCursor();
             if ($next) {
-                $this->next = new Codepoint($next['cp'], $this->db);
+                $this->next = self::getCP($next['cp'], $this->db);
             } else {
                 $this->next = false;
             }
         }
         return $this->next;
+    }
+
+    /**
+     * return a new instance if not cached
+     */
+    public static function getCP($cp, $db, $info=array()) {
+        if (is_string($cp)) {
+            $cp = intval($cp);
+        }
+        if (! array_key_exists($cp, self::$cp_cache)) {
+            self::$cp_cache[$cp] = new self($cp, $db, $info);
+        }
+        return self::$cp_cache[$cp];
     }
 
     /**

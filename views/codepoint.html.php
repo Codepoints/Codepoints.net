@@ -90,7 +90,7 @@ include "nav.php";
         echo preg_replace_callback('/U\+([0-9A-F]{4,6})/', function($m) {
             $router = Router::getRouter();
             $db = $router->getSetting('db');
-            return _cp(new Codepoint(hexdec($m[1]), $db), '', 'min');
+            return _cp(Codepoint::getCP(hexdec($m[1]), $db), '', 'min');
         }, $defn);
       ?></em>.
     <?php endif?>
@@ -250,7 +250,7 @@ include "nav.php";
                 if (hexdec($m[1]) === $codepoint->getId()) {
                     return _cp($codepoint, '', 'min');
                 }
-                return _cp(new Codepoint(hexdec($m[1]), $o['db']), '', 'min');
+                return _cp(Codepoint::getCP(hexdec($m[1]), $o['db']), '', 'min');
               }, $v);
             else:?>
               <a href="<?php e($router->getUrl('search?'.$k.'='.$v))?>"><?php e($info->getLabel($k, $v))?></a>

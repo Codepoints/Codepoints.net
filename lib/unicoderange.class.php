@@ -163,7 +163,7 @@ class UnicodeRange implements Iterator {
                     if (! $cp['image']) {
                         $cp['image'] = Codepoint::$defaultImage;
                     }
-                    $names[intval($cp['cp'])] = new Codepoint(intval($cp['cp']),
+                    $names[intval($cp['cp'])] = Codepoint::getCP(intval($cp['cp']),
                         $this->db, array('name' => $cp['na']? $cp['na'] : ($cp['na1']? $cp['na1'].'*' : '<control>'),
                         'block' => $this, 'image' => 'image/png;base64,' . $cp['image']));
                 }
