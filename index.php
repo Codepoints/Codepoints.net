@@ -1,12 +1,38 @@
 <?php
 
+define('VU_DEBUG', False);
+
 
 function __autoload($class) {
     require_once 'lib/' . strtolower($class) . '.class.php';
 }
 
 
-$db = new PDO('sqlite:'.dirname(__FILE__).'/ucd.sqlite');
+function flog($msg) {
+   if (VU_DEBUG) {
+       error_log(sprintf("[%s]\n%s\n", date("r"), $msg), 3,
+                 '/tmp/visual-unicode.log');
+   }
+}
+
+
+class DB extends PDO {
+    public function prepare($query, $params=array()) {
+        $this->__log($query);
+        return parent::prepare($query, $params);
+    }
+    public function query($query) {
+        $this->__log($query);
+        return call_user_func_array(array(get_parent_class($this), 'query'),
+                                    func_get_args());
+    }
+    protected function __log($query) {
+        flog(preg_replace('/\s{2,}/', ' ', $query));
+    }
+}
+
+
+$db = new DB('sqlite:'.dirname(__FILE__).'/ucd.sqlite');
 $router = Router::getRouter();
 
 
