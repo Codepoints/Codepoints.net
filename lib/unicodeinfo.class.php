@@ -6,6 +6,7 @@
  */
 class UnicodeInfo {
     protected $categories = array(
+        'cp' => 'Codepoint',
         'age' => 'Age',
         'na' => 'Unicode Name',
         'na1' => 'Unicode 1 Name',
@@ -848,6 +849,9 @@ class UnicodeInfo {
      * The key is qualified by the category (e.g., 'sc')
      */
     public function getLabel($cat, $abbr, $i=0) {
+        if ($cat === 'cp') {
+            return sprintf('%04X', intval($abbr));
+        }
         if (array_key_exists($cat, $this->legend)) {
             if (array_key_exists($abbr, $this->legend[$cat])) {
                 $r = $this->legend[$cat][$abbr];
