@@ -18,11 +18,15 @@ include "nav.php";
   <h1><?php e($title);?></h1>
   <p>From U+<?php f('%04X', $plane->first)?>
      to U+<?php f('%04X', $plane->last)?></p>
-  <h2>Blocks in this plane</h2>
-  <ol>
-    <?php foreach ($blocks as $b):?>
-      <li><?php bl($b)?> <small>(U+<?php $l = $b->getBlockLimits(); f('%04X', $l[0])?> to <?php f('%04X', $l[1])?>)</small></li>
-    <?php endforeach?>
-  </ol>
+  <?php if (count($blocks)):?>
+    <h2>Blocks in this plane</h2>
+    <ol>
+      <?php foreach ($blocks as $b):?>
+        <li><?php bl($b)?> <small>(U+<?php $l = $b->getBlockLimits(); f('%04X', $l[0])?> to <?php f('%04X', $l[1])?>)</small></li>
+      <?php endforeach?>
+    </ol>
+  <?php else:?>
+    <p class="info">There are no blocks defined in this plane.</p>
+  <?php endif?>
 </div>
 <?php include "footer.php"?>
