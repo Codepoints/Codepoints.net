@@ -1,7 +1,9 @@
 nav {
   color: #ddd;
+  border-bottom: 1px solid #111;
   background: #33302a;
   background: -moz-linear-gradient(top, #43402a, #33302a);
+  box-shadow: 0 1px 3px rgba(0,0,0,.5);
   padding: 3px;
   line-height: 18px;
   @include pie-clearfix;
