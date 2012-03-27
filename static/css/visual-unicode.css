@@ -913,6 +913,9 @@ dd {
 .props tr .n {
   color: #900;
 }
+.props tr .x {
+  color: #999;
+}
 
 .slide {
   position: absolute;

@@ -200,13 +200,42 @@ include "nav.php";
       </thead>
       <tbody>
         <?php $bools = $info->getBooleanCategories();
-        ksort($props);
+        uksort($props, function($a, $b) {
+            $n = strcasecmp($a, $b);
+            if ($n === 0) {
+                return 0;
+            }
+            $r = array('age', 'na', 'na1', 'blk', 'gc', 'sc', 'bc', 'ccc',
+                'dt', 'dm', 'Lower', 'slc', 'lc', 'Upper', 'suc', 'uc',
+                'stc', 'tc', 'cf');
+            $r2 = array();
+            for ($i = 0, $c = count($r); $i < $c; $i++) {
+                if ($a === $r[$i]) {
+                    if (in_array($b, $r2)) {
+                        return 1;
+                    } else {
+                        return -1;
+                    }
+                } elseif ($b === $r[$i]) {
+                    if (in_array($a, $r2)) {
+                        return -1;
+                    } else {
+                        return 1;
+                    }
+                } else {
+                    $r2[] = $r[$i];
+                }
+            }
+            return strcasecmp($a, $b);
+        });
         foreach ($props as $k => $v):
-              if ($v !== NULL && $v !== '' && $k !== 'cp' && $k !== 'image'):?>
+            if ($k !== 'cp' && $k !== 'image' && ! ($k[0] === 'k' && ! $v)):?>
           <tr class="p_<?php e($k)?>">
             <th><?php e($info->getCategory($k))?> <small>(<?php e($k)?>)</small></th>
             <td>
-            <?php if (in_array($k, $bools)):?>
+            <?php if ($v === '' || $v === Null):?>
+              <span class="x">—</span>
+            <?php elseif (in_array($k, $bools)):?>
               <span class="<?php if ($v):?>y">✔<?php else:?>n">✘<?php endif?></span>
             <?php elseif (is_array($v) || $v instanceof Codepoint):?>
               <?php cp($v, '', 'min') ?>
@@ -217,10 +246,11 @@ include "nav.php";
             elseif (in_array($k, array('kCompatibilityVariant', 'kDefinition',
                 'kSemanticVariant', 'kSimplifiedVariant',
                 'kSpecializedSemanticVariant', 'kTraditionalVariant', 'kZVariant'))):
-              echo preg_replace_callback('/U\+([0-9A-F]{4,6})/', function($m) {
-                $router = Router::getRouter();
-                $db = $router->getSetting('db');
-                return _cp(new Codepoint(hexdec($m[1]), $db), '', 'min');
+              echo preg_replace_callback('/U\+([0-9A-F]{4,6})/', function($m) use ($codepoint, $o) {
+                if (hexdec($m[1]) === $codepoint->getId()) {
+                    return _cp($codepoint, '', 'min');
+                }
+                return _cp(new Codepoint(hexdec($m[1]), $o['db']), '', 'min');
               }, $v);
             else:?>
               <a href="<?php e($router->getUrl('search?'.$k.'='.$v))?>"><?php e($info->getLabel($k, $v))?></a>
