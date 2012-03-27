@@ -77,6 +77,9 @@ class Codepoint {
             if ($this->id < 33) {
                 return mb_convert_encoding('&#'.($this->id + 9216).';',
                                            $coding, 'HTML-ENTITIES');
+            } elseif ($this->id === 127) { // U+007F DELETE
+                return mb_convert_encoding('&#9249;', $coding,
+                                           'HTML-ENTITIES');
             }
             return mb_convert_encoding('&#xFFFD;', $coding, 'HTML-ENTITIES');
         }
