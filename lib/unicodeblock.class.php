@@ -160,6 +160,27 @@ class UnicodeBlock extends UnicodeRange {
         return new static('', $db, $r);
     }
 
+    /**
+     * search blocks by name
+     */
+    public static function search($q, $db) {
+        $query = $db->prepare("
+            SELECT name, first, last FROM blocks
+             WHERE replace(replace(lower(name), '_', ''), ' ', '') LIKE :name
+            ORDER BY first ASC");
+        $query->execute(array(':name' => str_replace(array(' ', '_'), '',
+                              strtolower("%$q%"))));
+        $r = $query->fetchAll(PDO::FETCH_ASSOC);
+        $query->closeCursor();
+        $blocks = array();
+        if ($r) {
+            foreach ($r as $b) {
+                $blocks[] = new static('', $db, $b);
+            }
+        }
+        return $blocks;
+    }
+
 }
 
 
