@@ -33,6 +33,8 @@ a.cp, a .cp {
     img {
       image-rendering: optimizeSpeed;
       @include transform(scale(2));
+      @include background(radial-gradient(center, contain, rgba(255,255,255,.3),
+      rgba(255,255,255,0)));
     }
 
   }

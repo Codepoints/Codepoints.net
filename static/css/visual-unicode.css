@@ -399,6 +399,12 @@ a.cp:focus img, a.cp:hover img, a .cp:focus img, a .cp:hover img {
   -o-transform: scale(2);
   -ms-transform: scale(2);
   transform: scale(2);
+  background: -webkit-gradient(radial, 50%, 0, 50%, 100, color-stop(0%, rgba(255, 255, 255, 0.3)), color-stop(100%, rgba(255, 255, 255, 0)));
+  background: -webkit-radial-gradient(center, contain, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+  background: -moz-radial-gradient(center, contain, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+  background: -o-radial-gradient(center, contain, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+  background: -ms-radial-gradient(center, contain, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+  background: radial-gradient(center, contain, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
 }
 
 .min.cp {
@@ -499,6 +505,8 @@ nav li {
 
 nav a:link,
 nav a:visited {
+  font-size: .75em;
+  font-family: Arial,sans-serif;
   display: -moz-inline-box;
   -moz-box-orient: vertical;
   display: inline-block;
@@ -530,7 +538,7 @@ nav a:visited {
 }
 nav a:link img,
 nav a:visited img {
-  vertical-align: middle;
+  vertical-align: bottom;
 }
 
 nav a:hover,
@@ -562,6 +570,10 @@ nav a:before {
 
 nav .min.cp {
   width: auto;
+  font-size: 1em;
+}
+nav .min.cp:focus, nav .min.cp:hover {
+  box-shadow: none;
 }
 
 nav .bl,
@@ -569,6 +581,12 @@ nav .cp {
   border: none;
   background: none;
   color: #ddd;
+  font-size: 1em;
+}
+nav .bl:focus, nav .bl:hover,
+nav .cp:focus,
+nav .cp:hover {
+  box-shadow: none;
 }
 
 nav .start {

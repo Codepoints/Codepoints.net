@@ -26,6 +26,8 @@ nav li {
 
 nav a:link,
 nav a:visited {
+  font-size: .75em;
+  font-family: Arial,sans-serif;
   @include inline-block;
   height: 24px;
   line-height: 24px;
@@ -40,7 +42,7 @@ nav a:visited {
   padding: 0 5px;
   text-shadow: 0 -1px rgba(0,0,0,1);
   img {
-    vertical-align: middle;
+    vertical-align: bottom;
   }
   color: #ddd;
   text-decoration: none;
@@ -70,6 +72,11 @@ nav a:before {
 
 nav .min.cp {
   width: auto;
+  font-size: 1em;
+  &:focus,
+  &:hover {
+    box-shadow: none;
+  }
 }
 
 nav .bl,
@@ -77,6 +84,11 @@ nav .cp {
   border: none;
   background: none;
   color: #ddd;
+  font-size: 1em;
+  &:focus,
+  &:hover {
+    box-shadow: none;
+  }
 }
 
 nav .start {
