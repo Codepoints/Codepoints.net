@@ -126,6 +126,9 @@ $(function() {
     return false;
   });
   $(document).on('keydown', function(e) {
+    if (e.target !== document.body) {
+      return;
+    }
     if (e.shiftKey && ! e.metaKey && ! e.ctrlKey && ! e.altKey) {
       var a = [], click = true;
       switch (e.which) {
@@ -151,11 +154,16 @@ $(function() {
           a = $('.data a:eq(0)');
           click = false;
           break;
+        case 83: // S: search
+          a = $('a[rel="search"]:eq(0)');
+          break;
+        case 65: // A: about
+          a = $('nav .about a:eq(0)');
+          break;
       }
       if (a.length) {
         a.trigger('focus');
         if (click) {
-          a.click();
           window.location.href = a[0].href;
         }
         return false;
