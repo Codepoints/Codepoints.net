@@ -14,7 +14,7 @@ if ($prev) {
 }
 $nav["up"] = '<a class="pl" rel="up" href="'.q($router->getUrl($plane)).'">'.q($plane->getName()).'</a>';
 if ($next) {
-    $nav['next'] = _bl($next, 'prev', 'min', 'span');
+    $nav['next'] = _bl($next, 'next', 'min', 'span');
 }
 include "nav.php";
 ?>
