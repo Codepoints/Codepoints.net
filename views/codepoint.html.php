@@ -176,6 +176,17 @@ include "nav.php";
       </tbody>
     </table>
   </section>
+<?php $relatives = $codepoint->related();
+if (count($relatives)):?>
+  <section>
+    <h2>Related Characters</h2>
+    <ul class="data">
+      <?php foreach ($relatives as $rel):?>
+        <li><?php cp($rel)?></li>
+      <?php endforeach?>
+    </ul>
+  </section>
+<?php endif?>
   <section>
     <h2>Elsewhere</h2>
     <ul>
@@ -229,7 +240,7 @@ include "nav.php";
             return strcasecmp($a, $b);
         });
         foreach ($props as $k => $v):
-            if ($k !== 'cp' && $k !== 'image' && ! ($k[0] === 'k' && ! $v)):?>
+            if (! in_array($k, array('cp', 'image')) && ! ($k[0] === 'k' && ! $v)):?>
           <tr class="p_<?php e($k)?>">
             <th><?php e($info->getCategory($k))?> <small>(<?php e($k)?>)</small></th>
             <td>
