@@ -97,14 +97,21 @@ $router->addSetting('db', $db)
     }
     $page = isset($_GET['page'])? intval($_GET['page']) : 1;
     $result->page = $page - 1;
-    if ($result->getCount() === 1) {
-        $cp = $result->current();
-        $router->redirect('U+'.$cp);
+    if (count($result->getQuery())) {
+        if ($result->getCount() === 1) {
+            $cp = $result->current();
+            $router->redirect('U+'.$cp);
+        } else {
+            $pagination = new Pagination($result->getCount(), 128);
+            $pagination->setPage($page);
+            $view = new View('result');
+            echo $view->render(compact('result', 'blocks', 'pagination',
+                                       'page'));
+        }
+    } else {
+        $view = new View('search');
+        echo $view->render();
     }
-    $pagination = new Pagination($result->getCount(), 128);
-    $pagination->setPage($page);
-    $view = new View('search');
-    echo $view->render(compact('result', 'blocks', 'pagination', 'page'));
 })
 
 ->registerAction(function ($url, $o) {

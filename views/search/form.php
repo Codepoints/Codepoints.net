@@ -6,7 +6,7 @@
      <input type="text" name="int" id="s_int" value="<?php echo _get('int')?>" /></p>
 <?php foreach (array('blk', 'gc', 'bc', 'ccc', 'dt', 'nt', 'lb', 'ea',
                      'sc', 'SB', 'WB') as $cat) {
-     include 'search/fieldset.php';
+     include 'fieldset.php';
     } ?>
   <?php foreach ($info->getBooleanCategories() as $cat):?>
   <p class="boolsearch">
