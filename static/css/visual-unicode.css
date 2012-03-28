@@ -159,8 +159,6 @@ h1 {
   margin: 0 0 0.833em;
   font-size: 1.5em;
   line-height: 0.833em;
-  letter-spacing: .05em;
-  word-spacing: .1em;
 }
 
 h2 {
@@ -189,6 +187,7 @@ a:focus,
 a:hover {
   color: #F00;
   text-decoration: none;
+  text-shadow: 1px 1px white, -1px 1px white;
   border-bottom: 1px solid;
 }
 
@@ -737,6 +736,11 @@ nav .up a:before {
 
 .payload.codepoint {
   max-width: 800px;
+}
+
+.payload.codepoint h1 {
+  letter-spacing: .05em;
+  word-spacing: .1em;
 }
 
 .payload.codepoint section {

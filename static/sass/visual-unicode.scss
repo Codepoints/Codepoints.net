@@ -16,8 +16,6 @@ h1 {
   margin: 0 0 (20em/24);
   font-size: (24em/16);
   line-height: (20em/24);
-  letter-spacing: .05em;
-  word-spacing: .1em;
 }
 
 h2 {
@@ -46,6 +44,8 @@ a:focus,
 a:hover {
   color: #F00;
   text-decoration: none;
+  text-shadow: 1px 1px white,
+               -1px 1px white;
   border-bottom: 1px solid;
 }
 
@@ -72,6 +72,11 @@ h1, h2, h3, b, strong {
 
 .payload.codepoint {
   max-width: 800px;
+}
+
+.payload.codepoint h1 {
+  letter-spacing: .05em;
+  word-spacing: .1em;
 }
 
 .payload.codepoint section {
