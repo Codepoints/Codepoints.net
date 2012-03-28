@@ -2,9 +2,14 @@
 $query = $result->getQuery();
 $cQuery = count($query);
 $cBlocks = count($blocks);
-$cBResult = $cBlocks > 0? sprintf(' and %s Blocks', $cBlocks) : '';
+$cBResult = $cBlocks > 0? ($cBlocks > 1?
+    sprintf(' and %s Blocks', $cBlocks) :
+    ' and 1 Block') :
+    '';
 $fQuery = $result->getCount();
-$title = $cQuery > 0? sprintf('%s Codepoints%s Found', $fQuery, $cBResult) : 'Search';
+$title = $cQuery > 0? ($cQuery > 1?
+    sprintf('%s Codepoints%s Found', $fQuery, $cBResult) :
+    sprintf('1 Codepoint%s Found', $cBResult)) : 'Search';
 include "header.php";
 include "nav.php";
 ?>
@@ -55,8 +60,9 @@ include "nav.php";
   <?php else:?>
     <p>Please enter your search specification.</p>
   <?php endif?>
-  <?php if(count($blocks)):?>
-  <p><strong><?php e(count($blocks))?></strong> blocks match
+  <?php if($cBlocks):?>
+  <p><strong><?php e($cBlocks)?></strong> block<?php if($cBlocks > 1):?>s<?php endif?>
+    match<?php if($cBlocks === 1):?>es<?php endif?>
     <strong><?php e(_get('q'))?></strong>:<p>
     <ol class="data">
       <?php foreach ($blocks as $bl):
