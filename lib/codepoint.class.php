@@ -6,6 +6,7 @@ class Codepoint {
     protected $id;
     protected $db;
     protected $properties;
+    protected $related;
     protected $name;
     protected $block;
     protected $plane;
@@ -171,6 +172,26 @@ class Codepoint {
             }
         }
         return $this->properties;
+    }
+
+    /**
+     * fetch related characters
+     */
+    public function related() {
+        if ($this->related === NULL) {
+            $this->related = array();
+            $query = $this->db->prepare('SELECT cp
+                                           FROM codepoint_relation
+                                           WHERE other = :cp AND cp != :cp
+                                           GROUP BY cp');
+            $query->execute(array(':cp' => $this->id));
+            $rel = $query->fetchAll(PDO::FETCH_ASSOC);
+            $query->closeCursor();
+            foreach ($rel as $v) {
+                $this->related[] = self::getCP($v['cp'], $this->db);
+            }
+        }
+        return $this->related;
     }
 
     /**
