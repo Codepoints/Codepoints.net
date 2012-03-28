@@ -100,6 +100,7 @@ $(function() {
   //  return animatePage($(this), this.href, 'minimize', 'zoomout');
   //});
   $(document).tooltip();
+  $('nav .search, nav .about').wrapAll('<div class="nav-extra"></div>');
   $('nav a[rel="search"]').on('click', function() {
     var $this = $(this),
         el = $('#footer_search').css({

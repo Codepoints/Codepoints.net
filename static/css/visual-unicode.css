@@ -586,6 +586,11 @@ nav .search a:before {
   padding-right: .3em;
 }
 
+nav .about a:before {
+  content: "\2139";
+  padding-right: .3em;
+}
+
 nav .prev a:before {
   content: "\25C0";
   padding-right: .3em;
@@ -601,9 +606,11 @@ nav .up a:before {
   padding-right: .3em;
 }
 
-nav .about a:before {
-  content: "\2139";
-  padding-right: .3em;
+.nav-extra {
+  float: right;
+}
+.nav-extra li {
+  margin-left: .3em;
 }
 
 #footer_search {

@@ -95,6 +95,13 @@ nav .search {
   }
 }
 
+nav .about {
+  a:before {
+    content: "\2139";
+    padding-right: .3em;
+  }
+}
+
 nav .prev {
   a:before {
     content: "\25C0";
@@ -116,10 +123,10 @@ nav .up {
   }
 }
 
-nav .about {
-  a:before {
-    content: "\2139";
-    padding-right: .3em;
+.nav-extra {
+  float: right;
+  li {
+    margin-left: .3em;
   }
 }
 
