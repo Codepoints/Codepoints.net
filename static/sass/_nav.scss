@@ -157,9 +157,14 @@ nav .up {
   color: #ddd;
   border-bottom: 1px solid;
   border-bottom-color: rgba(255,255,255,.4);
+  text-shadow: none;
   &:before {
     color: black;
     content: "» ";
+  }
+  &:focus,
+  &:hover {
+    color: white;
   }
 }
 

@@ -648,10 +648,14 @@ nav .up a:before {
   color: #ddd;
   border-bottom: 1px solid;
   border-bottom-color: rgba(255, 255, 255, 0.4);
+  text-shadow: none;
 }
 #footer_search a:before {
   color: black;
   content: "» ";
+}
+#footer_search a:focus, #footer_search a:hover {
+  color: white;
 }
 
 #footer_search form p {
