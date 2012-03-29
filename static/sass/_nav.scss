@@ -73,6 +73,7 @@ nav a:before {
 nav .min.cp {
   width: auto;
   font-size: 1em;
+  box-shadow: none;
   &:focus,
   &:hover {
     box-shadow: none;
