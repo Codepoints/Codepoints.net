@@ -246,6 +246,12 @@ dd {
     background: none;
     text-shadow: none;
     border-top-width: 0;
+    font-style: normal;
+    font-variant: small-caps;
+    letter-spacing: .15em;
+  }
+  thead th:first-child {
+    text-align: right;
   }
   tbody th {
     text-align: right;

@@ -4,6 +4,7 @@ nav {
   background: #33302a;
   @include background(linear-gradient(top, #43402a, #33302a));
   box-shadow: 0 1px 3px rgba(0,0,0,.5);
+  box-shadow: inset 0 -1px 1px rgba(255,255,255,.2);
   padding: 3px;
   line-height: 18px;
   @include pie-clearfix;
