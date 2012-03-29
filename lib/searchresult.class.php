@@ -55,11 +55,11 @@ class SearchResult extends UnicodeRange {
         if ($r !== False) {
             foreach ($r as $cp) {
                 if (! $cp['image']) {
-                    $cp['image'] = Codepoint::$defaultImage;
+                    $cp['image'] = '';
                 }
                 $names[intval($cp['cp'])] = Codepoint::getCP(intval($cp['cp']),
                     $this->db, array('name' => $cp['na']? $cp['na'] : ($cp['na1']? $cp['na1'].'*' : '<control>'),
-                    'image' => 'image/png;base64,' . $cp['image']));
+                    'image' => 'data:image/png;base64,' . $cp['image']));
             }
         }
         $this->set = $names;

@@ -16,7 +16,8 @@ class Codepoint {
     protected $image;
     protected static $cp_cache = array();
 
-    public static $defaultImage = 'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQAAAAA3iMLMAAAAIUlEQVQI12P4/58Bghr/M8z8z7AUjFr/M3SCUSMSA6wMAI8sGvs6OjZhAAAAAElFTkSuQmCC';
+    //public static $defaultImage = 'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAAAAAA6mKC9AAAAQUlEQVQY022PSQ4AIAgD5/+fxhhbEJEL6bAV4gmc6QBMSC1C9otQ9UOwRntoeqdommsEj8iED+ssae1vbFqfz1Usi/eYaGRQ6NgAAAAASUVORK5CYII=';
+    public static $defaultImage = 'static/images/default-cp.png';
 
     /**
      * Construct with PDO object of database
@@ -108,9 +109,14 @@ class Codepoint {
             $props = $this->getProperties();
             $r = $props['image'];
             if (! $r) {
-                $r = self::$defaultImage;
+                $router = Router::getRouter();
+                $this->image = $router->getUrl(self::$defaultImage);
+            } else {
+                $this->image = 'data:image/png;base64,' . $r;
             }
-            $this->image = 'image/png;base64,' . $r;
+        } elseif ($this->image === 'data:image/png;base64,') {
+            $router = Router::getRouter();
+            $this->image = $router->getUrl(self::$defaultImage);
         }
         return $this->image;
     }

@@ -161,11 +161,11 @@ class UnicodeRange implements Iterator {
             if ($r !== False) {
                 foreach ($r as $cp) {
                     if (! $cp['image']) {
-                        $cp['image'] = Codepoint::$defaultImage;
+                        $cp['image'] = '';
                     }
                     $names[intval($cp['cp'])] = Codepoint::getCP(intval($cp['cp']),
                         $this->db, array('name' => $cp['na']? $cp['na'] : ($cp['na1']? $cp['na1'].'*' : '<control>'),
-                        'block' => $this, 'image' => 'image/png;base64,' . $cp['image']));
+                        'block' => $this, 'image' => 'data:image/png;base64,' . $cp['image']));
                 }
             }
         }

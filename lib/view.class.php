@@ -49,12 +49,12 @@ function _cp($cp, $rel='', $class='', $wrap='') {
     foreach ($cp as $c) {
         if ($wrap) {
             $r[] = sprintf('<a%s href="%s" title="%s"><%s class="cp%s">%s<img src="'.
-                'data:%s" alt="" height="16" width="16" /></%s></a>',
+                '%s" alt="" height="16" width="16" /></%s></a>',
                 $rel, q($router->getUrl($c)), q($c->getName()), $wrap, $class,
                 q($c), q($c->getImage()), $wrap);
         } else {
             $r[] = sprintf('<a class="cp%s"%s href="%s" title="%s">%s<img src="'.
-                'data:%s" alt="" height="16" width="16" /></a>',
+                '%s" alt="" height="16" width="16" /></a>',
                 $class, $rel, q($router->getUrl($c)), q($c->getName()), q($c),
                 q($c->getImage()));
         }
