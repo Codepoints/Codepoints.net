@@ -21,6 +21,13 @@ if ($next) {
     $nav['next'] = _cp($next, 'next', 'min', 'span');
 }
 include "nav.php";
+$s = function($cat) use ($router, $info, $props) {
+    echo '<a href="';
+    e($router->getUrl('search?'.$cat.'='.$props[$cat]));
+    echo '">';
+    e($info->getLabel($cat, $props[$cat]));
+    echo '</a>';
+};
 ?>
 <div class="payload codepoint">
   <figure>
@@ -42,19 +49,16 @@ include "nav.php";
   <h1>U+<?php e($codepoint->getId('hex'))?> <?php e($codepoint->getName())?></h1>
   <section class="abstract">
   <p>
-    This codepoint is categorized as
-    <a href="<?php e($router->getUrl('search?gc='.$props['gc']))?>"><?php e($info->getLabel('gc', $props['gc']))?></a>
-    and belongs to the
-    <a href="<?php e($router->getUrl('search?sc='.$props['sc']))?>"><?php e($info->getLabel('sc', $props['sc']))?></a>
+    This codepoint is categorized as <?php $s('gc')?> and belongs to the
+    <?php $s('sc')?>
     <?php e($info->getCategory('sc'))?>.
     It was added to Unicode in version
-    <a href="<?php e($router->getUrl('search?age='.$props['age']))?>"><?php e($info->getLabel('age', $props['age']))?></a>.
+    <?php $s('age')?>.
     The glyph is
     <?php if ($props['dt'] === 'none'):?>
       <a href="<?php e($router->getUrl('search?dt=none'))?>">not a composition</a>.
     <?php else:?>
-      a <a href="<?php e($router->getUrl('search?dt='.$props['dt']))?>"><?php e($info->getLabel('dt', $props['dt']))?></a>
-      composition of the glyphs
+      a <?php $s('dt')?> composition of the glyphs
       <?php cp($props['dm'], '', 'min')?>.
     <?php endif?>
     The codepoint is located in the block
@@ -74,7 +78,7 @@ include "nav.php";
             its titlecase variant <?php cp($props['tc'], '', 'min')?><?php endif?>.
     <?php endif?>
     In bidirectional context it acts as
-    <a href="<?php e($router->getUrl('search?bc='.$props['bc']))?>"><?php e($info->getLabel('bc', $props['bc']))?></a>
+    <?php $s('bc')?>
     and is
     <a href="<?php e($router->getUrl('search?bc='.$props['bc'].'&bm='.(int)$props['Bidi_M']))?>"><?php if (! $props['Bidi_M']):?>not <?php endif?>mirrored</a>.
     <?php if (array_key_exists('bmg', $props) && $props['bmg']->getId() != $codepoint->getId()):?>
@@ -82,7 +86,7 @@ include "nav.php";
     <?php endif?>
   </p>
   <p>
-    The codepoint has a <a href="<?php e($router->getUrl('search?ea='.$props['ea']))?>"><?php e($info->getLabel('ea', $props['ea']))?></a>
+    The codepoint has a <?php $s('ea')?>
     <?php e($info->getCategory('ea'))?>.
     <?php $defn = $codepoint->getProp('kDefinition');
       if ($defn):?>
@@ -101,21 +105,12 @@ include "nav.php";
     <?php endif?>
   </p>
   <p>
-    In text U+<?php e($codepoint->getId('hex'))?> behaves as
-    <a href="<?php e($router->getUrl('search?lb='.$props['lb']))?>"><?php
-    e($info->getLabel('lb', $props['lb']))?></a> regarding line breaks.
-    It has type <a href="<?php e($router->getUrl('search?SB='.$props['SB']))?>"><?php
-    e($info->getLabel('SB', $props['SB']))?></a> for sentence and
-    <a href="<?php e($router->getUrl('search?WB='.$props['WB']))?>"><?php
-    e($info->getLabel('WB', $props['WB']))?></a> for word breaks. The
-    <?php e($info->getCategory('GCB'))?> property is
-    <a href="<?php e($router->getUrl('search?GCB='.$props['GCB']))?>"><?php
-    e($info->getLabel('GCB', $props['GCB']))?></a>.
+    In text U+<?php e($codepoint->getId('hex'))?> behaves as <?php $s('lb')?> 
+    regarding line breaks. It has type <?php $s('SB')?> for sentence and <?php 
+    $s('WB')?> for word breaks. The <?php e($info->getCategory('GCB'))?> property 
+    is <?php $s('GCB')?>.
     <?php if($props['nt'] !== 'None'):?>
-    The codepoint has a
-    <a href="<?php e($router->getUrl('search?nt='.$props['nt']))?>"><?php e($info->getLabel('nt', $props['nt']))?></a>
-    numeric value of
-    <a href="<?php e($router->getUrl('search?nv='.$props['nv']))?>"><?php e($props['nv'])?></a>
+        The codepoint has a <?php $s('nt')?> numeric value of <?php $s('nv')?>.
     <?php endif?>
   </p>
   </section>
@@ -286,9 +281,9 @@ if (count($relatives)):?>
                 $db = $router->getSetting('db');
                 return _cp(Codepoint::getCP(hexdec($m[1]), $db), '', 'min');
               }, $v);
-            else:?>
-              <a href="<?php e($router->getUrl('search?'.$k.'='.$v))?>"><?php e($info->getLabel($k, $v))?></a>
-            <?php endif?>
+            else:
+              $s($k);
+            endif?>
             </td>
           </tr>
         <?php endif; endforeach?>
