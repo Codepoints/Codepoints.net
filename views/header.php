@@ -10,6 +10,24 @@
     <script src="static/js/underscore.js"></script>
     <script src="static/js/backbone.js"></script>
     <script src="static/js/visual-unicode.js"></script>
+    <script type="text/javascript">
+      WebFontConfig = {
+        google: {
+          families: [
+            'Droid Serif:n,i,b,ib',
+            'Droid Sans:n,b'
+          ]
+        }
+      };
+      (function() {
+        var wf = document.createElement('script');
+        wf.src = 'http://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+        wf.type = 'text/javascript';
+        wf.async = 'true';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wf, s);
+      })();
+    </script>
     <?php echo isset($headdata)? $headdata : ''?>
   </head>
   <body>
