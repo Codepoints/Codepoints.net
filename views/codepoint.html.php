@@ -169,10 +169,23 @@ include "nav.php";
         <?php $pronunciation = $codepoint->getPronunciation();
         if ($pronunciation):?>
           <tr>
-            <th>Pronunciation</th>
+            <th>Pīnyīn</th>
             <td><?php e($pronunciation)?></td>
           </tr>
         <?php endif?>
+        <?php foreach (array('kIRG_GSource', 'kIRG_HSource', 'kIRG_JSource',
+        'kIRG_KPSource', 'kIRG_KSource', 'kIRG_MSource', 'kIRG_TSource',
+        'kIRG_USource', 'kIRG_VSource', 'kBigFive', 'kCCCII', 'kCNS1986',
+        'kCNS1992', 'kEACC', 'kGB0', 'kGB1', 'kGB3', 'kGB5', 'kGB7', 'kGB8',
+        'kHKSCS', 'kIBMJapan', 'kJis0', 'kJIS0213', 'kJis1', 'kKPS0', 'kKPS1',
+        'kKSC0', 'kKSC1', 'kMainlandTelegraph', 'kPseudoGB1',
+        'kTaiwanTelegraph', 'kXerox') as $v):
+            if ($props[$v]):?>
+          <tr>
+          <th><?php e($info->getCategory($v))?></th>
+            <td><?php e($props[$v])?></td>
+          </tr>
+        <?php endif; endforeach?>
       </tbody>
     </table>
   </section>
