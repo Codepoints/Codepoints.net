@@ -91,6 +91,13 @@ $router->addSetting('db', $db)
                 }
                 $blocks = UnicodeBlock::search($v, $o['db']);
             }
+        } elseif ($v && $k === 'scx') {
+            // scx is a list of sc's
+            $result->addQuery($k, $v);
+            $v2 = explode(' ', $v);
+            foreach($v2 as $v3) {
+                $result->addQuery($k, "%$v3%", 'LIKE', 'OR');
+            }
         } elseif ($v && in_array($k, $cats)) {
             $result->addQuery($k, $v);
         }
