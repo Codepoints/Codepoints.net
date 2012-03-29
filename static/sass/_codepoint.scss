@@ -1,13 +1,13 @@
 a.cp, a .cp {
   background: white;
-  background: -moz-linear-gradient(top, white, #e3e3e3);
+  @include background(linear-gradient(top, white, #e3e3e3));
   border: 1px solid #666;
   @include border-radius(1px);
   @include inline-block;
   width: 32px;
   padding: 4px 0 0;
   font-size: 10px;
-  font-family: Arial,sans-serif;
+  font-family: $sans;
   font-style: normal;
   line-height: 15px;
   text-align: center;

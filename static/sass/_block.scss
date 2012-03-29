@@ -1,12 +1,12 @@
 .bl {
   text-shadow: none;
   background: white;
-  background: -moz-linear-gradient(top, white, #e3e3e3);
+  @include background(linear-gradient(top, white, #e3e3e3));
   border: 1px solid #666;
   @include border-radius(1px);
   @include inline-block;
   font-size: (12em/16);
-  font-family: Arial,sans-serif;
+  font-family: $sans;
   color: #333;
   text-decoration: none;
   @include transition-property('box-shadow, border-color');

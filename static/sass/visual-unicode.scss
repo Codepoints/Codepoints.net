@@ -3,13 +3,11 @@
 @import "global";
 @import "animation";
 
-@include font-face(LastResort, url(../LastResort.ttf));
-
 @include reset-html5;
 
 body {
   margin: 0;
-  font: 1em/1.5 "Droid Serif",Georgia,serif;
+  font: 1em/1.5 $serif;
 }
 
 h1 {
@@ -137,7 +135,7 @@ figure .fig {
 
 .data .missing span {
   background: white;
-  background: -moz-linear-gradient(top, white, #f3f3f3);
+  @include background(linear-gradient(top, white, #f3f3f3));
   border: 1px solid #bbb;
   @include border-radius(1px);
   @include inline-block;

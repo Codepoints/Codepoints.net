@@ -1,3 +1,6 @@
+$sans: "Droid Sans",Arial,Helvetica,sans-serif;
+$serif: "Droid Serif",Georgia,serif;
+
 @mixin user-select($select) {
   $select: unquote($select);
   @include experimental(user-select, $select,
