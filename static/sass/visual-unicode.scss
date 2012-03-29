@@ -29,18 +29,18 @@ h3 {
 }
 
 a:link {
-  color: #800;
+  color: $cLink;
   text-decoration: none;
 }
 
 a:visited {
-  color: #600;
+  color: $cVisited;
   text-decoration: none;
 }
 
 a:focus,
 a:hover {
-  color: #F00;
+  color: $cHighlight;
   text-decoration: none;
   text-shadow: 1px 1px white,
                -1px 1px white;

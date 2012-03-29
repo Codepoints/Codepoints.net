@@ -1,6 +1,10 @@
 $sans: "Droid Sans",Arial,Helvetica,sans-serif;
 $serif: "Droid Serif",Georgia,serif;
 
+$cLink: #880000;
+$cVisited: #660000;
+$cHighlight: #FF0000;
+
 @mixin user-select($select) {
   $select: unquote($select);
   @include experimental(user-select, $select,
@@ -10,11 +14,11 @@ $serif: "Droid Serif",Georgia,serif;
 
 ::-webkit-selection {
   text-shadow: none !important;
-  background: #333;
+  background: $cVisited;
   color: #ddd;
 }
 ::-moz-selection {
   text-shadow: none !important;
-  background: #333;
+  background: $cVisited;
   color: #ddd;
 }
