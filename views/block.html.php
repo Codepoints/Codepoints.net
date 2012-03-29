@@ -28,6 +28,7 @@ include "nav.php";
   <?php else:?>
     <p>Block from U+<?php f('%04X', $block_limits[0])?>
        to U+<?php f('%04X', $block_limits[1])?></p>
+    <p><a href="http://www.unicode.org/charts/PDF/U<?php f('%04X', $block_limits[0])?>.pdf">Chart at Unicode.org</a> (PDF)</p>
     <?php echo $pagination?>
       <ol class="block data">
         <?php
