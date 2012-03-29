@@ -1,4 +1,5 @@
 
+@import "jquery.ui.all.css";
 @import "compass";
 @import "global";
 @import "animation";
@@ -69,6 +70,7 @@ h1, h2, h3, b, strong {
   max-width: 1200px;
 }
 
+.payload.static,
 .payload.codepoint {
   max-width: 800px;
 }
