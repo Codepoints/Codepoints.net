@@ -278,11 +278,13 @@ if (count($relatives)):?>
             elseif (in_array($k, array('kCompatibilityVariant', 'kDefinition',
                 'kSemanticVariant', 'kSimplifiedVariant',
                 'kSpecializedSemanticVariant', 'kTraditionalVariant', 'kZVariant'))):
-              echo preg_replace_callback('/U\+([0-9A-F]{4,6})/', function($m) use ($codepoint, $o) {
+              echo preg_replace_callback('/U\+([0-9A-F]{4,6})/', function($m) use ($codepoint) {
                 if (hexdec($m[1]) === $codepoint->getId()) {
                     return _cp($codepoint, '', 'min');
                 }
-                return _cp(Codepoint::getCP(hexdec($m[1]), $o['db']), '', 'min');
+                $router = Router::getRouter();
+                $db = $router->getSetting('db');
+                return _cp(Codepoint::getCP(hexdec($m[1]), $db), '', 'min');
               }, $v);
             else:?>
               <a href="<?php e($router->getUrl('search?'.$k.'='.$v))?>"><?php e($info->getLabel($k, $v))?></a>
