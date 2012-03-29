@@ -246,6 +246,14 @@ if (count($relatives)):?>
                     } else {
                         return 1;
                     }
+                } elseif ($a[0] === 'k' && $b[0] === 'k') {
+                    if ($a[1] === 'I' && $b[1] !== 'I') {
+                        return -1;
+                    } elseif ($a[1] !== 'I' && $b[1] === 'I') {
+                        return 1;
+                    } else {
+                        return strcasecmp($a, $b);
+                    }
                 } else {
                     $r2[] = $r[$i];
                 }
