@@ -13,7 +13,7 @@ body {
 h1 {
   margin: 0 0 (20em/24);
   font-size: (24em/16);
-  line-height: (20em/24);
+  line-height: (30em/24);
 }
 
 h2 {
@@ -66,6 +66,7 @@ h1, h2, h3, b, strong {
 .payload {
   padding: 10px;
   margin: 30px auto 0;
+  max-width: 1200px;
 }
 
 .payload.codepoint {
@@ -91,8 +92,25 @@ h1, h2, h3, b, strong {
 
 .payload.codepoint aside,
 .payload.codepoint figure {
-  margin-left: -160px;
   margin-bottom: 2em;
+}
+
+@media (max-width: 640px) {
+  .payload.codepoint aside,
+  .payload.codepoint figure {
+    clear: none;
+    width: auto;
+  }
+  .payload.codepoint h1 {
+    clear: left;
+  }
+}
+
+@media (min-width: 1140px) {
+  .payload.codepoint aside,
+  .payload.codepoint figure {
+    margin-left: -160px;
+  }
 }
 
 .payload aside {
