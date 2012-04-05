@@ -101,6 +101,8 @@ $(function() {
   //});
   $(document).tooltip();
   $('nav .search, nav .about').wrapAll('<div class="nav-extra"></div>');
+
+  /* display search form */
   $('nav a[rel="search"]').on('click', function() {
     var $this = $(this),
         el = $('#footer_search').css({
@@ -125,6 +127,8 @@ $(function() {
     }
     return false;
   });
+
+  /* keyboard navigation */
   $(document).on('keydown', function(e) {
     if (e.target !== document.body) {
       return;
@@ -170,6 +174,79 @@ $(function() {
       }
     }
   });
+
+  /* search form enhancement */
+  $('.propsearch').each(function() {
+    return false;
+    var fieldset = $(this),
+        area = $('<div class="propsearch-auto"><div class="inner"><input ' +
+                 'type="text"/></div></div>'),
+        input = area.find('input'),
+        vals = [],
+        map = {},
+        labels = fieldset.find('label'),
+        cbs = fieldset.find(':checkbox').each(function() {
+          var val = this.value,
+              lab = labels.filter('[for="'+this.id+'"]');
+          if (lab.length) {
+            lab = lab.text();
+          } else {
+            lab = val;
+          }
+          vals.push(lab);
+          map[lab] = this.id;
+        });
+    fieldset.find('p').hide();
+    area.appendTo(fieldset);
+    input.on("keydown", function( event ) {
+        if ( event.keyCode === $.ui.keyCode.TAB &&
+            $( this ).data( "autocomplete" ).menu.active ) {
+          event.preventDefault();
+        }
+      })
+    .autocomplete({
+      source: function( request, response ) {
+        // delegate back to autocomplete, but extract the last term
+        response( $.ui.autocomplete.filter(
+          vals, request.term.split(/\s*,\s*/).pop() ) );
+      },
+      focus: function() {
+        // prevent value inserted on focus
+        return false;
+      },
+      select: function( event, ui ) {
+        var terms = $.trim(this.value).split(/\s*,\s*/);
+        // remove the current input
+        terms.pop();
+        terms = $.grep(terms, function(n) {
+          return n && $.inArray(n, vals) > -1;
+        });
+        // add the selected item
+        terms.push( ui.item.value );
+        cbs.each(function() { this.checked = false; });
+        $.each(terms, function() {
+          if (this in map) {
+            cbs.filter('#'+map[this])[0].checked = true;
+          }
+        });
+        // add placeholder to get the comma-and-space at the end
+        terms.push( "" );
+        this.value = terms.join( ", " );
+        input.change();
+        return false;
+      },
+      change: function( event, ui) {
+        var terms = this.value.split(/\s*,\s*/);
+        cbs.each(function() { this.checked = false; });
+        $.each(terms, function() {
+          if (this in map) {
+            cbs.filter('#'+map[this])[0].checked = true;
+          }
+        });
+      }
+    });
+  });
+
 });
 
 })(this, jQuery);
