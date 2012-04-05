@@ -12,13 +12,21 @@ $cHighlight: #FF0000;
   );
 }
 
-::-webkit-selection {
-  text-shadow: none !important;
-  background: $cVisited;
-  color: #ddd;
-}
 ::-moz-selection {
-  text-shadow: none !important;
   background: $cVisited;
   color: #ddd;
+  text-shadow: none;
 }
+
+::-webkit-selection {
+  background: $cVisited;
+  color: #ddd;
+  text-shadow: none;
+}
+
+::selection {
+  background: $cVisited;
+  color: #ddd;
+  text-shadow: none;
+}
+
