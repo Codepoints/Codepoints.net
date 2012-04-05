@@ -1,13 +1,23 @@
 <?php
 
+
+/**
+ * set DEBUG level
+ */
 define('VU_DEBUG', False);
 
 
+/**
+ * load classes from lib/
+ */
 function __autoload($class) {
     require_once 'lib/' . strtolower($class) . '.class.php';
 }
 
 
+/**
+ * log $msg to /tmp/visual-unicode.log
+ */
 function flog($msg) {
    if (VU_DEBUG) {
        error_log(sprintf("[%s]\n%s\n", date("r"), $msg), 3,
@@ -148,7 +158,7 @@ $router->addSetting('db', $db)
 
 ->registerAction(function ($url, $o) {
     // Codepoint Range
-    if (preg_match('/^U\+[0-9a-f]{4,6}\.\.U\+[0-9a-f]{4,6}$/i', $url)) {
+    if (preg_match('/^(?:U\+[0-9a-f]{4,6}(?:\.\.|-|,))+U\+[0-9a-f]{4,6}$/i', $url)) {
         return True;
     }
     return False;
@@ -164,8 +174,9 @@ $router->addSetting('db', $db)
     }
     $pagination = new Pagination($result->getCount(), 128);
     $pagination->setPage($page);
-    $view = new View('search');
-    echo $view->render(compact('range', 'result', 'pagination', 'page'));
+    $view = new View('result');
+    $blocks = Null;
+    echo $view->render(compact('range', 'blocks', 'result', 'pagination', 'page'));
 })
 
 ->registerAction(function ($url, $o) {
