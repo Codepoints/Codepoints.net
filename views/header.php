@@ -6,9 +6,6 @@
     <link rel="stylesheet" href="static/css/visual-unicode.css"/>
     <script src="static/js/jquery.js"></script>
     <script src="static/js/jquery.ui.js"></script>
-    <script src="static/js/json2.js"></script>
-    <script src="static/js/underscore.js"></script>
-    <script src="static/js/backbone.js"></script>
     <script src="static/js/visual-unicode.js"></script>
     <script type="text/javascript">
       WebFontConfig = {
