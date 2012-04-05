@@ -1,5 +1,5 @@
 <?php
-$title = 'About Visual Unicode';
+$title = 'About Codepoints';
 include 'header.php';
 include 'nav.php';
 ?>

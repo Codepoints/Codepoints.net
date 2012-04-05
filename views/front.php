@@ -1,4 +1,4 @@
-<?php $title = 'Visual Unicode';
+<?php $title = 'Codepoints';
 include "header.php";
 include "nav.php";
 ?>
