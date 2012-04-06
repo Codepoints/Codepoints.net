@@ -1,0 +1,12 @@
+.codepoint aside,
+.codepoint figure {
+  margin-left: -160px;
+}
+
+.block.data li:nth-of-type(16n+1) {
+  clear: none;
+}
+
+.block.data li:nth-of-type(32n+1) {
+  clear: left;
+}

@@ -1,0 +1,106 @@
+
+@mixin user-select($select) {
+  // make text un-selectable
+  $select: unquote($select);
+  @include experimental(user-select, $select,
+    -moz, -webkit, not -o, not -ms, -khtml, official
+  );
+}
+
+@mixin selection($bg, $fg, $ts: none) {
+  // control appearance of text selection
+  ::-webkit-selection {
+    background: $bg;
+    color: $fg;
+    text-shadow: $ts;
+  }
+
+  ::-moz-selection {
+    background: $bg;
+    color: $fg;
+    text-shadow: $ts;
+  }
+
+  ::selection {
+    background: $bg;
+    color: $fg;
+    text-shadow: $ts;
+  }
+}
+
+@mixin datalist {
+  // lists of block items
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  @include pie-clearfix;
+  clear: left;
+  & li {
+    list-style: none;
+    float: left;
+    margin: 0 3px 3px 0;
+    padding: 0;
+  }
+  & a {
+    @include basestyle-button;
+    padding: 4px 0 0;
+    width: 32px;
+    img {
+      display: block;
+      margin: 4px auto 8px;
+      @include transition-property(all);
+      @include transition-duration(.5s);
+    }
+    &:focus,
+    &:hover {
+      img {
+        image-rendering: optimizeSpeed;
+        @include transform(scale(2));
+        @include background(radial-gradient(center, contain, rgba(255,255,255,.3),
+        rgba(255,255,255,0)));
+      }
+    }
+  }
+}
+
+@mixin navlist {
+  & ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    @include pie-clearfix;
+  }
+  & li {
+    float: left;
+  }
+}
+
+@mixin basestyle-button {
+  background: white;
+  @include background(linear-gradient(top, white, #e3e3e3));
+  border: 1px solid $cBorderDarker;
+  @include border-radius(1px);
+  @include inline-block;
+  padding: 4px;
+  font-size: (10em/$sFontBase);
+  font-family: $sans;
+  font-style: normal;
+  line-height: 15px;
+  text-align: center;
+  text-shadow: none;
+  text-decoration: none;
+  color: $cTextBold;
+  @include transition-property('box-shadow, border-color');
+  @include transition-duration(.3s);
+  outline: none;
+  box-shadow: inset 0 -1px 1px rgba(255,255,255,.4),
+               1px 0 1px rgba(0,0,0,.05),
+              -1px 0 1px rgba(0,0,0,.05),
+              0 -1px 1px rgba(0,0,0,.15);
+
+  &:focus,
+  &:hover {
+    box-shadow: 0 0 2px 1px $cBrightMark;
+    border-color: $cBorderDark;
+  }
+}
