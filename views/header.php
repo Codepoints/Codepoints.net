@@ -7,6 +7,9 @@
     <title><?php e($title)?> – Codepoints</title>
     <meta name="author" content="Manuel Strehl"/>
     <meta name="description" content="<?php e(isset($hDescription)? $hDescription : '')?>" />
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
     <link rel="stylesheet" href="static/css/visual-unicode.css"/>
     <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="static/images/favicon.ico"/>
     <link rel="search" href="opensearch.xml" type="application/opensearchdescription+xml" title="Search Codepoints" />
