@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <title><?php e($title)?></title>
     <link rel="stylesheet" href="static/css/visual-unicode.css"/>
+    <link rel="search" href="opensearch.xml" type="application/opensearchdescription+xml" title="Search Codepoints" />
     <script src="static/js/jquery.js"></script>
     <script src="static/js/jquery.ui.js"></script>
     <script src="static/js/visual-unicode.js"></script>
