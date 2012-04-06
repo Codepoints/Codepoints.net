@@ -4,8 +4,11 @@
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <title><?php e($title)?></title>
+    <title><?php e($title)?> – Codepoints</title>
+    <meta name="author" content="Manuel Strehl"/>
+    <meta name="description" content="<?php e(isset($hDescription)? $hDescription : '')?>" />
     <link rel="stylesheet" href="static/css/visual-unicode.css"/>
+    <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="static/images/favicon.ico"/>
     <link rel="search" href="opensearch.xml" type="application/opensearchdescription+xml" title="Search Codepoints" />
     <link rel="author" href="/humans.txt" />
     <script src="static/js/jquery.js"></script>
