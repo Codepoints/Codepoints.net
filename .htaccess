@@ -1,3 +1,8 @@
+
+<Files opensearch.xml>
+  ForceType application/opensearchdescription+xml
+</Files>
+
 RewriteEngine On
 
 RewriteRule ^index.php - [L]
@@ -6,6 +11,6 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !/static/.*
 RewriteRule .* index.php [L]
 
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} /static/.*
-RewriteRule .* static/images/logo.png [L]
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} /static/.*
+#RewriteRule .* static/images/logo.png [L]
