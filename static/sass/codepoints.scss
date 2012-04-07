@@ -78,7 +78,9 @@ nav {
   @include navlist;
 }
 
-@import "tooltip";
+.tooltip {
+  @include tooltip;
+}
 
 
 
