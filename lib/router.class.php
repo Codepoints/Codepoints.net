@@ -22,7 +22,8 @@ class Router {
     public static function getRouter() {
         if (! self::$defaultRouter) {
             self::$defaultRouter = new self();
-            self::$defaultRouter->base(dirname($_SERVER['PHP_SELF']).'/');
+            self::$defaultRouter->base(rtrim(dirname($_SERVER['PHP_SELF']),
+                                       '/').'/');
         }
         return self::$defaultRouter;
     }
