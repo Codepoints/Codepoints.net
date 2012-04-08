@@ -1,5 +1,6 @@
-$sans: "Droid Sans",Arial,Helvetica,sans-serif;
-$serif: "Droid Serif",Georgia,serif;
+$sans: "Droid Sans", "DejaVu Sans", Arial, Helvetica, sans-serif;
+$serif: "Droid Serif", "DejaVu Serif", Georgia, serif;
+$mono: "Droid Sans Mono", "DejaVu Sans Mono", Inconsolata, Monaco, "Courier New", monospace;
 
 $sFontBase: 16;
 
@@ -11,12 +12,13 @@ $cHighlight: #FF0000;
 
 $cText: #000000;
 $cTextBold: #2A2A2A;
-$cTextBright: #666666;
+$cTextBright: #999999;
 $cTextYes: #009900;
 $cTextNo: #990000;
 $cTextMaybe: #999999;
 
 $cBorder: #DDDDDD;
+$cBorderLight: #EEEEEE;
 $cBorderMedium: #BBBBBB;
 $cBorderDarker: #666666;
 $cBorderDark: #333333;

@@ -17,11 +17,12 @@ body {
 h1 {
   margin: 0 0 (20em/36);
   font-size: (36em/$sFontBase);
-  line-height: (30em/36);
+  line-height: (40em/36);
+  text-shadow: 0 2px 1px white;
 }
 
 h2 {
-  margin: 0 0 (20em/24);
+  margin: 0 0 (10em/24);
   font-size: (24em/$sFontBase);
   line-height: (30em/24);
 }

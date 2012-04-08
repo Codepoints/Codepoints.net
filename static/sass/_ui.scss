@@ -41,10 +41,37 @@
     margin: 0 3px 3px 0;
     padding: 0;
   }
-  & a {
-    @include basestyle-button;
+  & a,
+  & .missing span {
+    @include inline-block;
     padding: 4px 0 0;
     width: 32px;
+    font-size: (10em/$sFontBase);
+    font-family: $sans;
+    font-style: normal;
+    line-height: 15px;
+    text-align: center;
+    @include border-radius(2px);
+    text-shadow: none;
+  }
+  & .missing span {
+    @include background(linear-gradient(top, rgba(255,255,255,.5), rgba(255,255,255,0)));
+    border: 1px solid $cBackground;
+    color: $cTextBright;
+    height: 43px;
+  }
+  & a {
+    border: 1px solid $cBorderLight;
+    background: transparentize($cBackground, .5);
+    text-decoration: none;
+    color: $cTextBold;
+    @include transition-property('box-shadow, border-color');
+    @include transition-duration(.3s);
+    outline: none;
+    box-shadow: 0 1px rgba(255,255,255,.67),
+                1px 0 rgba(255,255,255,.33),
+                -1px 0 rgba(255,255,255,.33),
+                inset 0 2px 3px -1px rgba(0,0,0,.03);
     img {
       display: block;
       margin: 4px auto 8px;
@@ -53,6 +80,15 @@
     }
     &:focus,
     &:hover {
+      text-shadow: 0 1px white;
+      background: white;
+      @include background(linear-gradient(top, rgba(255,255,255,.5), rgba(127,127,127,0)));
+      border-color: $cBorderMedium;
+      border-bottom-color: $cBorder;
+      box-shadow: 0 0 3px $cBrightMark,
+                  0 1px rgba(0,0,0,.1),
+                  inset 0 -1px rgba(255,255,255,.33),
+                  inset 0 2px 3px -3px white;
       img {
         image-rendering: optimizeSpeed;
         @include transform(scale(2));
@@ -63,47 +99,35 @@
   }
 }
 
+
+
+
+
 @mixin navlist {
+  // navigation list
+  border-bottom: 1px solid $cBorderLight;
+  padding: 10px 10px 0 10px;
+  font-size: (12em/$sFontBase);
+  font-family: $sans;
   & ul {
-    margin: 0;
+    margin: 0 0 10px;
     padding: 0;
     list-style: none;
     @include pie-clearfix;
   }
   & li {
     float: left;
+    margin: 0 1em 0 0;
+  }
+  & a {
+    display: block;
+    border: 1px solid $cBorder;
+    @include border-radius(2px);
+    padding: 4px 8px;
   }
 }
 
-@mixin basestyle-button {
-  background: white;
-  @include background(linear-gradient(top, white, #e3e3e3));
-  border: 1px solid $cBorderDarker;
-  @include border-radius(1px);
-  @include inline-block;
-  padding: 4px;
-  font-size: (10em/$sFontBase);
-  font-family: $sans;
-  font-style: normal;
-  line-height: 15px;
-  text-align: center;
-  text-shadow: none;
-  text-decoration: none;
-  color: $cTextBold;
-  @include transition-property('box-shadow, border-color');
-  @include transition-duration(.3s);
-  outline: none;
-  box-shadow: inset 0 -1px 1px rgba(255,255,255,.4),
-               1px 0 1px rgba(0,0,0,.05),
-              -1px 0 1px rgba(0,0,0,.05),
-              0 -1px 1px rgba(0,0,0,.15);
 
-  &:focus,
-  &:hover {
-    box-shadow: 0 0 2px 1px $cBrightMark;
-    border-color: $cBorderDark;
-  }
-}
 
 
 
@@ -115,11 +139,14 @@
   padding: 2px 8px;
   position: absolute;
   background: black;
-  background: rgba(0,0,0,.67);
+  background: rgba(0,0,0,.5);
   border-radius: 2px;
   border: none;
   color: white;
-  text-shadow: 1px 1px 0 #000;
+  text-shadow: 1px 1px 0 #000,
+               1px -1px 0 #000,
+               -1px 1px 0 #000,
+               -1px -1px 0 #000;
   box-shadow: 1px 1px 2px rgba(0,0,0,.4);
   margin: 0;
   & i {
@@ -132,7 +159,7 @@
     border: 1px solid transparent;
     border-width: 0 4px 6px;
     border-bottom-color: black;
-    border-bottom-color: rgba(0,0,0,.67);
+    border-bottom-color: rgba(0,0,0,.5);
     content: " ";
     text-shadow: none;
     &.down {
@@ -141,7 +168,7 @@
       margin: 0 0 -6px -4px;
       border-width: 6px 4px 0;
       border-top-color: black;
-      border-top-color: rgba(0,0,0,.67);
+      border-top-color: rgba(0,0,0,.5);
     }
   }
 }
