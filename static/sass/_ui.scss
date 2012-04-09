@@ -124,6 +124,21 @@
     border: 1px solid $cBorder;
     @include border-radius(2px);
     padding: 4px 8px;
+    @include background(linear-gradient(top, $cBackBright, $cBackDim));
+    box-shadow: inset 0 1px rgba(255,255,255,.67),
+                0 1px rgba(255,255,255,.67),
+                inset 1px 0 rgba(255,255,255,.33),
+                inset -1px 0 rgba(255,255,255,.33),
+                0 -1px 1px rgba(0,0,0,.05);
+    text-shadow: 0 1px white;
+    &:focus, &:hover {
+      border-color: $cBorderMedium;
+      box-shadow: inset 0 1px rgba(255,255,255,.67),
+                  0 0 3px 1px $cBrightMark;
+    }
+  }
+  & img {
+    vertical-align: middle;
   }
 }
 
