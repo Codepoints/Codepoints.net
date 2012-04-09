@@ -133,8 +133,10 @@
     text-shadow: 0 1px white;
     &:focus, &:hover {
       border-color: $cBorderMedium;
+      background: $cBackBright;
+      @include background(linear-gradient(top, $cBackBright, $cBackground));
       box-shadow: inset 0 1px rgba(255,255,255,.67),
-                  0 0 3px 1px $cBrightMark;
+                  0 0 3px 0px $cBrightMark;
     }
   }
   & img {
@@ -154,7 +156,7 @@
   padding: 2px 8px;
   position: absolute;
   background: black;
-  background: rgba(0,0,0,.5);
+  background: rgba(0,0,0,.67);
   border-radius: 2px;
   border: none;
   color: white;
@@ -174,7 +176,7 @@
     border: 1px solid transparent;
     border-width: 0 4px 6px;
     border-bottom-color: black;
-    border-bottom-color: rgba(0,0,0,.5);
+    border-bottom-color: rgba(0,0,0,.67);
     content: " ";
     text-shadow: none;
     &.down {
@@ -183,7 +185,7 @@
       margin: 0 0 -6px -4px;
       border-width: 6px 4px 0;
       border-top-color: black;
-      border-top-color: rgba(0,0,0,.5);
+      border-top-color: rgba(0,0,0,.67);
     }
   }
 }
