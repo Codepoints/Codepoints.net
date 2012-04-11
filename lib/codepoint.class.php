@@ -153,7 +153,10 @@ class Codepoint {
                             WHERE codepoint_image.cp = codepoints.cp) image,
                           (SELECT codepoint_script.sc
                              FROM codepoint_script
-                            WHERE codepoint_script.cp = codepoints.cp) sc
+                            WHERE codepoint_script.cp = codepoints.cp) sc,
+                          (SELECT codepoint_abstract.abstract
+                             FROM codepoint_abstract
+                            WHERE codepoint_abstract.cp = codepoints.cp) abstract
                 FROM codepoints
                 WHERE cp = :cp LIMIT 1');
             $query->execute(array(':cp' => $this->id));
@@ -321,8 +324,9 @@ class Codepoint {
      */
     public function getAlias() {
         if ($this->alias === NULL) {
-            $query = $this->db->prepare('SELECT cp, name, `type` FROM alias
-                                        WHERE cp = :cp');
+            $query = $this->db->prepare('SELECT cp, alias, `type`
+                                           FROM codepoint_alias
+                                          WHERE cp = :cp');
             $query->execute(array(':cp' => $this->id));
             $this->alias = $query->fetchAll(PDO::FETCH_ASSOC);
             $query->closeCursor();

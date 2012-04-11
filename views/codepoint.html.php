@@ -113,6 +113,13 @@ $s = function($cat) use ($router, $info, $props) {
         The codepoint has a <?php $s('nt')?> numeric value of <?php $s('nv')?>.
     <?php endif?>
   </p>
+  <?php if (array_key_exists('abstract', $props) && $props['abstract']):?>
+    <p>The <a href="http://en.wikipedia.org/wiki/%<?php e($codepoint->getRepr('UTF-8', '%'))?>">Wikipedia</a>
+    says about this codepoint:</p>
+    <blockquote>
+      <?php echo strip_tags($props['abstract'], '<p><b><strong class="selflink"><strong><em><i><var><sup><sub><tt><ul><ol><li><samp><small><hr><h2><h3><h4><h5><dfn><dl><dd><dt><u><abbr><big><blockquote><br><center><del><ins><kbd>')?>
+    </blockquote>
+  <?php endif?>
   </section>
   <section>
     <h2>Representations</h2>
@@ -155,7 +162,7 @@ $s = function($cat) use ($router, $info, $props) {
             <td><?php if ($a['type'] === 'html') {
                 echo '&amp;';
             }
-            e($a['name']);
+            e($a['alias']);
             if ($a['type'] === 'html') {
                 echo ';';
             }?></td>
@@ -256,7 +263,7 @@ if (count($relatives)):?>
             return strcasecmp($a, $b);
         });
         foreach ($props as $k => $v):
-            if (! in_array($k, array('cp', 'image')) && ! ($k[0] === 'k' && ! $v)):?>
+            if (! in_array($k, array('cp', 'image', 'abstract')) && ! ($k[0] === 'k' && ! $v)):?>
           <tr class="p_<?php e($k)?>">
             <th><?php e($info->getCategory($k))?> <small>(<?php e($k)?>)</small></th>
             <td>
