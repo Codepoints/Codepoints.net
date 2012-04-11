@@ -40,6 +40,10 @@
     float: left;
     margin: 0 3px 3px 0;
     padding: 0;
+    &:before {
+      content: none;
+      display: inline;
+    }
   }
   & a,
   & .missing span {
@@ -119,6 +123,10 @@
   & li {
     float: left;
     margin: 0 -1px 0 0;
+    &:before {
+      content: none;
+      display: inline;
+    }
     &:first-child a {
       border-radius: 2px 0 0 2px;
     }
@@ -128,6 +136,7 @@
     &.start a:before {
       content: url(../images/logo.png);
       vertical-align: middle;
+      line-height: 0;
       padding-right: .3em;
     }
     &.next a:after {
@@ -152,27 +161,7 @@
     }
   }
   & a {
-    display: block;
-    border: 1px solid $cBorder;
-    //@include border-radius(2px);
-    padding: 4px 8px;
-    @include background(linear-gradient(top, $cBackBright, $cBackDim));
-    box-shadow: inset 0 1px rgba(255,255,255,.67),
-                0 1px rgba(255,255,255,.67),
-                inset 1px 0 rgba(255,255,255,.33),
-                inset -1px 0 rgba(255,255,255,.33),
-                0 -1px 1px rgba(0,0,0,.05);
-    text-shadow: 0 1px white;
-    &:focus, &:hover {
-      outline: none;
-      border-color: $cBorderMedium;
-      background: $cBackBright;
-      @include background(linear-gradient(top, $cBackBright, $cBackground));
-      box-shadow: inset 0 1px rgba(255,255,255,.67),
-                  0 0 3px 0px $cBrightMark;
-      position: relative;
-      z-index: 10;
-    }
+    @include button-base;
     &:after,
     &:before {
       color: $cTextBright;
@@ -187,6 +176,124 @@
 }
 
 
+
+@mixin button-base {
+  // base style for buttons
+  @include inline-block;
+  border: 1px solid $cBorder;
+  padding: 4px 8px;
+  @include background(linear-gradient(top, $cBackBright, $cBackDim));
+  box-shadow: inset 0 1px rgba(255,255,255,.67),
+              0 1px rgba(255,255,255,.67),
+              inset 1px 0 rgba(255,255,255,.33),
+              inset -1px 0 rgba(255,255,255,.33),
+              0 -1px 1px rgba(0,0,0,.05);
+  text-shadow: 0 1px white;
+  text-align: center;
+  @include transition-property("background, color, box-shadow, border-color");
+  @include transition-duration(.3s);
+  &:focus, &:hover {
+    outline: none;
+    border-color: $cBorderMedium;
+    background: $cBackBright;
+    @include background(linear-gradient(top, $cBackBright, $cBackground));
+    box-shadow: inset 0 1px rgba(255,255,255,.67),
+                0 0 3px 0px $cBrightMark;
+    position: relative;
+    z-index: 10;
+  }
+}
+
+
+
+@mixin pagination {
+  // pagination lists
+  list-style: none;
+  margin: 10px 0;
+  padding: 0;
+  text-align: center;
+  max-width: 1182px;
+  clear: left;
+
+  & li {
+    @include inline-block;
+    margin: 0 1px 0 0;
+    padding: 0;
+    &:before {
+      content: none;
+      display: inline;
+    }
+  }
+
+  & .ellipsis {
+    min-width: 36px;
+  }
+
+  & span {
+    @include inline-block;
+    padding: 4px 8px;
+    min-width: 18px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    text-shadow: 0 1px white;
+    color: $cTextBold;
+    font-weight: bold;
+    box-shadow: inset 0 4px 4px -4px rgba(0,0,0,.2),
+                inset 4px 0 4px -4px rgba(0,0,0,.1),
+                inset -4px 0 4px -4px rgba(0,0,0,.1);
+    border: 1px solid $cBorderLight;
+    cursor: default;
+  }
+
+  & a {
+    @include button-base;
+    min-width: 18px;
+    height: 24px;
+    line-height: 24px;
+  }
+
+  & .prev a,
+  & .next a,
+  & .prev span,
+  & .next span {
+    text-indent: -9999px;
+  }
+
+  & .prev a:after,
+  & .next a:after,
+  & .prev span:after,
+  & .next span:after {
+    border-color: transparent;
+    border-style: solid;
+    border-width: 8px;
+    width: 0;
+    height: 0;
+    display: block;
+    margin-top: -20px;
+    content: " ";
+  }
+
+  & .prev {
+    float: left;
+
+    & a:after {
+      border-color: transparent $cLink transparent transparent;
+      margin-left: -4px;
+    }
+  }
+
+  & .next {
+    float: right;
+
+    & a:after {
+      border-color: transparent transparent transparent $cLink;
+      margin-left: 6px;
+      margin-right: -6px;
+    }
+  }
+
+}
 
 
 

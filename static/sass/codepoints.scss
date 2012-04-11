@@ -84,6 +84,10 @@ nav {
   @include tooltip;
 }
 
+.pagination {
+  @include pagination;
+}
+
 
 
 
