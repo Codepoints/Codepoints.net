@@ -6,6 +6,7 @@ class Codepoint {
     protected $id;
     protected $db;
     protected $properties;
+    protected $confusables;
     protected $related;
     protected $name;
     protected $block;
@@ -181,6 +182,31 @@ class Codepoint {
             }
         }
         return $this->properties;
+    }
+
+    /**
+     * fetch related characters
+     */
+    public function getConfusables() {
+        if ($this->confusables === NULL) {
+            $confusables = array();
+            $query = $this->db->prepare('SELECT *
+                                           FROM codepoint_confusables
+                                          WHERE cp = :cp');
+            if ($query) {
+                $query->execute(array(':cp' => $this->id));
+                $conf = $query->fetchAll(PDO::FETCH_ASSOC);
+                $query->closeCursor();
+                foreach ($conf as $v) {
+                    if (! array_key_exists($v['id'], $confusables)) {
+                        $confusables[$v['id']] = array("type"=> $v['type']);
+                    }
+                    $confusables[$v['id']][$v['order']] = self::getCP($v['other'], $this->db);
+                }
+            }
+            $this->confusables = $confusables;
+        }
+        return $this->confusables;
     }
 
     /**

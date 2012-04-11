@@ -115,7 +115,7 @@ $s = function($cat) use ($router, $info, $props) {
   </p>
   <?php if (array_key_exists('abstract', $props) && $props['abstract']):?>
     <p>The <a href="http://en.wikipedia.org/wiki/%<?php e($codepoint->getRepr('UTF-8', '%'))?>">Wikipedia</a>
-    says about this codepoint:</p>
+    has the following information about this codepoint:</p>
     <blockquote>
       <?php echo strip_tags($props['abstract'], '<p><b><strong class="selflink"><strong><em><i><var><sup><sub><tt><ul><ol><li><samp><small><hr><h2><h3><h4><h5><dfn><dl><dd><dt><u><abbr><big><blockquote><br><center><del><ins><kbd>')?>
     </blockquote>
@@ -200,6 +200,15 @@ if (count($relatives)):?>
         <li><?php cp($rel)?></li>
       <?php endforeach?>
     </ul>
+    <?php $confusables = $codepoint->getConfusables();
+    if (count($confusables)):?>
+      <h3>Confusables</h3>
+      <ul class="data">
+        <?php foreach ($confusables as $rel): unset($rel["type"]); ?>
+          <li><?php cp($rel)?></li>
+        <?php endforeach?>
+      </ul>
+    <?php endif?>
   </section>
 <?php endif?>
   <section>
