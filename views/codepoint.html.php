@@ -192,16 +192,18 @@ $s = function($cat) use ($router, $info, $props) {
     </table>
   </section>
 <?php $relatives = $codepoint->related();
-if (count($relatives)):?>
+$confusables = $codepoint->getConfusables();
+if (count($relatives) + count($confusables)):?>
   <section>
     <h2>Related Characters</h2>
-    <ul class="data">
-      <?php foreach ($relatives as $rel):?>
-        <li><?php cp($rel)?></li>
-      <?php endforeach?>
-    </ul>
-    <?php $confusables = $codepoint->getConfusables();
-    if (count($confusables)):?>
+    <?php if (count($relatives)):?>
+      <ul class="data">
+        <?php foreach ($relatives as $rel):?>
+          <li><?php cp($rel)?></li>
+        <?php endforeach?>
+      </ul>
+    <?php endif?>
+    <?php if (count($confusables)):?>
       <h3>Confusables</h3>
       <ul class="data">
         <?php foreach ($confusables as $rel): unset($rel["type"]); ?>
