@@ -39,6 +39,12 @@ $router->addSetting('db', $db)
     echo $view->render(array('planes' => UnicodePlane::getAll($o['db'])));
 })
 
+->registerAction('planes', function ($request, $o) {
+    // all planes
+    $view = new View('planes');
+    echo $view->render(array('planes' => UnicodePlane::getAll($o['db'])));
+})
+
 ->registerAction(array('about'), function ($request, $o) {
     // static pages
     $view = new View($request->trunkUrl);

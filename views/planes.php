@@ -1,11 +1,9 @@
-<?php $title = 'Codepoints';
+<?php $title = 'Unicode Planes';
 include "header.php";
 include "nav.php";
 ?>
-<div class="payload front">
+<div class="payload planes">
   <h1><?php e($title)?></h1>
-  <p>The <a href="<?php e($router->getUrl('planes'))?>">Unicode Planes</a>
-  </p>
   <ol>
     <?php foreach ($planes as $plane):?>
       <li><a href="<?php e($router->getUrl($plane))?>"><?php e($plane->name)?></a></li>
