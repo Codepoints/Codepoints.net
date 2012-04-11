@@ -24,7 +24,7 @@
       border-bottom-width: 0;
     }
     th {
-      color: $cTextBright;
+      color: $cTextLight;
       font-weight: normal;
       font-style: italic;
     }
@@ -36,6 +36,7 @@
       font-style: normal;
       font-variant: small-caps;
       letter-spacing: .15em;
+      color: $cTextBright;
     }
     thead th:first-child {
       text-align: right;
@@ -100,7 +101,7 @@
 
 @mixin cp-sections {
   .codepoint {
-    max-width: 800px;
+    max-width: 880px;
     & h1 {
       letter-spacing: .05em;
       word-spacing: .1em;

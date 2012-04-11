@@ -56,6 +56,25 @@ h1, h2, h3, b, strong {
   color: $cTextBold;
 }
 
+blockquote {
+  font-style: italic;
+  & i, & em, & var & blockquote {
+    font-style: normal;
+  }
+}
+
+ul li {
+  list-style: none;
+  &:before {
+    display: block;
+    content: "\2013";
+    float: left;
+    margin-left: -1.2em;
+    width: 1.2em;
+    color: $cTextLight;
+  }
+}
+
 .hidden {
   display: none;
 }
@@ -95,10 +114,14 @@ nav {
 
 
 
+@media (max-width: 640px) {
+  @import "small-screen";
+}
+
 @media (min-width: 641px) {
   @import "medium-screen";
 }
 
-@media (min-width: 1141px) {
+@media (min-width: 1230px) {
   @import "large-screen";
 }
