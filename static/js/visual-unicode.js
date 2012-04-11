@@ -102,6 +102,16 @@ $(function() {
   $(document).tooltip();
   //$('nav .search, nav .about').wrapAll('<div class="nav-extra"></div>');
 
+  var headline = $('.front h1'), resizer;
+  if (headline.length) {
+    // with hat tip to fittext.js
+    resizer = function () {
+      headline.css('font-size', Math.max(Math.min(headline.width() / 7.5, 200), 10));
+    };
+    resizer();
+    $(window).resize(resizer);
+  }
+
   /* display search form */
   $('nav a[rel="search"]').on('click', function() {
     var $this = $(this),

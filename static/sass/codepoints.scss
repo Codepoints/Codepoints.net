@@ -86,6 +86,17 @@ ul li {
   border-top: 1px solid white;
 }
 
+.front h1 {
+  margin: 0 0 30px;
+  text-transform: uppercase;
+  font-size: 9em;
+  line-height: 1em;
+  letter-spacing: .05em;
+  color: white;
+  text-shadow: 0 1px 1px rgba(0,0,0,.5);
+  text-align: center;
+}
+
 @include props;
 @include cp-dl;
 @include cp-fig;
