@@ -100,7 +100,7 @@ $(function() {
   //  return animatePage($(this), this.href, 'minimize', 'zoomout');
   //});
   $(document).tooltip();
-  $('nav .search, nav .about').wrapAll('<div class="nav-extra"></div>');
+  //$('nav .search, nav .about').wrapAll('<div class="nav-extra"></div>');
 
   /* display search form */
   $('nav a[rel="search"]').on('click', function() {
