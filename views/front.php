@@ -11,9 +11,10 @@ include "nav.php";
   </form>
   <article>
     <blockquote class="central">
-      <p><strong>Codepoint</strong>, <em>n.</em> the representation of a character in a computer system.</p>
+      <p><strong>Codepoint</strong>, <em>n.</em> a position of a character in an encoding system.</p>
     </blockquote>
     <p>The <a href="<?php e($router->getUrl('planes'))?>">Unicode Planes</a>
+       or maybe you are more daring and want <a href="<?php e($router->getUrl('random'))?>">a random codepoint</a>?
     </p>
     <ol>
       <?php foreach ($planes as $plane):?>
