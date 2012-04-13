@@ -1,7 +1,7 @@
 # Require any additional compass plugins here.
 
 # Set this to the root of your project when deployed:
-http_path = "/projekte/visual-unicode/"
+http_path = "/"
 css_dir = "static/css"
 sass_dir = "static/sass"
 images_dir = "static/images"
