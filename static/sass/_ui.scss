@@ -180,8 +180,25 @@
 @mixin button-base {
   // base style for buttons
   @include inline-block;
-  border: 1px solid $cBorder;
+  @include button-normal;
   padding: 4px 8px;
+  text-align: center;
+  @include transition-property("background, color, box-shadow, border-color");
+  @include transition-duration(.3s);
+  &:focus, &:hover {
+    @include button-focus;
+    outline: none;
+    position: relative;
+    z-index: 10;
+  }
+  &:active {
+    @include button-active;
+  }
+}
+
+@mixin button-normal {
+  // a button in its normal state
+  border: 1px solid $cBorder;
   @include background(linear-gradient(top, $cBackBright, $cBackDim));
   box-shadow: inset 0 1px rgba(255,255,255,.67),
               0 1px rgba(255,255,255,.67),
@@ -189,19 +206,40 @@
               inset -1px 0 rgba(255,255,255,.33),
               0 -1px 1px rgba(0,0,0,.05);
   text-shadow: 0 1px white;
-  text-align: center;
-  @include transition-property("background, color, box-shadow, border-color");
-  @include transition-duration(.3s);
-  &:focus, &:hover {
-    outline: none;
-    border-color: $cBorderMedium;
-    background: $cBackBright;
-    @include background(linear-gradient(top, $cBackBright, $cBackground));
-    box-shadow: inset 0 1px rgba(255,255,255,.67),
-                0 0 3px 0px $cBrightMark;
-    position: relative;
-    z-index: 10;
-  }
+}
+
+@mixin button-disabled {
+  // a disabled button
+  border: 1px solid $cBorder;
+  padding: 4px 8px;
+  background: $cBackDim;
+  box-shadow: inset 0 1px rgba(255,255,255,.67),
+              0 1px rgba(255,255,255,.67),
+              inset 1px 0 rgba(255,255,255,.33),
+              inset -1px 0 rgba(255,255,255,.33),
+              0 -1px 1px rgba(0,0,0,.05);
+  text-shadow: 0 1px white;
+  color: $cTextLight;
+  cursor: default;
+}
+
+@mixin button-focus {
+  // a button in hover/focus state
+  border-color: $cBorderMedium;
+  background: $cBackBright;
+  @include background(linear-gradient(top, $cBackBright, $cBackground));
+  box-shadow: inset 0 1px rgba(255,255,255,.67),
+              0 0 3px 0px $cBrightMark;
+}
+
+@mixin button-active {
+  // a button in active state
+  text-shadow: 0 1px white;
+  color: $cTextBold;
+  box-shadow: inset 0 4px 4px -4px rgba(0,0,0,.2),
+              inset 4px 0 4px -4px rgba(0,0,0,.1),
+              inset -4px 0 4px -4px rgba(0,0,0,.1);
+  border: 1px solid $cBorderLight;
 }
 
 
@@ -231,18 +269,13 @@
 
   & span {
     @include inline-block;
+    @include button-active;
     padding: 4px 8px;
     min-width: 18px;
     height: 24px;
     line-height: 24px;
     text-align: center;
-    text-shadow: 0 1px white;
-    color: $cTextBold;
     font-weight: bold;
-    box-shadow: inset 0 4px 4px -4px rgba(0,0,0,.2),
-                inset 4px 0 4px -4px rgba(0,0,0,.1),
-                inset -4px 0 4px -4px rgba(0,0,0,.1);
-    border: 1px solid $cBorderLight;
     cursor: default;
   }
 

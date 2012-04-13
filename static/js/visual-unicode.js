@@ -100,24 +100,26 @@ $(function() {
   //  return animatePage($(this), this.href, 'minimize', 'zoomout');
   //});
   $(document).tooltip();
-  //$('nav .search, nav .about').wrapAll('<div class="nav-extra"></div>');
 
+  /* scale the front headline text */
   var headline = $('.front h1'), resizer;
   if (headline.length) {
     // with hat tip to fittext.js
     resizer = function () {
-      headline.css('font-size', Math.max(Math.min(headline.width() / 7.5, 200), 10));
+      headline.css('font-size', Math.max(Math.min(headline.width() / 7.5, 160), 20));
     };
     resizer();
-    $(window).resize(resizer);
+    $(window).on("load resize", resizer);
   }
 
   /* display search form */
   $('nav a[rel="search"]').on('click', function() {
     var $this = $(this),
-        el = $('#footer_search').css({
-          right: $(window).width() - $this.offset().left - $this.outerWidth(),
-          top: $this.offset().top + $this.outerHeight() + 4
+        el = $('#footer_search').position({
+          my: 'left top',
+          at: 'left bottom',
+          of: $this,
+          collision: 'fit'
         });
     if (! el.data('extended')) {
       el.data('extended',
@@ -127,8 +129,8 @@ $(function() {
     if (el.is(':hidden')) {
       el.slideDown('normal').find(':text:eq(0)').focus();
       $(document).one('click keydown', function __hideMe(e) {
-        if (el.find(e.target).length === 0 &&
-            (e.type === 'click' || e.which === 27)) {
+        if (e.which === 27 || (el.find(e.target).length === 0 &&
+            e.type === 'click')) {
           el.slideUp('normal');
         } else {
           $(document).one('click keydown', __hideMe);
