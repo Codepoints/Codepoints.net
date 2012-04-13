@@ -3,6 +3,7 @@ $title = 'Page not Found';
 if ($block) {
     $title = 'Codepoint not Found';
 }
+$hDescription = 'HTTP error 404';
 include "header.php";
 include "nav.php";
 ?>

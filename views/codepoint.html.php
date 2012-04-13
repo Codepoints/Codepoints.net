@@ -11,6 +11,8 @@ endif;
 if ($next):
     $headdata .= '<link rel="next" href="' . q($router->getUrl($next)) . '" />';
 endif;
+$hDescription = sprintf('The Unicode codepoint U+%04X is located in the block “%s”. It belongs to the %s script.',
+    $codepoint->getId(), $block->getName(), $info->getLabel('sc', $props['sc']));
 include "header.php";
 $nav = array();
 if ($prev) {

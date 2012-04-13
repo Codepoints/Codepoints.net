@@ -1,5 +1,6 @@
 <?php
 $title = 'Search';
+$hDescription = 'Search Codepoints.net.';
 include "header.php";
 include "nav.php";
 ?>
