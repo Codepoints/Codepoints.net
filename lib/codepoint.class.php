@@ -185,7 +185,7 @@ class Codepoint {
     }
 
     /**
-     * fetch related characters
+     * fetch characters that can be confused with the current one
      */
     public function getConfusables() {
         if ($this->confusables === NULL) {
@@ -193,17 +193,50 @@ class Codepoint {
             $query = $this->db->prepare('SELECT *
                                            FROM codepoint_confusables
                                           WHERE cp = :cp');
-            if ($query) {
-                $query->execute(array(':cp' => $this->id));
-                $conf = $query->fetchAll(PDO::FETCH_ASSOC);
-                $query->closeCursor();
-                foreach ($conf as $v) {
-                    if (! array_key_exists($v['id'], $confusables)) {
-                        $confusables[$v['id']] = array("type"=> $v['type']);
-                    }
-                    $confusables[$v['id']][$v['order']] = self::getCP($v['other'], $this->db);
+            $query->execute(array(':cp' => $this->id));
+            $conf = $query->fetchAll(PDO::FETCH_ASSOC);
+            $base = array();
+            foreach ($conf as $v) {
+                if (! array_key_exists($v['type'], $base)) {
+                    $base[$v['type']] = array(); // any of SL, SA, ML, MA
+                }
+                $base[$v['type']][(int)$v['order']] = self::getCP($v['other'],
+                                                               $this->db);
+            }
+            $fetched = array();
+            $query = $this->db->prepare('SELECT *
+                                           FROM codepoint_confusables
+                                          WHERE other = :cp');
+            $query->execute(array(':cp' => $this->id));
+            $conf = $query->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($conf as $v) {
+                $tmp = self::getCP($v['cp'], $this->db);
+                if (! in_array($tmp, $confusables)) {
+                    $confusables[] = $tmp;
                 }
             }
+            foreach($base as $t => $c) {
+                if (! in_array($c, $confusables)) {
+                    $confusables[] = $c;
+                }
+                if (count($c) === 1) {
+                    $d = $c[0];
+                    if (! in_array($d, $fetched)) {
+                        $fetched[] = $d;
+                        $query->execute(array(':cp' => $d->getId()));
+                        $conf = $query->fetchAll(PDO::FETCH_ASSOC);
+                        foreach ($conf as $v) {
+                            $tmp = self::getCP($v['cp'], $this->db);
+                            if (! in_array($tmp, $confusables)) {
+                                $confusables[] = $tmp;
+                            }
+                        }
+                    }
+                }
+            }
+            $query->closeCursor();
+
+            sort($confusables);
             $this->confusables = $confusables;
         }
         return $this->confusables;

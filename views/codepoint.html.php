@@ -208,7 +208,7 @@ if (count($relatives) + count($confusables)):?>
     <?php if (count($confusables)):?>
       <h3>Confusables</h3>
       <ul class="data">
-        <?php foreach ($confusables as $rel): unset($rel["type"]); ?>
+        <?php foreach ($confusables as $rel): ?>
           <li><?php cp($rel)?></li>
         <?php endforeach?>
       </ul>
