@@ -1,9 +1,16 @@
 <?php
 $title = 'About Codepoints';
+$hDescription = 'Codepoints.net is a site dedicated to Unicode and all things related to codepoints, characters, glyphs and internationalization.';
+$nav = array(
+  'main' => '<a href="#main">About this site</a>',
+  'find' => '<a href="#find">Finding Characters</a>',
+  'glossary' => '<a href="#glossary">Glossary of Common Terms</a>',
+  'unicode' => '<a href="#unicode">About Unicode</a>',
+);
 include 'header.php';
 include 'nav.php';
 ?>
-<div class="payload static">
+<div class="payload static about">
   <h1><?php e($title)?></h1>
   <p>The content on this website reflects the information found in<br/>
   <em>The Unicode Consortium.</em> The Unicode Standard, Version 6.1.0,
