@@ -13,6 +13,5 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !/static/.*
 RewriteRule .* index.php [L]
 
-#RewriteCond %{REQUEST_FILENAME} !-f
-#RewriteCond %{REQUEST_FILENAME} /static/.*
-#RewriteRule .* static/images/logo.png [L]
+RewriteRule ^favicon.ico static/images/favicon.ico [L]
+
