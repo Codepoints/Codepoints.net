@@ -1,4 +1,5 @@
 <?php $title = 'Unicode Planes';
+$hDescription = 'Unicode defines 16 planes, in which all the codepoints are separated.';
 include "header.php";
 include "nav.php";
 ?>
