@@ -11,11 +11,18 @@ include "nav.php";
   </form>
   <article>
     <blockquote class="central">
-      <p><strong>Codepoint</strong>, <em>n.</em> the position of a character in an encoding system.</p>
+      <p><strong>Codepoint</strong>, <em>n.</em> the position of a character in
+         an encoding system.</p>
     </blockquote>
+    <p>This site is dedicated to all the characters, that are defined in
+       the <a href="http://unicode.org">Unicode Standard</a>. Theoretically,
+       these should be <em>all characters ever used</em>. In practice Unicode
+       has <em><?php e($nCPs)?> codepoints</em> defined at the moment, mapping characters
+       from <a href="<?php e($router->getUrl('egyptian_hieroglyphs'))?>">Egyptian Hieroglyphs</a>
+       to <a href="<?php e($router->getUrl('dingbats'))?>">Dingbats and Symbols</a>.
     <p>All codepoints are arranged in 16 so-called
        <a href="<?php e($router->getUrl('planes'))?>">planes</a>. These planes
-       are further divided in several blocks with
+       are further divided into several blocks with
        <a href="<?php e($router->getUrl('/basic_latin'))?>">Basic Latin</a>
        being the first one.
        You can browse one by one by starting with the first codepoint,
@@ -23,8 +30,7 @@ include "nav.php";
        Or maybe you are more daring and want
        <a href="<?php e($router->getUrl('random'))?>">a random codepoint</a>?
     </p>
-    <h2>All Unicode Planes</h2>
-    <p><i>(as currently defined)</i></p>
+    <h2>The <i>(currently defined)</i> Unicode Planes</h2>
     <ol>
       <?php foreach ($planes as $plane):?>
         <li><a href="<?php e($router->getUrl($plane))?>"><?php e($plane->name)?></a></li>

@@ -36,7 +36,11 @@ $router->addSetting('db', $db)
 ->registerAction('', function ($request, $o) {
     // Index
     $view = new View('front');
-    echo $view->render(array('planes' => UnicodePlane::getAll($o['db'])));
+    $x = $o['db']->prepare('SELECT COUNT(*) AS c FROM codepoints');
+    $x->execute();
+    $row = $x->fetch();
+    echo $view->render(array('planes' => UnicodePlane::getAll($o['db']),
+      'nCPs' => $row['c']));
 })
 
 ->registerAction('planes', function ($request, $o) {
