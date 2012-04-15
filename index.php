@@ -45,6 +45,12 @@ $router->addSetting('db', $db)
     echo $view->render(array('planes' => UnicodePlane::getAll($o['db'])));
 })
 
+->registerAction('wizard', function ($request, $o) {
+    // a "find my CP" wizard
+    $view = new View('wizard');
+    echo $view->render();
+})
+
 ->registerAction('random', function ($request, $o) {
     // random codepoint
     $x = $o['db']->prepare('SELECT cp FROM codepoints ORDER BY RANDOM() LIMIT 1');
