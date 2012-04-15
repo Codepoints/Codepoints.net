@@ -1,4 +1,17 @@
-CODEPOINTS.NET
 
-Author: Manuel Strehl
+
+                          C O D E P O I N T S . N E T
+
+
+                                   /* TEAM */
+
+Author: Manuel Strehl, @m_strehl
+Hosting: Uberspace.de
+
+
+                                 /* SOFTWARE */
+
+Online: https://github.com/Boldewyn/codepoints.net
+Standards: HTML5, CSS 3, JavaScript
+
 
