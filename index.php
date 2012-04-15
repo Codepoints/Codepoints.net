@@ -269,8 +269,22 @@ if ($router->callAction() === False) {
                 $router->getSetting('db'));
         } catch(Exception $e) {}
     }
+    $req = $router->getSetting('request');
+    $cps = array();
+    $url = rawurldecode($req->trunkUrl);
+    if (mb_strlen($url) < 128) {
+        foreach (preg_split('/(?<!^)(?!$)/u', $url) as $c) {
+            $cc = unpack('N', mb_convert_encoding($c, 'UCS-4BE', 'UTF-8'));
+            try {
+                $cx = Codepoint::getCP($cc[1], $db);
+                $cx->getName();
+                $cps[] = $cx;
+            } catch (Exception $e) {
+            }
+        }
+    }
     $view = new View('error404');
-    echo $view->render(compact('planes', 'block'));
+    echo $view->render(compact('planes', 'block', 'cps'));
 }
 
 
