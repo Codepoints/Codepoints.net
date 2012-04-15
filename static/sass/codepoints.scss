@@ -93,6 +93,14 @@ ul li {
   }
 }
 
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button,
+.button {
+  @include button-base;
+}
+
 .hidden {
   display: none;
 }
@@ -197,7 +205,6 @@ nav {
 }
 
 #footer_search button {
-  @include button-base;
   font-size: (12em/$sFontBase);
 }
 
@@ -226,7 +233,6 @@ nav {
   }
 
   button {
-    @include button-base;
     font-size: (21em/$sFontBase);
   }
 }
