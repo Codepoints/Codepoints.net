@@ -10,7 +10,7 @@ $nav = array();
 if ($prev) {
     $nav["prev"] = '<a rel="prev" href="'.q($router->getUrl($prev)).'">'.q($prev->name).'</a>';
 }
-$nav["up"] = '<a rel="up" href="'.q($router->getUrl()).'">Unicode</a>';
+$nav["up"] = '<a rel="up" href="'.q($router->getUrl('planes')).'">Unicode</a>';
 if ($next) {
     $nav["next"] = '<a rel="next" href="'.q($router->getUrl($next)).'">'.q($next->name).'</a>';
 }
