@@ -193,6 +193,9 @@
   }
   &:active {
     @include button-active;
+    outline: none;
+    position: relative;
+    z-index: 10;
   }
 }
 
