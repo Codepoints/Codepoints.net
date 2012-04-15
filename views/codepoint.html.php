@@ -118,7 +118,7 @@ $s = function($cat) use ($router, $info, $props) {
   <?php if (array_key_exists('abstract', $props) && $props['abstract']):?>
     <p>The <a href="http://en.wikipedia.org/wiki/%<?php e($codepoint->getRepr('UTF-8', '%'))?>">Wikipedia</a>
     has the following information about this codepoint:</p>
-    <blockquote>
+    <blockquote cite="http://en.wikipedia.org/wiki/%<?php e($codepoint->getRepr('UTF-8', '%'))?>">
       <?php echo strip_tags($props['abstract'], '<p><b><strong class="selflink"><strong><em><i><var><sup><sub><tt><ul><ol><li><samp><small><hr><h2><h3><h4><h5><dfn><dl><dd><dt><u><abbr><big><blockquote><br><center><del><ins><kbd>')?>
     </blockquote>
   <?php endif?>
