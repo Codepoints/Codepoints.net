@@ -175,9 +175,11 @@
       padding-right: .5em;
     }
   }
+  & em,
   & a {
     @include button-base;
     line-height: (16em/12);
+    font-style: normal;
     &:after,
     &:before {
       color: $cTextBright;

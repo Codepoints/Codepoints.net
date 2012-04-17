@@ -44,6 +44,10 @@ h4 {
   letter-spacing: .05em;
 }
 
+section {
+  margin: 0 0 2em;
+}
+
 a:link {
   color: $cLink;
   text-decoration: none;
@@ -150,6 +154,11 @@ nav {
 }
 
 
+
+.protocol_s {
+  vertical-align: text-bottom;
+  line-height: 0;
+}
 
 
 
