@@ -50,7 +50,7 @@ $router->addSetting('db', $db)
 })
 
 ->registerAction('wizard', function ($request, $o) {
-    // a "find my CP" wizard
+    // the "find my CP" wizard
     $view = new View('wizard');
     echo $view->render();
 })

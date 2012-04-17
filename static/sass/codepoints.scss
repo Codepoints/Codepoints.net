@@ -53,6 +53,7 @@ a:link {
 
 a:visited {
   color: $cVisited;
+  text-decoration: none;
 }
 
 a:focus,
@@ -61,6 +62,10 @@ a:hover {
   text-shadow: 1px 1px white,
                -1px 1px white;
   border-bottom: 1px solid;
+}
+
+a[href^="http"]:after {
+  content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAO0lEQVQ4y2P4z8DAgIH//8eN0dQyjBpA2AAMKXJcABGC0uS4ANklJBmAYjOpLkDXTFYgYmgeTYm0MQAAMq3ATnxfaJ4AAAAASUVORK5CYII=);
 }
 
 h1, h2, h3, b, strong {
