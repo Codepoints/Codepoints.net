@@ -58,10 +58,14 @@ class Router {
         $this->addSetting('request', $req);
         $tUrl = $req->trunkUrl;
         foreach ($this->actions as $action) {
-            if (is_callable($action[0])) {
-                $r = $action[0]($tUrl, $this->settings);
-            } elseif (is_array($action[0])) {
+            // we check first for array, because else __autoload
+            // will get in the way. This means, however, that we
+            // can't use the array($class, $method) approach to
+            // call a route.
+            if (is_array($action[0])) {
                 $r = in_array($tUrl, $action[0]);
+            } elseif (is_callable($action[0])) {
+                $r = $action[0]($tUrl, $this->settings);
             } else {
                 $r = ($action[0] === $tUrl);
             }
