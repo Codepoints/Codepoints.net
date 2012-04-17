@@ -64,7 +64,7 @@ $router->addSetting('db', $db)
     $router->redirect(sprintf('U+%04X', $row['cp']));
 })
 
-->registerAction(array('about'), function ($request, $o) {
+->registerAction(array('about', 'glossary'), function ($request, $o) {
     // static pages
     $view = new View($request->trunkUrl);
     echo $view->render();
