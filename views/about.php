@@ -2,15 +2,34 @@
 $title = 'About Codepoints';
 $hDescription = 'Codepoints.net is a site dedicated to Unicode and all things related to codepoints, characters, glyphs and internationalization.';
 $nav = array(
-  'main' => '<a href="#about">About this Site</a>',
   'find' => '<a href="#find">Finding Characters</a>',
-  'glossary' => '<a href="'.$router->getUrl('glossary').'">Glossary of Common Terms</a>',
   'unicode' => '<a href="#unicode">About Unicode</a>',
+  'main' => '<a href="#about">About this Site</a>',
+  'glossary' => '<a href="'.$router->getUrl('glossary').'">Glossary of Common Terms</a>',
 );
 include 'header.php';
 include 'nav.php';
 ?>
 <div class="payload static about">
+  <section id="find">
+    <h1>Finding Characters</h1>
+    <p>
+      It’s hard to find one certain character in over 110,000 codepoints. This
+      site aims to make it as easy as possible with the following search options:
+    </p>
+    <ul>
+      <li>Free search: Just press the “Search” tab above and type a query. In many cases the codepoint in question is in the result.</li>
+      <li>Extended search: You can configure on this page every Unicode property of the codepoint in question.</li>
+      <li>The “Find my Codepoint” wizard: Answer a series of questions to get to your character.</li>
+    </ul>
+    <h2>Not Sure about that Character’s Name?</h2>
+    <p>You don’t know the name or any properties of a codepoint but its general
+    shape? Fear not, on <a href="http://shapecatcher.com/">Shapecatcher</a>
+    you can draw the character and get it recognized.</p>
+  </section>
+  <section id="unicode">
+    <h1>About Unicode</h1>
+  </section>
   <section id="about">
     <h1><?php e($title)?></h1>
     <p>
@@ -89,16 +108,6 @@ include 'nav.php';
       <p>Your Browser doesn’t support frames. Please visit
       <a href="http://piwik.manuel-strehl.de/index.php?module=CoreAdminHome&action=optOut">this page</a>.</p>
     </iframe>
-  </section>
-  <section id="find">
-    <h1>Finding Characters</h1>
-    <h2>Not Sure about that Character’s Name?</h2>
-    <p>You don’t know the name or properties of a codepoint but its general
-    shape? Fear not, on <a href="http://shapecatcher.com/">Shapecatcher</a>
-    you can draw the character and get it recognized.</p>
-  </section>
-  <section id="unicode">
-    <h1>About Unicode</h1>
   </section>
 </div>
 <?php include 'footer.php'?>
