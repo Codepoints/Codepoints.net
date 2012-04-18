@@ -18,14 +18,20 @@ include 'nav.php';
       site aims to make it as easy as possible with the following search options:
     </p>
     <ul>
-      <li>Free search: Just press the “Search” tab above and type a query. In many cases the codepoint in question is in the result.</li>
-      <li>Extended search: You can configure on this page every Unicode property of the codepoint in question.</li>
-      <li>The “Find my Codepoint” wizard: Answer a series of questions to get to your character.</li>
+      <li>Free search: Just press the “Search” tab above or use the form on the
+        front page and type a query. In many cases the codepoint in question is
+        in the result.</li>
+      <li><a href="<?php e($router->getUrl('search'))?>">Extended search</a>:
+        You can configure on this page every Unicode property of the codepoint
+        in question.</li>
+      <li><a href="<?php e($router->getUrl('wizard'))?>">The “Find my Codepoint” wizard</a>:
+        Answer a series of questions to get to your character.</li>
     </ul>
     <h2>Not Sure about that Character’s Name?</h2>
     <p>You don’t know the name or any properties of a codepoint but its general
     shape? Fear not, on <a href="http://shapecatcher.com/">Shapecatcher</a>
-    you can draw the character and get it recognized.</p>
+    you can draw the character and get it recognized. This works remarkably
+    well for many non-Unihan, <i>i. e.</i> non-Asian, characters.</p>
   </section>
   <section id="unicode">
     <h1>About Unicode</h1>
