@@ -108,31 +108,33 @@ $router->addSetting('db', $db)
                 $result->addQuery('cp', unpack('N', mb_convert_encoding($v,
                                         'UCS-4BE', 'UTF-8')));
             } else {
-                if (ctype_xdigit($v) && in_array(strlen($v), array(4,5,6))) {
-                    $result->addQuery('cp', hexdec($v), '=', 'OR');
+                foreach (preg_split('/\s+/', $v) as $vv) {
+                    if (ctype_xdigit($vv) && in_array(strlen($vv), array(4,5,6))) {
+                        $result->addQuery('cp', hexdec($vv), '=', 'OR');
+                    }
+                    if (substr(strtolower($vv), 0, 2) === 'u+' &&
+                        ctype_xdigit(substr($vv, 2))) {
+                        $result->addQuery('cp', hexdec(substr($vv, 2)), '=', 'OR');
+                    }
+                    if (ctype_digit($vv) && strlen($vv) < 8) {
+                        $result->addQuery('cp', intval($vv), '=', 'OR');
+                    }
+                    $vv = "%$vv%";
+                    $result->addQuery('na', $vv, 'LIKE', 'OR');
+                    $result->addQuery('na1', $vv, 'LIKE', 'OR');
+                    $result->addQuery('isc', $vv, 'LIKE', 'OR');
+                    $result->addQuery('kDefinition', $vv, 'LIKE', 'OR');
+                    if (preg_match('/\blowercase\b/i', $vv)) {
+                        $result->addQuery('gc', 'lc', '=', 'OR');
+                    }
+                    if (preg_match('/\buppercase\b/i', $vv)) {
+                        $result->addQuery('gc', 'uc', '=', 'OR');
+                    }
+                    if (preg_match('/\btitlecase\b/i', $vv)) {
+                        $result->addQuery('gc', 'tc', '=', 'OR');
+                    }
+                    $blocks = UnicodeBlock::search($vv, $o['db']);
                 }
-                if (substr(strtolower($v), 0, 2) === 'u+' &&
-                    ctype_xdigit(substr($v, 2))) {
-                    $result->addQuery('cp', hexdec(substr($v, 2)), '=', 'OR');
-                }
-                if (ctype_digit($v) && strlen($v) < 8) {
-                    $result->addQuery('cp', intval($v), '=', 'OR');
-                }
-                $v = "%$v%";
-                $result->addQuery('na', $v, 'LIKE', 'OR');
-                $result->addQuery('na1', $v, 'LIKE', 'OR');
-                $result->addQuery('isc', $v, 'LIKE', 'OR');
-                $result->addQuery('kDefinition', $v, 'LIKE', 'OR');
-                if (preg_match('/\blowercase\b/i', $v)) {
-                    $result->addQuery('gc', 'lc', '=', 'OR');
-                }
-                if (preg_match('/\buppercase\b/i', $v)) {
-                    $result->addQuery('gc', 'uc', '=', 'OR');
-                }
-                if (preg_match('/\btitlecase\b/i', $v)) {
-                    $result->addQuery('gc', 'tc', '=', 'OR');
-                }
-                $blocks = UnicodeBlock::search($v, $o['db']);
             }
         } elseif ($v && $k === 'scx') {
             // scx is a list of sc's
