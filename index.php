@@ -1,10 +1,34 @@
 <?php
+/**
+ * Welcome to the source of Codepoints.net!
+ *
+ * This is the main (and sole) entry to the site. Classes in
+ * lib/*.class.php are auto-loaded. The controller for the URL
+ * structure is lib/router.class.php.
+ *
+ * In lib/view.class.php is a view system defined, with the
+ * views guiding the output living in views/.
+ *
+ * To get an instance of the database up and running, visit
+ * <https://github.com/Boldewyn/unicodeinfo>. On a regular
+ * *NIX system, a simple `make` in that project should provide
+ * you with the ucd.sqlite to run this instance.
+ *
+ * This code is dually licensed under GPL and MIT. See
+ * <http://codepoints.net/about#main> for details.
+ */
+
+
+/**
+ * define Unicode Version in use
+ */
+define('UNICODE_VERSION', '6.1');
 
 
 /**
  * set DEBUG level
  */
-define('VU_DEBUG', False);
+define('CP_DEBUG', 0);
 
 
 /**
@@ -19,7 +43,7 @@ function __autoload($class) {
  * log $msg to /tmp/visual-unicode.log
  */
 function flog($msg) {
-   if (VU_DEBUG) {
+   if (CP_DEBUG) {
        error_log(sprintf("[%s]\n%s\n", date("r"), $msg), 3,
                  '/tmp/visual-unicode.log');
    }
