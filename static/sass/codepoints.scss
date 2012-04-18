@@ -1,3 +1,6 @@
+
+@import "jquery.ui.all.css";
+
 @import "compass";
 @import "normalize";
 @import "settings";
@@ -160,6 +163,42 @@ nav {
   line-height: 0;
 }
 
+
+.ui-menu-item {
+  &:before {
+    display: none;
+  }
+}
+
+
+.query-add {
+  min-height: 20px;
+
+  .ui-menu-item {
+    clear: right;
+  }
+
+  .rm {
+    float: right;
+  }
+}
+
+.ui-dialog .query-choose {
+  padding: 5px 0 0 5px;
+  margin: 0;
+  li {
+    list-style: none;
+    margin: 0 5px 5px 0;
+    float: left;
+    width: 200px;
+    &:before {
+      display: none;
+    }
+    a {
+      display: block;
+    }
+  }
+}
 
 
 

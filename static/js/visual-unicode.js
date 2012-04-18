@@ -144,12 +144,12 @@ $(function() {
   /* display search form */
   $('nav a[rel="search"]').on('click', function() {
     var $this = $(this),
-        el = $('#footer_search').position({
+        el = $('#footer_search').show().position({
           my: 'left top',
           at: 'left bottom',
           of: $this,
           collision: 'fit'
-        });
+        }).hide();
     if (! el.data('extended')) {
       el.data('extended',
         true).append($('<p></p>').append($('<a></a>').attr('href',
@@ -157,12 +157,12 @@ $(function() {
     }
     if (el.is(':hidden')) {
       el.slideDown('normal').find(':text:eq(0)').focus();
-      $(document).one('click keydown', function __hideMe(e) {
+      $(document).one('tap click keydown', function __hideMe(e) {
         if (e.which === 27 || (el.find(e.target).length === 0 &&
-            e.type === 'click')) {
+            $.inArray(e.type, ['tap', 'click']) > -1)) {
           el.slideUp('normal');
         } else {
-          $(document).one('click keydown', __hideMe);
+          $(document).one('tap click keydown', __hideMe);
         }
       });
     }
@@ -217,75 +217,99 @@ $(function() {
   });
 
   /* search form enhancement */
-  $('.propsearch').each(function() {
-    return false;
-    var fieldset = $(this),
-        area = $('<div class="propsearch-auto"><div class="inner"><input ' +
-                 'type="text"/></div></div>'),
-        input = area.find('input'),
-        vals = [],
-        map = {},
-        labels = fieldset.find('label'),
-        cbs = fieldset.find(':checkbox').each(function() {
-          var val = this.value,
-              lab = labels.filter('[for="'+this.id+'"]');
-          if (lab.length) {
-            lab = lab.text();
-          } else {
-            lab = val;
-          }
-          vals.push(lab);
-          map[lab] = this.id;
-        });
-    fieldset.find('p').hide();
-    area.appendTo(fieldset);
-    input.on("keydown", function( event ) {
-        if ( event.keyCode === $.ui.keyCode.TAB &&
-            $( this ).data( "autocomplete" ).menu.active ) {
-          event.preventDefault();
+  $('.extended.searchform').each(function() {
+    var $form = $(this), fields = $('.propsearch, .boolsearch', $form).hide(),
+        submitset = $('.submitset', $form),
+        addlist = $('<ul class="query-add ui-menu ui-widget ui-widget-content ui-corner-all"></ul>').insertBefore(submitset),
+        addfields = $(),
+        add = $('<p><button type="button" title="add new query">+</button></p>')
+                .insertBefore(submitset).tooltip().find('button'),
+        values = {},
+        menu = $('<ul class="ui-menu ui-widget ui-widget-content"></ul>');
+
+    fields.filter('.propsearch').each(function() {
+      var field = $(this), val = [],
+          legend = $('legend', field).text().replace(/:\s*$/, '');
+      $(':checkbox', field).each(function() {
+        var chk = $(this), label = $('label[for="'+this.id+'"]', field).text();
+        val.push([chk, label]);
+        if (chk[0].checked) {
+          _createItem(legend, label, chk);
         }
-      })
-    .autocomplete({
-      source: function( request, response ) {
-        // delegate back to autocomplete, but extract the last term
-        response( $.ui.autocomplete.filter(
-          vals, request.term.split(/\s*,\s*/).pop() ) );
-      },
-      focus: function() {
-        // prevent value inserted on focus
-        return false;
-      },
-      select: function( event, ui ) {
-        var terms = $.trim(this.value).split(/\s*,\s*/);
-        // remove the current input
-        terms.pop();
-        terms = $.grep(terms, function(n) {
-          return n && $.inArray(n, vals) > -1;
-        });
-        // add the selected item
-        terms.push( ui.item.value );
-        cbs.each(function() { this.checked = false; });
-        $.each(terms, function() {
-          if (this in map) {
-            cbs.filter('#'+map[this])[0].checked = true;
-          }
-        });
-        // add placeholder to get the comma-and-space at the end
-        terms.push( "" );
-        this.value = terms.join( ", " );
-        input.change();
-        return false;
-      },
-      change: function( event, ui) {
-        var terms = this.value.split(/\s*,\s*/);
-        cbs.each(function() { this.checked = false; });
-        $.each(terms, function() {
-          if (this in map) {
-            cbs.filter('#'+map[this])[0].checked = true;
-          }
-        });
+      });
+      values[legend] = val;
+    });
+    values['Boolean Value'] = [];
+    fields.filter('.boolsearch').each(function() {
+      var sel = $('select', this), label = $('label', this).text();
+      values['Boolean Value'].push([sel, label]);
+      if (sel.find('option[value="1"]')[0].selected) {
+        _createItem('Boolean Value', label, sel);
       }
     });
+    $.each(values, function(k, v) {
+      menu.append($('<li class="ui-menu-item"><a href="#">'+k+'</a></li>')
+                  .data('v', v).data('k', k));
+    });
+
+    $(document).on('keypress click tap', function() {
+      menu.slideUp();
+    });
+
+    menu.css({
+      display: 'none',
+      position: 'absolute'
+    }).appendTo('body').on('click tap', 'li', function() {
+      var li = $(this), v = li.data('v'), k = li.data('k'),
+          dlg = $('<ul class="query-choose"></ul>');
+      $.each(v, function(j, vv) {
+        dlg.append($('<li><a class="button" href="#">'+vv[1]+'</a></li>')
+          .on('click tap', 'a', function() {
+            if (vv[0].is(':checkbox')) {
+              vv[0][0].checked = true;
+            } else {
+              vv[0].find('option[value="1"]')[0].selected = true;
+            }
+            dlg.dialog('close').dialog('destroy').remove();
+            _createItem(k, vv[1], vv[0]);
+            return false;
+          }));
+      });
+      dlg.dialog({
+        title: k,
+        modal: true,
+        width: Math.min($(window).width(), 1030)
+      });
+      menu.slideUp();
+      return false;
+    });
+
+    add.on('click', function() {
+      menu.show().position({
+        my: 'left top',
+        at: 'left bottom',
+        of: this,
+        colision: 'fit flip'
+      }).hide().slideDown();
+      return false;
+    });
+
+    /** create a single search field item */
+    function _createItem(key, value, input) {
+      return $('<li class="ui-menu-item"></li>')
+        .html(key+': '+value+'<a href="#" class="rm">X</a>')
+          .find('.rm').click(function() {
+            var i = $(this).closest('li');
+            if (input.is(':checkbox')) {
+              input[0].checked = false;
+            } else {
+              input.find('option[value=""]')[0].selected = true;
+            }
+            i.slideUp('fast', i.remove);
+          }).end()
+        .appendTo(addlist);
+    }
+
   });
 
 });

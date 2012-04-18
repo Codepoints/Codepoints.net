@@ -1,8 +1,8 @@
 <form method="get" action="<?php e($router->getUrl('SearchResult'))?>"
       class="extended searchform">
-  <p><label for="s_na">Name:</label>
+  <p class="stringsearch"><label for="s_na">Name:</label>
      <input type="text" name="na" id="s_na" value="" /></p>
-  <p><label for="s_int">Decimal:</label>
+  <p class="stringsearch"><label for="s_int">Decimal:</label>
      <input type="text" name="int" id="s_int" value="<?php echo _get('int')?>" /></p>
 <?php foreach (array('blk', 'gc', 'bc', 'ccc', 'dt', 'nt', 'lb', 'ea',
                      'sc', 'SB', 'WB') as $cat) {
@@ -18,5 +18,5 @@
     <label for="s_<?php e($cat)?>"><?php e($info->getCategory($cat))?></label>
   </p>
   <?php endforeach?>
-  <p><button type="submit"><span>search</span></button></p>
+  <p class="submitset"><button type="submit"><span>search</span></button></p>
 </form>
