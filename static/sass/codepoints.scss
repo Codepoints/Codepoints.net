@@ -173,13 +173,26 @@ nav {
 
 .query-add {
   min-height: 20px;
+  padding-left: 0;
 
-  .ui-menu-item {
+  li {
     clear: right;
+    padding: 5px 3px 3px;
+    border-bottom: 1px solid $cBorder;
+    &:before {
+      display: none;
+    }
+    &:last-child {
+      border-bottom: none;
+    }
   }
 
   button {
     float: right;
+    width: 1.4em;
+    .ui-button-text {
+      line-height: .4;
+    }
   }
 }
 

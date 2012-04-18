@@ -46,7 +46,13 @@ function animatePage($this, url, a1, a2) {
  * replace the title attribute with a custom tooltip
  */
 $.fn.tooltip = function() {
-  $('[title]', this).each(function() {
+  var targets = $();
+  if (this.is(function() {
+    return this.nodeType === 1 && this.title;
+  })) {
+    targets = targets.add(this);
+  }
+  targets.add('[title]', this).each(function() {
     var origin = $(this),
         title = origin.attr('title'),
         arrow = $('<i></i>'),
@@ -297,11 +303,11 @@ $(function() {
     /** create a single search field item */
     function _createItem(key, value, input) {
       return $('<li class="query-item"></li>')
-        .html(key+': '+value+'<button type="button">X</button>')
+        .html(key+': '+value+'<button type="button">remove</button>')
           .find('button').button({
             text: false,
             icons: {primary: 'ui-icon-close', secondary: false}
-          }).click(function() {
+          }).tooltip().click(function() {
             var i = $(this).closest('li');
             if (input.is(':checkbox')) {
               input[0].checked = false;
