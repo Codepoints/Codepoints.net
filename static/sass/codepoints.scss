@@ -1,6 +1,4 @@
 
-@import "jquery.ui.all.css";
-
 @import "compass";
 @import "normalize";
 @import "settings";
@@ -117,6 +115,8 @@ button,
   display: none;
 }
 
+@import "jquery.ui.all";
+
 .payload {
   padding: 30px 10px 10px;
   margin: 0 auto;
@@ -178,7 +178,7 @@ nav {
     clear: right;
   }
 
-  .rm {
+  button {
     float: right;
   }
 }

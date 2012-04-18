@@ -220,7 +220,7 @@ $(function() {
   $('.extended.searchform').each(function() {
     var $form = $(this), fields = $('.propsearch, .boolsearch', $form).hide(),
         submitset = $('.submitset', $form),
-        addlist = $('<ul class="query-add ui-menu ui-widget ui-widget-content ui-corner-all"></ul>').insertBefore(submitset),
+        addlist = $('<ul class="query-add ui-widget ui-widget-content ui-corner-all"></ul>').insertBefore(submitset),
         addfields = $(),
         add = $('<p><button type="button" title="add new query">+</button></p>')
                 .insertBefore(submitset).tooltip().find('button'),
@@ -296,9 +296,12 @@ $(function() {
 
     /** create a single search field item */
     function _createItem(key, value, input) {
-      return $('<li class="ui-menu-item"></li>')
-        .html(key+': '+value+'<a href="#" class="rm">X</a>')
-          .find('.rm').click(function() {
+      return $('<li class="query-item"></li>')
+        .html(key+': '+value+'<button type="button">X</button>')
+          .find('button').button({
+            text: false,
+            icons: {primary: 'ui-icon-close', secondary: false}
+          }).click(function() {
             var i = $(this).closest('li');
             if (input.is(':checkbox')) {
               input[0].checked = false;
