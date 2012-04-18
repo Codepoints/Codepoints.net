@@ -92,6 +92,24 @@ $.fn.tooltip = function() {
 };
 
 $(function() {
+  /**
+  * Determine the scrolling element
+  *
+  * @see http://stackoverflow.com/questions/2837178
+  */
+  var scrollElement = (function (tags) {
+    var el, $el;
+    while (el = tags.pop()) {
+      $el = $(el);
+      if ($el.scrollTop() > 0){
+        return $el;
+      } else if($el.scrollTop(1).scrollTop() > 0) {
+        return $el.scrollTop(0);
+      }
+    }
+    return $();
+  })(["html", "body"]);
+
   stage = $('.stage');
   //stage.on('click', 'a.cp', function() {
   //  return animatePage($(this), this.href, 'zoomin', 'maximize');
@@ -99,6 +117,8 @@ $(function() {
   //stage.on('click', 'a.bl, a.pl', function() {
   //  return animatePage($(this), this.href, 'minimize', 'zoomout');
   //});
+
+  /** init tooltips */
   $(document).tooltip();
 
   /* scale the front headline text */
@@ -111,6 +131,15 @@ $(function() {
     resizer();
     $(window).on("load resize", resizer);
   }
+
+  /** let in-page links scroll smooth */
+  $(document).on('click tap', 'nav a[href^="#"], a[rel~="internal"]', function() {
+    var a = $(this), t = a.attr("href");
+    if (t.length > 1 && $(t).length) {
+      scrollElement.animate({scrollTop: $(t).offset().top - 10}, 1000);
+      return false;
+    }
+  });
 
   /* display search form */
   $('nav a[rel="search"]').on('click', function() {
