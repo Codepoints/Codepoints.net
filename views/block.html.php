@@ -22,7 +22,7 @@ include "nav.php";
 ?>
 <div class="payload block">
   <figure>
-    <img src="static/images/blocks/<?php e(str_replace(' ', '_', $block->getName()))?>.png" alt="" width="128" height="128" />
+    <img src="/static/images/blocks/<?php e(str_replace(' ', '_', $block->getName()))?>.png" alt="" width="128" height="128" />
   </figure>
   <h1><?php e($block->getName());?></h1>
   <?php if ($block_limits === Null):?>
