@@ -3,6 +3,10 @@
   ForceType application/opensearchdescription+xml
 </Files>
 
+<Files ucd.sqlite>
+  Deny From All
+</Files>
+
 RewriteEngine On
 
 RewriteBase /
