@@ -15,6 +15,10 @@
       <link rel="stylesheet" href="static/css/ie.css"/>
     <![endif]-->
     <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="static/images/favicon.ico"/>
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="static/images/icon144.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="static/images/icon114.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="static/images/icon72.png"/>
+    <link rel="apple-touch-icon-precomposed" href="static/images/icon57.png"/>
     <link rel="search" href="opensearch.xml" type="application/opensearchdescription+xml" title="Search Codepoints" />
     <link rel="author" href="/humans.txt" />
     <script src="static/js/jquery.js"></script>
