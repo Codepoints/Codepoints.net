@@ -2,8 +2,29 @@
     <div class="hidden" id="footer_search">
       <?php include "quicksearch.php"?>
     </div>
-<script type="text/javascript">
-var _paq=_paq||[];(function(){var u="http://piwik.manuel-strehl.de/";_paq.push(['setSiteId',4]);_paq.push(['setTrackerUrl',u+'piwik.php']);_paq.push(['trackPageView']);_paq.push(['enableLinkTracking']);var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];g.type='text/javascript';g.defer=true;g.async=true;g.src=u+'piwik.js';s.parentNode.insertBefore(g,s);})();
-</script>
+    <script>
+      var _paq=_paq||[];(function(){var u="http://piwik.manuel-strehl.de/";_paq.push(['setSiteId',4]);_paq.push(['setTrackerUrl',u+'piwik.php']);_paq.push(['trackPageView']);_paq.push(['enableLinkTracking']);var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];g.type='text/javascript';g.defer=true;g.async=true;g.src=u+'piwik.js';s.parentNode.insertBefore(g,s);})();
+    </script>
+    <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/jquery.ui.js"></script>
+    <script src="/static/js/visual-unicode.js"></script>
+    <script>
+      WebFontConfig = {
+        google: {
+          families: [
+            'Droid Serif:n,i,b,ib',
+            'Droid Sans:n,b'
+          ]
+        }
+      };
+      (function() {
+        var wf = document.createElement('script');
+        wf.src = 'http://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+        wf.type = 'text/javascript';
+        wf.async = 'true';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wf, s);
+      })();
+    </script>
   </body>
 </html>
