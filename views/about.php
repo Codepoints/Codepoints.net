@@ -2,16 +2,16 @@
 $title = 'About Codepoints';
 $hDescription = 'Codepoints.net is a site dedicated to Unicode and all things related to codepoints, characters, glyphs and internationalization.';
 $nav = array(
-  'find' => '<a href="#find">Finding Characters</a>',
+  'find' => '<a href="#finding_characters">Finding Characters</a>',
   'unicode' => '<a href="#unicode">About Unicode</a>',
-  'main' => '<a href="#about">About this Site</a>',
+  'main' => '<a href="#this_site">About this Site</a>',
   'glossary' => '<a href="'.$router->getUrl('glossary').'">Glossary of Common Terms</a>',
 );
 include 'header.php';
 include 'nav.php';
 ?>
 <div class="payload static about">
-  <section id="find">
+  <section id="finding_characters">
     <h1>Finding Characters</h1>
     <p>
       It’s hard to find one certain character in over 110,000 codepoints. This
@@ -113,7 +113,7 @@ include 'nav.php';
         representable in terms of a Unicode encoding.</li>
     </ol>
   </section>
-  <section id="about">
+  <section id="this_site">
     <h1><?php e($title)?></h1>
     <p>
       This website is a private project of
