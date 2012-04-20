@@ -134,7 +134,7 @@ class Router {
         if (array_key_exists($class, $this->urls)) {
             $path = $this->urls[$class]($object);
         } elseif (is_string($object)) {
-            $path = $object;
+            $path = ltrim($object, '/');
         }
         return $this->baseURL . $path;
     }
