@@ -35,6 +35,83 @@ include 'nav.php';
   </section>
   <section id="unicode">
     <h1>About Unicode</h1>
+    <p>
+      Computers act on 0’s and 1’s to represent information. To get them into
+      the shape of useful information, in our case characters to display text,
+      we need an <em>encoding</em>, that tells the computer how to interpret
+      that 0’s and 1’s in terms of a given alphabet. The first standardized
+      encoding was ASCII, which basically assigns upper- and lowercase letters
+      as well as numbers and some punctuation, all in all 128 positions.
+      The W3C has published a <a href="http://www.w3.org/International/questions/qa-what-is-encoding">very
+      good introduction</a> to the topic of character encodings.
+    </p>
+    <p>
+      128 positions didn’t last very long. Many institutions and companies
+      began to implement their own encodings. In 2010 there were a whooping
+      250 encodings widely used, not counting some obscure or privately used
+      ones. This situation proved disastrous, when computers started to talk
+      to one another over the <em>Internet</em>. If they didn’t specify the
+      encoding, there was a good chance the receiver would only get a stream
+      of nonsense and rubbish.
+    </p>
+    <p>
+      Thus enters <em>Unicode</em>. Adobe and Xerox decided in 1984, that this
+      was no situation to continue, and that there is a need for a universal
+      encoding scheme. 1991 saw the publication of the first version of Unicode
+      with the international standardization as ISO 10646 following two years
+      later. (<i>Fun fact: ASCII is standardized in ISO 646, the number for
+      the Unicode standard was deliberately choosen.</i>) Meanwhile the
+      <a href="http://unicode.org">Unicode Consortium</a> began to form in
+      order to guide the further development of the standard.
+    </p>
+    <p>
+      Today, version 6.1 of Unicode is published, containing over 110,000 characters
+      in over 100 different scripts. It’s encoding form UTF-8, a superset of
+      ASCII, is the most popular encoding worldwide and the consortium counts
+      Apple, Oracle, Microsoft, Google, IBM, Nokia and many others to its
+      members.
+    </p>
+    <p>
+      Unicode is a mechanism for universally identifying characters. All
+      characters get an assigned “codepoint”, which universally refers to
+      them. For example, the letter “A” has the codepoint 65 assigned, the
+      chinese character “㐭” the codepoint 13357. Codepoints are usually
+      represented in <a href="http://en.wikipedia.org/wiki/Hexadecimal">hexadecimal
+      notation</a>, where “A” to “F” represent the numbers 10 to 16.
+    </p>
+    <p>
+      To bring the sheer mass of the possible 1,114,111 codepoints in a useful
+      order, Unicode is divided in 16 planes, which are further divided in
+      logically connected blocks. There are ten principles, that guide the
+      extension and care of the Unicode standard:
+    </p>
+    <ol>
+      <li><em>Universal repertoire:</em> Every writing system ever used shall
+        be respected and represented in the standard</li>
+      <li><em>Efficiency:</em> The documentation must be efficient and complete.</li>
+      <li><em>Characters, not glyphs:</em> Only characters, not glyphs shall be
+        encoded. In a nutshell, glyphs are the actual graphical representations,
+        while characters are the more abstract concepts behind. Glyphs change
+        between typefaces, characters don’t.</li>
+      <li><em>Semantics:</em> Included characters must be well defined and 
+        distinguished from others.</li>
+      <li><em>Plain Text:</em> Characters in the standard are <em>text</em> and
+        never mark-up or metacharacters.</li>
+      <li><em>Logical order:</em> In bidirectional text are the characters
+        stored in logical order, not in a way that the representaion suggests.</li>
+      <li><em>Unification:</em> Where different cultures or languages use the
+        same character, it shall be only included once. This point is rather
+        debatable, because in East Asia the separations, where this rule is to
+        apply, are not that clear.</li>
+      <li><em>Dynamic composition:</em> New characters can be composed of other,
+        already standardized characters. For example, the character “Ä” can be
+        composed of an “A” and a dieresis sign.</li>
+      <li><em>Stability:</em> Once defined characters shall never be removed or
+        their codepoints reassigned. In the case of an error, a codepoint shall
+        be deprecated.</li>
+      <li><em>Convertibility:</em> Every other used encoding shall be
+        representable in terms of a Unicode encoding.</li>
+    </ol>
   </section>
   <section id="about">
     <h1><?php e($title)?></h1>
