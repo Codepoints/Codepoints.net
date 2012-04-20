@@ -26,7 +26,10 @@ include "nav.php";
        <a href="<?php e($router->getUrl('/basic_latin'))?>">Basic Latin</a>
        being the first one.
        You can browse one by one by starting with the first codepoint,
-       <a href="<?php e($router->getUrl('/U+0000'))?>">U+0000</a>.
+       <?php cp(Codepoint::getCP(0, $router->getSetting('db')))?> or
+       <a href="<?php e($router->getUrl('search'))?>">search</a> for a specific
+       character. If you’re not fully sure, try <a href="<?php e($router->getUrl('wizard'))?>">
+       “Find My Codepoint”</a>, to narrow down the candidates.
        Or maybe you are more daring and want
        <a href="<?php e($router->getUrl('random'))?>">a random codepoint</a>?
     </p>
