@@ -65,40 +65,10 @@
     height: 43px;
   }
   & a {
-    border: 1px solid $cBorderLight;
-    background: transparentize($cBackground, .5);
-    text-decoration: none;
-    color: $cTextBold;
-    @include transition-property('box-shadow, border-color');
-    @include transition-duration(.3s);
-    outline: none;
-    box-shadow: 0 1px rgba(255,255,255,.67),
-                1px 0 rgba(255,255,255,.33),
-                -1px 0 rgba(255,255,255,.33),
-                inset 0 2px 3px -1px rgba(0,0,0,.03);
+    @include active-block;
     img {
       display: block;
       margin: 4px auto 8px;
-      @include transition-property(all);
-      @include transition-duration(.5s);
-    }
-    &:focus,
-    &:hover {
-      text-shadow: 0 1px white;
-      background: white;
-      @include background(linear-gradient(top, rgba(255,255,255,.5), rgba(127,127,127,0)));
-      border-color: $cBorderMedium;
-      border-bottom-color: $cBorder;
-      box-shadow: 0 0 3px $cBrightMark,
-                  0 1px rgba(0,0,0,.1),
-                  inset 0 -1px rgba(255,255,255,.33),
-                  inset 0 2px 3px -3px white;
-      img {
-        image-rendering: optimizeSpeed;
-        @include transform(scale(2));
-        @include background(radial-gradient(center, contain, rgba(255,255,255,.3),
-        rgba(255,255,255,0)));
-      }
     }
   }
   & .bl {
@@ -395,6 +365,46 @@
       border-width: 6px 4px 0;
       border-top-color: black;
       border-top-color: rgba(0,0,0,.67);
+    }
+  }
+}
+
+
+
+
+@mixin active-block {
+  // a clickable block, like the codepoints in list view
+  border: 1px solid $cBorderLight;
+  background: transparentize($cBackground, .5);
+  text-decoration: none;
+  color: $cTextBold;
+  @include transition-property('box-shadow, border-color');
+  @include transition-duration(.3s);
+  outline: none;
+  box-shadow: 0 1px rgba(255,255,255,.67),
+              1px 0 rgba(255,255,255,.33),
+              -1px 0 rgba(255,255,255,.33),
+              inset 0 2px 3px -1px rgba(0,0,0,.03);
+  img {
+    @include transition-property(all);
+    @include transition-duration(.5s);
+  }
+  &:focus,
+  &:hover {
+    text-shadow: 0 1px white;
+    background: white;
+    @include background(linear-gradient(top, rgba(255,255,255,.5), rgba(127,127,127,0)));
+    border-color: $cBorderMedium;
+    border-bottom-color: $cBorder;
+    box-shadow: 0 0 3px $cBrightMark,
+                0 1px rgba(0,0,0,.1),
+                inset 0 -1px rgba(255,255,255,.33),
+                inset 0 2px 3px -3px white;
+    img {
+      image-rendering: optimizeSpeed;
+      @include transform(scale(2));
+      @include background(radial-gradient(center, contain, rgba(255,255,255,.3),
+      rgba(255,255,255,0)));
     }
   }
 }

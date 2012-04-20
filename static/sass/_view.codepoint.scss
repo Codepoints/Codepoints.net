@@ -109,5 +109,17 @@
     & section, & aside, & figure {
       margin: 0 0 2em;
     }
+
+    .min.cp, .bl {
+      font-size: (12em/$sFontBase);
+      font-family: $sans;
+      font-style: normal;
+      line-height: 15px;
+      padding: 2px;
+      @include active-block;
+    }
+    .bl img {
+      vertical-align: text-bottom;
+    }
   }
 }
