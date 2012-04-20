@@ -245,12 +245,12 @@ $(function() {
       });
       values[legend] = val;
     });
-    values['Boolean Value'] = [];
+    values['Other Property'] = [];
     fields.filter('.boolsearch').each(function() {
       var sel = $('select', this), label = $('label', this).text();
-      values['Boolean Value'].push([sel, label]);
+      values['Other Property'].push([sel, label]);
       if (sel.find('option[value="1"]')[0].selected) {
-        _createItem('Boolean Value', label, sel);
+        _createItem('Other Property', label, sel);
       }
     });
     $.each(values, function(k, v) {
@@ -266,11 +266,13 @@ $(function() {
       display: 'none',
       position: 'absolute'
     }).appendTo('body').on('click tap', 'li', function() {
+      // user selects a category
       var li = $(this), v = li.data('v'), k = li.data('k'),
           dlg = $('<ul class="query-choose"></ul>');
       $.each(v, function(j, vv) {
         dlg.append($('<li><a class="button" href="#">'+vv[1]+'</a></li>')
           .on('click tap', 'a', function() {
+            // user selects an option from this category
             if (vv[0].is(':checkbox')) {
               vv[0][0].checked = true;
             } else {
@@ -307,7 +309,8 @@ $(function() {
           .find('button').button({
             text: false,
             icons: {primary: 'ui-icon-close', secondary: false}
-          }).tooltip().click(function() {
+          }).tooltip().on('click tab', function() {
+            // remove this field again
             var i = $(this).closest('li');
             if (input.is(':checkbox')) {
               input[0].checked = false;
