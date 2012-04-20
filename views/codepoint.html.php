@@ -4,6 +4,8 @@ $prev = $codepoint->getPrev();
 $next = $codepoint->getNext();
 $props = $codepoint->getProperties();
 $block = $codepoint->getBlock();
+$relatives = $codepoint->related();
+$confusables = $codepoint->getConfusables();
 $headdata = sprintf('<link rel="up" href="%s"/>', q($router->getUrl($block)));
 if ($prev):
     $headdata .= '<link rel="prev" href="' . q($router->getUrl($prev)) . '" />';
@@ -38,6 +40,10 @@ $s = function($cat) use ($router, $info, $props) {
   <aside>
     <!--h3>Properties</h3-->
     <dl>
+      <dt>Nº</dt>
+      <dd><?php e($codepoint->getId())?></dd>
+      <dt>UTF-8</dt>
+      <dd><?php e($codepoint->getRepr('UTF-8'))?></dd>
       <?php foreach(array('gc', 'sc', 'bc', 'dt', 'ea') as $cat):?>
         <dt><?php e($info->getCategory($cat))?></dt>
         <dd><a href="<?php e('search?'.$cat.'='.$props[$cat])?>"><?php e($info->getLabel($cat, $props[$cat]))?></a></dd>
@@ -50,78 +56,7 @@ $s = function($cat) use ($router, $info, $props) {
   </aside>
   <h1>U+<?php e($codepoint->getId('hex'))?> <?php e($codepoint->getName())?></h1>
   <section class="abstract">
-  <p>
-    This codepoint is categorized as <?php $s('gc')?> and belongs to the
-    <?php $s('sc')?>
-    <?php e($info->getCategory('sc'))?>.
-    It was added to Unicode in version
-    <?php $s('age')?>.
-    The glyph is
-    <?php if ($props['dt'] === 'none'):?>
-      <a href="<?php e($router->getUrl('search?dt=none'))?>">not a composition</a>.
-    <?php else:?>
-      a <?php $s('dt')?> composition of the glyphs
-      <?php cp($props['dm'], '', 'min')?>.
-    <?php endif?>
-    The codepoint is located in the block
-    <?php bl($block)?> in the
-    <?php $plane = $codepoint->getPlane();
-    f('<a class="pl" href="%s">%s</a>', $router->getUrl($plane), $plane->name); ?>.
-    <?php
-    $hasUC = ($props['uc'] && (is_array($props['uc']) || $props['uc']->getId() != $codepoint->getId()));
-    $hasLC = ($props['lc'] && (is_array($props['lc']) || $props['lc']->getId() != $codepoint->getId()));
-    $hasTC = ($props['tc'] && (is_array($props['tc']) || $props['tc']->getId() != $codepoint->getId()));
-    if ($hasUC || $hasLC || $hasTC):?>
-        It is related to
-        <?php if ($hasUC):?>its uppercase variant <?php cp($props['uc'], '', 'min')?><?php endif?>
-        <?php if ($hasLC): if ($hasUC) { echo $hasTC? ', ' : ' and '; }?>
-            its lowercase variant <?php cp($props['lc'], '', 'min')?><?php endif?>
-        <?php if ($hasTC): if ($hasUC || $hasLC) { echo ' and '; }?>
-            its titlecase variant <?php cp($props['tc'], '', 'min')?><?php endif?>.
-    <?php endif?>
-    In bidirectional context it acts as
-    <?php $s('bc')?>
-    and is
-    <a href="<?php e($router->getUrl('search?bc='.$props['bc'].'&bm='.(int)$props['Bidi_M']))?>"><?php if (! $props['Bidi_M']):?>not <?php endif?>mirrored</a>.
-    <?php if (array_key_exists('bmg', $props) && $props['bmg']->getId() != $codepoint->getId()):?>
-    Its corresponding mirrored character is <?php cp($props['bmg'], '', 'min')?>.
-    <?php endif?>
-  </p>
-  <p>
-    The codepoint has a <?php $s('ea')?>
-    <?php e($info->getCategory('ea'))?>.
-    <?php $defn = $codepoint->getProp('kDefinition');
-      if ($defn):?>
-      The Unihan Database defines its glyph as <em><?php
-        echo preg_replace_callback('/U\+([0-9A-F]{4,6})/', function($m) {
-            $router = Router::getRouter();
-            $db = $router->getSetting('db');
-            return _cp(Codepoint::getCP(hexdec($m[1]), $db), '', 'min');
-        }, $defn);
-      ?></em>.
-    <?php endif?>
-    <?php $pronunciation = $codepoint->getPronunciation();
-      if ($pronunciation):?>
-      Its Pīnyīn pronunciation is
-      <em><?php e($pronunciation)?></em>.
-    <?php endif?>
-  </p>
-  <p>
-    In text U+<?php e($codepoint->getId('hex'))?> behaves as <?php $s('lb')?> 
-    regarding line breaks. It has type <?php $s('SB')?> for sentence and <?php 
-    $s('WB')?> for word breaks. The <?php e($info->getCategory('GCB'))?> property 
-    is <?php $s('GCB')?>.
-    <?php if($props['nt'] !== 'None'):?>
-        The codepoint has a <?php $s('nt')?> numeric value of <?php $s('nv')?>.
-    <?php endif?>
-  </p>
-  <?php if (array_key_exists('abstract', $props) && $props['abstract']):?>
-    <p>The <a href="http://en.wikipedia.org/wiki/%<?php e($codepoint->getRepr('UTF-8', '%'))?>">Wikipedia</a>
-    has the following information about this codepoint:</p>
-    <blockquote cite="http://en.wikipedia.org/wiki/%<?php e($codepoint->getRepr('UTF-8', '%'))?>">
-      <?php echo strip_tags($props['abstract'], '<p><b><strong class="selflink"><strong><em><i><var><sup><sub><tt><ul><ol><li><samp><small><hr><h2><h3><h4><h5><dfn><dl><dd><dt><u><abbr><big><blockquote><br><center><del><ins><kbd>')?>
-    </blockquote>
-  <?php endif?>
+    <?php include "codepoint/info.php"?>
   </section>
   <section>
     <h2>Representations</h2>
@@ -134,7 +69,7 @@ $s = function($cat) use ($router, $info, $props) {
       </thead>
       <tbody>
         <tr>
-          <th>Nº</td>
+          <th>Nº</th>
           <td><?php e($codepoint->getId())?></td>
         </tr>
         <tr>
@@ -193,9 +128,7 @@ $s = function($cat) use ($router, $info, $props) {
       </tbody>
     </table>
   </section>
-<?php $relatives = $codepoint->related();
-$confusables = $codepoint->getConfusables();
-if (count($relatives) + count($confusables)):?>
+<?php if (count($relatives) + count($confusables)):?>
   <section>
     <h2>Related Characters</h2>
     <?php if (count($relatives)):?>
@@ -206,7 +139,7 @@ if (count($relatives) + count($confusables)):?>
       </ul>
     <?php endif?>
     <?php if (count($confusables)):?>
-      <h3>Confusables</h3>
+      <h3 id="confusables">Confusables</h3>
       <ul class="data">
         <?php foreach ($confusables as $rel): ?>
           <li><?php cp($rel)?></li>
