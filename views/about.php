@@ -161,7 +161,7 @@ include 'nav.php';
       <li><a href="http://unifoundry.com/unifont.html">GNU Unifont</a>, released
           mainly under the GNU Public License, partly under a liberal re-use
           license</li>
-      <li><a href="http://users.teilar.gr/~g1951d/">Historic Fonts by Teoli</a>,
+      <li><a href="http://users.teilar.gr/~g1951d/">Historic Fonts by George Douros</a>,
           released free for re-use</li>
       <li><a href="http://www.wazu.jp/gallery/views/View_MPH2BDamase.html">MPH 2B Damase</a>,
           released under the GPL</li>
