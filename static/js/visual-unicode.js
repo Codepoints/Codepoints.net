@@ -142,7 +142,7 @@ $(function() {
   $(document).on('click tap', 'nav a[href^="#"], a[rel~="internal"]', function() {
     var a = $(this), t = a.attr("href");
     if (t.length > 1 && $(t).length) {
-      scrollElement.animate({scrollTop: $(t).offset().top - 10}, 1000);
+      scrollElement.animate({scrollTop: $(t).offset().top - 20}, 1000);
       return false;
     }
   });
