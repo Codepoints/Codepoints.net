@@ -372,12 +372,12 @@
 
 
 
-@mixin active-block {
+@mixin active-block($color: $cTextBold) {
   // a clickable block, like the codepoints in list view
   border: 1px solid $cBorderLight;
   background: transparentize($cBackground, .5);
   text-decoration: none;
-  color: $cTextBold;
+  color: $color;
   @include transition-property('box-shadow, border-color');
   @include transition-duration(.3s);
   outline: none;

@@ -9,7 +9,7 @@
 
 <!-- character -->
 <p>
-  This character, categorized as <?php $s('gc')?>, is
+  This character is a <?php $s('gc')?> and is
   <?php if ($props['sc'] === 'Zyyy'):?>
     <a href="<?php e($router->getUrl('search?sc='.$props['sc']))?>">commonly</a> used.
   <?php else:?>

@@ -117,7 +117,7 @@
       font-style: normal;
       line-height: 15px;
       padding: 2px;
-      @include active-block;
+      @include active-block($cLink);
     }
     .bl img {
       vertical-align: text-bottom;
