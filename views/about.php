@@ -155,7 +155,7 @@ include 'nav.php';
     </p>
     <h3>Re-use License</h3>
     <p>
-      You may re-use all content on this page, given that you respect the
+      You may re-use all content on this site, given that you respect the
       following terms. The information regarding Unicode is licensed by the
       Unicode Consortium under the <a href="http://www.unicode.org/terms_of_use.html">Unicode Terms of Use</a>.
       The JavaScript part contains libraries under different licenses, mostly the
@@ -183,7 +183,7 @@ include 'nav.php';
     <p>
       All code provided specifically for Codepoints.net is released
       under both the GPL and MIT license, with the licensee free to choose.
-      Content genuine to this page is released under the
+      Content genuine to this site is released under the
       <a rel="license" href="http://creativecommons.org/licenses/by/3.0/de/"><img
       alt="" src="s:image/cc-by.png" /> Creative Commons Attribution 3.0 Germany</a>.
       Attribution in this case is a simple backlink, optionally with the link
@@ -191,7 +191,7 @@ include 'nav.php';
     </p>
     <h2>Privacy, Statistics</h2>
     <p>
-      This page uses <a href="http://piwik.org">Piwik</a> to gather statistics
+      This site uses <a href="http://piwik.org">Piwik</a> to gather statistics
       about page views. The sole purpose is to enhance this site.
       If you don’t want your visits to be tracked at all, please follow these
       instructions:
