@@ -4,7 +4,11 @@
   <?php $s('age')?>. It belongs to the block <?php bl($block)?> in the
   <?php $plane = $codepoint->getPlane();
   f('<a class="pl" href="%s">%s</a>',
-    $router->getUrl($plane), $plane->name); ?>.
+      $router->getUrl($plane), $plane->name); ?>.
+  <?php if ($props['Dep']):?>
+    This codepoint is <a href="<?php
+      e($router->getUrl('search?Dep=1'))?>">deprecated</a>.
+  <?php endif?>
 </p>
 
 <!-- character -->
