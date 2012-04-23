@@ -93,6 +93,9 @@
   padding: 10px 10px 0 10px;
   font-size: (12em/$sFontBase);
   font-family: $sans;
+  a[href^="http"]:after {
+    content: none;
+  }
   & ul {
     margin: 0 auto 10px;
     padding: 0;
@@ -148,14 +151,15 @@
   & em,
   & a {
     @include button-base;
-    line-height: (16em/12);
+    height: (20em/12);
+    line-height: (20em/12);
     font-style: normal;
     &:after,
     &:before {
       color: $cTextBright;
       text-shadow: 0 1px rgba(255,255,255,.1);
       font-size: (1em/.75);
-      line-height: 0;
+      line-height: (16em/12);
     }
     &.active {
       @include button-active;
