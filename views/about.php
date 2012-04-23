@@ -148,6 +148,11 @@ include 'nav.php';
       enhance it and send me a pull request. (If you don’t have a Github account,
       please send the git patch via e-mail.)
     </p>
+    <p>
+      <strong>There is no warranty,</strong> that the content on this site is
+      accurate, complete or error-free! For normative references please refer
+      to the Unicode website itself.
+    </p>
     <h3>Re-use License</h3>
     <p>
       You may re-use all content on this page, given that you respect the
@@ -171,7 +176,12 @@ include 'nav.php';
     <p>
       The images representing single Unicode blocks are taken from the
       font <a href="http://www.unicode.org/policies/lastresortfont_eula.html">Last Resort</a>,
-      released under a permissive license. All code provided by me is released
+      released under a permissive license. The quotes from Wikipedia are subject
+      to the Creative Commons Attribution Share-alike license. Details can be
+      obtained by following the respective link on each quote.
+    </p>
+    <p>
+      All code provided specifically for Codepoints.net is released
       under both the GPL and MIT license, with the licensee free to choose.
       Content genuine to this page is released under the
       <a rel="license" href="http://creativecommons.org/licenses/by/3.0/de/"><img
