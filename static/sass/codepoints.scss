@@ -194,6 +194,27 @@ nav {
       line-height: .4;
     }
   }
+
+  .value {
+    cursor: pointer;
+    font-weight: bold;
+    color: $cTextBold;
+  }
+
+  .y {
+    color: $cTextYes;
+    &:before {
+      content: "\2714\00A0";
+    }
+  }
+
+  .n {
+    color: $cTextNo;
+    &:before {
+      content: "\2718\00A0";
+    }
+  }
+
 }
 
 .ui-dialog .query-choose {
