@@ -31,7 +31,7 @@ class UnicodeInfo {
         'FC_NFKC' => 'FC NFKC Closure',
         'nt' => 'Numeric Type',
         'nv' => 'Numeric Value',
-        'jt' => 'Joining Class',
+        'jt' => 'Joining Type',
         'jg' => 'Joining Group',
         'Join_C' => 'Join Control',
         'lb' => 'Line Break',

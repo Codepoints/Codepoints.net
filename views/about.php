@@ -5,7 +5,7 @@ $nav = array(
   'find' => '<a href="#finding_characters">Finding Characters</a>',
   'unicode' => '<a href="#unicode">About Unicode</a>',
   'main' => '<a href="#this_site">About this Site</a>',
-  'glossary' => '<a href="'.$router->getUrl('glossary').'">Glossary of Common Terms</a>',
+  'glossary' => '<a href="'.$router->getUrl('glossary').'">Glossary</a>',
 );
 include 'header.php';
 include 'nav.php';

@@ -1,11 +1,11 @@
 <?php
-$title = 'Glossary of Common Terms';
+$title = 'Glossary of Terms';
 $hDescription = 'This glossary explains central terms of the Unicode standard and character encodings in general.';
 $nav = array(
   'find' => '<a href="'.$router->getUrl('about').'#finding_characters">Finding Characters</a>',
   'unicode' => '<a href="'.$router->getUrl('about').'#unicode">About Unicode</a>',
   'main' => '<a href="'.$router->getUrl('about').'#this_site">About this site</a>',
-  'glossary' => '<em class="active">Glossary of Common Terms</em>',
+  'glossary' => '<em class="active">Glossary</em>',
 );
 include 'header.php';
 include 'nav.php';
