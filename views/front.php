@@ -14,6 +14,18 @@ include "nav.php";
       <p><strong>Codepoint</strong>, <em>n.</em> the position of a character in
          an encoding system.</p>
     </blockquote>
+    <p class="action">
+      <span class="desc">Start here:</span>
+      <a class="button" href="<?php e($router->getUrl('basic_latin'))?>">Browse Codepoints</a>
+    </p>
+    <p class="action">
+      <span class="desc">Need help?</span>
+      <a class="button" href="<?php e($router->getUrl('wizard'))?>">Find my Codepoint</a>
+    </p>
+    <p class="action">
+      <span class="desc">Expert Search:</span>
+      <a class="button" href="<?php e($router->getUrl('search'))?>">Search Codepoint</a>
+    </p>
     <p>This site is dedicated to all the characters, that are defined in
        the <a href="http://unicode.org">Unicode Standard</a>. Theoretically,
        these should be <em>all characters ever used</em>. In practice Unicode

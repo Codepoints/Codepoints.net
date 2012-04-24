@@ -13,3 +13,27 @@
 .pagination {
   max-width: 590px;
 }
+
+.action {
+
+  @include pie-clearfix;
+
+  .desc,
+  .button {
+    display: block;
+    float: left;
+    height: 120px;
+    line-height: 120px;
+  }
+
+  .desc {
+    width: 38.2%;
+    text-align: right;
+    padding-right: 1em;
+  }
+
+  .button {
+    width: 61.8%;
+  }
+
+}
