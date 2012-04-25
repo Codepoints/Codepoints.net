@@ -15,16 +15,16 @@ include "nav.php";
          an encoding system.</p>
     </blockquote>
     <p class="action">
-      <span class="desc">Start here:</span>
-      <a class="button" href="<?php e($router->getUrl('basic_latin'))?>">Browse Codepoints</a>
+      <span class="desc">Start here: <small>Browse one by one through blocks of characters</small></span>
+      <a class="button browse" href="<?php e($router->getUrl('basic_latin'))?>">Browse Codepoints</a>
     </p>
     <p class="action">
-      <span class="desc">Need help?</span>
-      <a class="button" href="<?php e($router->getUrl('wizard'))?>">Find my Codepoint</a>
+      <span class="desc">Need help? <small>Answer questions to find matching characters</small></span>
+      <a class="button find" href="<?php e($router->getUrl('wizard'))?>">Find my Codepoint</a>
     </p>
     <p class="action">
-      <span class="desc">Expert Search:</span>
-      <a class="button" href="<?php e($router->getUrl('search'))?>">Search Codepoint</a>
+      <span class="desc">Expert Search! <small>Search for characters with particular properties</small></span>
+      <a class="button expert" href="<?php e($router->getUrl('search'))?>">Search Codepoint</a>
     </p>
     <p>This site is dedicated to all the characters, that are defined in
        the <a href="http://unicode.org">Unicode Standard</a>. Theoretically,
