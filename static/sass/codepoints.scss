@@ -111,6 +111,9 @@ button,
   @include button-base;
 }
 
+input[type="number"],
+input[type="password"],
+input[type="search"],
 input[type="text"] {
   @include input-text;
 }
