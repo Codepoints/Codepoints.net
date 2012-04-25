@@ -281,7 +281,7 @@ $(function() {
       return false;
     });
 
-    add.on('click', function() {
+    add.on('click tap', function() {
       menu.show().position({
         my: 'left top',
         at: 'left bottom',
@@ -289,6 +289,12 @@ $(function() {
         colision: 'fit flip'
       }).hide().slideDown();
       return false;
+    });
+    addlist.on('click tap', function(e) {
+      if (e.target === this) {
+        add.trigger('click');
+        return false;
+      }
     });
 
     /** show an option dialog for a single prop */
