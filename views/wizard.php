@@ -68,4 +68,8 @@ include "nav.php";
     </p>
   </form>
 </div>
-<?php include "footer.php"?>
+<?php
+$footer_scripts = array(
+    "/static/js/wizard.js"
+);
+include "footer.php"?>

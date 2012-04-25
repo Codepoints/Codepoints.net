@@ -8,6 +8,9 @@
     <script src="/static/js/jquery.js"></script>
     <script src="/static/js/jquery.ui.js"></script>
     <script src="/static/js/visual-unicode.js"></script>
+    <?php if (isset($footer_scripts)): foreach($footer_scripts as $sc):?>
+        <script src="<?php e($sc)?>"></script>
+    <?php endforeach; endif?>
     <script>
       WebFontConfig = {
         google: {
