@@ -245,6 +245,25 @@
 
 
 
+
+@mixin input-text {
+  vertical-align: middle;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 1px solid $cBorderMedium;
+  border-radius: 3px;
+  background-color: white;
+  padding: 2px 3px;
+
+  &:hover, &:focus {
+    border-color: blend($cBorderMedium, $cBrightMark);
+    box-shadow: inset 0 1px rgba(255,255,255,.67),
+                0 0 3px 0px $cBrightMark;
+  }
+}
+
+
+
 @mixin pagination {
   // pagination lists
   list-style: none;

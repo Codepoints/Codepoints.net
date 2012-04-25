@@ -111,6 +111,10 @@ button,
   @include button-base;
 }
 
+input[type="text"] {
+  @include input-text;
+}
+
 .hidden {
   display: none;
 }
@@ -170,6 +174,14 @@ nav {
   }
 }
 
+
+.stringsearch {
+  clear: left;
+  label {
+    float: left;
+    width: 100px;
+  }
+}
 
 .query-add {
   min-height: 20px;
