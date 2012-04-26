@@ -190,6 +190,13 @@
       '': 'No <small>(I have no such pair in mind)</small>'
   });
 
+  var q_archaic = new Question('archaic',
+    'Is it an archaic character or is it in use today?', {
+      1: 'Yep, noone would use that anymore!',
+      0: 'Nah, seen it yesterday in the newspaper',
+      '': 'I don’t know'
+  });
+
 
 
 
