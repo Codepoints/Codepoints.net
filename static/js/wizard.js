@@ -3,13 +3,13 @@
   /**
    * a single question for the wizard
    */
-  function Question(id, text) {
+  function Question(id, text, answers) {
     var q = this;
     q.id = id;
     q.text = text;
     q.prev = null;
     q.next = {};
-    q.answers = {};
+    q.answers = answers || {};
     q.selected = null;
     q.html = null;
   };
@@ -28,16 +28,17 @@
     },
     render: function() {
       if (! this.html) {
-        var q = this;
+        var q = this, i = 0;
         q.html = $('<fieldset id="'+q.id+'" class="question"></fieldset>')
                   .append('<legend>'+q.text+'</legend>')
                   .data('q', q);
         $.each(q.answers, function(id, label) {
+          i += 1;
           q.html.append($('<p><button type="button"></button></p>')
             .find('button')
-              .text(label)
+              .html(label)
               .on('click tap', function() { q.select(id); })
-            .end());
+            .end().addClass('answer answer_'+i));
         });
       }
       return this.html;
@@ -69,8 +70,10 @@
   function finishAsking(q) {
     // collect given answers and make request
     q.html.trigger('question.finish', q);
-    var answers = {}, q2 = q, i = 0,
-        html = $('<fieldset id="wizard_finish"><legend>Finished!</legend></fieldset>');
+    var answers = {'_wizard': 1}, q2 = q, i = 0,
+        html = $('<fieldset id="wizard_finish">' +
+                   '<legend>Finished!</legend>' +
+                 '</fieldset>');
     if (q.selected !== null) {
       answers[q.id] = q.selected;
       i += 1;
@@ -85,8 +88,7 @@
     q.html.fadeOut('fast', function() {
       html.hide().insertAfter(q.html).fadeIn('fast');
       q.html.remove();
-      console.log('?' + $.param(answers));
-      //window.location.href = '?' + $.param(answers);
+      window.location.href = '?' + $.param(answers);
     });
   }
 
@@ -121,6 +123,76 @@
   q1.setNextForAnswer('64', q3);
   q2.setNextForAnswer('43', q3);
 
-  prepareContainer($('#wizard_container'), q1);
+  var q_number = new Question('nt',
+    'Is it a number of any kind?', {
+      1: 'Yes',
+      0: 'No',
+      '': 'I don’t know'
+  });
+
+  var q_region = new Question('region',
+    'Where does the character appear usually?', {
+      'Africa': 'Africa',
+      'America': 'America <small>(originally, not Latin)</small>',
+      'Europe': 'Europe <small>(Latin, Cyrillic, …)</small>',
+      'Middle_East': 'Middle East',
+      'Central_Asia': 'Central Asia',
+      'East_Asia': 'East Asia <small>(Chinese, Korean, Japanese, …)</small>',
+      'South_Asia': 'South Asia <small>(Indian)</small>',
+      'Southeast Asia': 'Southeast Asia <small>(Thai, Khmer, …)</small>',
+      'Philippines': 'Philippines',
+      'n': 'Nowhere specific',
+      '': 'I don’t know'
+  });
+
+  var q_case = new Question('case',
+    'Has the character a case (upper, lower, title)?', {
+      l: 'Yes, it’s lowercase',
+      u: 'Yes, it’s uppercase',
+      t: 'Yes, it’s titlecase',
+      y: 'Yes, but I don’t know the case',
+      n: 'No, it’s uncased',
+      '': 'I don’t know'
+  });
+
+  var q_symbol = new Question('symbol',
+    'Is the character some kind of symbol or dingbat?', {
+      s: 'Yes <small>(It isn’t part of usually written text)</small>',
+      c: 'No <small>(But it is some kind of control character)</small>',
+      t: 'No <small>(It may appear in text, like letters or punctuation)</small>',
+      '': 'I don’t know'
+  });
+
+  var q_punc = new Question('punctuation',
+    'Is the character some kind of punctuation?', {
+      1: 'Yes',
+      0: 'No',
+      '': 'I don’t know'
+  });
+
+  var q_incomplete = new Question('incomplete',
+    'Is the character incomplete on its own, like a diacritic sign?', {
+      1: 'Yes <small>(It’s usually found together with another character)</small>',
+      0: 'No <small>(It stands on its own)</small>',
+      '': 'I don’t know'
+  });
+
+  var q_composed = new Question('composed',
+    'Is the character composed of two others?', {
+      1: 'Yes <small>(It is based on two or more other characters)</small>',
+      0: 'No <small>(It is a genuine character)</small>',
+      '': 'I don’t know'
+  });
+
+  var q_confuse = new Question('confuse',
+    'Off the top of your head, can the character be confused with another one?', {
+      1: 'Yes <small>(Like latin “A” and greek “Α”, alpha)</small>',
+      '': 'No <small>(I have no such pair in mind)</small>'
+  });
+
+
+
+
+  prepareContainer($('#wizard_container'), q_symbol);
 
 })(this, jQuery);

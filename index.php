@@ -75,8 +75,13 @@ $router->addSetting('db', $db)
 
 ->registerAction('wizard', function ($request, $o) {
     // the "find my CP" wizard
-    $view = new View('wizard');
-    echo $view->render();
+    if (isset($_GET['_wizard']) && $_GET['_wizard'] === '1') {
+        echo '<a href="/wizard">Back</a><br>';
+        var_dump($_GET);
+    } else {
+        $view = new View('wizard');
+        echo $view->render();
+    }
 })
 
 ->registerAction('random', function ($request, $o) {
