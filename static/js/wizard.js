@@ -34,29 +34,61 @@
                   .data('q', q);
         $.each(q.answers, function(id, label) {
           i += 1;
-          q.html.append($('<p><button type="button"></button></p>')
-            .find('button')
-              .html(label)
-              .on('click tap', function() { q.select(id); })
-            .end().addClass('answer answer_'+i));
+          if (id === '_number') {
+            var counter = $('<input type="number"/>').val(label[1]||0),
+                slider = $('<div></div>').slider({
+                  min: label[1]||0,
+                  max: label[2]||100,
+                  change: function() {
+                    counter.val($(this).slider('value'));
+                  },
+                  slide: function() {
+                    counter.val($(this).slider('value'));
+                  }
+                });
+            q.html.append($('<div class="number"><p></p><p><button type="button"></button></p></div>')
+              .addClass('answer answer_'+i)
+              .find('button')
+                .html(label[0])
+                .on('click tap', function() { q.select(slider.slider('value'),
+                                                       q.next[id]); })
+              .end().find('p:eq(0)')
+                .append(counter)
+                .append(slider)
+              .end());
+          } else if (id === '_text') {
+            var txt = $('<input type="text"/>');
+            q.html.append($('<p class="text"><button type="button"></button></p>')
+              .find('button')
+                .html(label)
+                .before(txt)
+                .on('click tap', function() { q.select(txt.val(), q.next[id]); })
+              .end().addClass('answer answer_'+i));
+          } else {
+            q.html.append($('<p><button type="button"></button></p>')
+              .find('button')
+                .html(label)
+                .on('click tap', function() { q.select(id, q.next[id]); })
+              .end().addClass('answer answer_'+i));
+          }
         });
       }
       return this.html;
     },
-    select: function(id) {
+    select: function(id, next) {
       var q = this;
       q.html.trigger('question.answered');
       q.selected = id;
-      if (q.next[id]) {
+      if (next) {
         // if there is a next question, show this
         q.html.fadeOut('fast', function() {
-          var next_html = q.next[id].render();
-          QuestionPrototype.current = q.next[id];
+          var next_html = next.render();
+          QuestionPrototype.current = next;
           next_html.trigger('question.next');
           next_html.hide().insertAfter(q.html).fadeIn('fast');
           q.html.remove();
         });
-        q.next[id].prev = q;
+        next.prev = q;
       } else {
         finishAsking(q);
       }
@@ -197,9 +229,21 @@
       '': 'I don’t know'
   });
 
+  var q_strokes = new Question('strokes',
+    'Do you know the number of strokes the character has?', {
+      _number: ['This much', 1, 64],
+      '': 'Nope, never counted them'
+  });
+
+  var q_def = new Question('def',
+    'Do you happen to know the meaning of the character?', {
+      _text: 'This is what I’m looking for',
+      '': 'I don’t speak that language'
+  });
 
 
 
-  prepareContainer($('#wizard_container'), q_symbol);
+
+  prepareContainer($('#wizard_container'), q_def);
 
 })(this, jQuery);

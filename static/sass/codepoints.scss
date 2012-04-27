@@ -411,6 +411,29 @@ nav {
     text-align: left;
   }
 
+  .number {
+    p {
+      @include pie-clearfix;
+    }
+    [type="number"] {
+      width: 20%;
+      float: left;
+    }
+    .ui-slider {
+      width: 75%;
+      margin-right: 12;
+      float: right;
+      top: 6px;
+    }
+  }
+
+  .text {
+    [type="text"] {
+      margin-bottom: 5px;
+      width: 100%;
+    }
+  }
+
 }
 
 
