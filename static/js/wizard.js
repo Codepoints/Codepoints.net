@@ -57,7 +57,12 @@
                 .append(slider)
               .end());
           } else if (id === '_text') {
-            var txt = $('<input type="text"/>');
+            var txt = $('<input type="text"/>').on('keypress', function(e) {
+              if (e.which === 13) {
+                $(this).next().click();
+                return false;
+              }
+            });
             q.html.append($('<p class="text"><button type="button"></button></p>')
               .find('button')
                 .html(label)
