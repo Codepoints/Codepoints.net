@@ -73,17 +73,6 @@ $router->addSetting('db', $db)
     echo $view->render(array('planes' => UnicodePlane::getAll($o['db'])));
 })
 
-->registerAction('wizard', function ($request, $o) {
-    // the "find my CP" wizard
-    if (isset($_GET['_wizard']) && $_GET['_wizard'] === '1') {
-        echo '<a href="/wizard">Back</a><br>';
-        var_dump($_GET);
-    } else {
-        $view = new View('wizard');
-        echo $view->render();
-    }
-})
-
 ->registerAction('random', function ($request, $o) {
     // random codepoint
     $x = $o['db']->prepare('SELECT cp FROM codepoints ORDER BY RANDOM() LIMIT 1');
@@ -126,6 +115,25 @@ $router->addSetting('db', $db)
     // static pages
     $view = new View($request->trunkUrl);
     echo $view->render();
+})
+
+->registerAction('wizard', function ($request, $o) {
+    // the "find my CP" wizard
+    if (isset($_GET['_wizard']) && $_GET['_wizard'] === '1') {
+        $result = new SearchResult(array(), $o['db']);
+        foreach ($_GET as $k => $v) {
+            switch ($k) {
+                case 'def':
+                    $result->addQuery('kDefinition', "%$v%", 'LIKE');
+                    break;
+            }
+        }
+        echo '<a href="/wizard">Back</a><br>';
+        var_dump($result->get());
+    } else {
+        $view = new View('wizard');
+        echo $view->render();
+    }
 })
 
 ->registerAction('search', function ($request, $o) {

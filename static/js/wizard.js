@@ -237,7 +237,7 @@
 
   var q_def = new Question('def',
     'Do you happen to know the meaning of the character?', {
-      _text: 'This is what I’m looking for',
+      _text: 'This is (part of) what I’m looking for',
       '': 'I don’t speak that language'
   });
 
