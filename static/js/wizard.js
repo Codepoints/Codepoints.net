@@ -144,23 +144,13 @@
       });
   }
 
-  var q1 = new Question('swallow', 'What is the speed of an unladden swallow?');
-  q1.addAnswer('24');
-  q1.addAnswer('42');
-  q1.addAnswer('64');
+  var q_swallow = new Question('swallow',
+    'What’s the airspeed velocity of an unladen swallow?', {
+      1: 'An African, or',
+      2: 'A European Swallow?'
+  });
 
-  var q2 = new Question('hitch', 'What is the ultimate answer?');
-  q2.addAnswer('25');
-  q2.addAnswer('43');
-  q1.setNextForAnswer('42', q2);
-
-  var q3 = new Question('foobar', 'Foo or Bar?');
-  q3.addAnswer('Foo');
-  q3.addAnswer('Bar');
-  q1.setNextForAnswer('64', q3);
-  q2.setNextForAnswer('43', q3);
-
-  var q_number = new Question('nt',
+  var q_number = new Question('number',
     'Is it a number of any kind?', {
       1: 'Yes',
       0: 'No',
@@ -217,6 +207,7 @@
   var q_composed = new Question('composed',
     'Is the character composed of two others?', {
       1: 'Yes <small>(It is based on two or more other characters)</small>',
+      2: 'Sort of <small>(It’s got some quiggly lines or dots, like “Ä” or “ٷ”)</small>',
       0: 'No <small>(It is a genuine character)</small>',
       '': 'I don’t know'
   });
@@ -247,8 +238,9 @@
   });
 
 
+  q_region.setNextForAnswer('Africa', q_number);
 
 
-  prepareContainer($('#wizard_container'), q_def);
+  prepareContainer($('#wizard_container'), q_region);
 
 })(this, jQuery);

@@ -126,10 +126,124 @@ $router->addSetting('db', $db)
                 case 'def':
                     $result->addQuery('kDefinition', "%$v%", 'LIKE');
                     break;
+                case 'strokes':
+                    if (ctype_digit($v) && (int)$v > 0) {
+                        $result->addQuery('kTotalStrokes', $v);
+                    }
+                    break;
+                case 'archaic':
+                    if ($v === '1') {
+                        throw new Exception('TODO');
+                        $result->addQuery('', '');
+                    } elseif ($v === '0') {
+                        throw new Exception('TODO');
+                        $result->addQuery('', '');
+                    }
+                    break;
+                case 'confuse':
+                    if ($v === '1') {
+                        $result->addQuery('confusables', 0, '>');
+                    }
+                    break;
+                case 'composed':
+                    if ($v >= 1) {
+                        $result->addQuery('NFKD_QC', 'No');
+                    } elseif ($v === '0') {
+                        $result->addQuery('NFKD_QC', 'Yes');
+                    }
+                    break;
+                case 'incomplete':
+                    if ($v === '1') {
+                        $result->addQuery('ccc', 0, '>');
+                    } elseif ($v === '0') {
+                        $result->addQuery('ccc', 0);
+                    }
+                    break;
+                case 'punctuation':
+                    if ($v === '1') {
+                        $result->addQuery('gc', array('Pc', 'Pd', 'Ps', 'Pe',
+                                                      'Pi', 'Pf', 'Po'));
+                    } elseif ($v === '0') {
+                        $result->addQuery('gc', array('Pc', 'Pd', 'Ps', 'Pe',
+                                                      'Pi', 'Pf', 'Po'), '!=');
+                    }
+                    break;
+                case 'symbol':
+                    if ($v === 's') {
+                        $result->addQuery('gc', array('Sm', 'Sc', 'Sk', 'So'));
+                    } elseif ($v === 'c') {
+                        $result->addQuery('gc', array('Cc', 'Cf', 'Cs', 'Co',
+                                                      'Cn'));
+                    } elseif ($v === 't') {
+                        $result->addQuery('gc', array('Sm', 'Sc', 'Sk', 'So',
+                                                      'Cc', 'Cf', 'Cs', 'Co',
+                                                      'Cn'), '!=');
+                    }
+                    break;
+                case 'number':
+                    if ($v === '1') {
+                        $result->addQuery('gc', array('Nd', 'Nl', 'No'));
+                    } elseif ($v === '0') {
+                        $result->addQuery('gc', array('Nd', 'Nl', 'No'), '!=');
+                    }
+                    break;
+                case 'case':
+                    if ($v === 'l') {
+                        $result->addQuery('gc', 'Ll');
+                    } elseif ($v === 'u') {
+                        $result->addQuery('gc', 'Lu');
+                    } elseif ($v === 't') {
+                        $result->addQuery('gc', 'Lt');
+                    } elseif ($v === 'y') {
+                        $result->addQuery('gc', array('Lu', 'Ll', 'Lt'));
+                    } elseif ($v === 'n') {
+                        $result->addQuery('gc', array('Lu', 'Ll', 'Lt'), '!=');
+                    }
+                    break;
+                case 'region':
+                    if ($v === 'Africa') {
+                        $result->addQuery('blk', array('Ethiopic', 'Ethiopic_Ext', 'Ethiopic_Ext_A', 'Ethiopic_Sup', 'NKo', 'Osmanya', 'Tifinagh'));
+                    } elseif ($v === 'America') {
+                        $result->addQuery('blk', array('Cherokee', 'Deseret', 'UCAS', 'UCAS_Ext'));
+                    } elseif ($v === 'Europe') {
+                        $result->addQuery('blk', array('Armenian', 'Basic_Latin', 'Diacriticals', 'Diacriticals_Sup', 'Half_Marks', 'Coptic', 'Cypriot_Syllabary', 'Cyrillic', 'Cyrillic_Ext_A', 'Cyrillic_Ext_B', 'Cyrillic_Sup', 'Georgian', 'Georgian_Sup', 'Glagolitic', 'Gothic', 'Greek', 'Greek_Ext', 'IPA_Ext', 'Latin_Ext_Additional', 'Latin_Ext_A', 'Latin_Ext_B', 'Latin_Ext_C', 'Latin_Ext_D', 'Latin_1_Sup', 'Linear_B_Ideograms', 'Linear_B_Syllabary', 'Modifier_Tone_Letters', 'Ogham', 'Old_Italic', 'Phonetic_Ext', 'Phonetic_Ext_Sup', 'Runic', 'Shavian', 'Modifier_Letters'));
+                    } elseif ($v === 'Middle_East') {
+                        $result->addQuery('blk', array('Alphabetic_PF', 'Arabic', 'Arabic_Ext_A', 'Arabic_Math', 'Arabic_PF_A', 'Arabic_PF_B', 'Arabic_Sup', 'Cuneiform', 'Hebrew', 'Old_Persian', 'Phoenician', 'Syriac', 'Ugaritic'));
+                    } elseif ($v === 'Central_Asia') {
+                        $result->addQuery('blk', array('Mongolian', 'Phags_Pa', 'Tibetan'));
+                    } elseif ($v === 'East_Asia') {
+                        $result->addQuery('blk', array('Bopomofo', 'Bopomofo_Ext', 'CJK_Symbols', 'CJK_Compat', 'CJK_Compat_Forms', 'CJK_Compat_Ideographs', 'CJK_Compat_Ideographs_Sup', 'CJK_Radicals_Sup', 'CJK_Strokes', 'CJK', 'CJK_Ext_A', 'CJK_Ext_B', 'CJK_Ext_C', 'CJK_Ext_D', 'Compat_Jamo', 'Jamo', 'Jamo_Ext_A', 'Jamo_Ext_B', 'Hangul', 'Hiragana', 'IDC', 'Kanbun', 'Kangxi', 'Katakana', 'Katakana_Ext', 'Yi_Radicals', 'Yi_Syllables', 'Yijing'));
+                    } elseif ($v === 'South_Asia') {
+                        $result->addQuery('blk', array('Bengali', 'Devanagari', 'Gujarati', 'Gurmukhi', 'Kannada', 'Kharoshthi', 'Limbu', 'Malayalam', 'Oriya', 'Sinhala', 'Syloti_Nagri', 'Tamil', 'Telugu', 'Thaana'));
+                    } elseif ($v === 'Southeast_Asia') {
+                        $result->addQuery('blk', array('Balinese', 'Buginese', 'Khmer', 'Khmer_Symbols', 'Lao', 'Myanmar', 'Myanmar_Ext_A', 'New_Tai_Lue', 'Tai_Le', 'Tai_Tham', 'Tai_Viet', 'Tai_Xuan_Jing', 'Thai'));
+                    } elseif ($v === 'Philippines') {
+                        $result->addQuery('blk', array('Buhid', 'Hanunoo', 'Tagalog', 'Tagbanwa'));
+                    } elseif ($v === 'n') {
+                        throw new Exception('TODO');
+                        $result->addQuery('blk', array('OCR', 'Transport_And_Map', 'Misc_Symbols', 'Misc_Technical', 'Music', 'Misc_Pictographs', 'Misc_Arrows', 'Misc_Math_Symbols_A', 'Misc_Math_Symbols_B', 'Playing_Cards', 'Dingbats', 'Domino', 'Emoticons', 'Geometric_Shapes', 'Majyong', 'Math_Alphanum', 'Math_Operators', 'Control_Pictures', 'Alchemical', 'Arrows', 'Block_Elements', 'Box_Drawing', 'Currency_Symbols', 'Sup_Arrows_A', 'Sup_Arrows_B', 'Sup_Math_Operators', 'Sup_Punctuation', 'Tags'));
+                    }
+                    break;
             }
         }
-        echo '<a href="/wizard">Back</a><br>';
-        var_dump($result->get());
+        $page = isset($_GET['page'])? intval($_GET['page']) : 1;
+        $result->page = $page - 1;
+        if (count($result->getQuery())) {
+            if ($result->getCount() === 1) {
+                $cp = $result->current();
+                $router->redirect('U+'.$cp);
+            } else {
+                $pagination = new Pagination($result->getCount(), 128);
+                $pagination->setPage($page);
+                $view = new View('result');
+                $blocks = array();
+                echo $view->render(compact('result', 'blocks', 'pagination',
+                                        'page'));
+            }
+        } else {
+            $view = new View('wizard');
+            echo $view->render(array('message'=> 'Nothing found'));
+        }
     } else {
         $view = new View('wizard');
         echo $view->render();

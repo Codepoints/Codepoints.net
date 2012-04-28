@@ -5,6 +5,9 @@ include "nav.php";
 ?>
 <div class="payload wizard">
   <h1><?php e($title)?></h1>
+  <?php if (isset($message) && $message):?>
+    <p class="error"><?php e($message)?></p>
+  <?php endif?>
   <p>You search for a specific character? Answer the following questions and
      we try to figure out candidates.</p>
   <div id="wizard_container" class="wizard">
