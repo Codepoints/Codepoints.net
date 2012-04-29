@@ -119,6 +119,18 @@ $router->addSetting('db', $db)
 
 ->registerAction('wizard', function ($request, $o) {
     // the "find my CP" wizard
+    $region = array(
+        'Africa' => array('Ethiopic', 'Ethiopic_Ext', 'Ethiopic_Ext_A', 'Ethiopic_Sup', 'NKo', 'Osmanya', 'Tifinagh', 'Meroitic_Cursive', 'Meroitic_Hieroglyphs', 'Bamum', 'Bamum_Sup', 'Vai',),
+        'America' => array('Cherokee', 'Deseret', 'UCAS', 'UCAS_Ext'),
+        'Europe' => array('Armenian', 'Basic_Latin', 'Diacriticals', 'Diacriticals_Sup', 'Half_Marks', 'Coptic', 'Cypriot_Syllabary', 'Cyrillic', 'Cyrillic_Ext_A', 'Cyrillic_Ext_B', 'Cyrillic_Sup', 'Georgian', 'Georgian_Sup', 'Glagolitic', 'Gothic', 'Greek', 'Greek_Ext', 'IPA_Ext', 'Latin_Ext_Additional', 'Latin_Ext_A', 'Latin_Ext_B', 'Latin_Ext_C', 'Latin_Ext_D', 'Latin_1_Sup', 'Linear_B_Ideograms', 'Linear_B_Syllabary', 'Modifier_Tone_Letters', 'Ogham', 'Old_Italic', 'Phonetic_Ext', 'Phonetic_Ext_Sup', 'Runic', 'Shavian', 'Modifier_Letters', 'Ancient_Greek_Music', 'Ancient_Greek_Numbers', 'Ancient_Symbols', 'Byzantine_Music', 'Aegean_Numbers', 'Lycian', 'Phaistos', 'Super_And_Sub',),
+        'Middle_East' => array('Alphabetic_PF', 'Arabic', 'Old_South_Arabian', 'Arabic_Ext_A', 'Arabic_Math', 'Arabic_PF_A', 'Arabic_PF_B', 'Arabic_Sup', 'Cuneiform', 'Hebrew', 'Old_Persian', 'Phoenician', 'Syriac', 'Ugaritic', 'Samaritan', 'Egyptian_Hieroglyphs', 'Avestan', 'Carian', 'Cuneiform_Numbers', 'Imperial_Aramaic', 'Inscriptional_Pahlavi', 'Inscriptional_Parthian', 'Lydian', 'Mandaic', 'Old_Turkic',),
+        'Central_Asia' => array('Mongolian', 'Phags_Pa', 'Tibetan', 'Chakma', 'Lepcha',),
+        'East_Asia' => array('Bopomofo', 'Bopomofo_Ext', 'CJK_Symbols', 'CJK_Compat', 'CJK_Compat_Forms', 'CJK_Compat_Ideographs', 'CJK_Compat_Ideographs_Sup', 'CJK_Radicals_Sup', 'CJK_Strokes', 'CJK', 'CJK_Ext_A', 'CJK_Ext_B', 'CJK_Ext_C', 'CJK_Ext_D', 'Compat_Jamo', 'Jamo', 'Jamo_Ext_A', 'Jamo_Ext_B', 'Hangul', 'Hiragana', 'IDC', 'Kanbun', 'Kangxi', 'Katakana', 'Katakana_Ext', 'Yi_Radicals', 'Yi_Syllables', 'Yijing', 'Vertical_Forms', 'Enclosed_CJK', 'Enclosed_Ideographic_Sup', 'Counting_Rod', 'Kana_Sup', 'Miao', 'Half_And_Full_Forms', 'Small_Forms', ),
+        'South_Asia' => array('Bengali', 'Devanagari', 'Devanagari_Ext', 'Indic_Number_Forms', 'Gujarati', 'Gurmukhi', 'Kannada', 'Kharoshthi', 'Limbu', 'Malayalam', 'Oriya', 'Sinhala', 'Syloti_Nagri', 'Tamil', 'Telugu', 'Thaana', 'Brahmi', 'Meetei_Mayek', 'Meetei_Mayek_Ext', 'Kaithi', 'Ol_Chiki', 'Saurashtra', 'Sharada', 'Sora_Sompeng', 'Vedic_Ext', 'Takri',),
+        'Southeast_Asia' => array('Balinese', 'Buginese', 'Khmer', 'Khmer_Symbols', 'Lao', 'Myanmar', 'Myanmar_Ext_A', 'New_Tai_Lue', 'Tai_Le', 'Tai_Tham', 'Tai_Viet', 'Tai_Xuan_Jing', 'Thai', 'Cham', 'Lisu', 'Kayah_Li', 'Rumi',),
+        'Philippines' => array('Buhid', 'Hanunoo', 'Tagalog', 'Tagbanwa', 'Batak', 'Javanese', 'Rejang', 'Sundanese', 'Sundanese_Sup'),
+        'n' => array('OCR', 'Transport_And_Map', 'Misc_Symbols', 'Misc_Technical', 'Music', 'Misc_Pictographs', 'Misc_Arrows', 'Misc_Math_Symbols_A', 'Misc_Math_Symbols_B', 'Playing_Cards', 'Dingbats', 'Domino', 'Emoticons', 'Geometric_Shapes', 'Majyong', 'Math_Alphanum', 'Math_Operators', 'Control_Pictures', 'Alchemical', 'Arrows', 'Block_Elements', 'Box_Drawing', 'Currency_Symbols', 'Sup_Arrows_A', 'Sup_Arrows_B', 'Sup_Math_Operators', 'Sup_Punctuation', 'Tags', 'Letterlike_Symbols', 'VS', 'VS_Sup', 'Number_Forms', 'Punctuation', 'Diacriticals_For_Symbols', 'Braille', 'Specials', 'Enclosed_Alphanum', 'Enclosed_Alphanum_Sup'),
+    );
     if (isset($_GET['_wizard']) && $_GET['_wizard'] === '1') {
         $result = new SearchResult(array(), $o['db']);
         foreach ($_GET as $k => $v) {
@@ -203,26 +215,8 @@ $router->addSetting('db', $db)
                     }
                     break;
                 case 'region':
-                    if ($v === 'Africa') {
-                        $result->addQuery('blk', array('Ethiopic', 'Ethiopic_Ext', 'Ethiopic_Ext_A', 'Ethiopic_Sup', 'NKo', 'Osmanya', 'Tifinagh', 'Meroitic_Cursive', 'Meroitic_Hieroglyphs', 'Bamum', 'Bamum_Sup', 'Vai',));
-                    } elseif ($v === 'America') {
-                        $result->addQuery('blk', array('Cherokee', 'Deseret', 'UCAS', 'UCAS_Ext'));
-                    } elseif ($v === 'Europe') {
-                        $result->addQuery('blk', array('Armenian', 'Basic_Latin', 'Diacriticals', 'Diacriticals_Sup', 'Half_Marks', 'Coptic', 'Cypriot_Syllabary', 'Cyrillic', 'Cyrillic_Ext_A', 'Cyrillic_Ext_B', 'Cyrillic_Sup', 'Georgian', 'Georgian_Sup', 'Glagolitic', 'Gothic', 'Greek', 'Greek_Ext', 'IPA_Ext', 'Latin_Ext_Additional', 'Latin_Ext_A', 'Latin_Ext_B', 'Latin_Ext_C', 'Latin_Ext_D', 'Latin_1_Sup', 'Linear_B_Ideograms', 'Linear_B_Syllabary', 'Modifier_Tone_Letters', 'Ogham', 'Old_Italic', 'Phonetic_Ext', 'Phonetic_Ext_Sup', 'Runic', 'Shavian', 'Modifier_Letters', 'Ancient_Greek_Music', 'Ancient_Greek_Numbers', 'Ancient_Symbols', 'Byzantine_Music', 'Aegean_Numbers', 'Lycian', 'Phaistos', 'Super_And_Sub',));
-                    } elseif ($v === 'Middle_East') {
-                        $result->addQuery('blk', array('Alphabetic_PF', 'Arabic', 'Old_South_Arabian', 'Arabic_Ext_A', 'Arabic_Math', 'Arabic_PF_A', 'Arabic_PF_B', 'Arabic_Sup', 'Cuneiform', 'Hebrew', 'Old_Persian', 'Phoenician', 'Syriac', 'Ugaritic', 'Samaritan', 'Egyptian_Hieroglyphs', 'Avestan', 'Carian', 'Cuneiform_Numbers', 'Imperial_Aramaic', 'Inscriptional_Pahlavi', 'Inscriptional_Parthian', 'Lydian', 'Mandaic', 'Old_Turkic',));
-                    } elseif ($v === 'Central_Asia') {
-                        $result->addQuery('blk', array('Mongolian', 'Phags_Pa', 'Tibetan', 'Chakma', 'Lepcha',));
-                    } elseif ($v === 'East_Asia') {
-                        $result->addQuery('blk', array('Bopomofo', 'Bopomofo_Ext', 'CJK_Symbols', 'CJK_Compat', 'CJK_Compat_Forms', 'CJK_Compat_Ideographs', 'CJK_Compat_Ideographs_Sup', 'CJK_Radicals_Sup', 'CJK_Strokes', 'CJK', 'CJK_Ext_A', 'CJK_Ext_B', 'CJK_Ext_C', 'CJK_Ext_D', 'Compat_Jamo', 'Jamo', 'Jamo_Ext_A', 'Jamo_Ext_B', 'Hangul', 'Hiragana', 'IDC', 'Kanbun', 'Kangxi', 'Katakana', 'Katakana_Ext', 'Yi_Radicals', 'Yi_Syllables', 'Yijing', 'Vertical_Forms', 'Enclosed_CJK', 'Enclosed_Ideographic_Sup', 'Counting_Rod', 'Kana_Sup', 'Miao', 'Half_And_Full_Forms', 'Small_Forms', ));
-                    } elseif ($v === 'South_Asia') {
-                        $result->addQuery('blk', array('Bengali', 'Devanagari', 'Devanagari_Ext', 'Indic_Number_Forms', 'Gujarati', 'Gurmukhi', 'Kannada', 'Kharoshthi', 'Limbu', 'Malayalam', 'Oriya', 'Sinhala', 'Syloti_Nagri', 'Tamil', 'Telugu', 'Thaana', 'Brahmi', 'Meetei_Mayek', 'Meetei_Mayek_Ext', 'Kaithi', 'Ol_Chiki', 'Saurashtra', 'Sharada', 'Sora_Sompeng', 'Vedic_Ext', 'Takri',));
-                    } elseif ($v === 'Southeast_Asia') {
-                        $result->addQuery('blk', array('Balinese', 'Buginese', 'Khmer', 'Khmer_Symbols', 'Lao', 'Myanmar', 'Myanmar_Ext_A', 'New_Tai_Lue', 'Tai_Le', 'Tai_Tham', 'Tai_Viet', 'Tai_Xuan_Jing', 'Thai', 'Cham', 'Lisu', 'Kayah_Li', 'Rumi',));
-                    } elseif ($v === 'Philippines') {
-                        $result->addQuery('blk', array('Buhid', 'Hanunoo', 'Tagalog', 'Tagbanwa', 'Batak', 'Javanese', 'Rejang', 'Sundanese', 'Sundanese_Sup'));
-                    } elseif ($v === 'n') {
-                        $result->addQuery('blk', array('OCR', 'Transport_And_Map', 'Misc_Symbols', 'Misc_Technical', 'Music', 'Misc_Pictographs', 'Misc_Arrows', 'Misc_Math_Symbols_A', 'Misc_Math_Symbols_B', 'Playing_Cards', 'Dingbats', 'Domino', 'Emoticons', 'Geometric_Shapes', 'Majyong', 'Math_Alphanum', 'Math_Operators', 'Control_Pictures', 'Alchemical', 'Arrows', 'Block_Elements', 'Box_Drawing', 'Currency_Symbols', 'Sup_Arrows_A', 'Sup_Arrows_B', 'Sup_Math_Operators', 'Sup_Punctuation', 'Tags', 'Letterlike_Symbols', 'VS', 'VS_Sup', 'Number_Forms', 'Punctuation', 'Diacriticals_For_Symbols', 'Braille', 'Specials', 'Enclosed_Alphanum', 'Enclosed_Alphanum_Sup'));
+                    if (array_key_exists($v,$region)) {
+                        $result->addQuery('blk', $region[$v]);
                     }
                     break;
             }
