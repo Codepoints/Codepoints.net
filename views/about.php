@@ -187,13 +187,14 @@ include 'nav.php';
       released under a permissive license. The quotes from Wikipedia are subject
       to the Creative Commons Attribution Share-alike license. Details can be
       obtained by following the respective link on each quote.
-    </p>
+      The geographic localization of blocks (used in the “Find my Codepoint”
+      wizard) is based on the categorization on <a href="http://www.decodeunicode.org">decodeunicode.org</a>,
+      published under the CC BY NC license.
     <p>
       All code provided specifically for Codepoints.net is released
       under both the GPL and MIT license, with the licensee free to choose.
       Content genuine to this site is released under the
-      <a rel="license" href="http://creativecommons.org/licenses/by/3.0/de/"><img
-      alt="" src="s:image/cc-by.png" /> Creative Commons Attribution 3.0 Germany</a>.
+      <a rel="license" href="http://creativecommons.org/licenses/by/3.0/de/">Creative Commons Attribution 3.0 Germany</a>.
       Attribution in this case is a simple backlink, optionally with the link
       text “Based on information from Codepoints.net”.
     </p>
