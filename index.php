@@ -124,7 +124,9 @@ $router->addSetting('db', $db)
         foreach ($_GET as $k => $v) {
             switch ($k) {
                 case 'def':
-                    $result->addQuery('kDefinition', "%$v%", 'LIKE');
+                    if ($v) {
+                        $result->addQuery('kDefinition', "%$v%", 'LIKE');
+                    }
                     break;
                 case 'strokes':
                     if (ctype_digit($v) && (int)$v > 0) {

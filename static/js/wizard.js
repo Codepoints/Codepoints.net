@@ -150,13 +150,6 @@
       2: 'A European Swallow?'
   });
 
-  var q_number = new Question('number',
-    'Is it a number of any kind?', {
-      1: 'Yes',
-      0: 'No',
-      '': 'I don’t know'
-  });
-
   var q_region = new Question('region',
     'Where does the character appear usually?', {
       'Africa': 'Africa',
@@ -169,6 +162,13 @@
       'Southeast Asia': 'Southeast Asia <small>(Thai, Khmer, …)</small>',
       'Philippines': 'Philippines',
       'n': 'Nowhere specific',
+      '': 'I don’t know'
+  });
+
+  var q_number = new Question('number',
+    'Is it a number of any kind?', {
+      1: 'Yes',
+      0: 'No',
       '': 'I don’t know'
   });
 
@@ -239,7 +239,51 @@
 
 
   q_region.setNextForAnswer('Africa', q_number);
+  q_region.setNextForAnswer('America', q_number);
+  q_region.setNextForAnswer('Europe', q_number);
+  q_region.setNextForAnswer('Middle_East', q_number);
+  q_region.setNextForAnswer('Central_Asia', q_number);
+  q_region.setNextForAnswer('South_Asia', q_number);
+  q_region.setNextForAnswer('Southeast_Asia', q_number);
+  q_region.setNextForAnswer('Philippines', q_number);
+  q_region.setNextForAnswer('n', q_symbol);
 
+  q_region.setNextForAnswer('East_Asia', q_def);
+  q_def.setNextForAnswer('_text', q_strokes);
+  q_def.setNextForAnswer('', q_strokes);
+
+  q_strokes.setNextForAnswer('_number', q_composed);
+  q_strokes.setNextForAnswer('', q_composed);
+
+  q_number.setNextForAnswer(0, q_symbol);
+  q_number.setNextForAnswer('', q_symbol);
+
+  q_symbol.setNextForAnswer('t', q_punc);
+  q_symbol.setNextForAnswer('', q_punc);
+
+  q_punc.setNextForAnswer(1, q_archaic);
+  q_punc.setNextForAnswer(0, q_case);
+  q_punc.setNextForAnswer('', q_case);
+
+  q_case.setNextForAnswer('l', q_composed);
+  q_case.setNextForAnswer('u', q_composed);
+  q_case.setNextForAnswer('t', q_composed);
+  q_case.setNextForAnswer('y', q_composed);
+  q_case.setNextForAnswer('n', q_composed);
+  q_case.setNextForAnswer('', q_composed);
+
+  q_composed.setNextForAnswer(1, q_archaic);
+  q_composed.setNextForAnswer(2, q_archaic);
+  q_composed.setNextForAnswer(0, q_incomplete);
+  q_composed.setNextForAnswer('', q_incomplete);
+
+  q_incomplete.setNextForAnswer(1, q_archaic);
+  q_incomplete.setNextForAnswer(0, q_archaic);
+  q_incomplete.setNextForAnswer('', q_archaic);
+
+  q_archaic.setNextForAnswer(1, q_confuse);
+  q_archaic.setNextForAnswer(0, q_confuse);
+  q_archaic.setNextForAnswer('', q_confuse);
 
   prepareContainer($('#wizard_container'), q_region);
 
