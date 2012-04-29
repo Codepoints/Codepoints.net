@@ -5,10 +5,15 @@
   <ul class="primary">
     <li class="start"><a href="<?php e($router->getUrl())?>" rel="start">Start</a></li>
     <li class="search"><a href="<?php e($router->getUrl('SearchResult'))?>" rel="search">Search</a></li>
-    <?php $stem = 'http://'.$_SERVER['HTTP_HOST'].$router->getUrl('search?');
-    if (array_key_exists('HTTP_REFERER', $_SERVER) && substr($_SERVER['HTTP_REFERER'], 0, strlen($stem)) === $stem):?>
-      <li class="up"><a href="<?php e($_SERVER['HTTP_REFERER'])?>">Back to last search</a></li>
-    <?php endif?>
+    <?php $stem = array(
+        'http://'.$_SERVER['HTTP_HOST'].$router->getUrl('search?'),
+        'http://'.$_SERVER['HTTP_HOST'].$router->getUrl('wizard?'),
+    );
+    if (array_key_exists('HTTP_REFERER', $_SERVER)):
+        foreach ($stem as $stemX):
+            if (substr($_SERVER['HTTP_REFERER'], 0, strlen($stemX)) === $stemX):?>
+                <li class="up"><a href="<?php e($_SERVER['HTTP_REFERER'])?>">Back to last search</a></li>
+    <?php break; endif; endforeach; endif?>
     <li class="about"><a href="<?php e($router->getUrl().'about')?>">About</a></li>
   </ul>
   <?php if (count($nav)):?>
