@@ -159,7 +159,9 @@ $(function() {
     if (! el.data('extended')) {
       el.data('extended',
         true).append($('<p></p>').append($('<a></a>').attr('href',
-              $this.attr('href')).text('Extended Search')));
+              $this.attr('href')).text('Extended Search')))
+             .append($('<p></p>').append($('<a></a>').attr('href',
+              '/wizard').text('Find my Codepoint')));
     }
     if (el.is(':hidden')) {
       el.slideDown('normal').find(':text:eq(0)').focus();
