@@ -120,7 +120,8 @@
       answers[q2.id] = q2.selected;
       i += 1;
     }
-    html.append($('<p></p>').text('Let’s make those '+i+' questions productive.'));
+    html.append($('<p></p>').text('Please wait a second, we’re making those '+
+                                   i+' answers productive.'));
     $('#wizard_now').fadeOut('fast');
     q.html.fadeOut('fast', function() {
       html.hide().insertAfter(q.html).fadeIn('fast');
