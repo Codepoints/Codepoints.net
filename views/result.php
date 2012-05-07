@@ -18,40 +18,7 @@ include "nav.php";
 <div class="payload search">
   <h1><?php e($title)?></h1>
   <?php if ($fQuery > 0):?>
-    <p>There are <strong><?php e($fQuery)?></strong> codepoints<?php if ($cQuery > 0):?>
-      where
-        <?php foreach ($query as $i => $q):
-          $sep = ', ';
-          if (in_array($cQuery, array(1, $i+1))) {
-              $sep = '.';
-          } elseif ($i === $cQuery - 2) {
-              $sep = $q[3] === 'AND'? ' and ' : ' or ';
-          }
-          $tmp = array();
-          foreach ((array)$q[2] as $q2) {
-              $tmp[] = ($q2? $info->getLabel($q[0], trim($q2, '%')) : 'empty');
-          }
-          switch ($q[1]) {
-              case 'LIKE':
-              case 'like':
-                  $ct = 'contains';
-                  break;
-              case '!=':
-                  $ct = 'is not';
-                  break;
-              default:
-                  $ct = 'is';
-          }
-          printf('<span class="where"><em>%s</em> %s <strong>%s</strong></span>%s',
-              $info->getCategory($q[0]),
-              $ct,
-              join('</strong> or <strong>', $tmp), $sep);
-        endforeach ?>
-      <?php elseif (isset($range)):?>
-        in the range <strong><?php e($range)?></strong>.
-      <?php else:?>.
-      <?php endif?>
-    </p>
+    <p><strong><?php e($fQuery)?></strong> codepoints match<?php include "result/querytext.php"?></p>
     <?php echo $pagination?>
     <ol class="block data">
       <?php foreach ($result->get() as $cp => $na):
@@ -60,7 +27,7 @@ include "nav.php";
     </ol>
     <?php echo $pagination?>
   <?php else:?>
-    <p>There were no matches.</p>
+    <p>There are no matches<?php include "result/querytext.php"?></p>
   <?php endif?>
   <?php if($cBlocks):?>
   <p><strong><?php e($cBlocks)?></strong> block<?php if($cBlocks > 1):?>s<?php endif?>
