@@ -43,6 +43,9 @@ class SearchResult extends UnicodeRange {
             (SELECT codepoint_image.image
                FROM codepoint_image
               WHERE codepoint_image.cp = codepoints.cp) image,
+            (SELECT name FROM blocks
+              WHERE first <= codepoints.cp AND last >= codepoints.cp
+              LIMIT 1) block,
             (SELECT COUNT(*)
                FROM codepoint_confusables
               WHERE codepoint_confusables.cp = codepoints.cp
