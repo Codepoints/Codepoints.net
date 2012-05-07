@@ -1,4 +1,5 @@
-<?php $title = 'Find My Codepoint';
+<?php
+$title = 'Find My Codepoint';
 $hDescription = 'Find a certain codepoint by answering a set of questions.';
 include "header.php";
 include "nav.php";

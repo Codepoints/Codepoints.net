@@ -8,12 +8,22 @@
                      'sc', 'SB', 'WB') as $cat) {
      include 'fieldset.php';
     } ?>
-  <?php foreach ($info->getBooleanCategories() as $cat):?>
+  <?php foreach ($info->getBooleanCategories() as $cat):
+    $tmp_v = "";
+    if (isset($query)) {
+        foreach ($query as $q) {
+            if ($q[0] === $cat) {
+                $tmp_v = $q[2];
+                break;
+            }
+        }
+    }
+    ?>
   <p class="boolsearch">
     <select name="<?php e($cat)?>" id="s_<?php e($cat)?>" size="3">
-      <option value="" <?php if (_get($cat) === ""):?>selected="selected"<?php endif?>>any</option>
-      <option value="1" <?php if (_get($cat) === "1"):?>selected="selected"<?php endif?>>yes</option>
-      <option value="0" <?php if (_get($cat) === "0"):?>selected="selected"<?php endif?>>no</option>
+      <option value="" <?php if ($tmp_v === ""):?>selected="selected"<?php endif?>>any</option>
+      <option value="1" <?php if ($tmp_v == "1"):?>selected="selected"<?php endif?>>yes</option>
+      <option value="0" <?php if ($tmp_v == "0"):?>selected="selected"<?php endif?>>no</option>
     </select>
     <label for="s_<?php e($cat)?>"><?php e($info->getCategory($cat))?></label>
   </p>
