@@ -287,8 +287,9 @@ $router->addSetting('db', $db)
                 $pagination->setPage($page);
                 $view = new View('result');
                 $blocks = array();
+                $wizard = True;
                 echo $view->render(compact('result', 'blocks', 'pagination',
-                                        'page'));
+                                        'page', 'wizard'));
             }
         } else {
             $view = new View('wizard');

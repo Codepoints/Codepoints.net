@@ -4,11 +4,12 @@
      <input type="text" name="na" id="s_na" value="" /></p>
   <p class="stringsearch"><label for="s_int">Decimal:</label>
      <input type="number" name="int" id="s_int" value="<?php echo _get('int')?>" /></p>
-<?php foreach (array('blk', 'gc', 'bc', 'ccc', 'dt', 'nt', 'lb', 'ea',
-                     'sc', 'SB', 'WB') as $cat) {
+  <?php
+  foreach (array('blk', 'gc', 'bc', 'ccc', 'dt', 'nt', 'lb', 'ea',
+                 'sc', 'SB', 'WB') as $cat) {
      include 'fieldset.php';
-    } ?>
-  <?php foreach ($info->getBooleanCategories() as $cat):
+  }
+  foreach ($info->getBooleanCategories() as $cat):
     $tmp_v = "";
     if (isset($query)) {
         foreach ($query as $q) {

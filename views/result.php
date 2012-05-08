@@ -39,6 +39,11 @@ include "nav.php";
       endforeach ?>
     </ol>
   <?php endif?>
+  <?php if (isset($wizard) && $wizard):?>
+    <p>
+      <a href="<?php e($router->getUrl('wizard'))?>">Try “Find My Codepoint” again.</a>
+    </p>
+  <?php endif?>
   <?php include "search/form.php"?>
 </div>
 <?php include "footer.php"?>
