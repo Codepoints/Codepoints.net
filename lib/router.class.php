@@ -85,7 +85,11 @@ class Router {
     public function callAction($url=Null) {
         $action = $this->getAction($url);
         if ($action !== Null) {
-            $action[0]($action[1], $this->settings);
+            try {
+                $action[0]($action[1], $this->settings);
+            } catch (RoutingError $e) {
+                return False;
+            }
             return True;
         }
         return False;
@@ -165,6 +169,12 @@ class Router {
     }
 
 }
+
+
+/**
+ * thrown, when a view function detects a 404
+ */
+class RoutingError extends Exception {}
 
 
 //__END__
