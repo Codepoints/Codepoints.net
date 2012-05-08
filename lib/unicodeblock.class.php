@@ -181,6 +181,21 @@ class UnicodeBlock extends UnicodeRange {
         return $blocks;
     }
 
+    /**
+     * get all block names in defined order
+     */
+    public static function getAllNames($db) {
+        $query = $db->prepare("SELECT name FROM blocks ORDER BY first ASC");
+        $query->execute();
+        $r = $query->fetchAll(PDO::FETCH_ASSOC);
+        $query->closeCursor();
+        $blocks = array();
+        foreach ($r as $b) {
+            $blocks[] = $b['name'];
+        }
+        return $blocks;
+    }
+
 }
 
 
