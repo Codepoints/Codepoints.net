@@ -175,7 +175,7 @@ $router->addSetting('db', $db)
             'Lisu', 'Kayah Li', 'Rumi Numeral Symbols',),
         'n' => array('Optical Character Recognition', 'Transport And Map Symbols',
             'Miscellaneous Symbols', 'Miscellaneous Technical', 'Musical Symbols',
-            'Miscellaneous Symbols and Pictographs', 'Miscellaneous Symbols and Arrows',
+            'Miscellaneous Symbols And Pictographs', 'Miscellaneous Symbols and Arrows',
             'Miscellaneous Mathematical Symbols-A', 'Miscellaneous Mathematical Symbols-B',
             'Playing Cards', 'Dingbats', 'Domino Tiles', 'Emoticons', 'Geometric Shapes',
             'Mahjong Tiles', 'Mathematical Alphanumeric Symbols', 'Mathematical Operators',
