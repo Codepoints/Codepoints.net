@@ -153,15 +153,15 @@
 
   var q_region = new Question('region',
     'Where does the character appear usually?', {
-      'Africa': 'Africa',
-      'America': 'America <small>(originally, not Latin)</small>',
+      'Africa': 'Africa <small>(without Arabic)</small>',
+      'America': 'America <small>(originally, <i>e. g.</i> Cherokee, not Latin)</small>',
       'Europe': 'Europe <small>(Latin, Cyrillic, …)</small>',
       'Middle_East': 'Middle East',
       'Central_Asia': 'Central Asia',
       'East_Asia': 'East Asia <small>(Chinese, Korean, Japanese, …)</small>',
       'South_Asia': 'South Asia <small>(Indian)</small>',
       'Southeast Asia': 'Southeast Asia <small>(Thai, Khmer, …)</small>',
-      'Philippines': 'Philippines',
+      'Philippines': 'Philippines, Indonesia, Oceania',
       'n': 'Nowhere specific',
       '': 'I don’t know'
   });
