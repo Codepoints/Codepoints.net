@@ -12,6 +12,9 @@ Hosting: Uberspace.de
                                  /* SOFTWARE */
 
 Online: https://github.com/Boldewyn/codepoints.net
-Standards: HTML5, CSS 3, JavaScript
+Technology: PHP (sorry!), SQLite, HTML5, CSS 3, JavaScript, Sass
+Libs: jQuery, jQuery UI
+Data: The Unicode Standard, SQLite version via
+      https://github.com/Boldewyn/unicodeinfo
 
 

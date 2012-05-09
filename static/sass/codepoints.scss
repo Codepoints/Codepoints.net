@@ -484,6 +484,9 @@ input[type="text"] {
     font-style: italic;
     margin: 0;
   }
+  a:after {
+    content: none;
+  }
 }
 
 

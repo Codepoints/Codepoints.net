@@ -5,7 +5,10 @@
     <footer class="ft">
       <nav>
         <p class="tx">This is Codepoints.net, a site dedicated to all
-        things Unicode and characters.</p>
+        things Unicode and characters. The site is run by
+        <a href="http://www.manuel-strehl.de">Manuel Strehl</a>.
+        <a href="https://github.com/Boldewyn/codepoints.net">Feedback
+        and contributions</a> are always welcome.</p>
         <ul>
           <li><a href="/">Start</a></li>
           <li><a href="<?php e($router->getUrl('blog/'))?>">Blog</a></li>
