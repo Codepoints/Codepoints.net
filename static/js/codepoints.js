@@ -147,6 +147,19 @@ $(function() {
     }
   });
 
+  /* display "to top" anchor under circumstances */
+  $(window).on("load", function() {
+    if ($(window).height() + 50 < $(document).height()) {
+      $('footer.ft nav ul:eq(0)').prepend(
+        $('<li><a href="#top">\u2B06 top</a></li>').find('a')
+          .on('click', function() {
+            scrollElement.animate({scrollTop: 0}, 500);
+            return false;
+          })
+        .end());
+    }
+  });
+
   /* display search form */
   $('nav a[rel="search"]').on('click', function() {
     var $this = $(this),
