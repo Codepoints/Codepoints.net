@@ -26,13 +26,16 @@ include "nav.php";
       <span class="desc">Expert Search! <small>Search for characters with particular properties</small></span>
       <a class="button expert" href="<?php e($router->getUrl('search'))?>">Search Codepoint</a>
     </p>
-    <p>This site is dedicated to all the characters, that are defined in
+    <section>
+      <h2>About this Site</h2>
+      <p>Codepoints.net is dedicated to all the characters, that are defined in
        the <a href="http://unicode.org">Unicode Standard</a>. Theoretically,
        these should be <em>all characters ever used</em>. In practice Unicode
        has <em><?php e($nCPs)?> codepoints</em> defined at the moment, mapping characters
        from <a href="<?php e($router->getUrl('egyptian_hieroglyphs'))?>">Egyptian Hieroglyphs</a>
        to <a href="<?php e($router->getUrl('dingbats'))?>">Dingbats and Symbols</a>.
-    <p>All codepoints are arranged in 16 so-called
+      </p>
+      <p>All codepoints are arranged in 16 so-called
        <a href="<?php e($router->getUrl('planes'))?>">planes</a>. These planes
        are further divided into several blocks with
        <a href="<?php e($router->getUrl('/basic_latin'))?>">Basic Latin</a>
@@ -44,13 +47,68 @@ include "nav.php";
        “Find My Codepoint”</a>, to narrow down the candidates.
        Or maybe you are more daring and want
        <a href="<?php e($router->getUrl('random'))?>">a random codepoint</a>?
-    </p>
-    <h2>The <i>(currently defined)</i> Unicode Planes</h2>
-    <ol>
-      <?php foreach ($planes as $plane):?>
-        <li><a href="<?php e($router->getUrl($plane))?>"><?php e($plane->name)?></a></li>
-      <?php endforeach?>
-    </ol>
+      </p>
+    </section>
+<!--
+    <section>
+      <h2>The <i>(currently defined)</i> Unicode Planes</h2>
+      <ol>
+        <?php foreach ($planes as $plane):?>
+          <li><a href="<?php e($router->getUrl($plane))?>"><?php e($plane->name)?></a></li>
+        <?php endforeach?>
+      </ol>
+    </section>
+-->
+    <?php if ($daily):
+    $codepoint = $daily[0];
+    $props = $codepoint->getProperties();
+    $block = $codepoint->getBlock();
+    $s = function($cat) use ($router, $info, $props) {
+        echo '<a href="';
+        e($router->getUrl('search?'.$cat.'='.$props[$cat]));
+        echo '">';
+        e($info->getLabel($cat, $props[$cat]));
+        echo '</a>';
+    };
+    ?>
+      <section>
+        <aside class="other">
+          <h2>Codepoints of the Day</h2>
+          <div id="ucotd_cal" data-date="<?php e(date('Y-m-d'))?>"></div>
+        </aside>
+        <h2>Codepoint of the Day:
+            <a href="<?php e($router->getUrl($codepoint))?>">U+<?php e($codepoint->getId('hex'))?> <?php e($codepoint->getName())?></a></h2>
+        <figure>
+          <a href="<?php e($router->getUrl($codepoint))?>"><span class="fig"><?php e($codepoint->getSafeChar())?></span></a>
+        </figure>
+        <div class="abstract">
+          <p>
+            U+<?php e($codepoint->getId('hex'))?> was added to Unicode in version
+            <?php $s('age')?>. It belongs to the block <?php bl($block)?> in the
+            <?php $plane = $codepoint->getPlane();
+            f('<a class="pl" href="%s">%s</a>',
+                $router->getUrl($plane), $plane->name); ?>.
+            <?php if ($props['Dep']):?>
+                This codepoint is <a href="<?php
+                e($router->getUrl('search?Dep=1'))?>">deprecated</a>.
+            <?php endif?>
+          </p>
+          <p>
+            This character is a <?php $s('gc')?> and is
+            <?php if ($props['sc'] === 'Zyyy'):?>
+                <a href="<?php e($router->getUrl('search?sc='.$props['sc']))?>">commonly</a> used…
+            <?php else:?>
+                mainly used in the <?php $s('sc')?> script…
+            <?php endif?>
+          </p>
+          <p><strong><a href="<?php e($router->getUrl($codepoint))?>">» View full description of this codepoint.</a></strong></p>
+        </div>
+      </section>
+    <?php endif?>
   </article>
 </div>
-<?php include "footer.php"?>
+<?php
+$footer_scripts = array(
+    "/static/js/dailycp.js"
+);
+include "footer.php"?>

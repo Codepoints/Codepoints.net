@@ -60,9 +60,6 @@
 
 @mixin cp-dl {
   .codepoint {
-    aside {
-      font-size: (12em/$sFontBase);
-    }
     dl {
       margin: 0;
       @include pie-clearfix;
@@ -84,7 +81,8 @@
 }
 
 @mixin cp-fig {
-  .codepoint .fig {
+  .fig {
+    color: $cText;
     width: 128px;
     height: 128px;
     @include inline-block;

@@ -63,8 +63,9 @@ $router->addSetting('db', $db)
     $x = $o['db']->prepare('SELECT COUNT(*) AS c FROM codepoints');
     $x->execute();
     $row = $x->fetch();
+    $daily = DailyCP::get(date('Y-m-d'), $o['db']);
     echo $view->render(array('planes' => UnicodePlane::getAll($o['db']),
-      'nCPs' => $row['c']));
+      'nCPs' => $row['c'], 'daily' => $daily));
 })
 
 ->registerAction('planes', function ($request, $o) {

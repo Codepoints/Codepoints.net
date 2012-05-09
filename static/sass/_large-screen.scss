@@ -3,6 +3,11 @@
   margin-left: -160px;
 }
 
+.codepoint aside.other {
+  margin-left: 0;
+  margin-right: -160px;
+}
+
 .block.data li:nth-of-type(16n+1) {
   clear: none;
 }
@@ -22,4 +27,15 @@
     background: url(../images/action_desc.png) no-repeat 90% center;
   }
 
+}
+
+.front {
+  section {
+    width: 570px;
+    margin-right: 10px;
+    float: left;
+    padding: 9px;
+    border: 1px solid $cBorder;
+    border-radius: 3px;
+  }
 }

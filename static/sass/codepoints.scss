@@ -77,6 +77,10 @@ h1, h2, h3, b, strong {
   color: $cTextBold;
 }
 
+aside {
+  font-size: (12em/$sFontBase);
+}
+
 blockquote {
   font-style: italic;
   & i, & em, & var & blockquote {
@@ -314,31 +318,42 @@ nav {
 
 
 
-.front .searchform {
-  text-align: center;
-  margin: 0 0 30px;
+.front {
+  .searchform {
+    text-align: center;
+    margin: 0 0 30px;
 
-  p {
-    margin: 0;
+    p {
+      margin: 0;
+    }
+
+    input {
+      vertical-align: middle;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      border: 1px solid $cBorderMedium;
+      border-radius: 3px;
+      background-color: white;
+      font-size: (21em/$sFontBase);
+      width: 61.8%;
+      padding: 4px 8px;
+    }
+
+    button {
+      font-size: (21em/$sFontBase);
+    }
   }
-
-  input {
-    vertical-align: middle;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    border: 1px solid $cBorderMedium;
-    border-radius: 3px;
-    background-color: white;
-    font-size: (21em/$sFontBase);
-    width: 61.8%;
-    padding: 4px 8px;
+  figure a {
+    &:hover, &:focus {
+      border: none;
+    }
   }
-
-  button {
-    font-size: (21em/$sFontBase);
+  section {
+    p {
+      margin: 0 0 1em;
+    }
   }
 }
-
 
 
 
