@@ -129,10 +129,12 @@ input[type="text"] {
 @import "jquery.ui.all";
 
 .payload {
-  padding: 30px 10px 10px;
+  padding: 30px 10px 30px;
   margin: 0 auto;
   max-width: 1200px;
   border-top: 1px solid white;
+  border-bottom: 1px solid $cBorderLight;
+  @include pie-clearfix;
 }
 
 .front h1 {
@@ -155,7 +157,7 @@ input[type="text"] {
   @include datalist;
 }
 
-nav {
+.hd nav {
   @include navlist;
 }
 
@@ -452,6 +454,37 @@ nav {
 }
 
 
+
+.ft {
+  border-top: 1px solid white;
+  background: -moz-linear-gradient(top, $cBorderLight, rgba(255,255,255,0) 20px);
+  padding: 30px 10px;
+  font-size: (12em/$sFontBase);
+  color: $cTextBold;
+  nav {
+    @include pie-clearfix;
+    max-width: 1200px;
+    margin: 0 auto;
+    ul {
+      margin: 0;
+      padding: 0;
+      float: right;
+    }
+    li {
+      display: inline;
+      padding-left: 1em;
+      &:before {
+        content: none;
+      }
+    }
+  }
+  .tx {
+    float: left;
+    color: $cTextLight;
+    font-style: italic;
+    margin: 0;
+  }
+}
 
 
 
