@@ -1,0 +1,37 @@
+ErrorDocument 404 '<!DOCTYPE html><title>Not Found</title><p>Nothing exists here.</p>'
+
+AddType image/svg+xml .svg .svgz
+AddType image/vnd.microsoft.icon .ico
+AddType font/ttf .ttf
+AddType font/otf .otf
+AddType application/x-woff .woff
+AddType image/svg+xml .svg
+AddType application/vnd.ms-fontobject .eot
+
+<IfModule deflate_module>
+  AddOutputFilterByType DEFLATE text/css text/javascript application/x-javascript application/json
+  AddOutputFilterByType DEFLATE font/ttf font/otf application/x-woff application/vnd.ms-fontobject
+</IfModule>
+
+FileETag MTime Size
+AddDefaultCharset utf-8
+AddEncoding x-gzip .gz .svgz
+
+<IfModule expires_module_debug>
+  # Lets files expire after some time
+  ExpiresActive On
+  ExpiresDefault "access plus 1 hour"
+  ExpiresByType text/css "access plus 1 week"
+  ExpiresByType text/javascript "access plus 1 week"
+  ExpiresByType application/x-javascript "access plus 1 week"
+  ExpiresByType application/json "access plus 1 day"
+  ExpiresByType image/gif "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType image/vnd.microsoft.icon "access plus 1 month"
+  ExpiresByType font/ttf "access plus 1 year"
+  ExpiresByType font/otf "access plus 1 year"
+  ExpiresByType application/vnd.ms-fontobject "access plus 1 year"
+  ExpiresByType application/x-woff "access plus 1 year"
+</IfModule>

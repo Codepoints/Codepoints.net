@@ -7,6 +7,8 @@
   Deny From All
 </Files>
 
+ErrorDocument 404 /index.php
+
 RewriteEngine On
 
 RewriteBase /
