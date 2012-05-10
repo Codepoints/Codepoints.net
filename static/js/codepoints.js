@@ -2,24 +2,35 @@
 
 var Cache = {};
 
+function getUrl(url, callback) {
+  if (! $.isFunction(callback)) {
+    callback = $.noop;
+  }
+  if (url in Cache) {
+    callback(Cache[url]);
+  } else {
+    $.get(url, callback);
+  }
+}
+
 function getPage(url, callback) {
   if (! $.isFunction(callback)) {
     callback = function(data) {
       $('.stage').empty().append(data.find('.stage').contents());
     };
   }
-  var action = $.get;
-  if (url in Cache) {
-    action = function (url, func) {
-      func(Cache[url]);
-    };
-  }
-  action(url, function(data) {
+  var cb2 = function(data) {
+    var $data = $(data);
     history.pushState({}, '', url);
-    data = $(data);
-    document.title = data.filter('title').text();
-    callback(data);
-  });
+    document.title = $data.filter('title').text();
+    callback($data);
+    var _ts = $data.find('#_ts');
+    if (_ts.length) {
+      $('#_ts', document).remove();
+      _ts.clone().appendTo('body');
+    }
+  };
+  getUrl(url, cb2);
 }
 
 var stage;
@@ -97,6 +108,47 @@ $.fn.tooltip = function() {
   return this;
 };
 
+var glossary = null;
+
+$.fn.glossary = function() {
+  var gl = this.find('.gl');
+  if (gl.length) {
+    getUrl('/glossary', function(data) {
+      var $data = $(data);
+      glossary = $data.find('#glossary');
+      gl.each(function() {
+        var $gl = $(this), dt, dd;
+        dt = glossary.find('dt#'+$gl.data('term'));
+        if (! dt.length) {
+          return;
+        }
+        dt = dt.add(dt.nextUntil('dd')).add(dt.prevUntil('dd'));
+        dd = dt.nextUntil('dt');
+        win = $('<div class="tooltip glos"><dl></dl></div>')
+              .find('dl').append(dt.clone()).append(dd.clone()).end()
+              .on('mouseenter', function() { win.stop(true).show(); })
+              .on('mouseleave', function() { $gl.find('.after').trigger('mouseleave'); });
+        $gl.data('gl', win)
+          .append('<span class="after">?</span>')
+          .find('.after').on('mouseenter', function() {
+            $gl.data('gl').stop(true, true).show().appendTo('body').position({
+              my: 'left bottom',
+              at: 'right top',
+              of: $gl,
+              offset: '10 0',
+              collision: 'fit flip'
+            });
+          }).on('mouseleave', function() {
+            $gl.data('gl').fadeOut(700, function() {
+              $(this).detach();
+            });
+          });
+      });
+    });
+  }
+  return this;
+};
+
 $(function() {
   /**
   * Determine the scrolling element
@@ -125,7 +177,7 @@ $(function() {
   //});
 
   /** init tooltips */
-  $(document).tooltip();
+  $(document).tooltip().glossary();
 
   /* scale the front headline text */
   var headline = $('.front h1'), resizer;
