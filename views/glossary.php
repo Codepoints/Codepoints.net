@@ -12,7 +12,7 @@ include 'nav.php';
 ?>
 <div class="payload static glossary">
   <h1><?php e($title)?></h1>
-  <dl>
+  <dl id="glossary">
     <dt id="block">Block (Unicode)</dt>
     <dd></dd>
     <dt id="plane">Plane (Unicode)</dt>
