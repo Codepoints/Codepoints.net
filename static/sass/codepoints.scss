@@ -501,14 +501,18 @@ input[type="text"] {
     position: relative;
     top: -7px;
     font-size: .75em;
-    color: white;
-    background: $cTextBright;
+    color: $cTextBright;
     border-radius: 100%;
     display: inline-block;
     width: 12px;
     height: 12px;
+    margin-left: 3px;
     text-align: center;
     cursor: help;
+    font-style: normal;
+    text-shadow: none;
+    box-shadow: 0 -1px rgba(0,0,0,.25),
+                0 1px rgba(255,255,255,.75);
   }
 }
 
@@ -523,6 +527,13 @@ input[type="text"] {
     &:hover, &:focus {
       text-shadow: none;
     }
+  }
+  i {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    border: none;
   }
 }
 

@@ -117,7 +117,7 @@ $.fn.glossary = function() {
       var $data = $(data);
       glossary = $data.find('#glossary');
       gl.each(function() {
-        var $gl = $(this), dt, dd;
+        var $gl = $(this), dt, dd, win;
         dt = glossary.find('dt#'+$gl.data('term'));
         if (! dt.length) {
           return;
@@ -126,7 +126,7 @@ $.fn.glossary = function() {
         dd = dt.nextUntil('dt');
         win = $('<div class="tooltip glos"><dl></dl></div>')
               .find('dl').append(dt.clone()).append(dd.clone()).end()
-              .on('mouseenter', function() { win.stop(true).show(); })
+              .on('mouseenter', function() { win.stop(true, true).appendTo('body').show(); })
               .on('mouseleave', function() { $gl.find('.after').trigger('mouseleave'); });
         $gl.data('gl', win)
           .append('<span class="after">?</span>')
