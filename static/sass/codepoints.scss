@@ -107,6 +107,10 @@ ul li {
   }
 }
 
+dd + dt {
+  margin-top: 1em;
+}
+
 input[type="submit"],
 input[type="reset"],
 input[type="button"],
