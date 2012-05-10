@@ -3,7 +3,7 @@
   ForceType application/opensearchdescription+xml
 </Files>
 
-<Files ucd.sqlite>
+<Files ~ "^(ucd\.sqlite|config\.rb)$">
   Deny From All
 </Files>
 
