@@ -40,12 +40,12 @@ function __autoload($class) {
 
 
 /**
- * log $msg to /tmp/visual-unicode.log
+ * log $msg to /tmp/codepoints.log
  */
 function flog($msg) {
    if (CP_DEBUG) {
        error_log(sprintf("[%s]\n%s\n", date("r"), $msg), 3,
-                 '/tmp/visual-unicode.log');
+                 '/tmp/codepoints.log');
    }
 }
 
