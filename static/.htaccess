@@ -1,4 +1,4 @@
-ErrorDocument 404 '<!DOCTYPE html><title>Not Found</title><p>Nothing exists here.</p>'
+ErrorDocument 404 '<!DOCTYPE html><title>Not Found</title><p>Nothing exists here.</p><p><a href="/">Back home</a></p>'
 
 AddType image/svg+xml .svg .svgz
 AddType image/vnd.microsoft.icon .ico
