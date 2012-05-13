@@ -226,7 +226,7 @@ $(function() {
         true).append($('<p></p>').append($('<a></a>').attr('href',
               $this.attr('href')).text('Extended Search')))
              .append($('<p></p>').append($('<a></a>').attr('href',
-              '/wizard').text('Find my Codepoint')));
+              '/wizard').text('Find My Codepoint')));
     }
     if (el.is(':hidden')) {
       el.slideDown('normal').find(':text:eq(0)').focus();

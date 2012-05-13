@@ -24,7 +24,7 @@ include 'nav.php';
       <li><a href="<?php e($router->getUrl('search'))?>">Extended search</a>:
         You can configure on this page every Unicode property of the codepoint
         in question.</li>
-      <li>The <a href="<?php e($router->getUrl('wizard'))?>">“Find my Codepoint” wizard</a>:
+      <li>The <a href="<?php e($router->getUrl('wizard'))?>">“Find My Codepoint” wizard</a>:
         Answer a series of questions to get to your character.</li>
     </ul>
     <p>If you happen to already have the character in question just paste it
@@ -187,7 +187,7 @@ include 'nav.php';
       released under a permissive license. The quotes from Wikipedia are subject
       to the Creative Commons Attribution Share-alike license. Details can be
       obtained by following the respective link on each quote.
-      The geographic localization of blocks (used in the “Find my Codepoint”
+      The geographic localization of blocks (used in the “Find My Codepoint”
       wizard) is based on the categorization on <a href="http://www.decodeunicode.org">decodeunicode.org</a>,
       published under the CC BY NC license.
     <p>

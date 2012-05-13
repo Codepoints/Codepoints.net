@@ -20,7 +20,7 @@ include "nav.php";
     </p>
     <p class="action">
       <span class="desc">Need help? <small>Answer questions to find matching characters</small></span>
-      <a class="button find" href="<?php e($router->getUrl('wizard'))?>">Find my Codepoint</a>
+      <a class="button find" href="<?php e($router->getUrl('wizard'))?>">Find My Codepoint</a>
     </p>
     <p class="action">
       <span class="desc">Expert Search! <small>Search for characters with particular properties</small></span>
