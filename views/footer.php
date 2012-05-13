@@ -11,7 +11,7 @@
         and contributions</a> are always welcome.</p>
         <ul>
           <li><a href="/">Start</a></li>
-          <li><a href="<?php e($router->getUrl('blog/'))?>">Blog</a></li>
+          <li><a href="http://blog.codepoints.net/">Blog</a></li>
           <li><a href="<?php e($router->getUrl('about'))?>">About</a></li>
         </ul>
       </nav>
