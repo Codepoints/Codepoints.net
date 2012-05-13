@@ -8,7 +8,7 @@
     <meta name="author" content="Manuel Strehl"/>
     <meta name="description" content="<?php e(isset($hDescription)? $hDescription : '')?>" />
     <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+      <script src="/static/js/html5shiv.js"></script>
     <![endif]-->
     <link rel="stylesheet" href="/static/css/codepoints.css"/>
     <!--[if lt IE 9]>
