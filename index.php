@@ -112,7 +112,7 @@ $router->addSetting('db', $db)
     }
 })
 
-->registerAction(array('about', 'glossary'), function ($request, $o) {
+->registerAction(array('about', 'glossary', 'scripts'), function ($request, $o) {
     // static pages
     $view = new View($request->trunkUrl);
     echo $view->render();
@@ -507,6 +507,39 @@ $router->addSetting('db', $db)
 }, function($request) {
     $router = Router::getRouter();
     $router->redirect(sprintf('U+%04X', $request->data->getId()));
+})
+
+->registerAction(function ($url, $o) {
+    // Script description: script/Xxxx
+    if (preg_match('/^script\/(?:[A-Z][a-z]{3})(?:%20[A-Z][a-z]{3})*$/', $url, $m)) {
+        return True;
+    }
+    return False;
+}, function($request, $o) {
+    header('Content-Type: application/json; charset=UTF-8');
+    $trunk = rawurldecode(substr($request->trunkUrl, 7));
+    $j = array();
+    $found = False;
+    $stm = $o['db']->prepare('SELECT abstract, src
+                                FROM script_abstract WHERE sc = :sc');
+    foreach (explode(' ', $trunk) as $sc) {
+        $stm->execute(array('sc'=>$sc));
+        $r = $stm->fetch(PDO::FETCH_ASSOC);
+        if ($r['abstract']) {
+            $j[$sc] = array(
+                'name' => $o['info']->getLabel('sc', $sc),
+                'abstract' => $r['abstract'],
+                'src' => $r['src'],
+            );
+            $found = true;
+        } else {
+            $j[$sc] = Null;
+        }
+    }
+    if (! $found) {
+        header('HTTP/1.0 404 Not Found');
+    }
+    echo json_encode($j);
 })
 
 ;
