@@ -315,20 +315,38 @@
 
 /* Overlays */
 .ui-widget-overlay {
-  background: $cBackDark;
-  opacity: .3;
-  filter: Alpha(Opacity=30);
+  background: black;
+  opacity: .5;
+  filter: Alpha(Opacity=50);
 }
 
 .ui-widget-shadow {
   margin: -8px 0 0 -8px;
   padding: 8px;
-  background: $cBackDark;
-  opacity: .3;
-  filter: Alpha(Opacity=30);
+  background: black;
+  opacity: .5;
+  filter: Alpha(Opacity=50);
   -moz-border-radius: 2px;
   -khtml-border-radius: 2px;
   -webkit-border-radius: 2px;
   border-radius: 2px;
 }
 
+
+/* Customization */
+.ui-dialog {
+  padding: 0;
+  border: none;
+  box-shadow: 0 5px 5px -2px rgba(0,0,0,.5);
+
+  .ui-dialog-titlebar {
+    background: black;
+    color: white;
+    border: none;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    font-weight: normal;
+  }
+}
