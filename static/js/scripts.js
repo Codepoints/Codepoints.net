@@ -32,7 +32,7 @@ function showDetails(obj) {
         }
       });
       d.dialog({
-        title: 'Scripts used in ' + obj.properties.name,
+        title: 'Scripts used in ' + obj.properties.name + ' (' + obj.id + ')',
         width: $(window).width() - 40,
         modal: true,
         resizable: false
@@ -53,21 +53,16 @@ function showDetails(obj) {
 var feature;
 
 var projection = d3.geo.azimuthal()
-    .scale(380)
+    .scale(400)
     .origin([-30,20])
     .mode("orthographic")
-    .translate([640, 400]);
+    .translate([400, 400]);
 
-var circle = d3.geo.greatCircle()
-    .origin(projection.origin());
+var circle = d3.geo.greatCircle().origin(projection.origin());
 
-var path = d3.geo.path()
-    .projection(projection);
+var path = d3.geo.path().projection(projection);
 
-var svg = d3.select("#earth")
-    .attr("width", 1280)
-    .attr("height", 800)
-    .on("mousedown", mousedown);
+var svg = d3.select("#earth").on("mousedown", mousedown);
 
 d3.json("/static/world.json", function(collection) {
   feature = svg.selectAll("path")
@@ -79,11 +74,6 @@ d3.json("/static/world.json", function(collection) {
       .text(function(d) { return d.properties.name; });
   feature.on('click', function(e) { showDetails(e); });
 
-//  svg.append('svg:circle')
-//      .attr('cx', 640)
-//      .attr('cy', 400)
-//      .attr('r', 380)
-//      .attr('style', 'pointer-events: none; fill: url(#reflect)');
   $('#athmo').remove().appendTo('#earth');
 });
 

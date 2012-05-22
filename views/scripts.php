@@ -4,20 +4,29 @@ $hDescription = 'Browse Codepoints.net by script';
 $headdata = '
     <style type="text/css">
 
+#space {
+  margin: 0 auto;
+  max-width: 800px;
+}
+
 svg {
-  width: 1280px;
-  height: 800px;
   pointer-events: all;
 }
 
 circle {
   fill: #dbe4f0;
+  fill: #b5cbe8;
 }
 
 path {
   fill: #aaa;
-  stroke: #fff;
+  stroke: #000;
+  stroke-width: .33px;
   cursor: pointer;
+}
+
+path:hover {
+  fill: #BBB;
 }
 
     </style>
@@ -27,8 +36,9 @@ include 'nav.php';
 ?>
 <div class="payload static script">
   <h1>Browse Codepoints by Script</h1>
-  <div id="body">
-    <svg xmlns="http://www.w3.org/2000/svg" id="earth">
+  <div id="space">
+    <svg xmlns="http://www.w3.org/2000/svg" id="earth"
+         width="100%" viewBox="0 0 800 800">
       <defs>
         <radialGradient id="reflect"
           r="75%" cx="35%" cy="20%">
@@ -38,8 +48,8 @@ include 'nav.php';
           <stop stop-color="black" stop-opacity="0.2" offset="1" />
         </radialGradient>
       </defs>
-      <circle cx="50%" cy="50%" r="35.5%" style="cursor: move" />
-      <circle id="athmo" cx="50%" cy="50%" r="35.5%" style="pointer-events: none; fill: url(#reflect)" />
+      <circle cx="50%" cy="50%" r="50%" style="cursor: move" />
+      <circle id="athmo" cx="50%" cy="50%" r="50%" style="pointer-events: none; fill: url(#reflect)" />
     </svg>
   </div>
 </div>
