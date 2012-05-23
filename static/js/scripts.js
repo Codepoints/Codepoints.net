@@ -32,7 +32,10 @@ function showDetails(obj) {
         }
       });
       d.dialog({
-        title: 'Scripts used in ' + obj.properties.name + ' (' + obj.id + ')',
+        title: 'Scripts used in ' + obj.properties.name,
+        buttons: {
+          Finished: function() { $(this).dialog('close'); }
+        },
         width: $(window).width() - 40,
         modal: true,
         resizable: false
@@ -78,26 +81,37 @@ d3.json("/static/world.json", function(collection) {
   $('#athmo').remove().appendTo('#earth');
 });
 
-$('#sclist').on('mouseenter mouseleave', 'li', function(e) {
-  var paths = $(),
-      $this = $(this),
-      cls = $this.attr('class').split(/\s+/),
-      action = 'addClass', i, j;
-  if (e.type === 'mouseleave') {
-    action = 'removeClass';
-  }
-  for (i = 0, j = cls.length; i < j; i++) {
-    if (cls[i].substr(0, 3) === 'sc_' && cls[i].length > 3) {
-      paths = paths.add($('path.' + cls[i]));
+$('#sclist').accordion({
+  active: false,
+  autoHeight: false,
+  header: '>dt',
+  changestart: function(e, ui) {
+    var dt = ui.newHeader, dd = dt.data('dd'), sc = dt.data('sc');
+    if (! dd) {
+      dd = dt.next('dd');
+      dt.data('dd', dd);
+      $.ajax({
+        url: '/script/' + sc,
+        type: 'json'
+      }).done(function(data) {
+        dd.append('<hr/>'+data[sc].abstract).append('<p>Source: <a href="' + data[sc].src + '">Wikipedia</a></p>');
+      });
     }
-  }
-  paths.each(function() {
-    if (action === 'addClass') {
-      this.setAttribute('class', this.getAttribute('class') + ' active');
-    } else {
+    var paths = $(),
+        cls = dt.attr('class').split(/\s+/),
+        i, j;
+    $.each(document.getElementsByTagName('path'), function() {
       this.setAttribute('class', this.getAttribute('class').replace(/\s*active\s*/, ' '));
+    });
+    for (i = 0, j = cls.length; i < j; i++) {
+      if (cls[i].substr(0, 3) === 'sc_' && cls[i].length > 3) {
+        paths = paths.add($('path.' + cls[i]));
+      }
     }
-  });
+    paths.each(function() {
+      this.setAttribute('class', this.getAttribute('class') + ' active');
+    });
+  }
 });
 
 d3.select(window)

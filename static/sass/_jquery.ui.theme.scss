@@ -334,6 +334,10 @@
 
 
 /* Customization */
+.ui-widget-content {
+  background: $cBackground url(../images/body.png);
+}
+
 .ui-dialog {
   padding: 0;
   border: none;

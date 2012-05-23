@@ -18,14 +18,33 @@ path {
   stroke: #000;
   stroke-width: .33px;
   cursor: pointer;
+  transition-property: fill;
+  transition-duration: .5s;
 }
 
 path:hover {
-  fill: #BBB;
+  fill: #DDD;
 }
 
 path.active {
-  fill: #f00;
+  fill: #f44;
+  stroke: #600
+}
+
+#sclist dd + dt {
+  margin-top: 0;
+}
+
+#sclist dd {
+  font-size: 12px;
+}
+
+#sclist a {
+  color: #880000;
+}
+
+#sclist dt a {
+  border-bottom: none;
 }
 
     </style>
@@ -54,11 +73,14 @@ include 'nav.php';
     </svg>
   </section>
   <section class="bk">
-    <ul id="sclist">
+    <dl id="sclist">
       <?php foreach ($scripts as $sc): ?>
-        <li class="sc_<?php e($sc['iso'])?>"><a href="/search?sc=<?php e($sc['iso'])?>"><?php e($sc['name'])?></a> <i>(<?php e($sc['count'])?> characters)</i></li>
+        <dt data-sc="<?php e($sc['iso'])?>" class="sc_<?php e($sc['iso'])?>"><a href="#"><?php e($sc['name'])?></a></dt>
+        <dd>
+          <p>Unicode has <a href="/search?sc=<?php e($sc['iso'])?>"><?php e($sc['count'])?> characters</a> encoded in this script.</p>
+        </dd>
       <?php endforeach?>
-    </ul>
+    </dl>
   </section>
 </div>
 <?php
