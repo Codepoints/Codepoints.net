@@ -68,13 +68,36 @@ d3.json("/static/world.json", function(collection) {
   feature = svg.selectAll("path")
       .data(collection.features)
     .enter().append("svg:path")
-      .attr("d", clip);
+      .attr("d", clip)
+      .attr("class", function(d) { return 'sc sc_' + d.properties.scripts.join(' sc_') + ' sc_' + d.properties.oldscripts.join(' sc_')});
 
   feature.append("svg:title")
       .text(function(d) { return d.properties.name; });
   feature.on('click', function(e) { showDetails(e); });
 
   $('#athmo').remove().appendTo('#earth');
+});
+
+$('#sclist').on('mouseenter mouseleave', 'li', function(e) {
+  var paths = $(),
+      $this = $(this),
+      cls = $this.attr('class').split(/\s+/),
+      action = 'addClass', i, j;
+  if (e.type === 'mouseleave') {
+    action = 'removeClass';
+  }
+  for (i = 0, j = cls.length; i < j; i++) {
+    if (cls[i].substr(0, 3) === 'sc_' && cls[i].length > 3) {
+      paths = paths.add($('path.' + cls[i]));
+    }
+  }
+  paths.each(function() {
+    if (action === 'addClass') {
+      this.setAttribute('class', this.getAttribute('class') + ' active');
+    } else {
+      this.setAttribute('class', this.getAttribute('class').replace(/\s*active\s*/, ' '));
+    }
+  });
 });
 
 d3.select(window)

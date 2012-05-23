@@ -4,11 +4,6 @@ $hDescription = 'Browse Codepoints.net by script';
 $headdata = '
     <style type="text/css">
 
-#space {
-  margin: 0 auto;
-  max-width: 800px;
-}
-
 svg {
   pointer-events: all;
 }
@@ -27,6 +22,10 @@ path {
 
 path:hover {
   fill: #BBB;
+}
+
+path.active {
+  fill: #f00;
 }
 
     </style>
