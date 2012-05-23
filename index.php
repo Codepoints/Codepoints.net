@@ -542,7 +542,7 @@ $router->addSetting('db', $db)
         if ($r['abstract']) {
             $j[$sc] = array(
                 'name' => $o['info']->getLabel('sc', $sc),
-                'abstract' => $r['abstract'],
+                'abstract' => strip_tags($r['abstract'], '<p><b><strong class="selflink"><strong><em><i><var><sup><sub><tt><ul><ol><li><samp><small><hr><h2><h3><h4><h5><dfn><dl><dd><dt><u><abbr><big><blockquote><br><center><del><ins><kbd>'),
                 'src' => $r['src'],
             );
             $found = true;
