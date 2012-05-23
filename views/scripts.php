@@ -36,7 +36,9 @@ include 'nav.php';
 ?>
 <div class="payload static script">
   <h1>Browse Codepoints by Script</h1>
-  <div id="space">
+  <section id="space" class="bk">
+    <p>Scripts used around the world. Drag the globe to rotate it.
+       Click on a country to see scripts used there.</p>
     <svg xmlns="http://www.w3.org/2000/svg" id="earth"
          width="100%" viewBox="0 0 800 800">
       <defs>
@@ -51,7 +53,14 @@ include 'nav.php';
       <circle cx="50%" cy="50%" r="50%" style="cursor: move" />
       <circle id="athmo" cx="50%" cy="50%" r="50%" style="pointer-events: none; fill: url(#reflect)" />
     </svg>
-  </div>
+  </section>
+  <section class="bk">
+    <ul id="sclist">
+      <?php foreach ($scripts as $sc): ?>
+        <li class="sc_<?php e($sc['iso'])?>"><a href="/search?sc=<?php e($sc['iso'])?>"><?php e($sc['name'])?></a> <i>(<?php e($sc['count'])?> characters)</i></li>
+      <?php endforeach?>
+    </ul>
+  </section>
 </div>
 <?php
 $footer_scripts = array(

@@ -29,7 +29,8 @@
 
 }
 
-.container {
+// a block that contains a complete info unit
+.bk {
   width: 570px;
   margin-right: 10px;
   float: left;
@@ -37,3 +38,4 @@
   border: 1px solid $cBorder;
   border-radius: 3px;
 }
+

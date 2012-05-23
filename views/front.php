@@ -26,7 +26,7 @@ include "nav.php";
       <span class="desc">Expert Search! <small>Search for characters with particular properties</small></span>
       <a class="button expert" href="<?php e($router->getUrl('search'))?>">Search Codepoint</a>
     </p>
-    <section class="container">
+    <section class="bk">
       <h2>About this Site</h2>
       <p>Codepoints.net is dedicated to all the characters, that are defined in
        the <a href="http://unicode.org">Unicode Standard</a>. Theoretically,
@@ -50,7 +50,7 @@ include "nav.php";
       </p>
     </section>
 <!--
-    <section class="container">
+    <section class="bk">
       <h2>The <i>(currently defined)</i> Unicode Planes</h2>
       <ol>
         <?php foreach ($planes as $plane):?>
@@ -71,7 +71,7 @@ include "nav.php";
         echo '</a>';
     };
     ?>
-      <section class="container">
+      <section class="bk">
         <aside class="other">
           <h2>Codepoints of the Day</h2>
           <div id="ucotd_cal" data-date="<?php e(date('Y-m-d'))?>"></div>
