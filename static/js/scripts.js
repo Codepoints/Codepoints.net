@@ -92,7 +92,7 @@ $('#sclist').accordion({
       dt.data('dd', dd);
       $.ajax({
         url: '/script/' + sc,
-        type: 'json'
+        dataType: 'json'
       }).done(function(data) {
         dd.append('<hr/>'+data[sc].abstract).append('<p>Source: <a href="' + data[sc].src + '">Wikipedia</a></p>');
       });
