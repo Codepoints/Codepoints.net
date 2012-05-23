@@ -29,13 +29,11 @@
 
 }
 
-.front {
-  section {
-    width: 570px;
-    margin-right: 10px;
-    float: left;
-    padding: 9px;
-    border: 1px solid $cBorder;
-    border-radius: 3px;
-  }
+.container {
+  width: 570px;
+  margin-right: 10px;
+  float: left;
+  padding: 9px;
+  border: 1px solid $cBorder;
+  border-radius: 3px;
 }
