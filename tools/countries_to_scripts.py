@@ -354,14 +354,16 @@ with open('countrynames.csv') as ff:
             if line[0] in oscr:
                 oldscripts.extend(oscr[line[0]])
             geo = {}
+            name = line[3].strip()
             for feat in feats:
                 if feat['id'] == line[1].strip():
                     geo = feat['geometry']
+                    name = feat['properties']['name']
             result.append({
                 'type': "Feature",
                 'id': line[0],
                 'properties': {
-                    'name': line[3].strip(),
+                    'name': name,
                     'id3': line[1].strip(),
                     'scripts': scripts,
                     'oldscripts': oldscripts,
@@ -371,6 +373,6 @@ with open('countrynames.csv') as ff:
 
     result = {"type":"FeatureCollection","features":result}
 
-    json.dump(result, open('countrynames.json', 'wb'), separators=(',',':'))
+    json.dump(result, open('../static/world.json', 'wb'), separators=(',',':'))
     #json.dump(result, open('countrynames.json', 'wb'), sort_keys=True, indent=4)
 
