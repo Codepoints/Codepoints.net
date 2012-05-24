@@ -30,7 +30,6 @@
   color: $cTextBold;
 }
 .ui-widget-content a {
-  color: $cTextBold;
 }
 .ui-widget-header {
   border: 1px solid $cBorderMedium;
@@ -40,6 +39,7 @@
 }
 .ui-widget-header a {
   color: $cTextBold;
+  border-bottom: none;
 }
 
 /* Interaction states
@@ -353,4 +353,8 @@
     padding-bottom: 0;
     font-weight: normal;
   }
+}
+
+.ui-menu-item a {
+  border-bottom: none;
 }
