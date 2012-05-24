@@ -1,36 +1,46 @@
 (function(window, $, undefined) {
 
+/**
+ * show info about a single script in the opening modal dialog
+ */
+function renderScript(d, data) {
+  return function(i, sc) {
+    var n = 0, tmp = $('#sclist').find('dt.sc_'+sc);
+    if (tmp.length) {
+      n = parseInt(tmp.next('dd').find('.nchar').text(), 10);
+      if (isNaN(n)) { n = 0; }
+    }
+    if (sc in data && data[sc]) {
+      d.append(
+        $('<section style="margin:0"></section>').append(
+          $('<h3></h3>').text(data[sc].name))
+        .append($('<div style="font-size: 12px"></div>').html(data[sc].abstract)
+                .prepend($('<p>Unicode has </p>')
+                    .append('<a href="/search?sc='+sc+'">'+ n +
+                            ' codepoints</a> encoded in this script.'))
+                .append('<p class="nt">Source: <a href="' + data[sc].src +
+                        '">Wikipedia</a></p>')));
+    }
+  };
+}
+
+/**
+ * show infos about used scripts in a country in a modal window
+ */
 function showDetails(obj) {
   var co = obj.id;
-  if (obj.properties.scripts) {
-    $.getJSON('/script/' + obj.properties.scripts.join(' ') +
-              ' ' + obj.properties.oldscripts.join(' ')).done(function(data) {
+  if (obj.properties.scripts || obj.properties.oldscripts) {
+    $.ajax({
+        url: '/script/' + obj.properties.scripts.join(' ') +
+             ' ' + obj.properties.oldscripts.join(' '),
+        dataType: 'json'
+    }).done(function(data) {
       var d = $('<div></div>'), sc;
-      $.each(obj.properties.scripts, function(i, sc) {
-        if (sc in data && data[sc]) {
-          d.append(
-            $('<section></section>').append(
-              $('<h3></h3>').append(
-                $('<a></a>').text(data[sc].name)
-                            .attr('href', '/search?sc='+sc)))
-            .append($('<div></div>').html(data[sc].abstract)
-                    .append('<p><small>Source: <a href="'+data[sc].src+'">Wikipedia</a></small></p>')));
-        }
-      });
+      $.each(obj.properties.scripts, renderScript(d, data));
       if (obj.properties.oldscripts.length) {
         d.append('<h2>Old Scripts</h2>');
       }
-      $.each(obj.properties.oldscripts, function(i, sc) {
-        if (sc in data && data[sc]) {
-          d.append(
-            $('<section></section>').append(
-              $('<h3></h3>').append(
-                $('<a></a>').text(data[sc].name)
-                            .attr('href', '/search?sc='+sc)))
-            .append($('<div></div>').html(data[sc].abstract)
-                    .append('<p><small>Source: <a href="'+data[sc].src+'">Wikipedia</a></small></p>')));
-        }
-      });
+      $.each(obj.properties.oldscripts, renderScript(d, data));
       d.dialog({
         title: 'Scripts used in ' + obj.properties.name,
         buttons: {
@@ -45,7 +55,10 @@ function showDetails(obj) {
     });
   } else {
     $('<div>We don’t know about '+obj.properties.name+'’s scripts, sorry!</div>').dialog({
-      title: 'Nothing Found',
+      title: 'Nothing Found for ' + obj.property.name,
+      buttons: {
+        Finished: function() { $(this).dialog('close'); }
+      },
       width: $(window).width() - 40,
       modal: true,
       resizable: false
@@ -94,7 +107,7 @@ $('#sclist').accordion({
         url: '/script/' + sc,
         dataType: 'json'
       }).done(function(data) {
-        dd.append('<hr/>'+data[sc].abstract).append('<p>Source: <a href="' + data[sc].src + '">Wikipedia</a></p>');
+        dd.append('<hr/>'+data[sc].abstract).append('<p class="nt">Source: <a href="' + data[sc].src + '">Wikipedia</a></p>');
       });
     }
     var paths = $(),
