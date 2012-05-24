@@ -38,7 +38,7 @@ function showDetails(obj) {
       var d = $('<div></div>'), sc;
       $.each(obj.properties.scripts, renderScript(d, data));
       if (obj.properties.oldscripts.length) {
-        d.append('<h2>Old Scripts</h2>');
+        d.append('<h2>Rare and Historic Scripts</h2>');
       }
       $.each(obj.properties.oldscripts, renderScript(d, data));
       d.dialog({
