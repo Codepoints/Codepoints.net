@@ -295,8 +295,8 @@ $(function() {
         submitset = $('.submitset', $form),
         addlist = $('<ul class="query-add ui-widget ui-widget-content ui-corner-all"></ul>').insertBefore(submitset),
         addfields = $(),
-        add = $('<p><button type="button" title="add new query">+</button></p>')
-                .insertBefore(submitset).tooltip().find('button'),
+        add = $('<p><button type="button">+ add new query</button></p>')
+                .insertBefore(submitset).find('button'),
         search_values = {},
         menu = $('<ul class="ui-menu ui-widget ui-widget-content"></ul>');
 
