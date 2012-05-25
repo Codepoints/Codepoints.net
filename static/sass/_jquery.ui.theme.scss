@@ -357,4 +357,8 @@
 
 .ui-menu-item a {
   border-bottom: none;
+  color: $cTextBold;
+  &:hover, &:focus {
+    color: $cTextLight;
+  }
 }

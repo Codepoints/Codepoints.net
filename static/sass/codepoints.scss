@@ -254,14 +254,16 @@ input[type="text"] {
   margin: 0;
   li {
     list-style: none;
-    margin: 0 5px 5px 0;
-    float: left;
-    width: 200px;
+    x-margin: 0 5px 5px 0;
+    x-float: left;
+    x-width: 200px;
+    display: inline;
     &:before {
       display: none;
     }
     a {
-      display: block;
+      display: inline-block;
+      margin: 0 6px 6px 0;
     }
   }
 }
