@@ -25,16 +25,33 @@ function renderScript(d, data) {
 }
 
 /**
+ * load the script data and cache, if necessary
+ */
+var scxCache = {};
+function getScripts(scx) {
+  var r;
+  if (! (scx in scxCache)) {
+    r = $.ajax({
+      url: '/script/' + scx,
+      dataType: 'json'
+    }).done(function (data) {
+      scxCache[scx] = data;
+    });
+  } else {
+    r = $.when(scxCache[scx]);
+  }
+  return r;
+}
+
+/**
  * show infos about used scripts in a country in a modal window
  */
 function showDetails(obj) {
   var co = obj.id;
   if (obj.properties.scripts || obj.properties.oldscripts) {
-    $.ajax({
-        url: '/script/' + obj.properties.scripts.join(' ') +
-             ' ' + obj.properties.oldscripts.join(' '),
-        dataType: 'json'
-    }).done(function(data) {
+    getScripts(obj.properties.scripts.join(' ') +
+             ' ' + obj.properties.oldscripts.join(' ')
+    ).done(function(data) {
       var d = $('<div></div>'), sc;
       $.each(obj.properties.scripts, renderScript(d, data));
       if (obj.properties.oldscripts.length) {
