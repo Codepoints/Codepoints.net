@@ -13,19 +13,19 @@ include 'nav.php';
 <div class="payload static glossary">
   <h1><?php e($title)?></h1>
   <dl id="glossary">
-    <dt id="block">Block (Unicode)</dt>
-    <dd></dd>
-    <dt id="plane">Plane (Unicode)</dt>
-    <dd></dd>
     <dt id="unicode">Unicode</dt>
-    <dd></dd>
+    <dd>A standard to map characters to codepoints, numeric repsresentations. The Unicode standard is curated by the <a href="http://unicode.org">Unicode Consortium</a>.</dd>
     <dt id="codepoint">Codepoint</dt>
-    <dd></dd>
+    <dd>A number in the Unicode standard denoting one single character.</dd>
+    <dt id="plane">Plane (Unicode)</dt>
+    <dd>A Unicode plane is one of 16 sets of 65536 <a href="#codepoint">codepoints</a> each. Currently only the first three planes contain character definitions. The last two planes are reserved for <a href="#private_use">private use</a>.</dd>
+    <dt id="private_use">Private Use</dt>
+    <dd>So-called “private use” areas are <a href="#unicode">Unicode</a> codepoints, that are deliberately not assigned to characters. These codepoints can be used by application developers to add their own extensions to Unicode.</dd>
     <dt id="jt">Joining Type</dt>
     <dt id="jg">Joining Group</dt>
     <dd>Basic Arabic and Syriac character shaping properties, such as initial, medial and final shapes. See <i>Section 8.2, Arabic</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>]. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="bmg">Bidi Mirroring Glyph</dt>
-    <dd>Informative mapping for substituting characters in an implementation of bidirectional mirroring. This maps a subset of characters with the Bidi_Mirrored property to other characters that normally are displayed with the corresponding mirrored glyph. When a character with the Bidi_Mirrored property has the default value for Bidi_Mirroring_Glyph, that means that no other character exists whose glyph is appropriate for character-based glyph mirroring. Implementations must then use other mechanisms to implement mirroring of those characters for the Unicode Bidirectional Algorithm. See Unicode Standard Annex #9:" The Unicode Bidirectional Algorithm" [<a href="http://unicode.org/reports/tr41/tr41-9.html#UAX9">UAX9</a>]. Do not confuse this property with the <a href="<?php e($router->getUrl('glossary'))?>#Bidi_M">Bidi Mirrored</a> property itself. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dd>Informative mapping for substituting characters in an implementation of bidirectional mirroring. This maps a subset of characters with the Bidi_Mirrored property to other characters that normally are displayed with the corresponding mirrored glyph. When a character with the Bidi_Mirrored property has the default value for Bidi_Mirroring_Glyph, that means that no other character exists whose glyph is appropriate for character-based glyph mirroring. Implementations must then use other mechanisms to implement mirroring of those characters for the Unicode Bidirectional Algorithm. See Unicode Standard Annex #9:" The Unicode Bidirectional Algorithm" [<a href="http://unicode.org/reports/tr41/tr41-9.html#UAX9">UAX9</a>]. Do not confuse this property with the <a href="#Bidi_M">Bidi Mirrored</a> property itself. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="blk">Block (Codepoint)</dt>
     <dd>List of block names, which are arbitrary names for ranges of code points. See the code charts in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>]. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="CE">Composition Exclusion</dt>
@@ -70,19 +70,19 @@ include 'nav.php';
     <dt id="Numeric_Type_Han">Numeric Type</dt>
     <dt id="Numeric_Value_Han">Numeric Value</dt>
     <dd>The characters tagged with either kPrimaryNumeric, kAccountingNumeric, or kOtherNumeric are given the property value Numeric_Type=Numeric, and the Numeric_Value indicated in those tags.
-      <p>Most characters have these numeric properties based on values from UnicodeData.txt. See <a href="<?php e($router->getUrl('glossary'))?>#nt">Numeric_Type</a>.</p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+      <p>Most characters have these numeric properties based on values from UnicodeData.txt. See <a href="#nt">Numeric_Type</a>.</p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="kRSUnicode">Unicode Radical Stroke</dt>
     <dd>The Unicode radical-stroke count, based on the tag kRSUnicode. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="Lower">Lowercase</dt>
-    <dd>Characters with the Lowercase property. For more information, see <i>Chapter 4, Character Properties</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>].<p><i>Generated from: Ll + <a href="<?php e($router->getUrl('glossary'))?>#OLower">Other Lowercase</a></i></p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dd>Characters with the Lowercase property. For more information, see <i>Chapter 4, Character Properties</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>].<p><i>Generated from: Ll + <a href="#OLower">Other Lowercase</a></i></p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="Upper">Uppercase</dt>
-    <dd>Characters with the Uppercase property. For more information, see <i>Chapter 4, Character Properties</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>].<p><i>Generated from: Lu + <a href="<?php e($router->getUrl('glossary'))?>#OUpper">Other Uppercase</a></i></p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dd>Characters with the Uppercase property. For more information, see <i>Chapter 4, Character Properties</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>].<p><i>Generated from: Lu + <a href="#OUpper">Other Uppercase</a></i></p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="Cased">Cased</dt>
     <dd>Characters which are considered to be either uppercase, lowercase or titlecase characters. This property is not identical to the Changes_When_Casemapped property. For more information, see D135 in <i>Section 3.13, Default Case Algorithms</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>].
-      <p><i>Generated from: <a href="<?php e($router->getUrl('glossary'))?>#Lower">Lowercase</a> + <a href="<?php e($router->getUrl('glossary'))?>#Upper">Uppercase</a> + Lt</i></p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+      <p><i>Generated from: <a href="#Lower">Lowercase</a> + <a href="#Upper">Uppercase</a> + Lt</i></p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="CI">Case Ignorable</dt>
     <dd>Characters which are ignored for casing purposes. For more information, see D136 in <i>Section 3.13, Default Case Algorithms</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>].
-      <p><i>Generated from: Mn + Me + Cf + Lm + Sk + <a href="<?php e($router->getUrl('glossary'))?>#WB">Word Break</a>=MidLetter + <a href="<?php e($router->getUrl('glossary'))?>#WB">Word Break</a>=MidNumLet</i></p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+      <p><i>Generated from: Mn + Me + Cf + Lm + Sk + <a href="#WB">Word Break</a>=MidLetter + <a href="#WB">Word Break</a>=MidNumLet</i></p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="CWL">Changes When Lowercased</dt>
     <dd>Characters whose normalized forms are not stable under a toLowercase mapping. For more information, see D139 in <i>Section 3.13, Default Case Algorithms</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>].
       <p><i>Generated from: toLowercase(toNFD(X)) != toNFD(X)</i></p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
@@ -100,10 +100,10 @@ include 'nav.php';
       <p><i>Generated from: Changes_When_Lowercased(X) or Changes_When_Uppercased(X) or Changes_When_Titlecased(X)</i></p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="Alpha">Alphabetic</dt>
     <dd>Characters with the Alphabetic property. For more information, see <i>Chapter 4, Character Properties</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>].
-      <p><i>Generated from: Lu + Ll + Lt + Lm + Lo + Nl + <a href="<?php e($router->getUrl('glossary'))?>#OAlpha">Other Alphabetic</a></i></p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+      <p><i>Generated from: Lu + Ll + Lt + Lm + Lo + Nl + <a href="#OAlpha">Other Alphabetic</a></i></p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="DI">Default Ignorable Code Point</dt>
     <dd>For programmatic determination of default ignorable code points. New characters that should be ignored in rendering (unless explicitly supported) will be assigned in these ranges, permitting programs to correctly handle the default rendering of such characters when not otherwise supported. For more information, see the FAQ <a href="http://www.unicode.org/faq/unsup_char.html">Display of Unsupported Characters</a>, and <i>Section 5.21, Default Ignorable Code Points</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>].
-      <p><i>Generated from<br/> <a href="<?php e($router->getUrl('glossary'))?>#ODI">Other Default Ignorable Code Point</a><br/>
+      <p><i>Generated from<br/> <a href="#ODI">Other Default Ignorable Code Point</a><br/>
         + Cf (format characters)<br/>
         + Variation_Selector<br/>
         - White_Space<br/>
@@ -111,17 +111,17 @@ include 'nav.php';
         - 0600..0604, 06DD, 070F, 110BD (exceptional Cf characters that should be visible)</i></p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="Gr_Base">Grapheme Base</dt>
     <dd>Property used together with the definition of Standard Korean Syllable Block to define "Grapheme base". See D58 in <i>Chapter 3, Conformance</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>]. 
-      <p><i>Generated from: [0..10FFFF] - Cc - Cf - Cs - Co - Cn - Zl - Zp - <a href="<?php e($router->getUrl('glossary'))?>#Gr_Ext">Grapheme Extend</a></i></p>
+      <p><i>Generated from: [0..10FFFF] - Cc - Cf - Cs - Co - Cn - Zl - Zp - <a href="#Gr_Ext">Grapheme Extend</a></i></p>
       <p><b>Note:</b> Grapheme_Base is a property of individual characters. That usage contrasts with "grapheme base", which is an attribute of Unicode strings; a grapheme base may consist of a Korean syllable which is itself represented by a sequence of conjoining jamos.</p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="Gr_Ext">Grapheme Extend</dt>
     <dd>Property used to define "Grapheme extender". See D59 in <i>Chapter 3, Conformance</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>]. 
-      <p><i>Generated from:  Me + Mn + <a href="<?php e($router->getUrl('glossary'))?>#OGr_Ext">Other Grapheme Extend</a></i></p>
+      <p><i>Generated from:  Me + Mn + <a href="#OGr_Ext">Other Grapheme Extend</a></i></p>
       <p><b>Note:</b> The set of characters for which Grapheme_Extend=Yes is equivalent to the set of characters for which Grapheme_Cluster_Break=Extend.</p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="Gr_Link">Grapheme Link (deprecated)</dt>
     <dd>Formerly proposed for programmatic determination of grapheme cluster boundaries.
       <p><i>Generated from: Canonical_Combining_Class=Virama</i></p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="Math">Math</dt>
-    <dd>Characters with the Math property. For more information, see <i>Chapter 4, Character Properties</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>].<p><i>Generated from: Sm + <a href="<?php e($router->getUrl('glossary'))?>#OMath">Other Math</a></i></p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dd>Characters with the Math property. For more information, see <i>Chapter 4, Character Properties</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>].<p><i>Generated from: Sm + <a href="#OMath">Other Math</a></i></p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="IDS">ID Start</dt>
     <dt id="IDC">ID Continue</dt>
     <dt id="XIDS">XID Start</dt>
@@ -184,9 +184,9 @@ include 'nav.php';
     <dt id="OGr_Ext">Other Grapheme Extend</dt>
     <dd>Used in deriving&nbsp; the Grapheme_Extend property. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="OIDC">Other ID Continue</dt>
-    <dd>Used to maintain backward compatibility of <a href="<?php e($router->getUrl('glossary'))?>#IDC">ID Continue</a>. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dd>Used to maintain backward compatibility of <a href="#IDC">ID Continue</a>. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="OIDS">Other ID Start</dt>
-    <dd>Used to maintain backward compatibility of <a href="<?php e($router->getUrl('glossary'))?>#IDS">ID Start</a>. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dd>Used to maintain backward compatibility of <a href="#IDS">ID Start</a>. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="OLower">Other Lowercase</dt>
     <dd>Used in deriving the Lowercase property. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="OMath">Other Math</dt>
@@ -211,7 +211,7 @@ include 'nav.php';
     <dt id="VS">Variation Selector</dt>
     <dd>Indicates characters that are Variation Selectors. For details on the behavior of these characters, see <a href="http://unicode.org/reports/tr44/#StandardizedVariants">StandardizedVariants.html</a>, <i>Section 16.4, Variation Selectors</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>], and Unicode Standard Annex #37, "Unicode Ideographic Variation Database" [<a href="http://unicode.org/reports/tr41/tr41-9.html#UTS37">UTS37</a>]. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="WSpace">White Space</dt>
-    <dd>Spaces, separator characters and other control characters which should be treated by programming languages as "white space" for the purpose of parsing elements. See also <a href="<?php e($router->getUrl('glossary'))?>#LB">Line Break</a>, <a href="<?php e($router->getUrl('glossary'))?>#GCB">Grapheme Cluster Break</a>, <a href="<?php e($router->getUrl('glossary'))?>#SB">Sentence Break</a>, and <a href="<?php e($router->getUrl('glossary'))?>#WB">Word Break</a>, which classify space characters and related controls somewhat differently for particular text segmentation contexts. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dd>Spaces, separator characters and other control characters which should be treated by programming languages as "white space" for the purpose of parsing elements. See also <a href="#LB">Line Break</a>, <a href="#GCB">Grapheme Cluster Break</a>, <a href="#SB">Sentence Break</a>, and <a href="#WB">Word Break</a>, which classify space characters and related controls somewhat differently for particular text segmentation contexts. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="na">Name</dt>
     <dd>These names match exactly the names published in the code charts of the Unicode Standard. The derived Hangul Syllable names are omitted from this file; see <a href="http://unicode.org/reports/tr44/#Jamo.txt">Jamo.txt</a> for their derivation. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="gc">General Category</dt>
@@ -229,9 +229,9 @@ include 'nav.php';
     <dd>If the character has the property value Numeric_Type=Decimal, then the Numeric_Value of that digit is represented with an integer value (limited to the range 0..9) in fields 6, 7, and 8. Characters with the property value Numeric_Type=Decimal are restricted to digits which can be used in a decimal radix positional numeral system and which are encoded in the standard in a contiguous ascending range 0..9. See the discussion of <i>decimal digits</i> in <i>Chapter 4, Character Properties</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>]. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dd>If the character has the property value Numeric_Type=Digit, then the Numeric_Value of that digit is represented with an integer value (limited to the range 0..9) in fields 7 and 8, and field 6 is null. This covers digits that need special handling, such as the compatibility superscript digits. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dd>If the character has the property value Numeric_Type=Numeric, then the Numeric_Value of that character is represented with a positive or negative integer or rational number in this field, and fields 6 and 7 are null. This includes fractions such as, for example, "1/5" for U+2155 VULGAR FRACTION ONE FIFTH.
-      <p>Some characters have these properties based on values from the Unihan data files. See <a href="<?php e($router->getUrl('glossary'))?>#Numeric_Type_Han">Numeric Type Han</a>.</p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+      <p>Some characters have these properties based on values from the Unihan data files. See <a href="#Numeric_Type_Han">Numeric Type Han</a>.</p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="Bidi_M">Bidi Mirrored</dt>
-    <dd>If the character is a "mirrored" character in bidirectional text, this field has the value "Y"; otherwise "N".  See <i>Section 4.7, Bidi Mirrored—Normative</i> of [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>]. <i>Do not confuse this with the <a href="<?php e($router->getUrl('glossary'))?>#bmg">Bidi Mirroring Glyph</a> property.</i> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dd>If the character is a "mirrored" character in bidirectional text, this field has the value "Y"; otherwise "N".  See <i>Section 4.7, Bidi Mirrored—Normative</i> of [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>]. <i>Do not confuse this with the <a href="#bmg">Bidi Mirroring Glyph</a> property.</i> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="na1">Unicode 1 Name</dt>
     <dd>Old name as published in Unicode 1.0. This name is only provided when it is significantly different from the current name for the character. The value of field 10 for control characters does not always match the Unicode 1.0 names. Instead, field 10 contains ISO 6429 names for control functions, for printing in the code charts. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="isc">ISO Comment (deprecated, stabilized)</dt>

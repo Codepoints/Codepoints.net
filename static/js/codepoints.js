@@ -127,7 +127,8 @@ $.fn.glossary = function() {
         win = $('<div class="tooltip glos"><dl></dl></div>')
               .find('dl').append(dt.clone()).append(dd.clone()).end()
               .on('mouseenter', function() { win.stop(true, true).appendTo('body').show(); })
-              .on('mouseleave', function() { $gl.find('.after').trigger('mouseleave'); });
+              .on('mouseleave', function() { $gl.find('.after').trigger('mouseleave'); })
+              .on('click tap', 'a[href^="#"]', function() { window.location.href = '/glossary' + this.hash; return false; });
         $gl.data('gl', win)
           .append('<span class="after">?</span>')
           .find('.after').on('mouseenter', function() {
