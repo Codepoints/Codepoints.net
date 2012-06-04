@@ -22,7 +22,7 @@
 /**
  * define Unicode Version in use
  */
-define('UNICODE_VERSION', '6.1');
+define('UNICODE_VERSION', '6.1.0');
 
 
 /**

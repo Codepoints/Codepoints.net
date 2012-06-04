@@ -76,7 +76,8 @@ include 'nav.php';
       order to guide the further development of the standard.
     </p>
     <p>
-      Today, version 6.1 of Unicode is published, containing over 110,000 characters
+      The most recent version of Unicode is <?php e(UNICODE_VERSION)?>,
+      containing over 110,000 characters
       in over 100 different scripts. It’s encoding form UTF-8, a superset of
       ASCII, is the most popular encoding worldwide and the consortium counts
       Apple, Oracle, Microsoft, Google, IBM, Nokia and many others to its
@@ -146,9 +147,9 @@ include 'nav.php';
     <h2>The Content on this Site</h2>
     <p>
       The content on this website reflects the information found in<br/>
-      <em>The Unicode Consortium.</em> The Unicode Standard, Version 6.1.0,
+      <em>The Unicode Consortium.</em> The Unicode Standard, Version <?php e(UNICODE_VERSION)?>,
       (Mountain View, CA: The Unicode Consortium, 2012. ISBN 978-1-936213-02-3)<br/>
-      <a href="http://www.unicode.org/versions/Unicode6.1.0/">http://www.unicode.org/versions/Unicode6.1.0/</a>,<br/>
+      <a href="http://www.unicode.org/versions/Unicode<?php e(UNICODE_VERSION)?>/">http://www.unicode.org/versions/Unicode<?php e(UNICODE_VERSION)?>/</a>,<br/>
       which happens to be the most relevant version of the Unicode Standard
       as of April, 2012.
     </p>
