@@ -17,7 +17,7 @@ include 'nav.php';
     <dd>A standard to map characters to codepoints, numeric repsresentations. The Unicode standard is curated by the <a href="http://unicode.org">Unicode Consortium</a>.</dd>
     <dt id="codepoint">Codepoint</dt>
     <dd>A number in the Unicode standard denoting one single character.</dd>
-    <dt id="plane">Plane (Unicode)</dt>
+    <dt id="plane">Plane</dt>
     <dd>A Unicode plane is one of 16 sets of 65536 <a href="#codepoint">codepoints</a> each. Currently only the first three planes contain character definitions. The last two planes are reserved for <a href="#private_use">private use</a>.</dd>
     <dt id="private_use">Private Use</dt>
     <dd>So-called “private use” areas are <a href="#unicode">Unicode</a> codepoints, that are deliberately not assigned to characters. These codepoints can be used by application developers to add their own extensions to Unicode.</dd>
@@ -26,7 +26,7 @@ include 'nav.php';
     <dd>Basic Arabic and Syriac character shaping properties, such as initial, medial and final shapes. See <i>Section 8.2, Arabic</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>]. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="bmg">Bidi Mirroring Glyph</dt>
     <dd>Informative mapping for substituting characters in an implementation of bidirectional mirroring. This maps a subset of characters with the Bidi_Mirrored property to other characters that normally are displayed with the corresponding mirrored glyph. When a character with the Bidi_Mirrored property has the default value for Bidi_Mirroring_Glyph, that means that no other character exists whose glyph is appropriate for character-based glyph mirroring. Implementations must then use other mechanisms to implement mirroring of those characters for the Unicode Bidirectional Algorithm. See Unicode Standard Annex #9:" The Unicode Bidirectional Algorithm" [<a href="http://unicode.org/reports/tr41/tr41-9.html#UAX9">UAX9</a>]. Do not confuse this property with the <a href="#Bidi_M">Bidi Mirrored</a> property itself. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="blk">Block (Codepoint)</dt>
+    <dt id="blk">Block</dt>
     <dd>List of block names, which are arbitrary names for ranges of code points. See the code charts in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>]. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="CE">Composition Exclusion</dt>
     <dd>A property used in normalization. See Unicode Standard Annex #15: "Unicode Normalization Forms" [<a href="http://unicode.org/reports/tr41/tr41-9.html#UAX15">UAX15</a>]. Unlike other files, CompositionExclusions.txt simply lists the relevant code points. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
