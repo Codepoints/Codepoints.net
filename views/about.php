@@ -44,23 +44,26 @@ include 'nav.php';
   <section id="unicode">
     <h1>About Unicode</h1>
     <p>
-      Computers act on 0’s and 1’s to represent information. To get them into
-      the shape of useful information, in our case characters to display text,
-      we need an <em>encoding</em>, that tells the computer how to interpret
-      that 0’s and 1’s in terms of a given alphabet. The first standardized
-      encoding was ASCII, which basically assigns upper- and lowercase letters
+      Computers use 0’s and 1’s to store information. To get useful information out of that, in our case to display text,
+      we need a so-called <em>encoding</em>, that tells the computer how to transform
+      those 0’s and 1’s into an alphabet. The first standardized
+      encoding was ASCII, which basically assigns simple Latin upper- and lowercase letters
       as well as numbers and some punctuation, all in all 128 positions.
       The W3C has published a <a href="http://www.w3.org/International/questions/qa-what-is-encoding">very
       good introduction</a> to the topic of character encodings.
     </p>
+    <aside class="other">
+      <p>The <a href="<?php e($router->getUrl('basic_latin'))?>">first block
+      of Unicode codepoints</a> is intentionally identical to ASCII.</p>
+    </aside>
     <p>
       128 positions didn’t last very long. Many institutions and companies
       began to implement their own encodings. In 2010 there were a whooping
       250 encodings widely used, not counting some obscure or privately used
       ones. This situation proved disastrous, when computers started to talk
-      to one another over the <em>Internet</em>. If they didn’t specify the
-      encoding, there was a good chance the receiver would only get a stream
-      of nonsense and rubbish.
+      to one another over the <em>Internet</em>. If the sender didn’t specify
+      the encoding of a message, there was a good chance the receiver would
+      only get a stream of nonsense and rubbish.
     </p>
     <p>
       Thus enters <em>Unicode</em>. Adobe and Xerox decided in 1984, that this
