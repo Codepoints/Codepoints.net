@@ -1,3 +1,5 @@
 /.sass-cache
 /ucd.sqlite
 /attic
+/static/js/_.js
+/dist

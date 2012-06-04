@@ -28,7 +28,7 @@ define('UNICODE_VERSION', '6.1.0');
 /**
  * set DEBUG level
  */
-define('CP_DEBUG', 0);
+define('CP_DEBUG', 1);
 
 
 /**
@@ -44,7 +44,7 @@ function __autoload($class) {
  */
 function flog($msg) {
    if (CP_DEBUG) {
-       error_log(sprintf("[%s]\n%s\n", date("r"), $msg), 3,
+       error_log(sprintf("[%s] %s\n", date("c"), trim($msg)), 3,
                  '/tmp/codepoints.log');
    }
 }
