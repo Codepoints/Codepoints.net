@@ -431,3 +431,29 @@
     }
   }
 }
+
+
+@mixin icon {
+  // an icon with a representation in static/images/icons.png
+  display: inline-block;
+  height: 30px;
+  line-height: 30px;
+  padding: 1px;
+  border-radius: 2px;
+  border: 1px solid $cBorder;
+  @include background(linear-gradient(top, $cBackBright, $cBackDim));
+  &:before {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    content: " ";
+    background: url(../images/icons.png) no-repeat 0 0;
+    vertical-align: middle;
+  }
+  &.text{
+    padding-right: 5px;
+    &:before {
+      margin-right: 5px;
+    }
+  }
+}
