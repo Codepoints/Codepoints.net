@@ -45,30 +45,27 @@
 /* Interaction states
 ----------------------------------*/
 .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
-  border: 1px solid $cBorder;
-  background: #e6e6e6/*{bgColorDefault}*/ url(../images/ui-bg_glass_75_e6e6e6_1x400.png)/*{bgImgUrlDefault}*/ 50%/*{bgDefaultXPos}*/ 50%/*{bgDefaultYPos}*/ repeat-x/*{bgDefaultRepeat}*/;
   font-weight: normal;
   color: $cTextLight;
+  @include button-normal;
 }
 .ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited {
   color: $cTextLight;
   text-decoration: none;
 }
 .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {
-  border: 1px solid #999999/*{borderColorHover}*/;
-  background: #dadada/*{bgColorHover}*/ url(../images/ui-bg_glass_75_dadada_1x400.png)/*{bgImgUrlHover}*/ 50%/*{bgHoverXPos}*/ 50%/*{bgHoverYPos}*/ repeat-x/*{bgHoverRepeat}*/;
-  font-weight: normal/*{fwDefault}*/;
+  font-weight: normal;
   color: $cTextBold;
+  @include button-focus;
 }
 .ui-state-hover a, .ui-state-hover a:hover {
   color: $cTextBold;
   text-decoration: none;
 }
 .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
-  border: 1px solid #aaaaaa/*{borderColorActive}*/;
-  background: #ffffff/*{bgColorActive}*/ url(../images/ui-bg_glass_65_ffffff_1x400.png)/*{bgImgUrlActive}*/ 50%/*{bgActiveXPos}*/ 50%/*{bgActiveYPos}*/ repeat-x/*{bgActiveRepeat}*/;
-  font-weight: normal/*{fwDefault}*/;
+  font-weight: normal;
   color: $cTextBold;
+  @include button-active;
 }
 .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {
   color: $cTextBold;
