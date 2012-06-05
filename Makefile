@@ -1,10 +1,14 @@
 
 
 all:
+	@echo "make dist, perhaps?"
 
-.PHONY: all css js dist
+.PHONY: all css js dist clean ucotd
 
-dist: css js
+clean:
+	-rm -fr dist
+
+dist: ucotd css js
 	mkdir $@
 	cp -r .htaccess humans.txt index.php lib opensearch.xml robots.txt static ucd.sqlite views $@
 	sed -i 's/define(.CP_DEBUG., .);/define('"'CP_DEBUG'"', 0);/' $@/index.php
@@ -18,4 +22,8 @@ js: static/js/_.js
 
 static/js/_.js: static/js/jquery.js static/js/jquery.ui.js static/js/codepoints.js
 	cat $^ | uglifyjs > $@
+
+ucotd: tools/ucotd.*
+	cd tools; \
+	python ucotd.py
 

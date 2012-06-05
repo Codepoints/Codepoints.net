@@ -63,7 +63,8 @@ $router->addSetting('db', $db)
     $x = $o['db']->prepare('SELECT COUNT(*) AS c FROM codepoints');
     $x->execute();
     $row = $x->fetch();
-    $daily = DailyCP::get(date('Y-m-d'), $o['db']);
+    $Daily = new DailyCP();
+    $daily = $Daily->get(date('Y-m-d'), $o['db']);
     echo $view->render(array('planes' => UnicodePlane::getAll($o['db']),
       'nCPs' => $row['c'], 'daily' => $daily));
 })
@@ -399,7 +400,8 @@ $router->addSetting('db', $db)
         $date = $today;
     }
     if ($date) {
-        list($codepoint, $name, $description) = DailyCP::get($date, $o['db']);
+        $Daily = new DailyCP();
+        list($codepoint, $name, $description) = $Daily->get($date, $o['db']);
         $tpl = 'dailycp';
         if (! $codepoint) {
             list($codepoint, $name, $description) = array(false, false, false);
