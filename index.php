@@ -400,10 +400,12 @@ $router->addSetting('db', $db)
     }
     if ($date) {
         list($codepoint, $name, $description) = DailyCP::get($date, $o['db']);
+        $tpl = 'dailycp';
         if (! $codepoint) {
-            throw new RoutingError();
+            list($codepoint, $name, $description) = array(false, false, false);
+            $tpl .= '_not';
         }
-        $view = new View('dailycp');
+        $view = new View($tpl);
         echo $view->render(compact('codepoint', 'description',
                                    'date', 'today'));
     } else {
