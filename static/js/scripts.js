@@ -61,7 +61,7 @@ function showDetails(obj) {
       d.dialog({
         title: 'Scripts used in ' + obj.properties.name,
         buttons: {
-          Finished: function() { $(this).dialog('close'); }
+          OK: function() { $(this).dialog('close'); }
         },
         width: $(window).width() - 40,
         modal: true,
