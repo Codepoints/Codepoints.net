@@ -117,6 +117,7 @@ input[type="reset"],
 input[type="button"],
 button,
 .button {
+  cursor: pointer;
   @include button-base;
 }
 
@@ -463,6 +464,36 @@ input[type="text"] {
     }
   }
 
+}
+
+.wizcount {
+  padding: 0;
+  @include pie-clearfix;
+  &:before {
+    display: inline-block;
+    border: 16px solid transparent;
+    border-left-color: $cBorderLight;
+    border-right-width: 0;
+    content: " ";
+    width: 0;
+    height: 0;
+    margin-right: 3px;
+    float: left;
+  }
+
+  li {
+    float: left;
+    position: relative;
+    list-style: none;
+    @include button-base;
+    cursor: pointer;
+    margin: 0;
+    padding: 3px 6px;
+
+    small {
+      display: none;
+    }
+  }
 }
 
 

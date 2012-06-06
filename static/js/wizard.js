@@ -82,16 +82,16 @@
     },
     select: function(id, next) {
       var q = this;
-      q.html.trigger('question.answered');
       q.selected = id;
+      q.html.trigger('question.answered', q);
       if (next) {
         // if there is a next question, show this
         q.html.fadeOut('fast', function() {
           var next_html = next.render();
           QuestionPrototype.current = next;
-          next_html.trigger('question.next');
+          next_html.trigger('question.next', {prev:q, next:next});
           next_html.hide().insertAfter(q.html).fadeIn('fast');
-          q.html.remove();
+          q.html.detach();
         });
         next.prev = q;
       } else {
@@ -120,29 +120,51 @@
       answers[q2.id] = q2.selected;
       i += 1;
     }
+    QuestionPrototype.container.addClass('finished');
     html.append($('<p></p>').text('Please wait a second, we’re making those '+
                                    i+' answers productive.'));
     $('#wizard_now').fadeOut('fast');
     q.html.fadeOut('fast', function() {
       html.hide().insertAfter(q.html).fadeIn('fast');
-      q.html.remove();
+      q.html.detach();
       window.location.href = '?' + $.param(answers);
     });
   }
 
   /**
-   *
+   * initialize the markup
    */
   function prepareContainer(container, q1) {
+    var ol = $('<ol class="wizcount"/>');
     QuestionPrototype.current = q1;
-    container.empty().append(q1.render()).one('question.answered',
-      function() {
-        $(this).after($('<p class="buttonset" id="wizard_now">' +
-            '<button type="button">Enough questions! Search now.</button>' +
-          '</p>').find('button').on('click', function() {
-          finishAsking(QuestionPrototype.current);
-        }).end().hide().slideDown());
-      });
+    QuestionPrototype.container = container;
+    container.empty()
+        .append(ol)
+        .append(q1.render())
+        .one('question.answered', function() {
+          $(this).after($('<p class="buttonset" id="wizard_now">' +
+              '<button type="button">Enough questions! Search now.</button>' +
+            '</p>').find('button').on('click', function() {
+            finishAsking(QuestionPrototype.current);
+          }).end().hide().slideDown());
+        })
+        .on('question.answered', function(e, q) {
+          ol.append(
+              $('<li></li>').attr('title', q.text).tooltip()
+                  .html(q.answers[q.selected])
+                  .hide().slideDown().on('click', function() {
+                    if (container.is('.finished')) {
+                      return false; // don't change the set, if there is
+                                    // already a request going
+                    }
+                    var cur = QuestionPrototype.current, li = $(this);
+                    li.add(li.nextAll('li')).remove();
+                    QuestionPrototype.current = q;
+                    q.render().hide().insertAfter(cur.html).fadeIn('fast');
+                    cur.html.detach();
+                  })
+          );
+        });
   }
 
   var q_swallow = new Question('swallow',
