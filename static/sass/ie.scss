@@ -3,9 +3,13 @@
 @import "settings";
 @import "ui";
 @import "view.codepoint";
+@import "fontawesome-ie7";
 
 // fetch the styles that are otherwise hidden behind @media queries
 @import "small-screen";
 @import "medium-screen";
 @import "large-screen";
 
+*+html {
+  @include fontawesome-ie7;
+}

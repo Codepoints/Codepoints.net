@@ -4,8 +4,10 @@
 @import "settings";
 @import "ui";
 @import "view.codepoint";
+@import "fontawesome";
 
 @include normalize;
+@include fontawesome;
 
 @include selection($cVisited, #ddd);
 
