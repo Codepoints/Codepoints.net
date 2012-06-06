@@ -10,6 +10,7 @@
   @include normalize-figures;
   @include normalize-forms;
   @include normalize-tables;
+  /*! end normalize */
 }
 
 @mixin normalize-display {
