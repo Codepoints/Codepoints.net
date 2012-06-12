@@ -120,30 +120,33 @@
     }
     &.next a:after {
       padding-left: .5em;
+      width: 1.25em;
       content: "\f054";
     }
+    &.prev, &.up, &.about, &.scripts, &.search {
+      a:before {
+        padding-right: .5em;
+        width: 1.25em;
+      }
+    }
     &.prev a:before {
-      padding-right: .5em;
       content: "\f053";
     }
     &.up a:before {
-      padding-right: .5em;
       content: "\f077";
     }
     &.about a:before {
-      padding-right: .5em;
       content: "\f05a";
     }
     &.scripts a:before {
-      padding-right: .5em;
       content: "\f0ac";
     }
     &.search a:before {
-      padding-right: .5em;
       content: "\f002";
     }
     & a[href^="#"]:before {
       padding-right: .5em;
+      width: 1.25em;
       content: "\f078";
     }
   }

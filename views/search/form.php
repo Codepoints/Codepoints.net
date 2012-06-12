@@ -7,7 +7,7 @@
   <?php
   foreach (array('blk', 'gc', 'bc', 'ccc', 'dt', 'nt', 'lb', 'ea',
                  'sc', 'SB', 'WB') as $cat) {
-     include 'fieldset.php';
+    include 'fieldset.php';
   }
   foreach ($info->getBooleanCategories() as $cat):
     $tmp_v = "";

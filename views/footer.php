@@ -12,7 +12,7 @@
         <ul>
           <li><a href="/">Start</a></li>
           <li><a href="http://blog.codepoints.net/">Blog</a></li>
-          <li><a href="<?php e($router->getUrl('about'))?>">About</a></li>
+          <li><a href="<?php e($router->getUrl('about'))?>#this_site">About</a></li>
         </ul>
       </nav>
     </footer>

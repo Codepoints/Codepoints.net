@@ -16,7 +16,7 @@ function renderScript(d, data) {
           $('<h3></h3>').text(data[sc].name))
         .append($('<div style="font-size: 12px"></div>').html(data[sc].abstract)
                 .prepend($('<p>Unicode has </p>')
-                    .append('<a href="/search?sc='+sc+'">'+ n +
+                    .append('<a href="/search?sc=[]'+sc+'">'+ n +
                             ' codepoints</a> encoded in this script.'))
                 .append('<p class="nt">Source: <a href="' + data[sc].src +
                         '">Wikipedia</a></p>')));

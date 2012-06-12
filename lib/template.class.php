@@ -11,7 +11,7 @@ T_textdomain($domain);
 
 
 /**
- * own extension to the Mustache base class + i18n
+ * own wrapper around the Mustache base class + i18n
  */
 class Template {
 

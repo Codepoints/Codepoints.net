@@ -151,7 +151,7 @@ include 'nav.php';
       (Mountain View, CA: The Unicode Consortium, 2012. ISBN 978-1-936213-02-3)<br/>
       <a href="http://www.unicode.org/versions/Unicode<?php e(UNICODE_VERSION)?>/">http://www.unicode.org/versions/Unicode<?php e(UNICODE_VERSION)?>/</a>,<br/>
       which happens to be the most relevant version of the Unicode Standard
-      as of April, 2012.
+      as of June, 2012.
     </p>
     <p>
       If you find problems, inaccurancies, bugs or other issues with this site,
