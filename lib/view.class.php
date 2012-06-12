@@ -104,18 +104,31 @@ class View {
 
     protected $file;
 
+    protected $isTemplate = False;
+
     public function __construct($view) {
-        $this->file = dirname(__FILE__)."/../views/$view.php";
+        $base = dirname(__FILE__).'/../';
+        if (is_file($base."static/tpl/$view.mustache")) {
+            $this->file = $base."static/tpl/$view.mustache";
+            $this->isTemplate = True;
+        } else {
+            $this->file = $base."views/$view.php";
+        }
     }
 
     public function render($params=array()) {
-        $info = UnicodeInfo::get();
-        $router = Router::getRouter();
-        extract($params);
-        ob_start();
-        include($this->file);
-        $out = ob_get_contents();
-        @ob_end_clean();
+        $params['info'] = UnicodeInfo::get();
+        $params['router'] = Router::getRouter();
+        if ($this->isTemplate) {
+            $tpl = new Template(file_get_contents($this->file));
+            $out = $tpl->render($params);
+        } else {
+            extract($params);
+            ob_start();
+            include($this->file);
+            $out = ob_get_contents();
+            @ob_end_clean();
+        }
         return $out;
     }
 

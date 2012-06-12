@@ -13,13 +13,21 @@ T_textdomain($domain);
 /**
  * own extension to the Mustache base class + i18n
  */
-class Template extends Mustache {
+class Template {
 
-    public $__ = array(__CLASS__, '__translate');
+    protected $mustache = null;
 
-    public $name = "Bob";
+    public function __construct($template) {
+        $partials = new MustacheLoader(dirname(__FILE__)."/../static/tpl");
+        $this->mustache = new Mustache($template, null, $partials, null);
+    }
 
-    public static function __translate($s) {
+    public function render($view = array()) {
+        $view['_'] = array($this, '_translate');
+        return $this->mustache->render(null, $view, null);
+    }
+
+    public function _translate($s) {
         return T_gettext($s);
     }
 
