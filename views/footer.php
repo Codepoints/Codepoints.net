@@ -16,7 +16,7 @@
         </ul>
       </nav>
     </footer>
-    <script id="_ts">
+    <script id="_ts" async="async">
       var _paq=_paq||[];(function(){var u="http://piwik.manuel-strehl.de/";_paq.push(['setSiteId',4]);_paq.push(['setTrackerUrl',u+'piwik.php']);_paq.push(['trackPageView']);_paq.push(['enableLinkTracking']);var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];g.type='text/javascript';g.defer=true;g.async=true;g.src=u+'piwik.js';s.parentNode.insertBefore(g,s);})();
     </script>
 <?php if(CP_DEBUG):?>
@@ -32,7 +32,7 @@
     <?php if (isset($footer_scripts)): foreach($footer_scripts as $sc):?>
         <script src="<?php e($sc)?>"></script>
     <?php endforeach; endif?>
-    <script>
+    <script async="async">
       WebFontConfig = {
         google: {
           families: [

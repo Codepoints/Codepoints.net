@@ -17,13 +17,14 @@ FileETag MTime Size
 AddDefaultCharset utf-8
 AddEncoding x-gzip .gz .svgz
 
-<IfModule expires_module_debug>
+<IfModule expires_module>
   # Lets files expire after some time
   ExpiresActive On
   ExpiresDefault "access plus 1 hour"
   ExpiresByType text/css "access plus 1 week"
   ExpiresByType text/javascript "access plus 1 week"
   ExpiresByType application/x-javascript "access plus 1 week"
+  ExpiresByType application/javascript "access plus 1 week"
   ExpiresByType application/json "access plus 1 day"
   ExpiresByType image/gif "access plus 1 month"
   ExpiresByType image/jpeg "access plus 1 month"

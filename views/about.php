@@ -136,12 +136,15 @@ include 'nav.php';
     <address>
       <p>
         <strong>Manuel Strehl</strong><br/>
-        <img class="protocol_s" alt="Adresse identisch mit dem Eintrag für den Admin-C, den man bei der DENiC herausfinden kann" src="/static/images/address.png" />
+        <img class="protocol_s" alt="Adresse identisch mit dem Eintrag für den Admin-C, den man bei der DENiC herausfinden kann"
+            src="/static/images/address.png" width="220" height="40" />
       </p>
       <p>
-        E-Mail: <img class="protocol_s" alt="website (Klammeraffe) diese Domain ohne www" src="/static/images/email.png"><br />
+        E-Mail: <img class="protocol_s" alt="website (Klammeraffe) diese Domain ohne www"
+            src="/static/images/email.png" width="220" height="20" /><br />
         WWW: www.manuel-strehl.de/about/contact<br/>
-        Tel.: <img class="protocol_s" alt="Siehe Adresse" src="/static/images/phone.png" />
+        Tel.: <img class="protocol_s" alt="Siehe Adresse"
+            src="/static/images/phone.png" width="220" height="20" />
       </p>
     </address>
     <h2>The Content on this Site</h2>
