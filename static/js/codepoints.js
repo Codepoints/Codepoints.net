@@ -1,87 +1,5 @@
 (function(window, $, undefined){
 
-function getPage(url, callback) {
-  if (! $.isFunction(callback)) {
-    callback = function(data) {
-      $('.stage').empty().append(data.find('.stage').contents());
-    };
-  }
-  var cb2 = function(data) {
-    var $data = $(data);
-    history.pushState({}, '', url);
-    document.title = $data.filter('title').text();
-    callback($data);
-    var _ts = $data.find('#_ts');
-    if (_ts.length) {
-      $('#_ts', document).remove();
-      _ts.clone().appendTo('body');
-    }
-  };
-  $.cachedAjax(url, cb2);
-}
-
-var stage;
-
-function animatePage($this, url, a1, a2) {
-  var offset = "" + ($this.offset().left) + "px " + ($this.offset().top) + "px",
-      tr = $('>*', stage).wrapAll('<div class="slide bottom"></div>')
-            .closest('.slide').css('MozTransformOrigin', offset)
-            .addClass(a1),
-      tmp;
-  getPage(url, function (data) {
-    data = data.filter('.stage').contents();
-    tmp = $('<div class="slide top '+a2+'"></div>').html(data)
-               .appendTo(stage).css('MozTransformOrigin', offset);
-    window.setTimeout(function() {
-      tr.remove();
-      tmp.replaceWith(tmp.contents());
-    }, 3000);
-  });
-  return false;
-}
-
-var glossary = null;
-
-$.fn.glossary = function() {
-  var gl = this.find('.gl');
-  if (gl.length) {
-    $.cachedAjax('/glossary').done(function(data) {
-      var $data = $(data);
-      glossary = $data.find('#glossary');
-      gl.each(function() {
-        var $gl = $(this), dt, dd, win;
-        dt = glossary.find('dt#'+$gl.data('term'));
-        if (! dt.length) {
-          return;
-        }
-        dt = dt.add(dt.nextUntil('dd')).add(dt.prevUntil('dd'));
-        dd = dt.nextUntil('dt');
-        win = $('<div class="tooltip glos"><dl></dl></div>')
-              .find('dl').append(dt.clone()).append(dd.clone()).end()
-              .on('mouseenter', function() { win.stop(true, true).appendTo('body').show(); })
-              .on('mouseleave', function() { $gl.find('.after').trigger('mouseleave'); })
-              .on('click tap', 'a[href^="#"]', function() { window.location.href = '/glossary' + this.hash; return false; });
-        $gl.data('gl', win)
-          .append('<span class="after">?</span>')
-          .find('.after').on('mouseenter', function() {
-            $gl.data('gl').stop(true, true).show().appendTo('body').position({
-              my: 'left bottom',
-              at: 'right top',
-              of: $gl,
-              offset: '10 0',
-              collision: 'fit flip'
-            });
-          }).on('mouseleave', function() {
-            $gl.data('gl').fadeOut(700, function() {
-              $(this).detach();
-            });
-          });
-      });
-    });
-  }
-  return this;
-};
-
 $(function() {
   /**
   * Determine the scrolling element
@@ -100,14 +18,6 @@ $(function() {
     }
     return $();
   })(["html", "body"]);
-
-  stage = $('.stage');
-  //stage.on('click', 'a.cp', function() {
-  //  return animatePage($(this), this.href, 'zoomin', 'maximize');
-  //});
-  //stage.on('click', 'a.bl, a.pl', function() {
-  //  return animatePage($(this), this.href, 'minimize', 'zoomout');
-  //});
 
   /** init tooltips */
   $(document).tooltip().glossary();

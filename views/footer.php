@@ -24,6 +24,7 @@
     <script src="/static/js/jquery.ui.js"></script>
     <script src="/static/js/jquery.cachedajax.js"></script>
     <script src="/static/js/jquery.tooltip.js"></script>
+    <script src="/static/js/jquery.glossary.js"></script>
     <script src="/static/js/codepoints.js"></script>
 <?php else:?>
     <script src="/static/js/_.js"></script>
