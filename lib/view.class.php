@@ -88,6 +88,10 @@ function _bl($bl, $rel='', $class='', $wrap='') {
     return $r;
 }
 
+function icon($name) {
+    return sprintf('<i class="icon-%s" aria-role="presentation"></i>', $name);
+}
+
 function _get($key, $default='') {
     if (array_key_exists($key, $_GET)) {
         return q($_GET[$key]);
