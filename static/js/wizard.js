@@ -122,7 +122,7 @@
     }
     QuestionPrototype.container.addClass('finished');
     html.append($('<p></p>').text('Please wait a second, we’re making those '+
-                                   i+' answers productive.'));
+                                   i+' answers productive.').prepend('<img src="/static/images/ajax.gif" alt="" width="16" height="16"/> '));
     $('#wizard_now').fadeOut('fast');
     q.html.fadeOut('fast', function() {
       html.hide().insertAfter(q.html).fadeIn('fast');
@@ -270,6 +270,7 @@
   q_region.setNextForAnswer('Southeast_Asia', q_number);
   q_region.setNextForAnswer('Philippines', q_number);
   q_region.setNextForAnswer('n', q_symbol);
+  q_region.setNextForAnswer('', q_symbol);
 
   q_region.setNextForAnswer('East_Asia', q_def);
   q_def.setNextForAnswer('_text', q_strokes);
