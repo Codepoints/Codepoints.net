@@ -135,6 +135,7 @@ $router->addSetting('db', $db)
 
 ->registerAction('wizard', function ($request, $o) {
     // the "find my CP" wizard
+    $router = Router::getRouter();
     $region = array(
         'Africa' => array('Ethiopic', 'Ethiopic Extended', 'Ethiopic Extended-A',
             'Ethiopic Supplement', 'NKo', 'Osmanya', 'Tifinagh', 'Meroitic Cursive',
