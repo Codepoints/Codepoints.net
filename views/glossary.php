@@ -12,6 +12,12 @@ include 'nav.php';
 ?>
 <div class="payload static glossary">
   <h1><?php e($title)?></h1>
+  <p>This page gives an overview of the terms and concepts presented on this
+    site. Unfortunately many definitions are taken directly from the respective
+    specification at the <a href="http://unicode.org/reports/">Unicode
+    website</a> and may remain a bit technical. If you see this sign <span
+    class="gl" data-term="unicode"></span> on a page, it means you can access
+    the definition from here by hovering over it.</p>
   <dl id="glossary">
     <dt id="unicode">Unicode</dt>
     <dd>A standard to map characters to <a href="#codepoint">codepoints</a>, numeric representations. The Unicode standard is curated by the <a href="http://unicode.org">Unicode Consortium</a>. It is internationally standardized as ISO 10464.</dd>
@@ -21,88 +27,66 @@ include 'nav.php';
     <dd>The representation of a codepoint under certain circumstances. For example, the letter “A” looks quite differently in latin and blackletter fonts. Both are different glyphs for the underlying character.</dd>
     <dt id="plane">Plane</dt>
     <dd>A Unicode plane is one of 16 sets of 65536 <a href="#codepoint">codepoints</a> each. Currently only the first three planes contain character definitions. The last two planes are reserved for <a href="#private_use">private use</a>.</dd>
-    <dt id="private_use">Private Use</dt>
+    <dt id="private_use" class="last-special">Private Use</dt>
     <dd>So-called “private use” areas are <a href="#unicode">Unicode</a> codepoints, that are deliberately not assigned to characters. These codepoints can be used by application developers to add their own extensions to Unicode.</dd>
-    <dt id="jt">Joining Type</dt>
-    <dt id="jg">Joining Group</dt>
-    <dd>Basic Arabic and Syriac character shaping properties, such as initial, medial and final shapes. See <i>Section 8.2, Arabic</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>]. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+
+    <dt id="age">Age</dt>
+    <dd>This property shows when various code points were designated/assigned in successive versions of the Unicode Standard.
+      <p>The Age property is normative in the sense that it is completely specified based on when a character is encoded in the standard. However, DerivedAge.txt is provided for information. The value of the Age property for a code point can be derived by analysis of successive versions of the UCD, and Age is not used normatively in the specification of any Unicode algorithm.</p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="Alpha">Alphabetic</dt>
+    <dd>Characters with the Alphabetic property. For more information, see <i>Chapter 4, Character Properties</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>].
+      <p><i>Generated from: Lu + Ll + Lt + Lm + Lo + Nl + <a href="#OAlpha">Other Alphabetic</a></i></p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="AHex">ASCII Hex Digit</dt>
+    <dd>ASCII characters commonly used for the representation of hexadecimal numbers. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="bc">Bidi Class</dt>
+    <dd>These are the categories required by the Unicode Bidirectional Algorithm. For the property values, see <a href="http://unicode.org/reports/tr44/#Bidi_Class_Values">Bidirectional Class Values</a>. For more information, see Unicode Standard Annex #9, "The Unicode Bidirectional Algorithm" [<a href="http://unicode.org/reports/tr41/tr41-9.html#UAX9">UAX9</a>].
+      <p>The default property values depend on the code point, and are explained in DerivedBidiClass.txt</p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="Bidi_C">Bidi Control</dt>
+    <dd>Format control characters which have specific functions in the Unicode Bidirectional Algorithm [<a href="http://unicode.org/reports/tr41/tr41-9.html#UAX9">UAX9</a>]. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="Bidi_M">Bidi Mirrored</dt>
+    <dd>If the character is a "mirrored" character in bidirectional text, this field has the value "Y"; otherwise "N".  See <i>Section 4.7, Bidi Mirrored—Normative</i> of [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>]. <i>Do not confuse this with the <a href="#bmg">Bidi Mirroring Glyph</a> property.</i> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="bmg">Bidi Mirroring Glyph</dt>
     <dd>Informative mapping for substituting characters in an implementation of bidirectional mirroring. This maps a subset of characters with the Bidi_Mirrored property to other characters that normally are displayed with the corresponding mirrored glyph. When a character with the Bidi_Mirrored property has the default value for Bidi_Mirroring_Glyph, that means that no other character exists whose glyph is appropriate for character-based glyph mirroring. Implementations must then use other mechanisms to implement mirroring of those characters for the Unicode Bidirectional Algorithm. See Unicode Standard Annex #9:" The Unicode Bidirectional Algorithm" [<a href="http://unicode.org/reports/tr41/tr41-9.html#UAX9">UAX9</a>]. Do not confuse this property with the <a href="#Bidi_M">Bidi Mirrored</a> property itself. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="blk">Block</dt>
     <dd>List of block names, which are arbitrary names for ranges of code points. See the code charts in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>]. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="CE">Composition Exclusion</dt>
-    <dd>A property used in normalization. See Unicode Standard Annex #15: "Unicode Normalization Forms" [<a href="http://unicode.org/reports/tr41/tr41-9.html#UAX15">UAX15</a>]. Unlike other files, CompositionExclusions.txt simply lists the relevant code points. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="scf">Simple Case Folding</dt>
+    <dt id="ccc">Canonical Combining Class</dt>
+    <dd>The classes used for the Canonical Ordering Algorithm in the Unicode Standard. This property could be considered either an enumerated property or a numeric property: the principal use of the property is in terms of the numeric values. For the property value names associated with different numeric values, see <a href="http://unicode.org/reports/tr44/#DerivedCombiningClass.txt">DerivedCombiningClass.txt</a> and <a href="http://unicode.org/reports/tr44/#Canonical_Combining_Class_Values">Canonical Combining Class Values</a>. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="cf">Case Folding</dt>
+    <dt id="scf">Simple Case Folding</dt>
     <dd>Mapping from characters to their case-folded forms. This is an informative file containing normative derived properties.
       <p><i>Derived from UnicodeData and SpecialCasing.</i></p>
       <p><b>Note: </b>The case foldings are omitted in the data file if they are the same as the code point itself.</p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="age">Age</dt>
-    <dd>This file shows when various code points were designated/assigned in successive versions of the Unicode Standard.
-      <p>The Age property is normative in the sense that it is completely specified based on when a character is encoded in the standard. However, DerivedAge.txt is provided for information. The value of the Age property for a code point can be derived by analysis of successive versions of the UCD, and Age is not used normatively in the specification of any Unicode algorithm.</p>
-      <p><b>Note:</b> When using the Age property in regular expressions, an expression such as "\p{age=3.0}" matches all of the code points assigned in Version 3.0—that is, all the code points with a value <i>less than</i> or equal to 3.0 for the Age property. For more information, see Unicode Technical Standard #18, "Unicode Regular Expressions" [<a href="http://unicode.org/reports/tr41/tr41-9.html#UTS18">UTS18</a>].</p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="ea">East Asian Width</dt>
-    <dd>Properties for determining the choice of wide versus narrow glyphs in East Asian contexts. Property values are described in Unicode Standard Annex #11, "East Asian Width" [<a href="http://unicode.org/reports/tr41/tr41-9.html#UAX11">UAX11</a>]. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="hst">Hangul Syllable Type</dt>
-    <dd>The values L, V, T, LV, and LVT used in <i>Chapter 3, Conformance</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>]. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="InMC">Indic Matra Category</dt>
-    <dd>A provisional property defining the placement categories for dependent vowels in Indic scripts. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="InSC">Indic Syllabic Category</dt>
-    <dd>A provisional property defining the structural categories of syllabic components in Indic scripts. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="JSN">Jamo Short Name</dt>
-    <dd>The Hangul Syllable names are derived from the Jamo Short Names, as described in <i>Chapter 3, Conformance</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>]. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="lb">Line Break</dt>
-    <dd>Properties for line breaking. For more information, see Unicode Standard Annex #14, "Unicode Line Breaking Algorithm" [<a href="http://unicode.org/reports/tr41/tr41-9.html#UAX14">UAX14</a>]. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="GCB">Grapheme Cluster Break</dt>
-    <dd>See Unicode Standard Annex #29, "Unicode Text Segmentation" [<a href="http://unicode.org/reports/tr41/tr41-9.html#UAX29">UAX29</a>] <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="SB">Sentence Break</dt>
-    <dd>See Unicode Standard Annex #29, "Unicode Text Segmentation" [<a href="http://unicode.org/reports/tr41/tr41-9.html#UAX29">UAX29</a>] <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="WB">Word Break</dt>
-    <dd>See Unicode Standard Annex #29, "Unicode Text Segmentation" [<a href="http://unicode.org/reports/tr41/tr41-9.html#UAX29">UAX29</a>] <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="alias">Name Alias</dt>
-    <dd>Normative formal aliases for characters with erroneous names, for control characters and some format characters, and for character abbreviations, as described in <i>Chapter 4, Character Properties</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>]. The aliases tagged with the type "correction" exactly match the formal aliases published in the Unicode Standard code charts. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="sc">Script</dt>
-    <dd>Script values for use in regular expressions and elsewhere. For more information, see Unicode Standard Annex #24, "Unicode Script Property" [<a href="http://unicode.org/reports/tr41/tr41-9.html#UAX24">UAX24</a>]. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="scx">Script Extensions</dt>
-    <dd>Enumerated sets of Script values for use in regular expressions and elsewhere. For more information, see Unicode Standard Annex #24, "Unicode Script Property" [<a href="http://unicode.org/reports/tr41/tr41-9.html#UAX24">UAX24</a>]. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="uc">Uppercase Mapping</dt>
-    <dt id="lc">Lowercase Mapping</dt>
-    <dt id="tc">Titlecase Mapping</dt>
-    <dd>Data for producing (in combination with the simple case mappings from <a href="http://unicode.org/reports/tr44/#UnicodeData.txt">UnicodeData.txt</a>) the full case mappings. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="Numeric_Type_Han">Numeric Type</dt>
-    <dt id="Numeric_Value_Han">Numeric Value</dt>
-    <dd>The characters tagged with either kPrimaryNumeric, kAccountingNumeric, or kOtherNumeric are given the property value Numeric_Type=Numeric, and the Numeric_Value indicated in those tags.
-      <p>Most characters have these numeric properties based on values from UnicodeData.txt. See <a href="#nt">Numeric_Type</a>.</p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="kRSUnicode">Unicode Radical Stroke</dt>
-    <dd>The Unicode radical-stroke count, based on the tag kRSUnicode. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="Lower">Lowercase</dt>
-    <dd>Characters with the Lowercase property. For more information, see <i>Chapter 4, Character Properties</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>].<p><i>Generated from: Ll + <a href="#OLower">Other Lowercase</a></i></p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="Upper">Uppercase</dt>
-    <dd>Characters with the Uppercase property. For more information, see <i>Chapter 4, Character Properties</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>].<p><i>Generated from: Lu + <a href="#OUpper">Other Uppercase</a></i></p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="Cased">Cased</dt>
-    <dd>Characters which are considered to be either uppercase, lowercase or titlecase characters. This property is not identical to the Changes_When_Casemapped property. For more information, see D135 in <i>Section 3.13, Default Case Algorithms</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>].
-      <p><i>Generated from: <a href="#Lower">Lowercase</a> + <a href="#Upper">Uppercase</a> + Lt</i></p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="CI">Case Ignorable</dt>
     <dd>Characters which are ignored for casing purposes. For more information, see D136 in <i>Section 3.13, Default Case Algorithms</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>].
       <p><i>Generated from: Mn + Me + Cf + Lm + Sk + <a href="#WB">Word Break</a>=MidLetter + <a href="#WB">Word Break</a>=MidNumLet</i></p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="CWL">Changes When Lowercased</dt>
-    <dd>Characters whose normalized forms are not stable under a toLowercase mapping. For more information, see D139 in <i>Section 3.13, Default Case Algorithms</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>].
-      <p><i>Generated from: toLowercase(toNFD(X)) != toNFD(X)</i></p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="CWU">Changes When Uppercased</dt>
-    <dd>Characters whose normalized forms are not stable under a toUppercase mapping. For more information, see D140 in <i>Section 3.13, Default Case Algorithms</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>].
-      <p><i>Generated from: toUppercase(toNFD(X)) != toNFD(X)</i></p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="CWT">Changes When Titlecased</dt>
-    <dd>Characters whose normalized forms are not stable under a toTitlecase mapping. For more information, see D141 in <i>Section 3.13, Default Case Algorithms</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>].
-      <p><i>Generated from: toTitlecase(toNFD(X)) != toNFD(X)</i></p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="Cased">Cased</dt>
+    <dd>Characters which are considered to be either uppercase, lowercase or titlecase characters. This property is not identical to the Changes_When_Casemapped property. For more information, see D135 in <i>Section 3.13, Default Case Algorithms</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>].
+      <p><i>Generated from: <a href="#Lower">Lowercase</a> + <a href="#Upper">Uppercase</a> + Lt</i></p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="CWCF">Changes When Casefolded</dt>
     <dd>Characters whose normalized forms are not stable under case folding. For more information, see D142 in <i>Section 3.13, Default Case Algorithms</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>].
       <p><i>Generated from: toCasefold(toNFD(X)) != toNFD(X)</i></p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="CWCM">Changes When Casemapped</dt>
     <dd>Characters which may change when they undergo case mapping. For more information, see D143 in <i>Section 3.13, Default Case Algorithms</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>].
       <p><i>Generated from: Changes_When_Lowercased(X) or Changes_When_Uppercased(X) or Changes_When_Titlecased(X)</i></p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="Alpha">Alphabetic</dt>
-    <dd>Characters with the Alphabetic property. For more information, see <i>Chapter 4, Character Properties</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>].
-      <p><i>Generated from: Lu + Ll + Lt + Lm + Lo + Nl + <a href="#OAlpha">Other Alphabetic</a></i></p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="CWL">Changes When Lowercased</dt>
+    <dd>Characters whose normalized forms are not stable under a toLowercase mapping. For more information, see D139 in <i>Section 3.13, Default Case Algorithms</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>].
+      <p><i>Generated from: toLowercase(toNFD(X)) != toNFD(X)</i></p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="CWKCF">Changes When NFKC Casefolded</dt>
+    <dd>Characters which are not identical to their NFKC_Casefold mapping. 
+      <p><i>Generated from: (cp != NFKC_CaseFold(cp))</i></p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="CWT">Changes When Titlecased</dt>
+    <dd>Characters whose normalized forms are not stable under a toTitlecase mapping. For more information, see D141 in <i>Section 3.13, Default Case Algorithms</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>].
+      <p><i>Generated from: toTitlecase(toNFD(X)) != toNFD(X)</i></p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="CWU">Changes When Uppercased</dt>
+    <dd>Characters whose normalized forms are not stable under a toUppercase mapping. For more information, see D140 in <i>Section 3.13, Default Case Algorithms</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>].
+      <p><i>Generated from: toUppercase(toNFD(X)) != toNFD(X)</i></p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="CE">Composition Exclusion</dt>
+    <dd>A property used in normalization. See Unicode Standard Annex #15: "Unicode Normalization Forms" [<a href="http://unicode.org/reports/tr41/tr41-9.html#UAX15">UAX15</a>]. Unlike other files, CompositionExclusions.txt simply lists the relevant code points. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="Dash">Dash</dt>
+    <dd>Punctuation characters explicitly called out as dashes in the Unicode Standard, plus their compatibility equivalents. Most of these have the General_Category value Pd, but some have the General_Category value Sm because of their use in mathematics. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="dt">Decomposition Type</dt>
+    <dt id="dm">Decomposition Mapping</dt>
+    <dd>This field contains both values, with the type in angle brackets. The decomposition mappings exactly match the decomposition mappings published with the character names in the Unicode Standard. For more information, see <a href="http://unicode.org/reports/tr44/#Character_Decomposition_Mappings">Character Decomposition Mappings</a>. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="DI">Default Ignorable Code Point</dt>
     <dd>For programmatic determination of default ignorable code points. New characters that should be ignored in rendering (unless explicitly supported) will be assigned in these ranges, permitting programs to correctly handle the default rendering of such characters when not otherwise supported. For more information, see the FAQ <a href="http://www.unicode.org/faq/unsup_char.html">Display of Unsupported Characters</a>, and <i>Section 5.21, Default Ignorable Code Points</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>].
       <p><i>Generated from<br/> <a href="#ODI">Other Default Ignorable Code Point</a><br/>
@@ -111,10 +95,32 @@ include 'nav.php';
         - White_Space<br/>
         - FFF9..FFFB (annotation characters)<br/>
         - 0600..0604, 06DD, 070F, 110BD (exceptional Cf characters that should be visible)</i></p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="Dep">Deprecated</dt>
+    <dd>For a machine-readable list of deprecated characters. No characters will ever be removed from the standard, but the usage of deprecated characters is strongly discouraged. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="Dia">Diacritic</dt>
+    <dd>Characters that linguistically modify the meaning of another character to which they apply. Some diacritics are not combining characters, and some combining characters are not diacritics. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="ea">East Asian Width</dt>
+    <dd>Properties for determining the choice of wide versus narrow glyphs in East Asian contexts. Property values are described in Unicode Standard Annex #11, "East Asian Width" [<a href="http://unicode.org/reports/tr41/tr41-9.html#UAX11">UAX11</a>]. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="XO_NFC">Expands On NFC (deprecated)</dt>
+    <dt id="XO_NFD">Expands On NFD (deprecated)</dt>
+    <dt id="XO_NFKC">Expands On NFKC (deprecated)</dt>
+    <dt id="XO_NFKD">Expands On NFKD (deprecated)</dt>
+    <dd>Characters that expand to more than one character in the specified normalization form. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="Ext">Extender</dt>
+    <dd>Characters whose principal function is to extend the value or shape of a preceding alphabetic character. Typical of these are length and iteration marks. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="FC_NFKC">FC NFKC Closure (deprecated)</dt>
+    <dd>Characters that require extra mappings for closure under Case Folding plus Normalization Form KC.
+      <p>The mapping is listed in Field 2.</p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="Comp_Ex">Full Composition Exclusion</dt>
+    <dd>Characters that are excluded from composition: those listed explicitly in CompositionExclusions.txt, plus the derivable sets of <i>Singleton Decompositions</i> and <i>Non-Starter Decompositions</i>, as documented in that data file. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="gc">General Category</dt>
+    <dd>This is a useful breakdown into various character types which can be used as a default categorization in implementations. For the property values, see <a href="http://unicode.org/reports/tr44/#General_Category_Values">General Category Values</a>. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="Gr_Base">Grapheme Base</dt>
     <dd>Property used together with the definition of Standard Korean Syllable Block to define "Grapheme base". See D58 in <i>Chapter 3, Conformance</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>]. 
       <p><i>Generated from: [0..10FFFF] - Cc - Cf - Cs - Co - Cn - Zl - Zp - <a href="#Gr_Ext">Grapheme Extend</a></i></p>
       <p><b>Note:</b> Grapheme_Base is a property of individual characters. That usage contrasts with "grapheme base", which is an attribute of Unicode strings; a grapheme base may consist of a Korean syllable which is itself represented by a sequence of conjoining jamos.</p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="GCB">Grapheme Cluster Break</dt>
+    <dd>See Unicode Standard Annex #29, "Unicode Text Segmentation" [<a href="http://unicode.org/reports/tr41/tr41-9.html#UAX29">UAX29</a>] <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="Gr_Ext">Grapheme Extend</dt>
     <dd>Property used to define "Grapheme extender". See D59 in <i>Chapter 3, Conformance</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>]. 
       <p><i>Generated from:  Me + Mn + <a href="#OGr_Ext">Other Grapheme Extend</a></i></p>
@@ -122,131 +128,37 @@ include 'nav.php';
     <dt id="Gr_Link">Grapheme Link (deprecated)</dt>
     <dd>Formerly proposed for programmatic determination of grapheme cluster boundaries.
       <p><i>Generated from: Canonical_Combining_Class=Virama</i></p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="Math">Math</dt>
-    <dd>Characters with the Math property. For more information, see <i>Chapter 4, Character Properties</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>].<p><i>Generated from: Sm + <a href="#OMath">Other Math</a></i></p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="hst">Hangul Syllable Type</dt>
+    <dd>The values L, V, T, LV, and LVT used in <i>Chapter 3, Conformance</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>]. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="Hex">Hex Digit</dt>
+    <dd>Characters commonly used for the representation of hexadecimal numbers, plus their compatibility equivalents. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="Hyphen">Hyphen (deprecated, stabilized)</dt>
+    <dd>Dashes which are used to mark connections between pieces of words, plus the <i>Katakana middle dot</i>. The <i>Katakana middle dot</i> functions like a hyphen, but is shaped like a dot rather than a dash. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="IDS">ID Start</dt>
     <dt id="IDC">ID Continue</dt>
     <dt id="XIDS">XID Start</dt>
     <dt id="XIDC">XID Continue</dt>
     <dd>Used to determine programming identifiers, as described in Unicode Standard Annex #31, "Unicode Identifier and Pattern Syntax" [<a href="http://unicode.org/reports/tr41/tr41-9.html#UAX31">UAX31</a>]. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="Comp_Ex">Full Composition Exclusion</dt>
-    <dd>Characters that are excluded from composition: those listed explicitly in CompositionExclusions.txt, plus the derivable sets of <i>Singleton Decompositions</i> and <i>Non-Starter Decompositions</i>, as documented in that data file. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="XO_NFC">Expands On NFC (deprecated)</dt>
-    <dt id="XO_NFD">Expands On NFD (deprecated)</dt>
-    <dt id="XO_NFKC">Expands On NFKC (deprecated)</dt>
-    <dt id="XO_NFKD">Expands On NFKD (deprecated)</dt>
-    <dd>Characters that expand to more than one character in the specified normalization form. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="FC_NFKC">FC NFKC Closure (deprecated)</dt>
-    <dd>Characters that require extra mappings for closure under Case Folding plus Normalization Form KC.
-      <p>The mapping is listed in Field 2.</p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="NFD_QC">NFD Quick Check</dt>
-    <dt id="NFKD_QC">NFKD Quick Check</dt>
-    <dt id="NFC_QC">NFC Quick Check</dt>
-    <dt id="NFKC_QC">NFKC Quick Check</dt>
-    <dd>For property values, see <a href="http://unicode.org/reports/tr44/#Decompositions_and_Normalization"> Decompositions and Normalization</a>. (Abbreviated names: NFD_QC, NFKD_QC, NFC_QC, NFKC_QC) <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="NFKC_CF">NFKC Casefold</dt>
-    <dd>A mapping designed for best behavior when doing caseless matching of strings interpreted as identifiers. (Abbreviated name: NFKC_CF)
-      <p>For the definition of the related string transform toNFKC_Casefold() based on this mapping, see <i>Section 3.13, Default Case Algorithms</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>].</p>
-      <p>The mapping is listed in Field 2.</p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="CWKCF">Changes When NFKC Casefolded</dt>
-    <dd>Characters which are not identical to their NFKC_Casefold mapping. 
-      <p><i>Generated from: (cp != NFKC_CaseFold(cp))</i></p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="AHex">ASCII Hex Digit</dt>
-    <dd>ASCII characters commonly used for the representation of hexadecimal numbers. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="Bidi_C">Bidi Control</dt>
-    <dd>Format control characters which have specific functions in the Unicode Bidirectional Algorithm [<a href="http://unicode.org/reports/tr41/tr41-9.html#UAX9">UAX9</a>]. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="Dash">Dash</dt>
-    <dd>Punctuation characters explicitly called out as dashes in the Unicode Standard, plus their compatibility equivalents. Most of these have the General_Category value Pd, but some have the General_Category value Sm because of their use in mathematics. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="Dep">Deprecated</dt>
-    <dd>For a machine-readable list of deprecated characters. No characters will ever be removed from the standard, but the usage of deprecated characters is strongly discouraged. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="Dia">Diacritic</dt>
-    <dd>Characters that linguistically modify the meaning of another character to which they apply. Some diacritics are not combining characters, and some combining characters are not diacritics. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="Ext">Extender</dt>
-    <dd>Characters whose principal function is to extend the value or shape of a preceding alphabetic character. Typical of these are length and iteration marks. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="Hex">Hex Digit</dt>
-    <dd>Characters commonly used for the representation of hexadecimal numbers, plus their compatibility equivalents. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="Hyphen">Hyphen (deprecated, stabilized)</dt>
-    <dd>Dashes which are used to mark connections between pieces of words, plus the <i>Katakana middle dot</i>. The <i>Katakana middle dot</i> functions like a hyphen, but is shaped like a dot rather than a dash. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="Ideo">Ideographic</dt>
     <dd>Characters considered to be CJKV (Chinese, Japanese, Korean, and Vietnamese) ideographs. This property roughly defines the class of "Chinese characters" and does not include characters of other logographic scripts such as Cuneiform or Egyptian Hieroglyphs. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="IDSB">IDS Binary Operator</dt>
     <dd>Used in Ideographic Description Sequences. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="IDST">IDS Trinary Operator</dt>
     <dd>Used in Ideographic Description Sequences. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="Join_C">Join Control</dt>
-    <dd>Format control characters which have specific functions for control of cursive joining and ligation. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="LOE">Logical Order Exception</dt>
-    <dd>A small number of spacing vowel letters occurring in certain Southeast Asian scripts such as Thai and Lao, which use a visual order display model. These letters are stored in text ahead of syllable-initial consonants, and require special handling for processes such as searching and sorting. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="Nchar">Noncharacter Code Point</dt>
-    <dd>Code points permanently reserved for internal use. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="OAlpha">Other Alphabetic</dt>
-    <dd>Used in deriving the Alphabetic property. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="ODI">Other Default Ignorable Code Point</dt>
-    <dd>Used in deriving the Default_Ignorable_Code_Point property. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="OGr_Ext">Other Grapheme Extend</dt>
-    <dd>Used in deriving&nbsp; the Grapheme_Extend property. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="OIDC">Other ID Continue</dt>
-    <dd>Used to maintain backward compatibility of <a href="#IDC">ID Continue</a>. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="OIDS">Other ID Start</dt>
-    <dd>Used to maintain backward compatibility of <a href="#IDS">ID Start</a>. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="OLower">Other Lowercase</dt>
-    <dd>Used in deriving the Lowercase property. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="OMath">Other Math</dt>
-    <dd>Used in deriving the Math property. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="OUpper">Other Uppercase</dt>
-    <dd>Used in deriving the Uppercase property. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="Pat_Syn">Pattern Syntax</dt>
-    <dt id="Pat_WS">Pattern White Space</dt>
-    <dd>Used for pattern syntax as described in Unicode Standard Annex #31, "Unicode Identifier and Pattern Syntax" [<a href="http://unicode.org/reports/tr41/tr41-9.html#UAX31">UAX31</a>]. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="QMark">Quotation Mark</dt>
-    <dd>Punctuation characters that function as quotation marks. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="Radical">Radical</dt>
-    <dd>Used in Ideographic Description Sequences. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="SD">Soft Dotted</dt>
-    <dd>Characters with a "soft dot", like <i>i</i> or <i>j</i>. An accent placed on these characters causes the dot to disappear. An explicit <i>dot above</i> can be added where required, such as in Lithuanian. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="STerm">STerm</dt>
-    <dd>Sentence Terminal. Used in Unicode Standard Annex #29, "Unicode Text Segmentation" [<a href="http://unicode.org/reports/tr41/tr41-9.html#UAX29">UAX29</a>]. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="Term">Terminal Punctuation</dt>
-    <dd>Punctuation characters that generally mark the end of textual units. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="UIdeo">Unified Ideograph</dt>
-    <dd>A property which specifies the exact set of Unified CJK Ideographs in the standard. This set excludes CJK Compatibility Ideographs (which have canonical decompositions to Unified CJK Ideographs), as well as characters from the CJK Symbols and Punctuation block. The property is used in the definition of Ideographic Description Sequences. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="VS">Variation Selector</dt>
-    <dd>Indicates characters that are Variation Selectors. For details on the behavior of these characters, see <a href="http://unicode.org/reports/tr44/#StandardizedVariants">StandardizedVariants.html</a>, <i>Section 16.4, Variation Selectors</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>], and Unicode Standard Annex #37, "Unicode Ideographic Variation Database" [<a href="http://unicode.org/reports/tr41/tr41-9.html#UTS37">UTS37</a>]. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="WSpace">White Space</dt>
-    <dd>Spaces, separator characters and other control characters which should be treated by programming languages as "white space" for the purpose of parsing elements. See also <a href="#LB">Line Break</a>, <a href="#GCB">Grapheme Cluster Break</a>, <a href="#SB">Sentence Break</a>, and <a href="#WB">Word Break</a>, which classify space characters and related controls somewhat differently for particular text segmentation contexts. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="na">Name</dt>
-    <dd>These names match exactly the names published in the code charts of the Unicode Standard. The derived Hangul Syllable names are omitted from this file; see <a href="http://unicode.org/reports/tr44/#Jamo.txt">Jamo.txt</a> for their derivation. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="gc">General Category</dt>
-    <dd>This is a useful breakdown into various character types which can be used as a default categorization in implementations. For the property values, see <a href="http://unicode.org/reports/tr44/#General_Category_Values">General Category Values</a>. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="ccc">Canonical Combining Class</dt>
-    <dd>The classes used for the Canonical Ordering Algorithm in the Unicode Standard. This property could be considered either an enumerated property or a numeric property: the principal use of the property is in terms of the numeric values. For the property value names associated with different numeric values, see <a href="http://unicode.org/reports/tr44/#DerivedCombiningClass.txt">DerivedCombiningClass.txt</a> and <a href="http://unicode.org/reports/tr44/#Canonical_Combining_Class_Values">Canonical Combining Class Values</a>. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="bc">Bidi Class</dt>
-    <dd>These are the categories required by the Unicode Bidirectional Algorithm. For the property values, see <a href="http://unicode.org/reports/tr44/#Bidi_Class_Values">Bidirectional Class Values</a>. For more information, see Unicode Standard Annex #9, "The Unicode Bidirectional Algorithm" [<a href="http://unicode.org/reports/tr41/tr41-9.html#UAX9">UAX9</a>].
-      <p>The default property values depend on the code point, and are explained in DerivedBidiClass.txt</p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="dt">Decomposition Type</dt>
-    <dt id="dm">Decomposition Mapping</dt>
-    <dd>This field contains both values, with the type in angle brackets. The decomposition mappings exactly match the decomposition mappings published with the character names in the Unicode Standard. For more information, see <a href="http://unicode.org/reports/tr44/#Character_Decomposition_Mappings">Character Decomposition Mappings</a>. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="nt">Numeric Type</dt>
-    <dt id="nv">Numeric Value</dt>
-    <dd>If the character has the property value Numeric_Type=Decimal, then the Numeric_Value of that digit is represented with an integer value (limited to the range 0..9) in fields 6, 7, and 8. Characters with the property value Numeric_Type=Decimal are restricted to digits which can be used in a decimal radix positional numeral system and which are encoded in the standard in a contiguous ascending range 0..9. See the discussion of <i>decimal digits</i> in <i>Chapter 4, Character Properties</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>]. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dd>If the character has the property value Numeric_Type=Digit, then the Numeric_Value of that digit is represented with an integer value (limited to the range 0..9) in fields 7 and 8, and field 6 is null. This covers digits that need special handling, such as the compatibility superscript digits. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dd>If the character has the property value Numeric_Type=Numeric, then the Numeric_Value of that character is represented with a positive or negative integer or rational number in this field, and fields 6 and 7 are null. This includes fractions such as, for example, "1/5" for U+2155 VULGAR FRACTION ONE FIFTH.
-      <p>Some characters have these properties based on values from the Unihan data files. See <a href="#Numeric_Type_Han">Numeric Type Han</a>.</p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="Bidi_M">Bidi Mirrored</dt>
-    <dd>If the character is a "mirrored" character in bidirectional text, this field has the value "Y"; otherwise "N".  See <i>Section 4.7, Bidi Mirrored—Normative</i> of [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>]. <i>Do not confuse this with the <a href="#bmg">Bidi Mirroring Glyph</a> property.</i> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="na1">Unicode 1 Name</dt>
-    <dd>Old name as published in Unicode 1.0. This name is only provided when it is significantly different from the current name for the character. The value of field 10 for control characters does not always match the Unicode 1.0 names. Instead, field 10 contains ISO 6429 names for control functions, for printing in the code charts. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="InMC">Indic Matra Category</dt>
+    <dd>A provisional property defining the placement categories for dependent vowels in Indic scripts. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="InSC">Indic Syllabic Category</dt>
+    <dd>A provisional property defining the structural categories of syllabic components in Indic scripts. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="isc">ISO Comment (deprecated, stabilized)</dt>
     <dd>ISO 10646 comment field. It was used for notes that appeared in parentheses in the 10646 names list, or contained an asterisk to mark an Annex P note.
       <p>As of Unicode 5.2.0, this field no longer contains any non-null values.</p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="suc">Simple Uppercase Mapping</dt>
-    <dd>Simple uppercase mapping (single character result).<br/>
-      If a character is part of an alphabet with case distinctions, and has a simple uppercase equivalent, then the uppercase equivalent is in this field. The simple mappings have a single character result, where the full mappings may have multi-character results. For more information, see <a href="http://unicode.org/reports/tr44/#Casemapping">Case and Case Mapping</a>. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="slc">Simple Lowercase Mapping</dt>
-    <dd>Simple lowercase mapping (single character result). <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="stc">Simple Titlecase Mapping</dt>
-    <dd>Simple titlecase mapping (single character result).
-      <p><b>Note:</b> If this field is null, then the Simple_Titlecase_Mapping is the same as the Simple_Uppercase_Mapping for this character.</p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="Join_C">Join Control</dt>
+    <dd>Format control characters which have specific functions for control of cursive joining and ligation. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="jt">Joining Type</dt>
+    <dt id="jg">Joining Group</dt>
+    <dd>Basic Arabic and Syriac character shaping properties, such as initial, medial and final shapes. See <i>Section 8.2, Arabic</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>]. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="JSN">Jamo Short Name</dt>
+    <dd>The Hangul Syllable names are derived from the Jamo Short Names, as described in <i>Chapter 3, Conformance</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>]. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="kAccountingNumeric">kAccountingNumeric</dt>
     <dd>The value of the character when used in the writing of accounting numerals.<br/><br/>
     Accounting numerals are used in East Asia to prevent fraud. Because a number like ten (十) is easily turned into one thousand (千) with a stroke of a brush, monetary documents will often use an accounting form of the numeral ten (such as 拾) in their place.<br/><br/>
@@ -550,6 +462,102 @@ include 'nav.php';
     <dt id="kZVariant">kZVariant</dt>
     <dd>The Unicode value(s) for known z-variants of this character.<br/><br/>
     The basic syntax is a Unicode scalar value. It may optionally be followed by additional data. The additional data is separated from the Unicode scalar value by a less-than sign (&lt;), and may be subdivided itself into substrings by commas. The additional data consists of a series of field tags for another field in the Unihan database indicating the source of the information. <small>(Source: <a href="http://unicode.org/reports/tr38/">UAX38</a>)</small></dd>
+    <dt id="lb">Line Break</dt>
+    <dd>Properties for line breaking. For more information, see Unicode Standard Annex #14, "Unicode Line Breaking Algorithm" [<a href="http://unicode.org/reports/tr41/tr41-9.html#UAX14">UAX14</a>]. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="LOE">Logical Order Exception</dt>
+    <dd>A small number of spacing vowel letters occurring in certain Southeast Asian scripts such as Thai and Lao, which use a visual order display model. These letters are stored in text ahead of syllable-initial consonants, and require special handling for processes such as searching and sorting. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="Lower">Lowercase</dt>
+    <dd>Characters with the Lowercase property. For more information, see <i>Chapter 4, Character Properties</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>].<p><i>Generated from: Ll + <a href="#OLower">Other Lowercase</a></i></p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="lc">Lowercase Mapping</dt>
+    <dt id="tc">Titlecase Mapping</dt>
+    <dt id="uc">Uppercase Mapping</dt>
+    <dd>Data for producing (in combination with the simple case mappings from <a href="http://unicode.org/reports/tr44/#UnicodeData.txt">UnicodeData.txt</a>) the full case mappings. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="Math">Math</dt>
+    <dd>Characters with the Math property. For more information, see <i>Chapter 4, Character Properties</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>].<p><i>Generated from: Sm + <a href="#OMath">Other Math</a></i></p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="na">Name</dt>
+    <dd>These names match exactly the names published in the code charts of the Unicode Standard. The derived Hangul Syllable names are omitted from this file; see <a href="http://unicode.org/reports/tr44/#Jamo.txt">Jamo.txt</a> for their derivation. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="alias">Name Alias</dt>
+    <dd>Normative formal aliases for characters with erroneous names, for control characters and some format characters, and for character abbreviations, as described in <i>Chapter 4, Character Properties</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>]. The aliases tagged with the type "correction" exactly match the formal aliases published in the Unicode Standard code charts. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="NFKC_CF">NFKC Casefold</dt>
+    <dd>A mapping designed for best behavior when doing caseless matching of strings interpreted as identifiers. (Abbreviated name: NFKC_CF)
+      <p>For the definition of the related string transform toNFKC_Casefold() based on this mapping, see <i>Section 3.13, Default Case Algorithms</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>].</p>
+      <p>The mapping is listed in Field 2.</p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="NFC_QC">NFC Quick Check</dt>
+    <dt id="NFKC_QC">NFKC Quick Check</dt>
+    <dt id="NFD_QC">NFD Quick Check</dt>
+    <dt id="NFKD_QC">NFKD Quick Check</dt>
+    <dd>For property values, see <a href="http://unicode.org/reports/tr44/#Decompositions_and_Normalization"> Decompositions and Normalization</a>. (Abbreviated names: NFD_QC, NFKD_QC, NFC_QC, NFKC_QC) <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="Nchar">Noncharacter Code Point</dt>
+    <dd>Code points permanently reserved for internal use. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="nt">Numeric Type</dt>
+    <dt id="nv">Numeric Value</dt>
+    <dd>If the character has the property value Numeric_Type=Decimal, then the Numeric_Value of that digit is represented with an integer value (limited to the range 0..9) in fields 6, 7, and 8. Characters with the property value Numeric_Type=Decimal are restricted to digits which can be used in a decimal radix positional numeral system and which are encoded in the standard in a contiguous ascending range 0..9. See the discussion of <i>decimal digits</i> in <i>Chapter 4, Character Properties</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>]. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dd>If the character has the property value Numeric_Type=Digit, then the Numeric_Value of that digit is represented with an integer value (limited to the range 0..9) in fields 7 and 8, and field 6 is null. This covers digits that need special handling, such as the compatibility superscript digits. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dd>If the character has the property value Numeric_Type=Numeric, then the Numeric_Value of that character is represented with a positive or negative integer or rational number in this field, and fields 6 and 7 are null. This includes fractions such as, for example, "1/5" for U+2155 VULGAR FRACTION ONE FIFTH.
+      <p>Some characters have these properties based on values from the Unihan data files. See <a href="#Numeric_Type_Han">Numeric Type Han</a>.</p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="Numeric_Type_Han">Numeric Type (Han)</dt>
+    <dt id="Numeric_Value_Han">Numeric Value (Han)</dt>
+    <dd>The characters tagged with either kPrimaryNumeric, kAccountingNumeric, or kOtherNumeric are given the property value Numeric_Type=Numeric, and the Numeric_Value indicated in those tags.
+      <p>Most characters have these numeric properties based on values from UnicodeData.txt. See <a href="#nt">Numeric_Type</a>.</p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="OAlpha">Other Alphabetic</dt>
+    <dd>Used in deriving the Alphabetic property. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="ODI">Other Default Ignorable Code Point</dt>
+    <dd>Used in deriving the Default_Ignorable_Code_Point property. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="OGr_Ext">Other Grapheme Extend</dt>
+    <dd>Used in deriving&nbsp; the Grapheme_Extend property. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="OIDC">Other ID Continue</dt>
+    <dd>Used to maintain backward compatibility of <a href="#IDC">ID Continue</a>. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="OIDS">Other ID Start</dt>
+    <dd>Used to maintain backward compatibility of <a href="#IDS">ID Start</a>. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="OLower">Other Lowercase</dt>
+    <dd>Used in deriving the Lowercase property. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="OMath">Other Math</dt>
+    <dd>Used in deriving the Math property. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="OUpper">Other Uppercase</dt>
+    <dd>Used in deriving the Uppercase property. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="Pat_Syn">Pattern Syntax</dt>
+    <dt id="Pat_WS">Pattern White Space</dt>
+    <dd>Used for pattern syntax as described in Unicode Standard Annex #31, "Unicode Identifier and Pattern Syntax" [<a href="http://unicode.org/reports/tr41/tr41-9.html#UAX31">UAX31</a>]. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="QMark">Quotation Mark</dt>
+    <dd>Punctuation characters that function as quotation marks. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="Radical">Radical</dt>
+    <dd>Used in Ideographic Description Sequences. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="sc">Script</dt>
+    <dd>Script values for use in regular expressions and elsewhere. For more information, see Unicode Standard Annex #24, "Unicode Script Property" [<a href="http://unicode.org/reports/tr41/tr41-9.html#UAX24">UAX24</a>]. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="scx">Script Extensions</dt>
+    <dd>Enumerated sets of Script values for use in regular expressions and elsewhere. For more information, see Unicode Standard Annex #24, "Unicode Script Property" [<a href="http://unicode.org/reports/tr41/tr41-9.html#UAX24">UAX24</a>]. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="SB">Sentence Break</dt>
+    <dd>See Unicode Standard Annex #29, "Unicode Text Segmentation" [<a href="http://unicode.org/reports/tr41/tr41-9.html#UAX29">UAX29</a>] <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="slc">Simple Lowercase Mapping</dt>
+    <dd>Simple lowercase mapping (single character result). <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="stc">Simple Titlecase Mapping</dt>
+    <dd>Simple titlecase mapping (single character result).
+      <p><b>Note:</b> If this field is null, then the Simple_Titlecase_Mapping is the same as the Simple_Uppercase_Mapping for this character.</p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="suc">Simple Uppercase Mapping</dt>
+    <dd>Simple uppercase mapping (single character result).<br/>
+      If a character is part of an alphabet with case distinctions, and has a simple uppercase equivalent, then the uppercase equivalent is in this field. The simple mappings have a single character result, where the full mappings may have multi-character results. For more information, see <a href="http://unicode.org/reports/tr44/#Casemapping">Case and Case Mapping</a>. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="SD">Soft Dotted</dt>
+    <dd>Characters with a "soft dot", like <i>i</i> or <i>j</i>. An accent placed on these characters causes the dot to disappear. An explicit <i>dot above</i> can be added where required, such as in Lithuanian. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="STerm">STerm</dt>
+    <dd>Sentence Terminal. Used in Unicode Standard Annex #29, "Unicode Text Segmentation" [<a href="http://unicode.org/reports/tr41/tr41-9.html#UAX29">UAX29</a>]. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="Term">Terminal Punctuation</dt>
+    <dd>Punctuation characters that generally mark the end of textual units. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="na1">Unicode 1 Name</dt>
+    <dd>Old name as published in Unicode 1.0. This name is only provided when it is significantly different from the current name for the character. The value of field 10 for control characters does not always match the Unicode 1.0 names. Instead, field 10 contains ISO 6429 names for control functions, for printing in the code charts. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="kRSUnicode">Unicode Radical Stroke</dt>
+    <dd>The Unicode radical-stroke count, based on the tag kRSUnicode. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="UIdeo">Unified Ideograph</dt>
+    <dd>A property which specifies the exact set of Unified CJK Ideographs in the standard. This set excludes CJK Compatibility Ideographs (which have canonical decompositions to Unified CJK Ideographs), as well as characters from the CJK Symbols and Punctuation block. The property is used in the definition of Ideographic Description Sequences. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="Upper">Uppercase</dt>
+    <dd>Characters with the Uppercase property. For more information, see <i>Chapter 4, Character Properties</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>].<p><i>Generated from: Lu + <a href="#OUpper">Other Uppercase</a></i></p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="VS">Variation Selector</dt>
+    <dd>Indicates characters that are Variation Selectors. For details on the behavior of these characters, see <a href="http://unicode.org/reports/tr44/#StandardizedVariants">StandardizedVariants.html</a>, <i>Section 16.4, Variation Selectors</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>], and Unicode Standard Annex #37, "Unicode Ideographic Variation Database" [<a href="http://unicode.org/reports/tr41/tr41-9.html#UTS37">UTS37</a>]. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="WSpace">White Space</dt>
+    <dd>Spaces, separator characters and other control characters which should be treated by programming languages as "white space" for the purpose of parsing elements. See also <a href="#LB">Line Break</a>, <a href="#GCB">Grapheme Cluster Break</a>, <a href="#SB">Sentence Break</a>, and <a href="#WB">Word Break</a>, which classify space characters and related controls somewhat differently for particular text segmentation contexts. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="WB">Word Break</dt>
+    <dd>See Unicode Standard Annex #29, "Unicode Text Segmentation" [<a href="http://unicode.org/reports/tr41/tr41-9.html#UAX29">UAX29</a>] <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
   </dl>
 </div>
-<?php include 'footer.php'?>
+<?php
+$footer_scripts = array('/static/js/glossary.js');
+include 'footer.php'?>

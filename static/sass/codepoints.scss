@@ -591,6 +591,39 @@ input[type="text"] {
   }
 }
 
+.quicknav {
+  text-align: center;
+  background: $cBackground url(../images/body.png);
+  padding: 0;
+  &.floating {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border-bottom: 1px solid white;
+    box-shadow: 0 1px 4px rgba(0,0,0,.25);
+    margin: 0;
+  }
+  li {
+    &:before {
+      content: none;
+    }
+    display: inline;
+    a {
+      display: inline-block;
+      text-align: center;
+      width: 1.5em;
+      height: 1.5em;
+      line-height: 1.5em;
+      padding-bottom: 1px;
+      &:hover, &:focus {
+        padding-bottom: 0;
+        background: white;
+      }
+    }
+  }
+}
+
 
 
 @media (max-width: 640px) {
