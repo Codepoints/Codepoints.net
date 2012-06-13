@@ -17,8 +17,13 @@ include "nav.php";
 ?>
 <div class="payload search">
   <h1><?php e($title)?></h1>
+  <?php if (isset($wizard) && $wizard):?>
+    <p>
+      <a href="<?php e($router->getUrl('wizard'))?>">Try “Find My Codepoint” again.</a>
+    </p>
+  <?php endif?>
   <?php if ($fQuery > 0):?>
-    <p><strong><?php e($fQuery)?></strong> codepoints match<?php include "result/querytext.php"?></p>
+    <?php /* <p><strong><?php e($fQuery)? ></strong> codepoints match<?php include "result/querytext.php"? ></p>*/?>
     <?php echo $pagination?>
     <ol class="block data">
       <?php foreach ($result->get() as $cp => $na):
@@ -38,11 +43,6 @@ include "nav.php";
         echo '<li>'; bl($bl); echo '</li>';
       endforeach ?>
     </ol>
-  <?php endif?>
-  <?php if (isset($wizard) && $wizard):?>
-    <p>
-      <a href="<?php e($router->getUrl('wizard'))?>">Try “Find My Codepoint” again.</a>
-    </p>
   <?php endif?>
   <?php include "search/form.php"?>
 </div>
