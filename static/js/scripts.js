@@ -102,7 +102,10 @@ d3.json("/static/world.json", function(collection) {
       .data(collection.features)
     .enter().append("svg:path")
       .attr("d", clip)
-      .attr("class", function(d) { return 'sc sc_' + d.properties.scripts.join(' sc_') + ' sc_' + d.properties.oldscripts.join(' sc_')});
+      .attr("class", function(d) {
+        return 'sc sc_' + d.properties.scripts.join(' sc_') +
+               ' sc_' + d.properties.oldscripts.join(' sc_');
+      });
 
   feature.append("svg:title")
       .text(function(d) { return d.properties.name; });
@@ -162,7 +165,7 @@ function mousemove() {
     var m1 = [d3.event.pageX, d3.event.pageY],
         o1 = [o0[0] + (m0[0] - m1[0]) / 8, o0[1] + (m1[1] - m0[1]) / 8];
     projection.origin(o1);
-    circle.origin(o1)
+    circle.origin(o1);
     refresh();
   }
 }

@@ -12,7 +12,7 @@
     q.answers = answers || {};
     q.selected = null;
     q.html = null;
-  };
+  }
 
   /**
    * shared methods for all wizard questions
