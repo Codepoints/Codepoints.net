@@ -14,9 +14,11 @@ include 'nav.php';
   <h1><?php e($title)?></h1>
   <dl id="glossary">
     <dt id="unicode">Unicode</dt>
-    <dd>A standard to map characters to codepoints, numeric repsresentations. The Unicode standard is curated by the <a href="http://unicode.org">Unicode Consortium</a>.</dd>
+    <dd>A standard to map characters to <a href="#codepoint">codepoints</a>, numeric representations. The Unicode standard is curated by the <a href="http://unicode.org">Unicode Consortium</a>. It is internationally standardized as ISO 10464.</dd>
     <dt id="codepoint">Codepoint</dt>
-    <dd>A number in the Unicode standard denoting one single character.</dd>
+    <dd>A number in the <a href="#unicode">Unicode standard</a> denoting one single character. A codepoint is different from a <a href="#glyph">Glyph</a>.</dd>
+    <dt id="glyph">Glyph</dt>
+    <dd>The representation of a codepoint under certain circumstances. For example, the letter “A” looks quite differently in latin and blackletter fonts. Both are different glyphs for the underlying character.</dd>
     <dt id="plane">Plane</dt>
     <dd>A Unicode plane is one of 16 sets of 65536 <a href="#codepoint">codepoints</a> each. Currently only the first three planes contain character definitions. The last two planes are reserved for <a href="#private_use">private use</a>.</dd>
     <dt id="private_use">Private Use</dt>

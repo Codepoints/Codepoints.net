@@ -83,9 +83,9 @@ include 'nav.php';
   <section class="bk">
     <dl id="sclist">
       <?php foreach ($scripts as $sc): ?>
-        <dt data-sc="<?php e($sc['iso'])?>" class="sc_<?php e($sc['iso'])?>"><a href="#"><?php e($sc['name'])?></a></dt>
+        <dt data-sc="<?php e($sc['iso'])?>" class="sc_<?php e($sc['iso'])?>"><a href="#"><?php e(str_replace('_', ' ', $sc['name']))?></a></dt>
         <dd>
-          <p>Unicode has <a href="/search?sc[]=<?php e($sc['iso'])?>"><span class="nchar"><?php e($sc['count'])?></span> characters</a> encoded in this script.</p>
+          <p><a href="/search?sc[]=<?php e($sc['iso'])?>"><span class="nchar"><?php e($sc['count'])?></span> characters</a> are encoded in this script.</p>
         </dd>
       <?php endforeach?>
     </dl>
