@@ -29,17 +29,17 @@ include 'nav.php';
     </ul>
     <p>If you happen to already have the character in question just paste it
     in the search box. It will bring you directly to its description page.</p>
-    <h2>Advanced Options</h2>
-    <p>If you know Unicode and also know the rough range, where the codepoint
-    might be, you can give the range directly in the URL. <em>E. g.,</em> to
-    inspect characters in the range U+0200 to U+0300, enter in the address bar
-    “<kbd><a href="<?php e($router->getUrl('U+0200..U+0300'))?>"><?php
-    e($_SERVER['HTTP_HOST'])?><?php e($router->getUrl('U+0200..U+0300'))?></a></kbd>”.
     <h2>Do you know the character’s shape?</h2>
     <p>You don’t know the name or any properties of a codepoint but its general
     look? Fear not, on <a href="http://shapecatcher.com/">Shapecatcher</a>
     you can draw the character and get it recognized. This works remarkably
     well for many characters.</p>
+    <h2>Advanced Options</h2>
+    <p>If you know Unicode and also know the rough range, where the codepoint
+    might be, you can give the range directly in the URL. <em>E. g.,</em> to
+    inspect characters in the range U+0200 to U+0300, enter in the address bar
+    “<kbd><a href="<?php e($router->getUrl('U+0200..U+0300'))?>"><?php
+    e($_SERVER['HTTP_HOST'])?><?php e($router->getUrl('U+0200..U+0300'))?></a></kbd>”.</p>
   </section>
   <section id="unicode">
     <h1>About Unicode</h1>
