@@ -1,4 +1,6 @@
 
+AddDefaultCharset utf-8
+
 <Files opensearch.xml>
   ForceType application/opensearchdescription+xml
 </Files>
