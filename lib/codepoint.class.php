@@ -15,6 +15,7 @@ class Codepoint {
     protected $prev;
     protected $next;
     protected $image;
+    protected $fonts;
     protected static $cp_cache = array();
 
     //public static $defaultImage = 'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAAAAAA6mKC9AAAAQUlEQVQY022PSQ4AIAgD5/+fxhhbEJEL6bAV4gmc6QBMSC1C9otQ9UOwRntoeqdommsEj8iED+ssae1vbFqfz1Usi/eYaGRQ6NgAAAAASUVORK5CYII=';
@@ -240,6 +241,24 @@ class Codepoint {
             $this->confusables = $confusables;
         }
         return $this->confusables;
+    }
+
+    /**
+     * fetch fonts that include this codepoint
+     */
+    public function getFonts() {
+        if ($this->fonts === NULL) {
+            $fonts = array();
+            $query = $this->db->prepare('SELECT font
+                                           FROM codepoint_fonts
+                                          WHERE cp = :cp');
+            $query->execute(array(':cp' => $this->id));
+            $fonts = $query->fetchAll(PDO::FETCH_COLUMN);
+            $query->closeCursor();
+
+            $this->fonts = $fonts;
+        }
+        return $this->fonts;
     }
 
     /**
