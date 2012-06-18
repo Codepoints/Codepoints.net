@@ -366,6 +366,13 @@ $router->addSetting('db', $db)
             foreach($v2 as $v3) {
                 $result->addQuery($k, "%$v3%", 'LIKE', 'OR');
             }
+        } elseif ($k === 'int' && $v !== "") {
+            $v = preg_split('/\s+/', $v);
+            foreach($v as $v2) {
+                if (ctype_digit($v2)) {
+                    $result->addQuery($k, $v2, '=', 'OR');
+                }
+            }
         } elseif ($v && in_array($k, $cats)) {
             $result->addQuery($k, $v);
         }
