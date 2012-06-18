@@ -1,9 +1,15 @@
 <form method="get" action="<?php e($router->getUrl('SearchResult'))?>"
       class="extended searchform">
-  <p class="stringsearch"><label for="s_na">Name:</label>
-     <input type="text" name="na" id="s_na" value="" /></p>
-  <p class="stringsearch"><label for="s_int">Decimal:</label>
-     <input type="number" name="int" id="s_int" value="<?php echo _get('int')?>" /></p>
+  <p class="stringsearch">
+    <label for="s_na">Name:</label>
+    <input type="text" name="na" id="s_na" value="" />
+    <small class="nt">The name (or parts) of the character</small>
+  </p>
+  <p class="stringsearch">
+    <label for="s_int">Decimal:</label>
+    <input type="number" name="int" id="s_int" value="<?php echo _get('int')?>" />
+    <small class="nt">The decimal position of the codepoint</small>
+  </p>
   <?php
   foreach (array('blk', 'gc', 'bc', 'ccc', 'dt', 'nt', 'lb', 'ea',
                  'sc', 'SB', 'WB') as $cat) {
