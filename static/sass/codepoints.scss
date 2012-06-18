@@ -11,6 +11,10 @@
 
 @include selection($cVisited, #ddd);
 
+html {
+  overflow-y: scroll;
+}
+
 body {
   font: 1em/1.5 $serif;
   color: $cText;
