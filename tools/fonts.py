@@ -35,7 +35,8 @@ def main(args):
         name = _font.fullname
         for glyph in selection:
             cp = glyph.unicode
-            if cp > -1 and cp < 0x110000:
+            if (cp > -1 and cp < 0x110000 and not (cp >= 57344 and cp <= 63743)
+                and not (cp >= 983040 and cp <= 1114111)):
                 if debug:
                     print (cp, name)
                 else:
