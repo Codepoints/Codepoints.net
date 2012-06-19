@@ -21,6 +21,7 @@ static/css/codepoints.css static/css/ie.css: static/sass/*.scss
 js: static/js/_.js
 
 static/js/_.js: static/js/jquery.js static/js/jquery.ui.js \
+                static/js/webfont.js \
                 static/js/jquery.cachedajax.js static/js/jquery.tooltip.js \
                 static/js/jquery.glossary.js static/js/codepoints.js
 	cat $^ | uglifyjs > $@

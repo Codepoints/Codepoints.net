@@ -35,7 +35,11 @@ $s = function($cat) use ($router, $info, $props) {
 ?>
 <div class="payload codepoint">
   <figure>
-    <span class="fig"><?php e($codepoint->getSafeChar())?></span>
+    <span class="fig"<?php
+    if ($codepoint->getId() > 0xFFFF):
+        $fonts = $codepoint->getFonts();?>
+        data-fonts="<?php e(join(',', $fonts))?>"
+    <?php endif; ?>><?php e($codepoint->getSafeChar())?></span>
   </figure>
   <aside>
     <!--h3>Properties</h3-->

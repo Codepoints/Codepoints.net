@@ -313,6 +313,34 @@ $(function() {
     });
   }
 
+  /**
+   * load a font to render the codepoint figure
+   */
+  var cp_fig = $('.codepoint figure .fig');
+  if (cp_fig.length) {
+    if (cp_fig.data('fonts')) {
+      var cp_fonts = cp_fig.data('fonts').split(',');
+      if (cp_fonts[0]) {
+        window.WebFont.load({
+          custom: {
+            families: [cp_fonts[0]],
+            urls: ['/static/fonts/'+encodeURIComponent(cp_fonts[0])+'.css']
+          },
+          active: function() {
+            cp_fig.css({
+              fontFamily: '"'+cp_fonts[0]+'", serif'
+            });
+            var _aside = cp_fig.closest('figure').next('aside');
+            if (_aside.length) {
+              _aside.find('dl:eq(0)').append('<dt>Font used above</dt>' +
+                                             '<dd>'+cp_fonts[0]+'</dd>');
+            }
+          }
+        });
+      }
+    }
+  }
+
 });
 
 })(this, jQuery);
