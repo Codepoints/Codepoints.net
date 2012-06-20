@@ -1,7 +1,6 @@
 
 
-all:
-	@echo "make dist, perhaps?"
+all: ucotd css js
 
 .PHONY: all css js dist clean ucotd
 
@@ -29,4 +28,9 @@ static/js/_.js: static/js/jquery.js static/js/jquery.ui.js \
 ucotd: tools/ucotd.*
 	cd tools; \
 	python ucotd.py
+
+ucd.sqlite: ucotd tools/scripts.sql tools/scripts_wp.sql tools/fonts/*_insert.sql
+	sqlite3 $@ <tools/scripts.sql
+	sqlite3 $@ <tools/scripts_wp.sql
+	sqlite3 $@ <tools/fonts/*_insert.sql
 
