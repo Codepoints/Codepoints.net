@@ -8,6 +8,11 @@ import sys
 
 
 tpl = 'INSERT OR REPLACE INTO codepoint_fonts (cp, font) VALUES (?, ?);'
+create_statement = """CREATE TABLE IF NOT EXISTS codepoint_fonts (
+    cp      INTEGER(7) REFERENCES codepoints,
+    font    TEXT,
+    PRIMARY KEY (cp, font)
+);"""
 
 def main(args):
     conn = sqlite3.connect('../ucd.sqlite')
@@ -19,13 +24,9 @@ def main(args):
         debug = True
 
     if debug:
-        print "CREATE TABLE"
+        print create_statement
     else:
-        cur.execute("""CREATE TABLE IF NOT EXISTS codepoint_fonts (
-            cp     INTEGER(7) REFERENCES codepoints,
-            font   TEXT,
-            PRIMARY KEY (cp, font)
-        );""")
+        cur.execute(create_statement)
 
     for font in args:
         if not os.path.isfile(font):
@@ -38,7 +39,7 @@ def main(args):
             if (cp > -1 and cp < 0x110000 and not (cp >= 57344 and cp <= 63743)
                 and not (cp >= 983040 and cp <= 1114111)):
                 if debug:
-                    print (cp, name)
+                    print tpl.replace('?', '%s') % (cp, name)
                 else:
                     cur.execute(tpl, (cp, name))
 
