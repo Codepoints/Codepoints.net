@@ -2,6 +2,8 @@
  * replace the title attribute with a custom tooltip
  */
 (function($) {
+var tipIDCounter = 0;
+
 $.fn.tooltip = function() {
   var targets = $();
   if (this.is(function() {
@@ -12,12 +14,15 @@ $.fn.tooltip = function() {
   targets.add('[title]', this).each(function() {
     var origin = $(this),
         title = origin.attr('title'),
+        id = '__tooltip_1AE511_' + (++tipIDCounter),
         arrow = $('<i></i>'),
-        tip = $('<p class="tooltip"></p>').text(title)
+        tip = $('<p class="tooltip"></p>').text(title).attr('id', id)
                 .prepend(arrow)
                 .hide().appendTo('body').on('mouseenter', function() {
                   $(this).hide(); });
     origin.removeAttr('title')
+          .data('tooltip', tip)
+          .attr('aria-labelledby', id)
           .on('mouseenter', function() {
       tip.stop(true, true).fadeIn('slow').position({
         my: 'top',
