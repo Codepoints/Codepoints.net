@@ -13,7 +13,7 @@
       if (array_key_exists('HTTP_REFERER', $_SERVER)):
           foreach ($stem as $stemX):
               if (substr($_SERVER['HTTP_REFERER'], 0, strlen($stemX)) === $stemX):?>
-                  <li class="up"><a href="<?php e($_SERVER['HTTP_REFERER'])?>">Back to last search</a></li>
+                  <li class="up"><a href="<?php e($_SERVER['HTTP_REFERER'])?>">Back to search results</a></li>
       <?php break; endif; endforeach; endif?>
       <li class="scripts"><a href="<?php e($router->getUrl('scripts'))?>">Scripts</a></li>
       <li class="about"><a href="<?php e($router->getUrl().'about')?>">About</a></li>
