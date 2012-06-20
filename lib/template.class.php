@@ -1,25 +1,21 @@
 <?php
 
 
-require_once "lib/gettext/gettext.inc";
-$locale = (isset($_COOKIE['lang']))? $_COOKIE['lang'] : 'en';
-T_setlocale(LC_MESSAGES, $locale);
-$domain = 'mustache';
-T_bindtextdomain($domain, realpath('./locale'));
-T_bind_textdomain_codeset($domain, 'UTF-8');
-T_textdomain($domain);
-
-
 /**
- * own wrapper around the Mustache base class + i18n
+ * own wrapper around the Mustache base class + l10n
  */
 class Template {
 
     protected $mustache = null;
+    protected $l10n;
 
     public function __construct($template) {
         $partials = new MustacheLoader(dirname(__FILE__)."/../static/tpl");
         $this->mustache = new Mustache($template, null, $partials, null);
+        $this->l10n = L10n::get('mustache');
+        if (isset($_COOKIE['lang'])){
+            $this->l10n->setLanguage($_COOKIE['lang']);
+        }
     }
 
     public function render($view = array()) {
@@ -28,7 +24,7 @@ class Template {
     }
 
     public function _translate($s) {
-        return T_gettext($s);
+        return $this->l10n->gettext($s);
     }
 
 }
