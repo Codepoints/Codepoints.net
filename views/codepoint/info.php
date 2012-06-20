@@ -13,19 +13,24 @@
 
 <!-- character -->
 <p>
-  This character is a <?php $s('gc')?> and is
+  This character is a <?php $s('gc')?> and
   <?php if ($props['sc'] === 'Zyyy'):?>
-    <a href="<?php e($router->getUrl('search?sc='.$props['sc']))?>">commonly</a> used.
+    is <a href="<?php e($router->getUrl('search?sc='.$props['sc']))?>">commonly</a>
+    used, that is, in no specific script.
+  <?php elseif ($props['sc'] === 'Zinh'):?>
+    <a href="<?php e($router->getUrl('search?sc='.$props['sc']))?>">inherits</a>
+    its <span class="gl" data-term="sc">script property</span> from the
+    preceding character.
   <?php else:?>
-    mainly used in the <?php $s('sc')?> script.
+    is mainly used in the <?php $s('sc')?> script.
   <?php endif?>
   <?php $buf=array(); foreach(explode(' ', $props['scx']) as $sc): if ($sc !== $props['sc']):
     $buf[] = '<a href="'.q($router->getUrl('search?scx='.$props['scx'])).'">'.
               q($info->getLabel('sc', $sc)).'</a>';
   endif; endforeach;
   if (count($buf)):?>
-  It is also used in the script<?php if (count($buf) > 1):?>s<?php endif?>
-  <?php echo join(', ', $buf)?>.
+    It is also used in the script<?php if (count($buf) > 1):?>s<?php endif?>
+    <?php echo join(', ', $buf)?>.
   <?php endif?>
 
   <?php $defn = $codepoint->getProp('kDefinition');
