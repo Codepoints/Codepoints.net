@@ -7,17 +7,14 @@ $(function() {
   * @see http://stackoverflow.com/questions/2837178
   */
   var scrollElement = (function (tags) {
-    var el, $el;
-    while (el = tags.pop()) {
-      $el = $(el);
-      if ($el.scrollTop() > 0){
-        return $el;
-      } else if($el.scrollTop(1).scrollTop() > 0) {
-        return $el.scrollTop(0);
-      }
+    var el = $(document.documentElement);
+    if (el.scrollTop() > 0){
+      return el;
+    } else if(el.scrollTop(1).scrollTop() > 0) {
+      return el.scrollTop(0);
     }
-    return $();
-  })(["html", "body"]);
+    return $('body');
+  })();
 
   /** init tooltips */
   $(document).tooltip().glossary();
