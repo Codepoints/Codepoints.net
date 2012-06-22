@@ -14,7 +14,7 @@ function renderScript(d, data) {
       d.append(
         $('<section style="margin:0"></section>').append(
           $('<h3></h3>').text(data[sc].name)
-            .append(' <small><a href="/search?sc=[]'+sc+'">('+ n +
+            .append(' <small><a href="/search?sc[]='+sc+'">('+ n +
                             ' codepoints)</a></small>'))
         .append($('<div style="font-size: 12px"></div>').html(data[sc].abstract)
                 .append('<p class="nt">Source: <a href="' + data[sc].src +
