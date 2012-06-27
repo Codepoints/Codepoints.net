@@ -1,8 +1,12 @@
 #!/usr/bin/python
 
+import copy
 import csv
 import json
+import sqlite3
 
+# countries w/o script are filled below. This list is generated from
+# Unicode CLDR data
 scr = {
 "AD":['Latn'],
 "AE":['Arab'],
@@ -226,6 +230,7 @@ scr = {
 "ZW":['Latn'],
 }
 
+# These extensions are mined via Wikipedia
 scr["AQ"].extend([])
 scr["BS"].extend(["Latn"])
 scr["BW"].extend(["Latn"])
@@ -237,6 +242,7 @@ scr["SZ"].extend(["Latn"])
 scr["TF"].extend(["Latn"])
 scr["XK"].extend(["Latn", "Cyrl"])
 
+# old and seldomly used scripts
 oscr = {
 "AF":["Khar"],
 "AL":["Elba"],
@@ -323,7 +329,6 @@ others = [
     "Zinh", "Zmth", "Zsym", "Zyyy", "Zzzz",
 ]
 
-import copy
 xall = copy.copy(others)
 for x in scr.values():
     xall.extend(x)
@@ -332,7 +337,6 @@ for x in oscr.values():
 xall = list(set(xall))
 xall.sort()
 
-import sqlite3
 conn = sqlite3.connect('../ucd.sqlite')
 cur = conn.cursor()
 cur.execute('select sc from script_abstract')
@@ -347,6 +351,7 @@ for x in xall:
 
 print ' '.join(yall)
 
+# load existing country features
 with open('world-countries.json') as p:
     props = json.load(p)
 
@@ -386,5 +391,4 @@ with open('countrynames.csv') as ff:
     result = {"type":"FeatureCollection","features":result}
 
     json.dump(result, open('../static/world.json', 'wb'), separators=(',',':'))
-    #json.dump(result, open('countrynames.json', 'wb'), sort_keys=True, indent=4)
 
