@@ -16,7 +16,7 @@ dist: ucotd css js
 
 css: static/css/codepoints.css static/css/ie.css
 
-static/css/codepoints.css static/css/ie.css: static/sass/*.scss
+static/css/codepoints.css static/css/ie.css: dev/sass/*.scss
 	compass compile
 
 js: static/js/_.js $(JS_TARGET)
