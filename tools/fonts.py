@@ -39,7 +39,7 @@ def main(args):
             if (cp > -1 and cp < 0x110000 and not (cp >= 57344 and cp <= 63743)
                 and not (cp >= 983040 and cp <= 1114111)):
                 if debug:
-                    print tpl.replace('?', '%s') % (cp, name)
+                    print tpl.replace('?', '%s') % (cp, '"'+name+'"')
                 else:
                     cur.execute(tpl, (cp, name))
 
