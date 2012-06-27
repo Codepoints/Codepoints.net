@@ -9,6 +9,8 @@
         <a href="http://www.manuel-strehl.de">Manuel Strehl</a>. The content
         can be <a href="<?php e($router->getUrl('about'))?>#this_site">freely
         reused</a> under the given terms.
+        We’d like to thank <a href="<?php e($router->getUrl('about'))?>#attribution">these
+        fine people</a> for making Codepoints.net possible.
         <a href="https://github.com/Boldewyn/codepoints.net">Feedback
         and contributions</a> are always welcome.</p>
         <ul>

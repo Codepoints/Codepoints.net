@@ -5,6 +5,7 @@ $nav = array(
   'find' => '<a href="#finding_characters">Finding Characters</a>',
   'unicode' => '<a href="#unicode">About Unicode</a>',
   'main' => '<a href="#this_site">About this Site</a>',
+  'attribution' => '<a href="#attribution">Attribution <i class="amp">&amp;</i> Credits</a>',
   'glossary' => '<a class="glossary" href="'.$router->getUrl('glossary').'">Glossary</a>',
 );
 include 'header.php';
@@ -217,6 +218,33 @@ include 'nav.php';
       <p>Your Browser doesn’t support frames. Please visit
       <a href="http://piwik.manuel-strehl.de/index.php?module=CoreAdminHome&action=optOut">this page</a>.</p>
     </iframe>
+  </section>
+  <section id="attribution">
+    <h1>Attribution <i class="amp">&amp;</i> Credits</h1>
+    <p>First of all we’d like to thank the contributors of the Unicode Consortium,
+      who work to standardize the essential part of computation, the display
+      of characters.</p>
+    <h2>Fonts</h2>
+    <p>Many people base their work on this. We want to thank the authors of
+      these fonts, that they made it possible to re-use them for this project:
+    </p>
+    <ul>
+      <li>Roman Czyborra, David Starner, Qianqian Fang, Changwoo Ryu and Paul
+          Hardy for <a href="http://unifoundry.com/unifont.html">GNU Unifont</a>
+          </li>
+      <li><a href="http://users.teilar.gr/~g1951d/">George Douros</a></li>
+      <li><a href="http://www.wazu.jp/gallery/views/View_MPH2BDamase.html">MPH 2B Damase</a>,
+          released under the GPL</li>
+      <li><a href="http://dejavu-fonts.org/wiki/Main_Page">The Deja Vu Project</a></li>
+    </ul>
+    <h2>Image Attribution</h2>
+    <p>The background image on the front page is released under the Creative
+       Commons Attribution license by <a href="http://www.flickr.com/photos/wilhei/109404349/">Flickr user Willi Heidelbach</a>.</p>
+    <p>The button backgrounds on the front page are in the public domain:
+       <a href="http://commons.wikimedia.org/wiki/File:1657_Jansson_Map_of_the_Empire_of_Charlemagne_-_Geographicus_-_CaroliMagni-jansson-1657.jpg">map of Charlemagne’s empire</a>,
+       <a href="http://commons.wikimedia.org/wiki/File:18th_century_dowser.jpg">18<sup>th</sup> century dowser</a>, and
+       <a href="http://commons.wikimedia.org/wiki/File:NASA_Mars_Rover.jpg">NASA Mars Rover</a>.
+    </p>
   </section>
 </div>
 <?php include 'footer.php'?>
