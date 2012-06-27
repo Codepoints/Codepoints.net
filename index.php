@@ -328,6 +328,8 @@ $router->addSetting('db', $db)
     $blocks = array();
     foreach ($_GET as $k => $v) {
         if ($k === 'q' && $v) {
+            // "q" is a special case: We parse the query and try to
+            // figure, what's searched
             if (mb_strlen($v, 'UTF-8') === 1) {
                 $result->addQuery('cp', unpack('N', mb_convert_encoding($v,
                                         'UCS-4BE', 'UTF-8')));

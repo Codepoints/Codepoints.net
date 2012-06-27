@@ -6,7 +6,8 @@ include "nav.php";
 <div class="payload front">
   <h1><?php e($title)?></h1>
   <form method="get" action="<?php e($router->getUrl('SearchResult'))?>" class="searchform">
-    <p><input type="text" name="q" placeholder="Search a Character" />
+    <p><input type="text" name="q" placeholder="Search a Character"
+       title="Enter a single character, like “丙” or “A”, or a term that describes the character, like “cyrillic” or “grass”" />
        <button type="submit"><span>search</span></button></p>
   </form>
   <article>
