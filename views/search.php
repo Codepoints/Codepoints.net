@@ -13,4 +13,6 @@ include "nav.php";
   button on the right removes the value from the search again.</p>
   <?php include "search/form.php"?>
 </div>
-<?php include "footer.php"?>
+<?php
+$footer_scripts = array('/static/js/searchform.js');
+include "footer.php"?>

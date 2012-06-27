@@ -1,5 +1,7 @@
 
 
+JS_SRC = $(wildcard dev/js/*.js)
+JS_TARGET = $(patsubst dev/js/%.js,static/js/%.js,$(JS_SRC))
 all: ucotd css js
 
 .PHONY: all css js dist clean ucotd
@@ -17,13 +19,16 @@ css: static/css/codepoints.css static/css/ie.css
 static/css/codepoints.css static/css/ie.css: static/sass/*.scss
 	compass compile
 
-js: static/js/_.js
+js: static/js/_.js $(JS_TARGET)
 
 static/js/_.js: static/js/jquery.js static/js/jquery.ui.js \
                 static/js/webfont.js \
                 static/js/jquery.cachedajax.js static/js/jquery.tooltip.js \
                 static/js/jquery.glossary.js static/js/codepoints.js
 	cat $^ | uglifyjs > $@
+
+$(JS_TARGET): static/js/%.js: dev/js/%.js
+	uglifyjs $^ > $@
 
 ucotd: tools/ucotd.*
 	cd tools; \

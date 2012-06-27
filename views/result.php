@@ -46,4 +46,6 @@ include "nav.php";
   <?php endif?>
   <?php include "search/form.php"?>
 </div>
-<?php include "footer.php"?>
+<?php
+$footer_scripts = array('/static/js/searchform.js');
+include "footer.php"?>
