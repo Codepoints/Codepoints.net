@@ -5,6 +5,7 @@ $prev = $plane->getPrev();
 $next = $plane->getNext();
 $hDescription = sprintf('The Unicode plane %s contains %s blocks and spans codepoints from U+%04X to U+%04X.',
     $plane->getName(), count($blocks), $plane->first, $plane->last);
+$canonical = $router->getUrl($plane);
 include "header.php";
 $nav = array();
 if ($prev) {

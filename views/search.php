@@ -1,6 +1,7 @@
 <?php
 $title = 'Search';
 $hDescription = 'Search Codepoints.net.';
+$canonical = '/search';
 include "header.php";
 include "nav.php";
 ?>

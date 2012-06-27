@@ -22,6 +22,7 @@ $nav["up"] = _bl($block, 'up', 'min', 'span');
 if ($next) {
     $nav['next'] = _cp($next, 'next', 'min', 'span');
 }
+$canonical = '/codepoint_of_the_day?date='.$date;
 include "header.php";
 include "nav.php";
 $s = function($cat) use ($router, $info, $props) {

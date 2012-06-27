@@ -1,6 +1,7 @@
 <?php
 $title = 'Find My Codepoint';
 $hDescription = 'Find a certain codepoint by answering a set of questions.';
+$canonical = '/wizard';
 include "header.php";
 include "nav.php";
 ?>

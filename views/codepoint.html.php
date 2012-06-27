@@ -15,6 +15,7 @@ if ($next):
 endif;
 $hDescription = sprintf('The Unicode codepoint U+%04X is located in the block “%s”. It belongs to the %s script.',
     $codepoint->getId(), $block->getName(), $info->getLabel('sc', $props['sc']));
+$canonical = $router->getUrl($codepoint);
 include "header.php";
 $nav = array();
 if ($prev) {

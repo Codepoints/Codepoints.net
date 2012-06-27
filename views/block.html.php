@@ -9,6 +9,7 @@ $page = isset($_GET['page'])? intval($_GET['page']) : 1;
 $pagination->setPage($page);
 $hDescription = sprintf('The Unicode block %s contains the codepoinbts from U+%04X to U+%04X.',
     $block->getName(), $block_limits[0], $block_limits[1]);
+$canonical = $router->getUrl($block);
 include "header.php";
 $nav = array();
 if ($prev) {

@@ -1,5 +1,6 @@
 <?php $title = 'Codepoints';
 $hDescription = 'Codepoints is a site dedicated to the Unicode standard.';
+$canonical = '/';
 include "header.php";
 include "nav.php";
 ?>

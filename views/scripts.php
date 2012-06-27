@@ -55,6 +55,7 @@ path.active:hover {
 
     </style>
     ';
+$canonical = '/scripts';
 include 'header.php';
 include 'nav.php';
 ?>

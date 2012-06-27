@@ -8,6 +8,7 @@ $nav = array(
   'attribution' => '<a href="'.$router->getUrl('about').'#attribution">Attribution <i class="amp">&amp;</i> Credits</a>',
   'glossary' => '<em class="active glossary">Glossary</em>',
 );
+$canonical = '/glossary';
 include 'header.php';
 include 'nav.php';
 ?>

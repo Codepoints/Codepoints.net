@@ -1,6 +1,7 @@
 <?php
 $title = 'Codepoint of the Day: No Codepoint Found';
 $hDescription = 'Every day a new codepoint. Unfortunately not specifically this day.';
+$canonical = '/codepoint_of_the_day?date='.$date;
 include "header.php";
 include "nav.php";
 ?>
