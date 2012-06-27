@@ -199,6 +199,7 @@ include 'nav.php';
       The geographic localization of blocks (used in the “Find My Codepoint”
       wizard) is based on the categorization on <a href="http://www.decodeunicode.org">decodeunicode.org</a>,
       published under the CC BY NC license.
+    </p>
     <p>
       All code provided specifically for Codepoints.net is released
       under both the GPL and MIT license, with the licensee free to choose.
@@ -224,9 +225,15 @@ include 'nav.php';
     <h1>Attribution <i class="amp">&amp;</i> Credits</h1>
     <p>First of all we’d like to thank the contributors of the Unicode Consortium,
       who work to standardize the essential part of computation, the display
-      of characters.</p>
+      of characters. The same holds for the authors of Wikipedia, who gather
+      knowledge about many parts of the lettering universe. Their share is an
+      important part of this site.</p>
+    <p>Many thanks go to two sites with a similar goal but other emphasis in
+      the presentation of the Unicode standard: <a href="http://decodeunicode.org">Decode Unicode</a> and
+      <a href="http://graphemica.com">Graphemica</a>.
+    </p>
     <h2>Fonts</h2>
-    <p>Many people base their work on this. We want to thank the authors of
+    <p>Many people base their work on Unicode. We want to thank the authors of
       these fonts, that they made it possible to re-use them for this project:
     </p>
     <ul>
@@ -234,18 +241,19 @@ include 'nav.php';
           Hardy for <a href="http://unifoundry.com/unifont.html">GNU Unifont</a>
           </li>
       <li><a href="http://users.teilar.gr/~g1951d/">George Douros</a></li>
-      <li><a href="http://www.wazu.jp/gallery/views/View_MPH2BDamase.html">MPH 2B Damase</a>,
-          released under the GPL</li>
+      <li><a href="http://www.wazu.jp/gallery/views/View_MPH2BDamase.html">Mark Williamson</a></li>
       <li><a href="http://dejavu-fonts.org/wiki/Main_Page">The Deja Vu Project</a></li>
+      <li><a href="http://www.evertype.com/">Michael Everson</a> for the Last Resort font</li>
     </ul>
     <h2>Image Attribution</h2>
     <p>The background image on the front page is released under the Creative
-       Commons Attribution license by <a href="http://www.flickr.com/photos/wilhei/109404349/">Flickr user Willi Heidelbach</a>.</p>
-    <p>The button backgrounds on the front page are in the public domain:
+       Commons Attribution license by <a href="http://www.flickr.com/photos/wilhei/109404349/">Flickr user Willi Heidelbach</a>.
+       The button backgrounds on the front page are in the public domain:
        <a href="http://commons.wikimedia.org/wiki/File:1657_Jansson_Map_of_the_Empire_of_Charlemagne_-_Geographicus_-_CaroliMagni-jansson-1657.jpg">map of Charlemagne’s empire</a>,
        <a href="http://commons.wikimedia.org/wiki/File:18th_century_dowser.jpg">18<sup>th</sup> century dowser</a>, and
        <a href="http://commons.wikimedia.org/wiki/File:NASA_Mars_Rover.jpg">NASA Mars Rover</a>.
     </p>
+    <p>The icons are part of the <a href="http://fortawesome.github.com/Font-Awesome">Font Awesome</a> icon set.</p>
   </section>
 </div>
 <?php include 'footer.php'?>
