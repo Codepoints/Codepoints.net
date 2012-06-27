@@ -29,10 +29,7 @@ class DailyCP {
         $this->db = $db;
         $data = self::_getDataset($date);
         if ($data) {
-            $data = array(
-                Codepoint::getCP($data[0], $db),
-                $data[1], $data[2]
-            );
+            $data = array(Codepoint::getCP($data[0], $db), $data[1]);
         }
         return $data;
     }

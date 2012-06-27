@@ -411,10 +411,10 @@ $router->addSetting('db', $db)
     }
     if ($date) {
         $Daily = new DailyCP();
-        list($codepoint, $name, $description) = $Daily->get($date, $o['db']);
+        list($codepoint, $description) = $Daily->get($date, $o['db']);
         $tpl = 'dailycp';
         if (! $codepoint) {
-            list($codepoint, $name, $description) = array(false, false, false);
+            list($codepoint, $description) = array(false, false);
             $tpl .= '_not';
         }
         $view = new View($tpl);
