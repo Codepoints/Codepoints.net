@@ -149,6 +149,10 @@ input[type="text"] {
   @include pie-clearfix;
 }
 
+.payload.front {
+  background: url(../images/front.jpg) no-repeat right top;
+}
+
 .front h1 {
   margin: 0 0 30px;
   text-transform: uppercase;
@@ -179,6 +183,11 @@ input[type="text"] {
 
 .pagination {
   @include pagination;
+}
+
+.amp {
+  font-style: italic;
+  font-family: $serif;
 }
 
 .nt {
