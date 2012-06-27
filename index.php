@@ -425,6 +425,39 @@ $router->addSetting('db', $db)
     }
 })
 
+->registerAction('sitemap.xml', function($request, $o) {
+    // sitemap
+    header('Content-Type: application/xml; charset=utf-8');
+    $view = new View('sitemap.xml');
+    $blocks = UnicodeBlock::getAllNames($o['db']);
+    echo $view->render(compact('blocks'));
+})
+
+->registerAction('sitemap/base.xml', function($request, $o) {
+    // sitemap part 2
+    header('Content-Type: application/xml; charset=utf-8');
+    $view = new View('sitemap/base.xml');
+    echo $view->render();
+})
+
+->registerAction(function ($url, $o) {
+    if (substr($url, 0, 8) === 'sitemap/') {
+        try {
+            $block = new UnicodeBlock(substr(substr($url, 8), 0, -4),
+                                      $o['db']);
+        } catch(Exception $e) {
+            return False;
+        }
+        return $block;
+    }
+    return False;
+}, function($request, $o) {
+    // sitemap for a block
+    header('Content-Type: application/xml; charset=utf-8');
+    $view = new View('sitemap/block.xml');
+    echo $view->render(array('block'=>$request->data));
+})
+
 ->registerAction(function ($url, $o) {
     // Plane
     if (substr($url, -6) === '_plane') {
