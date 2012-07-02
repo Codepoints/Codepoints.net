@@ -263,6 +263,7 @@ $router->addSetting('db', $db)
             // "q" is a special case: We parse the query and try to
             // figure, what's searched
             if (mb_strlen($v, 'UTF-8') === 1) {
+                // seems to be one single character
                 $result->addQuery('cp', unpack('N', mb_convert_encoding($v,
                                         'UCS-4BE', 'UTF-8')));
             } else {
@@ -290,7 +291,8 @@ $router->addSetting('db', $db)
                     if (preg_match('/\btitlecase\b/i', $vv)) {
                         $result->addQuery('gc', 'tc', '=', 'OR');
                     }
-                    $blocks = UnicodeBlock::search($vv, $o['db']);
+                    $blocks = array_unique(array_merge($blocks,
+                                        UnicodeBlock::search($vv, $o['db'])));
                 }
             }
         } elseif ($v && $k === 'scx') {
