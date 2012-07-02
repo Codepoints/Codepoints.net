@@ -3,6 +3,9 @@
 
 /**
  * the result of a Unicode codepoint search
+ *
+ * We extend UnicodeRange, because a search result is basically nothing
+ * else than a set of codepoints. We adapt fetchNames() heavily for this.
  */
 class SearchResult extends UnicodeRange {
 
@@ -52,6 +55,8 @@ class SearchResult extends UnicodeRange {
                  OR codepoint_confusables.other = codepoints.cp) confusables
         FROM codepoints
         JOIN codepoint_script USING ( cp )
+        JOIN codepoint_alias USING ( cp )
+        JOIN codepoint_abstract USING ( cp )
         WHERE ' . $search;
 
         $stm = $this->db->prepare($select.' LIMIT '.($this->page * $this->pageLength).','.$this->pageLength);

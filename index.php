@@ -282,6 +282,7 @@ $router->addSetting('db', $db)
                     $result->addQuery('na', $vv, 'LIKE', 'OR');
                     $result->addQuery('na1', $vv, 'LIKE', 'OR');
                     $result->addQuery('kDefinition', $vv, 'LIKE', 'OR');
+                    $result->addQuery('alias', $vv, 'LIKE', 'OR');
                     if (preg_match('/\blowercase\b/i', $vv)) {
                         $result->addQuery('gc', 'lc', '=', 'OR');
                     }
