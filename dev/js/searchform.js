@@ -8,7 +8,7 @@
         add = $('<p><button type="button">+ add new query</button></p>')
                 .insertBefore(submitset).find('button'),
         search_values = {},
-        menu = $('<ul class="ui-menu ui-widget ui-widget-content"></ul>');
+        menu = $('<ul class="ui-menu ui-widget ui-widget-content" tabindex="0"></ul>');
 
     fields.filter('.propsearch').each(function() {
       var field = $(this), val = [],
@@ -35,7 +35,7 @@
                   .data('v', v).data('k', k));
     });
 
-    $(document).on('keypress click tap', function() {
+    $(document).on('keydown click tap', function() {
       menu.slideUp();
     });
 
@@ -56,6 +56,35 @@
         });
       menu.slideUp();
       return false;
+    }).on('keydown', function(e) {
+      if (! e.shiftKey && ! e.metaKey && ! e.ctrlKey && ! e.altKey) {
+        var focussed = menu.find('a:focus'),
+            next = $();
+        switch (e.which) {
+          case 38: // ArrUp
+            if (focussed.length) {
+              next = focussed.parent().prev('li').find('a');
+            }
+            if (! next.length) {
+              next = menu.find('a:last');
+            }
+            break;
+          case 40: // ArrDown
+            if (focussed.length) {
+              next = focussed.parent().next('li').find('a');
+            }
+            if (! next.length) {
+              next = menu.find('a:first');
+            }
+            break;
+        }
+        if (next.length) {
+          next.focus();
+          e.preventDefault();
+          e.stopPropagation();
+          return false;
+        }
+      }
     });
 
     add.on('click tap', function() {
@@ -64,7 +93,7 @@
         at: 'left bottom',
         of: this,
         colision: 'fit flip'
-      }).hide().slideDown();
+      }).hide().slideDown().focus();
       return false;
     });
     addlist.on('click tap', function(e) {
