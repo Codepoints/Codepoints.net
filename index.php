@@ -152,9 +152,9 @@ $router->addSetting('db', $db)
                     break;
                 case 'archaic':
                     if ($v === '1') {
-                        $result->addQuery('sc', Knowledge::$archaicScripts);
+                        $result->addQuery('sc', UnicodeInfo::$archaicScripts);
                     } elseif ($v === '0') {
-                        $result->addQuery('sc', Knowledge::$recentScripts);
+                        $result->addQuery('sc', UnicodeInfo::$recentScripts);
                     }
                     break;
                 case 'confuse':
@@ -218,9 +218,9 @@ $router->addSetting('db', $db)
                     }
                     break;
                 case 'region':
-                    if (array_key_exists($v, Knowledge::$regionToBlock)) {
+                    if (array_key_exists($v, UnicodeInfo::$regionToBlock)) {
                         $result->addQuery('block',
-                                          Knowledge::$regionToBlock[$v]);
+                                          UnicodeInfo::$regionToBlock[$v]);
                     }
                     break;
             }
