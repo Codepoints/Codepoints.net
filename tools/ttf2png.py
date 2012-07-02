@@ -22,7 +22,9 @@ def main(args):
     for glyph in selection:
         cp = glyph.unicode
         xcp = '%04X' % cp
-        if cp > 65535 or "\n"+str(cp)+"\n" in unknown:
+        if ("\n"+str(cp)+"\n" in unknown or
+            (cp > 0xFFFF and cp < 0x110000 and not (cp >= 57344 and cp <= 63743)
+                and not (cp >= 983040 and cp <= 1114111))):
             fn = "%s/U+%s.png" % (folder, xcp)
             tfn = "%s/U+%s.tmp.png" % (folder, xcp)
             subprocess.call([
