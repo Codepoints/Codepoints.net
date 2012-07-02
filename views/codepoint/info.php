@@ -65,6 +65,13 @@
     <?php if ($hasTC): if ($hasUC || $hasLC) { echo ' and '; }?>
       its titlecase variant <?php cp($props['tc'], '', 'min')?><?php endif?>.
   <?php endif?>
+  <?php $info_alias = array_values(array_filter($codepoint->getALias(), function($v) {
+        return $v['type'] === 'alias';
+  })); if (count($info_alias)): ?>
+    The character is also known as
+    <?php for ($i = 0, $j = count($info_alias); $i < $j; $i++):?><?php if ($i > 0): if ($i === $j - 1):?> and <?php else: ?>, <?php endif; endif?>
+      <em><?php e($info_alias[$i]['alias'])?></em><?php endfor?>.
+  <?php endif?>
 </p>
 
 <!-- glyph -->
