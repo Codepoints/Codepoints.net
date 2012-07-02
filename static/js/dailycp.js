@@ -1,12 +1,1 @@
-(function(window, $) {
-  var cal = $('#ucotd_cal');
-  cal.datepicker({
-    dateFormat: "yy-mm-dd",
-    defaultDate: cal.data('date'),
-    minDate: "2011-05-04",
-    maxDate: "+0",
-    onSelect: function(dateText, inst) {
-      window.location.href = "/codepoint_of_the_day?date="+dateText;
-    }
-  });
-})(this, jQuery);
+(function(a,b){var c=b("#ucotd_cal");c.datepicker({dateFormat:"yy-mm-dd",defaultDate:c.data("date"),minDate:"2011-05-04",maxDate:"+0",onSelect:function(b,c){a.location.href="/codepoint_of_the_day?date="+b}})})(this,jQuery);
