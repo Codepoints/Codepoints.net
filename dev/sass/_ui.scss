@@ -123,7 +123,8 @@
       width: 1.25em;
       content: "\f054";
     }
-    &.prev, &.up, &.about, &.scripts, &.search {
+    &.prev, &.up, &.about, &.scripts, &.search,
+    &.random {
       a:before {
         padding-right: .5em;
         width: 1.25em;
@@ -143,6 +144,9 @@
     }
     &.search a:before {
       content: "\f002";
+    }
+    &.random a:before {
+      content: "\f074";
     }
     & .glossary:before {
       content: "\f03a";

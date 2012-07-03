@@ -16,6 +16,7 @@
                   <li class="up"><a href="<?php e($_SERVER['HTTP_REFERER'])?>">Back to search results</a></li>
       <?php break; endif; endforeach; endif?>
       <li class="scripts"><a href="<?php e($router->getUrl('scripts'))?>">Scripts</a></li>
+      <li class="random"><a href="<?php e($router->getUrl().'random')?>">Random</a></li>
       <li class="about"><a href="<?php e($router->getUrl().'about')?>">About</a></li>
     </ul>
     <?php if (count($nav)):?>
