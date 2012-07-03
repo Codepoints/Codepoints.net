@@ -54,9 +54,9 @@ class SearchResult extends UnicodeRange {
               WHERE codepoint_confusables.cp = codepoints.cp
                  OR codepoint_confusables.other = codepoints.cp) confusables
         FROM codepoints
-        JOIN codepoint_script USING ( cp )
-        JOIN codepoint_alias USING ( cp )
-        JOIN codepoint_abstract USING ( cp )
+        LEFT JOIN codepoint_script USING ( cp )
+        LEFT JOIN codepoint_alias USING ( cp )
+        LEFT JOIN codepoint_abstract USING ( cp )
         WHERE ' . $search;
 
         $stm = $this->db->prepare($select.' LIMIT '.($this->page * $this->pageLength).','.$this->pageLength);
