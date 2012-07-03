@@ -137,7 +137,16 @@ class Codepoint {
                 } elseif (isset($props['na1']) && $props['na1']) {
                     $this->name = $props['na1'].'*';
                 } else {
-                    $this->name = '<control>';
+                    $aliases = $this->getAlias();
+                    foreach ($aliases as $alias) {
+                        if ($alias['type'] === 'figment') {
+                            $this->name = $alias['alias'].'*';
+                            break;
+                        }
+                    }
+                    if ($this->name === NULL) {
+                        $this->name = '<control>';
+                    }
                 }
             }
         }
