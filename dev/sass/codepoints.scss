@@ -173,8 +173,19 @@ input[type="text"] {
   @include datalist;
 }
 
-.hd nav {
-  @include navlist;
+.hd {
+  &.floating {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    box-shadow: 0 0px 0px rgba(0,0,0,.2);
+    background: $cBackground url(../images/body.png);
+  }
+  nav {
+    @include navlist;
+  }
 }
 
 .tooltip {
