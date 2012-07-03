@@ -179,7 +179,7 @@ input[type="text"] {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 100;
+    z-index: 20;
     box-shadow: 0 0px 0px rgba(0,0,0,.2);
     background: $cBackground url(../images/body.png);
   }
@@ -301,6 +301,7 @@ input[type="text"] {
 
 #footer_search {
   position: absolute;
+  z-index: 50;
   color: $cTextBold;
   background: $cBackground;
   @include background(linear-gradient(top, $cBackground, $cBackBright));
