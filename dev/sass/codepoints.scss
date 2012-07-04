@@ -622,6 +622,7 @@ input[type="text"] {
   padding: 0;
   &.floating {
     position: fixed;
+    z-index: 30;
     top: 0;
     left: 0;
     width: 100%;
@@ -645,6 +646,14 @@ input[type="text"] {
         padding-bottom: 0;
         background: white;
       }
+    }
+  }
+}
+
+@media (min-height: 500px) {
+  .quicknav {
+    &.floating {
+      top: 90px;
     }
   }
 }
