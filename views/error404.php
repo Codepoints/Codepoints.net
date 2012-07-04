@@ -3,7 +3,7 @@ $title = 'Page not Found';
 if ($block) {
     $title = 'Codepoint not Found';
 }
-$hDescription = 'HTTP error 404';
+$hDescription = 'HTTP error 404: This page doesn’t exist.';
 include "header.php";
 include "nav.php";
 ?>

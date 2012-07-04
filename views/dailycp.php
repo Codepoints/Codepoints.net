@@ -1,6 +1,6 @@
 <?php
 $title = ($date === $today)? 'Codepoint of the Day' : 'Codepoint from '.$date;
-$hDescription = 'Every day a new codepoint. '.$date.': U+'.$codepoint->getId('hex').', '.$description;
+$hDescription = 'Codepoints.net presents every day a new character from Unicode. '.($date === $today? 'Today' : $date).': U+'.$codepoint->getId('hex').', '.$description;
 $prev = $codepoint->getPrev();
 $next = $codepoint->getNext();
 $props = $codepoint->getProperties();
