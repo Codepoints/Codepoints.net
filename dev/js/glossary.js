@@ -23,6 +23,7 @@
     window.scrollTo(0, 0);
     return false;
   }));
+
   dts.filter(function() {
     return $(this).prev('dd').length > 0;
   }).each(function() {
@@ -40,8 +41,11 @@
     }
   });
 
+  // insert glossary navigation before glossary
   gl.before(nav);
   top = nav.offset().top;
+
+  // set the placeholder dimensions
   placeholder.height(nav.outerHeight()).css({
     marginBottom: nav.css('marginBottom'),
     marginTop: nav.css('marginTop')
