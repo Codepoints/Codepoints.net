@@ -1,6 +1,8 @@
 <?php
 $title = 'Scripts';
-$hDescription = 'Browse Codepoints by script';
+$hDescription = 'Browse Codepoints by script. “Scripts” are the different '.
+    'writing systems. They are presented geographically, so that '.
+    'you can identify quickly interesting ones.';
 $headdata = '
     <style type="text/css">
 

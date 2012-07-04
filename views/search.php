@@ -1,6 +1,6 @@
 <?php
 $title = 'Search';
-$hDescription = 'Search Codepoints.net.';
+$hDescription = 'Search Codepoints.net by specifying many different possible parameters.';
 $canonical = '/search';
 include "header.php";
 include "nav.php";

@@ -1,6 +1,6 @@
 <?php
 $title = 'About Codepoints';
-$hDescription = 'Codepoints.net is a site dedicated to Unicode and all things related to codepoints, characters, glyphs and internationalization.';
+$hDescription = 'Codepoints is a site dedicated to Unicode. This page explains the concepts and possibilities to navigate Unicode on the site.';
 $nav = array(
   'find' => '<a href="#finding_characters">Finding Characters</a>',
   'unicode' => '<a href="#unicode">About Unicode</a>',
@@ -254,6 +254,9 @@ include 'nav.php';
        <a href="http://commons.wikimedia.org/wiki/File:NASA_Mars_Rover.jpg">NASA Mars Rover</a>.
     </p>
     <p>The icons are part of the <a href="http://fortawesome.github.com/Font-Awesome">Font Awesome</a> icon set.</p>
+    <hr/>
+    <p>Finally I’d like to thank <a href="http://mathiasbynens.be">Mathias Bynens</a>
+        for pushing me to publish this site at last.</p>
   </section>
 </div>
 <?php include 'footer.php'?>

@@ -11,7 +11,11 @@ $title = $fQuery > 0? ($fQuery > 1?
     sprintf('%s Codepoints%s Found', $fQuery, $cBResult) :
     sprintf('1 Codepoint%s Found', $cBResult)) :
     sprintf('No Codepoints%s Found', $cBResult);
-$hDescription = 'These codepoints match the given search.';
+if ($fQuery === 0) {
+    $hDescription = "No codepoints match the given search.";
+} else {
+    $hDescription = sprintf('%s codepoints match the given search.', $fQuery);
+}
 include "header.php";
 include "nav.php";
 ?>

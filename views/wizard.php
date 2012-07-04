@@ -1,6 +1,7 @@
 <?php
 $title = 'Find My Codepoint';
-$hDescription = 'Find a certain codepoint by answering a set of questions.';
+$hDescription = 'Find a certain character by answering a set of questions. '.
+    'The questions will narrow down possible candidates in the wide range of Unicode codepoints.';
 $canonical = '/wizard';
 include "header.php";
 include "nav.php";
