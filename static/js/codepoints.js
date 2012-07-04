@@ -194,7 +194,7 @@ $(function() {
    */
   if ($(window).height() > 500) {
     var hd = $('header.hd:eq(0)').addClass('floating'),
-        hd_scrolled = false,
+        hd_scrolled = true,
         hd_shadow = 0;
     hd.next().css({
       marginTop: hd.outerHeight()
@@ -209,7 +209,7 @@ $(function() {
       } else if (t <= 45) { hd_shadow = 2;
       } else if (t <= 60) { hd_shadow = 3;
       } else if (t <= 75) { hd_shadow = 4;
-      } else if (t <= 90) { hd_shadow = 5;
+      } else              { hd_shadow = 5;
       }
       hd.css({
         boxShadow: '0 '+hd_shadow+'px '+hd_shadow+'px rgba(0,0,0,.2)'
