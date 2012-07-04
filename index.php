@@ -566,13 +566,21 @@ $router->registerUrl('Codepoint', function ($object) {
 if ($router->callAction() === False) {
     header('HTTP/1.0 404 Not Found');
     $block = Null;
+    $plane = Null;
     $planes = UnicodePlane::getAll($db);
     if ($router->getSetting('noCP')) {
+        $int = hexdec(substr($router->getSetting('request')->trunkUrl, 2));
         try {
-            $block = UnicodeBlock::getForCodepoint(
-                hexdec(substr($router->getSetting('request')->trunkUrl, 2)),
-                $router->getSetting('db'));
-        } catch(Exception $e) {}
+            $block = UnicodeBlock::getForCodepoint($int,
+                                    $router->getSetting('db'));
+        } catch(Exception $e) {
+            foreach ($planes as $p) {
+                if ((int)$p->first <= $int && (int)$p->last >= $int) {
+                    $plane = $p;
+                    break;
+                }
+            }
+        }
     }
     $req = $router->getSetting('request');
     $cps = array();
@@ -589,7 +597,7 @@ if ($router->callAction() === False) {
         }
     }
     $view = new View('error404');
-    echo $view->render(compact('planes', 'block', 'cps'));
+    echo $view->render(compact('planes', 'block', 'plane', 'cps'));
 }
 
 

@@ -12,6 +12,9 @@ include "nav.php";
   <?php if ($block):?>
     <p>This codepoint doesn’t exist. You can find surrounding codepoints in
       the block <?php bl($block, '', 'min')?>.</p>
+  <?php elseif($plane):?>
+    <p>This codepoint doesn’t exist. If it would, it’d be located in the
+       <a href="<?php e($router->getUrl($plane))?>"><?php e($plane->getName())?></a>.</p>
   <?php endif?>
   <?php if (count($cps)):?>
     <ul class="data">
