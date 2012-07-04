@@ -1,0 +1,4 @@
+head, meta { display: block; }
+meta[name="description"]:after{ content: attr(content); }
+
+header.hd.floating { position: static;}
