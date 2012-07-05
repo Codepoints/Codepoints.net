@@ -43,7 +43,7 @@ $(function() {
   $(window).on("load", function() {
     if ($(window).height() + 50 < $(document).height()) {
       $('footer.ft nav ul:eq(0)').prepend(
-        $('<li><a href="#top">\u2B06 top</a></li>').find('a')
+        $('<li><a href="#top"><i class="icon-chevron-up"></i> top</a></li>').find('a')
           .on('click', function() {
             scrollElement.animate({scrollTop: 0}, 500);
             return false;
@@ -130,8 +130,10 @@ $(function() {
   });
 
 
+  /**
+   * handle the "about" screen
+   */
   var about = $('.payload.about');
-
   if (about.length) {
     var sect = about.find('>section'), n = 0, sel = [];
     if (sect.filter(window.location.hash).length) {

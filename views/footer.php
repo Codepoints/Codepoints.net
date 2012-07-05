@@ -15,9 +15,9 @@
         and contributions</a> are always welcome.</p>
         <ul>
           <li><a href="/">Start</a></li>
-          <li><a href="https://twitter.com/UnicodeCotD">Twitter</a></li>
-          <li><a href="http://blog.codepoints.net/">Blog</a></li>
-          <li><a href="<?php e($router->getUrl('about'))?>#this_site">About</a></li>
+          <li><a href="https://twitter.com/UnicodeCotD"><i class="icon-twitter"></i> Twitter</a></li>
+          <li><a href="http://blog.codepoints.net/"><i class="icon-book"></i> Blog</a></li>
+          <li><a href="<?php e($router->getUrl('about'))?>#this_site"><i class="icon-info-sign"></i> About</a></li>
         </ul>
       </nav>
     </footer>

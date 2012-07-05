@@ -19,7 +19,7 @@ include "nav.php";
 ?>
 <div class="payload plane">
   <h1><?php e($title);?></h1>
-  <p>From U+<?php f('%04X', $plane->first)?>
+  <p>Plane from U+<?php f('%04X', $plane->first)?>
      to U+<?php f('%04X', $plane->last)?></p>
   <?php if (count($blocks)):?>
     <h2>Blocks in this plane</h2>
