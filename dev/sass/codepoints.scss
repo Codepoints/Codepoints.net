@@ -141,7 +141,7 @@ input[type="text"] {
 @import "jquery.ui.all";
 
 .payload {
-  padding: 30px 10px 30px;
+  padding: 10px 10px 30px;
   margin: 0 auto;
   max-width: 1200px;
   border-top: 1px solid white;
@@ -150,6 +150,7 @@ input[type="text"] {
 }
 
 .payload.front {
+  padding-top: 30px;
   background: url(../images/front.jpg) no-repeat right top;
 }
 
