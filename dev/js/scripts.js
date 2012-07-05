@@ -1,5 +1,7 @@
 (function(window, $, undefined) {
 
+var $window = $(window);
+
 /**
  * show info about a single script in the opening modal dialog
  */
@@ -46,7 +48,11 @@ function getScripts(scx) {
  * show infos about used scripts in a country in a modal window
  */
 function showDetails(obj) {
-  var co = obj.id;
+  var co = obj.id,
+      width = $window.width();
+  if (width > 800) {
+    width = 800;
+  }
   if (obj.properties.scripts || obj.properties.oldscripts) {
     getScripts(obj.properties.scripts.join(' ') +
              ' ' + obj.properties.oldscripts.join(' ')
@@ -62,9 +68,7 @@ function showDetails(obj) {
         buttons: {
           OK: function() { $(this).dialog('close'); }
         },
-        width: $(window).width() - 40,
-        modal: true,
-        resizable: false
+        width: width
       });
     }).fail(function() {
       showDetails({id: '___not_found___'});
@@ -75,9 +79,7 @@ function showDetails(obj) {
       buttons: {
         Finished: function() { $(this).dialog('close'); }
       },
-      width: $(window).width() - 40,
-      modal: true,
-      resizable: false
+      width: width()
     });
   }
 }
