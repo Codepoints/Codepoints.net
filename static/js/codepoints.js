@@ -209,10 +209,11 @@ $(function() {
       } else if (t <= 45) { hd_shadow = 2;
       } else if (t <= 60) { hd_shadow = 3;
       } else if (t <= 75) { hd_shadow = 4;
-      } else              { hd_shadow = 5;
+      } else if (t <= 90) { hd_shadow = 5;
+      } else              { hd_shadow = 6;
       }
       hd.css({
-        boxShadow: '0 '+hd_shadow+'px '+hd_shadow+'px rgba(0,0,0,.2)'
+        boxShadow: '0 '+(hd_shadow-1)+'px '+hd_shadow+'px rgba(0,0,0,.2)'
       });
     }, 50);
   }
