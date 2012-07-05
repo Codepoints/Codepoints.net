@@ -26,8 +26,9 @@ include "nav.php";
     <img src="/static/images/blocks/<?php e(str_replace(' ', '_', $block->getName()))?>.png" alt="" width="128" height="128" />
   </figure>
   <h1><?php e($block->getName());?></h1>
-  <?php if ($block_limits === Null):?>
-    <p class="warning">This block has not defined any codepoints.</p>
+  <?php $defLimits = $block->getBlockLimits(); if ($block_limits === Null):?>
+    <p>This block has not defined any codepoints between U+<?php f('%04X', $defLimits[0])?>
+       and U+<?php f('%04X', $defLimits[1])?>.</p>
   <?php else:?>
     <p>Block from U+<?php f('%04X', $block_limits[0])?>
        to U+<?php f('%04X', $block_limits[1])?></p>
