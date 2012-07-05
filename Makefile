@@ -21,10 +21,10 @@ static/css/codepoints.css static/css/ie.css: dev/sass/*.scss
 
 js: static/js/_.js $(JS_TARGET)
 
-static/js/_.js: static/js/jquery.js static/js/jquery.ui.js \
-                static/js/webfont.js \
-                static/js/jquery.cachedajax.js dev/js_embed/jquery.tooltip.js \
-                static/js/jquery.glossary.js static/js/codepoints.js
+static/js/_.js: dev/js_embed/jquery.js dev/js_embed/jquery.ui.js \
+                dev/js_embed/webfont.js \
+                dev/js_embed/jquery.cachedajax.js dev/js_embed/jquery.tooltip.js \
+                dev/js_embed/jquery.glossary.js static/js/codepoints.js
 	cat $^ | uglifyjs > $@
 
 $(JS_TARGET): static/js/%.js: dev/js/%.js

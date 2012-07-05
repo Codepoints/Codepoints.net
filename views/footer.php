@@ -24,12 +24,12 @@
     <script id="_ts" async="async">var _paq=_paq||[];(function(){var u="http://piwik.manuel-strehl.de/";_paq.push(['setSiteId',4]);_paq.push(['setTrackerUrl',u+'piwik.php']);_paq.push(['trackPageView']);_paq.push(['enableLinkTracking']);var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];g.type='text/javascript';g.defer=true;g.async=true;g.src=u+'piwik.js';s.parentNode.insertBefore(g,s);})();</script>
     <script>WebFontConfig={google:{families:['Droid Serif:n,i,b,ib','Droid Sans:n,b']}};</script>
 <?php if(CP_DEBUG):?>
-    <script src="/static/js/jquery.js"></script>
-    <script src="/static/js/jquery.ui.js"></script>
-    <script src="/static/js/webfont.js"></script>
-    <script src="/static/js/jquery.cachedajax.js"></script>
+    <script src="/dev/js_embed/jquery.js"></script>
+    <script src="/dev/js_embed/jquery.ui.js"></script>
+    <script src="/dev/js_embed/webfont.js"></script>
+    <script src="/dev/js_embed/jquery.cachedajax.js"></script>
     <script src="/dev/js_embed/jquery.tooltip.js"></script>
-    <script src="/static/js/jquery.glossary.js"></script>
+    <script src="/dev/js_embed/jquery.glossary.js"></script>
     <script src="/static/js/codepoints.js"></script>
 <?php else:?>
     <script src="/static/js/_.js"></script>
