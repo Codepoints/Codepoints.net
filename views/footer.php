@@ -30,7 +30,7 @@
     <script src="/dev/js_embed/jquery.cachedajax.js"></script>
     <script src="/dev/js_embed/jquery.tooltip.js"></script>
     <script src="/dev/js_embed/jquery.glossary.js"></script>
-    <script src="/static/js/codepoints.js"></script>
+    <script src="/dev/js_embed/codepoints.js"></script>
 <?php else:?>
     <script src="/static/js/_.js"></script>
 <?php endif?>
