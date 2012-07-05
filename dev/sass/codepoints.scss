@@ -210,6 +210,22 @@ input[type="text"] {
 }
 
 
+.min.cp {
+  @include scale-img;
+  img {
+    margin-left: .4em;
+  }
+}
+
+
+.min.bl {
+  @include scale-img;
+  img {
+    margin-right: .4em;
+  }
+}
+
+
 
 .protocol_s {
   vertical-align: text-bottom;

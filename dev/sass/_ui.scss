@@ -115,8 +115,9 @@
     }
     &.start a:before {
       content: url(../images/icon16.png);
-      vertical-align: middle;
-      padding-right: .3em;
+      vertical-align: top;
+      margin-top: .1em;
+      padding-right: .6em;
     }
     &.next a:after {
       padding-left: .5em;
@@ -420,10 +421,7 @@
               1px 0 rgba(255,255,255,.33),
               -1px 0 rgba(255,255,255,.33),
               inset 0 2px 3px -1px rgba(0,0,0,.03);
-  img {
-    @include transition-property(all);
-    @include transition-duration(.5s);
-  }
+
   &:focus,
   &:hover {
     text-shadow: 0 1px white;
@@ -435,6 +433,20 @@
                 0 1px rgba(0,0,0,.1),
                 inset 0 -1px rgba(255,255,255,.33),
                 inset 0 2px 3px -3px white;
+  }
+
+  @include scale-img;
+}
+
+
+@mixin scale-img {
+  // scale a contained image on hover
+  img {
+    @include transition-property(all);
+    @include transition-duration(.5s);
+  }
+  &:focus,
+  &:hover {
     img {
       image-rendering: optimizeSpeed;
       @include transform(scale(2));
