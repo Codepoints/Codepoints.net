@@ -220,6 +220,21 @@ $(function() {
     }, 50);
   }
 
+  /**
+   * handle the EU cookie law thingy
+   */
+  var cook = $('.cookies');
+  if (cook.length) {
+    cook.append($('<a href="#"> Hide this message.</a>').click(function() {
+      cook.fadeOut('slow');
+      var date = new Date();
+      date.setTime(date.getTime()+(2*365*24*60*60*1000));
+      var expires = date.toGMTString();
+      document.cookie = "_eu=hide; expires="+expires+"; path=/";
+      return false;
+    }));
+  }
+
 });
 
 })(this, jQuery);

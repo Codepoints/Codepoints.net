@@ -192,7 +192,7 @@ include 'nav.php';
     </ul>
     <p>
       The images representing single Unicode blocks are taken from the
-      font <a href="http://www.unicode.org/policies/lastresortfont_eula.html">Last Resort</a>,
+      font <a href="http://users.teilar.gr/~g1951d/">Unidings</a> by George Douros,
       released under a permissive license. The quotes from Wikipedia are subject
       to the Creative Commons Attribution Share-alike license. Details can be
       obtained by following the respective link on each quote.

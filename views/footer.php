@@ -13,6 +13,13 @@
         fine people</a> for making Codepoints.net possible.
         <a href="https://github.com/Boldewyn/codepoints.net">Feedback
         and contributions</a> are always welcome.</p>
+        <?php if (! isset($_COOKIE) || ! isset($_COOKIE['_eu']) || $_COOKIE['_eu'] !== 'hide'):?>
+          <p class="tx cookies">We use cookies to enhance your experience and to develop the site
+          further. We never track you for monetary reasons. If you do not want this,
+          you can either use the Do-Not-Track feature of your browser or
+          <a href="<?php e($router->getUrl('about'))?>#this_site">opt out
+          explicitly</a>.</p>
+        <?php endif?>
         <ul>
           <li><a href="/">Start</a></li>
           <li><a href="https://twitter.com/UnicodeCotD"><i class="icon-twitter"></i> Twitter</a></li>
