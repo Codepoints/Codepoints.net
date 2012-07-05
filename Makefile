@@ -23,7 +23,7 @@ js: static/js/_.js $(JS_TARGET)
 
 static/js/_.js: static/js/jquery.js static/js/jquery.ui.js \
                 static/js/webfont.js \
-                static/js/jquery.cachedajax.js static/js/jquery.tooltip.js \
+                static/js/jquery.cachedajax.js dev/js_embed/jquery.tooltip.js \
                 static/js/jquery.glossary.js static/js/codepoints.js
 	cat $^ | uglifyjs > $@
 
