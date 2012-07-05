@@ -15,11 +15,11 @@ RewriteEngine On
 
 RewriteBase /
 
+RewriteRule ^favicon\.ico$ static/images/favicon.ico [R,L]
+
 RewriteRule ^index.php - [L]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !/static/.*
 RewriteRule .* index.php [L]
-
-RewriteRule ^favicon.ico static/images/favicon.ico [L]
 
