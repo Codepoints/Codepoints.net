@@ -9,7 +9,7 @@ include "nav.php";
     <img src="/static/images/unicode-logo-framed.png" alt="a representation of the Unicode logo" width="128" height="128"/>
   </figure>
   <h1><?php e($title)?></h1>
-  <ol>
+  <ol style="margin-left: 140px">
     <?php foreach ($planes as $plane):?>
       <li><a href="<?php e($router->getUrl($plane))?>"><?php e($plane->name)?></a>
           <small>(U+<?php f('%04X', $plane->first)?> to <?php f('%04X', $plane->last)?>)</small></li>

@@ -355,6 +355,10 @@
   }
 }
 
+.ui-menu {
+  z-index: 30;
+}
+
 .ui-menu-item a {
   border-bottom: none;
   color: $cTextBold;
