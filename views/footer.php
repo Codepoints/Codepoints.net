@@ -39,10 +39,10 @@
     <script src="/dev/js_embed/jquery.glossary.js"></script>
     <script src="/dev/js_embed/codepoints.js"></script>
 <?php else:?>
-    <script src="/static/js/_.js"></script>
+    <script src="/static/js/_.js?<?php e(CACHE_BUST)?>"></script>
 <?php endif?>
     <?php if (isset($footer_scripts)): foreach($footer_scripts as $sc):?>
-        <script src="<?php e($sc)?>"></script>
+        <script src="<?php e($sc)?>?<?php e(CACHE_BUST)?>"></script>
     <?php endforeach; endif?>
   </body>
 </html>
