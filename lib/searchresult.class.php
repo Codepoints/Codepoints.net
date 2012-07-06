@@ -106,27 +106,41 @@ class SearchResult extends UnicodeRange {
         $params = array();
         $search = '';
         if (count($this->query) === 0) {
-            $search = "cp IN (" . join(',', $this->_set) . ")";
+            /* if there are no queries defined but a set to look into, use this.
+             * This is basically to ensure compatibility with UnicodeRange. */
+            $search = "codepoints.cp IN (" . join(',', $this->_set) . ")";
         } else {
             foreach ($this->query as $i => $q) {
                 if ($search !== '') {
+                    /* join the query with the last one using the $q3 parameter
+                     * (usually "AND" or "OR"). */
                     $search .= " ${q[3]} ";
                 }
                 if (is_array($q[2])) {
+                    /* the query value is an array: we construct an "IN ()" SQL
+                    * statement. */
                     $tmp = array_map(array($this->db, 'quote'), $q[2]);
                     if ($q[1] === '=') {
                         $q[1] = 'IN';
                     } elseif ($q[1] === '!=') {
                         $q[1] = 'NOT IN';
                     }
-                    $search .= " `${q[0]}` ${q[1]} ( " . join(',', $tmp) . " )";
+                    if ($q[0] === 'cp') {
+                        $search .= " codepoints.cp ${q[1]} ( " . join(',', $tmp) . " )";
+                    } else {
+                        $search .= " `${q[0]}` ${q[1]} ( " . join(',', $tmp) . " )";
+                    }
                 } elseif ($q[0] === 'na' || $q[0] === 'na1') {
+                    /* match names loosely, especially to make the search case-insensiitve */
                     $search .= " `${q[0]}` LIKE :q$i ";
                     $params[':q'.$i] = "%${q[2]}%";
-                } elseif ($q[0] === 'int') {
-                    $search .= " cp = :q$i ";
+                } elseif ($q[0] === 'cp' || $q[0] === 'int') {
+                    /* handle "cp" specially to fight "ambiguous column" SQLite errors */
+                    $search .= " codepoints.cp = :q$i ";
                     $params[':q'.$i] = $q[2];
                 } else {
+                    /* the default is to query the column $q0 with the comparison $q1
+                     * for a value $q2 */
                     $search .= " `${q[0]}` ${q[1]} :q$i ";
                     $params[':q'.$i] = $q[2];
                 }
