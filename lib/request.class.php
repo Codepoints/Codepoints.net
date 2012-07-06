@@ -13,6 +13,7 @@ class Request {
     public $extensionTypeMap = array(
         'htm' => 'text/html',
         'html' => 'text/html',
+        'xml' => 'application/xml',
         'json' => 'application/json',
         'js' => 'application/json',
     );

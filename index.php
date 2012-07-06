@@ -335,6 +335,14 @@ $router->addSetting('db', $db)
 
 ->registerAction('codepoint_of_the_day', function($request, $o) {
     // Codepoint of the Day
+    if ($request->type === 'application/xml') {
+        header('Content-Type: application/xml; charset=utf-8');
+        $Daily = new DailyCP($o['db']);
+        $cps = $Daily->getSome(30);
+        $view = new View('dailycp.feed');
+        echo $view->render(compact('cps'));
+        return;
+    }
     $date = NULL;
     $today = date('Y-m-d');
     if (isset($_GET['date'])) {
