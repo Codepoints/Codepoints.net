@@ -36,6 +36,10 @@
     <changefreq>daily</changefreq>
   </url>
   <url>
+    <loc>http://codepoints.net/codepoint_of_the_day.xml</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
     <loc>http://codepoints.net/planes</loc>
     <changefreq>yearly</changefreq>
   </url>
