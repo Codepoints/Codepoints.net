@@ -42,7 +42,7 @@ class SearchResult extends UnicodeRange {
         }
 
         list($search, $params) = $this->_getQuerySQL();
-        $select = 'SELECT cp, na, na1,
+        $select = 'SELECT codepoints.cp cp, na, na1,
             (SELECT codepoint_image.image
                FROM codepoint_image
               WHERE codepoint_image.cp = codepoints.cp) image,
