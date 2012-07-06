@@ -90,17 +90,19 @@
 @mixin navlist {
   // navigation list
   border-bottom: 1px solid $cBorderLight;
-  padding: 10px 10px 0 10px;
+  padding: 5px 5px 0 5px;
   font-size: (12em/$sFontBase);
   font-family: $sans;
-  & ul {
+
+  ul {
     margin: 0 auto 10px;
     padding: 0;
     list-style: none;
     @include pie-clearfix;
     max-width: 1200px;
   }
-  & li {
+
+  li {
     float: left;
     margin: 0 -1px 0 0;
     &:before {
@@ -117,17 +119,14 @@
       content: url(../images/icon16.png);
       vertical-align: top;
       margin-top: .1em;
-      padding-right: .6em;
     }
     &.next a:after {
-      padding-left: .5em;
       width: 1.25em;
       content: "\f054";
     }
     &.prev, &.up, &.about, &.scripts, &.search,
     &.random {
       a:before {
-        padding-right: .5em;
         width: 1.25em;
       }
     }
@@ -151,21 +150,20 @@
     }
     & .glossary:before {
       content: "\f03a";
-      padding-right: .5em;
       width: 1.25em;
     }
-    & a[href^="#"]:before {
-      padding-right: .5em;
+    a[href^="#"]:before {
       width: 1.25em;
       content: "\f078";
     }
   }
-  & em,
-  & a {
+
+  em, a {
     @include button-base;
     height: (20em/12);
     line-height: (20em/12);
     font-style: normal;
+    padding: 4px;
     &:before, &:after {
       font-family: FontAwesome;
       font-weight: normal;
@@ -178,8 +176,39 @@
       @include button-active;
     }
   }
-  & img {
+
+  img {
     vertical-align: text-bottom;
+  }
+}
+
+@mixin wide-navlist {
+  // navigation list in non-narrow env
+  padding: 10px 10px 0 10px;
+
+  li {
+    &.start a:before {
+      padding-right: .6em;
+    }
+    &.next a:after {
+      padding-left: .5em;
+    }
+    &.prev, &.up, &.about, &.scripts, &.search,
+    &.random {
+      a:before {
+        padding-right: .5em;
+      }
+    }
+    & .glossary:before {
+      padding-right: .5em;
+    }
+    a[href^="#"]:before {
+      padding-right: .5em;
+    }
+
+    em, a {
+      padding: 4px 8px;
+    }
   }
 }
 

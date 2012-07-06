@@ -49,3 +49,7 @@
   }
 
 }
+
+.hd nav {
+  @include wide-navlist;
+}
