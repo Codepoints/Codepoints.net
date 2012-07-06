@@ -12,7 +12,7 @@ class UnicodePlane {
     protected $next;
 
     /**
-     * create a new plae instance, optionally prefilled
+     * create a new plane instance, optionally prefilled
      */
     public function __construct($name, $db, $r=NULL) {
         $this->db = $db;
