@@ -62,6 +62,9 @@ class UnicodeBlock extends UnicodeRange {
     public function getName() {
         return $this->name;
     }
+    public function __toString() {
+        return $this->name;
+    }
 
     /**
      * return first and last codepoint of block definition

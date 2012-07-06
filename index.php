@@ -31,6 +31,10 @@ define('UNICODE_VERSION', '6.1.0');
 define('CP_DEBUG', 1);
 
 
+/* enable gzip compression of HTML */
+ini_set('zlib.output_compression', True);
+
+
 /**
  * load classes from lib/
  */

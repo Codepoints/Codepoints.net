@@ -85,6 +85,9 @@ class Router {
     public function callAction($url=Null) {
         $action = $this->getAction($url);
         if ($action !== Null) {
+            if ($this->settings['request']->type === 'text/html') {
+                header('Content-Type: text/html; charset=utf-8');
+            }
             try {
                 $action[0]($action[1], $this->settings);
             } catch (RoutingError $e) {
@@ -161,7 +164,7 @@ class Router {
      */
     public function redirect($url) {
         if (substr($url, 0, 4) !== 'http' && $url[0] !== '/') {
-            $url = $this->baseUrl . $url;
+            $url = $this->baseURL . $url;
         }
         header('HTTP/1.0 303 See Other');
         header('Location: ' . $url);
