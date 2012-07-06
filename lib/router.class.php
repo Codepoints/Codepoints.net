@@ -85,6 +85,9 @@ class Router {
     public function callAction($url=Null) {
         $action = $this->getAction($url);
         if ($action !== Null) {
+            if ($this->settings['request']->type === 'text/html') {
+                header('Content-Type: text/html; charset=utf-8');
+            }
             try {
                 $action[0]($action[1], $this->settings);
             } catch (RoutingError $e) {
