@@ -197,7 +197,8 @@ $(function() {
   if ($(window).height() > 500) {
     var hd = $('header.hd:eq(0)').addClass('floating'),
         hd_scrolled = true,
-        hd_shadow = 0;
+        hd_shadow = 0,
+        gt_threshold = false;
     hd.next().css({
       marginTop: hd.outerHeight()
     });
@@ -206,6 +207,8 @@ $(function() {
       if (! hd_scrolled) { return; }
       hd_scrolled = false;
       var t = scrollElement.scrollTop();
+      if (gt_threshold && t > 105) { return; }
+      gt_threshold = false;
       if (t <= 15) { hd_shadow = 0;
       } else if (t <= 30) { hd_shadow = 1;
       } else if (t <= 45) { hd_shadow = 2;
@@ -213,6 +216,7 @@ $(function() {
       } else if (t <= 75) { hd_shadow = 4;
       } else if (t <= 90) { hd_shadow = 5;
       } else              { hd_shadow = 6;
+                            gt_threshold = true;
       }
       hd.css({
         boxShadow: '0 '+(hd_shadow-1)+'px '+hd_shadow+'px rgba(0,0,0,.2)'
