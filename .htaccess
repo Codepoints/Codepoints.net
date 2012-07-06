@@ -5,7 +5,7 @@ AddDefaultCharset utf-8
   ForceType application/opensearchdescription+xml
 </Files>
 
-<Files ~ "^(ucd\.sqlite|config\.rb)$">
+<Files ~ "^(ucd\.sqlite|config\.rb|Makefile)$">
   Deny From All
 </Files>
 
