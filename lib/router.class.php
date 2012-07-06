@@ -161,7 +161,7 @@ class Router {
      */
     public function redirect($url) {
         if (substr($url, 0, 4) !== 'http' && $url[0] !== '/') {
-            $url = $this->baseUrl . $url;
+            $url = $this->baseURL . $url;
         }
         header('HTTP/1.0 303 See Other');
         header('Location: ' . $url);
