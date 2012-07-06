@@ -268,8 +268,10 @@ $router->addSetting('db', $db)
     $cats = $info->getCategoryKeys();
     $cats = array_merge($cats, array('int'));
     $blocks = array();
+    $_q = Null;
     foreach ($_GET as $k => $v) {
         if ($k === 'q' && $v) {
+            $_q = $v;
             // "q" is a special case: We parse the query and try to
             // figure, what's searched
             if (mb_strlen($v, 'UTF-8') === 1) {
@@ -327,7 +329,12 @@ $router->addSetting('db', $db)
     $page = isset($_GET['page'])? intval($_GET['page']) : 1;
     $result->page = $page - 1;
     if (count($result->getQuery())) {
-        if ($result->getCount() === 1) {
+        if ($result->getCount() === 0 && $_q) {
+            $cps = Codepoint::getForString($_q, $o['db']);
+            $view = new View('result');
+            echo $view->render(compact('result', 'blocks', 'cps',
+                                       'page'));
+        } elseif ($result->getCount() === 1) {
             $cp = $result->current();
             $router->redirect('U+'.$cp);
         } else {
@@ -601,19 +608,7 @@ if ($router->callAction() === False) {
         }
     }
     $req = $router->getSetting('request');
-    $cps = array();
-    $url = rawurldecode($req->trunkUrl);
-    if (mb_strlen($url) < 128) {
-        foreach (preg_split('/(?<!^)(?!$)/u', $url) as $c) {
-            $cc = unpack('N', mb_convert_encoding($c, 'UCS-4BE', 'UTF-8'));
-            try {
-                $cx = Codepoint::getCP($cc[1], $db);
-                $cx->getName();
-                $cps[] = $cx;
-            } catch (Exception $e) {
-            }
-        }
-    }
+    $cps = codepoint::getForString(rawurldecode($req->trunkUrl), $db);
     $view = new View('error404');
     echo $view->render(compact('planes', 'block', 'plane', 'cps'));
 }

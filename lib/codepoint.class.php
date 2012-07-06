@@ -507,6 +507,26 @@ class Codepoint {
         ));
     }
 
+    /**
+     * get all codepoints of a string
+     */
+    public static function getForString($string, $db) {
+        $cps = array();
+        if (mb_strlen($string) < 128) {
+            foreach (preg_split('/(?<!^)(?!$)/u', $string) as $c) {
+                $cc = unpack('N', mb_convert_encoding($c, 'UCS-4BE', 'UTF-8'));
+                try {
+                    $cx = Codepoint::getCP($cc[1], $db);
+                    // test, if codepoint exists
+                    $cx->getName();
+                    $cps[] = $cx;
+                } catch (Exception $e) {
+                }
+            }
+        }
+        return $cps;
+    }
+
 }
 
 

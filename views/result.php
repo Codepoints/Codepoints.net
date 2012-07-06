@@ -36,7 +36,13 @@ include "nav.php";
     </ol>
     <?php echo $pagination?>
   <?php else:?>
-    <p>There are no matches<?php include "result/querytext.php"?></p>
+    <?php if (isset($cps) && count($cps)):?>
+      <ul class="data">
+        <?php foreach($cps as $cp):?>
+          <li><?php cp($cp)?></li>
+        <?php endforeach?>
+      </ul>
+    <?php endif?>
   <?php endif?>
   <?php if($cBlocks):?>
   <p><strong><?php e($cBlocks)?></strong> block<?php if($cBlocks > 1):?>s<?php endif?>
