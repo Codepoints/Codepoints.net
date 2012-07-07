@@ -232,6 +232,11 @@ include 'nav.php';
       the presentation of the Unicode standard: <a href="http://decodeunicode.org">Decode Unicode</a> and
       <a href="http://graphemica.com">Graphemica</a>.
     </p>
+    <figure class="other">
+      <a href="http://uberspace.de" rel="external"><img src="/static/images/uberspace.png" alt="Hosted on Asteroids" /></a>
+    </figure>
+    <p>The hosting is done on Uberspace, a phantastic provider with extremely
+       helpful and flexible support.</p>
     <h2>Fonts</h2>
     <p>Many people base their work on Unicode. We want to thank the authors of
       these fonts, that they made it possible to re-use them for this project:

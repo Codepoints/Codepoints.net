@@ -11,10 +11,48 @@ Hosting: Uberspace.de
 
                                  /* SOFTWARE */
 
-Online: https://github.com/Boldewyn/codepoints.net
+Online: https://github.com/Boldewyn/Codepoints.net
+Bugs: https://github.com/Boldewyn/Codepoints.net/issues
 Technology: PHP (sorry!), SQLite, HTML5, CSS 3, JavaScript, Sass
 Libs: jQuery, jQuery UI
-Data: The Unicode Standard, SQLite version via
-      https://github.com/Boldewyn/unicodeinfo
+Data: The Unicode Standard
+Database: SQLite version of the Unicode standard via
+    <https://github.com/Boldewyn/unicodeinfo>
 
+
+                               /* ATTRIBUTION */
+
+Fonts: Thanks to:
+    - Roman Czyborra, David Starner, Qianqian Fang, Changwoo Ryu and Paul
+      Hardy for GNU Unifont
+    - George Douros for his free to use historic fonts
+    - Mark Williamson for MPH 2B Damase
+    - The Deja Vu Project
+    - Michael Everson for the Last Resort font
+
+Images:
+    - The background image on the front page is released under the Creative
+      Commons Attribution license by Flickr user Willi Heidelbach:
+      <http://www.flickr.com/photos/wilhei/109404349/>
+    - The button backgrounds on the front page are in the public domain:
+      <http://commons.wikimedia.org/wiki/File:1657_Jansson_Map_of_the_Empire_of_Charlemagne_-_Geographicus_-_CaroliMagni-jansson-1657.jpg>
+      <http://commons.wikimedia.org/wiki/File:18th_century_dowser.jpg>
+      <http://commons.wikimedia.org/wiki/File:NASA_Mars_Rover.jpg>
+    - The icons are part of the Font Awesome icon set
+
+Texts:
+    - There are many texts from Wikipedia throughout the site. All texts are
+      marked with the corresponding URL back to WP. Thanks to all the awesome
+      authors providing such information for free to the world.
+
+Inspiration: Thanks to:
+    - Decode Unicode for the “reference implementation” of a Unicode
+      visualization
+    - Graphemica for a good-looking one with a good social component
+    - Many people who inspire and engage to use the Unicode standard, among
+      which I can tell off the top of my head, but in no way exclusively,
+      Richard Ishida, Michael Everson, James Kass and Mark Davis
+    - Mathias Byrens for pushing me to publish it finally
+    - Uberspace for their phantastic hosting environment
+    - The Unicode Consortium for their awesome work
 

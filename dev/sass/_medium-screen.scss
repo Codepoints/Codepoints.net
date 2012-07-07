@@ -10,7 +10,8 @@
   clear: left;
 }
 
-.payload aside.other {
+.payload aside.other,
+.payload figure.other {
   float: right;
   clear: right;
   width: auto;
