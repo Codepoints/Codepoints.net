@@ -387,7 +387,7 @@ $router->addSetting('db', $db)
     }
 })
 
-->registerAction('sitemap.xml', function($request, $o) {
+->registerAction('sitemap', function($request, $o) {
     // sitemap
     header('Content-Type: application/xml; charset=utf-8');
     $view = new View('sitemap.xml');
@@ -395,7 +395,7 @@ $router->addSetting('db', $db)
     echo $view->render(compact('blocks'));
 })
 
-->registerAction('sitemap/base.xml', function($request, $o) {
+->registerAction('sitemap/base', function($request, $o) {
     // sitemap part 2
     header('Content-Type: application/xml; charset=utf-8');
     $view = new View('sitemap/base.xml');
@@ -405,7 +405,7 @@ $router->addSetting('db', $db)
 ->registerAction(function ($url, $o) {
     if (substr($url, 0, 8) === 'sitemap/') {
         try {
-            $block = new UnicodeBlock(substr(substr($url, 8), 0, -4),
+            $block = new UnicodeBlock(substr(substr($url, 8), 0),
                                       $o['db']);
         } catch(Exception $e) {
             return False;
