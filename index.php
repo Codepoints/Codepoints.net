@@ -295,6 +295,7 @@ $router->addSetting('db', $db)
                     $result->addQuery('na1', $vv, 'LIKE', 'OR');
                     $result->addQuery('kDefinition', $vv, 'LIKE', 'OR');
                     $result->addQuery('alias', $vv, 'LIKE', 'OR');
+                    $result->addQuery('abstract', $vv, 'LIKE', 'OR');
                     if (preg_match('/\blowercase\b/i', $vv)) {
                         $result->addQuery('gc', 'lc', '=', 'OR');
                     }
@@ -325,6 +326,7 @@ $router->addSetting('db', $db)
         } elseif ($v && in_array($k, $cats)) {
             $result->addQuery($k, $v);
         }
+        // else: that's an unrecognized GET param. Ignore it.
     }
     $page = isset($_GET['page'])? intval($_GET['page']) : 1;
     $result->page = $page - 1;
