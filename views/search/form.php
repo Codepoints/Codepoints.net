@@ -1,9 +1,14 @@
 <form method="get" action="<?php e($router->getUrl('SearchResult'))?>"
       class="extended searchform">
   <p class="stringsearch">
+    <label for="s_q">Free search:</label>
+    <input type="text" name="q" id="s_q" value="<?php echo _get('q')?>" />
+    <small class="nt">Any information about the character, that doesn’t fit the categories below</small>
+  </p>
+  <p class="stringsearch">
     <label for="s_na">Name:</label>
-    <input type="text" name="na" id="s_na" value="" />
-    <small class="nt">The name (or parts) of the character</small>
+    <input type="text" name="na" id="s_na" value="<?php echo _get('na')?>" />
+    <small class="nt">The Unicode name (or parts) of the character</small>
   </p>
   <p class="stringsearch">
     <label for="s_int">Decimal:</label>
