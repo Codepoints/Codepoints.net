@@ -233,7 +233,7 @@ include 'nav.php';
       <a href="http://graphemica.com">Graphemica</a>.
     </p>
     <figure class="other">
-      <a href="http://uberspace.de" rel="external"><img src="/static/images/uberspace.png" alt="Hosted on Asteroids" /></a>
+      <a href="https://uberspace.de" rel="external"><img src="/static/images/uberspace.png" alt="Hosted on Asteroids" /></a>
     </figure>
     <p>The hosting is done on Uberspace, a phantastic provider with extremely
        helpful and flexible support.</p>
