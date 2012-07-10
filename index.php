@@ -34,7 +34,7 @@ define('CP_DEBUG', 1);
 /**
  * cache busting string
  */
-define('CACHE_BUST', 'dd1bc8ac2370c492a126435075b615d9e2c283bd');
+define('CACHE_BUST', 'f50389e67fc46751af087a17a923fbca963d5c34');
 
 
 /* enable gzip compression of HTML */

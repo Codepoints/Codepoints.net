@@ -194,7 +194,7 @@ $(function() {
   /**
    * make header floating, if window is higher than 500px
    */
-  if ($(window).height() > 500) {
+  if ($(window).height() >= 750) {
     var hd = $('header.hd:eq(0)').addClass('floating'),
         hd_scrolled = true,
         hd_shadow = 0,
