@@ -143,6 +143,13 @@ class UnicodeRange implements Iterator {
     }
 
     /**
+     * slice the set of codepoints
+     */
+    public function slice($offset, $length=0) {
+        $this->_set = array_slice($this->_set, $offset, $length);
+    }
+
+    /**
      * get the names of all characters in the set
      */
     protected function fetchNames($set) {
