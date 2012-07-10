@@ -77,6 +77,18 @@ class UnicodeBlock extends UnicodeRange {
     }
 
     /**
+     * return the count of codepoints in this block
+     */
+    public function count() {
+        $stm = $this->db->prepare('SELECT COUNT(*) c
+                                     FROM codepoints
+                                    WHERE cp >= ? AND cp <= ?');
+        $stm->execute($this->limits);
+        $r = $stm->fetch(PDO::FETCH_ASSOC);
+        return (int)$r['c'];
+    }
+
+    /**
      * get the previous block or False
      */
     public function getPrev() {
