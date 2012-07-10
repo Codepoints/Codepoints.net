@@ -2,9 +2,9 @@
 
 JS_SRC = $(wildcard dev/js/*.js)
 JS_TARGET = $(patsubst dev/js/%.js,static/js/%.js,$(JS_SRC))
-all: ucotd css js
+all: ucotd css js cachebust
 
-.PHONY: all css js dist clean ucotd
+.PHONY: all css js dist clean ucotd cachebust
 
 clean:
 	-rm -fr dist
@@ -26,6 +26,9 @@ static/js/_.js: dev/js_embed/jquery.js dev/js_embed/jquery.ui.js \
                 dev/js_embed/jquery.cachedajax.js dev/js_embed/jquery.tooltip.js \
                 dev/js_embed/jquery.glossary.js dev/js_embed/codepoints.js
 	cat $^ | uglifyjs > $@
+
+cachebust: $(JS_TARGET) static/css/*.css
+	sed -i '/^define(.CACHE_BUST., .\+.);$$/s/.*/define('"'CACHE_BUST', '"$$(cat $^ | sha1sum | awk '{ print $$1 }')"');/" index.php
 
 $(JS_TARGET): static/js/%.js: dev/js/%.js
 	uglifyjs $^ > $@
