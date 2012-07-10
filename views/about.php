@@ -150,7 +150,7 @@ include 'nav.php';
       </p>
     </address>
     <figure class="other">
-      <img alt="/static/images/were_open.jpg" alt="" />
+      <img src="/static/images/were_open.jpg" alt="" />
     </figure>
     <h2>The Content on this Site</h2>
     <p>
