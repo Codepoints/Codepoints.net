@@ -149,6 +149,9 @@ include 'nav.php';
             src="/static/images/phone.png" width="220" height="20" />
       </p>
     </address>
+    <figure class="other">
+      <img alt="/static/images/were_open.jpg" alt="" />
+    </figure>
     <h2>The Content on this Site</h2>
     <p>
       The content on this website reflects the information found in<br/>
@@ -257,6 +260,10 @@ include 'nav.php';
        <a href="http://commons.wikimedia.org/wiki/File:1657_Jansson_Map_of_the_Empire_of_Charlemagne_-_Geographicus_-_CaroliMagni-jansson-1657.jpg">map of Charlemagne’s empire</a>,
        <a href="http://commons.wikimedia.org/wiki/File:18th_century_dowser.jpg">18<sup>th</sup> century dowser</a>, and
        <a href="http://commons.wikimedia.org/wiki/File:NASA_Mars_Rover.jpg">NASA Mars Rover</a>.
+    </p>
+    <p>The “We’re Open Source” image is released under the Creative Commons
+       Attribution Non-Commercial No-Derivations license by
+       <a href="http://www.flickr.com/photos/tappnel/5798812875/">Flickr user tima</a>.
     </p>
     <p>The icons are part of the <a href="http://fortawesome.github.com/Font-Awesome">Font Awesome</a> icon set.</p>
     <hr/>
