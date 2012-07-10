@@ -164,7 +164,7 @@ include 'nav.php';
     <p>
       If you find problems, inaccurancies, bugs or other issues with this site,
       please e-mail me or issue a new bug at the <a href="https://github.com/Boldewyn/codepoints.net/issues">bug tracker</a>.
-      The source code for this site is <a href="https://github.com/Boldewyn/codepoints.net">live on Github</a>. If you like, fork the code,
+      The source code for this site is <a href="https://github.com/Boldewyn/codepoints.net">live on Github <i class="icon-github"></i></a>. If you like, fork the code,
       enhance it and send me a pull request. (If you don’t have a Github account,
       please send the git patch via e-mail.)
     </p>
