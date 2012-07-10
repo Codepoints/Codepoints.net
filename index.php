@@ -34,7 +34,7 @@ define('CP_DEBUG', 1);
 /**
  * cache busting string
  */
-define('CACHE_BUST', 'f50389e67fc46751af087a17a923fbca963d5c34');
+define('CACHE_BUST', 'fe4f058ae607d3a9ea3b66f0d65464d5d40e2e1a');
 
 
 /* enable gzip compression of HTML */
@@ -403,6 +403,7 @@ $router->addSetting('db', $db)
 })
 
 ->registerAction(function ($url, $o) {
+    // sitemap for a block
     if (substr($url, 0, 8) === 'sitemap/') {
         try {
             $block = new UnicodeBlock(substr(substr($url, 8), 0),
@@ -414,7 +415,6 @@ $router->addSetting('db', $db)
     }
     return False;
 }, function($request, $o) {
-    // sitemap for a block
     header('Content-Type: application/xml; charset=utf-8');
     $view = new View('sitemap/block.xml');
     echo $view->render(array('block'=>$request->data));
@@ -534,13 +534,13 @@ $router->addSetting('db', $db)
 
 ->registerAction(function ($url, $o) {
     // Script description: script/Xxxx
-    if (preg_match('/^script\/(?:[A-Z][a-z]{3})(?:%20[A-Z][a-z]{3})*$/', $url, $m)) {
+    if (preg_match('/^api\/script\/(?:[A-Z][a-z]{3})(?:%20[A-Z][a-z]{3})*$/', $url, $m)) {
         return True;
     }
     return False;
 }, function($request, $o) {
     header('Content-Type: application/json; charset=UTF-8');
-    $trunk = rawurldecode(substr($request->trunkUrl, 7));
+    $trunk = rawurldecode(substr($request->trunkUrl, 11));
     $j = array();
     $found = False;
     $stm = $o['db']->prepare('SELECT abstract, src

@@ -33,7 +33,7 @@ function getScripts(scx) {
   var r;
   if (! (scx in scxCache)) {
     r = $.ajax({
-      url: '/script/' + scx,
+      url: '/api/script/' + scx,
       dataType: 'json'
     }).done(function (data) {
       scxCache[scx] = data;
@@ -125,7 +125,7 @@ $('#sclist').accordion({
       dd = dt.next('dd');
       dt.data('dd', dd);
       $.ajax({
-        url: '/script/' + sc,
+        url: '/api/script/' + sc,
         dataType: 'json'
       }).done(function(data) {
         dd.append('<hr/>'+data[sc].abstract).append('<p class="nt">Source: <a href="' + data[sc].src + '">Wikipedia</a></p>');
