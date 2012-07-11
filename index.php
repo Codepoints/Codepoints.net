@@ -68,8 +68,20 @@ $router->addSetting('db', $db)
        ->addSetting('info', UnicodeInfo::get());
 
 
-foreach (glob('controllers/*.php') as $ctrl) {
-    require_once $ctrl;
+/**
+ * controllers sorted by complexity of routing
+ * (i.e., simple string matches first)
+ */
+$controllers = array(
+    'index', 'about', 'api_login', 'api_script', 'codepoint_of_the_day',
+    'planes', 'random', 'scripts', 'search', 'wizard', 'sitemap',
+
+    'single_character', 'plane', 'codepoint', 'block', 'possible_name',
+    'range',
+);
+
+foreach ($controllers as $ctrl) {
+    require_once "controllers/$ctrl.php";
 }
 
 
