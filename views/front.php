@@ -1,11 +1,11 @@
-<?php $title = 'Codepoints';
+<?php $title = 'Find all Unicode characters from Hieroglyphs to Dingbats';
 $hDescription = 'Codepoints is a site dedicated to Unicode and all things related to codepoints, characters, glyphs and internationalization.';
 $canonical = '/';
 include "header.php";
 include "nav.php";
 ?>
 <div class="payload front">
-  <h1><?php e($title)?></h1>
+  <h1><?php e('Codepoints')?></h1>
   <form method="get" action="<?php e($router->getUrl('SearchResult'))?>" class="searchform">
     <p><input type="text" name="q" placeholder="Search a Character"
        title="Enter a single character, like “丙” or “A”, or a term that describes the character, like “cyrillic” or “grass”" />
