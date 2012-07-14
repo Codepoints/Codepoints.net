@@ -6,6 +6,11 @@
  * lib/*.class.php are auto-loaded. The controller for the URL
  * structure is lib/router.class.php.
  *
+ * URLs are mapped to controllers in the following way: Every file in
+ * ./controllers/*.php is included and registers an action for a
+ * specific URL pattern. If the pattern is detected, the according action
+ * is called.
+ *
  * In lib/view.class.php is a view system defined, with the
  * views guiding the output living in views/.
  *
