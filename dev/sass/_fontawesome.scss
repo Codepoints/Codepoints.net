@@ -29,7 +29,6 @@ $path: '../fonts/fontawesome-webfont';
   src: url($path + '.eot?#iefix') format('eot'),
        url($path + '.woff') format('woff'),
        url($path + '.ttf') format('truetype'),
-       url($path + '.otf') format('opentype'),
        url($path + '.svg#FontAwesome') format('svg');
   font-weight: normal;
   font-style: normal;
