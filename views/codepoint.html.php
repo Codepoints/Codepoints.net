@@ -13,7 +13,8 @@ endif;
 if ($next):
     $headdata .= '<link rel="next" href="' . q($router->getUrl($next)) . '" />';
 endif;
-$hDescription = sprintf('The Unicode codepoint U+%04X, %s, is located in the block “%s”. It belongs to the %s script and is a %s.',
+$hDescription = sprintf('%s, codepoint U+%04X %s in Unicode, is located in the block “%s”. It belongs to the %s script and is a %s.',
+    $codepoint->getSafeChar(),
     $codepoint->getId(), $codepoint->getName(), $block->getName(), $info->getLabel('sc', $props['sc']), $info->getLabel('gc', $props['gc']));
 $canonical = $router->getUrl($codepoint);
 include "header.php";
