@@ -39,7 +39,7 @@ define('CP_DEBUG', 1);
 /**
  * cache busting string
  */
-define('CACHE_BUST', 'fe4f058ae607d3a9ea3b66f0d65464d5d40e2e1a');
+define('CACHE_BUST', 'b01c640efccc58f3b26b709e8ec49e42dd5deb3e');
 
 
 /* enable gzip compression of HTML */
@@ -81,6 +81,7 @@ $controllers = array(
     'index', 'about', 'api_login', 'api_script', 'codepoint_of_the_day',
     'planes', 'random', 'scripts', 'search', 'wizard', 'sitemap',
 
+    'api_font-face',
     'single_character', 'plane', 'codepoint', 'block', 'possible_name',
     'range',
 );

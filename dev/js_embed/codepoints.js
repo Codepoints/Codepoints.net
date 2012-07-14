@@ -174,7 +174,7 @@ $(function() {
         window.WebFont.load({
           custom: {
             families: [cp_fonts[0]],
-            urls: ['/static/fonts/'+encodeURIComponent(cp_fonts[0])+'.css']
+            urls: ['/api/font-face/'+encodeURIComponent(cp_fonts[0])+'.css']
           },
           active: function() {
             cp_fig.css({

@@ -16,6 +16,7 @@ class Request {
         'xml' => 'application/xml',
         'json' => 'application/json',
         'js' => 'application/json',
+        'css' => 'text/css',
     );
 
     public $lang = 'en';
