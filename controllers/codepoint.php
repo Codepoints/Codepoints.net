@@ -2,6 +2,7 @@
 
 $router->registerAction(function ($url, $o) {
     // Single Codepoint
+    $url = rawurldecode($url);
     if (substr($url, 0, 2) === 'U+' && ctype_xdigit(substr($url, 2))) {
         try {
             $codepoint = Codepoint::getCP(hexdec(substr($url, 2)), $o['db']);

@@ -84,6 +84,7 @@ $controllers = array(
     'api_font-face',
     'single_character', 'plane', 'codepoint', 'block', 'possible_name',
     'range',
+    'err_cp_with_space',
 );
 
 foreach ($controllers as $ctrl) {
