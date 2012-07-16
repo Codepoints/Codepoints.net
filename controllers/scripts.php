@@ -11,7 +11,10 @@ $router->registerAction('scripts', function ($request, $o) {
     $cur->execute();
     $scripts = $cur->fetchAll(PDO::FETCH_ASSOC);
     $view = new View($request->trunkUrl);
-    echo $view->render(array('scripts' => $scripts));
+    $cache = new Cache();
+    $data = $view->render(array('scripts' => $scripts));
+    echo $data;
+    $cache->write($request->url, $data);
 });
 
 //__END__

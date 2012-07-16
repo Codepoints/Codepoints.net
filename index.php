@@ -65,6 +65,22 @@ function flog($msg) {
 }
 
 
+if (CP_DEBUG) {
+    flog(sprintf("=============\n>>> START %s", $_SERVER['REQUEST_URI']));
+}
+
+
+if (! count($_GET) && ! count($_POST)) {
+    $cache = new Cache();
+    $cData = $cache->fetch(ltrim($_SERVER['REQUEST_URI'], "/"));
+    if ($cData) {
+        flog('Cache hit: '.ltrim($_SERVER['REQUEST_URI'], "/"));
+        header('Content-Type: text/html; charset=utf-8');
+        die($cData);
+    }
+}
+
+
 $db = new DB('sqlite:'.dirname(__FILE__).'/ucd.sqlite');
 $router = Router::getRouter();
 
@@ -137,6 +153,11 @@ if ($router->callAction() === False) {
     $cps = codepoint::getForString(rawurldecode($req->trunkUrl), $db);
     $view = new View('error404');
     echo $view->render(compact('planes', 'block', 'plane', 'cps'));
+}
+
+
+if (CP_DEBUG) {
+    flog(sprintf("\n>>> END %s\n===================", $_SERVER['REQUEST_URI']));
 }
 
 

@@ -17,8 +17,10 @@ $router->registerAction(function ($url, $o) {
     return False;
 }, function ($request, $o) {
     $view = new View('codepoint.html');
-    echo $view->render(array(
-        'codepoint' => $request->data));
+    $cache = new Cache();
+    $data = $view->render(array('codepoint' => $request->data));
+    echo $data;
+    $cache->write($request->url, $data);
 });
 
 //__END__

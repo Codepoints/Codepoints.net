@@ -14,7 +14,10 @@ $router->registerAction(function ($url, $o) {
 }, function($request) {
     $block = $request->data;
     $view = new View('block.html');
-    echo $view->render(compact('block'));
+    $cache = new Cache();
+    $data = $view->render(compact('block'));
+    echo $data;
+    $cache->write($request->url, $data);
 });
 
 //__END__

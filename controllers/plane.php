@@ -18,7 +18,10 @@ $router->registerAction(function ($url, $o) {
 }, function($request) {
     $plane = $request->data;
     $view = new View('plane.html');
-    echo $view->render(compact('plane'));
+    $cache = new Cache();
+    $data = $view->render(compact('plane'));
+    echo $data;
+    $cache->write($request->url, $data);
 });
 
 //__END__
