@@ -19,6 +19,13 @@ RewriteRule ^favicon\.ico$ static/images/favicon.ico [R,L]
 
 RewriteRule ^index.php - [L]
 
+# things that might go wrong with the "+" in the URL
+RewriteRule ^U(\ |%20|%2B)([A-Fa-f0-9]+)$      /U+$2 [R,L]
+
+# lowercased u+1234
+RewriteRule ^u(\+|\ |%20|%2B)([A-Fa-f0-9]+)$   /U+$2 [R,L]
+
+# everything that doesn't match a real file
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !/static/.*
 RewriteRule .* index.php [L]
