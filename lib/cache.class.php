@@ -48,10 +48,6 @@ class Cache {
         if (! is_file($rpath)) {
             return False;
         }
-        if (substr(realpath($rpath), 0, strlen(CACHE_FOLDER)) !==
-            CACHE_FOLDER) {
-            throw new Exception('Cache not accessible');
-        }
         if (filemtime($rpath) < filemtime(dirname(__FILE__).'/../index.php')) {
             // clear cache, if index.php has changed
             unlink($rpath);
@@ -70,7 +66,11 @@ class Cache {
      */
     protected function _getPath($path) {
         $rpath = CACHE_FOLDER."/_cache_".
-                    str_replace(array("/", ":", " ", "\\"), "_", $path);
+                    preg_replace('/[^a-zA-Z0-9$%&()*+,\-.=?_~]+/', "_", $path);
+        $test = dirname($rpath);
+        if (substr($test, 0, strlen(CACHE_FOLDER)) !== CACHE_FOLDER) {
+            throw new Exception('Cannot use this path for caching');
+        }
         return $rpath;
     }
 
