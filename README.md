@@ -23,6 +23,6 @@ project and issue an
 
 Presto, database ready. Copy it over here and call
 
-    $ make udc.sqlite
+    $ make ucd.sqlite
 
 to add the Codepoints.net specific additions.

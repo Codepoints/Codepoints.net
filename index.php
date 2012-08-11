@@ -17,7 +17,8 @@
  * To get an instance of the database up and running, visit
  * <https://github.com/Boldewyn/unicodeinfo>. On a regular
  * *NIX system, a simple `make` in that project should provide
- * you with the ucd.sqlite to run this instance.
+ * you with the ucd.sqlite to run this instance. (Don't forget to run
+ * `make ucd.sqlite`, when you copied it here.)
  *
  * This code is dually licensed under GPL and MIT. See
  * <http://codepoints.net/about#this_site> for details.
