@@ -11,8 +11,10 @@
  * specific URL pattern. If the pattern is detected, the according action
  * is called.
  *
- * In lib/view.class.php is a view system defined, with the
- * views guiding the output living in views/.
+ * In lib/view.class.php a view system is defined, with the
+ * views to guide the output living in views/. Optionally Mustache
+ * templates could be used, but we're not doing that at the moment.
+ * The templates would live in static/tpl/*.mustache.
  *
  * To get an instance of the database up and running, visit
  * <https://github.com/Boldewyn/unicodeinfo>. On a regular
@@ -38,7 +40,7 @@ define('CP_DEBUG', 1);
 
 
 /**
- * cache busting string
+ * cache busting string (the Makefile will manipulate this line)
  */
 define('CACHE_BUST', 'b01c640efccc58f3b26b709e8ec49e42dd5deb3e');
 
@@ -67,10 +69,12 @@ function flog($msg) {
 
 
 /**
- * check for existing cached entry
+ * check for existing cached entry and exit here, if a match exists
  */
 if (! count($_GET) && ! count($_POST)) {
     $cache = new Cache();
+    // TODO: Enhancement: We could fetch already gzipped content and
+    // pass that directly to the browser
     $cData = $cache->fetch(ltrim($_SERVER['REQUEST_URI'], "/"));
     if ($cData) {
         flog('Cache hit: '.ltrim($_SERVER['REQUEST_URI'], "/"));
