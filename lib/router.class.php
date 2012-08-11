@@ -162,11 +162,23 @@ class Router {
     /**
      * redirect to another URL
      */
-    public function redirect($url) {
+    public function redirect($url, $http=303) {
         if (substr($url, 0, 4) !== 'http' && $url[0] !== '/') {
             $url = $this->baseURL . $url;
         }
-        header('HTTP/1.0 303 See Other');
+        switch ($http) {
+            case 301:
+                header('HTTP/1.0 301 Moved Permanently');
+                break;
+            case 302:
+                header('HTTP/1.0 302 Found');
+                break;
+            case 307:
+                header('HTTP/1.0 307 Temporary Redirect');
+                break;
+            default:
+                header('HTTP/1.0 303 See Other');
+        }
         header('Location: ' . $url);
         exit();
     }
