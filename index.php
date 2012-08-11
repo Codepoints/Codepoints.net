@@ -65,6 +65,9 @@ function flog($msg) {
 }
 
 
+/**
+ * check for existing cached entry
+ */
 if (! count($_GET) && ! count($_POST)) {
     $cache = new Cache();
     $cData = $cache->fetch(ltrim($_SERVER['REQUEST_URI'], "/"));
@@ -76,6 +79,9 @@ if (! count($_GET) && ! count($_POST)) {
 }
 
 
+/**
+ * initialize DB connection and global router
+ */
 $db = new DB('sqlite:'.dirname(__FILE__).'/ucd.sqlite');
 $router = Router::getRouter();
 
@@ -85,7 +91,7 @@ $router->addSetting('db', $db)
 
 
 /**
- * controllers sorted by complexity of routing
+ * add controllers sorted by complexity of routing
  * (i.e., simple string matches first)
  */
 $controllers = array(
@@ -102,6 +108,9 @@ foreach ($controllers as $ctrl) {
 }
 
 
+/**
+ * register URL schemes for some class instances
+ */
 $router->registerUrl('Codepoint', function ($object) {
     return sprintf("U+%s", $object->getId('hex'));
 })
@@ -125,11 +134,16 @@ $router->registerUrl('Codepoint', function ($object) {
 });
 
 
+/**
+ * call the main action or produce a 404 error
+ */
 if ($router->callAction() === False) {
     header('HTTP/1.0 404 Not Found');
     $block = Null;
     $plane = Null;
     $planes = UnicodePlane::getAll($db);
+
+    // if the URL looks like a codepoint, give some extra hints
     if ($router->getSetting('noCP')) {
         $int = hexdec(substr($router->getSetting('request')->trunkUrl, 2));
         try {
@@ -144,6 +158,7 @@ if ($router->callAction() === False) {
             }
         }
     }
+
     $req = $router->getSetting('request');
     $cps = codepoint::getForString(rawurldecode($req->trunkUrl), $db);
     $view = new View('error404');
