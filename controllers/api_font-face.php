@@ -3,7 +3,7 @@
 $router->registerAction(function ($url, $o) {
     // an @font-face definition
     if (substr($url, 0, 14) === 'api/font-face/') {
-        return substr($url, 14);
+        return preg_replace('/[^a-zA-Z0-9_.-]/', '', substr($url, 14));
     }
     return False;
 }, function($request) {
