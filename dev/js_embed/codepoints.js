@@ -168,22 +168,24 @@ $(function() {
    */
   var cp_fig = $('.codepoint figure .fig');
   if (cp_fig.length) {
-    if (cp_fig.data('fonts')) {
-      var cp_fonts = cp_fig.data('fonts').split(',');
-      if (cp_fonts[0]) {
+    var font_opts = $('#fonts option');
+    if (font_opts.length) {
+      var cp_font = font_opts.eq(0).val(),
+          cp_fam  = $.trim(font_opts.eq(0).text());
+      if (cp_font) {
         window.WebFont.load({
           custom: {
-            families: [cp_fonts[0]],
-            urls: ['/api/font-face/'+encodeURIComponent(cp_fonts[0])+'.css']
+            families: [cp_font],
+            urls: ['/api/font-face/'+encodeURIComponent(cp_font)+'.css']
           },
           active: function() {
             cp_fig.css({
-              fontFamily: '"'+cp_fonts[0]+'", serif'
+              fontFamily: '"'+cp_fam+'", serif'
             });
             var _aside = cp_fig.closest('figure').next('aside');
             if (_aside.length) {
               _aside.find('dl:eq(0)').append('<dt>Font used above</dt>' +
-                                             '<dd>'+cp_fonts[0]+'</dd>');
+                                             '<dd>'+cp_font+'</dd>');
             }
           }
         });

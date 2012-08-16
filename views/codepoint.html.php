@@ -37,11 +37,17 @@ $s = function($cat) use ($router, $info, $props) {
 ?>
 <div class="payload codepoint">
   <figure>
-    <span class="fig"<?php
-    if ($codepoint->getId() > 0xFFFF):
-        $fonts = $codepoint->getFonts();?>
-        data-fonts="<?php e(join(',', $fonts))?>"
-    <?php endif; ?>><?php e($codepoint->getSafeChar())?></span>
+    <span class="fig"><?php e($codepoint->getSafeChar())?></span>
+    <?php if ($codepoint->getId() > 0xFFFF):
+        $fonts = $codepoint->getFonts();
+        if (count($fonts)):?>
+          <datalist id="fonts">
+            <?php foreach ($fonts as $font):?>
+              <option value="<?php e($font['id'])?>"><?php e($font['font'])?></option>
+            <?php endforeach?>
+          </datalist>
+        <?php endif?>
+    <?php endif?>
   </figure>
   <aside>
     <!--h3>Properties</h3-->
