@@ -71,7 +71,7 @@ function flog($msg) {
 /**
  * check for existing cached entry and exit here, if a match exists
  */
-if (! count($_GET) && ! count($_POST)) {
+if (! CP_DEBUG && ! count($_GET) && ! count($_POST)) {
     $cache = new Cache();
     // TODO: Enhancement: We could fetch already gzipped content and
     // pass that directly to the browser
