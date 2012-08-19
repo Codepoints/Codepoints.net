@@ -23,16 +23,16 @@ if ($next) {
 }
 include "nav.php";
 ?>
-<div class="payload block">
+<div class="payload block" itemscope="itemscope" itemtype="http://schema.org/Enumeration">
   <figure>
-    <img src="/static/images/blocks/<?php e(str_replace(' ', '_', $block->getName()))?>.png" alt="" width="128" height="128" />
+    <img src="/static/images/blocks/<?php e(str_replace(' ', '_', $block->getName()))?>.png" alt="" width="128" height="128" itemprop="image" />
   </figure>
-  <h1><?php e($block->getName());?></h1>
+  <h1 itemprop="name"><?php e($block->getName());?></h1>
   <?php if (count($cps) === 0):?>
-    <p>This block has not defined any codepoints between U+<?php f('%04X', $block_limits[0])?>
+    <p itemprop="description">This block has not defined any codepoints between U+<?php f('%04X', $block_limits[0])?>
        and U+<?php f('%04X', $block_limits[1])?>.</p>
   <?php else:?>
-    <p>Block from U+<?php f('%04X', $block_limits[0])?>
+    <p itemprop="description">Block from U+<?php f('%04X', $block_limits[0])?>
        to U+<?php f('%04X', $block_limits[1])?></p>
     <p><a href="http://www.unicode.org/charts/PDF/U<?php f('%04X', $block_limits[0])?>.pdf">Chart at Unicode.org</a> (PDF)<br/>
        <a href="http://decodeunicode.org/<?php e(str_replace(' ', '_', strtolower($block->getName())))?>">Block at Decode Unicode</a></p>
