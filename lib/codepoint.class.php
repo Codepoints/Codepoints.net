@@ -174,6 +174,9 @@ class Codepoint {
             $codepoint = $query->fetch(PDO::FETCH_ASSOC);
             $query->closeCursor();
             $this->properties = $codepoint;
+
+            // we now need all the codepoints related to this one
+            // (e.g., uppercase)
             $query = $this->db->prepare('SELECT *
                                            FROM codepoint_relation
                                           WHERE cp = :cp');
@@ -189,6 +192,15 @@ class Codepoint {
                     }
                     $this->properties[$v['relation']][$v['order'] - 1] = self::getCP($v['other'], $this->db);
                 }
+            }
+
+            // if the abstract is empty for a lowercase letter, take the
+            // one of the corresponding uppercase character
+            if ($this->properties['abstract'] === NULL &&
+                $this->properties['gc'] === 'Ll' &&
+                array_key_exists('uc', $this->properties)) {
+                $tmp = $this->properties['uc']->getProperties();
+                $this->properties['abstract'] = $tmp['abstract'];
             }
         }
         return $this->properties;
