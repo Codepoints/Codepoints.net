@@ -35,9 +35,9 @@ $s = function($cat) use ($router, $info, $props) {
     echo '</a>';
 };
 ?>
-<div class="payload codepoint">
+<div class="payload codepoint" itemscope="itemscope" itemtype="http://schema.org/StructuredValue">
   <figure>
-    <span class="fig"><?php e($codepoint->getSafeChar())?></span>
+    <span class="fig" itemprop="image"><?php e($codepoint->getSafeChar())?></span>
     <?php if ($codepoint->getId() > 0xFFFF):
         $fonts = $codepoint->getFonts();
         if (count($fonts)):?>
@@ -66,8 +66,8 @@ $s = function($cat) use ($router, $info, $props) {
       <?php endif?>
     </dl>
   </aside>
-  <h1>U+<?php e($codepoint->getId('hex'))?> <?php e($codepoint->getName())?></h1>
-  <section class="abstract">
+  <h1 itemprop="name">U+<?php e($codepoint->getId('hex'))?> <?php e($codepoint->getName())?></h1>
+  <section class="abstract" itemprop="description">
     <?php include "codepoint/info.php"?>
   </section>
   <section>
