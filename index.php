@@ -70,15 +70,31 @@ function flog($msg) {
 
 /**
  * check for existing cached entry and exit here, if a match exists
+ *
+ * We don't return cached entries, when POST variables are set or GET
+ * variables are immensely long.
  */
-if (! CP_DEBUG && ! count($_GET) && ! count($_POST)) {
+if (strlen($_SERVER['REQUEST_URI']) < 255 && ! count($_POST)) {
     $cache = new Cache();
-    // TODO: Enhancement: We could fetch already gzipped content and
-    // pass that directly to the browser
-    $cData = $cache->fetch(ltrim($_SERVER['REQUEST_URI'], "/"));
+    // we return the already gzipped cache entry, if the browser requests it
+    $zipped = False;
+    $xgzip = '';
+    if (isset($_SERVER['HTTP_ACCEPT_ENCODING']) &&
+        strpos($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip') !== False) {
+        $zipped = True;
+        if (strpos($_SERVER['HTTP_ACCEPT_ENCODING'], 'x-gzip') !== False) {
+            $xgzip = 'x-';
+        }
+    }
+    $cData = $cache->fetch(ltrim($_SERVER['REQUEST_URI'], "/"), $zipped);
     if ($cData) {
         flog('Cache hit: '.ltrim($_SERVER['REQUEST_URI'], "/"));
         header('Content-Type: text/html; charset=utf-8');
+        if ($zipped) {
+            flog('Send gzipped Cache hit');
+            ini_set('zlib.output_compression', False);
+            header('Content-Encoding: '.$xgzip.'gzip');
+        }
         die($cData);
     }
 }

@@ -20,6 +20,9 @@ class Cache {
 
     /**
      * write content to the cache
+     *
+     * If there are relevant GET parameters beside "lang", those must
+     * be reflected in the $path parameter!
      */
     public function write($path, $content) {
         if (! $this->_checkSize()) {
@@ -69,6 +72,7 @@ class Cache {
                     preg_replace('/[^a-zA-Z0-9$%&()*+,\-.=?_~]+/', "_", $path);
         $test = dirname($rpath);
         if (substr($test, 0, strlen(CACHE_FOLDER)) !== CACHE_FOLDER) {
+            // security net: don't allow writing/reading outside the cache folder
             throw new Exception('Cannot use this path for caching');
         }
         return $rpath;
