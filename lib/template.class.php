@@ -13,9 +13,6 @@ class Template {
         $partials = new MustacheLoader(dirname(__FILE__)."/../static/tpl");
         $this->mustache = new Mustache($template, null, $partials, null);
         $this->l10n = L10n::get('mustache');
-        if (isset($_COOKIE['lang'])){
-            $this->l10n->setLanguage($_COOKIE['lang']);
-        }
     }
 
     public function render($view = array()) {

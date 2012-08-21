@@ -70,6 +70,9 @@ class Cache {
     protected function _getPath($path) {
         $rpath = CACHE_FOLDER."/_cache_".
                     preg_replace('/[^a-zA-Z0-9$%&()*+,\-.=?_~]+/', "_", $path);
+        $lang = L10n::get('messages')->getLanguage();
+        // use Apache-style path extension for language
+        $rpath .= '.'.$lang;
         $test = dirname($rpath);
         if (substr($test, 0, strlen(CACHE_FOLDER)) !== CACHE_FOLDER) {
             // security net: don't allow writing/reading outside the cache folder

@@ -28,9 +28,7 @@ class L10n {
      * construct a new l10n wrapper
      */
     function __construct($lang = Null, $domain = Null) {
-        if ($lang) {
-            $this->setLanguage($lang);
-        }
+        $this->setLanguage($lang);
         if ($domain) {
             $this->domain = $domain;
         }
@@ -40,9 +38,19 @@ class L10n {
     /**
      * set the language in use
      */
-    public function setLanguage($lang) {
+    public function setLanguage($lang=NULL) {
+        if (! $lang) {
+            $lang = L10n::getDefaultLanguage();
+        }
         $this->lang = $lang;
         _setlocale(LC_MESSAGES, $lang);
+    }
+
+    /**
+     * get the language
+     */
+    public function getLanguage() {
+        return $this->lang;
     }
 
     /**
@@ -69,6 +77,21 @@ class L10n {
             self::$instances[$domain] = new self(Null, $domain);
         }
         return self::$instances[$domain];
+    }
+
+    /**
+     * get the language in use
+     */
+    public static function getDefaultLanguage() {
+        $lang = "en";
+        if (isset($_GET['lang']) && ctype_alpha($_GET['lang'])) {
+            $lang = $_GET['lang'];
+        } elseif (isset($_COOKIE['lang']) && ctype_alpha($_COOKIE['lang'])) {
+            $lang = $_COOKIE['lang'];
+        } elseif (function_exists('http_negotiate_language')) {
+            $lang = http_negotiate_language(array('en', 'de'));
+        }
+        return $lang;
     }
 
 }

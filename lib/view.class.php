@@ -17,6 +17,11 @@ function e($s) {
 }
 
 
+function _e($s) {
+    echo q(L10n::get('messages')->gettext($s));
+}
+
+
 function f() {
     $params = func_get_args();
     $format = $params[0];
