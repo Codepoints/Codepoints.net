@@ -199,8 +199,10 @@ class Codepoint {
             if ($this->properties['abstract'] === NULL &&
                 $this->properties['gc'] === 'Ll' &&
                 array_key_exists('uc', $this->properties)) {
-                $tmp = $this->properties['uc']->getProperties();
-                $this->properties['abstract'] = $tmp['abstract'];
+                if ($this->properties['uc'] instanceof Codepoint) {
+                    $tmp = $this->properties['uc']->getProperties();
+                    $this->properties['abstract'] = $tmp['abstract'];
+                }
             }
         }
         return $this->properties;
