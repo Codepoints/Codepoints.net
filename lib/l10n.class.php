@@ -71,6 +71,14 @@ class L10n {
     }
 
     /**
+     * translate a singular/plural string
+     */
+    public function ngettext($singular, $plural, $number) {
+        $l10n = _get_reader($this->domain);
+        return $l10n->ngettext($singular, $plural, $number);
+    }
+
+    /**
      * singleton getter
      */
     public static function get($domain="messages") {
