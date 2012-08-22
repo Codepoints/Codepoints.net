@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-22 22:20+0200\n"
-"PO-Revision-Date: 2012-08-22 22:27+0100\n"
+"POT-Creation-Date: 2012-08-22 23:30+0200\n"
+"PO-Revision-Date: 2012-08-22 23:53+0100\n"
 "Last-Translator: Manuel Strehl <translate@manuel-strehl.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -24,6 +24,398 @@ msgid ""
 "\n"
 msgstr ""
 
+#: views/search/form.php:4
+msgid "Free search:"
+msgstr "Freie Suche:"
+
+#: views/search/form.php:6
+msgid "Any information about the character, that doesn’t fit the categories below"
+msgstr "Jede Information über das Schriftzeichen, die nicht in die folgenden Kategorien passt"
+
+#: views/search/form.php:9
+#: views/quicksearch.php:3
+msgid "Name:"
+msgstr "Name:"
+
+#: views/search/form.php:11
+msgid "The Unicode name (or parts) of the character"
+msgstr "Der Unicode-Name (oder Teile davon) des Schriftzeichens"
+
+#: views/search/form.php:14
+msgid "Decimal:"
+msgstr "Dezimal:"
+
+#: views/search/form.php:16
+msgid "The decimal position of the codepoint"
+msgstr "Die dezimale Position des Codepunkts"
+
+#: views/search/form.php:36
+msgid "any"
+msgstr "egal"
+
+#: views/search/form.php:37
+msgid "yes"
+msgstr "ja"
+
+#: views/search/form.php:38
+msgid "no"
+msgstr "nein"
+
+#: views/search/form.php:43
+#: views/front.php:12
+#: views/front.php:53
+#: views/quicksearch.php:5
+msgid "search"
+msgstr "suchen"
+
+#: views/plane.html.php:6
+#, php-format
+msgid "The Unicode plane %s contains %s blocks and spans codepoints from U+%04X to U+%04X."
+msgstr "Die Unicode-Ebene %s enthält %s Blöcke und umspannt die Codepunkte von U+%04X bis U+%04X."
+
+#: views/plane.html.php:22
+#, php-format
+msgid "Plane from U+%04X to U+%04X."
+msgstr "Ebene von %04X bis %04X."
+
+#: views/plane.html.php:24
+msgid "Blocks in this plane"
+msgstr "Blöcke in dieser Ebene"
+
+#: views/plane.html.php:27
+#: views/planes.php:15
+#, php-format
+msgid "(U+%04X to U+%04X)"
+msgstr "(U+%04X bis U+%04X)"
+
+#: views/plane.html.php:31
+msgid "There are no blocks defined in this plane."
+msgstr "In dieser Ebene sind keine Blöcke definiert."
+
+#: views/nav.php:7
+#: views/footer.php:17
+msgid "Start"
+msgstr "Start"
+
+#: views/nav.php:8
+#: views/search.php:2
+msgid "Search"
+msgstr "Suche"
+
+#: views/nav.php:16
+msgid "Back to search results"
+msgstr "Zurück zu den Suchergebnissen"
+
+#: views/nav.php:18
+msgid "Scripts"
+msgstr "Schriften"
+
+#: views/nav.php:19
+msgid "Random"
+msgstr "Zufall"
+
+#: views/nav.php:20
+#: views/footer.php:20
+msgid "About"
+msgstr "Über"
+
+#: views/wizard.php:2
+#: views/front.php:25
+msgid "Find My Codepoint"
+msgstr "Finde meinen Codepunkt"
+
+#: views/wizard.php:3
+msgid "Find a certain character by answering a set of questions. The questions will narrow down possible candidates in the wide range of Unicode codepoints."
+msgstr ""
+
+#: views/wizard.php:13
+msgid "You search for a specific character? Answer the following questions and we try to figure out candidates."
+msgstr ""
+
+#: views/wizard.php:16
+msgid "We’re sorry, but for the wizard Javascript is needed."
+msgstr ""
+
+#: views/wizard.php:17
+msgid "We’d like to apologize for the inconvenience."
+msgstr ""
+
+#: views/search.php:3
+msgid "Search Codepoints.net by specifying many different possible parameters."
+msgstr ""
+
+#: views/search.php:10
+#, php-format
+msgid "Please add search limits with the form below. Click “add new query”, select a category and choose one of the values. You can change the value afterwards, if you click on it again. The %s button on the right removes the value from the search again."
+msgstr ""
+
+#: views/search.php:10
+msgid "remove"
+msgstr "entfernen"
+
+#: views/planes.php:1
+msgid "Unicode Planes"
+msgstr "Unicode-Ebenen"
+
+#: views/planes.php:2
+msgid "Unicode defines 16 planes, in which all the codepoints are separated."
+msgstr "Unicode definiert 16 Ebenen, in die alle Codepunkte eingeteilt werden."
+
+#: views/planes.php:9
+msgid "a representation of the Unicode logo"
+msgstr "eine Darstellung des Unicode-Logos"
+
+#: views/planes.php:18
+#, php-format
+msgid ""
+"The Unicode standard arranges the characters in 16 so-called planes of\n"
+"     a bit more than 65,000 codepoints (2<sup>16</sup> to be precise) each.\n"
+"     The Unicode standard has thus theoretically place for <em>1,114,112 characters</em>.\n"
+"     Some planes are still undefined\n"
+"     and will be filled at a later date. The most used characters go into\n"
+"     the almost full %s."
+msgstr ""
+
+#: views/planes.php:24
+msgid "Basic Multilingual Plane"
+msgstr ""
+
+#: views/planes.php:27
+#, php-format
+msgid ""
+"The %s contains mostly ancient characters, like Egyptian Hieroglyphs,\n"
+"     and graphic symbols, for example Mahjongg tiles or emoticons. Thirdly the\n"
+"     %s hosts lots of East Asian characters, that\n"
+"     didn’t find a place in the Basic Multilingual Plane.\n"
+"     The third-to-last %s\n"
+"     is almost completely empty and planned to contain non-character codepoints,\n"
+"     like control characters, that define the language of a text.\n"
+"     The last two planes are special purpose planes. Codepoints defined there\n"
+"     are <em>private</em>, that is, they will never be specified by Unicode and\n"
+"     can be freely assigned by third-party programs to whatever seems useful."
+msgstr ""
+
+#: views/planes.php:37
+msgid "second plane"
+msgstr ""
+
+#: views/planes.php:38
+msgid "Supplementary Ideographic Plane"
+msgstr ""
+
+#: views/planes.php:39
+msgid "Supplementary Special Purpose Plane"
+msgstr ""
+
+#: views/front.php:1
+msgid "Find all Unicode characters from Hieroglyphs to Dingbats"
+msgstr "Finde alle Unicode-Schriftzeichen von Hieroglyphen bis Dingbats"
+
+#: views/front.php:2
+msgid "Codepoints is a site dedicated to Unicode and all things related to codepoints, characters, glyphs and internationalization."
+msgstr "Codepoints ist eine Seite, die Unicode und allen Dingen rund um Schriftzeichen, Codepunkten, Buchstaben und Internationalisierung gewidmet ist."
+
+#: views/front.php:10
+msgid "Search a Character"
+msgstr "Suche ein Schriftzeichen"
+
+#: views/front.php:11
+msgid "Enter a single character, like “丙” or “A”, or a term that describes the character, like “cyrillic” or “grass”"
+msgstr "Gib ein einzelnes Zeichen, wie „丙“ or „A“, oder einen Begriff, der das Zeichen beschreibt, wie „cyrillic“ oder „grass“, an"
+
+#: views/front.php:16
+msgid ""
+"<strong>Codepoint</strong>, <em>n.</em> the position of a character in\n"
+"      an encoding system."
+msgstr "<strong>Codepunkt</strong>, <em>n.</em> die Position eines Zeichens in einem Kodiersystem."
+
+#: views/front.php:20
+msgid "Start here:"
+msgstr "Starte hier:"
+
+#: views/front.php:20
+msgid "Browse one by one through blocks of characters"
+msgstr "Stöbere eins nach dem anderen durch Blöcke von Schriftzeichen"
+
+#: views/front.php:21
+msgid "Browse Codepoints"
+msgstr "Durchstöbere Codepunkte"
+
+#: views/front.php:24
+msgid "Need help?"
+msgstr "Hilfe gefällig?"
+
+#: views/front.php:24
+msgid "Answer questions to find matching characters"
+msgstr "Beantworte Fragen um passende Zeichen zu finden"
+
+#: views/front.php:28
+msgid "Expert Search!"
+msgstr "Expertensuche!"
+
+#: views/front.php:28
+msgid "Search for characters with particular properties"
+msgstr "Suche nach Zeichen mit speziellen Eigenschaften"
+
+#: views/front.php:29
+msgid "Search Codepoint"
+msgstr "Codepunkt suchen"
+
+#: views/front.php:32
+msgid "About this Site"
+msgstr "Über diese Seite"
+
+#: views/front.php:33
+#, php-format
+msgid ""
+"Codepoints.net is dedicated to all the characters,\n"
+"          that are defined in the %s. Theoretically, these should be\n"
+"          <em>all characters ever used</em>. In practice Unicode has\n"
+"          <em>%s codepoints</em> defined at the moment, mapping characters\n"
+"          from %s to %s."
+msgstr "Codepoints.net ist allen Schriftzeichen gewidmet, die im %s definiert sind. Theoretisch sollten das <em>alle jemals verwendeten Zeichen</em> sein. In der Praxis hat Unicode derzeit <em>%s Codepunkte</em> definiert und umfasst Zeichen von %s bis %s."
+
+#: views/front.php:38
+msgid "Unicode Standard"
+msgstr "Unicode-Standard"
+
+#: views/front.php:40
+msgid "Egyptian Hieroglyphs"
+msgstr "ägyptischen Hieroglyphen"
+
+#: views/front.php:41
+msgid "Dingbats and Symbols"
+msgstr "Dingabts und Symbolen"
+
+#: views/front.php:44
+#, php-format
+msgid ""
+"All codepoints are arranged in 16 so-called\n"
+"       %s. These planes are further divided into several blocks with\n"
+"       %s being the first one. You can browse one by one by starting with\n"
+"       the first codepoint, %s or %s for a specific character. If you’re\n"
+"       not fully sure, try %s, to narrow down the candidates. Or maybe you\n"
+"       are more daring and want %s?"
+msgstr "Alle Codepunkte sind in 16 sogenannten %s angeordnet. Diese Ebenen sind weiter in einzelne Blöcke unterteilt mit %s als erstem. Du kannst sie einen nach dem anderen durchstöbern mit %s als erstem Codepunkt oder nach einem speziellen Charakter %s. Wenn du nicht vollkommen sicher bist, versuche %s um die Kandidaten einzuschränken. Oder vielleicht bist du wagemutig und versuchst %s?"
+
+#: views/front.php:50
+msgid "planes"
+msgstr "Ebenen"
+
+#: views/front.php:51
+msgid "Basic Latin"
+msgstr ""
+
+#: views/front.php:54
+msgid "“Find My Codepoint”"
+msgstr "„Finde meinen Codepunkt“"
+
+#: views/front.php:55
+msgid "a random codepoint"
+msgstr "einen zufälligen Codepunkt"
+
+#: views/front.php:83
+msgid "Codepoints of the Day"
+msgstr "Codepunkte des Tages"
+
+#: views/front.php:86
+msgid "Codepoint of the Day:"
+msgstr "Codepunkt des Tages:"
+
+#: views/front.php:95
+#, php-format
+msgid ""
+"U+%04X was added to Unicode in version\n"
+"            %s. It belongs to the block %s in the %s."
+msgstr "U+%04X wurde in Version %s zu Unicode hinzugefügt. Er gehört zum Block %s in der %s."
+
+#: views/front.php:103
+#, php-format
+msgid "This codepoint is %s."
+msgstr "Dieser Codepunkt ist %s."
+
+#: views/front.php:104
+msgid "deprecated"
+msgstr "überholt"
+
+#: views/front.php:116
+msgid "» View full description of this codepoint."
+msgstr "» Zeige volle Beschreibung dieses Codepunkts an."
+
+#: views/result.php:6
+#, php-format
+msgid " and %s Blocks"
+msgstr " und %s Blöcke"
+
+#: views/result.php:7
+msgid " and 1 Block"
+msgstr " und 1 Block"
+
+#: views/result.php:11
+#, php-format
+msgid "%s Codepoints%s Found"
+msgstr "%s Codepunkte%s gefunden"
+
+#: views/result.php:12
+#, php-format
+msgid "1 Codepoint%s Found"
+msgstr "1 Codepunkt%s gefunden"
+
+#: views/result.php:14
+#, php-format
+msgid "The Following Codepoints%s Match"
+msgstr "Die folgenden Codepunkte%s treffen zu"
+
+#: views/result.php:15
+#, php-format
+msgid "No Codepoints%s Found"
+msgstr "Keine Codepunkte%s gefunden"
+
+#: views/result.php:17
+msgid "No codepoints match the given search."
+msgstr "Keine Codepunkte entsprechen der gegebenen Suche."
+
+#: views/result.php:19
+#, php-format
+msgid "%s codepoints match the given search for %s properties."
+msgstr "%s Codepunkte entsprechen der gegebenen Suche nach %s Eigenschaften."
+
+#: views/result.php:28
+msgid "Try “Find My Codepoint” again."
+msgstr "Versuche „Finde meinen Codepunkt“ noch einmal."
+
+#: views/block.html.php:2
+#, php-format
+msgid "Block %s"
+msgstr "Block %s"
+
+#: views/block.html.php:12
+#, php-format
+msgid "The Unicode block %s contains the codepoints from U+%04X to U+%04X."
+msgstr "Der Unicode-Block %s enthält die Codepunkte von U+%04X bis U+%04X."
+
+#: views/block.html.php:32
+#, php-format
+msgid "This block has not defined any codepoints between U+%04X and U+%04X."
+msgstr "Dieser Block hat keine Codepunkte zwischen U+%04X und U+%04X definiert."
+
+#: views/block.html.php:34
+#, php-format
+msgid "Block from U+%04X to U+%04X."
+msgstr "Block von U+%04X bis U+%04X."
+
+#: views/block.html.php:35
+msgid "Chart at Unicode.org"
+msgstr "Tabelle bei Unicode.org"
+
+#: views/block.html.php:35
+msgid "(PDF)"
+msgstr "(PDF)"
+
+#: views/block.html.php:36
+msgid "Block at Decode Unicode"
+msgstr "Block bei Decode Unicode"
+
 #: views/codepoint/props.php:4
 msgid "Property"
 msgstr "Eigenschaft"
@@ -31,14 +423,6 @@ msgstr "Eigenschaft"
 #: views/codepoint/props.php:5
 msgid "Value"
 msgstr "Wert"
-
-#: views/quicksearch.php:3
-msgid "Name:"
-msgstr "Name:"
-
-#: views/quicksearch.php:5
-msgid "search"
-msgstr "suchen"
 
 #: views/codepoint.html.php:16
 #, php-format
@@ -145,10 +529,6 @@ msgstr "Wir verwenden Cookies, um Ihr Erlebnis zu verbessern und um die Seite we
 msgid "opt out explicitly"
 msgstr "explizit widersprechen"
 
-#: views/footer.php:17
-msgid "Start"
-msgstr "Start"
-
 #: views/footer.php:18
 msgid "Twitter"
 msgstr "Twitter"
@@ -157,7 +537,5 @@ msgstr "Twitter"
 msgid "Blog"
 msgstr "Blog"
 
-#: views/footer.php:20
-msgid "About"
-msgstr "Über"
-
+#~ msgid "(U+04X to U+04X)"
+#~ msgstr "(U+%04X bis U+%04X)"
