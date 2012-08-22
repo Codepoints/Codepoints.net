@@ -1,0 +1,163 @@
+# German translation of codepoints.net.
+# Copyright (C) 2012 Manuel Strehl
+# This file is distributed under the same license as the codepoints.net code.
+# Manuel Strehl <EMAIL@ADDRESS>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-08-22 22:20+0200\n"
+"PO-Revision-Date: 2012-08-22 22:27+0100\n"
+"Last-Translator: Manuel Strehl <translate@manuel-strehl.de>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: German\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: lib/gettext/examples/pigs_dropin.php:77
+msgid ""
+"This is how the story goes.\n"
+"\n"
+msgstr ""
+
+#: views/codepoint/props.php:4
+msgid "Property"
+msgstr "Eigenschaft"
+
+#: views/codepoint/props.php:5
+msgid "Value"
+msgstr "Wert"
+
+#: views/quicksearch.php:3
+msgid "Name:"
+msgstr "Name:"
+
+#: views/quicksearch.php:5
+msgid "search"
+msgstr "suchen"
+
+#: views/codepoint.html.php:16
+#, php-format
+msgid "%s, codepoint U+%04X %s in Unicode, is located in the block “%s”. It belongs to the %s script and is a %s."
+msgstr "%s, Codepunkt U+%04X %s in Unicode, liegt im Block „%s“. Es gehört zur %s-Schrift und ist ein %s."
+
+#: views/codepoint.html.php:55
+#: views/codepoint.html.php:84
+msgid "Nº"
+msgstr "Nr."
+
+#: views/codepoint.html.php:57
+#: views/codepoint.html.php:88
+msgid "UTF-8"
+msgstr "UTF-8"
+
+#: views/codepoint.html.php:64
+msgid "Numeric Value"
+msgstr "Numerischer Wert"
+
+#: views/codepoint.html.php:74
+msgid "Representations"
+msgstr "Darstellungen"
+
+#: views/codepoint.html.php:78
+msgid "System"
+msgstr "System"
+
+#: views/codepoint.html.php:79
+msgid "Representation"
+msgstr "Darstellung"
+
+#: views/codepoint.html.php:92
+msgid "UTF-16"
+msgstr "UTF-16"
+
+#: views/codepoint.html.php:96
+msgid "UTF-32"
+msgstr "UTF-32"
+
+#: views/codepoint.html.php:100
+msgid "URL-Quoted"
+msgstr "URL-kodiert"
+
+#: views/codepoint.html.php:104
+msgid "HTML-Escape"
+msgstr "HTML-Darstellung"
+
+#: views/codepoint.html.php:145
+msgid "Related Characters"
+msgstr "Verwandte Schriftzeichen"
+
+#: views/codepoint.html.php:154
+msgid "Confusables"
+msgstr "Verwechselbare"
+
+#: views/codepoint.html.php:164
+msgid "Elsewhere"
+msgstr "Anderswo"
+
+#: views/codepoint.html.php:168
+msgid "Unicode website"
+msgstr "Unicode-Webseite"
+
+#: views/codepoint.html.php:169
+msgid "Reference rendering on Unicode.org"
+msgstr "Referenz-Darstellung auf Unicode.org"
+
+#: views/codepoint.html.php:171
+msgid "Wikipedia"
+msgstr "Wikipedia"
+
+#: views/codepoint.html.php:174
+msgid "Unihan Database"
+msgstr "Unihan-Datenbank"
+
+#: views/codepoint.html.php:175
+msgid "Chinese Text Project"
+msgstr "Chinese Text Project"
+
+#: views/footer.php:7
+#, php-format
+msgid "This is Codepoints.net, a site dedicated to all things characters, letters and Unicode. The site is run by %s. The content can be %s under the given terms. We’d like to thank %s for making Codepoints.net possible. %s are always welcome."
+msgstr "Hier ist Codepoints.net, eine Seite, die Schriftzeichen, Buchstaben und Unicode gewidmet ist. Die Seite wird von %s betrieben. Der Inhalt kann unter den beschriebenen Bedingungen %s. Wir möchten %s dafür danken, Codepoints.net möglich gemacht zu haben. %s sind immer willkommen."
+
+#: views/footer.php:9
+msgid "freely reused"
+msgstr "frei wiederverwendet werden"
+
+#: views/footer.php:10
+msgid "these fine people"
+msgstr "diesen tollen Leuten"
+
+#: views/footer.php:11
+msgid "Feedback and contributions"
+msgstr "Feedback und Beiträge"
+
+#: views/footer.php:13
+#, php-format
+msgid "We use cookies to enhance your experience and to develop the site further. We never track you for monetary reasons. If you do not want this, you can either use the Do-Not-Track feature of your browser or %s."
+msgstr "Wir verwenden Cookies, um Ihr Erlebnis zu verbessern und um die Seite weiterzuentwickeln. Wir verfolgen Sie nie aus monetären Gründen. Wenn Sie das nicht möchten, können Sie entweder das Do-Not-Track-Feature Ihres Browsers verwenden oder %s."
+
+#: views/footer.php:14
+msgid "opt out explicitly"
+msgstr "explizit widersprechen"
+
+#: views/footer.php:17
+msgid "Start"
+msgstr "Start"
+
+#: views/footer.php:18
+msgid "Twitter"
+msgstr "Twitter"
+
+#: views/footer.php:19
+msgid "Blog"
+msgstr "Blog"
+
+#: views/footer.php:20
+msgid "About"
+msgstr "Über"
+
