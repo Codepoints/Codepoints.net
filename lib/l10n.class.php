@@ -59,6 +59,7 @@ class L10n {
     public function setDomain($domain) {
         $this->domain = $domain;
         _bindtextdomain($domain, realpath('./locale'));
+        _bind_textdomain_codeset($domain, 'UTF-8');
     }
 
     /**
