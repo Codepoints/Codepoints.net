@@ -13,7 +13,7 @@ endif;
 if ($next):
     $headdata .= '<link rel="next" href="' . q($router->getUrl($next)) . '" />';
 endif;
-$hDescription = sprintf('%s, codepoint U+%04X %s in Unicode, is located in the block “%s”. It belongs to the %s script and is a %s.',
+$hDescription = sprintf(__('%s, codepoint U+%04X %s in Unicode, is located in the block “%s”. It belongs to the %s script and is a %s.'),
     $codepoint->getSafeChar(),
     $codepoint->getId(), $codepoint->getName(), $block->getName(), $info->getLabel('sc', $props['sc']), $info->getLabel('gc', $props['gc']));
 $canonical = $router->getUrl($codepoint);
@@ -52,16 +52,16 @@ $s = function($cat) use ($router, $info, $props) {
   <aside>
     <!--h3>Properties</h3-->
     <dl>
-      <dt>Nº</dt>
+    <dt><?php _e('Nº')?></dt>
       <dd><?php e($codepoint->getId())?></dd>
-      <dt>UTF-8</dt>
+      <dt><?php _e('UTF-8')?></dt>
       <dd><?php e($codepoint->getRepr('UTF-8'))?></dd>
       <?php foreach(array('gc', 'sc', 'bc', 'dt', 'ea') as $cat):?>
         <dt><?php e($info->getCategory($cat))?></dt>
         <dd><a href="<?php e('search?'.$cat.'='.$props[$cat])?>"><?php e($info->getLabel($cat, $props[$cat]))?></a></dd>
       <?php endforeach?>
       <?php if($props['nt'] !== 'None'):?>
-        <dt>Numeric Value</dt>
+      <dt><?php _e('Numeric Value')?></dt>
         <dd><a href="<?php e('search?nt='.$props['nt'])?>"><?php e($info->getLabel('nt', $props['nt']).' '.$props['nv'])?></a></dd>
       <?php endif?>
     </dl>
@@ -71,37 +71,37 @@ $s = function($cat) use ($router, $info, $props) {
     <?php include "codepoint/info.php"?>
   </section>
   <section>
-    <h2>Representations</h2>
+  <h2><?php _e('Representations')?></h2>
     <table class="props">
       <thead>
         <tr>
-          <th>System</th>
-          <th>Representation</th>
+          <th><?php _e('System')?></th>
+          <th><?php _e('Representation')?></th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <th>Nº</th>
+          <th><?php _e('Nº')?></th>
           <td><?php e($codepoint->getId())?></td>
         </tr>
         <tr>
-          <th>UTF-8</th>
+          <th><?php _e('UTF-8')?></th>
           <td><?php e($codepoint->getRepr('UTF-8'))?></td>
         </tr>
         <tr>
-          <th>UTF-16</th>
+        <th><?php _e('UTF-16')?></th>
           <td><?php e($codepoint->getRepr('UTF-16'))?></td>
         </tr>
         <tr>
-          <th>UTF-32</th>
+          <th><?php _e('UTF-32')?></th>
           <td><?php e($codepoint->getRepr('UTF-32'))?></td>
         </tr>
         <tr>
-          <th>URL-Quoted</th>
+        <th><?php _e('URL-Quoted')?></th>
           <td>%<?php e($codepoint->getRepr('UTF-8', '%'))?></td>
         </tr>
         <tr>
-          <th>HTML-Escape</th>
+        <th><?php _e('HTML-Escape')?></th>
           <td>&amp;#x<?php e($codepoint->getId('hex'))?>;</td>
         </tr>
         <?php $alias = $codepoint->getALias();
@@ -142,7 +142,7 @@ $s = function($cat) use ($router, $info, $props) {
   </section>
 <?php if (count($relatives) + count($confusables)):?>
   <section>
-    <h2>Related Characters</h2>
+    <h2><?php _e('Related Characters')?></h2>
     <?php if (count($relatives)):?>
       <ul class="data">
         <?php foreach ($relatives as $rel):?>
@@ -151,7 +151,7 @@ $s = function($cat) use ($router, $info, $props) {
       </ul>
     <?php endif?>
     <?php if (count($confusables)):?>
-      <h3 id="confusables">Confusables</h3>
+      <h3 id="confusables"><?php _e('Confusables')?></h3>
       <ul class="data">
         <?php foreach ($confusables as $rel): ?>
           <li><?php cp($rel)?></li>
@@ -161,18 +161,18 @@ $s = function($cat) use ($router, $info, $props) {
   </section>
 <?php endif?>
   <section>
-    <h2>Elsewhere</h2>
+    <h2><?php _e('Elsewhere')?></h2>
     <ul>
       <li><a href="http://decodeunicode.org/en/U+<?php e($codepoint->getId('hex'))?>">Decode Unicode</a></li>
       <li><a href="http://fileformat.info/info/unicode/char/<?php e($codepoint->getId('hex'))?>/index.htm">Fileformat.info</a></li>
-      <li><a href="http://unicode.org/cldr/utility/character.jsp?a=<?php e($codepoint->getId('hex'))?>">Unicode website</a></li>
-      <li><a href="http://www.unicode.org/cgi-bin/refglyph?24-<?php e($codepoint->getId('hex'))?>">Reference rendering on Unicode.org</a></li>
+      <li><a href="http://unicode.org/cldr/utility/character.jsp?a=<?php e($codepoint->getId('hex'))?>"><?php _e('Unicode website')?></a></li>
+      <li><a href="http://www.unicode.org/cgi-bin/refglyph?24-<?php e($codepoint->getId('hex'))?>"><?php _e('Reference rendering on Unicode.org')?></a></li>
       <?php if (array_key_exists('abstract', $props) && $props['abstract']):?>
-        <li><a href="http://en.wikipedia.org/wiki/<?php e(rawurlencode($codepoint->getChar()))?>">Wikipedia</a></li>
+        <li><a href="http://en.wikipedia.org/wiki/<?php e(rawurlencode($codepoint->getChar()))?>"><?php _e('Wikipedia')?></a></li>
       <?php endif?>
       <?php if ($props['kDefinition']):?>
-        <li><a href="http://www.unicode.org/cgi-bin/GetUnihanData.pl?codepoint=<?php e(rawurlencode($codepoint->getChar()))?>">Unihan Database</a></li>
-        <li><a href="http://ctext.org/dictionary.pl?if=en&amp;char=<?php e(rawurlencode($codepoint->getChar()))?>">Chinese Text Project</a></li>
+        <li><a href="http://www.unicode.org/cgi-bin/GetUnihanData.pl?codepoint=<?php e(rawurlencode($codepoint->getChar()))?>"><?php _e('Unihan Database')?></a></li>
+        <li><a href="http://ctext.org/dictionary.pl?if=en&amp;char=<?php e(rawurlencode($codepoint->getChar()))?>"><?php _e('Chinese Text Project')?></a></li>
       <?php endif?>
       <li><a href="http://graphemica.com/<?php e(rawurlencode($codepoint->getChar()))?>">Graphemica</a></li>
       <li><a href="http://www.isthisthingon.org/unicode/index.phtml?glyph=<?php e($codepoint->getId('hex'))?>">The UniSearcher</a></li>

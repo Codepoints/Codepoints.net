@@ -1,8 +1,8 @@
 <table class="props">
   <thead>
     <tr>
-      <th>Property</th>
-      <th>Value</th>
+      <th><?php _e('Property')?></th>
+      <th><?php _e('Value')?></th>
     </tr>
   </thead>
   <tbody>
