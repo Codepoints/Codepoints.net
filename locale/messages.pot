@@ -1,0 +1,168 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-08-22 22:20+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: lib/gettext/examples/pigs_dropin.php:77
+msgid ""
+"This is how the story goes.\n"
+"\n"
+msgstr ""
+
+#: views/codepoint/props.php:4
+msgid "Property"
+msgstr ""
+
+#: views/codepoint/props.php:5
+msgid "Value"
+msgstr ""
+
+#: views/quicksearch.php:3
+msgid "Name:"
+msgstr ""
+
+#: views/quicksearch.php:5
+msgid "search"
+msgstr ""
+
+#: views/codepoint.html.php:16
+#, php-format
+msgid ""
+"%s, codepoint U+%04X %s in Unicode, is located in the block “%s”. It belongs "
+"to the %s script and is a %s."
+msgstr ""
+
+#: views/codepoint.html.php:55 views/codepoint.html.php:84
+msgid "Nº"
+msgstr ""
+
+#: views/codepoint.html.php:57 views/codepoint.html.php:88
+msgid "UTF-8"
+msgstr ""
+
+#: views/codepoint.html.php:64
+msgid "Numeric Value"
+msgstr ""
+
+#: views/codepoint.html.php:74
+msgid "Representations"
+msgstr ""
+
+#: views/codepoint.html.php:78
+msgid "System"
+msgstr ""
+
+#: views/codepoint.html.php:79
+msgid "Representation"
+msgstr ""
+
+#: views/codepoint.html.php:92
+msgid "UTF-16"
+msgstr ""
+
+#: views/codepoint.html.php:96
+msgid "UTF-32"
+msgstr ""
+
+#: views/codepoint.html.php:100
+msgid "URL-Quoted"
+msgstr ""
+
+#: views/codepoint.html.php:104
+msgid "HTML-Escape"
+msgstr ""
+
+#: views/codepoint.html.php:145
+msgid "Related Characters"
+msgstr ""
+
+#: views/codepoint.html.php:154
+msgid "Confusables"
+msgstr ""
+
+#: views/codepoint.html.php:164
+msgid "Elsewhere"
+msgstr ""
+
+#: views/codepoint.html.php:168
+msgid "Unicode website"
+msgstr ""
+
+#: views/codepoint.html.php:169
+msgid "Reference rendering on Unicode.org"
+msgstr ""
+
+#: views/codepoint.html.php:171
+msgid "Wikipedia"
+msgstr ""
+
+#: views/codepoint.html.php:174
+msgid "Unihan Database"
+msgstr ""
+
+#: views/codepoint.html.php:175
+msgid "Chinese Text Project"
+msgstr ""
+
+#: views/footer.php:7
+#, php-format
+msgid ""
+"This is Codepoints.net, a site dedicated to all things characters, letters "
+"and Unicode. The site is run by %s. The content can be %s under the given "
+"terms. We’d like to thank %s for making Codepoints.net possible. %s are "
+"always welcome."
+msgstr ""
+
+#: views/footer.php:9
+msgid "freely reused"
+msgstr ""
+
+#: views/footer.php:10
+msgid "these fine people"
+msgstr ""
+
+#: views/footer.php:11
+msgid "Feedback and contributions"
+msgstr ""
+
+#: views/footer.php:13
+#, php-format
+msgid ""
+"We use cookies to enhance your experience and to develop the site further. "
+"We never track you for monetary reasons. If you do not want this, you can "
+"either use the Do-Not-Track feature of your browser or %s."
+msgstr ""
+
+#: views/footer.php:14
+msgid "opt out explicitly"
+msgstr ""
+
+#: views/footer.php:17
+msgid "Start"
+msgstr ""
+
+#: views/footer.php:18
+msgid "Twitter"
+msgstr ""
+
+#: views/footer.php:19
+msgid "Blog"
+msgstr ""
+
+#: views/footer.php:20
+msgid "About"
+msgstr ""
