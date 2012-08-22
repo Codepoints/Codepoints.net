@@ -1,5 +1,5 @@
 <?php
-$title = 'Block ' . $block->getName();
+$title = sprintf(__('Block %s'), $block->getName());
 $block_limits = $block->getBlockLimits();
 $prev = $block->getPrev();
 $next = $block->getNext();
@@ -9,7 +9,7 @@ $page = isset($_GET['page'])? intval($_GET['page']) : 1;
 $pagination->setPage($page);
 $block->slice(($page - 1) * 256, 256);
 $cps = $block->get();
-$hDescription = sprintf('The Unicode block %s contains the codepoints from U+%04X to U+%04X.',
+$hDescription = sprintf(__('The Unicode block %s contains the codepoints from U+%04X to U+%04X.'),
     $block->getName(), $block_limits[0], $block_limits[1]);
 $canonical = $router->getUrl($block);
 include "header.php";
@@ -29,13 +29,11 @@ include "nav.php";
   </figure>
   <h1 itemprop="name"><?php e($block->getName());?></h1>
   <?php if (count($cps) === 0):?>
-    <p itemprop="description">This block has not defined any codepoints between U+<?php f('%04X', $block_limits[0])?>
-       and U+<?php f('%04X', $block_limits[1])?>.</p>
+    <p itemprop="description"><?php printf(__('This block has not defined any codepoints between U+%04X and U+%04X.'), $block_limits[0], $block_limits[1])?></p>
   <?php else:?>
-    <p itemprop="description">Block from U+<?php f('%04X', $block_limits[0])?>
-       to U+<?php f('%04X', $block_limits[1])?></p>
-    <p><a href="http://www.unicode.org/charts/PDF/U<?php f('%04X', $block_limits[0])?>.pdf">Chart at Unicode.org</a> (PDF)<br/>
-       <a href="http://decodeunicode.org/<?php e(str_replace(' ', '_', strtolower($block->getName())))?>">Block at Decode Unicode</a></p>
+    <p itemprop="description"><?php printf(__('Block from U+%04X to U+%04X.'), $block_limits[0]), $block_limits[1])?></p>
+    <p><a href="http://www.unicode.org/charts/PDF/U<?php f('%04X', $block_limits[0])?>.pdf"><?php _e('Chart at Unicode.org')?></a> <?php _e('(PDF)')?><br/>
+    <a href="http://decodeunicode.org/<?php e(str_replace(' ', '_', strtolower($block->getName())))?>"><?php _e('Block at Decode Unicode')?></a></p>
     <?php echo $pagination?>
     <ol class="block data">
       <?php

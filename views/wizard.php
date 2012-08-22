@@ -1,7 +1,6 @@
 <?php
-$title = 'Find My Codepoint';
-$hDescription = 'Find a certain character by answering a set of questions. '.
-    'The questions will narrow down possible candidates in the wide range of Unicode codepoints.';
+$title = __('Find My Codepoint');
+$hDescription = __('Find a certain character by answering a set of questions. The questions will narrow down possible candidates in the wide range of Unicode codepoints.');
 $canonical = '/wizard';
 include "header.php";
 include "nav.php";
@@ -11,12 +10,11 @@ include "nav.php";
   <?php if (isset($message) && $message):?>
     <p class="error"><?php e($message)?></p>
   <?php endif?>
-  <p>You search for a specific character? Answer the following questions and
-     we try to figure out candidates.</p>
+  <p><?php _e('You search for a specific character? Answer the following questions and we try to figure out candidates.')?></p>
   <div id="wizard_container" class="wizard">
     <noscript>
-      <p>We’re sorry, but for the wizard Javascript is needed.</p>
-      <p>We’d like to apologize for the inconvenience.</p>
+      <p><?php _e('We’re sorry, but for the wizard Javascript is needed.')?></p>
+      <p><?php _e('We’d like to apologize for the inconvenience.')?></p>
     </noscript>
   </div>
 </div>

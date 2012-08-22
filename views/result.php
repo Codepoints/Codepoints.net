@@ -3,20 +3,20 @@ $query = $result->getQuery();
 $cQuery = count($query);
 $cBlocks = count($blocks);
 $cBResult = $cBlocks > 0? ($cBlocks > 1?
-    sprintf(' and %s Blocks', $cBlocks) :
-    ' and 1 Block') :
+    sprintf(__(' and %s Blocks'), $cBlocks) :
+    __(' and 1 Block')) :
     '';
 $fQuery = $result->getCount();
 $title = $fQuery > 0? ($fQuery > 1?
-    sprintf('%s Codepoints%s Found', $fQuery, $cBResult) :
-        sprintf('1 Codepoint%s Found', $cBResult)) :
+    sprintf(__('%s Codepoints%s Found'), $fQuery, $cBResult) :
+        sprintf(__('1 Codepoint%s Found'), $cBResult)) :
         ((isset($cps) && count($cps))?
-            sprintf('The Following Codepoints%s Match', $cBResult) :
-                sprintf('No Codepoints%s Found', $cBResult));
+            sprintf(__('The Following Codepoints%s Match'), $cBResult) :
+                sprintf(__('No Codepoints%s Found'), $cBResult));
 if ($fQuery === 0) {
-    $hDescription = "No codepoints match the given search.";
+    $hDescription = __("No codepoints match the given search.");
 } else {
-    $hDescription = sprintf('%s codepoints match the given search.', $fQuery);
+    $hDescription = sprintf(__('%s codepoints match the given search for %s properties.'), $fQuery, $cQuery);
 }
 include "header.php";
 include "nav.php";
@@ -25,7 +25,7 @@ include "nav.php";
   <h1><?php e($title)?></h1>
   <?php if (isset($wizard) && $wizard):?>
     <p>
-      <a href="<?php e($router->getUrl('wizard'))?>">Try “Find My Codepoint” again.</a>
+      <a href="<?php e($router->getUrl('wizard'))?>"><?php _e('Try “Find My Codepoint” again.')?></a>
     </p>
   <?php endif?>
   <?php if ($fQuery > 0):?>
@@ -47,9 +47,7 @@ include "nav.php";
     <?php endif?>
   <?php endif?>
   <?php if($cBlocks):?>
-  <p><strong><?php e($cBlocks)?></strong> block<?php if($cBlocks > 1):?>s<?php endif?>
-    match<?php if($cBlocks === 1):?>es<?php endif?>
-    <strong><?php e(_get('q'))?></strong>:<p>
+  <p><?php printf(L10n::get('messages')->ngettext('%s block matches %s:', '%s blocks match %s:', $cBlocks), '<strong>'.q($cBlocks).'</strong>', '<strong>'.q(_get('q')).'</strong>')?><p>
     <ol class="data">
       <?php foreach ($blocks as $bl):
         echo '<li>'; bl($bl); echo '</li>';

@@ -1,5 +1,5 @@
-<?php $title = 'Find all Unicode characters from Hieroglyphs to Dingbats';
-$hDescription = 'Codepoints is a site dedicated to Unicode and all things related to codepoints, characters, glyphs and internationalization.';
+<?php $title = __('Find all Unicode characters from Hieroglyphs to Dingbats');
+$hDescription = __('Codepoints is a site dedicated to Unicode and all things related to codepoints, characters, glyphs and internationalization.');
 $canonical = '/';
 include "header.php";
 include "nav.php";
@@ -7,48 +7,53 @@ include "nav.php";
 <div class="payload front">
   <h1><?php e('Codepoints')?></h1>
   <form method="get" action="<?php e($router->getUrl('SearchResult'))?>" class="searchform">
-    <p><input type="text" name="q" placeholder="Search a Character"
-       title="Enter a single character, like “丙” or “A”, or a term that describes the character, like “cyrillic” or “grass”" />
-       <button type="submit"><span>search</span></button></p>
+    <p><input type="text" name="q" placeholder="<?php _e('Search a Character')?>"
+       title="<?php _e('Enter a single character, like “丙” or “A”, or a term that describes the character, like “cyrillic” or “grass”')?>" />
+       <button type="submit"><span><?php _e('search')?></span></button></p>
   </form>
   <article>
     <blockquote class="central">
-      <p><strong>Codepoint</strong>, <em>n.</em> the position of a character in
-         an encoding system.</p>
+      <p><?php echo __('<strong>Codepoint</strong>, <em>n.</em> the position of a character in
+      an encoding system.')?></p>
     </blockquote>
     <p class="action">
-      <span class="desc">Start here: <small>Browse one by one through blocks of characters</small></span>
-      <a class="button browse" href="<?php e($router->getUrl('basic_latin'))?>">Browse Codepoints</a>
+      <span class="desc"><?php _e('Start here:')?> <small><?php _e('Browse one by one through blocks of characters')?></small></span>
+      <a class="button browse" href="<?php e($router->getUrl('basic_latin'))?>"><?php _e('Browse Codepoints')?></a>
     </p>
     <p class="action">
-      <span class="desc">Need help? <small>Answer questions to find matching characters</small></span>
-      <a class="button find" href="<?php e($router->getUrl('wizard'))?>">Find My Codepoint</a>
+      <span class="desc"><?php _e('Need help?')?> <small><?php _e('Answer questions to find matching characters')?></small></span>
+      <a class="button find" href="<?php e($router->getUrl('wizard'))?>"><?php _e('Find My Codepoint')?></a>
     </p>
     <p class="action">
-      <span class="desc">Expert Search! <small>Search for characters with particular properties</small></span>
-      <a class="button expert" href="<?php e($router->getUrl('search'))?>">Search Codepoint</a>
+      <span class="desc"><?php _e('Expert Search!')?> <small><?php _e('Search for characters with particular properties')?></small></span>
+      <a class="button expert" href="<?php e($router->getUrl('search'))?>"><?php _e('Search Codepoint')?></a>
     </p>
     <section class="bk">
-      <h2>About this Site</h2>
-      <p>Codepoints.net is dedicated to all the characters, that are defined in
-       the <a href="http://unicode.org">Unicode Standard</a>. Theoretically,
-       these should be <em>all characters ever used</em>. In practice Unicode
-       has <em><?php e($nCPs)?> codepoints</em> defined at the moment, mapping characters
-       from <a href="<?php e($router->getUrl('egyptian_hieroglyphs'))?>">Egyptian Hieroglyphs</a>
-       to <a href="<?php e($router->getUrl('dingbats'))?>">Dingbats and Symbols</a>.
+      <h2><?php _e('About this Site')?></h2>
+      <p><?php printf(__('Codepoints.net is dedicated to all the characters,
+          that are defined in the %s. Theoretically, these should be
+          <em>all characters ever used</em>. In practice Unicode has
+          <em>%s codepoints</em> defined at the moment, mapping characters
+          from %s to %s.'),
+        '<a href="http://unicode.org">'.__('Unicode Standard').'</a>',
+        $nCPs,
+        '<a href="'.q($router->getUrl('egyptian_hieroglyphs')).'">'.__('Egyptian Hieroglyphs').'</a>',
+        '<a href="'.q($router->getUrl('dingbats')).'">'.__('Dingbats and Symbols').'</a>'
+       )?>
       </p>
-      <p>All codepoints are arranged in 16 so-called
-       <a href="<?php e($router->getUrl('planes'))?>">planes</a>. These planes
-       are further divided into several blocks with
-       <a href="<?php e($router->getUrl('/basic_latin'))?>">Basic Latin</a>
-       being the first one.
-       You can browse one by one by starting with the first codepoint,
-       <?php cp(Codepoint::getCP(0, $router->getSetting('db')))?> or
-       <a href="<?php e($router->getUrl('search'))?>">search</a> for a specific
-       character. If you’re not fully sure, try <a href="<?php e($router->getUrl('wizard'))?>">
-       “Find My Codepoint”</a>, to narrow down the candidates.
-       Or maybe you are more daring and want
-       <a href="<?php e($router->getUrl('random'))?>">a random codepoint</a>?
+      <p><?php printf(__('All codepoints are arranged in 16 so-called
+       %s. These planes are further divided into several blocks with
+       %s being the first one. You can browse one by one by starting with
+       the first codepoint, %s or %s for a specific character. If you’re
+       not fully sure, try %s, to narrow down the candidates. Or maybe you
+       are more daring and want %s?'),
+        '<a href="'.q($router->getUrl('planes')).'">'.__('planes').'</a>',
+        '<a href="'.q($router->getUrl('/basic_latin')).'">'.__('Basic Latin').'</a>',
+        _cp(Codepoint::getCP(0, $router->getSetting('db'))),
+        '<a href="'.q($router->getUrl('search')).'">'.__('search').'</a>',
+        '<a href="'.q($router->getUrl('wizard')).'">'.__('“Find My Codepoint”').'</a>',
+        '<a href="'.q($router->getUrl('random')).'">'.__('a random codepoint').'</a>'
+      )?>
       </p>
     </section>
 <!--
@@ -75,25 +80,30 @@ include "nav.php";
     ?>
       <section class="bk">
         <aside class="other">
-          <h2>Codepoints of the Day</h2>
+          <h2><?php _e('Codepoints of the Day')?></h2>
           <div id="ucotd_cal" data-date="<?php e(date('Y-m-d'))?>"></div>
         </aside>
-        <h2>Codepoint of the Day:
+        <h2><?php _e('Codepoint of the Day:')?>
             <a href="<?php e($router->getUrl($codepoint))?>">U+<?php e($codepoint->getId('hex'))?> <?php e($codepoint->getName())?></a></h2>
         <figure>
           <a href="<?php e($router->getUrl($codepoint))?>"><span class="fig"><?php e($codepoint->getSafeChar())?></span></a>
         </figure>
         <div class="abstract">
           <p>
-            U+<?php e($codepoint->getId('hex'))?> was added to Unicode in version
-            <?php $s('age')?>. It belongs to the block <?php bl($block)?> in the
-            <?php $plane = $codepoint->getPlane();
-            f('<a class="pl" href="%s">%s</a>',
-                $router->getUrl($plane), $plane->name); ?>.
-            <?php if ($props['Dep']):?>
-                This codepoint is <a href="<?php
-                e($router->getUrl('search?Dep=1'))?>">deprecated</a>.
-            <?php endif?>
+<?php 
+    $plane = $codepoint->getPlane();
+    printf(__('U+%04X was added to Unicode in version
+            %s. It belongs to the block %s in the %s.'),
+            $codepoint->getId(),
+            '<a href="'.q($router->getUrl('search?age='.$props['age'])).'">'.q($info->getLabel('age', $props['age'])).'</a>',
+            _bl($block),
+            '<a class="pl" href="'.q($router->getUrl($plane)).'">'.q($plane->name).'</a>'
+        );
+    if ($props['Dep']):
+        printf(__('This codepoint is %s.'),
+            '<a href="'.q($router->getUrl('search?Dep=1')).'">'.__('deprecated').'</a>');
+    endif;
+?>
           </p>
           <p>
             This character is a <?php $s('gc')?> and is
@@ -103,7 +113,7 @@ include "nav.php";
                 mainly used in the <?php $s('sc')?> script…
             <?php endif?>
           </p>
-          <p><strong><a href="<?php e($router->getUrl($codepoint))?>">» View full description of this codepoint.</a></strong></p>
+          <p><strong><a href="<?php e($router->getUrl($codepoint))?>"><?php _e('» View full description of this codepoint.')?></a></strong></p>
         </div>
       </section>
     <?php endif?>
