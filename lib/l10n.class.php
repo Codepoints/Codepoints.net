@@ -5,6 +5,14 @@ require_once "lib/gettext/gettext.inc";
 
 
 /**
+ * lazy gettext: do nothing, translation happens later
+ */
+function _n($s) {
+    return $s;
+}
+
+
+/**
  * wrapper for php_gettext
  */
 class L10n {

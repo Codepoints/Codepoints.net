@@ -46,4 +46,4 @@ ucd.sqlite: ucotd tools/scripts.sql tools/scripts_wp.sql tools/fonts/*_insert.sq
 locale/messages.pot: index.php lib/*.php controllers/*.php views/*.php \
                      views/*/*.php
 	find index.php lib controllers views -name \*.php | \
-		xargs xgettext -LPHP --from-code UTF-8 -k__ -k_e -kgettext -o $@
+		xargs xgettext -LPHP --from-code UTF-8 -k__ -k_e -k_n -kgettext -o $@
