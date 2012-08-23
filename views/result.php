@@ -47,7 +47,7 @@ include "nav.php";
     <?php endif?>
   <?php endif?>
   <?php if($cBlocks):?>
-  <p><?php printf(L10n::get('messages')->ngettext('%s block matches %s:', '%s blocks match %s:', $cBlocks), '<strong>'.q($cBlocks).'</strong>', '<strong>'.q(_get('q')).'</strong>')?><p>
+  <p><?php printf($cBlocks === 1? __('%s block matches %s:') : __('%s blocks match %s:'), '<strong>'.q($cBlocks).'</strong>', '<strong>'.q(_get('q')).'</strong>')?><p>
     <ol class="data">
       <?php foreach ($blocks as $bl):
         echo '<li>'; bl($bl); echo '</li>';

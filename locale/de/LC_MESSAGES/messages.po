@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-22 23:30+0200\n"
-"PO-Revision-Date: 2012-08-22 23:53+0100\n"
+"POT-Creation-Date: 2012-08-23 07:41+0200\n"
+"PO-Revision-Date: 2012-08-23 07:41+0100\n"
 "Last-Translator: Manuel Strehl <translate@manuel-strehl.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -17,12 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: German\n"
 "X-Poedit-SourceCharset: utf-8\n"
-
-#: lib/gettext/examples/pigs_dropin.php:77
-msgid ""
-"This is how the story goes.\n"
-"\n"
-msgstr ""
 
 #: views/search/form.php:4
 msgid "Free search:"
@@ -126,28 +120,28 @@ msgstr "Finde meinen Codepunkt"
 
 #: views/wizard.php:3
 msgid "Find a certain character by answering a set of questions. The questions will narrow down possible candidates in the wide range of Unicode codepoints."
-msgstr ""
+msgstr "Finde ein bestimmtes Zeichen durch das Beantworten einiger Fragen. Die Fragen schränken mögliche Kandidaten aus dem weiten Bereich der Unicode-Codepunkte ein."
 
 #: views/wizard.php:13
 msgid "You search for a specific character? Answer the following questions and we try to figure out candidates."
-msgstr ""
+msgstr "Du suchst ein bestimmtes Schriftzeichen? Beantworte die folgenden Fragen und wir versuchen, Kandidaten zu finden."
 
 #: views/wizard.php:16
 msgid "We’re sorry, but for the wizard Javascript is needed."
-msgstr ""
+msgstr "Leider wird für diese Funktion Javascript benötigt."
 
 #: views/wizard.php:17
 msgid "We’d like to apologize for the inconvenience."
-msgstr ""
+msgstr "Bitte entschuldige die Unannehmlichkeiten."
 
 #: views/search.php:3
 msgid "Search Codepoints.net by specifying many different possible parameters."
-msgstr ""
+msgstr "Durchsuche Codepoints.net durch Angabe vieler verschiedener möglicher Parameter."
 
 #: views/search.php:10
 #, php-format
 msgid "Please add search limits with the form below. Click “add new query”, select a category and choose one of the values. You can change the value afterwards, if you click on it again. The %s button on the right removes the value from the search again."
-msgstr ""
+msgstr "Bitte füge Einschränkungen mit dem unteren Formular hinzu. Klicke auf „neue Anfrage hinzufügen“ und wähle einen der Werte. Du kannst den Wert später ändern, indem du wieder auf ihn klickst. Der %s-Knopf zur Rechten entfernt den Wert wieder von der Suche."
 
 #: views/search.php:10
 msgid "remove"
@@ -174,11 +168,11 @@ msgid ""
 "     Some planes are still undefined\n"
 "     and will be filled at a later date. The most used characters go into\n"
 "     the almost full %s."
-msgstr ""
+msgstr "Der Unicode-Standard ordnet die Zeichen in 16 sogenannten Ebenen von je etwas mehr als 65.000 Zeichen (2<sup>16</sup> um genau zu sein) an. Der Standard hat deshalb theoretisch Platz für <em>1.114.112 Zeichen</em>. Einige Ebenen sind noch undefiniert und werden zu einem späteren Zeitpunkt gefüllt. Die meistverwendeten Zeichen wandern in die beinahe volle %s."
 
 #: views/planes.php:24
 msgid "Basic Multilingual Plane"
-msgstr ""
+msgstr "grundlegende mehrsprachige Ebene"
 
 #: views/planes.php:27
 #, php-format
@@ -193,19 +187,19 @@ msgid ""
 "     The last two planes are special purpose planes. Codepoints defined there\n"
 "     are <em>private</em>, that is, they will never be specified by Unicode and\n"
 "     can be freely assigned by third-party programs to whatever seems useful."
-msgstr ""
+msgstr "Die %s enthält hauptsächlich alte Zeichen wie ägyptische Hieroglyphen und grafische Symbole, zum Beispiel Mahjongg-Steine oder Emoticons. Drittens beherbergt die %s viele ostasiatische Zeichen, die in der grundlegenden mehrsprachigen Ebene keinen Platz gefunden haben. Die drittletzte %s ist beinahe vollkommen leer und soll Codepunkte enthalten, die keine Schriftzeichen sind, wie Kontrollzeichen, die die Sprache eines Textes auszeichnen. Die letzten beiden Ebenen sind Sondereinsatzebenen. Hier definierte Codepunkte sind <em>privat</em>, das heißt, sie werden niemals von Unicode spezifiziert und können von Drittprogrammen frei zugewiesen werden zu was immer sinnvoll erscheint."
 
 #: views/planes.php:37
 msgid "second plane"
-msgstr ""
+msgstr "zweite Ebene"
 
 #: views/planes.php:38
 msgid "Supplementary Ideographic Plane"
-msgstr ""
+msgstr "unterstützende ideographische Ebene"
 
 #: views/planes.php:39
 msgid "Supplementary Special Purpose Plane"
-msgstr ""
+msgstr "unterstützende Sondereinsatz-Ebene"
 
 #: views/front.php:1
 msgid "Find all Unicode characters from Hieroglyphs to Dingbats"
@@ -338,7 +332,22 @@ msgstr "Dieser Codepunkt ist %s."
 msgid "deprecated"
 msgstr "überholt"
 
-#: views/front.php:116
+#: views/front.php:109
+#, php-format
+msgid "This character is a %s and is %s…"
+msgstr "Dieses Schriftzeichen ist ein %s und ist %s…"
+
+#: views/front.php:111
+#, php-format
+msgid "%scommonly%s used"
+msgstr "%sallgemein%s verwendet"
+
+#: views/front.php:112
+#, php-format
+msgid "mainly used in the %s script"
+msgstr "hauptsächlich in der %s-Schrift verwendet"
+
+#: views/front.php:115
 msgid "» View full description of this codepoint."
 msgstr "» Zeige volle Beschreibung dieses Codepunkts an."
 
@@ -383,6 +392,16 @@ msgstr "%s Codepunkte entsprechen der gegebenen Suche nach %s Eigenschaften."
 #: views/result.php:28
 msgid "Try “Find My Codepoint” again."
 msgstr "Versuche „Finde meinen Codepunkt“ noch einmal."
+
+#: views/result.php:50
+#, php-format
+msgid "%s block matches %s:"
+msgstr "%s Block trifft auf %s zu:"
+
+#: views/result.php:50
+#, php-format
+msgid "%s blocks match %s:"
+msgstr "%s Blöcke treffen auf %s zu:"
 
 #: views/block.html.php:2
 #, php-format

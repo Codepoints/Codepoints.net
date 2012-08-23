@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-22 23:30+0200\n"
+"POT-Creation-Date: 2012-08-23 07:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
 #: lib/gettext/examples/pigs_dropin.php:77
 msgid ""
@@ -350,7 +349,22 @@ msgstr ""
 msgid "deprecated"
 msgstr ""
 
-#: views/front.php:116
+#: views/front.php:109
+#, php-format
+msgid "This character is a %s and is %s…"
+msgstr ""
+
+#: views/front.php:111
+#, php-format
+msgid "%scommonly%s used"
+msgstr ""
+
+#: views/front.php:112
+#, php-format
+msgid "mainly used in the %s script"
+msgstr ""
+
+#: views/front.php:115
 msgid "» View full description of this codepoint."
 msgstr ""
 
@@ -399,9 +413,12 @@ msgstr ""
 #: views/result.php:50
 #, php-format
 msgid "%s block matches %s:"
-msgid_plural "%s blocks match %s:"
-msgstr[0] ""
-msgstr[1] ""
+msgstr ""
+
+#: views/result.php:50
+#, php-format
+msgid "%s blocks match %s:"
+msgstr ""
 
 #: views/block.html.php:2
 #, php-format

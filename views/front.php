@@ -106,12 +106,11 @@ include "nav.php";
 ?>
           </p>
           <p>
-            This character is a <?php $s('gc')?> and is
-            <?php if ($props['sc'] === 'Zyyy'):?>
-                <a href="<?php e($router->getUrl('search?sc='.$props['sc']))?>">commonly</a> used…
-            <?php else:?>
-                mainly used in the <?php $s('sc')?> script…
-            <?php endif?>
+            <?php printf(__('This character is a %s and is %s…'),
+                '<a href="'.q($router->getUrl('search?gc='.$props['gc'])).'">'.q($info->getLabel('gc', $props['gc'])).'</a>',
+                ($props['sc'] === 'Zyyy')? sprintf(__('%scommonly%s used'), '<a href="'.q($router->getUrl('search?sc='.$props['sc'])).'">', '</a>') :
+                sprintf(__('mainly used in the %s script'), '<a href="'.q($router->getUrl('search?sc='.$props['sc'])).'">'.q($info->getLabel('sc', $props['sc'])).'</a>')
+            )?>
           </p>
           <p><strong><a href="<?php e($router->getUrl($codepoint))?>"><?php _e('» View full description of this codepoint.')?></a></strong></p>
         </div>
