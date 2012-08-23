@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-08-23 07:41+0200\n"
-"PO-Revision-Date: 2012-08-23 07:41+0100\n"
+"PO-Revision-Date: 2012-08-23 07:47+0100\n"
 "Last-Translator: Manuel Strehl <translate@manuel-strehl.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -542,7 +542,7 @@ msgstr "Feedback und Beiträge"
 #: views/footer.php:13
 #, php-format
 msgid "We use cookies to enhance your experience and to develop the site further. We never track you for monetary reasons. If you do not want this, you can either use the Do-Not-Track feature of your browser or %s."
-msgstr "Wir verwenden Cookies, um Ihr Erlebnis zu verbessern und um die Seite weiterzuentwickeln. Wir verfolgen Sie nie aus monetären Gründen. Wenn Sie das nicht möchten, können Sie entweder das Do-Not-Track-Feature Ihres Browsers verwenden oder %s."
+msgstr "Wir verwenden Cookies, um dein Erlebnis zu verbessern und die Seite weiterzuentwickeln. Wir verfolgen dich nie aus monetären Gründen. Wenn du das nicht möchtest, kannst du entweder das Do-Not-Track-Feature deines Browsers verwenden oder %s."
 
 #: views/footer.php:14
 msgid "opt out explicitly"
