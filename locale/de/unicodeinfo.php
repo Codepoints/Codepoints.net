@@ -1,43 +1,40 @@
 <?php
 
 
-/**
- * get abbreviations and stuff
- */
-class UnicodeInfo {
-    protected $categories = array(
-        'cp' => 'Codepoint',
-        'age' => 'Age',
-        'na' => 'Unicode Name',
-        'na1' => 'Unicode 1 Name',
-        'gc' => 'General Category',
-        'ccc' => 'Combining Class',
-        'bc' => 'Bidirectional Category',
-        'Bidi_M' => 'Bidi Mirrored',
-        'bmg' => 'Bidi Mirrored Glyph',
+$info_localized = array(
+    'categories' => array(
+        'cp' => 'Codepunkt',
+        'age' => 'Alter',
+        'na' => 'Unicode-Name',
+        'na1' => 'Unicode 1-Name',
+        'gc' => 'Generelle Kategorie',
+        'ccc' => 'Verknüpfungsklasse',
+        'bc' => 'Bidirektionale Kategorie',
+        'Bidi_M' => 'Bidi-gespiegelt',
+        'bmg' => 'Bidi gespiegeltes Zeichen',
         'Bidi_C' => 'Bidi Control',
-        'dt' => 'Decomposition Type',
-        'dm' => 'Decomposition Mapping',
+        'dt' => 'Zerlegungstyp',
+        'dm' => 'Zerlegungsabbildung',
         'CE' => 'Composition Exclusion',
         'Comp_Ex' => 'Full Composition Exclusion',
-        'NFC_QC' => 'NFC Quick Check',
-        'NFD_QC' => 'NFD Quick Check',
-        'NFKC_QC' => 'NFKC Quick Check',
-        'NFKD_QC' => 'NFKD Quick Check',
+        'NFC_QC' => 'NFC-Schnellcheck',
+        'NFD_QC' => 'NFD-Schnellcheck',
+        'NFKC_QC' => 'NFKC-Schnellcheck',
+        'NFKD_QC' => 'NFKD-Schnellcheck',
         'XO_NFC' => 'Expands On NFC',
         'XO_NFD' => 'Expands On NFD',
         'XO_NFKC' => 'Expands On NFKC',
         'XO_NFKD' => 'Expands On NFKD',
         'FC_NFKC' => 'FC NFKC Closure',
-        'nt' => 'Numeric Type',
-        'nv' => 'Numeric Value',
-        'jt' => 'Joining Type',
-        'jg' => 'Joining Group',
+        'nt' => 'Numerischer Typ',
+        'nv' => 'Numerischer Wert',
+        'jt' => 'Verbindungstyp',
+        'jg' => 'Verbindungsgruppe',
         'Join_C' => 'Join Control',
-        'lb' => 'Line Break',
-        'ea' => 'East Asian Width',
-        'Upper' => 'Uppercase',
-        'Lower' => 'Lowercase',
+        'lb' => 'Zeilenumbruch',
+        'ea' => 'Ostasiatische Weite',
+        'Upper' => 'Großbuchstabe',
+        'Lower' => 'Kleinbuchstabe',
         'OUpper' => 'Other Uppercase',
         'OLower' => 'Other Lowercase',
         'suc' => 'Simple Uppercase Mapping',
@@ -57,8 +54,8 @@ class UnicodeInfo {
         'CWT' => 'Changes When Titlecased',
         'CWU' => 'Changes When Uppercased',
         'NFKC_CF' => 'NFKC Casefold',
-        'sc' => 'Script',
-        'isc' => 'ISO 10646 Comment',
+        'sc' => 'Schrift',
+        'isc' => 'ISO 10646-Kommentar',
         'hst' => 'Hangul Syllable Type',
         'JSN' => 'Jamo Short Name',
         'InSC' => 'Indic Syllabic Category',
@@ -69,42 +66,42 @@ class UnicodeInfo {
         'IDC' => 'ID Continue',
         'OIDC' => 'Other ID Continue',
         'XIDC' => 'XID Continue',
-        'Pat_Syn' => 'Pattern Syntax',
-        'Pat_WS' => 'Pattern White Space',
-        'Dash' => 'Dash',
-        'Hyphen' => 'Hyphen',
-        'QMark' => 'Quotation Mark',
+        'Pat_Syn' => 'Muster-Syntax',
+        'Pat_WS' => 'Muster-Leerzeichen',
+        'Dash' => 'Strich',
+        'Hyphen' => 'Trennstrich',
+        'QMark' => 'Anführungszeichen',
         'Term' => 'Terminal Punctuation',
         'STerm' => 'STerm',
-        'Dia' => 'Diacritic',
+        'Dia' => 'Diakritisch',
         'Ext' => 'Extender',
         'SD' => 'Soft Dotted',
-        'Alpha' => 'Alphabetic',
+        'Alpha' => 'Alphabetisch',
         'OAlpha' => 'Other Alphabetic',
-        'Math' => 'Math',
-        'OMath' => 'Other Math',
-        'Hex' => 'Hex Digit',
-        'AHex' => 'ASCII Hex Digit',
+        'Math' => 'Mathe',
+        'OMath' => 'anderes Mathe',
+        'Hex' => 'Hex-Zahl',
+        'AHex' => 'ASCII Hex-Zahl',
         'DI' => 'Default Ignorable Code Point',
         'ODI' => 'Other Default Ignorable Code Point',
         'LOE' => 'Logical Order Exception',
-        'WSpace' => 'White Space',
+        'WSpace' => 'Leerzeichen',
         'Gr_Base' => 'Grapheme Base',
         'Gr_Ext' => 'Grapheme Extend',
         'OGr_Ext' => 'Other Grapheme Extend',
         'Gr_Link' => 'Grapheme Link',
         'GCB' => 'Grapheme Cluster Break',
-        'WB' => 'Word Break',
-        'SB' => 'Sentence Break',
-        'Ideo' => 'Ideographic',
-        'UIdeo' => 'Unified Ideograph',
+        'WB' => 'Wortumbruch',
+        'SB' => 'Satzumbruch',
+        'Ideo' => 'Ideogramm',
+        'UIdeo' => 'vereinheitlichtes Ideogramm',
         'IDSB' => 'IDS Binary Operator',
         'IDST' => 'IDS Trinary Operator and ',
         'Radical' => 'Radical',
-        'Dep' => 'Deprecated',
+        'Dep' => 'veraltet',
         'VS' => 'Variation Selector',
-        'NChar' => 'Noncharacter Code Point',
-        'kAccountingNumeric' => 'Accounting Numeric Value',
+        'NChar' => 'Nichtzeichen-Codepunkt',
+        'kAccountingNumeric' => 'numerischer Wert in der Buchhaltung',
         'kAlternateHanYu' => '',
         'kAlternateJEF' => '',
         'kAlternateKangXi' => '',
@@ -118,10 +115,10 @@ class UnicodeInfo {
         'kCheungBauer' => '',
         'kCheungBauerIndex' => '',
         'kCihaiT' => '',
-        'kCompatibilityVariant' => 'Compatibility Variant',
+        'kCompatibilityVariant' => 'Kompatibilitäts-Variante',
         'kCowles' => '',
         'kDaeJaweon' => '',
-        'kDefinition' => 'Unihan Definition',
+        'kDefinition' => 'Unihan-Definition',
         'kEACC' => '',
         'kFenn' => '',
         'kFennIndex' => '',
@@ -177,9 +174,9 @@ class UnicodeInfo {
         'kMeyerWempe' => '',
         'kMorohashi' => '',
         'kNelson' => '',
-        'kOtherNumeric' => 'Other Numeric Value',
+        'kOtherNumeric' => 'anderer numerischer Wert',
         'kPhonetic' => '',
-        'kPrimaryNumeric' => 'Primary Numeric Value',
+        'kPrimaryNumeric' => 'primärer numerischer Wert',
         'kPseudoGB1' => '',
         'kRSAdobe_Japan1_6' => 'Radical Stroke Count (Adobe Japan 1-6)',
         'kRSJapanese' => 'Radical Stroke Count (Japanese)',
@@ -189,86 +186,77 @@ class UnicodeInfo {
         'kRSMerged' => '',
         'kRSUnicode' => 'Radical Stroke Count (Unicode)',
         'kSBGY' => '',
-        'kSemanticVariant' => 'Semantic Variant',
-        'kSimplifiedVariant' => 'Simplified Variant',
-        'kSpecializedSemanticVariant' => 'Specialized Semantic Variant',
+        'kSemanticVariant' => 'Semantische Variante',
+        'kSimplifiedVariant' => 'vereinfachte Variante',
+        'kSpecializedSemanticVariant' => 'spezialisierte semantische Variante',
         'kTaiwanTelegraph' => '',
         'kTang' => '',
         'kTotalStrokes' => 'Stroke Number',
-        'kTraditionalVariant' => 'Traditional Variant',
+        'kTraditionalVariant' => 'Traditionelle Variante',
         'kVietnamese' => '',
         'kXHC1983' => '',
         'kWubi' => '',
         'kXerox' => '',
-        'kZVariant' => 'z Variant',
+        'kZVariant' => 'z-Variante',
         'blk' => 'Block',
-        'scx' => 'Script Extension',
-    );
+        'scx' => 'Schrift-Erweiterung',
+    ),
 
-    protected $boolean = array( 'Bidi_M', 'Bidi_C', 'CE', 'Comp_Ex', 'XO_NFC',
-    'XO_NFD', 'XO_NFKC', 'XO_NFKD', 'Join_C', 'Upper', 'Lower', 'OUpper',
-    'OLower', 'CI', 'Cased', 'CWCF', 'CWCM', 'CWL', 'CWKCF', 'CWT', 'CWU',
-    'IDS', 'OIDS', 'XIDS', 'IDC', 'OIDC', 'XIDC', 'Pat_Syn', 'Pat_WS', 'Dash',
-    'Hyphen', 'QMark', 'Term', 'STerm', 'Dia', 'Ext', 'SD', 'Alpha', 'OAlpha',
-    'Math', 'OMath', 'Hex', 'AHex', 'DI', 'ODI', 'LOE', 'WSpace', 'Gr_Base',
-    'Gr_Ext', 'OGr_Ext', 'Gr_Link', 'Ideo', 'UIdeo', 'IDSB', 'IDST',
-    'Radical', 'Dep', 'VS', 'NChar');
-
-    protected $legend = array(
+    'legend' => array(
 
         'gc' => array(
-            'Lu' => 'Uppercase Letter',
-            'Ll' => 'Lowercase Letter',
-            'Lt' => 'Titlecase Letter',
-            'Lm' => 'Modifier Letter',
-            'Lo' => 'Other Letter',
-            'Mn' => 'Nonspacing Mark',
-            'Mc' => 'Spacing Mark',
-            'Me' => 'Enclosing Mark',
-            'Nd' => 'Decimal Number',
-            'Nl' => 'Letter Number',
-            'No' => 'Other Number',
-            'Pc' => 'Connector Punctuation',
-            'Pd' => 'Dash Punctuation',
-            'Ps' => 'Open Punctuation',
-            'Pe' => 'Close Punctuation',
-            'Pi' => 'Initial Punctuation',
-            'Pf' => 'Final Punctuation',
-            'Po' => 'Other Punctuation',
-            'Sm' => 'Math Symbol',
-            'Sc' => 'Currency Symbol',
-            'Sk' => 'Modifier Symbol',
-            'So' => 'Other Symbol',
-            'Zs' => 'Space Separator',
-            'Zl' => 'Line Separator',
-            'Zp' => 'Paragraph Separator',
-            'Cc' => 'Control',
+            'Lu' => 'Großbuchstabe',
+            'Ll' => 'Kleinbuchstabe',
+            'Lt' => 'Titelbuchstabe',
+            'Lm' => 'Modifizierender Buchstabe',
+            'Lo' => 'anderer Buchstabe',
+            'Mn' => 'nicht-setzende Markierung',
+            'Mc' => 'setzende Markierung',
+            'Me' => 'einschließende Markierung',
+            'Nd' => 'Dezimalnummer',
+            'Nl' => 'Buchstaben-Nummer',
+            'No' => 'andere Nummer',
+            'Pc' => 'verbindende Interpunktation',
+            'Pd' => 'Strich-Interpunktation',
+            'Ps' => 'öffnende Interpunktation',
+            'Pe' => 'schließende Interpunktation',
+            'Pi' => 'beginnende Interpunktation',
+            'Pf' => 'endende Interpunktation',
+            'Po' => 'andere Interpunktation',
+            'Sm' => 'Mathe-Symbol',
+            'Sc' => 'Währungssymbol',
+            'Sk' => 'veränderndes Symbol',
+            'So' => 'anderes Symbol',
+            'Zs' => 'Leerzeichen-Trenner',
+            'Zl' => 'Zeilentrenner',
+            'Zp' => 'Absatztrenner',
+            'Cc' => 'Kontroll',
             'Cf' => 'Format',
-            'Cs' => 'Surrogate',
-            'Co' => 'Private Use',
-            'Cn' => 'Unassigned',
+            'Cs' => 'Ersatz',
+            'Co' => 'Persönlicher Bereich',
+            'Cn' => 'nicht zugewiesen',
         ),
 
         'bc' => array(
-            'L' =>   'Left To Right',
-            'LRE' => 'Left To Right Embedding',
-            'LRO' => 'Left To Right Override',
-            'R' =>   'Right To Left',
-            'AL' =>  'Arabic Letter',
-            'RLE' => 'Right To Left Embedding',
-            'RLO' => 'Right To Left Override',
+            'L' =>   'links nach rechts',
+            'LRE' => 'links nach rechts eingebettet',
+            'LRO' => 'links nach rechts überschreibend',
+            'R' =>   'rechts nach links',
+            'AL' =>  'Arabischer Buchstabe',
+            'RLE' => 'rechts nach links eingebettet',
+            'RLO' => 'rechts nach links überschreibend',
             'PDF' => 'Pop Directional Format',
-            'EN' =>  'European Number',
-            'ES' =>  'European Separator',
-            'ET' =>  'European Terminator',
-            'AN' =>  'Arabic Number',
-            'CS' =>  'Common Separator',
-            'NSM' => 'Nonspacing Mark',
-            'BN' =>  'Boundary Neutral',
-            'B' =>   'Paragraph Separator',
-            'S' =>   'Segment Separator',
-            'WS' =>  'White Space',
-            'ON' =>  'Other Neutral',
+            'EN' =>  'Europäische Nummer',
+            'ES' =>  'Europäischer Trenner',
+            'ET' =>  'Europäischer Beender',
+            'AN' =>  'Arabische Nummer',
+            'CS' =>  'allgemeiner Trenner',
+            'NSM' => 'nicht-setzende Markierung',
+            'BN' =>  'begrenzungsneutral',
+            'B' =>   'Absatz-Trenner',
+            'S' =>   'Segment-Trenner',
+            'WS' =>  'Leerzeichen',
+            'ON' =>  'anderes neutrales Zeichen',
         ),
 
         'ccc' => array(
@@ -301,90 +289,90 @@ class UnicodeInfo {
         ),
 
         'dt' => array(
-            'can' => 'Canonical',
-            'com' => 'Compat',
-            'enc' => 'Circle',
-            'fin' => 'Final',
-            'font' => 'Font',
-            'fra' => 'Fraction',
-            'init' => 'Initial',
-            'iso' => 'Isolated',
-            'med' => 'Medial',
-            'nar' => 'Narrow',
-            'nb' => 'Nobreak',
-            'none' => 'None',
-            'sml' => 'Small',
-            'sqr' => 'Square',
-            'sub' => 'Sub',
-            'sup' => 'Super',
-            'vert' => 'Vertical',
-            'wide' => 'Wide',
+            'can' => 'kanonisch',
+            'com' => 'kompatibel',
+            'enc' => 'Kreis',
+            'fin' => 'Abschluss',
+            'font' => 'Schriftart',
+            'fra' => 'Bruch',
+            'init' => 'Anfang',
+            'iso' => 'isoliert',
+            'med' => 'mittig',
+            'nar' => 'eng',
+            'nb' => 'nicht-umbrechend',
+            'none' => 'nichts',
+            'sml' => 'klein',
+            'sqr' => 'Quadrat',
+            'sub' => 'tiefer',
+            'sup' => 'höher',
+            'vert' => 'vertikal',
+            'wide' => 'breit',
         ),
 
         'nt' => array(
-            'De' => 'Decimal',
-            'Di' => 'Digit',
-            'None' => 'None',
-            'Nu' => 'Numeric',
+            'De' => 'Dezimal',
+            'Di' => 'Ziffer',
+            'None' => 'nichts',
+            'Nu' => 'Numerisch',
         ),
 
         'lb' => array(
-            'AI' => 'Ambiguous',
-            'AL' => 'Alphabetic',
-            'B2' => 'Break Both',
-            'BA' => 'Break After',
-            'BB' => 'Break Before',
-            'BK' => 'Mandatory Break',
+            'AI' => 'mehrdeutig',
+            'AL' => 'alphabetisch',
+            'B2' => 'Umbruch beidseits',
+            'BA' => 'Umbruch danach',
+            'BB' => 'Umbruch davor',
+            'BK' => 'verpflichtender Umbruch',
             'CB' => 'Contingent Break',
-            'CJ' => 'Conditional Japanese Starter',
-            'CL' => 'Close Punctuation',
+            'CJ' => 'bedingter japanischer Starter',
+            'CL' => 'schließende Interpunktion',
             'CM' => 'Combining Mark',
-            'CP' => 'Close Parenthesis',
-            'CR' => 'Carriage Return',
-            'EX' => 'Exclamation',
-            'GL' => 'Glue',
+            'CP' => 'schließende Klammer',
+            'CR' => 'Wagenrücklauf',
+            'EX' => 'Ausruf',
+            'GL' => 'Kleber',
             'H2' => 'H2',
             'H3' => 'H3',
-            'HL' => 'Hebrew Letter',
-            'HY' => 'Hyphen',
-            'ID' => 'Ideographic',
-            'IN' => 'Inseparable',
+            'HL' => 'Hebräischer Buchstabe',
+            'HY' => 'Trennstrich',
+            'ID' => 'Ideogramm',
+            'IN' => 'untrennbar',
             'IS' => 'Infix Numeric',
             'JL' => 'JL',
             'JT' => 'JT',
             'JV' => 'JV',
-            'LF' => 'Line Feed',
-            'NL' => 'Next Line',
-            'NS' => 'Nonstarter',
-            'NU' => 'Numeric',
-            'OP' => 'Open Punctuation',
+            'LF' => 'Zelenvorschub',
+            'NL' => 'nächste Zeile',
+            'NS' => 'Nichtstarter',
+            'NU' => 'Numerisch',
+            'OP' => 'öffnende Interpunktion',
             'PO' => 'Postfix Numeric',
             'PR' => 'Prefix Numeric',
-            'QU' => 'Quotation',
-            'SA' => 'Complex Context',
-            'SG' => 'Surrogate',
-            'SP' => 'Space',
+            'QU' => 'Zitat',
+            'SA' => 'komplexer Kontext',
+            'SG' => 'Surrogat',
+            'SP' => 'Leerzeichen',
             'SY' => 'Break Symbols',
-            'WJ' => 'Word Joiner',
-            'XX' => 'Unknown',
-            'ZW' => 'ZWSpace',
+            'WJ' => 'Wortverbinder',
+            'XX' => 'unbekannt',
+            'ZW' => 'längenloses Leerzeichen',
         ),
 
         'ea' => array(
-            'A' => 'Ambiguous',
-            'F' => 'Fullwidth',
-            'H' => 'Halfwidth',
-            'N' => 'Neutral',
-            'Na'=> 'Narrow',
-            'W' => 'Wide',
+            'A' => 'mehrdeutig',
+            'F' => 'Vollbreite',
+            'H' => 'Halbbreite',
+            'N' => 'neutral',
+            'Na'=> 'eng',
+            'W' => 'breit',
         ),
 
         'sc' => array(
-            'Arab' => 'Arabic',
+            'Arab' => 'Arabisch',
             'Armi' => 'Imperial Aramaic',
-            'Armn' => 'Armenian',
+            'Armn' => 'Armenisch',
             'Avst' => 'Avestan',
-            'Bali' => 'Balinese',
+            'Bali' => 'Balinesisch',
             'Bamu' => 'Bamum',
             'Batk' => 'Batak',
             'Beng' => 'Bengali',
@@ -398,26 +386,26 @@ class UnicodeInfo {
             'Cari' => 'Carian',
             'Cham' => 'Cham',
             'Cher' => 'Cherokee',
-            'Copt' => 'Coptic',
-            'Cprt' => 'Cypriot',
-            'Cyrl' => 'Cyrillic',
+            'Copt' => 'Koptisch',
+            'Cprt' => 'Zyprisch',
+            'Cyrl' => 'Kyrillisch',
             'Deva' => 'Devanagari',
             'Dsrt' => 'Deseret',
-            'Egyp' => 'Egyptian Hieroglyphs',
-            'Ethi' => 'Ethiopic',
-            'Geor' => 'Georgian',
-            'Glag' => 'Glagolitic',
-            'Goth' => 'Gothic',
-            'Grek' => 'Greek',
+            'Egyp' => 'Ägyptische Hieroglyphen',
+            'Ethi' => 'Äthiopisch',
+            'Geor' => 'Georgisch',
+            'Glag' => 'Glagolitisch',
+            'Goth' => 'Gothisch',
+            'Grek' => 'Griechisch',
             'Gujr' => 'Gujarati',
             'Guru' => 'Gurmukhi',
             'Hang' => 'Hangul',
             'Hani' => 'Han',
             'Hano' => 'Hanunoo',
-            'Hebr' => 'Hebrew',
+            'Hebr' => 'Hebräisch',
             'Hira' => 'Hiragana',
-            'Hrkt' => 'Katakana Or Hiragana',
-            'Ital' => 'Old Italic',
+            'Hrkt' => 'Katakana oder Hiragana',
+            'Ital' => 'Altitalisch',
             'Java' => 'Javanese',
             'Kali' => 'Kayah Li',
             'Kana' => 'Katakana',
@@ -427,7 +415,7 @@ class UnicodeInfo {
             'Kthi' => 'Kaithi',
             'Lana' => 'Tai Tham',
             'Laoo' => 'Lao',
-            'Latn' => 'Latin',
+            'Latn' => 'Latein',
             'Lepc' => 'Lepcha',
             'Limb' => 'Limbu',
             'Linb' => 'Linear B',
@@ -435,39 +423,39 @@ class UnicodeInfo {
             'Lyci' => 'Lycian',
             'Lydi' => 'Lydian',
             'Mand' => 'Mandaic',
-            'Merc' => 'Meroitic Cursive',
-            'Mero' => 'Meroitic Hieroglyphs',
+            'Merc' => 'Meroitische Kursive',
+            'Mero' => 'Meroitische Hieroglyphen',
             'Mlym' => 'Malayalam',
-            'Mong' => 'Mongolian',
+            'Mong' => 'Mongolisch',
             'Mtei' => 'Meetei Mayek',
             'Mymr' => 'Myanmar',
             'Nkoo' => 'Nko',
             'Ogam' => 'Ogham',
             'Olck' => 'Ol Chiki',
-            'Orkh' => 'Old Turkic',
+            'Orkh' => 'Alttürkisch',
             'Orya' => 'Oriya',
             'Osma' => 'Osmanya',
             'Phag' => 'Phags Pa',
             'Phli' => 'Inscriptional Pahlavi',
-            'Phnx' => 'Phoenician',
+            'Phnx' => 'Phönizisch',
             'Plrd' => 'Miao',
             'Prti' => 'Inscriptional Parthian',
             'Rjng' => 'Rejang',
-            'Runr' => 'Runic',
-            'Samr' => 'Samaritan',
-            'Sarb' => 'Old South Arabian',
+            'Runr' => 'Runisch',
+            'Samr' => 'Samaritisch',
+            'Sarb' => 'Alt-Südarabisch',
             'Saur' => 'Saurashtra',
-            'Shaw' => 'Shavian',
+            'Shaw' => 'Shavisch',
             'Shrd' => 'Sharada',
             'Sinh' => 'Sinhala',
             'Sora' => 'Sora Sompeng',
-            'Sund' => 'Sundanese',
+            'Sund' => 'Sundanesisch',
             'Sylo' => 'Syloti Nagri',
-            'Syrc' => 'Syriac',
+            'Syrc' => 'Syrisch',
             'Tagb' => 'Tagbanwa',
             'Takr' => 'Takri',
             'Tale' => 'Tai Le',
-            'Talu' => 'New Tai Lue',
+            'Talu' => 'Neu-Tai Lue',
             'Taml' => 'Tamil',
             'Tavt' => 'Tai Viet',
             'Telu' => 'Telugu',
@@ -475,15 +463,15 @@ class UnicodeInfo {
             'Tglg' => 'Tagalog',
             'Thaa' => 'Thaana',
             'Thai' => 'Thai',
-            'Tibt' => 'Tibetan',
-            'Ugar' => 'Ugaritic',
+            'Tibt' => 'Tibetisch',
+            'Ugar' => 'Ugaritisch',
             'Vaii' => 'Vai',
-            'Xpeo' => 'Old Persian',
+            'Xpeo' => 'Altpersisch',
             'Xsux' => 'Cuneiform',
             'Yiii' => 'Yi',
-            'Zinh' => 'Inherited',
-            'Zyyy' => 'Common',
-            'Zzzz' => 'Unknown',
+            'Zinh' => 'Vererbt',
+            'Zyyy' => 'Allgemein',
+            'Zzzz' => 'Unbekannt',
         ),
 
         'GCB' => array( # tr29
@@ -536,12 +524,12 @@ class UnicodeInfo {
         ),
 
         'jt' => array(
-            'R' => 'Right Joining',
-            'L' => 'Left Joining',
-            'D' => 'Dual Joining',
-            'C' => 'Join Causing',
-            'U' => 'Non Joining',
-            'T' => 'Transparent',
+            'R' => 'rechts verbindend',
+            'L' => 'links verbindend',
+            'D' => 'beidseits verbindend',
+            'C' => 'Verbindung auslösend',
+            'U' => 'nicht verbindend',
+            'T' => 'transparent',
         ),
 
         'hst' => array(
@@ -554,25 +542,25 @@ class UnicodeInfo {
         ),
 
         'NFC_QC' => array(
-            'M' => 'Maybe',
-            'N' => 'No',
-            'Y' => 'Yes',
+            'M' => 'vielleicht',
+            'N' => 'nein',
+            'Y' => 'ja',
         ),
 
         'NFD_QC' => array(
-            'N' => 'No',
-            'Y' => 'Yes',
+            'N' => 'nein',
+            'Y' => 'ja',
         ),
 
         'NFKC_QC' => array(
-            'M' => 'Maybe',
-            'N' => 'No',
-            'Y' => 'Yes',
+            'M' => 'vielleicht',
+            'N' => 'nein',
+            'Y' => 'ja',
         ),
 
         'NFKD_QC' => array(
-            'N' => 'No',
-            'Y' => 'Yes',
+            'N' => 'nein',
+            'Y' => 'ja',
         ),
 
         'blk' => array(
@@ -798,182 +786,8 @@ class UnicodeInfo {
             'supplementary_private_use_area-b' => 'Supplementary Private Use Area-B',
         ),
 
-    );
-
-    protected static $inst;
-
-    protected function __construct($lang='en') {
-        if ($lang !== 'en') {
-            if (is_file(dirname(__FILE__).'/../locale/'.$lang.'/unicodeinfo.php')) {
-                $info_localized = array();
-                require_once dirname(__FILE__).'/../locale/'.$lang.'/unicodeinfo.php';
-                foreach ($info_localized as $key => $value) {
-                    if (property_exists($this, $key)) {
-                        $this->$key = $value;
-                    }
-                }
-            }
-        }
-    }
-
-    public static function get() {
-        if (! self::$inst) {
-            $lang = L10n::get('messages')->getLanguage();
-            self::$inst = new self($lang);
-        }
-        return self::$inst;
-    }
-
-    /**
-     * get the list of all categories
-     */
-    public function getAllCategories() {
-        return $this->categories;
-    }
-
-    /**
-     * get all defined category fields
-     */
-    public function getCategoryKeys() {
-        return array_keys($this->categories);
-    }
-
-    /**
-     * get all category keys, that represent boolean values
-     */
-    public function getBooleanCategories() {
-        return $this->boolean;
-    }
-
-    /**
-     * get the full name for a category
-     */
-    public function getCategory($cat) {
-        if (array_key_exists($cat, $this->categories) &&
-            $this->categories[$cat]) {
-            return $this->categories[$cat];
-        }
-        return $cat;
-    }
-
-    /**
-     * get the full text label for an abbreviated key
-     *
-     * The key is qualified by the category (e.g., 'sc')
-     */
-    public function getLabel($cat, $abbr, $i=0) {
-        if ($cat === 'cp') {
-            return sprintf('%04X', intval($abbr));
-        }
-        if (array_key_exists($cat, $this->legend)) {
-            if (array_key_exists($abbr, $this->legend[$cat])) {
-                $r = $this->legend[$cat][$abbr];
-                if (is_array($r)) {
-                    return $r[min($i, count($r)-1)];
-                }
-                return $r;
-            }
-        }
-        return $abbr;
-    }
-
-    /**
-     * get all labels for a certain category
-     */
-    public function getLegendForCategory($cat) {
-        if (array_key_exists($cat, $this->legend)) {
-            return $this->legend[$cat];
-        }
-        return array();
-    }
-
-    public static $archaicScripts = array(
-        "Armi", "Avst", "Bali", "Bamu", "Brah", "Bugi", "Cari", "Cher", "Cprt",
-        "Dsrt", "Egyp", "Glag", "Goth", "Ital", "Java", "Khar", "Kthi", "Linb",
-        "Lyci", "Lydi", "Merc", "Mero", "Mtei", "Ogam", "Orkh", "Osma", "Phag",
-        "Phli", "Phnx", "Prti", "Rjng", "Runr", "Samr", "Sarb", "Shaw", "Shrd",
-        "Sylo", "Syrc", "Takr", "Tfng", "Ugar", "Xpeo", "Xsux",
-    );
-
-    public static $recentScripts = array(
-        "Arab", "Armn", "Batk", "Beng", "Bopo", "Brai", "Buhd", "Cakm", "Cans",
-        "Cham", "Copt", "Cyrl", "Deva", "Ethi", "Geor", "Grek", "Gujr", "Guru",
-        "Hang", "Hani", "Hano", "Hebr", "Hira", "Kali", "Kana", "Khmr", "Knda",
-        "Lana", "Laoo", "Latn", "Lepc", "Limb", "Lisu", "Mand", "Mlym", "Mong",
-        "Mymr", "Nkoo", "Olck", "Orya", "Plrd", "Saur", "Sinh", "Sora", "Sund",
-        "Tagb", "Tale", "Talu", "Taml", "Tavt", "Telu", "Tglg", "Thaa", "Thai",
-        "Tibt", "Vaii", "Yiii",
-    );
-
-    public static $regionToBlock = array(
-        'Africa' => array('Ethiopic', 'Ethiopic Extended', 'Ethiopic Extended-A',
-            'Ethiopic Supplement', 'NKo', 'Osmanya', 'Tifinagh', 'Meroitic Cursive',
-            'Meroitic Hieroglyphs', 'Bamum', 'Bamum Supplement', 'Vai',),
-        'America' => array('Cherokee', 'Deseret', 'Unified Canadian Aboriginal Syllabics',
-            'Unified Canadian Aboriginal Syllabics Extended'),
-        'Central_Asia' => array('Mongolian', 'Phags-pa', 'Tibetan', 'Chakma',
-            'Lepcha',),
-        'Philippines' => array('Buhid', 'Hanunoo', 'Tagalog', 'Tagbanwa',
-            'Batak', 'Javanese', 'Rejang', 'Sundanese', 'Sundanese Supplement'),
-        'Europe' => array('Armenian', 'Basic Latin', 'Combining Diacritical Marks',
-            'Combining Diacritical Marks Supplement', 'Combining Half Marks',
-            'Coptic', 'Cypriot Syllabary', 'Cyrillic', 'Cyrillic Extended-A',
-            'Cyrillic Extended-B', 'Cyrillic Supplement', 'Georgian',
-            'Georgian Supplement', 'Glagolitic', 'Gothic', 'Greek and Coptic',
-            'Greek Extended', 'IPA Extensions', 'Latin Extended Additional',
-            'Latin Extended-A', 'Latin Extended-B', 'Latin Extended-C',
-            'Latin Extended-D', 'Latin-1 Supplement', 'Linear B Ideograms',
-            'Linear B Syllabary', 'Modifier Tone Letters', 'Ogham', 'Old Italic',
-            'Phonetic Extensions', 'Phonetic Extensions Supplement', 'Runic',
-            'Shavian', 'Spacing Modifier Letters', 'Ancient Greek Musical Notation',
-            'Ancient Greek Numbers', 'Ancient Symbols', 'Byzantine Musical Symbols',
-            'Aegean Numbers', 'Lycian', 'Phaistos Disc', 'Superscripts and Subscripts',),
-        'Middle_East' => array('Alphabetic Presentation Forms', 'Arabic',
-            'Old South Arabian', 'Arabic Extended-A', 'Arabic Mathematical Alphabetic Symbols',
-            'Arabic Presentation Forms-A', 'Arabic Presentation Forms-B',
-            'Arabic Supplement', 'Cuneiform', 'Hebrew', 'Old Persian',
-            'Phoenician', 'Syriac', 'Ugaritic', 'Samaritan', 'Egyptian Hieroglyphs',
-            'Avestan', 'Carian', 'Cuneiform Numbers and Punctuation',
-            'Imperial Aramaic', 'Inscriptional Pahlavi', 'Inscriptional Parthian',
-            'Lydian', 'Mandaic', 'Old Turkic',),
-        'East_Asia' => array('Bopomofo', 'Bopomofo Extended', 'CJK Symbols and Punctuation',
-            'CJK Compatibility', 'CJK Compatibility Forms', 'CJK Compatibility Ideographs',
-            'CJK Compatibility Ideographs Supplement', 'CJK Radicals Supplement',
-            'CJK Strokes', 'CJK Unified Ideographs', 'CJK Unified Ideographs Extension A',
-            'CJK Unified Ideographs Extension B', 'CJK Unified Ideographs Extension C',
-            'CJK Unified Ideographs Extension D', 'Hangul Compatibility Jamo',
-            'Hangul Jamo', 'Hangul Jamo Extended-A', 'Hangul Jamo Extended-B',
-            'Hangul Syllables', 'Hiragana', 'Ideographic Description Characters', 'Kanbun',
-            'Kangxi Radicals', 'Katakana', 'Katakana Phonetic Extensions',
-            'Yi Radicals', 'Yi Syllables', 'Yijing Hexagram Symbols', 'Vertical Forms',
-            'Enclosed CJK Letters and Months', 'Enclosed Ideographic Supplement',
-            'Counting Rod Numerals', 'Kana Supplement', 'Miao', 'Halfwidth and Fullwidth Forms',
-            'Small Form Variants', ),
-        'South_Asia' => array('Bengali', 'Devanagari', 'Devanagari Extended',
-            'Common Indic Number Forms', 'Gujarati', 'Gurmukhi', 'Kannada', 'Kharoshthi',
-            'Limbu', 'Malayalam', 'Oriya', 'Sinhala', 'Syloti Nagri', 'Tamil',
-            'Telugu', 'Thaana', 'Brahmi', 'Meetei Mayek', 'Meetei Mayek Extensions',
-            'Kaithi', 'Ol Chiki', 'Saurashtra', 'Sharada', 'Sora Sompeng',
-            'Vedic Extensions', 'Takri',),
-        'Southeast_Asia' => array('Balinese', 'Buginese', 'Khmer', 'Khmer Symbols',
-            'Lao', 'Myanmar', 'Myanmar Extended-A', 'New Tai Lue', 'Tai Le',
-            'Tai Tham', 'Tai Viet', 'Tai Xuan Jing Symbols', 'Thai', 'Cham',
-            'Lisu', 'Kayah Li', 'Rumi Numeral Symbols',),
-        'n' => array('Optical Character Recognition', 'Transport And Map Symbols',
-            'Miscellaneous Symbols', 'Miscellaneous Technical', 'Musical Symbols',
-            'Miscellaneous Symbols And Pictographs', 'Miscellaneous Symbols and Arrows',
-            'Miscellaneous Mathematical Symbols-A', 'Miscellaneous Mathematical Symbols-B',
-            'Playing Cards', 'Dingbats', 'Domino Tiles', 'Emoticons', 'Geometric Shapes',
-            'Mahjong Tiles', 'Mathematical Alphanumeric Symbols', 'Mathematical Operators',
-            'Control Pictures', 'Alchemical Symbols', 'Arrows', 'Block Elements',
-            'Box Drawing', 'Currency Symbols', 'Supplemental Arrows-A', 'Supplemental Arrows-B',
-            'Supplemental Mathematical Operators', 'Supplemental Punctuation',
-            'Tags', 'Letterlike Symbols', 'Variation Selectors', 'Variation Selectors Supplement',
-            'Number Forms', 'General Punctuation', 'Combining Diacritical Marks for Symbols',
-            'Braille Patterns', 'Specials', 'Enclosed Alphanumerics', 'Enclosed Alphanumeric Supplement'),
-    );
-
-}
+    ),
+);
 
 
 //__END__

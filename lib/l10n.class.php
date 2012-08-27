@@ -98,11 +98,14 @@ class L10n {
 
     /**
      * get the language in use
+     *
+     * Also does persistance, ie., if GET param is found, copy to cookie
      */
     public static function getDefaultLanguage() {
         $lang = "en";
         if (isset($_GET['lang']) && ctype_alpha($_GET['lang'])) {
             $lang = $_GET['lang'];
+            setcookie('lang', $lang, time()+60*60*24*3650, '/');
         } elseif (isset($_COOKIE['lang']) && ctype_alpha($_COOKIE['lang'])) {
             $lang = $_COOKIE['lang'];
         } elseif (function_exists('http_negotiate_language')) {

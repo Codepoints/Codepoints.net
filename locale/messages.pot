@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-23 19:57+0200\n"
+"POT-Creation-Date: 2012-08-27 19:46+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -558,6 +558,11 @@ msgid ""
 "      instructions:"
 msgstr ""
 
+#: views/about.php:236
+#, php-format
+msgid "Your Browser doesn’t support frames. Please visit %sthis page%s."
+msgstr ""
+
 #: views/about.php:242
 msgid ""
 "First of all we’d like to thank the contributors of the Unicode Consortium,\n"
@@ -956,6 +961,10 @@ msgstr ""
 msgid "The Unicode block %s contains the codepoints from U+%04X to U+%04X."
 msgstr ""
 
+#: views/block.html.php:28
+msgid "Symbol representing this block in the Unidings font"
+msgstr ""
+
 #: views/block.html.php:32
 #, php-format
 msgid "This block has not defined any codepoints between U+%04X and U+%04X."
@@ -984,6 +993,16 @@ msgstr ""
 
 #: views/codepoint/props.php:5
 msgid "Value"
+msgstr ""
+
+#: views/codepoint/info.php:9
+#, php-format
+msgid "This codepoint is %sdeprecated%s."
+msgstr ""
+
+#: views/codepoint/info.php:111
+#, php-format
+msgid "The %sWikipedia%s has the following information about this codepoint:"
 msgstr ""
 
 #: views/codepoint.html.php:16
@@ -1029,40 +1048,44 @@ msgstr ""
 msgid "URL-Quoted"
 msgstr ""
 
-#: views/codepoint.html.php:104
+#: views/codepoint.html.php:104 views/codepoint.html.php:111
 msgid "HTML-Escape"
 msgstr ""
 
-#: views/codepoint.html.php:145
+#: views/codepoint.html.php:149
 msgid "Related Characters"
 msgstr ""
 
-#: views/codepoint.html.php:154
+#: views/codepoint.html.php:158
 msgid "Confusables"
 msgstr ""
 
-#: views/codepoint.html.php:164
+#: views/codepoint.html.php:168
 msgid "Elsewhere"
 msgstr ""
 
-#: views/codepoint.html.php:168
+#: views/codepoint.html.php:172
 msgid "Unicode website"
 msgstr ""
 
-#: views/codepoint.html.php:169
+#: views/codepoint.html.php:173
 msgid "Reference rendering on Unicode.org"
 msgstr ""
 
-#: views/codepoint.html.php:171
+#: views/codepoint.html.php:175
 msgid "Wikipedia"
 msgstr ""
 
-#: views/codepoint.html.php:174
+#: views/codepoint.html.php:178
 msgid "Unihan Database"
 msgstr ""
 
-#: views/codepoint.html.php:175
+#: views/codepoint.html.php:179
 msgid "Chinese Text Project"
+msgstr ""
+
+#: views/codepoint.html.php:186
+msgid "Complete Record"
 msgstr ""
 
 #: views/footer.php:7
