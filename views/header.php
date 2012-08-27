@@ -21,6 +21,7 @@
     <link rel="apple-touch-icon-precomposed" href="/static/images/icon57.png"/>
     <link rel="search" href="/opensearch.xml" type="application/opensearchdescription+xml" title="Search Codepoints" />
     <link rel="author" href="/humans.txt" />
+    <link rel="publisher" href="https://plus.google.com/115373008615574082246" />
     <?php if(isset($canonical) && $canonical):?>
       <link rel="canonical" href="http://codepoints.net<?php e($canonical)?>" />
     <?php endif?>
