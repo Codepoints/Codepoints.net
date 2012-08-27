@@ -74,7 +74,7 @@ function flog($msg) {
  * We don't return cached entries, when POST variables are set or GET
  * variables are immensely long.
  */
-if (strlen($_SERVER['REQUEST_URI']) < 255 && ! count($_POST)) {
+if (! CP_DEBUG && strlen($_SERVER['REQUEST_URI']) < 255 && ! count($_POST)) {
     $cache = new Cache();
     // we return the already gzipped cache entry, if the browser requests it
     $zipped = False;
