@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-23 19:57+0200\n"
-"PO-Revision-Date: 2012-08-23 19:59+0100\n"
+"POT-Creation-Date: 2012-08-27 19:46+0200\n"
+"PO-Revision-Date: 2012-08-27 19:57+0100\n"
 "Last-Translator: Manuel Strehl <translate@manuel-strehl.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -124,9 +124,8 @@ msgid "About Codepoints"
 msgstr "Über Codepunkte"
 
 #: views/about.php:3
-#, fuzzy
 msgid "Codepoints is a site dedicated to Unicode. This page explains the concepts and possibilities to navigate Unicode on the site."
-msgstr "Codepoints ist eine Seite, die Unicode und allen Dingen rund um Schriftzeichen, Codepunkten, Buchstaben und Internationalisierung gewidmet ist."
+msgstr "Codepoints ist eine Seite, die Unicode gewidmet ist. Hier werden die Konzepte und Möglichkeiten erklärt, Unicode auf dieser Webseite zu durchstöbern."
 
 #: views/about.php:5
 #: views/about.php:17
@@ -136,7 +135,7 @@ msgstr "Schriftzeichen finden"
 #: views/about.php:6
 #: views/about.php:47
 msgid "About Unicode"
-msgstr ""
+msgstr "Über Unicode"
 
 #: views/about.php:7
 #: views/front.php:32
@@ -146,11 +145,11 @@ msgstr "Über diese Seite"
 #: views/about.php:8
 #: views/about.php:241
 msgid "Attribution <i class=\"amp\">&amp;</i> Credits"
-msgstr ""
+msgstr "Zuschreibung <i class=\"amp\">&amp;</i> Danksagung"
 
 #: views/about.php:9
 msgid "Glossary"
-msgstr ""
+msgstr "Glossar"
 
 #: views/about.php:19
 msgid ""
@@ -396,19 +395,19 @@ msgid ""
 "This website is a private project of %s.\n"
 "      It is <strong>not</strong> affiliated with or approved by the Unicode Consortium.\n"
 "      You can contact me via:"
-msgstr ""
+msgstr "Diese Webseite ist ein privates Projekt von %s. Sie ist <strong>nicht</strong> mit dem Unicode-Konsortium verbunden oder von ihm freigegeben. DU kannst mich kontaktieren über:"
 
 #: views/about.php:145
 msgid "E-Mail:"
-msgstr ""
+msgstr "E-Mail:"
 
 #: views/about.php:147
 msgid "WWW:"
-msgstr ""
+msgstr "WWW:"
 
 #: views/about.php:148
 msgid "Tel.:"
-msgstr ""
+msgstr "Tel.:"
 
 #: views/about.php:155
 msgid "The Content on this Site"
@@ -423,7 +422,7 @@ msgid ""
 "      %s,<br/>\n"
 "      which happens to be the most relevant version of the Unicode Standard\n"
 "      as of August, 2012."
-msgstr ""
+msgstr "Der Inhalt dieser Webseite bildet die Information ab, die in <br/><em>The Unicode Consortium.</em> The Unicode Standard, Version %s,      (Mountain View, CA: The Unicode Consortium, 2012. ISBN 978-1-936213-02-3)<br/>      %s,<br/>gefunden werden kann. Dies ist die neueste Version des Unicode-Standards im August 2012."
 
 #: views/about.php:168
 #, php-format
@@ -433,26 +432,26 @@ msgid ""
 "      The source code for this site is %s. If you like, fork the code,\n"
 "      enhance it and send me a pull request. (If you don’t have a Github account,\n"
 "      please send the git patch via e-mail.)"
-msgstr ""
+msgstr "Wenn du Probleme, Ungenauigkeiten, Bugs oder andere Dinge auf dieser Webseite findest, maile mir bitte oder öffne ein neues Ticket im %s. Der Quelltext für diese Seite ist %s. Wenn du magst, forke den Code, verbessere ihn und schicke eine Pull-Anfrage. (Wenn du kein Github-Konto hast, sende den Patch bitte per E-Mail.)"
 
 #: views/about.php:173
 msgid "bug tracker"
-msgstr ""
+msgstr "Bugtracker"
 
 #: views/about.php:174
 msgid "live on Github"
-msgstr ""
+msgstr "live auf Github"
 
 #: views/about.php:178
 msgid ""
 "<strong>There is no warranty,</strong> that the content on this site is\n"
 "      accurate, complete or error-free! For normative references please refer\n"
 "      to the Unicode website itself."
-msgstr ""
+msgstr "<strong>Es gibt keine Garantie,</strong> dass der Inhalt auf dieser Seite akkuratm komplett und fehlerfrei ist! Für normative Referenzen beziehe dich bitte auf die Unicode-Webseite selbst."
 
 #: views/about.php:182
 msgid "Re-use License"
-msgstr ""
+msgstr "Lizenz zur Wiederverwendung"
 
 #: views/about.php:184
 #, php-format
@@ -520,7 +519,7 @@ msgstr ""
 
 #: views/about.php:227
 msgid "Privacy, Statistics"
-msgstr ""
+msgstr "Privatsphäre und Statistiken"
 
 #: views/about.php:229
 #, php-format
@@ -530,6 +529,11 @@ msgid ""
 "      If you don’t want your visits to be tracked at all, please follow these\n"
 "      instructions:"
 msgstr ""
+
+#: views/about.php:236
+#, php-format
+msgid "Your Browser doesn’t support frames. Please visit %sthis page%s."
+msgstr "Dein Browser unterstützt keine Frames. Bitte besuche %sdiese Seite%s."
 
 #: views/about.php:242
 msgid ""
@@ -581,7 +585,7 @@ msgstr ""
 
 #: views/about.php:270
 msgid "Image Attribution"
-msgstr ""
+msgstr "Bildzuschreibung"
 
 #: views/about.php:271
 #, php-format
@@ -908,6 +912,10 @@ msgstr "Block %s"
 msgid "The Unicode block %s contains the codepoints from U+%04X to U+%04X."
 msgstr "Der Unicode-Block %s enthält die Codepunkte von U+%04X bis U+%04X."
 
+#: views/block.html.php:28
+msgid "Symbol representing this block in the Unidings font"
+msgstr "Symbol, das diesen Block in der Unidings-Schriftart repräsentiert"
+
 #: views/block.html.php:32
 #, php-format
 msgid "This block has not defined any codepoints between U+%04X and U+%04X."
@@ -937,6 +945,16 @@ msgstr "Eigenschaft"
 #: views/codepoint/props.php:5
 msgid "Value"
 msgstr "Wert"
+
+#: views/codepoint/info.php:9
+#, php-format
+msgid "This codepoint is %sdeprecated%s."
+msgstr "Dieser Codepunkt ist %sveraltet%s."
+
+#: views/codepoint/info.php:111
+#, php-format
+msgid "The %sWikipedia%s has the following information about this codepoint:"
+msgstr "Die %sWIkipedia%s hat die folgende Information zu diesem Codepunkt:"
 
 #: views/codepoint.html.php:16
 #, php-format
@@ -982,40 +1000,45 @@ msgid "URL-Quoted"
 msgstr "URL-kodiert"
 
 #: views/codepoint.html.php:104
+#: views/codepoint.html.php:111
 msgid "HTML-Escape"
 msgstr "HTML-Darstellung"
 
-#: views/codepoint.html.php:145
+#: views/codepoint.html.php:149
 msgid "Related Characters"
 msgstr "Verwandte Schriftzeichen"
 
-#: views/codepoint.html.php:154
+#: views/codepoint.html.php:158
 msgid "Confusables"
 msgstr "Verwechselbare"
 
-#: views/codepoint.html.php:164
+#: views/codepoint.html.php:168
 msgid "Elsewhere"
 msgstr "Anderswo"
 
-#: views/codepoint.html.php:168
+#: views/codepoint.html.php:172
 msgid "Unicode website"
 msgstr "Unicode-Webseite"
 
-#: views/codepoint.html.php:169
+#: views/codepoint.html.php:173
 msgid "Reference rendering on Unicode.org"
 msgstr "Referenz-Darstellung auf Unicode.org"
 
-#: views/codepoint.html.php:171
+#: views/codepoint.html.php:175
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
-#: views/codepoint.html.php:174
+#: views/codepoint.html.php:178
 msgid "Unihan Database"
 msgstr "Unihan-Datenbank"
 
-#: views/codepoint.html.php:175
+#: views/codepoint.html.php:179
 msgid "Chinese Text Project"
 msgstr "Chinese Text Project"
+
+#: views/codepoint.html.php:186
+msgid "Complete Record"
+msgstr "Vollständiger Eintrag"
 
 #: views/footer.php:7
 #, php-format
