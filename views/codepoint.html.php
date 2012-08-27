@@ -107,7 +107,11 @@ $s = function($cat) use ($router, $info, $props) {
         <?php $alias = $codepoint->getALias();
         foreach ($alias as $a):?>
           <tr>
-            <th><?php e($a['type'])?></th>
+            <th><?php if ($a['type'] === 'html') {
+                _e('HTML-Escape');
+            } else {
+                e($a['type']);
+            }?></th>
             <td><?php if ($a['type'] === 'html') {
                 echo '&amp;';
             }
@@ -179,7 +183,7 @@ $s = function($cat) use ($router, $info, $props) {
     </ul>
   </section>
   <section>
-    <h2>Complete Record</h2>
+  <h2><?php _e('Complete Record')?></h2>
     <?php include "codepoint/props.php"?>
   </section>
 </div>
