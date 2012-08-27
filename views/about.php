@@ -233,8 +233,8 @@ include 'nav.php';
     </p>
     <iframe frameborder="no" width="100%" height="200px"
             src="http://piwik.manuel-strehl.de/index.php?module=CoreAdminHome&action=optOut">
-      <p>Your Browser doesn’t support frames. Please visit
-      <a href="http://piwik.manuel-strehl.de/index.php?module=CoreAdminHome&action=optOut">this page</a>.</p>
+            <p><?php printf(__('Your Browser doesn’t support frames. Please visit %sthis page%s.'),
+                '<a href="http://piwik.manuel-strehl.de/index.php?module=CoreAdminHome&amp;action=optOut">', '</a>')?></p>
     </iframe>
   </section>
   <section id="attribution">
