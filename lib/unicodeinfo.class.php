@@ -802,11 +802,24 @@ class UnicodeInfo {
 
     protected static $inst;
 
-    protected function __construct() {}
+    protected function __construct($lang='en') {
+        if ($lang !== 'en') {
+            if (is_file(dirname(__FILE__).'/../locale/'.$lang.'/unicodeinfo.php')) {
+                $info_localized = array();
+                require_once dirname(__FILE__).'/../locale/'.$lang.'/unicodeinfo.php';
+                foreach ($info_localized as $key => $value) {
+                    if (property_exists($this, $key)) {
+                        $this->$key = $value;
+                    }
+                }
+            }
+        }
+    }
 
     public static function get() {
         if (! self::$inst) {
-            self::$inst = new self;
+            $lang = L10n::get('messages')->getLanguage();
+            self::$inst = new self($lang);
         }
         return self::$inst;
     }
