@@ -117,4 +117,11 @@ class L10n {
 }
 
 
+if (! function_exists('__')) {
+    function __($s) {
+        return L10n::get('messages')->gettext($s);
+    }
+}
+
+
 //__END__

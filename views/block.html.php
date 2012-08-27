@@ -31,7 +31,7 @@ include "nav.php";
   <?php if (count($cps) === 0):?>
     <p itemprop="description"><?php printf(__('This block has not defined any codepoints between U+%04X and U+%04X.'), $block_limits[0], $block_limits[1])?></p>
   <?php else:?>
-    <p itemprop="description"><?php printf(__('Block from U+%04X to U+%04X.'), $block_limits[0]), $block_limits[1])?></p>
+    <p itemprop="description"><?php printf(__('Block from U+%04X to U+%04X.'), $block_limits[0], $block_limits[1])?></p>
     <p><a href="http://www.unicode.org/charts/PDF/U<?php f('%04X', $block_limits[0])?>.pdf"><?php _e('Chart at Unicode.org')?></a> <?php _e('(PDF)')?><br/>
     <a href="http://decodeunicode.org/<?php e(str_replace(' ', '_', strtolower($block->getName())))?>"><?php _e('Block at Decode Unicode')?></a></p>
     <?php echo $pagination?>
