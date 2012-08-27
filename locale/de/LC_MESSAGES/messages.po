@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-23 07:41+0200\n"
-"PO-Revision-Date: 2012-08-23 07:47+0100\n"
+"POT-Creation-Date: 2012-08-23 19:57+0200\n"
+"PO-Revision-Date: 2012-08-23 19:59+0100\n"
 "Last-Translator: Manuel Strehl <translate@manuel-strehl.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -17,6 +17,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: German\n"
 "X-Poedit-SourceCharset: utf-8\n"
+
+#: lib/gettext/examples/pigs_dropin.php:77
+msgid ""
+"This is how the story goes.\n"
+"\n"
+msgstr ""
 
 #: views/search/form.php:4
 msgid "Free search:"
@@ -112,6 +118,499 @@ msgstr "Zufall"
 #: views/footer.php:20
 msgid "About"
 msgstr "Über"
+
+#: views/about.php:2
+msgid "About Codepoints"
+msgstr "Über Codepunkte"
+
+#: views/about.php:3
+#, fuzzy
+msgid "Codepoints is a site dedicated to Unicode. This page explains the concepts and possibilities to navigate Unicode on the site."
+msgstr "Codepoints ist eine Seite, die Unicode und allen Dingen rund um Schriftzeichen, Codepunkten, Buchstaben und Internationalisierung gewidmet ist."
+
+#: views/about.php:5
+#: views/about.php:17
+msgid "Finding Characters"
+msgstr "Schriftzeichen finden"
+
+#: views/about.php:6
+#: views/about.php:47
+msgid "About Unicode"
+msgstr ""
+
+#: views/about.php:7
+#: views/front.php:32
+msgid "About this Site"
+msgstr "Über diese Seite"
+
+#: views/about.php:8
+#: views/about.php:241
+msgid "Attribution <i class=\"amp\">&amp;</i> Credits"
+msgstr ""
+
+#: views/about.php:9
+msgid "Glossary"
+msgstr ""
+
+#: views/about.php:19
+msgid ""
+"It’s hard to find one certain character in over 110,000 codepoints. This\n"
+"      site aims to make it as easy as possible with the following search options:"
+msgstr ""
+
+#: views/about.php:23
+msgid ""
+"Free search: Just press the “Search” tab above or use the form on the\n"
+"        front page and type a query. In many cases the codepoint in question is\n"
+"        in the result."
+msgstr ""
+
+#: views/about.php:26
+#, php-format
+msgid ""
+"%sExtended search%s:\n"
+"        You can configure on this page every Unicode property of the codepoint\n"
+"        in question."
+msgstr ""
+
+#: views/about.php:29
+#, php-format
+msgid ""
+"The %s“Find My Codepoint” wizard%s:\n"
+"        Answer a series of questions to get to your character."
+msgstr ""
+
+#: views/about.php:33
+msgid ""
+"If you happen to already have the character in question just paste it\n"
+"    in the search box. It will bring you directly to its description page."
+msgstr ""
+
+#: views/about.php:35
+msgid "Do you know the character’s shape?"
+msgstr ""
+
+#: views/about.php:36
+#, php-format
+msgid ""
+"You don’t know the name or any properties of a codepoint but its general\n"
+"    look? Fear not, on %s\n"
+"    you can draw the character and get it recognized. This works remarkably\n"
+"    well for many characters."
+msgstr ""
+
+#: views/about.php:40
+msgid "Advanced Options"
+msgstr ""
+
+#: views/about.php:41
+#, php-format
+msgid ""
+"If you know Unicode and also know the rough range, where the codepoint\n"
+"    might be, you can give the range directly in the URL. <em>E. g.,</em> to\n"
+"    inspect characters in the range U+0200 to U+0300, enter in the address bar\n"
+"    “%s”"
+msgstr ""
+
+#: views/about.php:49
+#, php-format
+msgid ""
+"Computers use 0’s and 1’s to store information. To get useful information out of that, in our case to display text,\n"
+"      we need a so-called <em>encoding</em>, that tells the computer how to transform\n"
+"      those 0’s and 1’s into an alphabet. The first standardized\n"
+"      encoding was ASCII, which basically assigns simple Latin upper- and lowercase letters\n"
+"      as well as numbers and some punctuation, all in all 128 positions.\n"
+"      The W3C has published a %svery good introduction%s to the topic of character encodings."
+msgstr ""
+
+#: views/about.php:58
+#, php-format
+msgid "The %s is intentionally identical to ASCII."
+msgstr ""
+
+#: views/about.php:59
+msgid "first block of Unicode codepoints"
+msgstr ""
+
+#: views/about.php:62
+msgid ""
+"128 positions didn’t last very long. Many institutions and companies\n"
+"      began to implement their own encodings. In 2010 there were a whooping\n"
+"      250 encodings widely used, not counting some obscure or privately used\n"
+"      ones. This situation proved disastrous, when computers started to talk\n"
+"      to one another over the <em>Internet</em>. If the sender didn’t specify\n"
+"      the encoding of a message, there was a good chance the receiver would\n"
+"      only get a stream of nonsense and rubbish."
+msgstr ""
+
+#: views/about.php:71
+#, php-format
+msgid ""
+"Thus enters <em>Unicode</em>. Adobe and Xerox decided in 1984, that this\n"
+"      was no situation to continue, and that there is a need for a universal\n"
+"      encoding scheme. 1991 saw the publication of the first version of Unicode\n"
+"      with the international standardization as ISO 10646 following two years\n"
+"      later. (<i>Fun fact: ASCII is standardized in ISO 646, the number for\n"
+"      the Unicode standard was deliberately choosen.</i>) Meanwhile the\n"
+"      %sUnicode Consortium%s began to form in\n"
+"      order to guide the further development of the standard."
+msgstr ""
+
+#: views/about.php:82
+#, php-format
+msgid ""
+"The most recent version of Unicode is %s,\n"
+"      containing over 110,000 characters\n"
+"      in over 100 different scripts. It’s encoding form UTF-8, a superset of\n"
+"      ASCII, is the most popular encoding worldwide and the consortium counts\n"
+"      Apple, Oracle, Microsoft, Google, IBM, Nokia and many others to its\n"
+"      members."
+msgstr ""
+
+#: views/about.php:90
+#, php-format
+msgid ""
+"Unicode is a mechanism for universally identifying characters. All\n"
+"      characters get an assigned “codepoint”, which universally refers to\n"
+"      them. For example, the letter “A” has the codepoint 65 assigned, the\n"
+"      chinese character “㐭” the codepoint 13357. Codepoints are usually\n"
+"      represented in %shexadecimal\n"
+"      notation%s, where “A” to “F” represent the numbers 10 to 16."
+msgstr ""
+
+#: views/about.php:98
+msgid ""
+"To bring the sheer mass of the possible 1,114,111 codepoints in a useful\n"
+"      order, Unicode is divided in 16 planes, which are further divided in\n"
+"      logically connected blocks. There are ten principles, that guide the\n"
+"      extension and care of the Unicode standard:"
+msgstr ""
+
+#: views/about.php:104
+msgid "Universal repertoire:"
+msgstr ""
+
+#: views/about.php:104
+msgid ""
+"Every writing system ever used shall\n"
+"        be respected and represented in the standard"
+msgstr ""
+
+#: views/about.php:106
+msgid "Efficiency:"
+msgstr ""
+
+#: views/about.php:106
+msgid "The documentation must be efficient and complete."
+msgstr ""
+
+#: views/about.php:107
+msgid "Characters, not glyphs:"
+msgstr ""
+
+#: views/about.php:107
+msgid ""
+"Only characters, not glyphs shall be\n"
+"        encoded. In a nutshell, glyphs are the actual graphical representations,\n"
+"        while characters are the more abstract concepts behind. Glyphs change\n"
+"        between typefaces, characters don’t."
+msgstr ""
+
+#: views/about.php:111
+msgid "Semantics:"
+msgstr ""
+
+#: views/about.php:111
+msgid ""
+"Included characters must be well defined and \n"
+"        distinguished from others."
+msgstr ""
+
+#: views/about.php:113
+msgid "Plain Text:"
+msgstr ""
+
+#: views/about.php:113
+msgid ""
+"Characters in the standard are <em>text</em> and\n"
+"        never mark-up or metacharacters."
+msgstr ""
+
+#: views/about.php:115
+msgid "Logical order:"
+msgstr ""
+
+#: views/about.php:115
+msgid ""
+"In bidirectional text are the characters\n"
+"        stored in logical order, not in a way that the representaion suggests."
+msgstr ""
+
+#: views/about.php:117
+msgid "Unification:"
+msgstr ""
+
+#: views/about.php:117
+msgid ""
+"Where different cultures or languages use the\n"
+"        same character, it shall be only included once. This point is rather\n"
+"        debatable, because in East Asia the separations, where this rule is to\n"
+"        apply, are not that clear."
+msgstr ""
+
+#: views/about.php:121
+msgid "Dynamic composition:"
+msgstr ""
+
+#: views/about.php:121
+msgid ""
+"New characters can be composed of other,\n"
+"        already standardized characters. For example, the character “Ä” can be\n"
+"        composed of an “A” and a dieresis sign."
+msgstr ""
+
+#: views/about.php:124
+msgid "Stability:"
+msgstr ""
+
+#: views/about.php:124
+msgid ""
+"Once defined characters shall never be removed or\n"
+"        their codepoints reassigned. In the case of an error, a codepoint shall\n"
+"        be deprecated."
+msgstr ""
+
+#: views/about.php:127
+msgid "Convertibility:"
+msgstr ""
+
+#: views/about.php:127
+msgid ""
+"Every other used encoding shall be\n"
+"        representable in terms of a Unicode encoding."
+msgstr ""
+
+#: views/about.php:134
+#, php-format
+msgid ""
+"This website is a private project of %s.\n"
+"      It is <strong>not</strong> affiliated with or approved by the Unicode Consortium.\n"
+"      You can contact me via:"
+msgstr ""
+
+#: views/about.php:145
+msgid "E-Mail:"
+msgstr ""
+
+#: views/about.php:147
+msgid "WWW:"
+msgstr ""
+
+#: views/about.php:148
+msgid "Tel.:"
+msgstr ""
+
+#: views/about.php:155
+msgid "The Content on this Site"
+msgstr "Der Inhalt auf dieser Seite"
+
+#: views/about.php:157
+#, php-format
+msgid ""
+"The content on this website reflects the information found in<br/>\n"
+"      <em>The Unicode Consortium.</em> The Unicode Standard, Version %s,\n"
+"      (Mountain View, CA: The Unicode Consortium, 2012. ISBN 978-1-936213-02-3)<br/>\n"
+"      %s,<br/>\n"
+"      which happens to be the most relevant version of the Unicode Standard\n"
+"      as of August, 2012."
+msgstr ""
+
+#: views/about.php:168
+#, php-format
+msgid ""
+"If you find problems, inaccurancies, bugs or other issues with this site,\n"
+"      please e-mail me or issue a new bug at the %s.\n"
+"      The source code for this site is %s. If you like, fork the code,\n"
+"      enhance it and send me a pull request. (If you don’t have a Github account,\n"
+"      please send the git patch via e-mail.)"
+msgstr ""
+
+#: views/about.php:173
+msgid "bug tracker"
+msgstr ""
+
+#: views/about.php:174
+msgid "live on Github"
+msgstr ""
+
+#: views/about.php:178
+msgid ""
+"<strong>There is no warranty,</strong> that the content on this site is\n"
+"      accurate, complete or error-free! For normative references please refer\n"
+"      to the Unicode website itself."
+msgstr ""
+
+#: views/about.php:182
+msgid "Re-use License"
+msgstr ""
+
+#: views/about.php:184
+#, php-format
+msgid ""
+"You may re-use all content on this site, given that you respect the\n"
+"      following terms. The information regarding Unicode is licensed by the\n"
+"      Unicode Consortium under the %sUnicode Terms of Use%s.\n"
+"      The JavaScript part contains libraries under different licenses, mostly the\n"
+"      GPL and/or the MIT license. See the page source for details.\n"
+"      The graphical representations use glyphs from the following fonts:"
+msgstr ""
+
+#: views/about.php:194
+#, php-format
+msgid ""
+"%sGNU Unifont%s, released\n"
+"          mainly under the GNU Public License, partly under a liberal re-use\n"
+"          license"
+msgstr ""
+
+#: views/about.php:197
+#, php-format
+msgid ""
+"%sHistoric Fonts by George Douros%s,\n"
+"          released free for re-use"
+msgstr ""
+
+#: views/about.php:199
+#, php-format
+msgid ""
+"%sMPH 2B Damase%s,\n"
+"          released under the GPL"
+msgstr ""
+
+#: views/about.php:201
+#, php-format
+msgid ""
+"%sDeja Vu%s, released\n"
+"          under the Bitstream Vera license"
+msgstr ""
+
+#: views/about.php:205
+#, php-format
+msgid ""
+"The images representing single Unicode blocks are taken from the\n"
+"      font %sUnidings%s by George Douros,\n"
+"      released under a permissive license. The quotes from Wikipedia are subject\n"
+"      to the Creative Commons Attribution Share-alike license. Details can be\n"
+"      obtained by following the respective link on each quote.\n"
+"      The geographic localization of blocks (used in the “Find My Codepoint”\n"
+"      wizard) is based on the categorization on %sdecodeunicode.org%s,\n"
+"      published under the CC BY NC license."
+msgstr ""
+
+#: views/about.php:218
+#, php-format
+msgid ""
+"All code provided specifically for Codepoints.net is released\n"
+"      under both the GPL and MIT license, with the licensee free to choose.\n"
+"      Content genuine to this site is released under the\n"
+"      %sCreative Commons Attribution 3.0 Germany%s.\n"
+"      Attribution in this case is a simple backlink, optionally with the link\n"
+"      text “Based on information from Codepoints.net”."
+msgstr ""
+
+#: views/about.php:227
+msgid "Privacy, Statistics"
+msgstr ""
+
+#: views/about.php:229
+#, php-format
+msgid ""
+"This site uses %s to gather statistics\n"
+"      about page views. The sole purpose is to enhance this site.\n"
+"      If you don’t want your visits to be tracked at all, please follow these\n"
+"      instructions:"
+msgstr ""
+
+#: views/about.php:242
+msgid ""
+"First of all we’d like to thank the contributors of the Unicode Consortium,\n"
+"      who work to standardize the essential part of computation, the display\n"
+"      of characters. The same holds for the authors of Wikipedia, who gather\n"
+"      knowledge about many parts of the lettering universe. Their share is an\n"
+"      important part of this site."
+msgstr ""
+
+#: views/about.php:247
+#, php-format
+msgid ""
+"Many thanks go to two sites with a similar goal but other emphasis in\n"
+"      the presentation of the Unicode standard: %s and %s."
+msgstr ""
+
+#: views/about.php:255
+msgid ""
+"The hosting is done on Uberspace, a phantastic provider with extremely\n"
+"    helpful and flexible support."
+msgstr ""
+
+#: views/about.php:257
+msgid "Fonts"
+msgstr "Schriftarten"
+
+#: views/about.php:258
+msgid ""
+"Many people base their work on Unicode. We want to thank the authors of\n"
+"    these fonts, that they made it possible to re-use them for this project:"
+msgstr ""
+
+#: views/about.php:262
+#, php-format
+msgid ""
+"Roman Czyborra, David Starner, Qianqian Fang, Changwoo Ryu and Paul\n"
+"    Hardy for %sGNU Unifont%s"
+msgstr ""
+
+#: views/about.php:267
+msgid "The Deja Vu Project"
+msgstr "Das Deja Vu-Projekt"
+
+#: views/about.php:268
+#, php-format
+msgid "%sMichael Everson%s for the Last Resort font"
+msgstr ""
+
+#: views/about.php:270
+msgid "Image Attribution"
+msgstr ""
+
+#: views/about.php:271
+#, php-format
+msgid ""
+"The background image on the front page is released under the Creative\n"
+"       Commons Attribution license by %sFlickr user Willi Heidelbach%s.\n"
+"       The button backgrounds on the front page are in the public domain:\n"
+"       %smap of Charlemagne’s empire%s, %s18<sup>th</sup> century dowser%s, and\n"
+"       %sNASA Mars Rover%s."
+msgstr ""
+
+#: views/about.php:286
+#, php-format
+msgid ""
+"The “We’re Open Source” image is released under the Creative Commons\n"
+"       Attribution Non-Commercial No-Derivations license by %sFlickr user tima%s."
+msgstr ""
+
+#: views/about.php:290
+#, php-format
+msgid "The icons are part of the %sFont Awesome%s icon set."
+msgstr ""
+
+#: views/about.php:293
+#, php-format
+msgid ""
+"Finally I’d like to thank %sMathias Bynens%s\n"
+"    for pushing me to publish this site at last."
+msgstr ""
 
 #: views/wizard.php:2
 #: views/front.php:25
@@ -254,10 +753,6 @@ msgstr "Suche nach Zeichen mit speziellen Eigenschaften"
 #: views/front.php:29
 msgid "Search Codepoint"
 msgstr "Codepunkt suchen"
-
-#: views/front.php:32
-msgid "About this Site"
-msgstr "Über diese Seite"
 
 #: views/front.php:33
 #, php-format

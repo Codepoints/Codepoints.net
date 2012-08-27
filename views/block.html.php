@@ -25,7 +25,7 @@ include "nav.php";
 ?>
 <div class="payload block" itemscope="itemscope" itemtype="http://schema.org/Enumeration">
   <figure>
-    <img src="/static/images/blocks/<?php e(str_replace(' ', '_', $block->getName()))?>.png" alt="" width="128" height="128" itemprop="image" />
+    <img src="/static/images/blocks/<?php e(str_replace(' ', '_', $block->getName()))?>.png" alt="<?php _e('Symbol representing this block in the Unidings font')?>" width="128" height="128" itemprop="image" />
   </figure>
   <h1 itemprop="name"><?php e($block->getName());?></h1>
   <?php if (count($cps) === 0):?>
