@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-28 07:41+0200\n"
+"POT-Creation-Date: 2012-08-28 23:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -90,6 +90,39 @@ msgstr ""
 msgid "There are no blocks defined in this plane."
 msgstr ""
 
+#: views/scripts.php:2 views/nav.php:18
+msgid "Scripts"
+msgstr ""
+
+#: views/scripts.php:3
+msgid ""
+"Browse Codepoints by script. “Scripts” are the different writing systems. "
+"They are presented geographically, so that you can identify quickly "
+"interesting ones."
+msgstr ""
+
+#: views/scripts.php:65
+msgid "Browse Codepoints by Script"
+msgstr ""
+
+#: views/scripts.php:67
+msgid ""
+"Scripts used around the world. Drag the globe to rotate it.\n"
+"  Click on a country to see scripts used there."
+msgstr ""
+
+#: views/scripts.php:80
+msgid ""
+"This is an interactive graphic of the world. You need an\n"
+"                SVG-enabled browser to use it. (SVG-enabled browsers are\n"
+"                Firefox, Opera, Google Chrome, Safari, and IE 9 or higher.)"
+msgstr ""
+
+#: views/scripts.php:94
+#, php-format
+msgid "%s%s%d%s characters%s are encoded in this script."
+msgstr ""
+
 #: views/nav.php:7 views/footer.php:17
 msgid "Start"
 msgstr ""
@@ -100,10 +133,6 @@ msgstr ""
 
 #: views/nav.php:16
 msgid "Back to search results"
-msgstr ""
-
-#: views/nav.php:18
-msgid "Scripts"
 msgstr ""
 
 #: views/nav.php:19

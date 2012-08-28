@@ -1,8 +1,8 @@
 <?php
-$title = 'Scripts';
-$hDescription = 'Browse Codepoints by script. “Scripts” are the different '.
+$title = __('Scripts');
+$hDescription = __('Browse Codepoints by script. “Scripts” are the different '.
     'writing systems. They are presented geographically, so that '.
-    'you can identify quickly interesting ones.';
+    'you can identify quickly interesting ones.');
 $headdata = '
     <style type="text/css">
 
@@ -62,10 +62,10 @@ include 'header.php';
 include 'nav.php';
 ?>
 <div class="payload static script">
-  <h1>Browse Codepoints by Script</h1>
+<h1><?php _e('Browse Codepoints by Script')?></h1>
   <section class="bk">
-    <p>Scripts used around the world. Drag the globe to rotate it.
-       Click on a country to see scripts used there.</p>
+  <p><?php _e('Scripts used around the world. Drag the globe to rotate it.
+  Click on a country to see scripts used there.')?></p>
     <div id="space">
       <svg xmlns="http://www.w3.org/2000/svg" id="earth"
            width="100%" viewBox="0 0 800 800">
@@ -77,9 +77,9 @@ include 'nav.php';
             <stop stop-color="white" stop-opacity="0.0" offset=".8" />
             <stop stop-color="black" stop-opacity="0.2" offset="1" />
           </radialGradient>
-          <desc>This is an interactive graphic of the world. You need an
+          <desc><?php _e('This is an interactive graphic of the world. You need an
                 SVG-enabled browser to use it. (SVG-enabled browsers are
-                Firefox, Opera, Google Chrome, Safari, and IE 9 or higher.)</desc>
+                Firefox, Opera, Google Chrome, Safari, and IE 9 or higher.)')?></desc>
         </defs>
         <circle cx="50%" cy="50%" r="50%" style="cursor: move" />
         <circle id="athmo" cx="50%" cy="50%" r="50%" style="pointer-events: none; fill: url(#reflect)" />
@@ -91,7 +91,10 @@ include 'nav.php';
       <?php foreach ($scripts as $sc): ?>
         <dt data-sc="<?php e($sc['iso'])?>" class="sc_<?php e($sc['iso'])?>"><a href="#"><?php e(str_replace('_', ' ', $sc['name']))?></a></dt>
         <dd>
-          <p><a href="/search?sc[]=<?php e($sc['iso'])?>"><span class="nchar"><?php e($sc['count'])?></span> characters</a> are encoded in this script.</p>
+          <p><?php printf(__('%s%s%d%s characters%s are encoded in this script.'),
+            '<a href="/search?sc[]='.q($sc['iso']).'">',
+            '<span class="nchar">', $sc['count'], '</span>',
+            '</a>')?></p>
         </dd>
       <?php endforeach?>
     </dl>

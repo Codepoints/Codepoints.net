@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-28 07:41+0200\n"
-"PO-Revision-Date: 2012-08-28 07:55+0100\n"
+"POT-Creation-Date: 2012-08-28 23:15+0200\n"
+"PO-Revision-Date: 2012-08-28 23:20+0100\n"
 "Last-Translator: Manuel Strehl <translate@manuel-strehl.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -17,6 +17,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: German\n"
 "X-Poedit-SourceCharset: utf-8\n"
+
+#: lib/gettext/examples/pigs_dropin.php:77
+msgid ""
+"This is how the story goes.\n"
+"\n"
+msgstr ""
 
 #: views/search/form.php:4
 msgid "Free search:"
@@ -86,6 +92,37 @@ msgstr "(U+%04X bis U+%04X)"
 msgid "There are no blocks defined in this plane."
 msgstr "In dieser Ebene sind keine Blöcke definiert."
 
+#: views/scripts.php:2
+#: views/nav.php:18
+msgid "Scripts"
+msgstr "Schriften"
+
+#: views/scripts.php:3
+msgid "Browse Codepoints by script. “Scripts” are the different writing systems. They are presented geographically, so that you can identify quickly interesting ones."
+msgstr "Durchstöbere Codepunkte nach Schriftsystem. \"Schriftsysteme\" sind unterschiedliche Schreibsysteme. Sie werden geografisch dargestellt, sodass du schnell interessante identifizieren kannst."
+
+#: views/scripts.php:65
+msgid "Browse Codepoints by Script"
+msgstr "Durchstöbere Codepunkte nach Schriftsystem"
+
+#: views/scripts.php:67
+msgid ""
+"Scripts used around the world. Drag the globe to rotate it.\n"
+"  Click on a country to see scripts used there."
+msgstr "Schriftsystem rund um die Welt. Ziehe den Globus, um ihn zu rotieren. Klicke auf ein Land, um die dort verwendeten Schriften zu sehen."
+
+#: views/scripts.php:80
+msgid ""
+"This is an interactive graphic of the world. You need an\n"
+"                SVG-enabled browser to use it. (SVG-enabled browsers are\n"
+"                Firefox, Opera, Google Chrome, Safari, and IE 9 or higher.)"
+msgstr "Dies ist eine interaktive Weltkarte. Du benötigst einen SVG-fähigen Browser, um sie zu nutzen. (SVG-fähige Browser sind Firefox, Opera, Google Chrome, Safari und IE 9 oder höher.)"
+
+#: views/scripts.php:94
+#, php-format
+msgid "%s%s%d%s characters%s are encoded in this script."
+msgstr "%s%s%d%s Schriftzeichen%s sind in diesem System kodiert."
+
 #: views/nav.php:7
 #: views/footer.php:17
 msgid "Start"
@@ -99,10 +136,6 @@ msgstr "Suche"
 #: views/nav.php:16
 msgid "Back to search results"
 msgstr "Zurück zu den Suchergebnissen"
-
-#: views/nav.php:18
-msgid "Scripts"
-msgstr "Schriften"
 
 #: views/nav.php:19
 msgid "Random"
@@ -247,7 +280,7 @@ msgid ""
 "      the Unicode standard was deliberately choosen.</i>) Meanwhile the\n"
 "      %sUnicode Consortium%s began to form in\n"
 "      order to guide the further development of the standard."
-msgstr ""
+msgstr "Dann kam <em>Unicode</em>. Adobe und Xerox beschlossen 1984, dass diese Situation nicht weiterführen konnte, und dass der Bedarf an einem universellen Kodierschema besteht. 1991 erlebte die Veröffentlichung der ersten Version von Unicode mit der internationalen Standardisierung als ISO 10646 zwei Jahre später. (<i>Detail am Rande: ASCII ist als ISO 646 standardisiert, die Nummer für den Unicode-Standard wurde absichtlich gewählt.</i>) Zwischenzeitlich bildete sich das %sUnicode-Konsortium%s um die weitere Entwicklung des Standards zu leiten."
 
 #: views/about.php:82
 #, php-format
@@ -258,7 +291,7 @@ msgid ""
 "      ASCII, is the most popular encoding worldwide and the consortium counts\n"
 "      Apple, Oracle, Microsoft, Google, IBM, Nokia and many others to its\n"
 "      members."
-msgstr ""
+msgstr "Die neueste Version von Unicode ist %s, beinhaltend über 110.000 Schriftzeichen in über 100 verschiedenen Schriftsystemen. Seine Kodierform UTF-8, eine Obermenge von ASCII, ist die populärste Kodierung weltweit und das Konsortium zählt Apple, Oracle, Microsoft, Google, IBM, Nokia und viele andere zu seinen Mitgliedern."
 
 #: views/about.php:90
 #, php-format
@@ -269,7 +302,7 @@ msgid ""
 "      chinese character “㐭” the codepoint 13357. Codepoints are usually\n"
 "      represented in %shexadecimal\n"
 "      notation%s, where “A” to “F” represent the numbers 10 to 16."
-msgstr ""
+msgstr "Unicode ist ein Mechanismus, um Schriftzeichen universell zu identifizieren. Alle Zeichen bekommen einen „Codepunkt“ zugewiesen, der stets auf sie verweist. Zum Beispiel erhielt der Buchstabe „A“ den Codepunkt 65, das chinesische Schriftzeichen „㐭“ den Codepunkt 13357. Codepunkte werden üblicher Weise in %shexadezimaler Notation%s dargestellt, in der „A“ bis „F“ die Nummern 10 bis 16 repräsentieren."
 
 #: views/about.php:98
 msgid ""
@@ -277,7 +310,7 @@ msgid ""
 "      order, Unicode is divided in 16 planes, which are further divided in\n"
 "      logically connected blocks. There are ten principles, that guide the\n"
 "      extension and care of the Unicode standard:"
-msgstr ""
+msgstr "Um die schiere Masse der möglichen 1.114.111 Codepunkte in eine nützliche Reihenfolge zu bringen, ist Unicode in 16 Ebenen unterteilt, die weiter in logisch zusammenhängende Blöcke geteilt sind. Es gibt zehn Prinzipien, die die Erweiterung und Pflege des Unicode-Standards leiten:"
 
 #: views/about.php:104
 msgid "Universal repertoire:"
@@ -307,7 +340,7 @@ msgid ""
 "        encoded. In a nutshell, glyphs are the actual graphical representations,\n"
 "        while characters are the more abstract concepts behind. Glyphs change\n"
 "        between typefaces, characters don’t."
-msgstr ""
+msgstr "Nur Zeichen, keine Glyphen sollen kodiert werden. Um es kurz zu fassen, sind Glyphen die tatsächliche graphische Präsentation, während Zeichen das abstraktere Konzept dahinter sind. Glyphen ändern sich zwischen Schriftarten, Zeichen nicht."
 
 #: views/about.php:111
 msgid "Semantics:"
@@ -317,7 +350,7 @@ msgstr "Semantik:"
 msgid ""
 "Included characters must be well defined and \n"
 "        distinguished from others."
-msgstr ""
+msgstr "Eingebundene Zeichen müssen wohldefiniert und gegen andere abgegrenzt sein."
 
 #: views/about.php:113
 msgid "Plain Text:"
@@ -327,7 +360,7 @@ msgstr "Reiner Text:"
 msgid ""
 "Characters in the standard are <em>text</em> and\n"
 "        never mark-up or metacharacters."
-msgstr ""
+msgstr "Zeichen im Standard sind <em>Text</em> und zeichnen nie Metazeichen aus."
 
 #: views/about.php:115
 msgid "Logical order:"
@@ -337,7 +370,7 @@ msgstr "Logische Reihenfolge:"
 msgid ""
 "In bidirectional text are the characters\n"
 "        stored in logical order, not in a way that the representaion suggests."
-msgstr ""
+msgstr "In bidirektionalem Text sind die Zeichen in logischer Reihenfolge gespeichert, nicht in einer Art, die durch die Darstellung vorgeschlagen wird."
 
 #: views/about.php:117
 msgid "Unification:"
@@ -349,7 +382,7 @@ msgid ""
 "        same character, it shall be only included once. This point is rather\n"
 "        debatable, because in East Asia the separations, where this rule is to\n"
 "        apply, are not that clear."
-msgstr ""
+msgstr "Wo verschiedene Kulturen oder Sprachen das gleiche Zeichen verwenden, soll es nur einmal eingebunden werden. Dieser Punkt ist eher umstritten, weil in Ostasien die Überschneidungen, auf die diese Regel zutreffen würde, nicht wirklich klar sind."
 
 #: views/about.php:121
 msgid "Dynamic composition:"
@@ -360,7 +393,7 @@ msgid ""
 "New characters can be composed of other,\n"
 "        already standardized characters. For example, the character “Ä” can be\n"
 "        composed of an “A” and a dieresis sign."
-msgstr ""
+msgstr "Neue Zeichen können aus anderen, bereits standardisierten Zeichen zusammengesetzt werden. Zum Beispiel kann das Zeichen „Ä“ aus einem „A“ und einem Trema aufgebaut werden."
 
 #: views/about.php:124
 msgid "Stability:"
@@ -371,7 +404,7 @@ msgid ""
 "Once defined characters shall never be removed or\n"
 "        their codepoints reassigned. In the case of an error, a codepoint shall\n"
 "        be deprecated."
-msgstr ""
+msgstr "Einmal definierte Zeichen sollen niemals entfernt oder anderen Zeichen zugeordnet werden. Im Falle eines Fehlers soll ein Codepunkt als veraltet ausgezeichnet werden."
 
 #: views/about.php:127
 msgid "Convertibility:"
@@ -381,7 +414,7 @@ msgstr "Umwandelbarkeit:"
 msgid ""
 "Every other used encoding shall be\n"
 "        representable in terms of a Unicode encoding."
-msgstr ""
+msgstr "Jede andere verwendete Kodierung soll in einer Unicode-Kodierung abbildbar sein."
 
 #: views/about.php:134
 #, php-format
@@ -389,7 +422,7 @@ msgid ""
 "This website is a private project of %s.\n"
 "      It is <strong>not</strong> affiliated with or approved by the Unicode Consortium.\n"
 "      You can contact me via:"
-msgstr "Diese Webseite ist ein privates Projekt von %s. Sie ist <strong>nicht</strong> mit dem Unicode-Konsortium verbunden oder von ihm freigegeben. DU kannst mich kontaktieren über:"
+msgstr "Diese Webseite ist ein privates Projekt von %s. Sie ist <strong>nicht</strong> mit dem Unicode-Konsortium verbunden oder von ihm freigegeben. Du kannst mich kontaktieren über:"
 
 #: views/about.php:145
 msgid "E-Mail:"
@@ -464,28 +497,28 @@ msgid ""
 "%sGNU Unifont%s, released\n"
 "          mainly under the GNU Public License, partly under a liberal re-use\n"
 "          license"
-msgstr ""
+msgstr "%sGNU Unifont%s, veröffentlicht hauptsächlich unter der GNU Public License, teilweise unter einer freigebigen Wiederverwende-Lizenz"
 
 #: views/about.php:197
 #, php-format
 msgid ""
 "%sHistoric Fonts by George Douros%s,\n"
 "          released free for re-use"
-msgstr ""
+msgstr "%sHistorische Schriften von George Douros%s, veröffentlicht frei zur Wiederverwendung"
 
 #: views/about.php:199
 #, php-format
 msgid ""
 "%sMPH 2B Damase%s,\n"
 "          released under the GPL"
-msgstr ""
+msgstr "%sMPH 2B Damase%s, veröffentlicht unter der GPL"
 
 #: views/about.php:201
 #, php-format
 msgid ""
 "%sDeja Vu%s, released\n"
 "          under the Bitstream Vera license"
-msgstr ""
+msgstr "%sDeja Vu%s, veröffentlicht unter der Bistream Vera-Lizenz"
 
 #: views/about.php:205
 #, php-format
@@ -549,7 +582,7 @@ msgstr ""
 msgid ""
 "The hosting is done on Uberspace, a phantastic provider with extremely\n"
 "    helpful and flexible support."
-msgstr ""
+msgstr "Das Hosting geschieht auf Servern von Uberspace, einem fantastischen Provider mit extrem hilfreichem und flexiblem Support."
 
 #: views/about.php:257
 msgid "Fonts"
@@ -559,14 +592,14 @@ msgstr "Schriftarten"
 msgid ""
 "Many people base their work on Unicode. We want to thank the authors of\n"
 "    these fonts, that they made it possible to re-use them for this project:"
-msgstr ""
+msgstr "Viele Leute arbeiten basierend auf Unicode. Wir möchten den Autoren dieser Schriften danken, dass sie die Verwendung für dieses Projekt möglich gemacht haben:"
 
 #: views/about.php:262
 #, php-format
 msgid ""
 "Roman Czyborra, David Starner, Qianqian Fang, Changwoo Ryu and Paul\n"
 "    Hardy for %sGNU Unifont%s"
-msgstr ""
+msgstr "Roman Czyborra, David Starner, Qianqian Fang, Changwoo Ryu und Paul Hardy für %sGNU Unifont%s"
 
 #: views/about.php:267
 msgid "The Deja Vu Project"
@@ -575,7 +608,7 @@ msgstr "Das Deja Vu-Projekt"
 #: views/about.php:268
 #, php-format
 msgid "%sMichael Everson%s for the Last Resort font"
-msgstr ""
+msgstr "%sMichael Everson%s für die Last Resort-Schriftart"
 
 #: views/about.php:270
 msgid "Image Attribution"
@@ -589,14 +622,14 @@ msgid ""
 "       The button backgrounds on the front page are in the public domain:\n"
 "       %smap of Charlemagne’s empire%s, %s18<sup>th</sup> century dowser%s, and\n"
 "       %sNASA Mars Rover%s."
-msgstr ""
+msgstr "Das Hintergrundbild auf der Startseite ist unter der Creative Commons Attribution-Lizenz von %sFlickr-Nutzer Willi Heidelbach%s veröffentlicht. Die Knopf-Hintergründe auf der Startseite sind gemeinfrei: %sKarte des Reichs von Karl dem Großen%s, %sWünschelrutengänger aus dem 18. Jhd.%s und %sein NASA-Marsrover%s."
 
 #: views/about.php:286
 #, php-format
 msgid ""
 "The “We’re Open Source” image is released under the Creative Commons\n"
 "       Attribution Non-Commercial No-Derivations license by %sFlickr user tima%s."
-msgstr ""
+msgstr "Das „We’re Open Source“-Bild ist unter der Creative Commons Attribution Non-Commercial No-Derivations-Lizenz von %sFlickr-Nutzer tima%s veröffentlicht."
 
 #: views/about.php:290
 #, php-format
@@ -791,7 +824,7 @@ msgstr "Ebenen"
 
 #: views/front.php:51
 msgid "Basic Latin"
-msgstr ""
+msgstr "Basis-Lateinisch"
 
 #: views/front.php:54
 msgid "“Find My Codepoint”"
