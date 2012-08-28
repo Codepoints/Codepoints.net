@@ -1,14 +1,16 @@
 <!-- codepoint -->
 <p>
-  U+<?php e($codepoint->getId('hex'))?> was added to Unicode in version
-  <?php $s('age')?>. It belongs to the block <?php bl($block)?> in the
   <?php $plane = $codepoint->getPlane();
-  f('<a class="pl" href="%s">%s</a>',
-      $router->getUrl($plane), $plane->name); ?>.
-  <?php if ($props['Dep']):?>
-    This codepoint is <a href="<?php
-      e($router->getUrl('search?Dep=1'))?>">deprecated</a>.
-  <?php endif?>
+  printf(__('U+%04X was added to Unicode in version %s. It belongs to the block %s in the %s.'),
+    $codepoint->getId(),
+    '<a href="'.q($router->getUrl('search?age='.$props['age'])).'">'.
+    q($info->getLabel('age', $props['age'])).'</a>',
+    _bl($block),
+    '<a class="pl" href="'.q($router->getUrl($plane)).'">'.q($plane->name).'</a>');
+  if ($props['Dep']):
+    printf(__('This codepoint is %sdeprecated%s.'),
+      '<a href="'.q($router->getUrl('search?Dep=1')).'">', '</a>');
+  endif?>
 </p>
 
 <!-- character -->
@@ -34,24 +36,26 @@
   <?php endif?>
 
   <?php $defn = $codepoint->getProp('kDefinition');
-    if ($defn):?>
-    The Unihan Database defines it as <em><?php
-      echo preg_replace_callback('/U\+([0-9A-F]{4,6})/', function($m) {
+    if ($defn):
+    printf(__('The Unihan Database defines it as <em>%s</em>.'),
+      preg_replace_callback('/U\+([0-9A-F]{4,6})/', function($m) {
           $router = Router::getRouter();
           $db = $router->getSetting('db');
           return _cp(Codepoint::getCP(hexdec($m[1]), $db), '', 'min');
-      }, $defn);
-    ?></em>.
-  <?php endif?>
+      }, $defn));
+  endif?>
   <?php $pronunciation = $codepoint->getPronunciation();
-    if ($pronunciation):?>
-    Its Pīnyīn pronunciation is
-    <em><?php e($pronunciation)?></em>.
-  <?php endif?>
+  if ($pronunciation):
+    printf(__('Its Pīnyīn pronunciation is <em>%s</em>.'), q($pronunciation));
+  endif?>
 
-  <?php if($props['nt'] !== 'None'):?>
-    The codepoint has the <?php $s('nt')?> value <?php $s('nv')?>.
-  <?php endif?>
+  <?php if($props['nt'] !== 'None'):
+    printf(__('The codepoint has the %s value %s.'),
+    '<a href="'.q($router->getUrl('search?nt='.$props['nt'])).'">'.
+    q($info->getLabel('nt', $props['nt'])).'</a>',
+    '<a href="'.q($router->getUrl('search?nv='.$props['nv'])).'">'.
+    q($info->getLabel('nv', $props['nv'])).'</a>');
+  endif?>
 
   <?php
   $hasUC = ($props['uc'] && (is_array($props['uc']) || $props['uc']->getId() != $codepoint->getId()));
@@ -91,25 +95,32 @@
          (int)$props['Bidi_M']))?>"><?php
   if (! $props['Bidi_M']):?>not <?php endif?>mirrored</a>.
   <?php if (array_key_exists('bmg', $props) &&
-            $props['bmg']->getId() != $codepoint->getId()):?>
-  Its corresponding mirrored glyph is <?php cp($props['bmg'], '', 'min')?>.
-  <?php endif?>
+            $props['bmg']->getId() != $codepoint->getId()):
+    printf(__('Its corresponding mirrored glyph is %s.'), _cp($props['bmg'], '', 'min'));
+  endif?>
 
   <?php if (count($confusables)):?>
-    The glyph can, under circumstances, be confused with
-    <a href="#confusables" rel="internal"><?php e(count($confusables))?> other glyphs</a>.
+    <?php printf(__('The glyph can, under circumstances, be confused with %s%d other glyphs%s.'),
+    '<a href="#confusables" rel="internal">', count($confusables), '</a>')?>
   <?php endif?>
 
-  In text U+<?php e($codepoint->getId('hex'))?> behaves as <?php $s('lb')?> 
-  regarding line breaks. It has type <?php $s('SB')?> for sentence and <?php 
-  $s('WB')?> for word breaks. The <?php e($info->getCategory('GCB'))?> property 
-  is <?php $s('GCB')?>.
+  <?php printf(__('In text U+%04X behaves as %s regarding line breaks. It has
+  type %s for sentence and %s for word breaks. The %s is %s.'),
+  $codepoint->getId(),
+    '<a href="'.q($router->getUrl('search?lb='.$props['lb'])).'">'.
+    q($info->getLabel('lb', $props['lb'])).'</a>',
+    '<a href="'.q($router->getUrl('search?SB='.$props['SB'])).'">'.
+    q($info->getLabel('SB', $props['SB'])).'</a>',
+    '<a href="'.q($router->getUrl('search?WB='.$props['WB'])).'">'.
+    q($info->getLabel('WB', $props['WB'])).'</a>',
+        q($info->getCategory('GCB')),
+    '<a href="'.q($router->getUrl('search?GCB='.$props['GCB'])).'">'.
+    q($info->getLabel('GCB', $props['GCB'])).'</a>')?>
 </p>
 
 <!-- Wikipedia -->
 <?php if (array_key_exists('abstract', $props) && $props['abstract']):?>
-  <p>The <a href="http://en.wikipedia.org/wiki/%<?php e($codepoint->getRepr('UTF-8', '%'))?>">Wikipedia</a>
-  has the following information about this codepoint:</p>
+  <p><?php printf(__('The %sWikipedia%s has the following information about this codepoint:'), '<a href="http://en.wikipedia.org/wiki/%'.q($codepoint->getRepr('UTF-8', '%')).'">', '</a>')?></p>
   <blockquote cite="http://en.wikipedia.org/wiki/%<?php e($codepoint->getRepr('UTF-8', '%'))?>">
     <?php echo strip_tags($props['abstract'], '<p><b><strong class="selflink"><strong><em><i><var><sup><sub><tt><ul><ol><li><samp><small><hr><h2><h3><h4><h5><dfn><dl><dd><dt><u><abbr><big><blockquote><br><center><del><ins><kbd>')?>
   </blockquote>

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-27 19:46+0200\n"
-"PO-Revision-Date: 2012-08-27 19:57+0100\n"
+"POT-Creation-Date: 2012-08-28 07:41+0200\n"
+"PO-Revision-Date: 2012-08-28 07:55+0100\n"
 "Last-Translator: Manuel Strehl <translate@manuel-strehl.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -17,12 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: German\n"
 "X-Poedit-SourceCharset: utf-8\n"
-
-#: lib/gettext/examples/pigs_dropin.php:77
-msgid ""
-"This is how the story goes.\n"
-"\n"
-msgstr ""
 
 #: views/search/form.php:4
 msgid "Free search:"
@@ -155,14 +149,14 @@ msgstr "Glossar"
 msgid ""
 "It’s hard to find one certain character in over 110,000 codepoints. This\n"
 "      site aims to make it as easy as possible with the following search options:"
-msgstr ""
+msgstr "Es ist schwer, ein Schriftzeichen unter 110.000 Codepunkten zu finden. Diese Webseite versucht, das mit den folgenden Suchoptionen so leicht wie möglich zu machen:"
 
 #: views/about.php:23
 msgid ""
 "Free search: Just press the “Search” tab above or use the form on the\n"
 "        front page and type a query. In many cases the codepoint in question is\n"
 "        in the result."
-msgstr ""
+msgstr "Freie Suche: Drücke einfach auf „Suche“ oben oder nutze das Formular auf der Startseite und gib eine Anfrage ein. In vielen Fällen ist der gesuchte Codepunkt im Ergebnis."
 
 #: views/about.php:26
 #, php-format
@@ -170,24 +164,24 @@ msgid ""
 "%sExtended search%s:\n"
 "        You can configure on this page every Unicode property of the codepoint\n"
 "        in question."
-msgstr ""
+msgstr "%sErweiterte Suche%s: Du kannst auf dieser Seite jede fragliche Unicode-Eigenschaft einstellen."
 
 #: views/about.php:29
 #, php-format
 msgid ""
 "The %s“Find My Codepoint” wizard%s:\n"
 "        Answer a series of questions to get to your character."
-msgstr ""
+msgstr "Der %s„Finde meinen Codepunkt“-Wizard%s: Beantworte eine Reihe Fragen, um zu deinem Schriftzeichen zu gelangen."
 
 #: views/about.php:33
 msgid ""
 "If you happen to already have the character in question just paste it\n"
 "    in the search box. It will bring you directly to its description page."
-msgstr ""
+msgstr "Wenn du das fragliche Schriftzeichen bereits hast, kopiere es einfach in die Suchbox. Sie bringt dich direkt zu seiner Beschreibungsseite."
 
 #: views/about.php:35
 msgid "Do you know the character’s shape?"
-msgstr ""
+msgstr "Kennst du die Gestalt des Zeichens?"
 
 #: views/about.php:36
 #, php-format
@@ -196,11 +190,11 @@ msgid ""
 "    look? Fear not, on %s\n"
 "    you can draw the character and get it recognized. This works remarkably\n"
 "    well for many characters."
-msgstr ""
+msgstr "Du kennst keinen Namen oder andere EIgenschaften eines Codepunkts, aber sein allgemeines Aussehen? Keine Panik, auf %s kannst du das Schriftzeichen malen und bekommst es erkannt. Das funktioniert erstaunlich gut für viele Zeichen."
 
 #: views/about.php:40
 msgid "Advanced Options"
-msgstr ""
+msgstr "Fortgeschrittene Optionen"
 
 #: views/about.php:41
 #, php-format
@@ -209,7 +203,7 @@ msgid ""
 "    might be, you can give the range directly in the URL. <em>E. g.,</em> to\n"
 "    inspect characters in the range U+0200 to U+0300, enter in the address bar\n"
 "    “%s”"
-msgstr ""
+msgstr "Wenn du Unicode kennst und auch den groben Bereich, in dem sich der Codepunkt befinden könnte, kannst du den Bereich direkt in der URL angeben. Um zum Beispiel die Schriftzeichen im Bereich U+0200 bis U+0300 zu untersuchen, gib in der Adresszeile „%s“ ein."
 
 #: views/about.php:49
 #, php-format
@@ -220,16 +214,16 @@ msgid ""
 "      encoding was ASCII, which basically assigns simple Latin upper- and lowercase letters\n"
 "      as well as numbers and some punctuation, all in all 128 positions.\n"
 "      The W3C has published a %svery good introduction%s to the topic of character encodings."
-msgstr ""
+msgstr "Computer verwenden 0en und 1en, um Information zu speichern. Um daraus nutzbare Information zu bekommen, in unserem Fall anzeigbaren Text, brauchen wir eine sogenannte <em>Kodierung</em>, die dem Computer sagt, wie diese 0en und 1en in ein Alphabet transformiert werden. Die erste standardisierte Kodierung war ASCII, das im Wesentlichen einfache lateinische Groß- und Kleinbuchstaben sowie Nummern und Interpunktion zuweist, alles in allem 128 Positionen. Das W3C hat eine %ssehr gute Einführung%s zum Thema Kodierungen veröffentlicht."
 
 #: views/about.php:58
 #, php-format
 msgid "The %s is intentionally identical to ASCII."
-msgstr ""
+msgstr "Der %s ist absichtlich identisch zu ASCII."
 
 #: views/about.php:59
 msgid "first block of Unicode codepoints"
-msgstr ""
+msgstr "erste Block von Unicode-Zeichen"
 
 #: views/about.php:62
 msgid ""
@@ -240,7 +234,7 @@ msgid ""
 "      to one another over the <em>Internet</em>. If the sender didn’t specify\n"
 "      the encoding of a message, there was a good chance the receiver would\n"
 "      only get a stream of nonsense and rubbish."
-msgstr ""
+msgstr "128 Positionen reichten nicht sehr lange. Viele Institute und Firmen begannen, ihre eigenen Kodierungen zu implementieren. 2010 gab es hübsche 250 Kodierungen in weitem Gebrauch, nicht enthaltend oskure oder privat verwendete. Diese Situation zeigte sich als katastrophal, als Computer anfingen, miteinander über das <em>Internet</em> zu reden. Wenn der Sender die Kodierung einer Nachricht nicht angab, war die Chance groß, dass der Empfänger nur einen Strom Unfug und Müll bekam."
 
 #: views/about.php:71
 #, php-format
@@ -287,25 +281,25 @@ msgstr ""
 
 #: views/about.php:104
 msgid "Universal repertoire:"
-msgstr ""
+msgstr "Universelles Repertoire:"
 
 #: views/about.php:104
 msgid ""
 "Every writing system ever used shall\n"
 "        be respected and represented in the standard"
-msgstr ""
+msgstr "Jedes jemals verwendete Schriftsystem soll respektiert und im Standard repräsentiert werden"
 
 #: views/about.php:106
 msgid "Efficiency:"
-msgstr ""
+msgstr "Effizienz:"
 
 #: views/about.php:106
 msgid "The documentation must be efficient and complete."
-msgstr ""
+msgstr "Die Dokumentation muss effizient und komplett sein."
 
 #: views/about.php:107
 msgid "Characters, not glyphs:"
-msgstr ""
+msgstr "Schriftzeichen, nicht Buchstaben:"
 
 #: views/about.php:107
 msgid ""
@@ -317,7 +311,7 @@ msgstr ""
 
 #: views/about.php:111
 msgid "Semantics:"
-msgstr ""
+msgstr "Semantik:"
 
 #: views/about.php:111
 msgid ""
@@ -327,7 +321,7 @@ msgstr ""
 
 #: views/about.php:113
 msgid "Plain Text:"
-msgstr ""
+msgstr "Reiner Text:"
 
 #: views/about.php:113
 msgid ""
@@ -337,7 +331,7 @@ msgstr ""
 
 #: views/about.php:115
 msgid "Logical order:"
-msgstr ""
+msgstr "Logische Reihenfolge:"
 
 #: views/about.php:115
 msgid ""
@@ -347,7 +341,7 @@ msgstr ""
 
 #: views/about.php:117
 msgid "Unification:"
-msgstr ""
+msgstr "Vereinheitlichung:"
 
 #: views/about.php:117
 msgid ""
@@ -359,7 +353,7 @@ msgstr ""
 
 #: views/about.php:121
 msgid "Dynamic composition:"
-msgstr ""
+msgstr "Dynamische Komposition:"
 
 #: views/about.php:121
 msgid ""
@@ -370,7 +364,7 @@ msgstr ""
 
 #: views/about.php:124
 msgid "Stability:"
-msgstr ""
+msgstr "Stabilität:"
 
 #: views/about.php:124
 msgid ""
@@ -381,7 +375,7 @@ msgstr ""
 
 #: views/about.php:127
 msgid "Convertibility:"
-msgstr ""
+msgstr "Umwandelbarkeit:"
 
 #: views/about.php:127
 msgid ""
@@ -528,7 +522,7 @@ msgid ""
 "      about page views. The sole purpose is to enhance this site.\n"
 "      If you don’t want your visits to be tracked at all, please follow these\n"
 "      instructions:"
-msgstr ""
+msgstr "Diese Seite nutzt %s, um Statistiken über Seitenaufrufe zu sammeln. Der einzige Zweck ist die Verbesserung dieser Webseite. Wenn du deine Besuche überhaupt nicht verfolgt haben möchtest, folge bitte diesen Anweisungen:"
 
 #: views/about.php:236
 #, php-format
@@ -607,14 +601,14 @@ msgstr ""
 #: views/about.php:290
 #, php-format
 msgid "The icons are part of the %sFont Awesome%s icon set."
-msgstr ""
+msgstr "Die Icons sind Teil des %sFont Awesome%s-Iconsets."
 
 #: views/about.php:293
 #, php-format
 msgid ""
 "Finally I’d like to thank %sMathias Bynens%s\n"
 "    for pushing me to publish this site at last."
-msgstr ""
+msgstr "Schließlich möchte ich %sMathias Bynens%s dafür danken, dass er mich dazu gebracht hat, die Webseite endlich zu veröffentlichen."
 
 #: views/wizard.php:2
 #: views/front.php:25
@@ -946,15 +940,52 @@ msgstr "Eigenschaft"
 msgid "Value"
 msgstr "Wert"
 
-#: views/codepoint/info.php:9
+#: views/codepoint/info.php:4
+#, php-format
+msgid "U+%04X was added to Unicode in version %s. It belongs to the block %s in the %s."
+msgstr "U+%04X wurde in Version %s zu Unicode hinzugefügt. Er gehört zum Block %s in der %s."
+
+#: views/codepoint/info.php:11
 #, php-format
 msgid "This codepoint is %sdeprecated%s."
 msgstr "Dieser Codepunkt ist %sveraltet%s."
 
-#: views/codepoint/info.php:111
+#: views/codepoint/info.php:40
+#, php-format
+msgid "The Unihan Database defines it as <em>%s</em>."
+msgstr "Die Unihan-Datenbank definiert ihn als <em>%s</em>."
+
+#: views/codepoint/info.php:49
+#, php-format
+msgid "Its Pīnyīn pronunciation is <em>%s</em>."
+msgstr "Seine Pīnyīn-Aussprache ist <em>%s</em>."
+
+#: views/codepoint/info.php:53
+#, php-format
+msgid "The codepoint has the %s value %s."
+msgstr "Der Codepunkt hat den %s-Wert %s."
+
+#: views/codepoint/info.php:99
+#, php-format
+msgid "Its corresponding mirrored glyph is %s."
+msgstr "Sein entsprechend gespiegelter Buchstabe ist %s."
+
+#: views/codepoint/info.php:103
+#, php-format
+msgid "The glyph can, under circumstances, be confused with %s%d other glyphs%s."
+msgstr "Der Buchstabe kann, unter Umständen, mit %s%d anderen Buchstaben%s verwechselt werden."
+
+#: views/codepoint/info.php:107
+#, php-format
+msgid ""
+"In text U+%04X behaves as %s regarding line breaks. It has\n"
+"  type %s for sentence and %s for word breaks. The %s is %s."
+msgstr "In Text verhält sich U+%04X als %s bezüglich Zeilenumbrüchen. Es hat Typ %s für Satz- und %s für Wortumbrüche. Das %s ist %s."
+
+#: views/codepoint/info.php:123
 #, php-format
 msgid "The %sWikipedia%s has the following information about this codepoint:"
-msgstr "Die %sWIkipedia%s hat die folgende Information zu diesem Codepunkt:"
+msgstr "Die %sWikipedia%s hat die folgende Information zu diesem Codepunkt:"
 
 #: views/codepoint.html.php:16
 #, php-format

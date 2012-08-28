@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-27 19:46+0200\n"
+"POT-Creation-Date: 2012-08-28 07:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -995,12 +995,52 @@ msgstr ""
 msgid "Value"
 msgstr ""
 
-#: views/codepoint/info.php:9
+#: views/codepoint/info.php:4
+#, php-format
+msgid ""
+"U+%04X was added to Unicode in version %s. It belongs to the block %s in the "
+"%s."
+msgstr ""
+
+#: views/codepoint/info.php:11
 #, php-format
 msgid "This codepoint is %sdeprecated%s."
 msgstr ""
 
-#: views/codepoint/info.php:111
+#: views/codepoint/info.php:40
+#, php-format
+msgid "The Unihan Database defines it as <em>%s</em>."
+msgstr ""
+
+#: views/codepoint/info.php:49
+#, php-format
+msgid "Its Pīnyīn pronunciation is <em>%s</em>."
+msgstr ""
+
+#: views/codepoint/info.php:53
+#, php-format
+msgid "The codepoint has the %s value %s."
+msgstr ""
+
+#: views/codepoint/info.php:99
+#, php-format
+msgid "Its corresponding mirrored glyph is %s."
+msgstr ""
+
+#: views/codepoint/info.php:103
+#, php-format
+msgid ""
+"The glyph can, under circumstances, be confused with %s%d other glyphs%s."
+msgstr ""
+
+#: views/codepoint/info.php:107
+#, php-format
+msgid ""
+"In text U+%04X behaves as %s regarding line breaks. It has\n"
+"  type %s for sentence and %s for word breaks. The %s is %s."
+msgstr ""
+
+#: views/codepoint/info.php:123
 #, php-format
 msgid "The %sWikipedia%s has the following information about this codepoint:"
 msgstr ""
