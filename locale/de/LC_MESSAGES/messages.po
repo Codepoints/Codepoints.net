@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-28 23:15+0200\n"
-"PO-Revision-Date: 2012-08-28 23:20+0100\n"
+"POT-Creation-Date: 2012-09-07 22:00+0200\n"
+"PO-Revision-Date: 2012-09-07 22:26+0100\n"
 "Last-Translator: Manuel Strehl <translate@manuel-strehl.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -542,7 +542,7 @@ msgid ""
 "      %sCreative Commons Attribution 3.0 Germany%s.\n"
 "      Attribution in this case is a simple backlink, optionally with the link\n"
 "      text “Based on information from Codepoints.net”."
-msgstr ""
+msgstr "Der gesamte Code, der speziell für Codepoints.net geschrieben wurde, ist unter der GPL und MIT-Lizenz verfügbar, der Lizenznehmer wählt frei. Für diese Seite geschriebener Inhalt ist unter der %sCreative Commons Attribution 2.0 Germany%s-Lizenz veröffentlicht. Eine Attribution ist in diesem Fall ein einfacher Link zurück, optional mit dem Linktext „Basierend auf Information von Codepoints.net“ versehen."
 
 #: views/about.php:227
 msgid "Privacy, Statistics"
@@ -569,14 +569,14 @@ msgid ""
 "      of characters. The same holds for the authors of Wikipedia, who gather\n"
 "      knowledge about many parts of the lettering universe. Their share is an\n"
 "      important part of this site."
-msgstr ""
+msgstr "Zu Allererst möchten wir den Beitragenden des Unicode-Konsortiums danken, die daran arbeiten, einen essentiellen Teil der Computerarbeit zu standardisieren, die Anzeige von Schriftzeichen. Das gleiche gilt für die Wikipedia-Autoren, die Wissen über viele Teile des Schrift-Universums zusammentragen. Sie haben einen gehörigen Teil dieser Seite erst möglich gemacht."
 
 #: views/about.php:247
 #, php-format
 msgid ""
 "Many thanks go to two sites with a similar goal but other emphasis in\n"
 "      the presentation of the Unicode standard: %s and %s."
-msgstr ""
+msgstr "Vielen Dank sagen wir auch zwei Seiten mit einem ähnlichen Ziel aber anderen Schwerpunkten in der Präsentation des Unicode-Standards: %s und %s."
 
 #: views/about.php:255
 msgid ""
@@ -978,44 +978,125 @@ msgstr "Wert"
 msgid "U+%04X was added to Unicode in version %s. It belongs to the block %s in the %s."
 msgstr "U+%04X wurde in Version %s zu Unicode hinzugefügt. Er gehört zum Block %s in der %s."
 
-#: views/codepoint/info.php:11
+#: views/codepoint/info.php:13
 #, php-format
 msgid "This codepoint is %sdeprecated%s."
 msgstr "Dieser Codepunkt ist %sveraltet%s."
 
-#: views/codepoint/info.php:40
+#: views/codepoint/info.php:21
+#, php-format
+msgid "This character is a %s and is %scommonly%s used, that is, in no specific script."
+msgstr "Dieses Schriftzeichen ist ein %s und wird %sallgemein%s verwendet, das heißt, in keiner speziellen Schrift."
+
+#: views/codepoint/info.php:27
+#, php-format
+msgid "This character is a %s and %sinherits%s its %sscript property%s from the preceding character."
+msgstr "Dieses Schriftzeichen ist ein %s und %serbt%s seine %sSchrift-Eigenschaft%s vom vorhergehenden Zeichen."
+
+#: views/codepoint/info.php:35
+#, php-format
+msgid "This character is a %s and is mainly used in the %s script."
+msgstr "Dieses Schriftzeichen ist ein %s und wird hauptsächlich in der %s-Schrift verwendet."
+
+#: views/codepoint/info.php:52
+#, php-format
+msgid "It is also used in the script%s %s."
+msgstr "Es wird auch in den Schrift%s %s verwendet."
+
+#: views/codepoint/info.php:60
 #, php-format
 msgid "The Unihan Database defines it as <em>%s</em>."
 msgstr "Die Unihan-Datenbank definiert ihn als <em>%s</em>."
 
-#: views/codepoint/info.php:49
+#: views/codepoint/info.php:71
 #, php-format
 msgid "Its Pīnyīn pronunciation is <em>%s</em>."
 msgstr "Seine Pīnyīn-Aussprache ist <em>%s</em>."
 
-#: views/codepoint/info.php:53
+#: views/codepoint/info.php:76
 #, php-format
 msgid "The codepoint has the %s value %s."
 msgstr "Der Codepunkt hat den %s-Wert %s."
 
-#: views/codepoint/info.php:99
+#: views/codepoint/info.php:88
+#, php-format
+msgid "It is related to %s%s%s%s%s."
+msgstr "Es ist verwandt mit %s%s%s%s%s."
+
+#: views/codepoint/info.php:89
+#, php-format
+msgid "its uppercase variant %s"
+msgstr "seinem Großbuchstaben %s"
+
+#: views/codepoint/info.php:90
+#: views/codepoint/info.php:107
+msgid ", "
+msgstr ", "
+
+#: views/codepoint/info.php:90
+#: views/codepoint/info.php:92
+#: views/codepoint/info.php:105
+msgid " and "
+msgstr " und "
+
+#: views/codepoint/info.php:91
+#, php-format
+msgid "its lowercase variant %s"
+msgstr "seinem Kleinbuchstaben %s"
+
+#: views/codepoint/info.php:93
+#, php-format
+msgid "its titlecase variant %s"
+msgstr "seinem Titelbuchstaben %s"
+
+#: views/codepoint/info.php:113
+#, php-format
+msgid "The character is also known as %s."
+msgstr "Das Schriftzeichen ist auch bekannt als %s."
+
+#: views/codepoint/info.php:121
+#, php-format
+msgid "The glyph is %snot a composition%s."
+msgstr "Der Buchstabe ist %skeine Zusammensetzung%s."
+
+#: views/codepoint/info.php:125
+#, php-format
+msgid "The glyph is a %s composition of the glyphs %s."
+msgstr "Der Buchstabe ist eine %s Zusammensetzung der Zeichen %s."
+
+#: views/codepoint/info.php:132
+#, php-format
+msgid "It has a %s %s."
+msgstr "Es hat eine %s %s."
+
+#: views/codepoint/info.php:139
+#, php-format
+msgid "In bidirectional context it acts as %s and is %smirrored%s."
+msgstr "In bidirektionalem Kontext handelt es als %s und wird %sgespiegelt%s."
+
+#: views/codepoint/info.php:148
+#, php-format
+msgid "In bidirectional context it acts as %s and is %snot mirrored%s."
+msgstr "In bidirektionalem Kontext handelt es als %s und wird %snicht gespiegelt%s."
+
+#: views/codepoint/info.php:160
 #, php-format
 msgid "Its corresponding mirrored glyph is %s."
 msgstr "Sein entsprechend gespiegelter Buchstabe ist %s."
 
-#: views/codepoint/info.php:103
+#: views/codepoint/info.php:165
 #, php-format
 msgid "The glyph can, under circumstances, be confused with %s%d other glyphs%s."
 msgstr "Der Buchstabe kann, unter Umständen, mit %s%d anderen Buchstaben%s verwechselt werden."
 
-#: views/codepoint/info.php:107
+#: views/codepoint/info.php:170
 #, php-format
 msgid ""
 "In text U+%04X behaves as %s regarding line breaks. It has\n"
-"  type %s for sentence and %s for word breaks. The %s is %s."
+"        type %s for sentence and %s for word breaks. The %s is %s."
 msgstr "In Text verhält sich U+%04X als %s bezüglich Zeilenumbrüchen. Es hat Typ %s für Satz- und %s für Wortumbrüche. Das %s ist %s."
 
-#: views/codepoint/info.php:123
+#: views/codepoint/info.php:186
 #, php-format
 msgid "The %sWikipedia%s has the following information about this codepoint:"
 msgstr "Die %sWikipedia%s hat die folgende Information zu diesem Codepunkt:"

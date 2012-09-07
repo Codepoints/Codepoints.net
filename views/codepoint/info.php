@@ -9,6 +9,7 @@
         '<a class="pl" href="'.q($router->getUrl($plane)).'">'.q($plane->name).'</a>');
 
     if ($props['Dep']) {
+        echo ' ';
         printf(__('This codepoint is %sdeprecated%s.'),
         '<a href="'.q($router->getUrl('search?Dep=1')).'">', '</a>');
     }
@@ -47,6 +48,7 @@
     }
 
     if (count($buf)) {
+        echo ' ';
         printf(__('It is also used in the script%s %s.'),
             (count($buf) > 1)? 's' : '',
             join(', ', $buf));
@@ -54,6 +56,7 @@
 
     $defn = $codepoint->getProp('kDefinition');
     if ($defn) {
+        echo ' ';
         printf(__('The Unihan Database defines it as <em>%s</em>.'),
             preg_replace_callback('/U\+([0-9A-F]{4,6})/', function($m) {
                 $router = Router::getRouter();
@@ -64,10 +67,12 @@
 
     $pronunciation = $codepoint->getPronunciation();
     if ($pronunciation) {
+        echo ' ';
         printf(__('Its Pīnyīn pronunciation is <em>%s</em>.'), q($pronunciation));
     }
 
     if($props['nt'] !== 'None') {
+        echo ' ';
         printf(__('The codepoint has the %s value %s.'),
         '<a href="'.q($router->getUrl('search?nt='.$props['nt'])).'">'.
         q($info->getLabel('nt', $props['nt'])).'</a>',
@@ -75,17 +80,19 @@
         q($info->getLabel('nv', $props['nv'])).'</a>');
     }
 
-  $hasUC = ($props['uc'] && (is_array($props['uc']) || $props['uc']->getId() != $codepoint->getId()));
-  $hasLC = ($props['lc'] && (is_array($props['lc']) || $props['lc']->getId() != $codepoint->getId()));
-  $hasTC = ($props['tc'] && (is_array($props['tc']) || $props['tc']->getId() != $codepoint->getId()));
-  if ($hasUC || $hasLC || $hasTC):?>
-    It is related to
-    <?php if ($hasUC):?>its uppercase variant <?php cp($props['uc'], '', 'min')?><?php endif?>
-    <?php if ($hasLC): if ($hasUC) { echo $hasTC? ', ' : ' and '; }?>
-      its lowercase variant <?php cp($props['lc'], '', 'min')?><?php endif?>
-    <?php if ($hasTC): if ($hasUC || $hasLC) { echo ' and '; }?>
-      its titlecase variant <?php cp($props['tc'], '', 'min')?><?php endif?>.
-<?php endif;
+    $hasUC = ($props['uc'] && (is_array($props['uc']) || $props['uc']->getId() != $codepoint->getId()));
+    $hasLC = ($props['lc'] && (is_array($props['lc']) || $props['lc']->getId() != $codepoint->getId()));
+    $hasTC = ($props['tc'] && (is_array($props['tc']) || $props['tc']->getId() != $codepoint->getId()));
+    echo ' ';
+    if ($hasUC || $hasLC || $hasTC) {
+        printf(__('It is related to %s%s%s%s%s.'),
+            ($hasUC)? sprintf(__('its uppercase variant %s'), _cp($props['uc'], '', 'min')) : '',
+            ($hasLC && $hasUC)? (($hasTC)? __(', ') : __(' and ')) : '',
+            ($hasLC)? sprintf(__('its lowercase variant %s'), _cp($props['lc'], '', 'min')) : '',
+            ($hasTC && ($hasUC || $hasLC))? __(' and ') : '',
+            ($hasTC)? sprintf(__('its titlecase variant %s'), _cp($props['tc'], '', 'min')) : ''
+        );
+    }
 
     $info_alias = array_values(array_filter($codepoint->getALias(), function($v) {
         return $v['type'] === 'alias';
@@ -102,6 +109,7 @@
             }
             $_aliases .= '<em>'.q($info_alias[$i]['alias']).'</em>';
         }
+        echo ' ';
         printf(__('The character is also known as %s.'), $_aliases);
     }
 ?></p>
@@ -120,12 +128,14 @@
             _cp($props['dm'], '', 'min'));
     }
 
+    echo ' ';
     printf(__('It has a %s %s.'),
         '<a href="'.q($router->getUrl('search?ea='.$props['ea'])).'">'.
         q($info->getLabel('ea', $props['ea'])).'</a>',
         q($info->getCategory('ea')));
 
     if ($props['Bidi_M']) {
+        echo ' ';
         printf(__('In bidirectional context it acts as %s and is %smirrored%s.'),
             '<a href="'.q($router->getUrl('search?bc='.$props['bc'])).'">'.
             q($info->getLabel('bc', $props['bc'])).'</a>',
@@ -134,6 +144,7 @@
             '</a>'
         );
     } else {
+        echo ' ';
         printf(__('In bidirectional context it acts as %s and is %snot mirrored%s.'),
             '<a href="'.q($router->getUrl('search?bc='.$props['bc'])).'">'.
             q($info->getLabel('bc', $props['bc'])).'</a>',
@@ -145,14 +156,17 @@
 
     if (array_key_exists('bmg', $props) &&
         $props['bmg']->getId() != $codepoint->getId()) {
+        echo ' ';
         printf(__('Its corresponding mirrored glyph is %s.'), _cp($props['bmg'], '', 'min'));
     }
 
     if (count($confusables)) {
+        echo ' ';
         printf(__('The glyph can, under circumstances, be confused with %s%d other glyphs%s.'),
                '<a href="#confusables" rel="internal">', count($confusables), '</a>');
     }
 
+    echo ' ';
     printf(__('In text U+%04X behaves as %s regarding line breaks. It has
         type %s for sentence and %s for word breaks. The %s is %s.'),
         $codepoint->getId(),

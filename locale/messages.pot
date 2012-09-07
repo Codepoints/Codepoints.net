@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-28 23:15+0200\n"
+"POT-Creation-Date: 2012-09-07 22:00+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1031,45 +1031,128 @@ msgid ""
 "%s."
 msgstr ""
 
-#: views/codepoint/info.php:11
+#: views/codepoint/info.php:13
 #, php-format
 msgid "This codepoint is %sdeprecated%s."
 msgstr ""
 
-#: views/codepoint/info.php:40
+#: views/codepoint/info.php:21
+#, php-format
+msgid ""
+"This character is a %s and is %scommonly%s used, that is, in no specific "
+"script."
+msgstr ""
+
+#: views/codepoint/info.php:27
+#, php-format
+msgid ""
+"This character is a %s and %sinherits%s its %sscript property%s from the "
+"preceding character."
+msgstr ""
+
+#: views/codepoint/info.php:35
+#, php-format
+msgid "This character is a %s and is mainly used in the %s script."
+msgstr ""
+
+#: views/codepoint/info.php:52
+#, php-format
+msgid "It is also used in the script%s %s."
+msgstr ""
+
+#: views/codepoint/info.php:60
 #, php-format
 msgid "The Unihan Database defines it as <em>%s</em>."
 msgstr ""
 
-#: views/codepoint/info.php:49
+#: views/codepoint/info.php:71
 #, php-format
 msgid "Its Pīnyīn pronunciation is <em>%s</em>."
 msgstr ""
 
-#: views/codepoint/info.php:53
+#: views/codepoint/info.php:76
 #, php-format
 msgid "The codepoint has the %s value %s."
 msgstr ""
 
-#: views/codepoint/info.php:99
+#: views/codepoint/info.php:88
+#, php-format
+msgid "It is related to %s%s%s%s%s."
+msgstr ""
+
+#: views/codepoint/info.php:89
+#, php-format
+msgid "its uppercase variant %s"
+msgstr ""
+
+#: views/codepoint/info.php:90 views/codepoint/info.php:107
+msgid ", "
+msgstr ""
+
+#: views/codepoint/info.php:90 views/codepoint/info.php:92
+#: views/codepoint/info.php:105
+msgid " and "
+msgstr ""
+
+#: views/codepoint/info.php:91
+#, php-format
+msgid "its lowercase variant %s"
+msgstr ""
+
+#: views/codepoint/info.php:93
+#, php-format
+msgid "its titlecase variant %s"
+msgstr ""
+
+#: views/codepoint/info.php:113
+#, php-format
+msgid "The character is also known as %s."
+msgstr ""
+
+#: views/codepoint/info.php:121
+#, php-format
+msgid "The glyph is %snot a composition%s."
+msgstr ""
+
+#: views/codepoint/info.php:125
+#, php-format
+msgid "The glyph is a %s composition of the glyphs %s."
+msgstr ""
+
+#: views/codepoint/info.php:132
+#, php-format
+msgid "It has a %s %s."
+msgstr ""
+
+#: views/codepoint/info.php:139
+#, php-format
+msgid "In bidirectional context it acts as %s and is %smirrored%s."
+msgstr ""
+
+#: views/codepoint/info.php:148
+#, php-format
+msgid "In bidirectional context it acts as %s and is %snot mirrored%s."
+msgstr ""
+
+#: views/codepoint/info.php:160
 #, php-format
 msgid "Its corresponding mirrored glyph is %s."
 msgstr ""
 
-#: views/codepoint/info.php:103
+#: views/codepoint/info.php:165
 #, php-format
 msgid ""
 "The glyph can, under circumstances, be confused with %s%d other glyphs%s."
 msgstr ""
 
-#: views/codepoint/info.php:107
+#: views/codepoint/info.php:170
 #, php-format
 msgid ""
 "In text U+%04X behaves as %s regarding line breaks. It has\n"
-"  type %s for sentence and %s for word breaks. The %s is %s."
+"        type %s for sentence and %s for word breaks. The %s is %s."
 msgstr ""
 
-#: views/codepoint/info.php:123
+#: views/codepoint/info.php:186
 #, php-format
 msgid "The %sWikipedia%s has the following information about this codepoint:"
 msgstr ""
