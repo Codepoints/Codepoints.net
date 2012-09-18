@@ -3,6 +3,15 @@
 } ?>
 <header class="hd">
   <nav>
+    <form method="get" class="langchooser">
+      <select name="lang" onchange="this.form.submit()">
+        <option value="en"<?php if ($lang === 'en'):?> selected="selected"<?php endif?>>english</option>
+        <option value="de"<?php if ($lang === 'de'):?> selected="selected"<?php endif?>>deutsch</option>
+      </select>
+      <?php foreach ($_GET as $k => $v):?>
+        <input type="hidden" name="<?php e($k)?>" value="<?php e($v)?>" />
+      <?php endforeach?>
+    </form>
     <ul class="primary">
       <li class="start"><a href="<?php e($router->getUrl())?>" rel="start"><?php _e('Start')?></a></li>
       <li class="search"><a href="<?php e($router->getUrl('SearchResult'))?>" rel="search"><?php _e('Search')?></a></li>

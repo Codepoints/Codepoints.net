@@ -124,6 +124,7 @@ class View {
     public function render($params=array()) {
         $params['info'] = UnicodeInfo::get();
         $params['router'] = Router::getRouter();
+        $lang = L10n::getDefaultLanguage();
         if ($this->isTemplate) {
             $tpl = new Template(file_get_contents($this->file));
             $out = $tpl->render($params);

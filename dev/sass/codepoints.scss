@@ -543,6 +543,39 @@ input[type="text"] {
 
 
 
+.langchooser {
+  max-width: 1200px;
+  margin: 0 auto;
+  select {
+    margin: 0 0 15px;
+    @include opacity(.67);
+    float: right;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    @include button-normal;
+    &:focus, &:hover {
+      @include button-focus;
+      @include opacity(1);
+      outline: none;
+      position: relative;
+      z-index: 10;
+    }
+    &:active {
+      @include button-active;
+      @include opacity(1);
+      outline: none;
+      position: relative;
+      z-index: 10;
+    }
+  }
+  option {
+    text-shadow: none;
+  }
+}
+
+
+
 .ft {
   border-top: 1px solid white;
   background: -moz-linear-gradient(top, $cBorderLight, rgba(255,255,255,0) 20px);

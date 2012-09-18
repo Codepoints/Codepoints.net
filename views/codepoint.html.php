@@ -29,7 +29,7 @@ if ($next) {
 include "nav.php";
 $s = function($cat) use ($router, $info, $props) {
     echo '<a href="';
-    e($router->getUrl('search?'.$cat.'='.$props[$cat]));
+    e($router->getUrl('search?'.$cat.'='.rawurlencode($props[$cat])));
     echo '">';
     e($info->getLabel($cat, $props[$cat]));
     echo '</a>';
