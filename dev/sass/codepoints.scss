@@ -315,231 +315,16 @@ input[type="text"] {
 
 
 
+@import "footersearch";
 
-#footer_search {
-  position: absolute;
-  z-index: 50;
-  color: $cTextBold;
-  background: $cBackground;
-  @include background(linear-gradient(top, $cBackground, $cBackBright));
-  padding: 10px;
-  border: 1px solid $cBorderMedium;
-  border-top-width: 0;
-  @include border-bottom-radius(2px);
-  max-width: 308px;
-  box-shadow: 0 2px 2px rgba(0,0,0,.3);
-}
 
-#footer_search label {
-  display: none;
-}
+@import "front";
 
-#footer_search p {
-  margin: 5px 0 0;
-  text-align: right;
-}
 
-#footer_search a {
-  color: $cTextBold;
-  border-bottom: 1px solid;
-  border-bottom-color: transparentize($cTextBold, .6);
-  text-shadow: none;
-  &:before {
-    color: black;
-    content: "» ";
-  }
-  &:focus,
-  &:hover {
-    color: $cText;
-    border-bottom-color: $cTextBold;
-  }
-}
-
-#footer_search form p {
-  display: inline;
-  margin: 0;
-}
-
-#footer_search input {
-  max-width: 308px;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  border: 1px solid $cBorderMedium;
-  border-radius: 3px;
-  @include background(linear-gradient(top, rgba(0,0,0,.1),
-  rgba(0,0,0,0)));
-  background-color: white;
-}
-
-#footer_search button {
-  font-size: (12em/$sFontBase);
-}
+@import "wizard";
 
 
 
-
-
-.front {
-  .searchform {
-    text-align: center;
-    margin: 0 0 30px;
-
-    p {
-      margin: 0;
-    }
-
-    input {
-      vertical-align: middle;
-      -moz-box-sizing: border-box;
-      box-sizing: border-box;
-      border: 1px solid $cBorderMedium;
-      border-radius: 3px;
-      background-color: white;
-      font-size: (21em/$sFontBase);
-      width: 61.8%;
-      padding: 4px 8px;
-    }
-
-    button {
-      font-size: (21em/$sFontBase);
-    }
-  }
-  figure a {
-    &:hover, &:focus {
-      border: none;
-    }
-  }
-}
-
-.bk {
-  p {
-    margin: 0 0 1em;
-  }
-}
-
-
-.action {
-
-  .desc,
-  .button {
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    width: 100%;
-    height: 100px;
-    font-size: (36em/$sFontBase);
-    font-family: $sans;
-    white-space: nowrap;
-  }
-
-  .desc {
-    display: none;
-    color: $cTextBold;
-    text-align: right;
-    padding-right: 1em;
-    padding-top: 10px;
-    line-height: 30px;
-
-    small {
-      display: block;
-      margin-top: 5px;
-      font-weight: normal;
-      font-style: italic;
-      font-size: 33%;
-      line-height: 1.5;
-      white-space: normal;
-    }
-  }
-
-  .button {
-    line-height: 100px;
-  }
-
-  .browse {
-    background-image: url(../images/action_map.jpg);
-    background-repeat: no-repeat;
-    background-position: 0 center;
-  }
-
-  .find {
-    background-image: url(../images/action_dowsing.jpg);
-    background-repeat: no-repeat;
-    background-position: 0 center;
-  }
-
-  .expert {
-    background-image: url(../images/action_find.jpg);
-    background-repeat: no-repeat;
-    background-position: 0 0;
-  }
-
-}
-
-
-
-
-
-.wizard {
-
-  button {
-    width: 100%;
-    padding: 10px;
-    text-align: left;
-  }
-
-  .number {
-    p {
-      @include pie-clearfix;
-    }
-    [type="number"] {
-      width: 20%;
-      float: left;
-    }
-    .ui-slider {
-      width: 75%;
-      margin-right: 12px;
-      float: right;
-      top: 6px;
-    }
-  }
-
-  .text {
-    [type="text"] {
-      margin-bottom: 1em;
-      width: 100%;
-    }
-  }
-
-}
-
-.wizcount {
-  padding: 0;
-  @include pie-clearfix;
-  &:before {
-    display: inline-block;
-    border: 16px solid transparent;
-    border-left-color: $cBorderLight;
-    border-right-width: 0;
-    content: " ";
-    width: 0;
-    height: 0;
-    margin-right: 3px;
-    float: left;
-  }
-
-  li {
-    float: left;
-    position: relative;
-    list-style: none;
-    @include button-base;
-    cursor: pointer;
-    margin: 0;
-    padding: 3px 6px;
-
-    small {
-      display: none;
-    }
-  }
-}
 
 
 
@@ -572,44 +357,13 @@ input[type="text"] {
   option {
     text-shadow: none;
   }
-}
-
-
-
-.ft {
-  border-top: 1px solid white;
-  background: -moz-linear-gradient(top, $cBorderLight, rgba(255,255,255,0) 20px);
-  padding: 30px 10px;
-  font-size: (12em/$sFontBase);
-  color: $cTextBold;
-  nav {
-    @include pie-clearfix;
-    max-width: 1200px;
-    margin: 0 auto;
-    ul {
-      margin: 0;
-      padding: 0;
-      float: right;
-    }
-    li {
-      display: inline;
-      padding-left: 1em;
-      &:before {
-        content: none;
-      }
-    }
-  }
-  .tx {
-    float: left;
-    color: $cTextLight;
-    font-style: italic;
-    margin: 0;
-  }
-  a:after {
-    content: none;
+  button {
+    float: right;
   }
 }
 
+
+@import "footer";
 
 
 .glossary {

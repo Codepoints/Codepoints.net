@@ -11,6 +11,7 @@
       <?php foreach ($_GET as $k => $v):?>
         <input type="hidden" name="<?php e($k)?>" value="<?php e($v)?>" />
       <?php endforeach?>
+      <noscript><button type="submit"><?php _e('choose language')?></button></noscript>
     </form>
     <ul class="primary">
       <li class="start"><a href="<?php e($router->getUrl())?>" rel="start"><?php _e('Start')?></a></li>

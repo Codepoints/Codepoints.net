@@ -1,0 +1,33 @@
+.ft {
+  border-top: 1px solid white;
+  background: -moz-linear-gradient(top, $cBorderLight, rgba(255,255,255,0) 20px);
+  padding: 30px 10px;
+  font-size: (12em/$sFontBase);
+  color: $cTextBold;
+  nav {
+    @include pie-clearfix;
+    max-width: 1200px;
+    margin: 0 auto;
+    ul {
+      margin: 0;
+      padding: 0;
+      float: right;
+    }
+    li {
+      display: inline;
+      padding-left: 1em;
+      &:before {
+        content: none;
+      }
+    }
+  }
+  .tx {
+    float: left;
+    color: $cTextLight;
+    font-style: italic;
+    margin: 0;
+  }
+  a:after {
+    content: none;
+  }
+}

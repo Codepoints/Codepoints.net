@@ -1,0 +1,62 @@
+.wizard {
+
+  button {
+    width: 100%;
+    padding: 10px;
+    text-align: left;
+  }
+
+  .number {
+    p {
+      @include pie-clearfix;
+    }
+    [type="number"] {
+      width: 20%;
+      float: left;
+    }
+    .ui-slider {
+      width: 75%;
+      margin-right: 12px;
+      float: right;
+      top: 6px;
+    }
+  }
+
+  .text {
+    [type="text"] {
+      margin-bottom: 1em;
+      width: 100%;
+    }
+  }
+
+}
+
+.wizcount {
+  padding: 0;
+  @include pie-clearfix;
+  &:before {
+    display: inline-block;
+    border: 16px solid transparent;
+    border-left-color: $cBorderLight;
+    border-right-width: 0;
+    content: " ";
+    width: 0;
+    height: 0;
+    margin-right: 3px;
+    float: left;
+  }
+
+  li {
+    float: left;
+    position: relative;
+    list-style: none;
+    @include button-base;
+    cursor: pointer;
+    margin: 0;
+    padding: 3px 6px;
+
+    small {
+      display: none;
+    }
+  }
+}

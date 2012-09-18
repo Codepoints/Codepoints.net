@@ -1,0 +1,61 @@
+
+#footer_search {
+  position: absolute;
+  z-index: 50;
+  color: $cTextBold;
+  background: $cBackground;
+  @include background(linear-gradient(top, $cBackground, $cBackBright));
+  padding: 10px;
+  border: 1px solid $cBorderMedium;
+  border-top-width: 0;
+  @include border-bottom-radius(2px);
+  max-width: 308px;
+  box-shadow: 0 2px 2px rgba(0,0,0,.3);
+}
+
+#footer_search label {
+  display: none;
+}
+
+#footer_search p {
+  margin: 5px 0 0;
+  text-align: right;
+}
+
+#footer_search a {
+  color: $cTextBold;
+  border-bottom: 1px solid;
+  border-bottom-color: transparentize($cTextBold, .6);
+  text-shadow: none;
+  &:before {
+    color: black;
+    content: "» ";
+  }
+  &:focus,
+  &:hover {
+    color: $cText;
+    border-bottom-color: $cTextBold;
+  }
+}
+
+#footer_search form p {
+  display: inline;
+  margin: 0;
+}
+
+#footer_search input {
+  max-width: 308px;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 1px solid $cBorderMedium;
+  border-radius: 3px;
+  @include background(linear-gradient(top, rgba(0,0,0,.1),
+  rgba(0,0,0,0)));
+  background-color: white;
+}
+
+#footer_search button {
+  font-size: (12em/$sFontBase);
+}
+
+
