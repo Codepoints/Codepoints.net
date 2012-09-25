@@ -36,3 +36,6 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !/static/.*
 RewriteRule .* index.php [L]
 
+# let assets be cache-busted with an "!"
+RewriteRule ^(static/.+)![a-z0-9]+      $1 [L]
+
