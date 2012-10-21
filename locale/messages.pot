@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-07 22:00+0200\n"
+"POT-Creation-Date: 2012-10-21 14:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -90,7 +90,7 @@ msgstr ""
 msgid "There are no blocks defined in this plane."
 msgstr ""
 
-#: views/scripts.php:2 views/nav.php:18
+#: views/scripts.php:2 views/nav.php:28
 msgid "Scripts"
 msgstr ""
 
@@ -123,23 +123,27 @@ msgstr ""
 msgid "%s%s%d%s characters%s are encoded in this script."
 msgstr ""
 
-#: views/nav.php:7 views/footer.php:17
+#: views/nav.php:14
+msgid "choose language"
+msgstr ""
+
+#: views/nav.php:17 views/footer.php:17
 msgid "Start"
 msgstr ""
 
-#: views/nav.php:8 views/search.php:2
+#: views/nav.php:18 views/search.php:2
 msgid "Search"
 msgstr ""
 
-#: views/nav.php:16
+#: views/nav.php:26
 msgid "Back to search results"
 msgstr ""
 
-#: views/nav.php:19
+#: views/nav.php:29
 msgid "Random"
 msgstr ""
 
-#: views/nav.php:20 views/footer.php:20
+#: views/nav.php:30 views/footer.php:20
 msgid "About"
 msgstr ""
 

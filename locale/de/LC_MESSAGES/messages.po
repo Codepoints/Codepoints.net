@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-07 22:00+0200\n"
-"PO-Revision-Date: 2012-09-07 22:26+0100\n"
+"POT-Creation-Date: 2012-10-21 14:06+0200\n"
+"PO-Revision-Date: 2012-10-21 14:17+0100\n"
 "Last-Translator: Manuel Strehl <translate@manuel-strehl.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -93,13 +93,13 @@ msgid "There are no blocks defined in this plane."
 msgstr "In dieser Ebene sind keine Blöcke definiert."
 
 #: views/scripts.php:2
-#: views/nav.php:18
+#: views/nav.php:28
 msgid "Scripts"
 msgstr "Schriften"
 
 #: views/scripts.php:3
 msgid "Browse Codepoints by script. “Scripts” are the different writing systems. They are presented geographically, so that you can identify quickly interesting ones."
-msgstr "Durchstöbere Codepunkte nach Schriftsystem. \"Schriftsysteme\" sind unterschiedliche Schreibsysteme. Sie werden geografisch dargestellt, sodass du schnell interessante identifizieren kannst."
+msgstr "Durchstöbere Codepunkte nach Schriftsystem. „Schriftsysteme“ sind unterschiedliche Schreibsysteme. Sie werden geografisch dargestellt, sodass du schnell interessante identifizieren kannst."
 
 #: views/scripts.php:65
 msgid "Browse Codepoints by Script"
@@ -123,25 +123,29 @@ msgstr "Dies ist eine interaktive Weltkarte. Du benötigst einen SVG-fähigen Br
 msgid "%s%s%d%s characters%s are encoded in this script."
 msgstr "%s%s%d%s Schriftzeichen%s sind in diesem System kodiert."
 
-#: views/nav.php:7
+#: views/nav.php:14
+msgid "choose language"
+msgstr "Sprache wählen"
+
+#: views/nav.php:17
 #: views/footer.php:17
 msgid "Start"
 msgstr "Start"
 
-#: views/nav.php:8
+#: views/nav.php:18
 #: views/search.php:2
 msgid "Search"
 msgstr "Suche"
 
-#: views/nav.php:16
+#: views/nav.php:26
 msgid "Back to search results"
 msgstr "Zurück zu den Suchergebnissen"
 
-#: views/nav.php:19
+#: views/nav.php:29
 msgid "Random"
 msgstr "Zufall"
 
-#: views/nav.php:20
+#: views/nav.php:30
 #: views/footer.php:20
 msgid "About"
 msgstr "Über"
@@ -489,7 +493,7 @@ msgid ""
 "      The JavaScript part contains libraries under different licenses, mostly the\n"
 "      GPL and/or the MIT license. See the page source for details.\n"
 "      The graphical representations use glyphs from the following fonts:"
-msgstr ""
+msgstr "Du darfst den gesamten Inhalt der Seite wiederverwenden, vorausgesetzt, dass du die folgenden Bedingungen einhältst. Die Information über Unicode ist vom Unicode-Konsortium unter den %sUnicode Terms of Use%s lizensiert. Der JavaScript-Teil enthält Bibliotheken unter verschiedenen Lizenzen, hauptsächlich GPL und/oder MIT-Lizenz. Siehe den Seitenquelltext für Details. Die grafische Darstellung verwendet Zeichen der folgenden Schriftarten:"
 
 #: views/about.php:194
 #, php-format
@@ -531,7 +535,7 @@ msgid ""
 "      The geographic localization of blocks (used in the “Find My Codepoint”\n"
 "      wizard) is based on the categorization on %sdecodeunicode.org%s,\n"
 "      published under the CC BY NC license."
-msgstr ""
+msgstr "Die Bilder, die einzelne Unicode-Blöcke darstellen, sind der Schriftart %sUnidings%s von George Douros entnommen, unter einer freigebigen Lizenz veröffentlicht. Die Zitate aus der Wikipedia sind der Creative Commons Attribution Share-alike-Lizenz unterworfen. Details können der entsprechend bei jedem Zitat verlinkten Wikipediaseite entnommen werden. Die geografische Lokalisierung von Blöcken (im „Finde meinen Codepunkt“-Wizard verwendet) basiert auf der Kategorisierung auf %sdecodeunicode.org%s, veröffentlicht unter der CC BY NC-Lizenz."
 
 #: views/about.php:218
 #, php-format
@@ -1067,12 +1071,12 @@ msgstr "Der Buchstabe ist eine %s Zusammensetzung der Zeichen %s."
 #: views/codepoint/info.php:132
 #, php-format
 msgid "It has a %s %s."
-msgstr "Es hat eine %s %s."
+msgstr "Seine %2$s ist %1$s."
 
 #: views/codepoint/info.php:139
 #, php-format
 msgid "In bidirectional context it acts as %s and is %smirrored%s."
-msgstr "In bidirektionalem Kontext handelt es als %s und wird %sgespiegelt%s."
+msgstr "In bidirektionalem Kontext agiert es als %s und wird %sgespiegelt%s."
 
 #: views/codepoint/info.php:148
 #, php-format
