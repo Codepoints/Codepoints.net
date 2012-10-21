@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-21 14:06+0200\n"
+"POT-Creation-Date: 2012-10-21 14:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -157,11 +157,11 @@ msgid ""
 "and possibilities to navigate Unicode on the site."
 msgstr ""
 
-#: views/about.php:5 views/about.php:17
+#: views/about.php:5 views/about.php:17 views/glossary.php:5
 msgid "Finding Characters"
 msgstr ""
 
-#: views/about.php:6 views/about.php:47
+#: views/about.php:6 views/about.php:47 views/glossary.php:6
 msgid "About Unicode"
 msgstr ""
 
@@ -169,11 +169,11 @@ msgstr ""
 msgid "About this Site"
 msgstr ""
 
-#: views/about.php:8 views/about.php:241
+#: views/about.php:8 views/about.php:241 views/glossary.php:8
 msgid "Attribution <i class=\"amp\">&amp;</i> Credits"
 msgstr ""
 
-#: views/about.php:9
+#: views/about.php:9 views/glossary.php:9
 msgid "Glossary"
 msgstr ""
 
@@ -1242,6 +1242,32 @@ msgstr ""
 
 #: views/codepoint.html.php:186
 msgid "Complete Record"
+msgstr ""
+
+#: views/glossary.php:2
+msgid "Glossary of Terms"
+msgstr ""
+
+#: views/glossary.php:3
+msgid ""
+"This glossary explains central terms of the Unicode standard and character "
+"encodings in general."
+msgstr ""
+
+#: views/glossary.php:7
+msgid "About this site"
+msgstr ""
+
+#: views/glossary.php:17
+#, php-format
+msgid ""
+"This page gives an overview of the terms and concepts\n"
+"    presented on this site. Unfortunately many definitions are taken "
+"directly\n"
+"    from the respective specification at the %sUnicode website%s and may\n"
+"    remain a bit technical. If you see this sign %s on a page, it means you "
+"can\n"
+"    access the definition from here by hovering over it."
 msgstr ""
 
 #: views/footer.php:7

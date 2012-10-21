@@ -5,7 +5,7 @@ JS_ALL = $(wildcard dev/js*/*.js)
 JS_TARGET = $(patsubst dev/js/%.js,static/js/%.js,$(JS_SRC))
 all: ucotd css js cachebust
 
-.PHONY: all css js dist clean ucotd cachebust
+.PHONY: all css js dist clean ucotd cachebust l10n
 
 clean:
 	-rm -fr dist
@@ -42,6 +42,8 @@ ucd.sqlite: ucotd tools/scripts.sql tools/scripts_wp.sql tools/fonts/*_insert.sq
 	sqlite3 $@ <tools/scripts.sql
 	sqlite3 $@ <tools/scripts_wp.sql
 	sqlite3 $@ <tools/fonts/*_insert.sql
+
+l10n: locale/messages.pot
 
 locale/messages.pot: index.php lib/*.php controllers/*.php views/*.php \
                      views/*/*.php

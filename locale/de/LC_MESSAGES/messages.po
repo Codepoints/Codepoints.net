@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-21 14:06+0200\n"
-"PO-Revision-Date: 2012-10-21 14:17+0100\n"
+"POT-Creation-Date: 2012-10-21 14:26+0200\n"
+"PO-Revision-Date: 2012-10-21 14:29+0100\n"
 "Last-Translator: Manuel Strehl <translate@manuel-strehl.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -160,11 +160,13 @@ msgstr "Codepoints ist eine Seite, die Unicode gewidmet ist. Hier werden die Kon
 
 #: views/about.php:5
 #: views/about.php:17
+#: views/glossary.php:5
 msgid "Finding Characters"
 msgstr "Schriftzeichen finden"
 
 #: views/about.php:6
 #: views/about.php:47
+#: views/glossary.php:6
 msgid "About Unicode"
 msgstr "Über Unicode"
 
@@ -175,10 +177,12 @@ msgstr "Über diese Seite"
 
 #: views/about.php:8
 #: views/about.php:241
+#: views/glossary.php:8
 msgid "Attribution <i class=\"amp\">&amp;</i> Credits"
 msgstr "Zuschreibung <i class=\"amp\">&amp;</i> Danksagung"
 
 #: views/about.php:9
+#: views/glossary.php:9
 msgid "Glossary"
 msgstr "Glossar"
 
@@ -1188,6 +1192,28 @@ msgstr "Chinese Text Project"
 #: views/codepoint.html.php:186
 msgid "Complete Record"
 msgstr "Vollständiger Eintrag"
+
+#: views/glossary.php:2
+msgid "Glossary of Terms"
+msgstr "Glossar der Begriffe"
+
+#: views/glossary.php:3
+msgid "This glossary explains central terms of the Unicode standard and character encodings in general."
+msgstr "Dieses Glossar erklärt die zentralen Begriffe des Unicode-Standards und von Zeichenkodierungen im Allgemeinen."
+
+#: views/glossary.php:7
+msgid "About this site"
+msgstr "Über diese Seite"
+
+#: views/glossary.php:17
+#, php-format
+msgid ""
+"This page gives an overview of the terms and concepts\n"
+"    presented on this site. Unfortunately many definitions are taken directly\n"
+"    from the respective specification at the %sUnicode website%s and may\n"
+"    remain a bit technical. If you see this sign %s on a page, it means you can\n"
+"    access the definition from here by hovering over it."
+msgstr "Diese Seite gibt einen Überblick über Begriffe und Konzepte, die auf dieser Webseite dargestellt werden. Unglücklicher Weise sind viele Definitionen direkt von der entsprechenden Spezifikation auf der %sUnicode-Webseite%s entnommen und dürften etwas technisch anmuten. Wenn du dieses Zeichen %s auf einer Seite siehst, bedeutet das, dass du die hier dargestellte Definition dort siehst, wenn du mit der Maus über das Zeichen fährst."
 
 #: views/footer.php:7
 #, php-format

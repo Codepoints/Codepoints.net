@@ -1,12 +1,12 @@
 <?php
-$title = 'Glossary of Terms';
-$hDescription = 'This glossary explains central terms of the Unicode standard and character encodings in general.';
+$title = __('Glossary of Terms');
+$hDescription = __('This glossary explains central terms of the Unicode standard and character encodings in general.');
 $nav = array(
-  'find' => '<a href="'.$router->getUrl('about').'#finding_characters">Finding Characters</a>',
-  'unicode' => '<a href="'.$router->getUrl('about').'#unicode">About Unicode</a>',
-  'main' => '<a href="'.$router->getUrl('about').'#this_site">About this site</a>',
-  'attribution' => '<a href="'.$router->getUrl('about').'#attribution">Attribution <i class="amp">&amp;</i> Credits</a>',
-  'glossary' => '<em class="active glossary">Glossary</em>',
+  'find' => '<a href="'.$router->getUrl('about').'#finding_characters">'.__('Finding Characters').'</a>',
+  'unicode' => '<a href="'.$router->getUrl('about').'#unicode">'.__('About Unicode').'</a>',
+  'main' => '<a href="'.$router->getUrl('about').'#this_site">'.__('About this site').'</a>',
+  'attribution' => '<a href="'.$router->getUrl('about').'#attribution">'.__('Attribution <i class="amp">&amp;</i> Credits').'</a>',
+  'glossary' => '<em class="active glossary">'.__('Glossary').'</em>',
 );
 $canonical = '/glossary';
 include 'header.php';
@@ -14,12 +14,13 @@ include 'nav.php';
 ?>
 <div class="payload static glossary">
   <h1><?php e($title)?></h1>
-  <p>This page gives an overview of the terms and concepts presented on this
-    site. Unfortunately many definitions are taken directly from the respective
-    specification at the <a href="http://unicode.org/reports/">Unicode
-    website</a> and may remain a bit technical. If you see this sign <span
-    class="gl" data-term="unicode"></span> on a page, it means you can access
-    the definition from here by hovering over it.</p>
+  <p><?php printf(__('This page gives an overview of the terms and concepts
+    presented on this site. Unfortunately many definitions are taken directly
+    from the respective specification at the %sUnicode website%s and may
+    remain a bit technical. If you see this sign %s on a page, it means you can
+    access the definition from here by hovering over it.'),
+    '<a href="http://unicode.org/reports/">', '</a>',
+    '<span class="gl" data-term="unicode"></span>')?></p>
   <dl id="glossary">
     <dt id="unicode">Unicode</dt>
     <dd>A standard to map characters to <a href="#codepoint">codepoints</a>, numeric representations. The Unicode standard is curated by the <a href="http://unicode.org">Unicode Consortium</a>. It is internationally standardized as ISO 10464.</dd>
