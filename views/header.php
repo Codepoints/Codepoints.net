@@ -8,11 +8,11 @@
     <meta name="author" content="Manuel Strehl"/>
     <meta name="description" content="<?php e(isset($hDescription)? $hDescription : '')?>" />
     <!--[if lt IE 9]>
-      <script src="/static/js/html5shiv.js?<?php e(CACHE_BUST)?>"></script>
+      <script src="/static/js/html5shiv.js!<?php e(CACHE_BUST)?>"></script>
     <![endif]-->
-    <link rel="stylesheet" href="/static/css/codepoints.css?<?php e(CACHE_BUST)?>"/>
+    <link rel="stylesheet" href="/static/css/codepoints.css!<?php e(CACHE_BUST)?>"/>
     <!--[if lt IE 9]>
-      <link rel="stylesheet" href="/static/css/ie.css?<?php e(CACHE_BUST)?>"/>
+      <link rel="stylesheet" href="/static/css/ie.css!<?php e(CACHE_BUST)?>"/>
     <![endif]-->
     <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="/static/images/favicon.ico"/>
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/static/images/icon144.png"/>
