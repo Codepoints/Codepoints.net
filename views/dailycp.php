@@ -1,6 +1,12 @@
 <?php
-$title = ($date === $today)? 'Codepoint of the Day' : 'Codepoint from '.$date;
-$hDescription = 'Codepoints.net presents every day a new character from Unicode. '.($date === $today? 'Today' : $date).': U+'.$codepoint->getId('hex').', '.$description;
+$title = ($date === $today)? __('Codepoint of the Day') :
+                             sprintf(__('Codepoint from %s'), $date);
+$hDescription = __('Codepoints.net presents every day a new character from Unicode. ');
+if ($date === $today) {
+   $hDescription .= sprintf(__('Today: U+%s, %s'), $codepoint->getId('hex'), $description);
+} else {
+   $hDescription .= sprintf(__('%s: U+%s, %s'), $date, $codepoint->getId('hex'), $description);
+}
 $prev = $codepoint->getPrev();
 $next = $codepoint->getNext();
 $props = $codepoint->getProperties();
@@ -36,7 +42,7 @@ $s = function($cat) use ($router, $info, $props) {
 ?>
 <div class="payload dailycp codepoint">
   <aside class="other">
-    <h2>Codepoints of the Day</h2>
+    <h2><?php _e('Codepoints of the Day')?></h2>
     <div id="ucotd_cal" data-date="<?php e($date)?>"></div>
   </aside>
   <figure>
@@ -45,16 +51,16 @@ $s = function($cat) use ($router, $info, $props) {
   <aside>
     <!--h3>Properties</h3-->
     <dl>
-      <dt>Nº</dt>
+      <dt><?php _e('Nº')?></dt>
       <dd><?php e($codepoint->getId())?></dd>
-      <dt>UTF-8</dt>
+      <dt><?php _e('UTF-8')?></dt>
       <dd><?php e($codepoint->getRepr('UTF-8'))?></dd>
       <?php foreach(array('gc', 'sc', 'bc', 'dt', 'ea') as $cat):?>
         <dt><?php e($info->getCategory($cat))?></dt>
         <dd><a href="<?php e('search?'.$cat.'='.$props[$cat])?>"><?php e($info->getLabel($cat, $props[$cat]))?></a></dd>
       <?php endforeach?>
       <?php if($props['nt'] !== 'None'):?>
-        <dt>Numeric Value</dt>
+        <dt><?php _e('Numeric Value')?></dt>
         <dd><a href="<?php e('search?nt='.$props['nt'])?>"><?php e($info->getLabel('nt', $props['nt']).' '.$props['nv'])?></a></dd>
       <?php endif?>
     </dl>
@@ -62,7 +68,7 @@ $s = function($cat) use ($router, $info, $props) {
   <h2><?php e($title)?></h2>
   <h1>U+<?php e($codepoint->getId('hex'))?> <?php e($codepoint->getName())?></h1>
   <section class="abstract">
-    <p><strong><a href="<?php e($router->getUrl($codepoint))?>">View full description of this codepoint.</a></strong></p>
+    <p><strong><a href="<?php e($router->getUrl($codepoint))?>"><?php _e('View full description of this codepoint.')?></a></strong></p>
     <?php include "codepoint/info.php"?>
   </section>
   </div>

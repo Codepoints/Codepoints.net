@@ -52,7 +52,7 @@ $s = function($cat) use ($router, $info, $props) {
   <aside>
     <!--h3>Properties</h3-->
     <dl>
-    <dt><?php _e('Nº')?></dt>
+      <dt><?php _e('Nº')?></dt>
       <dd><?php e($codepoint->getId())?></dd>
       <dt><?php _e('UTF-8')?></dt>
       <dd><?php e($codepoint->getRepr('UTF-8'))?></dd>

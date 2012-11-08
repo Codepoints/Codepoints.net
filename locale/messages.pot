@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-21 14:26+0200\n"
+"POT-Creation-Date: 2012-11-08 22:19+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,6 +21,26 @@ msgstr ""
 msgid ""
 "This is how the story goes.\n"
 "\n"
+msgstr ""
+
+#: views/dailycp_not.php:2
+msgid "Codepoint of the Day: No Codepoint Found"
+msgstr ""
+
+#: views/dailycp_not.php:3
+msgid "Every day a new codepoint. Unfortunately not specifically this day."
+msgstr ""
+
+#: views/dailycp_not.php:11 views/dailycp.php:45 views/front.php:83
+msgid "Codepoints of the Day"
+msgstr ""
+
+#: views/dailycp_not.php:15
+msgid "No Codepoint for this Date"
+msgstr ""
+
+#: views/dailycp_not.php:17
+msgid "Unfortunately we cannot find a codepoint for this date."
 msgstr ""
 
 #: views/search/form.php:4
@@ -682,6 +702,47 @@ msgid ""
 "    for pushing me to publish this site at last."
 msgstr ""
 
+#: views/dailycp.php:2
+msgid "Codepoint of the Day"
+msgstr ""
+
+#: views/dailycp.php:3
+#, php-format
+msgid "Codepoint from %s"
+msgstr ""
+
+#: views/dailycp.php:4
+msgid "Codepoints.net presents every day a new character from Unicode. "
+msgstr ""
+
+#: views/dailycp.php:6
+#, php-format
+msgid "Today: U+%s, %s"
+msgstr ""
+
+#: views/dailycp.php:8
+#, php-format
+msgid "%s: U+%s, %s"
+msgstr ""
+
+#: views/dailycp.php:54 views/codepoint.html.php:55
+#: views/codepoint.html.php:84
+msgid "Nº"
+msgstr ""
+
+#: views/dailycp.php:56 views/codepoint.html.php:57
+#: views/codepoint.html.php:88
+msgid "UTF-8"
+msgstr ""
+
+#: views/dailycp.php:63 views/codepoint.html.php:64
+msgid "Numeric Value"
+msgstr ""
+
+#: views/dailycp.php:71
+msgid "View full description of this codepoint."
+msgstr ""
+
 #: views/wizard.php:2 views/front.php:25
 msgid "Find My Codepoint"
 msgstr ""
@@ -887,10 +948,6 @@ msgstr ""
 
 #: views/front.php:55
 msgid "a random codepoint"
-msgstr ""
-
-#: views/front.php:83
-msgid "Codepoints of the Day"
 msgstr ""
 
 #: views/front.php:86
@@ -1166,18 +1223,6 @@ msgstr ""
 msgid ""
 "%s, codepoint U+%04X %s in Unicode, is located in the block “%s”. It belongs "
 "to the %s script and is a %s."
-msgstr ""
-
-#: views/codepoint.html.php:55 views/codepoint.html.php:84
-msgid "Nº"
-msgstr ""
-
-#: views/codepoint.html.php:57 views/codepoint.html.php:88
-msgid "UTF-8"
-msgstr ""
-
-#: views/codepoint.html.php:64
-msgid "Numeric Value"
 msgstr ""
 
 #: views/codepoint.html.php:74
