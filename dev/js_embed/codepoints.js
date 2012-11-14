@@ -1,5 +1,17 @@
 (function(window, $, undefined){
 
+if (document.referrer.match(/^https?:\/\/translate.google.[a-z.]+(?:\/|$)/)) {
+  if (! document.cookie.match(/(^|;)\s*notrans=true;/)) {
+    $('body').prepend($('<p class="note">Howdy! We noticed, that you visit '+
+        'this site through Google Translate. There are efforts to translate '+
+        'Codepoints.net, but we need your help. Please visit <a href="https://crowdin.net/project/codepoints">the '+
+        'translators’ page</a>, if you want to join us. <span class="close">Hide this message.</span></p>').on('click', '.close', function() {
+          document.cookie = 'notrans=true; expires=Tue, 19 Jan 2038 03:14:07 GMT; path=/';
+          $(this).closest('.note').slideUp();
+        }));
+  }
+}
+
 $(function() {
   /**
   * Determine the scrolling element

@@ -475,3 +475,22 @@ input[type="text"] {
 @media (min-width: 1230px) {
   @import "large-screen";
 }
+
+
+
+.note {
+  margin: 0 0 10px;
+  padding: 10px;
+  background: rgba(255,255,0,.3);
+  font-family: $sans;
+  font-size: 14px;
+  border-bottom: 2px groove rgba(127,127,127,.5);
+  .close {
+    color: $cLink;
+    float: right;
+    cursor: pointer;
+    &:hover {
+      color: $cHighlight;
+    }
+  }
+}
