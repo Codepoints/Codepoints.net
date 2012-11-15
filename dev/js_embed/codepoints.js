@@ -1,6 +1,6 @@
 (function(window, $, undefined){
 
-if (document.referrer.match(/^https?:\/\/translate.google.[a-z.]+(?:\/|$)/)) {
+if (document.referrer.match(/^https?:\/\/translate.google(usercontent)?.[a-z.]+(?:\/|$)/)) {
   if (! document.cookie.match(/(^|;)\s*notrans=true;/)) {
     $('body').prepend($('<p class="note">Howdy! We noticed, that you visit '+
         'this site through Google Translate. There are efforts to translate '+
