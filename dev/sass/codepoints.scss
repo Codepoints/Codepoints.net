@@ -494,3 +494,8 @@ input[type="text"] {
     }
   }
 }
+
+
+.no-fixed .floating {
+  position: static;
+}
