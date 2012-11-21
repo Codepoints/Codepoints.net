@@ -119,7 +119,7 @@ $controllers = array(
     'index', 'about', 'api_login', 'api_script', 'codepoint_of_the_day',
     'planes', 'random', 'scripts', 'search', 'wizard', 'sitemap',
 
-    'api_font-face', 'api_stats',
+    'api_font-face',
     'single_character', 'plane', 'codepoint', 'block', 'possible_name',
     'range',
 );
