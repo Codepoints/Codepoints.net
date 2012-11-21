@@ -1,9 +1,9 @@
 
 
-JS_SRC = $(wildcard dev/js/*.js)
-JS_ALL = $(wildcard dev/js*/*.js)
+JS_SRC = $(wildcard src/js/*.js)
+JS_ALL = $(wildcard src/js*/*.js)
 PHP_ALL = $(shell find . -type f -name \*.php)
-JS_TARGET = $(patsubst dev/js/%.js,static/js/%.js,$(JS_SRC))
+JS_TARGET = $(patsubst src/js/%.js,static/js/%.js,$(JS_SRC))
 PYTHON := python
 all: test ucotd css js cachebust
 
@@ -19,15 +19,15 @@ dist: ucotd css js
 
 css: static/css/codepoints.css static/css/ie.css
 
-static/css/codepoints.css static/css/ie.css: dev/sass/*.scss
+static/css/codepoints.css static/css/ie.css: src/sass/*.scss
 	compass compile
 
 js: static/js/_.js static/js/embedded.js $(JS_TARGET)
 
-static/js/_.js: dev/js_embed/jquery.js dev/js_embed/jquery.ui.js \
-                dev/js_embed/webfont.js \
-                dev/js_embed/jquery.cachedajax.js dev/js_embed/jquery.tooltip.js \
-                dev/js_embed/jquery.glossary.js dev/js_embed/codepoints.js
+static/js/_.js: src/js_embed/jquery.js src/js_embed/jquery.ui.js \
+                src/js_embed/webfont.js \
+                src/js_embed/jquery.cachedajax.js src/js_embed/jquery.tooltip.js \
+                src/js_embed/jquery.glossary.js src/js_embed/codepoints.js
 	cat $^ | uglifyjs > $@
 
 static/js/embedded.js: dev/js_embed/jquery.js dev/js_embed/webfont.js \
@@ -37,7 +37,7 @@ static/js/embedded.js: dev/js_embed/jquery.js dev/js_embed/webfont.js \
 cachebust: $(JS_ALL) static/css/*.css
 	sed -i '/^define(.CACHE_BUST., .\+.);$$/s/.*/define('"'CACHE_BUST', '"$$(cat $^ | sha1sum | awk '{ print $$1 }')"');/" index.php
 
-$(JS_TARGET): static/js/%.js: dev/js/%.js
+$(JS_TARGET): static/js/%.js: src/js/%.js
 	uglifyjs $^ > $@
 
 ucotd: tools/ucotd.*
