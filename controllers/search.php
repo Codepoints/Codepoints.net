@@ -30,9 +30,9 @@ $router->registerAction('search', function ($request, $o) {
                     if (ctype_digit($vv) && strlen($vv) < 8) {
                         $result->addQuery('cp', intval($vv), '=', 'OR');
                     }
-                    $vv = "%$vv%";
                     $result->addQuery('na', $vv, 'LIKE', 'OR');
                     $result->addQuery('na1', $vv, 'LIKE', 'OR');
+                    $vv = "%$vv%";
                     $result->addQuery('kDefinition', $vv, 'LIKE', 'OR');
                     $result->addQuery('alias', $vv, 'LIKE', 'OR');
                     $result->addQuery('abstract', $vv, 'LIKE', 'OR');
