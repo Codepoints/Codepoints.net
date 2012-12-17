@@ -42,7 +42,7 @@ class SearchResult extends UnicodeRange {
         }
 
         list($search, $params) = $this->_getQuerySQL();
-        $select = 'SELECT codepoints.cp cp, na, na1,
+        $fields = 'codepoints.cp cp, na, na1,
             (SELECT codepoint_image.image
                FROM codepoint_image
               WHERE codepoint_image.cp = codepoints.cp) image,
@@ -52,14 +52,15 @@ class SearchResult extends UnicodeRange {
             (SELECT COUNT(*)
                FROM codepoint_confusables
               WHERE codepoint_confusables.cp = codepoints.cp
-                 OR codepoint_confusables.other = codepoints.cp) confusables
+                 OR codepoint_confusables.other = codepoints.cp) confusables';
+        $select = 'SELECT %s
         FROM codepoints
         LEFT JOIN codepoint_script USING ( cp )
         LEFT JOIN codepoint_alias USING ( cp )
         LEFT JOIN codepoint_abstract USING ( cp )
-        WHERE ' . $search;
+        WHERE %s';
 
-        $stm = $this->db->prepare($select.' LIMIT '.($this->page * $this->pageLength).','.$this->pageLength);
+        $stm = $this->db->prepare(sprintf($select, $fields, $search.' LIMIT '.($this->page * $this->pageLength).','.$this->pageLength));
         $stm->execute($params);
         $r = $stm->fetchAll(PDO::FETCH_ASSOC);
         $names = array();
@@ -80,7 +81,7 @@ class SearchResult extends UnicodeRange {
         // query is LIMITed
         $c = count($this->set);
         if ($this->page > 1 || $c === $this->pageLength) {
-            $stm = $this->db->prepare('SELECT COUNT(*) AS c FROM ( '.$select.' )');
+            $stm = $this->db->prepare(sprintf($select, 'COUNT(*) AS c', $search));
             $stm->execute($params);
             $r = $stm->fetch(PDO::FETCH_ASSOC);
             $stm->closeCursor();
