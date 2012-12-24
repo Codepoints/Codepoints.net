@@ -3,6 +3,7 @@
 JS_SRC = $(wildcard dev/js/*.js)
 JS_ALL = $(wildcard dev/js*/*.js)
 JS_TARGET = $(patsubst dev/js/%.js,static/js/%.js,$(JS_SRC))
+PYTHON := python
 all: ucotd css js cachebust
 
 .PHONY: all css js dist clean ucotd cachebust l10n
@@ -36,7 +37,7 @@ $(JS_TARGET): static/js/%.js: dev/js/%.js
 
 ucotd: tools/ucotd.*
 	cd tools; \
-	python ucotd.py
+	$(PYTHON) ucotd.py
 
 ucd.sqlite: ucotd tools/scripts.sql tools/scripts_wp.sql tools/fonts/*_insert.sql
 	sqlite3 $@ <tools/scripts.sql
