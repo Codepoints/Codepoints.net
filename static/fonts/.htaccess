@@ -1,0 +1,5 @@
+<IfModule mod_headers.c>
+    <Files ~ fontawesome.*>
+        Header set Access-Control-Allow-Origin "*"
+    </Files>
+</IfModule>
