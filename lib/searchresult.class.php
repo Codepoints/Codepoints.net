@@ -53,7 +53,7 @@ class SearchResult extends UnicodeRange {
                FROM codepoint_confusables
               WHERE codepoint_confusables.cp = codepoints.cp
                  OR codepoint_confusables.other = codepoints.cp) confusables';
-        $select = 'SELECT %s
+        $select = 'SELECT DISTINCT %s
         FROM codepoints
         LEFT JOIN codepoint_script USING ( cp )
         LEFT JOIN codepoint_alias USING ( cp )
