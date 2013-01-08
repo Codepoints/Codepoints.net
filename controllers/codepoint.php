@@ -16,7 +16,11 @@ $router->registerAction(function ($url, $o) {
     }
     return False;
 }, function ($request, $o) {
-    $view = new View('codepoint.html');
+    if (array_key_exists('embed', $_GET)) {
+        $view = new View('codepoint.embedded');
+    } else {
+        $view = new View('codepoint.html');
+    }
     $cache = new Cache();
     $data = $view->render(array('codepoint' => $request->data));
     echo $data;

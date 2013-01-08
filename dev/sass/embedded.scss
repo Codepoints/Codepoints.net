@@ -1,0 +1,169 @@
+
+@import "compass";
+@import "normalize";
+@import "settings";
+@import "ui";
+@import "view.codepoint";
+
+@include normalize-display;
+@include normalize-lists;
+@include normalize-embedded;
+@include normalize-figures;
+@include normalize-tables;
+
+body {
+  font: 1em/1.5 $serif;
+  color: $cText;
+  margin: 0;
+  overflow: hidden;
+}
+
+h1 {
+  margin: 0 0 (20em/36);
+  font-size: (36em/$sFontBase);
+  line-height: (40em/36);
+  text-shadow: 0 2px 1px white;
+}
+
+h2 {
+  margin: 0 0 (10em/24);
+  font-size: (24em/$sFontBase);
+  line-height: (30em/24);
+}
+
+h3 {
+  margin: (20em/21) 0;
+  font-size: (21em/$sFontBase);
+  line-height: (20em/21);
+  font-weight: normal;
+  font-style: italic;
+}
+
+a:link {
+  color: $cLink;
+  text-decoration: none;
+  @include transition-property("color, border-color");
+  @include transition-duration(.5s);
+}
+
+a:visited {
+  color: $cVisited;
+  text-decoration: none;
+}
+
+a:focus,
+a:hover {
+  color: $cHighlight;
+  text-shadow: 1px 1px white,
+               -1px 1px white;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+h1, h2, h3, b, strong {
+  color: $cTextBold;
+}
+
+
+dl {
+  width: intrinsic;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+dt {
+  display: inline;
+  margin-right: .3em;
+  font-style: italic;
+  text-shadow: 1px 1px white;
+  color: $cTextLight;
+  &:after {
+    content: ":";
+  }
+}
+
+dd {
+  display: inline;
+  margin: 0;
+  &:after {
+    display: block;
+    content: " ";
+    height: 0;
+  }
+}
+
+figure {
+  float: left;
+  margin: 0 1em 1em 0;
+}
+
+@include cp-fig;
+@include props;
+
+.note {
+  margin: 10px 0 0;
+  background: rgba(255,255,0,.3);
+  font-family: $sans;
+  a {
+    display: block;
+    padding: 5px;
+  }
+}
+
+@media (max-width: 320px) {
+  figure {
+    margin: 0 .2em 0 0;
+    line-height: 0;
+  }
+  .fig {
+    $sFigSize: 24px;
+    width: $sFigSize;
+    height: $sFigSize;
+    line-height: $sFigSize;
+    font-size: #{$sFigSize*.85};
+  }
+  h1 {
+    font-size: 1em;
+  }
+}
+
+@media (min-width: 321px) {
+  h1 {
+    padding-top: .5em;
+    @include pie-clearfix;
+  }
+}
+
+@media (max-width: 440px) {
+  .cp-name {
+    display: block;
+    font-size: (20em/36);
+    line-height: 1.25;
+  }
+}
+
+@media (max-height: 600px) {
+  dl {
+    display: none;
+  }
+}
+
+@media (max-height: 400px) {
+  .props {
+    display: none;
+  }
+}
+
+@media (max-height: 100px) {
+  .note {
+    display: none;
+  }
+}
+
+@media (max-height: 100px) {
+  h1 {
+    white-space: nowrap;
+  }
+}
+

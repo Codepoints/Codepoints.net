@@ -21,12 +21,16 @@ css: static/css/codepoints.css static/css/ie.css
 static/css/codepoints.css static/css/ie.css: dev/sass/*.scss
 	compass compile
 
-js: static/js/_.js $(JS_TARGET)
+js: static/js/_.js static/js/embedded.js $(JS_TARGET)
 
 static/js/_.js: dev/js_embed/jquery.js dev/js_embed/jquery.ui.js \
                 dev/js_embed/webfont.js \
                 dev/js_embed/jquery.cachedajax.js dev/js_embed/jquery.tooltip.js \
                 dev/js_embed/jquery.glossary.js dev/js_embed/codepoints.js
+	cat $^ | uglifyjs > $@
+
+static/js/embedded.js: dev/js_embed/jquery.js dev/js_embed/webfont.js \
+                       dev/js_embed/load_font.js
 	cat $^ | uglifyjs > $@
 
 cachebust: $(JS_ALL) static/css/*.css
