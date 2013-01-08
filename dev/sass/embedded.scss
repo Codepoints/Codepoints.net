@@ -111,7 +111,7 @@ figure {
   }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 320px), (max-height: 130px) {
   figure {
     margin: 0 .2em 0 0;
     line-height: 0;
