@@ -96,46 +96,64 @@ dd {
 figure {
   float: left;
   margin: 0 1em 1em 0;
+  background: white;
 }
 
 @include cp-fig;
+
 @include props;
 
 .note {
-  margin: 10px 0 0;
-  background: rgba(255,255,0,.3);
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+  width: 100%;
+  background: rgba(255,255,0,.2);
   font-family: $sans;
+  font-size: (10em/$sFontBase);
   a {
     display: block;
     padding: 5px;
+    border: none;
   }
 }
 
-@media (max-width: 320px), (max-height: 130px) {
+@media (max-width: 319px), (max-height: 129px) {
   figure {
     margin: 0 .2em 0 0;
     line-height: 0;
   }
   .fig {
-    $sFigSize: 24px;
-    width: $sFigSize;
-    height: $sFigSize;
-    line-height: $sFigSize;
-    font-size: #{$sFigSize*.85};
+    @include cp-fig-size(24px);
   }
   h1 {
     font-size: 1em;
   }
 }
 
-@media (min-width: 321px) {
+@media (max-width: 59px) and (max-height: 59px) {
+  figure {
+    float: none;
+  }
   h1 {
-    padding-top: .5em;
+    font-weight: normal;
+    font-size: (10em/$sFontBase);
+  }
+  h1 .cp-name {
+    display: none;
+  }
+  .cp-code span {
+    display: none;
+  }
+}
+
+@media (min-width: 320px) {
+  h1 {
     @include pie-clearfix;
   }
 }
 
-@media (max-width: 440px) {
+@media (max-width: 439px) {
   .cp-name {
     display: block;
     font-size: (20em/36);
@@ -143,25 +161,28 @@ figure {
   }
 }
 
-@media (max-height: 600px) {
-  dl {
+@media (min-width: 440px) and (min-height: 130px) {
+  h1 {
+    line-height: 128px;
+  }
+}
+
+@media (max-height: 599px) {
+  .info-section {
     display: none;
   }
 }
 
-@media (max-height: 400px) {
-  .props {
+@media (max-height: 399px) {
+  .prop-section {
     display: none;
   }
 }
 
-@media (max-height: 100px) {
+@media (max-height: 59px), (max-width: 129px) and (max-height: 129px) {
   .note {
     display: none;
   }
-}
-
-@media (max-height: 100px) {
   h1 {
     white-space: nowrap;
   }
