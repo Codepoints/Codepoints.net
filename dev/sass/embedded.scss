@@ -131,7 +131,7 @@ figure {
   }
 }
 
-@media (max-width: 59px) and (max-height: 59px) {
+@media (max-width: 99px) and (max-height: 59px) {
   figure {
     float: none;
   }
@@ -158,6 +158,17 @@ figure {
     display: block;
     font-size: (20em/36);
     line-height: 1.25;
+  }
+}
+
+@media (min-width: 440px) and (max-height: 129px) {
+  .cp-head {
+    margin-left: 29px;
+  }
+  h1 {
+    display: table-cell;
+    height: 24px;
+    vertical-align: middle;
   }
 }
 
