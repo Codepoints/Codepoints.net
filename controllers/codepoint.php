@@ -24,7 +24,10 @@ $router->registerAction(function ($url, $o) {
     $cache = new Cache();
     $data = $view->render(array('codepoint' => $request->data));
     echo $data;
-    $cache->write($request->url, $data);
+    if (! array_key_exists('embed', $_GET)) {
+        // cache only, if this is not the embedded view
+        $cache->write($request->url, $data);
+    }
 });
 
 //__END__
