@@ -162,8 +162,13 @@ figure {
 }
 
 @media (min-width: 440px) and (min-height: 130px) {
+  .cp-head {
+    margin-left: 138px;
+  }
   h1 {
-    line-height: 128px;
+    display: table-cell;
+    height: 128px;
+    vertical-align: middle;
   }
 }
 

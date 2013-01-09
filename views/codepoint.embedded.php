@@ -33,8 +33,10 @@ $block = $codepoint->getBlock();
           </datalist>
         <?php endif?>
       </figure>
-      <h1><span class="cp-code"><span>U+</span><?php e($codepoint->getId('hex'))?></span>
-      <span class="cp-name"><?php e($codepoint->getName())?></span></h1>
+      <div class="cp-head">
+        <h1><span class="cp-code"><span>U+</span><?php e($codepoint->getId('hex'))?></span>
+          <span class="cp-name"><?php e($codepoint->getName())?></span></h1>
+      </div>
     </a>
     <section class="info-section">
       <dl>
