@@ -41,7 +41,7 @@ include "nav.php";
         '<a href="'.q($router->getUrl('dingbats')).'">'.__('Dingbats and Symbols').'</a>'
        )?>
       </p>
-      <p><?php printf(__('All codepoints are arranged in 16 so-called
+      <p><?php printf(__('All codepoints are arranged in 17 so-called
        %s. These planes are further divided into several blocks with
        %s being the first one. You can browse one by one by starting with
        the first codepoint, %s or %s for a specific character. If you’re

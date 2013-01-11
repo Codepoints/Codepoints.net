@@ -1,5 +1,5 @@
 <?php $title = __('Unicode Planes');
-$hDescription = __('Unicode defines 16 planes, in which all the codepoints are separated.');
+$hDescription = __('Unicode defines 17 planes, in which all the codepoints are separated.');
 $canonical = '/planes';
 include "header.php";
 include "nav.php";
@@ -15,7 +15,7 @@ include "nav.php";
           <small><?php printf(__('(U+%04X to U+%04X)'), $plane->first, $plane->last)?></small></li>
     <?php endforeach?>
   </ol>
-  <p><?php printf(__('The Unicode standard arranges the characters in 16 so-called planes of
+  <p><?php printf(__('The Unicode standard arranges the characters in 17 so-called planes of
      a bit more than 65,000 codepoints (2<sup>16</sup> to be precise) each.
      The Unicode standard has thus theoretically place for <em>1,114,112 characters</em>.
      Some planes are still undefined

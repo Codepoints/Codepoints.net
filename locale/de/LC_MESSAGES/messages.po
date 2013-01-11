@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-08 22:19+0100\n"
-"PO-Revision-Date: 2012-11-08 22:21+0100\n"
+"POT-Creation-Date: 2013-01-11 21:11+0100\n"
+"PO-Revision-Date: 2013-01-11 21:12+0100\n"
 "Last-Translator: Manuel Strehl <translate@manuel-strehl.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -337,10 +337,10 @@ msgstr "Unicode ist ein Mechanismus, um Schriftzeichen universell zu identifizie
 #: views/about.php:98
 msgid ""
 "To bring the sheer mass of the possible 1,114,111 codepoints in a useful\n"
-"      order, Unicode is divided in 16 planes, which are further divided in\n"
+"      order, Unicode is divided in 17 planes, which are further divided in\n"
 "      logically connected blocks. There are ten principles, that guide the\n"
 "      extension and care of the Unicode standard:"
-msgstr "Um die schiere Masse der möglichen 1.114.111 Codepunkte in eine nützliche Reihenfolge zu bringen, ist Unicode in 16 Ebenen unterteilt, die weiter in logisch zusammenhängende Blöcke geteilt sind. Es gibt zehn Prinzipien, die die Erweiterung und Pflege des Unicode-Standards leiten:"
+msgstr "Um die schiere Masse der möglichen 1.114.111 Codepunkte in eine nützliche Reihenfolge zu bringen, ist Unicode in 17 Ebenen unterteilt, die weiter in logisch zusammenhängende Blöcke geteilt sind. Es gibt zehn Prinzipien, die die Erweiterung und Pflege des Unicode-Standards leiten:"
 
 #: views/about.php:104
 msgid "Universal repertoire:"
@@ -697,18 +697,21 @@ msgid "%s: U+%s, %s"
 msgstr "%s: U+%s, %s"
 
 #: views/dailycp.php:54
+#: views/codepoint.embedded.php:63
 #: views/codepoint.html.php:55
 #: views/codepoint.html.php:84
 msgid "Nº"
 msgstr "Nr."
 
 #: views/dailycp.php:56
+#: views/codepoint.embedded.php:67
 #: views/codepoint.html.php:57
 #: views/codepoint.html.php:88
 msgid "UTF-8"
 msgstr "UTF-8"
 
 #: views/dailycp.php:63
+#: views/codepoint.embedded.php:48
 #: views/codepoint.html.php:64
 msgid "Numeric Value"
 msgstr "Numerischer Wert"
@@ -756,8 +759,8 @@ msgid "Unicode Planes"
 msgstr "Unicode-Ebenen"
 
 #: views/planes.php:2
-msgid "Unicode defines 16 planes, in which all the codepoints are separated."
-msgstr "Unicode definiert 16 Ebenen, in die alle Codepunkte eingeteilt werden."
+msgid "Unicode defines 17 planes, in which all the codepoints are separated."
+msgstr "Unicode definiert 17 Ebenen, in die alle Codepunkte eingeteilt werden."
 
 #: views/planes.php:9
 msgid "a representation of the Unicode logo"
@@ -766,13 +769,13 @@ msgstr "eine Darstellung des Unicode-Logos"
 #: views/planes.php:18
 #, php-format
 msgid ""
-"The Unicode standard arranges the characters in 16 so-called planes of\n"
+"The Unicode standard arranges the characters in 17 so-called planes of\n"
 "     a bit more than 65,000 codepoints (2<sup>16</sup> to be precise) each.\n"
 "     The Unicode standard has thus theoretically place for <em>1,114,112 characters</em>.\n"
 "     Some planes are still undefined\n"
 "     and will be filled at a later date. The most used characters go into\n"
 "     the almost full %s."
-msgstr "Der Unicode-Standard ordnet die Zeichen in 16 sogenannten Ebenen von je etwas mehr als 65.000 Zeichen (2<sup>16</sup> um genau zu sein) an. Der Standard hat deshalb theoretisch Platz für <em>1.114.112 Zeichen</em>. Einige Ebenen sind noch undefiniert und werden zu einem späteren Zeitpunkt gefüllt. Die meistverwendeten Zeichen wandern in die beinahe volle %s."
+msgstr "Der Unicode-Standard ordnet die Zeichen in 17 sogenannten Ebenen von je etwas mehr als 65.000 Zeichen (2<sup>16</sup> um genau zu sein) an. Der Standard hat deshalb theoretisch Platz für <em>1.114.112 Zeichen</em>. Einige Ebenen sind noch undefiniert und werden zu einem späteren Zeitpunkt gefüllt. Die meistverwendeten Zeichen wandern in die beinahe volle %s."
 
 #: views/planes.php:24
 msgid "Basic Multilingual Plane"
@@ -884,13 +887,13 @@ msgstr "Dingabts und Symbolen"
 #: views/front.php:44
 #, php-format
 msgid ""
-"All codepoints are arranged in 16 so-called\n"
+"All codepoints are arranged in 17 so-called\n"
 "       %s. These planes are further divided into several blocks with\n"
 "       %s being the first one. You can browse one by one by starting with\n"
 "       the first codepoint, %s or %s for a specific character. If you’re\n"
 "       not fully sure, try %s, to narrow down the candidates. Or maybe you\n"
 "       are more daring and want %s?"
-msgstr "Alle Codepunkte sind in 16 sogenannten %s angeordnet. Diese Ebenen sind weiter in einzelne Blöcke unterteilt mit %s als erstem. Du kannst sie einen nach dem anderen durchstöbern mit %s als erstem Codepunkt oder nach einem speziellen Charakter %s. Wenn du nicht vollkommen sicher bist, versuche %s um die Kandidaten einzuschränken. Oder vielleicht bist du wagemutig und versuchst %s?"
+msgstr "Alle Codepunkte sind in 17 sogenannten %s angeordnet. Diese Ebenen sind weiter in einzelne Blöcke unterteilt mit %s als erstem. Du kannst sie einen nach dem anderen durchstöbern mit %s als erstem Codepunkt oder nach einem speziellen Charakter %s. Wenn du nicht vollkommen sicher bist, versuche %s um die Kandidaten einzuschränken. Oder vielleicht bist du wagemutig und versuchst %s?"
 
 #: views/front.php:50
 msgid "planes"
@@ -998,6 +1001,46 @@ msgstr "%s Block trifft auf %s zu:"
 #, php-format
 msgid "%s blocks match %s:"
 msgstr "%s Blöcke treffen auf %s zu:"
+
+#: views/codepoint.embedded.php:24
+msgid "View on Codepoints.net"
+msgstr "Auf Codepoints.net ansehen"
+
+#: views/codepoint.embedded.php:57
+#: views/codepoint.html.php:78
+msgid "System"
+msgstr "System"
+
+#: views/codepoint.embedded.php:58
+#: views/codepoint.html.php:79
+msgid "Representation"
+msgstr "Darstellung"
+
+#: views/codepoint.embedded.php:71
+#: views/codepoint.html.php:92
+msgid "UTF-16"
+msgstr "UTF-16"
+
+#: views/codepoint.embedded.php:75
+#: views/codepoint.html.php:96
+msgid "UTF-32"
+msgstr "UTF-32"
+
+#: views/codepoint.embedded.php:79
+#: views/codepoint.html.php:100
+msgid "URL-Quoted"
+msgstr "URL-kodiert"
+
+#: views/codepoint.embedded.php:83
+#: views/codepoint.embedded.php:90
+#: views/codepoint.html.php:104
+#: views/codepoint.html.php:111
+msgid "HTML-Escape"
+msgstr "HTML-Darstellung"
+
+#: views/codepoint.embedded.php:126
+msgid "» View this character on Codepoints.net"
+msgstr "» Dieses Zeichen auf Codepoints.net ansehen"
 
 #: views/block.html.php:2
 #, php-format
@@ -1179,31 +1222,6 @@ msgstr "%s, Codepunkt U+%04X %s in Unicode, liegt im Block „%s“. Es gehört 
 #: views/codepoint.html.php:74
 msgid "Representations"
 msgstr "Darstellungen"
-
-#: views/codepoint.html.php:78
-msgid "System"
-msgstr "System"
-
-#: views/codepoint.html.php:79
-msgid "Representation"
-msgstr "Darstellung"
-
-#: views/codepoint.html.php:92
-msgid "UTF-16"
-msgstr "UTF-16"
-
-#: views/codepoint.html.php:96
-msgid "UTF-32"
-msgstr "UTF-32"
-
-#: views/codepoint.html.php:100
-msgid "URL-Quoted"
-msgstr "URL-kodiert"
-
-#: views/codepoint.html.php:104
-#: views/codepoint.html.php:111
-msgid "HTML-Escape"
-msgstr "HTML-Darstellung"
 
 #: views/codepoint.html.php:149
 msgid "Related Characters"

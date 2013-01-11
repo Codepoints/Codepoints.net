@@ -29,7 +29,7 @@ include 'nav.php';
     <dt id="glyph">Glyph</dt>
     <dd>The representation of a codepoint under certain circumstances. For example, the letter “A” looks quite differently in latin and blackletter fonts. Both are different glyphs for the underlying character.</dd>
     <dt id="plane">Plane</dt>
-    <dd>A Unicode plane is one of 16 sets of 65536 <a href="#codepoint">codepoints</a> each. Currently only the first three planes contain character definitions. The last two planes are reserved for <a href="#private_use">private use</a>.</dd>
+    <dd>A Unicode plane is one of 17 sets of 65536 <a href="#codepoint">codepoints</a> each. Currently only the first three planes contain character definitions. The last two planes are reserved for <a href="#private_use">private use</a>.</dd>
     <dt id="private_use" class="last-special">Private Use</dt>
     <dd>So-called “private use” areas are <a href="#unicode">Unicode</a> codepoints, that are deliberately not assigned to characters. These codepoints can be used by application developers to add their own extensions to Unicode.</dd>
 

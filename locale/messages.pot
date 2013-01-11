@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-08 22:19+0100\n"
+"POT-Creation-Date: 2013-01-11 21:11+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -343,7 +343,7 @@ msgstr ""
 #: views/about.php:98
 msgid ""
 "To bring the sheer mass of the possible 1,114,111 codepoints in a useful\n"
-"      order, Unicode is divided in 16 planes, which are further divided in\n"
+"      order, Unicode is divided in 17 planes, which are further divided in\n"
 "      logically connected blocks. There are ten principles, that guide the\n"
 "      extension and care of the Unicode standard:"
 msgstr ""
@@ -725,17 +725,18 @@ msgstr ""
 msgid "%s: U+%s, %s"
 msgstr ""
 
-#: views/dailycp.php:54 views/codepoint.html.php:55
-#: views/codepoint.html.php:84
+#: views/dailycp.php:54 views/codepoint.embedded.php:63
+#: views/codepoint.html.php:55 views/codepoint.html.php:84
 msgid "Nº"
 msgstr ""
 
-#: views/dailycp.php:56 views/codepoint.html.php:57
-#: views/codepoint.html.php:88
+#: views/dailycp.php:56 views/codepoint.embedded.php:67
+#: views/codepoint.html.php:57 views/codepoint.html.php:88
 msgid "UTF-8"
 msgstr ""
 
-#: views/dailycp.php:63 views/codepoint.html.php:64
+#: views/dailycp.php:63 views/codepoint.embedded.php:48
+#: views/codepoint.html.php:64
 msgid "Numeric Value"
 msgstr ""
 
@@ -789,7 +790,7 @@ msgid "Unicode Planes"
 msgstr ""
 
 #: views/planes.php:2
-msgid "Unicode defines 16 planes, in which all the codepoints are separated."
+msgid "Unicode defines 17 planes, in which all the codepoints are separated."
 msgstr ""
 
 #: views/planes.php:9
@@ -799,7 +800,7 @@ msgstr ""
 #: views/planes.php:18
 #, php-format
 msgid ""
-"The Unicode standard arranges the characters in 16 so-called planes of\n"
+"The Unicode standard arranges the characters in 17 so-called planes of\n"
 "     a bit more than 65,000 codepoints (2<sup>16</sup> to be precise) each.\n"
 "     The Unicode standard has thus theoretically place for "
 "<em>1,114,112 characters</em>.\n"
@@ -926,7 +927,7 @@ msgstr ""
 #: views/front.php:44
 #, php-format
 msgid ""
-"All codepoints are arranged in 16 so-called\n"
+"All codepoints are arranged in 17 so-called\n"
 "       %s. These planes are further divided into several blocks with\n"
 "       %s being the first one. You can browse one by one by starting with\n"
 "       the first codepoint, %s or %s for a specific character. If you’re\n"
@@ -1039,6 +1040,39 @@ msgstr ""
 #: views/result.php:50
 #, php-format
 msgid "%s blocks match %s:"
+msgstr ""
+
+#: views/codepoint.embedded.php:24
+msgid "View on Codepoints.net"
+msgstr ""
+
+#: views/codepoint.embedded.php:57 views/codepoint.html.php:78
+msgid "System"
+msgstr ""
+
+#: views/codepoint.embedded.php:58 views/codepoint.html.php:79
+msgid "Representation"
+msgstr ""
+
+#: views/codepoint.embedded.php:71 views/codepoint.html.php:92
+msgid "UTF-16"
+msgstr ""
+
+#: views/codepoint.embedded.php:75 views/codepoint.html.php:96
+msgid "UTF-32"
+msgstr ""
+
+#: views/codepoint.embedded.php:79 views/codepoint.html.php:100
+msgid "URL-Quoted"
+msgstr ""
+
+#: views/codepoint.embedded.php:83 views/codepoint.embedded.php:90
+#: views/codepoint.html.php:104 views/codepoint.html.php:111
+msgid "HTML-Escape"
+msgstr ""
+
+#: views/codepoint.embedded.php:126
+msgid "» View this character on Codepoints.net"
 msgstr ""
 
 #: views/block.html.php:2
@@ -1227,30 +1261,6 @@ msgstr ""
 
 #: views/codepoint.html.php:74
 msgid "Representations"
-msgstr ""
-
-#: views/codepoint.html.php:78
-msgid "System"
-msgstr ""
-
-#: views/codepoint.html.php:79
-msgid "Representation"
-msgstr ""
-
-#: views/codepoint.html.php:92
-msgid "UTF-16"
-msgstr ""
-
-#: views/codepoint.html.php:96
-msgid "UTF-32"
-msgstr ""
-
-#: views/codepoint.html.php:100
-msgid "URL-Quoted"
-msgstr ""
-
-#: views/codepoint.html.php:104 views/codepoint.html.php:111
-msgid "HTML-Escape"
 msgstr ""
 
 #: views/codepoint.html.php:149

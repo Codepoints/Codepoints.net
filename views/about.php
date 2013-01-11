@@ -96,7 +96,7 @@ include 'nav.php';
     </p>
     <p>
       <?php _e('To bring the sheer mass of the possible 1,114,111 codepoints in a useful
-      order, Unicode is divided in 16 planes, which are further divided in
+      order, Unicode is divided in 17 planes, which are further divided in
       logically connected blocks. There are ten principles, that guide the
       extension and care of the Unicode standard:')?>
     </p>
