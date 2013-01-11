@@ -50,8 +50,6 @@ class Router {
                                  strlen($this->baseURL));
             if ($url === False) {
                 $url = '';
-            } elseif (strpos($url, '?') !== False) {
-                $url = strstr($url, '?', True);
             }
         }
         $req = new Request($url);

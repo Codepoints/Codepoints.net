@@ -36,7 +36,7 @@ define('UNICODE_VERSION', '6.1.0');
 /**
  * set DEBUG level
  */
-define('CP_DEBUG', 1);
+define('CP_DEBUG', 0);
 
 
 /**

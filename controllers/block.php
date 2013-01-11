@@ -17,8 +17,7 @@ $router->registerAction(function ($url, $o) {
     $cache = new Cache();
     $data = $view->render(compact('block'));
     echo $data;
-    // Quick fix: The caching doesn't support GET variables
-    //$cache->write($request->url, $data);
+    $cache->write($request->url, $data);
 });
 
 //__END__

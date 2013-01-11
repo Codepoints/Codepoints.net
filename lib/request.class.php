@@ -34,6 +34,9 @@ class Request {
             $url = $_SERVER['REQUEST_URI'];
         }
         $this->url = $this->trunkUrl = $url;
+        if (strpos($url, '?') !== False) {
+            $this->trunkUrl = strstr($url, '?', True);
+        }
         if (array_key_exists('HTTP_ACCEPT', $_SERVER)) {
             $types = explode(',', $_SERVER['HTTP_ACCEPT']);
             for ($i = 0, $j = count($types); $i < $j; $i++) {
@@ -59,7 +62,7 @@ class Request {
         $ext = pathinfo($url, PATHINFO_EXTENSION);
         $ext = strtolower(ltrim($ext, '.'));
         if ($ext && array_key_exists($ext, $this->extensionTypeMap)) {
-            $this->trunkUrl = substr($url, 0, -strlen($ext)-1);
+            $this->trunkUrl = substr($this->trunkUrl, 0, -strlen($ext)-1);
             $this->type = $this->extensionTypeMap[$ext];
         }
     }
