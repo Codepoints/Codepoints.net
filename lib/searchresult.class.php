@@ -43,12 +43,8 @@ class SearchResult extends UnicodeRange {
 
         list($search, $params) = $this->_getQuerySQL();
         $fields = 'codepoints.cp cp, na, na1,
-            (SELECT codepoint_image.image
-               FROM codepoint_image
-              WHERE codepoint_image.cp = codepoints.cp) image,
-            (SELECT name FROM blocks
-              WHERE first <= codepoints.cp AND last >= codepoints.cp
-              LIMIT 1) block,
+             codepoint_image.image AS image,
+             blocks.name AS block,
             (SELECT COUNT(*)
                FROM codepoint_confusables
               WHERE codepoint_confusables.cp = codepoints.cp
@@ -58,6 +54,8 @@ class SearchResult extends UnicodeRange {
         LEFT JOIN codepoint_script USING ( cp )
         LEFT JOIN codepoint_alias USING ( cp )
         LEFT JOIN codepoint_abstract USING ( cp )
+        LEFT JOIN codepoint_image USING ( cp )
+        LEFT JOIN blocks ON blocks.first <= codepoints.cp AND blocks.last >= codepoints.cp
         WHERE %s';
 
         $stm = $this->db->prepare(sprintf($select, $fields, $search.' LIMIT '.($this->page * $this->pageLength).','.$this->pageLength));
@@ -128,6 +126,8 @@ class SearchResult extends UnicodeRange {
                     }
                     if ($q[0] === 'cp') {
                         $search .= " codepoints.cp ${q[1]} ( " . join(',', $tmp) . " )";
+                    } elseif ($q[0] === 'block') {
+                        $search .= " blocks.name ${q[1]} ( " . join(',', $tmp) . " )";
                     } else {
                         $search .= " `${q[0]}` ${q[1]} ( " . join(',', $tmp) . " )";
                     }
@@ -138,6 +138,9 @@ class SearchResult extends UnicodeRange {
                 } elseif ($q[0] === 'cp' || $q[0] === 'int') {
                     /* handle "cp" specially to fight "ambiguous column" SQLite errors */
                     $search .= " codepoints.cp = :q$i ";
+                    $params[':q'.$i] = $q[2];
+                } elseif ($q[0] === 'block') {
+                    $search .= " blocks.name = :q$i ";
                     $params[':q'.$i] = $q[2];
                 } else {
                     /* the default is to query the column $q0 with the comparison $q1
