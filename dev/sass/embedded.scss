@@ -118,6 +118,7 @@ figure {
   }
 }
 
+// quite narrow and low
 @media (max-width: 319px), (max-height: 129px) {
   figure {
     margin: 0 .2em 0 0;
@@ -131,13 +132,17 @@ figure {
   }
 }
 
+// extremely narrow and low
 @media (max-width: 99px) and (max-height: 59px) {
   figure {
     float: none;
+    margin: 0 0 2px 0;
   }
   h1 {
     font-weight: normal;
-    font-size: (10em/$sFontBase);
+    font-size: (9em/$sFontBase);
+    text-align: center;
+    font-family: $sans;
   }
   h1 .cp-name {
     display: none;
@@ -147,12 +152,14 @@ figure {
   }
 }
 
+// starting to become wide (may still be low)
 @media (min-width: 320px) {
   h1 {
     @include pie-clearfix;
   }
 }
 
+// medium wide (may be tall or low)
 @media (max-width: 439px) {
   .cp-name {
     display: block;
@@ -161,6 +168,7 @@ figure {
   }
 }
 
+// wide and low
 @media (min-width: 440px) and (max-height: 129px) {
   .cp-head {
     margin-left: 29px;
@@ -172,6 +180,7 @@ figure {
   }
 }
 
+// starting to become wide and tall
 @media (min-width: 440px) and (min-height: 130px) {
   .cp-head {
     margin-left: 138px;
@@ -183,18 +192,21 @@ figure {
   }
 }
 
+// medium tall
 @media (max-height: 599px) {
   .info-section {
     display: none;
   }
 }
 
+// quite tall but not enough for everything
 @media (max-height: 399px) {
   .prop-section {
     display: none;
   }
 }
 
+// extremely low and narrow, too small to show the "View on CP" note
 @media (max-height: 59px), (max-width: 129px) and (max-height: 129px) {
   .note {
     display: none;
