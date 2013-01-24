@@ -20,8 +20,8 @@ $canonical = $router->getUrl($codepoint);
 $headdata .= sprintf('<meta name="twitter:site" content="@codepointsnet"/>
 <meta name="twitter:url" content="http://codepoints.net%s"/>
 <meta name="twitter:title" content="%s"/>
-<meta name="twitter:description" content="%s"/>
-<meta name="twitter:image" content="%s"/>', q($router->getUrl($codepoint)), q($title), q($hDescription), q($codepoint->getImage()));
+<meta name="twitter:description" content="%s"/>',
+q($router->getUrl($codepoint)), q($title), q($hDescription));
 include "header.php";
 $nav = array();
 if ($prev) {
