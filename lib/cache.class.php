@@ -68,11 +68,9 @@ class Cache {
      * compose the path to the cached file
      */
     protected function _getPath($path) {
+        $path = $this->_normalize($path);
         $rpath = CACHE_FOLDER."/_cache_".
-                    preg_replace('/[^a-zA-Z0-9$%&()*+,\-.=?_~]+/', "_", $path);
-        $lang = L10n::get('messages')->getLanguage();
-        // use Apache-style path extension for language
-        $rpath .= '.'.$lang;
+                    preg_replace('/[^a-zA-Z0-9%&*+,\-.=?_~]+/', "_", $path);
         $test = dirname($rpath);
         if (substr($test, 0, strlen(CACHE_FOLDER)) !== CACHE_FOLDER) {
             // security net: don't allow writing/reading outside the cache folder
@@ -95,6 +93,68 @@ class Cache {
             return False;
         }
         return True;
+    }
+
+    /**
+     * normalize the path, especially to cater GET params
+     *
+     * @see http://en.wikipedia.org/wiki/URL_normalization
+     */
+    protected function _normalize($path) {
+        // get the file path
+        $rpath = current(explode('?', $path, 2));
+        // split off the get params
+        $params = substr($path, strlen($rpath));
+        // we throw away fragment identifiers
+        $params = current(explode('#', $params, 2));
+        if (strlen($params)) {
+            // if there are GET parameters
+            $aParams = parse_str($params);
+            if (array_key_exists('lang', $aParams)) {
+                unset($aParams['lang']); // we handle this param separately
+            }
+            ksort($aParams);
+            $params = '?'.http_build_query($aParams);
+            if ($params === '?') {
+                // can happen, if ?lang was the only GET param
+                $params = '';
+            }
+        }
+
+        // use Apache-style path extension for language
+        $lang = L10n::get('messages')->getLanguage();
+
+        // re-assemble path (the '?' is already part of $params
+        $path = $rpath . '.' . $lang . $params;
+
+        // normalize URL encoding
+        $path = preg_replace_callback('/%[a-f0-9]{2}/', function($m) {
+            return strtoupper($m[0]);
+        }, $path);
+        foreach (array(
+            '%41' => 'A', '%42' => 'B', '%43' => 'C', '%44' => 'D',
+            '%45' => 'E', '%46' => 'F', '%47' => 'G', '%48' => 'H',
+            '%49' => 'I', '%4A' => 'J', '%4B' => 'K', '%4C' => 'L',
+            '%4D' => 'M', '%4E' => 'N', '%4F' => 'O', '%50' => 'P',
+            '%51' => 'Q', '%52' => 'R', '%53' => 'S', '%54' => 'T',
+            '%55' => 'U', '%56' => 'V', '%57' => 'W', '%58' => 'X',
+            '%59' => 'Y', '%5A' => 'Z',
+            '%61' => 'a', '%62' => 'b', '%63' => 'c', '%64' => 'd',
+            '%65' => 'e', '%66' => 'f', '%67' => 'g', '%68' => 'h',
+            '%69' => 'i', '%6A' => 'j', '%6B' => 'k', '%6C' => 'l',
+            '%6D' => 'm', '%6E' => 'n', '%6F' => 'o', '%70' => 'p',
+            '%71' => 'q', '%72' => 'r', '%73' => 's', '%74' => 't',
+            '%75' => 'u', '%76' => 'v', '%77' => 'w', '%78' => 'x',
+            '%79' => 'y', '%7A' => 'z',
+            '%30' => '0', '%31' => '1', '%32' => '2', '%33' => '3',
+            '%34' => '4', '%35' => '5', '%36' => '6', '%37' => '7',
+            '%38' => '8', '%39' => '9',
+            '%2D' => '-', '%2E' => '.', '%5F' => '_', '%7E' => '~',
+        ) as $orig => $repl) {
+            $path = str_replace($orig, $repl, $path);
+        }
+
+        return $path;
     }
 
 }
