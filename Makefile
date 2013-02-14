@@ -2,11 +2,12 @@
 
 JS_SRC = $(wildcard dev/js/*.js)
 JS_ALL = $(wildcard dev/js*/*.js)
+PHP_ALL = $(shell find . -type f -name \*.php)
 JS_TARGET = $(patsubst dev/js/%.js,static/js/%.js,$(JS_SRC))
 PYTHON := python
-all: ucotd css js cachebust
+all: test ucotd css js cachebust
 
-.PHONY: all css js dist clean ucotd cachebust l10n
+.PHONY: all css js dist clean ucotd cachebust l10n test
 
 clean:
 	-rm -fr dist
@@ -54,3 +55,7 @@ locale/messages.pot: index.php lib/*.php controllers/*.php views/*.php \
                      views/*/*.php
 	find index.php lib controllers views -name \*.php | \
 		xargs xgettext -LPHP --from-code UTF-8 -k__ -k_e -k_n -kgettext -o $@
+
+test: $(PHP_ALL)
+	! find . -name \*.php -exec php -l '{}' \; | \
+		grep -v '^No syntax errors detected in '
