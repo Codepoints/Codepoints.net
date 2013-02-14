@@ -17,9 +17,9 @@ dist: ucotd css js
 	cp -r .htaccess humans.txt index.php lib opensearch.xml robots.txt static ucd.sqlite views $@
 	sed -i 's/define(.CP_DEBUG., .);/define('"'CP_DEBUG'"', 0);/' $@/index.php
 
-css: static/css/codepoints.css static/css/ie.css
+css: static/css/codepoints.css static/css/ie.css static/css/embedded.css
 
-static/css/codepoints.css static/css/ie.css: src/sass/*.scss
+static/css/codepoints.css static/css/ie.css static/css/embedded.css: src/sass/*.scss
 	compass compile
 
 js: static/js/_.js static/js/embedded.js $(JS_TARGET)
@@ -30,8 +30,8 @@ static/js/_.js: src/js_embed/jquery.js src/js_embed/jquery.ui.js \
                 src/js_embed/jquery.glossary.js src/js_embed/codepoints.js
 	cat $^ | uglifyjs > $@
 
-static/js/embedded.js: dev/js_embed/jquery.js dev/js_embed/webfont.js \
-                       dev/js_embed/load_font.js
+static/js/embedded.js: src/js_embed/jquery.js src/js_embed/webfont.js \
+                       src/js_embed/load_font.js
 	cat $^ | uglifyjs > $@
 
 cachebust: $(JS_ALL) static/css/*.css
