@@ -116,6 +116,8 @@ include "nav.php";
         </div>
       </section>
     <?php endif?>
+    <section class="bk blog-preview">
+    </section>
   </article>
 </div>
 <?php

@@ -254,6 +254,14 @@ $(function() {
     }));
   }
 
+  /**
+   * display latest blog post
+   */
+  var blog_preview = $('.blog-preview');
+  if (blog_preview.length) {
+    blog_preview.load('/blog-preview');
+  }
+
 });
 
 })(this, jQuery);

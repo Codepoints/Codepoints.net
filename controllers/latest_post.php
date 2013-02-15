@@ -7,11 +7,8 @@ $router->registerAction('blog-preview', function ($request, $o) {
         $data = explode('{', substr(file_get_contents('http://blog.codepoints.net/api/read/json?start=0&num=1&filter=text'), 0, -2), 2);
         $data = json_decode('{'.$data[1], true);
         if ($data) {
-            $content = sprintf('<h2><a href="%1$s">%2$s</a></h2><p>%3$s <a href="%1$s">...read on</a>.</p>',
-                $data['posts'][0]['url-with-slug'],
-                $data['posts'][0]['regular-title'],
-                substr($data['posts'][0]['regular-body'], 0, 255)
-            );
+            $view = new View('blog-preview');
+            $content = $view->render(array('post' => $data['posts'][0]));
             file_put_contents($cachefile, $content);
         }
     }
