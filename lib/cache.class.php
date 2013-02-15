@@ -109,7 +109,7 @@ class Cache {
         $params = current(explode('#', $params, 2));
         if (strlen($params)) {
             // if there are GET parameters
-            $aParams = parse_str($params);
+            parse_str($params, $aParams);
             if (array_key_exists('lang', $aParams)) {
                 unset($aParams['lang']); // we handle this param separately
             }
