@@ -10,7 +10,7 @@
           '<a href="'.q($router->getUrl('about')).'#attribution">'.__('these fine people').'</a>',
           '<a href="https://github.com/Boldewyn/codepoints.net">'.__('Feedback and contributions').'</a>')?></p>
         <?php if (! isset($_COOKIE) || ! isset($_COOKIE['_eu']) || $_COOKIE['_eu'] !== 'hide'):?>
-        <p class="tx cookies"><?php printf(__('We use cookies to enhance your experience and to srcelop the site further. We never track you for monetary reasons. If you do not want this, you can either use the Do-Not-Track feature of your browser or %s.'),
+        <p class="tx cookies"><?php printf(__('We use cookies to enhance your experience and to develop the site further. We never track you for monetary reasons. If you do not want this, you can either use the Do-Not-Track feature of your browser or %s.'),
             '<a href="'.q($router->getUrl('about')).'#this_site">'.__('opt out explicitly').'</a>')?></p>
         <?php endif?>
         <ul>

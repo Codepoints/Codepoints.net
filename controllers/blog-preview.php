@@ -3,6 +3,8 @@
 
 $router->registerAction('blog-preview', function ($request, $o) {
     $cachefile = dirname(dirname(__FILE__)).'/cache/blog-preview';
+    $lang = L10n::get('messages')->getLanguage();
+    $cachefile .= '.'.$lang;
     if (! file_exists($cachefile) || filemtime($cachefile) < time() - 60*60) {
         $data = explode('{', substr(file_get_contents('http://blog.codepoints.net/api/read/json?start=0&num=1&filter=text'), 0, -2), 2);
         $data = json_decode('{'.$data[1], true);

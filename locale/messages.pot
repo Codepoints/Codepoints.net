@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-11 21:11+0100\n"
+"POT-Creation-Date: 2013-02-15 22:50+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -726,17 +726,17 @@ msgid "%s: U+%s, %s"
 msgstr ""
 
 #: views/dailycp.php:54 views/codepoint.embedded.php:63
-#: views/codepoint.html.php:55 views/codepoint.html.php:84
+#: views/codepoint.html.php:60 views/codepoint.html.php:89
 msgid "Nº"
 msgstr ""
 
 #: views/dailycp.php:56 views/codepoint.embedded.php:67
-#: views/codepoint.html.php:57 views/codepoint.html.php:88
+#: views/codepoint.html.php:62 views/codepoint.html.php:93
 msgid "UTF-8"
 msgstr ""
 
 #: views/dailycp.php:63 views/codepoint.embedded.php:48
-#: views/codepoint.html.php:64
+#: views/codepoint.html.php:69
 msgid "Numeric Value"
 msgstr ""
 
@@ -1046,28 +1046,28 @@ msgstr ""
 msgid "View on Codepoints.net"
 msgstr ""
 
-#: views/codepoint.embedded.php:57 views/codepoint.html.php:78
+#: views/codepoint.embedded.php:57 views/codepoint.html.php:83
 msgid "System"
 msgstr ""
 
-#: views/codepoint.embedded.php:58 views/codepoint.html.php:79
+#: views/codepoint.embedded.php:58 views/codepoint.html.php:84
 msgid "Representation"
 msgstr ""
 
-#: views/codepoint.embedded.php:71 views/codepoint.html.php:92
+#: views/codepoint.embedded.php:71 views/codepoint.html.php:97
 msgid "UTF-16"
 msgstr ""
 
-#: views/codepoint.embedded.php:75 views/codepoint.html.php:96
+#: views/codepoint.embedded.php:75 views/codepoint.html.php:101
 msgid "UTF-32"
 msgstr ""
 
-#: views/codepoint.embedded.php:79 views/codepoint.html.php:100
+#: views/codepoint.embedded.php:79 views/codepoint.html.php:105
 msgid "URL-Quoted"
 msgstr ""
 
 #: views/codepoint.embedded.php:83 views/codepoint.embedded.php:90
-#: views/codepoint.html.php:104 views/codepoint.html.php:111
+#: views/codepoint.html.php:109 views/codepoint.html.php:116
 msgid "HTML-Escape"
 msgstr ""
 
@@ -1252,6 +1252,14 @@ msgstr ""
 msgid "The %sWikipedia%s has the following information about this codepoint:"
 msgstr ""
 
+#: views/blog-preview.php:1
+msgid "Latest from the blog:"
+msgstr ""
+
+#: views/blog-preview.php:3
+msgid "...read on"
+msgstr ""
+
 #: views/codepoint.html.php:16
 #, php-format
 msgid ""
@@ -1259,43 +1267,43 @@ msgid ""
 "to the %s script and is a %s."
 msgstr ""
 
-#: views/codepoint.html.php:74
+#: views/codepoint.html.php:79
 msgid "Representations"
 msgstr ""
 
-#: views/codepoint.html.php:149
+#: views/codepoint.html.php:154
 msgid "Related Characters"
 msgstr ""
 
-#: views/codepoint.html.php:158
+#: views/codepoint.html.php:163
 msgid "Confusables"
 msgstr ""
 
-#: views/codepoint.html.php:168
+#: views/codepoint.html.php:173
 msgid "Elsewhere"
 msgstr ""
 
-#: views/codepoint.html.php:172
+#: views/codepoint.html.php:177
 msgid "Unicode website"
 msgstr ""
 
-#: views/codepoint.html.php:173
+#: views/codepoint.html.php:178
 msgid "Reference rendering on Unicode.org"
 msgstr ""
 
-#: views/codepoint.html.php:175
+#: views/codepoint.html.php:180
 msgid "Wikipedia"
 msgstr ""
 
-#: views/codepoint.html.php:178
+#: views/codepoint.html.php:183
 msgid "Unihan Database"
 msgstr ""
 
-#: views/codepoint.html.php:179
+#: views/codepoint.html.php:184
 msgid "Chinese Text Project"
 msgstr ""
 
-#: views/codepoint.html.php:186
+#: views/codepoint.html.php:191
 msgid "Complete Record"
 msgstr ""
 
