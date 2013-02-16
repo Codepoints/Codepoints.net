@@ -4,3 +4,4 @@
 /dist
 /cache/_cache_*
 /cache/blog-preview.*
+/src/vendor
