@@ -1,7 +1,7 @@
 /**
  * replace the title attribute with a custom tooltip
  */
-(function($) {
+define(['jquery', 'jquery.ui'], function($) {
 var tipIDCounter = 0;
 
 $.fn.tooltip = function() {
@@ -58,4 +58,4 @@ $.fn.tooltip = function() {
   });
   return this;
 };
-})(jQuery);
+});

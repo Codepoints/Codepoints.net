@@ -1,4 +1,4 @@
-(function(window, $, undefined) {
+define(['jquery', 'webfont'], function($, WebFont) {
   $(function() {
     /**
     * load a font to render the codepoint figure
@@ -10,7 +10,7 @@
         var cp_font = font_opts.eq(0).val(),
             cp_fam  = $.trim(font_opts.eq(0).text());
         if (cp_font) {
-          window.WebFont.load({
+          WebFont.load({
             custom: {
               families: [cp_font],
               urls: ['/api/font-face/'+encodeURIComponent(cp_font)+'.css']
@@ -30,4 +30,4 @@
       }
     }
   });
-})(this, jQuery);
+});

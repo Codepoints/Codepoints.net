@@ -1,4 +1,4 @@
-(function(window, $, undefined) {
+require(['jquery'], function($) {
 
   /**
    * a single question for the wizard
@@ -311,4 +311,4 @@
 
   prepareContainer($('#wizard_container'), q_region);
 
-})(this, jQuery);
+});

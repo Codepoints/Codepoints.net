@@ -1,4 +1,4 @@
-(function (window, $) {
+require(['jquery', 'jquery.ui'], function($) {
   /* search form enhancement */
   $('.extended.searchform').each(function() {
     var $form = $(this), fields = $('.propsearch, .boolsearch', $form).hide(),
@@ -177,4 +177,4 @@
     }
 
   });
-})(this, jQuery);
+});

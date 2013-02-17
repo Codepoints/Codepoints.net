@@ -1,1 +1,1 @@
-(function(a,b){var c=b("#ucotd_cal");c.datepicker({dateFormat:"yy-mm-dd",defaultDate:c.data("date"),minDate:"2011-05-04",maxDate:"+0",onSelect:function(b,c){a.location.href="/codepoint_of_the_day?date="+b}})})(this,jQuery);
+require(["jquery","jquery.ui"],function(e){var t=e("#ucotd_cal");t.datepicker({dateFormat:"yy-mm-dd",defaultDate:t.data("date"),minDate:"2011-05-04",maxDate:"+0",onSelect:function(e,t){window.location.href="/codepoint_of_the_day?date="+e}})}),define("dailycp",function(){});

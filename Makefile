@@ -1,9 +1,9 @@
 
 
-JS_SRC := $(wildcard src/js/*.js)
-JS_ALL := $(wildcard src/js*/*.js)
+JS_ALL := $(shell find src/js -type f -name \*.js)
+JS_ROOTS := $(wildcard src/js/*.js)
+JS_TARGET := $(patsubst src/js/%,static/js/%,$(JS_ROOTS))
 PHP_ALL := $(shell find . -type f -name \*.php)
-JS_TARGET := $(patsubst src/js/%.js,static/js/%.js,$(JS_SRC))
 SASS_ROOTS := $(wildcard src/sass/[^_]*.scss)
 CSS_TARGET := $(patsubst src/sass/%.scss,static/css/%.css,$(SASS_ROOTS))
 PYTHON := python
@@ -25,23 +25,14 @@ css: $(CSS_TARGET)
 $(CSS_TARGET): static/css/%.css : src/sass/%.scss
 	compass compile --force $<
 
-js: static/js/_.js static/js/embedded.js $(JS_TARGET)
+js: src/build.js $(JS_ALL) static/js/html5shiv.js
+	cd src && node vendor/r.js/dist/r.js -o build.js
 
-static/js/_.js: src/js_embed/jquery.js src/js_embed/jquery.ui.js \
-                src/js_embed/webfont.js \
-                src/js_embed/jquery.cachedajax.js src/js_embed/jquery.tooltip.js \
-                src/js_embed/jquery.glossary.js src/js_embed/codepoints.js
-	cat $^ | uglifyjs > $@
-
-static/js/embedded.js: src/js_embed/jquery.js src/js_embed/webfont.js \
-                       src/js_embed/load_font.js
-	cat $^ | uglifyjs > $@
+static/js/html5shiv.js: src/vendor/html5shiv/dist/html5shiv.js
+	<$< uglifyjs >$@
 
 cachebust: $(JS_ALL) $(CSS_TARGET)
 	sed -i '/^define(.CACHE_BUST., .\+.);$$/s/.*/define('"'CACHE_BUST', '"$$(cat $^ | sha1sum | awk '{ print $$1 }')"');/" index.php
-
-$(JS_TARGET): static/js/%.js: src/js/%.js
-	uglifyjs $^ > $@
 
 ucotd: tools/ucotd.*
 	cd tools; \
@@ -68,4 +59,4 @@ vendor: src/component.json
 test: $(PHP_ALL) $(JS_ALL)
 	! find . -name \*.php -exec php -l '{}' \; | \
 		grep -v '^No syntax errors detected in '
-	jshint $(JS_SRC)
+	jshint $(JS_ALL)

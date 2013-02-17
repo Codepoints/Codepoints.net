@@ -1,7 +1,7 @@
 /**
  * cache AJAX requests locally
  */
-(function($) {
+define(['jquery'], function($) {
 
   var Cache = {};
 
@@ -22,4 +22,4 @@
     return r;
   };
 
-})(jQuery);
+});

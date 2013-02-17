@@ -1,7 +1,7 @@
 /**
  * handle the large glossary better
  */
-(function(window, $) {
+require(['jquery', 'components/jquery.glossary'], function($) {
 
   var gl = $('#glossary'),
       dts = gl.find('.last-special').nextAll('dt'),
@@ -62,4 +62,4 @@
     }
   });
 
-})(this, jQuery);
+});

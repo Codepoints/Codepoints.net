@@ -5,3 +5,4 @@
 /cache/_cache_*
 /cache/blog-preview.*
 /src/vendor
+/static/js/build.txt

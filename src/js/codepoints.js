@@ -1,4 +1,5 @@
-(function(window, $, undefined){
+require(['jquery', 'webfont', 'jquery.ui', 'components/jquery.cachedajax',
+  'components/jquery.tooltip', 'components/jquery.glossary'], function($, WebFont) {
 
 if (document.referrer.match(/^https?:\/\/translate.google(usercontent)?.[a-z.]+(?:\/|$)/)) {
   if (! document.cookie.match(/(^|;)\s*notrans=true;/)) {
@@ -186,7 +187,7 @@ $(function() {
       var cp_font = font_opts.eq(0).val(),
           cp_fam  = $.trim(font_opts.eq(0).text());
       if (cp_font) {
-        window.WebFont.load({
+        WebFont.load({
           custom: {
             families: [cp_font],
             urls: ['/api/font-face/'+encodeURIComponent(cp_font)+'.css']
@@ -264,4 +265,4 @@ $(function() {
 
 });
 
-})(this, jQuery);
+});

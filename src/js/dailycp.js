@@ -1,4 +1,4 @@
-(function(window, $) {
+require(['jquery', 'jquery.ui'], function($) {
   var cal = $('#ucotd_cal');
   cal.datepicker({
     dateFormat: "yy-mm-dd",
@@ -9,4 +9,4 @@
       window.location.href = "/codepoint_of_the_day?date="+dateText;
     }
   });
-})(this, jQuery);
+});

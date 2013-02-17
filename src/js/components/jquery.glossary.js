@@ -3,7 +3,7 @@
  *
  * depends on jQuery.cachedAjax
  */
-(function(window, $){
+define(['jquery', 'components/jquery.cachedajax'], function($){
 
   var glossary = null;
 
@@ -47,4 +47,4 @@
     return this;
   };
 
-})(this, jQuery);
+});
