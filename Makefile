@@ -10,7 +10,7 @@ PYTHON := python
 
 all: vendor test ucotd css js cachebust
 
-.PHONY: all css js dist clean ucotd cachebust l10n test vendor
+.PHONY: all css js dist clean ucotd cachebust l10n test vendor db
 
 clean:
 	-rm -fr dist src/vendor
@@ -33,6 +33,8 @@ static/js/html5shiv.js: src/vendor/html5shiv/dist/html5shiv.js
 
 cachebust: $(JS_ALL) $(CSS_TARGET)
 	sed -i '/^define(.CACHE_BUST., .\+.);$$/s/.*/define('"'CACHE_BUST', '"$$(cat $^ | sha1sum | awk '{ print $$1 }')"');/" index.php
+
+db: ucd.sqlite
 
 ucotd: tools/ucotd.*
 	cd tools; \
