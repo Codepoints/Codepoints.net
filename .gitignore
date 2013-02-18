@@ -6,3 +6,4 @@
 /cache/blog-preview.*
 /src/vendor
 /static/js/build.txt
+/static/js/components
