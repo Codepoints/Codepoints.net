@@ -73,7 +73,5 @@ $s = function($cat) use ($router, $info, $props) {
   </section>
   </div>
 <?php
-$footer_scripts = array(
-    "/static/js/dailycp.js"
-);
+$footer_scripts = array("/static/js/dailycp.js");
 include "footer.php"?>

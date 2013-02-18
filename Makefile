@@ -52,7 +52,7 @@ locale/messages.pot: index.php lib/*.php controllers/*.php views/*.php \
 
 vendor: src/component.json
 	bower install
-	$(MAKE) -C src/vendor/d3 d3.geo.js JS_UGLIFY=uglifyjs2
+	$(MAKE) -C src/vendor/d3 d3.v2.js JS_UGLIFY=uglifyjs2
 	cd src/vendor/jquery.ui && npm install && grunt build
 	cd src/vendor/webfontloader && rake
 

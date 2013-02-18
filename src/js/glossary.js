@@ -1,7 +1,7 @@
 /**
  * handle the large glossary better
  */
-require(['jquery', 'components/jquery.glossary'], function($) {
+require(['jquery'], function($) {
 
   var gl = $('#glossary'),
       dts = gl.find('.last-special').nextAll('dt'),

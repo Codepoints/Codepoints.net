@@ -101,9 +101,5 @@ include 'nav.php';
   </section>
 </div>
 <?php
-$footer_scripts = array(
-    '/static/js/d3.js',
-    '/static/js/d3.geo.js',
-    '/static/js/scripts.js',
-);
+$footer_scripts = array('/static/js/scripts.js');
 include 'footer.php'?>

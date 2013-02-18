@@ -1,4 +1,4 @@
-require(['jquery', 'd3', 'd3.geo'], function($, d3) {
+require(['jquery', 'd3'], function($, d3) {
 
 var $window = $(window);
 
