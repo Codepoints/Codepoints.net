@@ -1,6 +1,6 @@
-require(['jquery', 'webfont', 'jquery.ui', 'components/jquery.cachedajax',
+require(['jquery', 'jquery.ui', 'components/jquery.cachedajax',
   'components/jquery.tooltip', 'components/jquery.glossary',
-  'components/load_font'], function($, WebFont) {
+  'components/load_font'], function($) {
 
 if (document.referrer.match(/^https?:\/\/translate.google(usercontent)?.[a-z.]+(?:\/|$)/)) {
   if (! document.cookie.match(/(^|;)\s*notrans=true;/)) {

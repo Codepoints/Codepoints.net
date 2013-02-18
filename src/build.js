@@ -14,7 +14,7 @@
   },
   "shim": {
     "webfont": {
-      "exports": "webfont"
+      "exports": "WebFont"
     },
     "d3": {
       "exports": "d3"
@@ -26,7 +26,8 @@
       "include": ["almond", "jquery.ui"]
     },
     {
-      "name": "embedded"
+      "name": "embedded",
+      "include": ["almond"]
     },
     {
       "name": "dailycp",
