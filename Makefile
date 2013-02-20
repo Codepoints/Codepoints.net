@@ -27,6 +27,8 @@ $(CSS_TARGET): static/css/%.css : src/sass/%.scss
 
 js: src/build.js $(JS_ALL) static/js/html5shiv.js
 	cd src && node vendor/r.js/dist/r.js -o build.js
+	-rm -f static/js/build.txt
+	-rm -fr static/js/components
 
 static/js/html5shiv.js: src/vendor/html5shiv/dist/html5shiv.js
 	<$< uglifyjs >$@
