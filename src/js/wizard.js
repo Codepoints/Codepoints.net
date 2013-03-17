@@ -1,4 +1,6 @@
-require(['jquery'], function($) {
+require(['jquery', 'components/gettext'], function($, gettext) {
+
+  var _= gettext.gettext;
 
   /**
    * a single question for the wizard
@@ -109,7 +111,7 @@ require(['jquery'], function($) {
     q.html.trigger('question.finish', q);
     var answers = {'_wizard': 1}, q2 = q, i = 0,
         html = $('<fieldset id="wizard_finish">' +
-                   '<legend>Finished!</legend>' +
+                   '<legend>'+_('Finished!')+'</legend>' +
                  '</fieldset>');
     if (q.selected !== null) {
       answers[q.id] = q.selected;
@@ -121,8 +123,9 @@ require(['jquery'], function($) {
       i += 1;
     }
     QuestionPrototype.container.addClass('finished');
-    html.append($('<p></p>').text('Please wait a second, we’re making those '+
-                                   i+' answers productive.').prepend('<img src="/static/images/ajax.gif" alt="" width="16" height="16"/> '));
+    html.append($('<p></p>')
+        .text(_('Please wait a second, we’re making those %s answers productive.', i))
+        .prepend('<img src="/static/images/ajax.gif" alt="" width="16" height="16"/> '));
     $('#wizard_now').fadeOut('fast');
     q.html.fadeOut('fast', function() {
       html.hide().insertAfter(q.html).fadeIn('fast');
@@ -143,7 +146,8 @@ require(['jquery'], function($) {
         .append(q1.render())
         .one('question.answered', function() {
           $(this).after($('<p class="buttonset" id="wizard_now">' +
-              '<button type="button">Enough questions! Search now.</button>' +
+              '<button type="button">'+_('Enough questions! Search now.')+
+              '</button>' +
             '</p>').find('button').on('click', function() {
             finishAsking(QuestionPrototype.current);
           }).end().hide().slideDown());
@@ -168,96 +172,96 @@ require(['jquery'], function($) {
   }
 
   var q_swallow = new Question('swallow',
-    'What’s the airspeed velocity of an unladen swallow?', {
-      1: 'An African, or',
-      2: 'A European Swallow?'
+    _('What’s the airspeed velocity of an unladen swallow?'), {
+      1: _('An African, or'),
+      2: _('A European Swallow?')
   });
 
   var q_region = new Question('region',
-    'Where does the character appear usually?', {
-      'Africa': 'Africa <small>(without Arabic)</small>',
-      'America': 'America <small>(originally, <i>e. g.</i> Cherokee, not Latin)</small>',
-      'Europe': 'Europe <small>(Latin, Cyrillic, …)</small>',
-      'Middle_East': 'Middle East',
-      'Central_Asia': 'Central Asia',
-      'East_Asia': 'East Asia <small>(Chinese, Korean, Japanese, …)</small>',
-      'South_Asia': 'South Asia <small>(Indian)</small>',
-      'Southeast Asia': 'Southeast Asia <small>(Thai, Khmer, …)</small>',
-      'Philippines': 'Philippines, Indonesia, Oceania',
-      'n': 'Nowhere specific',
-      '': 'I don’t know'
+    _('Where does the character appear usually?'), {
+      'Africa': _('Africa <small>(without Arabic)</small>'),
+      'America': _('America <small>(originally, <i>e. g.</i> Cherokee, not Latin)</small>'),
+      'Europe': _('Europe <small>(Latin, Cyrillic, …)</small>'),
+      'Middle_East': _('Middle East'),
+      'Central_Asia': _('Central Asia'),
+      'East_Asia': _('East Asia <small>(Chinese, Korean, Japanese, …)</small>'),
+      'South_Asia': _('South Asia <small>(Indian)</small>'),
+      'Southeast Asia': _('Southeast Asia <small>(Thai, Khmer, …)</small>'),
+      'Philippines': _('Philippines, Indonesia, Oceania'),
+      'n': _('Nowhere specific'),
+      '': _('I don’t know')
   });
 
   var q_number = new Question('number',
-    'Is it a number of any kind?', {
-      1: 'Yes',
-      0: 'No',
-      '': 'I don’t know'
+    _('Is it a number of any kind?'), {
+      1: _('Yes'),
+      0: _('No'),
+      '': _('I don’t know')
   });
 
   var q_case = new Question('case',
-    'Has the character a case (upper, lower, title)?', {
-      l: 'Yes, it’s lowercase',
-      u: 'Yes, it’s uppercase',
-      t: 'Yes, it’s titlecase',
-      y: 'Yes, but I don’t know the case',
-      n: 'No, it’s uncased',
-      '': 'I don’t know'
+    _('Has the character a case (upper, lower, title)?'), {
+      l: _('Yes, it’s lowercase'),
+      u: _('Yes, it’s uppercase'),
+      t: _('Yes, it’s titlecase'),
+      y: _('Yes, but I don’t know the case'),
+      n: _('No, it’s uncased'),
+      '': _('I don’t know')
   });
 
   var q_symbol = new Question('symbol',
-    'Is the character some kind of symbol or dingbat?', {
-      s: 'Yes <small>(It isn’t part of usually written text)</small>',
-      c: 'No <small>(But it is some kind of control character)</small>',
-      t: 'No <small>(It may appear in text, like letters or punctuation)</small>',
-      '': 'I don’t know'
+    _('Is the character some kind of symbol or dingbat?'), {
+      s: _('Yes <small>(It isn’t part of usually written text)</small>'),
+      c: _('No <small>(But it is some kind of control character)</small>'),
+      t: _('No <small>(It may appear in text, like letters or punctuation)</small>'),
+      '': _('I don’t know')
   });
 
   var q_punc = new Question('punctuation',
-    'Is the character some kind of punctuation?', {
-      1: 'Yes',
-      0: 'No',
-      '': 'I don’t know'
+    _('Is the character some kind of punctuation?'), {
+      1: _('Yes'),
+      0: _('No'),
+      '': _('I don’t know')
   });
 
   var q_incomplete = new Question('incomplete',
-    'Is the character incomplete on its own, like a diacritic sign?', {
-      1: 'Yes <small>(It’s usually found together with another character)</small>',
-      0: 'No <small>(It stands on its own)</small>',
-      '': 'I don’t know'
+    _('Is the character incomplete on its own, like a diacritic sign?'), {
+      1: _('Yes <small>(It’s usually found together with another character)</small>'),
+      0: _('No <small>(It stands on its own)</small>'),
+      '': _('I don’t know')
   });
 
   var q_composed = new Question('composed',
-    'Is the character composed of two others?', {
-      1: 'Yes <small>(It is based on two or more other characters)</small>',
-      2: 'Sort of <small>(It’s got some quiggly lines or dots, like “Ä” or “ٷ”)</small>',
-      0: 'No <small>(It is a genuine character)</small>',
-      '': 'I don’t know'
+    _('Is the character composed of two others?'), {
+      1: _('Yes <small>(It is based on two or more other characters)</small>'),
+      2: _('Sort of <small>(It’s got some quiggly lines or dots, like “Ä” or “ٷ”)</small>'),
+      0: _('No <small>(It is a genuine character)</small>'),
+      '': _('I don’t know')
   });
 
   var q_confuse = new Question('confuse',
-    'Off the top of your head, can the character be confused with another one?', {
-      1: 'Yes <small>(Like latin “A” and greek “Α”, alpha)</small>',
-      '': 'No <small>(I have no such pair in mind)</small>'
+    _('Off the top of your head, can the character be confused with another one?'), {
+      1: _('Yes <small>(Like latin “A” and greek “Α”, alpha)</small>'),
+      '': _('No <small>(I have no such pair in mind)</small>')
   });
 
   var q_archaic = new Question('archaic',
-    'Is it an archaic character or is it in use today?', {
-      1: 'Yep, noone would use that anymore!',
-      0: 'Nah, seen it yesterday in the newspaper',
-      '': 'I don’t know'
+    _('Is it an archaic character or is it in use today?'), {
+      1: _('Yep, noone would use that anymore!'),
+      0: _('Nah, seen it yesterday in the newspaper'),
+      '': _('I don’t know')
   });
 
   var q_strokes = new Question('strokes',
-    'Do you know the number of strokes the character has?', {
-      _number: ['This much', 1, 64],
-      '': 'Nope, never counted them'
+    _('Do you know the number of strokes the character has?'), {
+      _number: [_('This much'), 1, 64],
+      '': _('Nope, never counted them')
   });
 
   var q_def = new Question('def',
-    'Do you happen to know the meaning of the character?', {
-      _text: 'This is (part of) what I’m looking for',
-      '': 'I don’t speak that language'
+    _('Do you happen to know the meaning of the character?'), {
+      _text: _('This is (part of) what I’m looking for'),
+      '': _('I don’t speak that language')
   });
 
 

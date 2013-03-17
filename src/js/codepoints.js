@@ -1,6 +1,8 @@
-require(['jquery', 'jquery.ui', 'components/jquery.cachedajax',
+require(['jquery', 'components/gettext', 'jquery.ui', 'components/jquery.cachedajax',
   'components/jquery.tooltip', 'components/jquery.glossary',
-  'components/load_font'], function($) {
+  'components/load_font'], function($, gettext) {
+
+var _ = gettext.gettext;
 
 if (document.referrer.match(/^https?:\/\/translate.google(usercontent)?.[a-z.]+(?:\/|$)/)) {
   if (! document.cookie.match(/(^|;)\s*notrans=true;/)) {
@@ -39,26 +41,29 @@ $(function() {
   if (headline.length) {
     // with hat tip to fittext.js
     resizer = function () {
-      headline.css('font-size', Math.max(Math.min(headline.width() / 7.5, 160), 20));
+      headline.css('font-size', Math.max(Math.min(headline.width() / 7.5,
+                                                  160), 20));
     };
     resizer();
     $(window).on("load resize", resizer);
   }
 
   /** let in-page links scroll smooth */
-  $(document).on('click tap', 'nav a[href^="#"], a[rel~="internal"]', function() {
-    var a = $(this), t = a.attr("href");
-    if (t.length > 1 && $(t).length) {
-      scrollElement.animate({scrollTop: $(t).offset().top - 20}, 1000);
-      return false;
-    }
-  });
+  $(document).on('click tap', 'nav a[href^="#"], a[rel~="internal"]',
+    function() {
+      var a = $(this), t = a.attr("href");
+      if (t.length > 1 && $(t).length) {
+        scrollElement.animate({scrollTop: $(t).offset().top - 20}, 1000);
+        return false;
+      }
+    });
 
   /* display "to top" anchor under circumstances */
   $(window).on("load", function() {
     if ($(window).height() + 50 < $(document).height()) {
       $('footer.ft nav ul:eq(0)').prepend(
-        $('<li><a href="#top"><i class="icon-chevron-up"></i> top</a></li>').find('a')
+        $('<li><a href="#top"><i class="icon-chevron-up"></i> '+_('top')+
+        '</a></li>').find('a')
           .on('click', function() {
             scrollElement.animate({scrollTop: 0}, 500);
             return false;
@@ -79,9 +84,9 @@ $(function() {
     if (! el.data('extended')) {
       el.data('extended',
         true).append($('<p></p>').append($('<a></a>').attr('href',
-              $this.attr('href')).text('Extended Search')))
+              $this.attr('href')).text(_('Extended Search'))))
              .append($('<p></p>').append($('<a></a>').attr('href',
-              '/wizard').text('Find My Codepoint')));
+              '/wizard').text(_('Find My Codepoint'))));
     }
     if (el.is(':hidden')) {
       el.slideDown('normal').find(':text:eq(0)').focus();
@@ -160,7 +165,8 @@ $(function() {
       var $this = $(this), $next = $this.next('section');
       sel.push('#' + this.id);
       if ($next.length) {
-        $this.append('<p><a href="#'+$next[0].id+'"><i>Read on:</i> “'+$next.find('h1').text()+'”</a></p>');
+        $this.append('<p><a href="#'+$next[0].id+'"><i>'+_('Read on:')+
+                     '</i> “'+$next.find('h1').text()+'”</a></p>');
       }
     });
     $(document).on('click tap', 'a[href^="#"]', function() {
@@ -216,7 +222,8 @@ $(function() {
    */
   var cook = $('.cookies');
   if (cook.length) {
-    cook.append($('<a href="#"> Hide this message.</a>').click(function() {
+    cook.append($(' <a href="#">'+_('Hide this message.')+'</a>')
+    .click(function() {
       cook.fadeOut('slow');
       var date = new Date();
       date.setTime(date.getTime()+(2*365*24*60*60*1000));
