@@ -8,14 +8,14 @@ SASS_ROOTS := $(wildcard src/sass/[^_]*.scss)
 CSS_TARGET := $(patsubst src/sass/%.scss,static/css/%.css,$(SASS_ROOTS))
 PYTHON := python
 
-all: vendor test ucotd css js cachebust
+all: test ucotd css js cachebust
 
 .PHONY: all css js dist clean ucotd cachebust l10n test vendor db
 
 clean:
 	-rm -fr dist src/vendor
 
-dist: vendor ucotd css js cachebust
+dist: vendor all
 	mkdir $@
 	cp -r .htaccess humans.txt index.php lib opensearch.xml robots.txt static ucd.sqlite views $@
 	sed -i 's/define(.CP_DEBUG., .);/define('"'CP_DEBUG'"', 0);/' $@/index.php
