@@ -1,11 +1,14 @@
-require(['jquery', 'jquery.ui'], function($) {
+require(['jquery', 'components/gettext', 'jquery.ui'], function($, gettext) {
+  var _ = gettext.gettext;
+
   /* search form enhancement */
   $('.extended.searchform').each(function() {
     var $form = $(this), fields = $('.propsearch, .boolsearch', $form).hide(),
         submitset = $('.submitset', $form),
-        addlist = $('<ul class="query-add ui-widget ui-widget-content ui-corner-all"></ul>').insertBefore(submitset),
+        addlist = $('<ul class="query-add ui-widget ui-widget-content ' +
+                    'ui-corner-all"></ul>').insertBefore(submitset),
         addfields = $(),
-        add = $('<p><button type="button">+ add new query</button></p>')
+        add = $('<p><button type="button">'+_('+ add new query')+'</button></p>')
                 .insertBefore(submitset).find('button'),
         search_values = {},
         menu = $('<ul class="ui-menu ui-widget ui-widget-content" tabindex="0"></ul>');
@@ -156,8 +159,8 @@ require(['jquery', 'jquery.ui'], function($) {
       }
       return $('<li class="query-item"></li>')
         .html('<span class="key">'+property+':</span> <span class="value' +
-              valclass + '" title="click to change">' +
-              value + '</span> <button type="button">remove</button>')
+              valclass + '" title="'+_('click to change')+'">' +
+              value + '</span> <button type="button">'+_('remove')+'</button>')
           .find('button').button({
             text: false,
             icons: {primary: 'ui-icon-close', secondary: false}

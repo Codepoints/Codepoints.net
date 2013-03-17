@@ -1,6 +1,7 @@
-require(['jquery', 'd3'], function($, d3) {
+require(['jquery', 'components/gettext', 'd3'], function($, gettext, d3) {
 
-var $window = $(window);
+var $window = $(window),
+    _ = gettext.gettext;
 
 /**
  * show info about a single script in the opening modal dialog
@@ -16,11 +17,11 @@ function renderScript(d, data) {
       d.append(
         $('<section style="margin:0"></section>').append(
           $('<h3></h3>').text(data[sc].name)
-            .append(' <small><a href="/search?sc[]='+sc+'">('+ n +
-                            ' codepoints)</a></small>'))
+            .append(' <small><a href="/search?sc[]='+sc+'">'+
+                    _('(%s codepoints)', n)+'</a></small>'))
         .append($('<div style="font-size: 12px"></div>').html(data[sc].abstract)
-                .append('<p class="nt">Source: <a href="' + data[sc].src +
-                        '">Wikipedia</a></p>')));
+                .append('<p class="nt">'+_('Source: %s', '<a href="' +
+                        data[sc].src + '">Wikipedia</a>')+'</p>')));
     }
   };
 }
@@ -60,11 +61,11 @@ function showDetails(obj) {
       var d = $('<div></div>'), sc;
       $.each(obj.properties.scripts, renderScript(d, data));
       if (obj.properties.oldscripts.length) {
-        d.append('<h2>Native, Rare and Historic Scripts</h2>');
+        d.append('<h2>'+_('Native, Rare and Historic Scripts')+'</h2>');
       }
       $.each(obj.properties.oldscripts, renderScript(d, data));
       d.dialog({
-        title: 'Scripts used in ' + obj.properties.name,
+        title: _('Scripts used in %s', obj.properties.name),
         buttons: {
           OK: function() { $(this).dialog('close'); }
         },
@@ -74,8 +75,9 @@ function showDetails(obj) {
       showDetails({id: '___not_found___'});
     });
   } else {
-    $('<div>We don’t know about '+obj.properties.name+'’s scripts, sorry!</div>').dialog({
-      title: 'Nothing Found for ' + obj.property.name,
+    $('<div>'+_('We don’t know about %s’s scripts, sorry!',
+      obj.properties.name)+'</div>').dialog({
+      title: _('Nothing Found for %s', obj.property.name),
       buttons: {
         Finished: function() { $(this).dialog('close'); }
       },
@@ -128,7 +130,9 @@ $('#sclist').accordion({
         url: '/api/script/' + sc,
         dataType: 'json'
       }).done(function(data) {
-        dd.append('<hr/>'+data[sc].abstract).append('<p class="nt">Source: <a href="' + data[sc].src + '">Wikipedia</a></p>');
+        dd.append('<hr/>'+data[sc].abstract).append('<p class="nt">'+
+          _('Source: %s', '<a href="' + data[sc].src + '">Wikipedia</a>')+
+          '</p>');
       });
     }
     var paths = $(),
