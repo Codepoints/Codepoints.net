@@ -21,7 +21,23 @@
         </ul>
       </nav>
     </footer>
-    <script id="_ts">var _paq=_paq||[];(function(){var u="http://piwik.manuel-strehl.de/";_paq.push(['setSiteId',4]);_paq.push(['setTrackerUrl',u+'piwik.php']);_paq.push(['trackPageView']);_paq.push(['enableLinkTracking']);var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];g.type='text/javascript';g.defer=true;g.async=true;g.src=u+'piwik.js';s.parentNode.insertBefore(g,s);})();</script>
+    <script id="_ts"><?php
+?>var _paq=_paq||[];<?php
+?>(function(){<?php
+  ?>var u="http://piwik.manuel-strehl.de/";<?php
+  ?>_paq.push(['setSiteId',4]);<?php
+  ?>_paq.push(['setTrackerUrl',u+'piwik.php']);<?php
+  ?>_paq.push(['trackPageView']);<?php
+  ?>_paq.push(['enableLinkTracking']);<?php
+  ?>var d=document,<?php
+      ?>g=d.createElement('script'),<?php
+      ?>s=d.getElementsByTagName('script')[0];<?php
+  ?>g.type='text/javascript';<?php
+  ?>g.defer=true;<?php
+  ?>g.async=true;<?php
+  ?>g.src=u+'piwik.js';<?php
+  ?>s.parentNode.insertBefore(g,s);<?php
+?>})();</script>
     <script>WebFontConfig={google:{families:['Droid Serif:n,i,b,ib','Droid Sans:n,b']}};</script>
     <script src="/static/js/codepoints.js!<?php e(CACHE_BUST)?>"></script>
     <?php if (isset($footer_scripts)): foreach($footer_scripts as $sc):?>
