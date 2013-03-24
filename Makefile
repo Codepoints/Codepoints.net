@@ -50,12 +50,16 @@ ucd.sqlite: ucotd tools/scripts.sql tools/scripts_wp.sql \
 	sqlite3 $@ <tools/fonts/*_insert.sql
 	sqlite3 $@ <tools/latex.sql
 
-l10n: locale/messages.pot
+l10n: locale/messages.pot locale/js.pot
 
 locale/messages.pot: index.php lib/*.php controllers/*.php views/*.php \
                      views/*/*.php
 	find index.php lib controllers views -name \*.php | \
 		xargs xgettext -LPHP --from-code UTF-8 -k__ -k_e -k_n -kgettext -o $@
+
+locale/js.pot: $(JS_ALL)
+	xgettext -LPerl --from-code UTF-8 -k_ -o - $^ | \
+		sed '/^#, perl-format$$/d' > $@
 
 vendor: src/component.json
 	bower install
