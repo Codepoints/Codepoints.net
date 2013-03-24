@@ -1,0 +1,90 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-03-24 21:42+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/js/scripts.js:21
+msgid "(%s codepoints)"
+msgstr ""
+
+#: src/js/scripts.js:23 src/js/scripts.js:134
+msgid "Source: %s"
+msgstr ""
+
+#: src/js/scripts.js:64
+msgid "Native, Rare and Historic Scripts"
+msgstr ""
+
+#: src/js/scripts.js:68
+msgid "Scripts used in %s"
+msgstr ""
+
+#: src/js/scripts.js:78
+msgid "We don’t know about %s’s scripts, sorry!"
+msgstr ""
+
+#: src/js/scripts.js:80
+msgid "Nothing Found for %s"
+msgstr ""
+
+#: src/js/searchform.js:11
+msgid "+ add new query"
+msgstr ""
+
+#: src/js/searchform.js:162
+msgid "click to change"
+msgstr ""
+
+#: src/js/searchform.js:163
+msgid "remove"
+msgstr ""
+
+#: src/js/codepoints.js:65
+msgid "top"
+msgstr ""
+
+#: src/js/codepoints.js:87
+msgid "Extended Search"
+msgstr ""
+
+#: src/js/codepoints.js:89
+msgid "Find My Codepoint"
+msgstr ""
+
+#: src/js/codepoints.js:168
+msgid "Read on:"
+msgstr ""
+
+#: src/js/codepoints.js:225
+msgid "Hide this message."
+msgstr ""
+
+#: src/js/components/load_font.js:27
+msgid "Font used above"
+msgstr ""
+
+#: src/js/wizard.js:114
+msgid "Finished!"
+msgstr ""
+
+#: src/js/wizard.js:127
+msgid "Please wait a second, we’re making those %s answers productive."
+msgstr ""
+
+#: src/js/wizard.js:149
+msgid "Enough questions! Search now."
+msgstr ""
