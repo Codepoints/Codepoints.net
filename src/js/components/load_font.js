@@ -1,4 +1,6 @@
-define(['jquery', 'webfont'], function($, WebFont) {
+define(['jquery', 'components/gettext', 'webfont'], function($, gettext, WebFont) {
+  var _ = gettext.gettext;
+
   $(function() {
     /**
     * load a font to render the codepoint figure
@@ -21,8 +23,9 @@ define(['jquery', 'webfont'], function($, WebFont) {
               });
               var _aside = cp_fig.closest('figure').next('aside');
               if (_aside.length) {
-                _aside.find('dl:eq(0)').append('<dt>Font used above</dt>' +
-                                              '<dd>'+cp_font+'</dd>');
+                _aside.find('dl:eq(0)')
+                      .append('<dt>'+_('Font used above')+'</dt>' +
+                              '<dd>'+cp_font+'</dd>');
               }
             }
           });
