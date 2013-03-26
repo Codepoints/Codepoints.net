@@ -9,6 +9,10 @@ class Template {
     protected $mustache = null;
     protected $l10n;
 
+    public static function get($file) {
+        return new static(file_get_contents(__DIR__."/../static/tpl/$file"));
+    }
+
     public function __construct($template) {
         $partials = new MustacheLoader(dirname(__FILE__)."/../static/tpl");
         $this->mustache = new Mustache($template, null, $partials, null);
