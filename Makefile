@@ -10,7 +10,7 @@ PYTHON := python
 
 all: test ucotd css js cachebust
 
-.PHONY: all css js dist clean ucotd cachebust l10n test vendor db
+.PHONY: all css js dist clean ucotd cachebust l10n test vendor db clearcache
 
 clean:
 	-rm -fr dist src/vendor
@@ -68,3 +68,6 @@ test: $(PHP_ALL) $(JS_ALL)
 	! find . -name \*.php -exec php -l '{}' \; | \
 		grep -v '^No syntax errors detected in '
 	jshint $(JS_ALL)
+
+clearcache:
+	rm -f cache/_cache_* cache/blog-preview*
