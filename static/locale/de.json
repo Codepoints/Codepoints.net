@@ -1,0 +1,20 @@
+{
+    "(%s codepoints)": "(%s Codepunkte)",
+    "Source: %s": "Quelle: %s",
+    "Native, Rare and Historic Scripts": "Native, seltene und historische Schriften",
+    "Scripts used in %s": "Schriften verwendet in %s",
+    "We don’t know about %s’s scripts, sorry!": "Wir wissen leider nichts über die Schriften in %s.",
+    "Nothing Found for %s": "Nichts gefunden für %s",
+    "+ add new query": "+ neue Suche hinzufügen",
+    "click to change": "klicken zum Ändern",
+    "remove": "entfernen",
+    "top": "oben",
+    "Extended Search": "Erweiterte Suche",
+    "Find My Codepoint": "Finde meinen Codepunkt",
+    "Read on:": "Weiterlesen:",
+    "Hide this message.": "Diese Nachricht verstecken.",
+    "Font used above": "Oben verwendete Schriftart",
+    "Finished!": "Fertig!",
+    "Please wait a second, we’re making those %s answers productive.": "Bitte warten Sie einen Moment, wir machen diese %s Antworten produktiv.",
+    "Enough questions! Search now.": "Genug Fragen! Jetzt suchen."
+}
