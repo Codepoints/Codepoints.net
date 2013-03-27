@@ -7,3 +7,5 @@
 /src/vendor
 /static/js/build.txt
 /static/js/components
+/tools/latex.xml
+/tools/charlist.dtd
