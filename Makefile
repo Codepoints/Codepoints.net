@@ -7,6 +7,7 @@ PHP_ALL := $(shell find . -type f -name \*.php)
 SASS_ROOTS := $(wildcard src/sass/[^_]*.scss)
 CSS_TARGET := $(patsubst src/sass/%.scss,static/css/%.css,$(SASS_ROOTS))
 PYTHON := python
+SAXON := saxonb-xslt
 
 all: test ucotd css js cachebust
 
@@ -42,10 +43,12 @@ ucotd: tools/ucotd.*
 	cd tools; \
 	$(PYTHON) ucotd.py
 
-ucd.sqlite: ucotd tools/scripts.sql tools/scripts_wp.sql tools/fonts/*_insert.sql
+ucd.sqlite: ucotd tools/scripts.sql tools/scripts_wp.sql \
+            tools/fonts/*_insert.sql tools/latex.sql
 	sqlite3 $@ <tools/scripts.sql
 	sqlite3 $@ <tools/scripts_wp.sql
 	sqlite3 $@ <tools/fonts/*_insert.sql
+	sqlite3 $@ <tools/latex.sql
 
 l10n: locale/messages.pot locale/js.pot
 
@@ -71,3 +74,10 @@ test: $(PHP_ALL) $(JS_ALL)
 
 clearcache:
 	rm -f cache/_cache_* cache/blog-preview*
+
+tools/latex.sql: tools/latex.xsl tools/latex.xml
+	$(SAXON) -xsl:tools/latex.xsl -s:tools/latex.xml -o:$@
+
+tools/latex.xml:
+	wget -O tools/latex.xml http://www.w3.org/Math/characters/unicode.xml
+	wget -O tools/charlist.dtd http://www.w3.org/Math/characters/charlist.dtd
