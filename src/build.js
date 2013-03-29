@@ -31,23 +31,23 @@
     },
     {
       "name": "dailycp",
-      "exclude": ["jquery","jquery.ui"]
+      "exclude": ["jquery","jquery.ui","components/gettext"]
     },
     {
       "name": "glossary",
-      "exclude": ["jquery","jquery.ui"]
+      "exclude": ["jquery","jquery.ui","components/gettext"]
     },
     {
       "name": "scripts",
-      "exclude": ["jquery","jquery.ui"]
+      "exclude": ["jquery","jquery.ui","components/gettext"]
     },
     {
       "name": "searchform",
-      "exclude": ["jquery","jquery.ui"]
+      "exclude": ["jquery","jquery.ui","components/gettext"]
     },
     {
       "name": "wizard",
-      "exclude": ["jquery","jquery.ui"]
+      "exclude": ["jquery","jquery.ui","components/gettext"]
     }
   ]
 }
