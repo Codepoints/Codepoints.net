@@ -35,12 +35,14 @@ static/js/html5shiv.js: src/vendor/html5shiv/dist/html5shiv.js
 	<$< uglifyjs >$@
 
 cachebust: $(JS_ALL) $(CSS_TARGET)
-	sed -i '/^define(.CACHE_BUST., .\+.);$$/s/.*/define('"'CACHE_BUST', '"$$(cat $^ | sha1sum | awk '{ print $$1 }')"');/" index.php
+	$(info * Update Cache Bust Constant)
+	@sed -i '/^define(.CACHE_BUST., .\+.);$$/s/.*/define('"'CACHE_BUST', '"$$(cat $^ | sha1sum | awk '{ print $$1 }')"');/" index.php
 
 db: ucd.sqlite
 
 ucotd: tools/ucotd.*
-	cd tools; \
+	$(info * Add Codepoint of the Day)
+	@cd tools; \
 	$(PYTHON) ucotd.py
 
 ucd.sqlite: ucotd tools/scripts.sql tools/scripts_wp.sql \
@@ -54,7 +56,8 @@ l10n: locale/messages.pot locale/js.pot
 
 locale/messages.pot: index.php lib/*.php controllers/*.php views/*.php \
                      views/*/*.php
-	find index.php lib controllers views -name \*.php | \
+	$(info * Compile translation strings)
+	@find index.php lib controllers views -name \*.php | \
 		xargs xgettext -LPHP --from-code UTF-8 -k__ -k_e -k_n -kgettext -o $@
 
 locale/js.pot: $(JS_ALL)
@@ -68,9 +71,11 @@ vendor: src/component.json
 	cd src/vendor/webfontloader && rake
 
 test: $(PHP_ALL) $(JS_ALL)
-	! find . -name \*.php -exec php -l '{}' \; | \
+	$(info * Test PHP syntax)
+	@! find . -name \*.php -exec php -l '{}' \; | \
 		grep -v '^No syntax errors detected in '
-	jshint $(JS_ALL)
+	$(info * Test JS syntax)
+	@jshint $(JS_ALL)
 
 clearcache:
 	rm -f cache/_cache_* cache/blog-preview*
