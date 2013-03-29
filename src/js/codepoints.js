@@ -222,7 +222,7 @@ $(function() {
    */
   var cook = $('.cookies');
   if (cook.length) {
-    cook.append($(' <a href="#">'+_('Hide this message.')+'</a>')
+    cook.append(" ").append($('<a href="#">'+_('Hide this message.')+'</a>')
     .click(function() {
       cook.fadeOut('slow');
       var date = new Date();
