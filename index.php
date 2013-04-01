@@ -42,7 +42,7 @@ define('CP_DEBUG', 0);
 /**
  * cache busting string (the Makefile will manipulate this line)
  */
-define('CACHE_BUST', '72d2fe6294400242b20d21bfb401a8dd8c646361');
+define('CACHE_BUST', '3f632df3a7f02074101f5ff7ab865dc2a597082d');
 
 
 /* enable gzip compression of HTML */

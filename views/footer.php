@@ -39,6 +39,9 @@
   ?>s.parentNode.insertBefore(g,s);<?php
 ?>})();</script>
     <script>WebFontConfig={google:{families:['Droid Serif:n,i,b,ib','Droid Sans:n,b']}};</script>
+    <?php if ($lang !== "en"):?>
+      <script src="/static/locale/<?php e($lang)?>.js!<?php e(CACHE_BUST)?>"></script>
+    <?php endif?>
     <script src="/static/js/codepoints.js!<?php e(CACHE_BUST)?>"></script>
     <?php if (isset($footer_scripts)): foreach($footer_scripts as $sc):?>
         <script src="<?php e($sc)?>!<?php e(CACHE_BUST)?>"></script>
