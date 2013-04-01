@@ -11,7 +11,8 @@ SAXON := saxonb-xslt
 
 all: test ucotd css js cachebust
 
-.PHONY: all css js dist clean ucotd cachebust l10n test vendor db clearcache
+.PHONY: all css js dist clean ucotd cachebust l10n test vendor db clearcache \
+        test-sass
 
 clean:
 	-rm -fr dist src/vendor
@@ -26,9 +27,10 @@ css: $(CSS_TARGET)
 $(CSS_TARGET): static/css/%.css : src/sass/%.scss
 	compass compile --force $<
 
-js: src/build.js $(JS_ALL) static/js/html5shiv.js
+js: static/js/build.txt static/js/html5shiv.js
+
+static/js/build.txt: src/build.js $(JS_ALL)
 	cd src && node vendor/r.js/dist/r.js -o build.js
-	-rm -f static/js/build.txt
 	-rm -fr static/js/components
 
 static/js/html5shiv.js: src/vendor/html5shiv/dist/html5shiv.js
@@ -70,12 +72,16 @@ vendor: src/component.json
 	cd src/vendor/jquery.ui && npm install && grunt build
 	cd src/vendor/webfontloader && rake
 
-test: $(PHP_ALL) $(JS_ALL)
+test: $(PHP_ALL) $(JS_ALL) test-sass
 	$(info * Test PHP syntax)
 	@! find . -name \*.php -exec php -l '{}' \; | \
 		grep -v '^No syntax errors detected in '
 	$(info * Test JS syntax)
 	@jshint $(JS_ALL)
+
+test-sass: $(shell find src/sass -type f)
+	$(info * Test Sass syntax)
+	@sass --check $^
 
 clearcache:
 	rm -f cache/_cache_* cache/blog-preview*
