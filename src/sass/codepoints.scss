@@ -499,3 +499,25 @@ input[type="text"] {
 .no-fixed .floating {
   position: static;
 }
+
+
+.latex {
+  sub, sup {
+    text-transform: uppercase;
+    position: static;
+  }
+
+  sub {
+    font-size: 1em;
+    vertical-align: -0.5ex;
+    margin-left: -0.1667em;
+    margin-right: -0.125em;
+  }
+
+  sup {
+    font-size: 0.85em;
+    vertical-align: 0.15em;
+    margin-left: -0.36em;
+    margin-right: -0.15em;
+  }
+}

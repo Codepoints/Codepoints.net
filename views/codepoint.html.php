@@ -114,6 +114,8 @@ $s = function($cat) use ($router, $info, $props) {
           <tr>
             <th><?php if ($a['type'] === 'html') {
                 _e('HTML-Escape');
+            } elseif ($a['type'] === 'latex') {
+                echo '<span class="latex">L<sup>a</sup>T<sub>e</sub>X</span>';
             } else {
                 e($a['type']);
             }?></th>
