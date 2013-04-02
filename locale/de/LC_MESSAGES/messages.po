@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-15 22:50+0100\n"
-"PO-Revision-Date: 2013-02-15 22:50+0100\n"
-"Last-Translator: Manuel Strehl <translate@manuel-strehl.de>\n"
+"POT-Creation-Date: 2013-04-02 17:58+0200\n"
+"PO-Revision-Date: 2013-04-02 18:00+0100\n"
+"Last-Translator: Manuel Strehl <m.strehl@kinetiqa.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -23,154 +23,6 @@ msgid ""
 "This is how the story goes.\n"
 "\n"
 msgstr ""
-
-#: views/dailycp_not.php:2
-msgid "Codepoint of the Day: No Codepoint Found"
-msgstr "Codepunkt des Tages: Kein Codepunkt gefunden"
-
-#: views/dailycp_not.php:3
-msgid "Every day a new codepoint. Unfortunately not specifically this day."
-msgstr "Jeden Tag einen neuen Codepunkt. Nur leider nicht ausgerechnet an diesem Tag."
-
-#: views/dailycp_not.php:11
-#: views/dailycp.php:45
-#: views/front.php:83
-msgid "Codepoints of the Day"
-msgstr "Codepunkte des Tages"
-
-#: views/dailycp_not.php:15
-msgid "No Codepoint for this Date"
-msgstr "Kein Codepunkt für diesen Tag"
-
-#: views/dailycp_not.php:17
-msgid "Unfortunately we cannot find a codepoint for this date."
-msgstr "Leider können wir für diesen Tag keinen Codepunkt finden."
-
-#: views/search/form.php:4
-msgid "Free search:"
-msgstr "Freie Suche:"
-
-#: views/search/form.php:6
-msgid "Any information about the character, that doesn’t fit the categories below"
-msgstr "Jede Information über das Schriftzeichen, die nicht in die folgenden Kategorien passt"
-
-#: views/search/form.php:9
-#: views/quicksearch.php:3
-msgid "Name:"
-msgstr "Name:"
-
-#: views/search/form.php:11
-msgid "The Unicode name (or parts) of the character"
-msgstr "Der Unicode-Name (oder Teile davon) des Schriftzeichens"
-
-#: views/search/form.php:14
-msgid "Decimal:"
-msgstr "Dezimal:"
-
-#: views/search/form.php:16
-msgid "The decimal position of the codepoint"
-msgstr "Die dezimale Position des Codepunkts"
-
-#: views/search/form.php:36
-msgid "any"
-msgstr "egal"
-
-#: views/search/form.php:37
-msgid "yes"
-msgstr "ja"
-
-#: views/search/form.php:38
-msgid "no"
-msgstr "nein"
-
-#: views/search/form.php:43
-#: views/front.php:12
-#: views/front.php:53
-#: views/quicksearch.php:5
-msgid "search"
-msgstr "suchen"
-
-#: views/plane.html.php:6
-#, php-format
-msgid "The Unicode plane %s contains %s blocks and spans codepoints from U+%04X to U+%04X."
-msgstr "Die Unicode-Ebene %s enthält %s Blöcke und umspannt die Codepunkte von U+%04X bis U+%04X."
-
-#: views/plane.html.php:22
-#, php-format
-msgid "Plane from U+%04X to U+%04X."
-msgstr "Ebene von %04X bis %04X."
-
-#: views/plane.html.php:24
-msgid "Blocks in this plane"
-msgstr "Blöcke in dieser Ebene"
-
-#: views/plane.html.php:27
-#: views/planes.php:15
-#, php-format
-msgid "(U+%04X to U+%04X)"
-msgstr "(U+%04X bis U+%04X)"
-
-#: views/plane.html.php:31
-msgid "There are no blocks defined in this plane."
-msgstr "In dieser Ebene sind keine Blöcke definiert."
-
-#: views/scripts.php:2
-#: views/nav.php:28
-msgid "Scripts"
-msgstr "Schriften"
-
-#: views/scripts.php:3
-msgid "Browse Codepoints by script. “Scripts” are the different writing systems. They are presented geographically, so that you can identify quickly interesting ones."
-msgstr "Durchstöbere Codepunkte nach Schriftsystem. „Schriftsysteme“ sind unterschiedliche Schreibsysteme. Sie werden geografisch dargestellt, sodass du schnell interessante identifizieren kannst."
-
-#: views/scripts.php:65
-msgid "Browse Codepoints by Script"
-msgstr "Durchstöbere Codepunkte nach Schriftsystem"
-
-#: views/scripts.php:67
-msgid ""
-"Scripts used around the world. Drag the globe to rotate it.\n"
-"  Click on a country to see scripts used there."
-msgstr "Schriftsystem rund um die Welt. Ziehe den Globus, um ihn zu rotieren. Klicke auf ein Land, um die dort verwendeten Schriften zu sehen."
-
-#: views/scripts.php:80
-msgid ""
-"This is an interactive graphic of the world. You need an\n"
-"                SVG-enabled browser to use it. (SVG-enabled browsers are\n"
-"                Firefox, Opera, Google Chrome, Safari, and IE 9 or higher.)"
-msgstr "Dies ist eine interaktive Weltkarte. Du benötigst einen SVG-fähigen Browser, um sie zu nutzen. (SVG-fähige Browser sind Firefox, Opera, Google Chrome, Safari und IE 9 oder höher.)"
-
-#: views/scripts.php:94
-#, php-format
-msgid "%s%s%d%s characters%s are encoded in this script."
-msgstr "%s%s%d%s Schriftzeichen%s sind in diesem System kodiert."
-
-#: views/nav.php:14
-msgid "choose language"
-msgstr "Sprache wählen"
-
-#: views/nav.php:17
-#: views/footer.php:17
-msgid "Start"
-msgstr "Start"
-
-#: views/nav.php:18
-#: views/search.php:2
-msgid "Search"
-msgstr "Suche"
-
-#: views/nav.php:26
-msgid "Back to search results"
-msgstr "Zurück zu den Suchergebnissen"
-
-#: views/nav.php:29
-msgid "Random"
-msgstr "Zufall"
-
-#: views/nav.php:30
-#: views/footer.php:20
-msgid "About"
-msgstr "Über"
 
 #: views/about.php:2
 msgid "About Codepoints"
@@ -615,36 +467,44 @@ msgid ""
 msgstr "Das Hosting geschieht auf Servern von Uberspace, einem fantastischen Provider mit extrem hilfreichem und flexiblem Support."
 
 #: views/about.php:257
+#, php-format
+msgid ""
+"The %s names are derived from %s, which is curated by\n"
+"    David Carlisle and provided together with the MathML specification of the\n"
+"    W3C."
+msgstr "Die %s-Bezeichner sind von %s abgeleitet, gepflegt von David Carlisle und mit der MathML-Spezifikation des W3C verteilt."
+
+#: views/about.php:261
 msgid "Fonts"
 msgstr "Schriftarten"
 
-#: views/about.php:258
+#: views/about.php:262
 msgid ""
 "Many people base their work on Unicode. We want to thank the authors of\n"
 "    these fonts, that they made it possible to re-use them for this project:"
 msgstr "Viele Leute arbeiten basierend auf Unicode. Wir möchten den Autoren dieser Schriften danken, dass sie die Verwendung für dieses Projekt möglich gemacht haben:"
 
-#: views/about.php:262
+#: views/about.php:266
 #, php-format
 msgid ""
 "Roman Czyborra, David Starner, Qianqian Fang, Changwoo Ryu and Paul\n"
 "    Hardy for %sGNU Unifont%s"
 msgstr "Roman Czyborra, David Starner, Qianqian Fang, Changwoo Ryu und Paul Hardy für %sGNU Unifont%s"
 
-#: views/about.php:267
+#: views/about.php:271
 msgid "The Deja Vu Project"
 msgstr "Das Deja Vu-Projekt"
 
-#: views/about.php:268
+#: views/about.php:272
 #, php-format
 msgid "%sMichael Everson%s for the Last Resort font"
 msgstr "%sMichael Everson%s für die Last Resort-Schriftart"
 
-#: views/about.php:270
+#: views/about.php:274
 msgid "Image Attribution"
 msgstr "Bildzuschreibung"
 
-#: views/about.php:271
+#: views/about.php:275
 #, php-format
 msgid ""
 "The background image on the front page is released under the Creative\n"
@@ -654,301 +514,24 @@ msgid ""
 "       %sNASA Mars Rover%s."
 msgstr "Das Hintergrundbild auf der Startseite ist unter der Creative Commons Attribution-Lizenz von %sFlickr-Nutzer Willi Heidelbach%s veröffentlicht. Die Knopf-Hintergründe auf der Startseite sind gemeinfrei: %sKarte des Reichs von Karl dem Großen%s, %sWünschelrutengänger aus dem 18. Jhd.%s und %sein NASA-Marsrover%s."
 
-#: views/about.php:286
+#: views/about.php:290
 #, php-format
 msgid ""
 "The “We’re Open Source” image is released under the Creative Commons\n"
 "       Attribution Non-Commercial No-Derivations license by %sFlickr user tima%s."
 msgstr "Das „We’re Open Source“-Bild ist unter der Creative Commons Attribution Non-Commercial No-Derivations-Lizenz von %sFlickr-Nutzer tima%s veröffentlicht."
 
-#: views/about.php:290
+#: views/about.php:294
 #, php-format
 msgid "The icons are part of the %sFont Awesome%s icon set."
 msgstr "Die Icons sind Teil des %sFont Awesome%s-Iconsets."
 
-#: views/about.php:293
+#: views/about.php:297
 #, php-format
 msgid ""
 "Finally I’d like to thank %sMathias Bynens%s\n"
 "    for pushing me to publish this site at last."
 msgstr "Schließlich möchte ich %sMathias Bynens%s dafür danken, dass er mich dazu gebracht hat, die Webseite endlich zu veröffentlichen."
-
-#: views/dailycp.php:2
-msgid "Codepoint of the Day"
-msgstr "Codepunkt des Tages"
-
-#: views/dailycp.php:3
-#, php-format
-msgid "Codepoint from %s"
-msgstr "Codepunkt am %s"
-
-#: views/dailycp.php:4
-msgid "Codepoints.net presents every day a new character from Unicode. "
-msgstr "Codepoints.net präsentiert jeden Tag ein neues Unicode-Zeichen."
-
-#: views/dailycp.php:6
-#, php-format
-msgid "Today: U+%s, %s"
-msgstr "Heute: U+%s, %s"
-
-#: views/dailycp.php:8
-#, php-format
-msgid "%s: U+%s, %s"
-msgstr "%s: U+%s, %s"
-
-#: views/dailycp.php:54
-#: views/codepoint.embedded.php:63
-#: views/codepoint.html.php:60
-#: views/codepoint.html.php:89
-msgid "Nº"
-msgstr "Nr."
-
-#: views/dailycp.php:56
-#: views/codepoint.embedded.php:67
-#: views/codepoint.html.php:62
-#: views/codepoint.html.php:93
-msgid "UTF-8"
-msgstr "UTF-8"
-
-#: views/dailycp.php:63
-#: views/codepoint.embedded.php:48
-#: views/codepoint.html.php:69
-msgid "Numeric Value"
-msgstr "Numerischer Wert"
-
-#: views/dailycp.php:71
-msgid "View full description of this codepoint."
-msgstr "Zeige volle Beschreibung dieses Codepunkts an."
-
-#: views/wizard.php:2
-#: views/front.php:25
-msgid "Find My Codepoint"
-msgstr "Finde meinen Codepunkt"
-
-#: views/wizard.php:3
-msgid "Find a certain character by answering a set of questions. The questions will narrow down possible candidates in the wide range of Unicode codepoints."
-msgstr "Finde ein bestimmtes Zeichen durch das Beantworten einiger Fragen. Die Fragen schränken mögliche Kandidaten aus dem weiten Bereich der Unicode-Codepunkte ein."
-
-#: views/wizard.php:13
-msgid "You search for a specific character? Answer the following questions and we try to figure out candidates."
-msgstr "Du suchst ein bestimmtes Schriftzeichen? Beantworte die folgenden Fragen und wir versuchen, Kandidaten zu finden."
-
-#: views/wizard.php:16
-msgid "We’re sorry, but for the wizard Javascript is needed."
-msgstr "Leider wird für diese Funktion Javascript benötigt."
-
-#: views/wizard.php:17
-msgid "We’d like to apologize for the inconvenience."
-msgstr "Bitte entschuldige die Unannehmlichkeiten."
-
-#: views/search.php:3
-msgid "Search Codepoints.net by specifying many different possible parameters."
-msgstr "Durchsuche Codepoints.net durch Angabe vieler verschiedener möglicher Parameter."
-
-#: views/search.php:10
-#, php-format
-msgid "Please add search limits with the form below. Click “add new query”, select a category and choose one of the values. You can change the value afterwards, if you click on it again. The %s button on the right removes the value from the search again."
-msgstr "Bitte füge Einschränkungen mit dem unteren Formular hinzu. Klicke auf „neue Anfrage hinzufügen“ und wähle einen der Werte. Du kannst den Wert später ändern, indem du wieder auf ihn klickst. Der %s-Knopf zur Rechten entfernt den Wert wieder von der Suche."
-
-#: views/search.php:10
-msgid "remove"
-msgstr "entfernen"
-
-#: views/planes.php:1
-msgid "Unicode Planes"
-msgstr "Unicode-Ebenen"
-
-#: views/planes.php:2
-msgid "Unicode defines 17 planes, in which all the codepoints are separated."
-msgstr "Unicode definiert 17 Ebenen, in die alle Codepunkte eingeteilt werden."
-
-#: views/planes.php:9
-msgid "a representation of the Unicode logo"
-msgstr "eine Darstellung des Unicode-Logos"
-
-#: views/planes.php:18
-#, php-format
-msgid ""
-"The Unicode standard arranges the characters in 17 so-called planes of\n"
-"     a bit more than 65,000 codepoints (2<sup>16</sup> to be precise) each.\n"
-"     The Unicode standard has thus theoretically place for <em>1,114,112 characters</em>.\n"
-"     Some planes are still undefined\n"
-"     and will be filled at a later date. The most used characters go into\n"
-"     the almost full %s."
-msgstr "Der Unicode-Standard ordnet die Zeichen in 17 sogenannten Ebenen von je etwas mehr als 65.000 Zeichen (2<sup>16</sup> um genau zu sein) an. Der Standard hat deshalb theoretisch Platz für <em>1.114.112 Zeichen</em>. Einige Ebenen sind noch undefiniert und werden zu einem späteren Zeitpunkt gefüllt. Die meistverwendeten Zeichen wandern in die beinahe volle %s."
-
-#: views/planes.php:24
-msgid "Basic Multilingual Plane"
-msgstr "grundlegende mehrsprachige Ebene"
-
-#: views/planes.php:27
-#, php-format
-msgid ""
-"The %s contains mostly ancient characters, like Egyptian Hieroglyphs,\n"
-"     and graphic symbols, for example Mahjongg tiles or emoticons. Thirdly the\n"
-"     %s hosts lots of East Asian characters, that\n"
-"     didn’t find a place in the Basic Multilingual Plane.\n"
-"     The third-to-last %s\n"
-"     is almost completely empty and planned to contain non-character codepoints,\n"
-"     like control characters, that define the language of a text.\n"
-"     The last two planes are special purpose planes. Codepoints defined there\n"
-"     are <em>private</em>, that is, they will never be specified by Unicode and\n"
-"     can be freely assigned by third-party programs to whatever seems useful."
-msgstr "Die %s enthält hauptsächlich alte Zeichen wie ägyptische Hieroglyphen und grafische Symbole, zum Beispiel Mahjongg-Steine oder Emoticons. Drittens beherbergt die %s viele ostasiatische Zeichen, die in der grundlegenden mehrsprachigen Ebene keinen Platz gefunden haben. Die drittletzte %s ist beinahe vollkommen leer und soll Codepunkte enthalten, die keine Schriftzeichen sind, wie Kontrollzeichen, die die Sprache eines Textes auszeichnen. Die letzten beiden Ebenen sind Sondereinsatzebenen. Hier definierte Codepunkte sind <em>privat</em>, das heißt, sie werden niemals von Unicode spezifiziert und können von Drittprogrammen frei zugewiesen werden zu was immer sinnvoll erscheint."
-
-#: views/planes.php:37
-msgid "second plane"
-msgstr "zweite Ebene"
-
-#: views/planes.php:38
-msgid "Supplementary Ideographic Plane"
-msgstr "unterstützende ideographische Ebene"
-
-#: views/planes.php:39
-msgid "Supplementary Special Purpose Plane"
-msgstr "unterstützende Sondereinsatz-Ebene"
-
-#: views/front.php:1
-msgid "Find all Unicode characters from Hieroglyphs to Dingbats"
-msgstr "Finde alle Unicode-Schriftzeichen von Hieroglyphen bis Dingbats"
-
-#: views/front.php:2
-msgid "Codepoints is a site dedicated to Unicode and all things related to codepoints, characters, glyphs and internationalization."
-msgstr "Codepoints ist eine Seite, die Unicode und allen Dingen rund um Schriftzeichen, Codepunkten, Buchstaben und Internationalisierung gewidmet ist."
-
-#: views/front.php:10
-msgid "Search a Character"
-msgstr "Suche ein Schriftzeichen"
-
-#: views/front.php:11
-msgid "Enter a single character, like “丙” or “A”, or a term that describes the character, like “cyrillic” or “grass”"
-msgstr "Gib ein einzelnes Zeichen, wie „丙“ or „A“, oder einen Begriff, der das Zeichen beschreibt, wie „cyrillic“ oder „grass“, an"
-
-#: views/front.php:16
-msgid ""
-"<strong>Codepoint</strong>, <em>n.</em> the position of a character in\n"
-"      an encoding system."
-msgstr "<strong>Codepunkt</strong>, <em>n.</em> die Position eines Zeichens in einem Kodiersystem."
-
-#: views/front.php:20
-msgid "Start here:"
-msgstr "Starte hier:"
-
-#: views/front.php:20
-msgid "Browse one by one through blocks of characters"
-msgstr "Stöbere eins nach dem anderen durch Blöcke von Schriftzeichen"
-
-#: views/front.php:21
-msgid "Browse Codepoints"
-msgstr "Durchstöbere Codepunkte"
-
-#: views/front.php:24
-msgid "Need help?"
-msgstr "Hilfe gefällig?"
-
-#: views/front.php:24
-msgid "Answer questions to find matching characters"
-msgstr "Beantworte Fragen um passende Zeichen zu finden"
-
-#: views/front.php:28
-msgid "Expert Search!"
-msgstr "Expertensuche!"
-
-#: views/front.php:28
-msgid "Search for characters with particular properties"
-msgstr "Suche nach Zeichen mit speziellen Eigenschaften"
-
-#: views/front.php:29
-msgid "Search Codepoint"
-msgstr "Codepunkt suchen"
-
-#: views/front.php:33
-#, php-format
-msgid ""
-"Codepoints.net is dedicated to all the characters,\n"
-"          that are defined in the %s. Theoretically, these should be\n"
-"          <em>all characters ever used</em>. In practice Unicode has\n"
-"          <em>%s codepoints</em> defined at the moment, mapping characters\n"
-"          from %s to %s."
-msgstr "Codepoints.net ist allen Schriftzeichen gewidmet, die im %s definiert sind. Theoretisch sollten das <em>alle jemals verwendeten Zeichen</em> sein. In der Praxis hat Unicode derzeit <em>%s Codepunkte</em> definiert und umfasst Zeichen von %s bis %s."
-
-#: views/front.php:38
-msgid "Unicode Standard"
-msgstr "Unicode-Standard"
-
-#: views/front.php:40
-msgid "Egyptian Hieroglyphs"
-msgstr "ägyptischen Hieroglyphen"
-
-#: views/front.php:41
-msgid "Dingbats and Symbols"
-msgstr "Dingabts und Symbolen"
-
-#: views/front.php:44
-#, php-format
-msgid ""
-"All codepoints are arranged in 17 so-called\n"
-"       %s. These planes are further divided into several blocks with\n"
-"       %s being the first one. You can browse one by one by starting with\n"
-"       the first codepoint, %s or %s for a specific character. If you’re\n"
-"       not fully sure, try %s, to narrow down the candidates. Or maybe you\n"
-"       are more daring and want %s?"
-msgstr "Alle Codepunkte sind in 17 sogenannten %s angeordnet. Diese Ebenen sind weiter in einzelne Blöcke unterteilt mit %s als erstem. Du kannst sie einen nach dem anderen durchstöbern mit %s als erstem Codepunkt oder nach einem speziellen Charakter %s. Wenn du nicht vollkommen sicher bist, versuche %s um die Kandidaten einzuschränken. Oder vielleicht bist du wagemutig und versuchst %s?"
-
-#: views/front.php:50
-msgid "planes"
-msgstr "Ebenen"
-
-#: views/front.php:51
-msgid "Basic Latin"
-msgstr "Basis-Lateinisch"
-
-#: views/front.php:54
-msgid "“Find My Codepoint”"
-msgstr "„Finde meinen Codepunkt“"
-
-#: views/front.php:55
-msgid "a random codepoint"
-msgstr "einen zufälligen Codepunkt"
-
-#: views/front.php:86
-msgid "Codepoint of the Day:"
-msgstr "Codepunkt des Tages:"
-
-#: views/front.php:95
-#, php-format
-msgid ""
-"U+%04X was added to Unicode in version\n"
-"            %s. It belongs to the block %s in the %s."
-msgstr "U+%04X wurde in Version %s zu Unicode hinzugefügt. Er gehört zum Block %s in der %s."
-
-#: views/front.php:103
-#, php-format
-msgid "This codepoint is %s."
-msgstr "Dieser Codepunkt ist %s."
-
-#: views/front.php:104
-msgid "deprecated"
-msgstr "überholt"
-
-#: views/front.php:109
-#, php-format
-msgid "This character is a %s and is %s…"
-msgstr "Dieses Schriftzeichen ist ein %s und ist %s…"
-
-#: views/front.php:111
-#, php-format
-msgid "%scommonly%s used"
-msgstr "%sallgemein%s verwendet"
-
-#: views/front.php:112
-#, php-format
-msgid "mainly used in the %s script"
-msgstr "hauptsächlich in der %s-Schrift verwendet"
-
-#: views/front.php:115
-msgid "» View full description of this codepoint."
-msgstr "» Zeige volle Beschreibung dieses Codepunkts an."
 
 #: views/result.php:6
 #, php-format
@@ -1002,45 +585,264 @@ msgstr "%s Block trifft auf %s zu:"
 msgid "%s blocks match %s:"
 msgstr "%s Blöcke treffen auf %s zu:"
 
-#: views/codepoint.embedded.php:24
-msgid "View on Codepoints.net"
-msgstr "Auf Codepoints.net ansehen"
+#: views/search/form.php:4
+msgid "Free search:"
+msgstr "Freie Suche:"
 
-#: views/codepoint.embedded.php:57
+#: views/search/form.php:6
+msgid "Any information about the character, that doesn’t fit the categories below"
+msgstr "Jede Information über das Schriftzeichen, die nicht in die folgenden Kategorien passt"
+
+#: views/search/form.php:9
+#: views/quicksearch.php:3
+msgid "Name:"
+msgstr "Name:"
+
+#: views/search/form.php:11
+msgid "The Unicode name (or parts) of the character"
+msgstr "Der Unicode-Name (oder Teile davon) des Schriftzeichens"
+
+#: views/search/form.php:14
+msgid "Decimal:"
+msgstr "Dezimal:"
+
+#: views/search/form.php:16
+msgid "The decimal position of the codepoint"
+msgstr "Die dezimale Position des Codepunkts"
+
+#: views/search/form.php:36
+msgid "any"
+msgstr "egal"
+
+#: views/search/form.php:37
+msgid "yes"
+msgstr "ja"
+
+#: views/search/form.php:38
+msgid "no"
+msgstr "nein"
+
+#: views/search/form.php:43
+#: views/quicksearch.php:5
+#: views/front.php:12
+#: views/front.php:53
+msgid "search"
+msgstr "suchen"
+
+#: views/search.php:2
+#: views/nav.php:18
+msgid "Search"
+msgstr "Suche"
+
+#: views/search.php:3
+msgid "Search Codepoints.net by specifying many different possible parameters."
+msgstr "Durchsuche Codepoints.net durch Angabe vieler verschiedener möglicher Parameter."
+
+#: views/search.php:10
+#, php-format
+msgid "Please add search limits with the form below. Click “add new query”, select a category and choose one of the values. You can change the value afterwards, if you click on it again. The %s button on the right removes the value from the search again."
+msgstr "Bitte füge Einschränkungen mit dem unteren Formular hinzu. Klicke auf „neue Anfrage hinzufügen“ und wähle einen der Werte. Du kannst den Wert später ändern, indem du wieder auf ihn klickst. Der %s-Knopf zur Rechten entfernt den Wert wieder von der Suche."
+
+#: views/search.php:10
+msgid "remove"
+msgstr "entfernen"
+
+#: views/glossary.php:2
+msgid "Glossary of Terms"
+msgstr "Glossar der Begriffe"
+
+#: views/glossary.php:3
+msgid "This glossary explains central terms of the Unicode standard and character encodings in general."
+msgstr "Dieses Glossar erklärt die zentralen Begriffe des Unicode-Standards und von Zeichenkodierungen im Allgemeinen."
+
+#: views/glossary.php:7
+msgid "About this site"
+msgstr "Über diese Seite"
+
+#: views/glossary.php:17
+#, php-format
+msgid ""
+"This page gives an overview of the terms and concepts\n"
+"    presented on this site. Unfortunately many definitions are taken directly\n"
+"    from the respective specification at the %sUnicode website%s and may\n"
+"    remain a bit technical. If you see this sign %s on a page, it means you can\n"
+"    access the definition from here by hovering over it."
+msgstr "Diese Seite gibt einen Überblick über Begriffe und Konzepte, die auf dieser Webseite dargestellt werden. Unglücklicher Weise sind viele Definitionen direkt von der entsprechenden Spezifikation auf der %sUnicode-Webseite%s entnommen und dürften etwas technisch anmuten. Wenn du dieses Zeichen %s auf einer Seite siehst, bedeutet das, dass du die hier dargestellte Definition dort siehst, wenn du mit der Maus über das Zeichen fährst."
+
+#: views/planes.php:1
+msgid "Unicode Planes"
+msgstr "Unicode-Ebenen"
+
+#: views/planes.php:2
+msgid "Unicode defines 17 planes, in which all the codepoints are separated."
+msgstr "Unicode definiert 17 Ebenen, in die alle Codepunkte eingeteilt werden."
+
+#: views/planes.php:9
+msgid "a representation of the Unicode logo"
+msgstr "eine Darstellung des Unicode-Logos"
+
+#: views/planes.php:15
+#: views/plane.html.php:27
+#, php-format
+msgid "(U+%04X to U+%04X)"
+msgstr "(U+%04X bis U+%04X)"
+
+#: views/planes.php:18
+#, php-format
+msgid ""
+"The Unicode standard arranges the characters in 17 so-called planes of\n"
+"     a bit more than 65,000 codepoints (2<sup>16</sup> to be precise) each.\n"
+"     The Unicode standard has thus theoretically place for <em>1,114,112 characters</em>.\n"
+"     Some planes are still undefined\n"
+"     and will be filled at a later date. The most used characters go into\n"
+"     the almost full %s."
+msgstr "Der Unicode-Standard ordnet die Zeichen in 17 sogenannten Ebenen von je etwas mehr als 65.000 Zeichen (2<sup>16</sup> um genau zu sein) an. Der Standard hat deshalb theoretisch Platz für <em>1.114.112 Zeichen</em>. Einige Ebenen sind noch undefiniert und werden zu einem späteren Zeitpunkt gefüllt. Die meistverwendeten Zeichen wandern in die beinahe volle %s."
+
+#: views/planes.php:24
+msgid "Basic Multilingual Plane"
+msgstr "grundlegende mehrsprachige Ebene"
+
+#: views/planes.php:27
+#, php-format
+msgid ""
+"The %s contains mostly ancient characters, like Egyptian Hieroglyphs,\n"
+"     and graphic symbols, for example Mahjongg tiles or emoticons. Thirdly the\n"
+"     %s hosts lots of East Asian characters, that\n"
+"     didn’t find a place in the Basic Multilingual Plane.\n"
+"     The third-to-last %s\n"
+"     is almost completely empty and planned to contain non-character codepoints,\n"
+"     like control characters, that define the language of a text.\n"
+"     The last two planes are special purpose planes. Codepoints defined there\n"
+"     are <em>private</em>, that is, they will never be specified by Unicode and\n"
+"     can be freely assigned by third-party programs to whatever seems useful."
+msgstr "Die %s enthält hauptsächlich alte Zeichen wie ägyptische Hieroglyphen und grafische Symbole, zum Beispiel Mahjongg-Steine oder Emoticons. Drittens beherbergt die %s viele ostasiatische Zeichen, die in der grundlegenden mehrsprachigen Ebene keinen Platz gefunden haben. Die drittletzte %s ist beinahe vollkommen leer und soll Codepunkte enthalten, die keine Schriftzeichen sind, wie Kontrollzeichen, die die Sprache eines Textes auszeichnen. Die letzten beiden Ebenen sind Sondereinsatzebenen. Hier definierte Codepunkte sind <em>privat</em>, das heißt, sie werden niemals von Unicode spezifiziert und können von Drittprogrammen frei zugewiesen werden zu was immer sinnvoll erscheint."
+
+#: views/planes.php:37
+msgid "second plane"
+msgstr "zweite Ebene"
+
+#: views/planes.php:38
+msgid "Supplementary Ideographic Plane"
+msgstr "unterstützende ideographische Ebene"
+
+#: views/planes.php:39
+msgid "Supplementary Special Purpose Plane"
+msgstr "unterstützende Sondereinsatz-Ebene"
+
+#: views/plane.html.php:6
+#, php-format
+msgid "The Unicode plane %s contains %s blocks and spans codepoints from U+%04X to U+%04X."
+msgstr "Die Unicode-Ebene %s enthält %s Blöcke und umspannt die Codepunkte von U+%04X bis U+%04X."
+
+#: views/plane.html.php:22
+#, php-format
+msgid "Plane from U+%04X to U+%04X."
+msgstr "Ebene von %04X bis %04X."
+
+#: views/plane.html.php:24
+msgid "Blocks in this plane"
+msgstr "Blöcke in dieser Ebene"
+
+#: views/plane.html.php:31
+msgid "There are no blocks defined in this plane."
+msgstr "In dieser Ebene sind keine Blöcke definiert."
+
+#: views/codepoint.html.php:16
+#, php-format
+msgid "%s, codepoint U+%04X %s in Unicode, is located in the block “%s”. It belongs to the %s script and is a %s."
+msgstr "%s, Codepunkt U+%04X %s in Unicode, liegt im Block „%s“. Es gehört zur %s-Schrift und ist ein %s."
+
+#: views/codepoint.html.php:60
+#: views/codepoint.html.php:89
+#: views/codepoint.embedded.php:63
+#: views/dailycp.php:54
+msgid "Nº"
+msgstr "Nr."
+
+#: views/codepoint.html.php:62
+#: views/codepoint.html.php:93
+#: views/codepoint.embedded.php:67
+#: views/dailycp.php:56
+msgid "UTF-8"
+msgstr "UTF-8"
+
+#: views/codepoint.html.php:69
+#: views/codepoint.embedded.php:48
+#: views/dailycp.php:63
+msgid "Numeric Value"
+msgstr "Numerischer Wert"
+
+#: views/codepoint.html.php:79
+msgid "Representations"
+msgstr "Darstellungen"
+
 #: views/codepoint.html.php:83
+#: views/codepoint.embedded.php:57
 msgid "System"
 msgstr "System"
 
-#: views/codepoint.embedded.php:58
 #: views/codepoint.html.php:84
+#: views/codepoint.embedded.php:58
 msgid "Representation"
 msgstr "Darstellung"
 
-#: views/codepoint.embedded.php:71
 #: views/codepoint.html.php:97
+#: views/codepoint.embedded.php:71
 msgid "UTF-16"
 msgstr "UTF-16"
 
-#: views/codepoint.embedded.php:75
 #: views/codepoint.html.php:101
+#: views/codepoint.embedded.php:75
 msgid "UTF-32"
 msgstr "UTF-32"
 
-#: views/codepoint.embedded.php:79
 #: views/codepoint.html.php:105
+#: views/codepoint.embedded.php:79
 msgid "URL-Quoted"
 msgstr "URL-kodiert"
 
-#: views/codepoint.embedded.php:83
-#: views/codepoint.embedded.php:90
 #: views/codepoint.html.php:109
 #: views/codepoint.html.php:116
+#: views/codepoint.embedded.php:83
+#: views/codepoint.embedded.php:90
 msgid "HTML-Escape"
 msgstr "HTML-Darstellung"
 
-#: views/codepoint.embedded.php:126
-msgid "» View this character on Codepoints.net"
-msgstr "» Dieses Zeichen auf Codepoints.net ansehen"
+#: views/codepoint.html.php:156
+msgid "Related Characters"
+msgstr "Verwandte Schriftzeichen"
+
+#: views/codepoint.html.php:165
+msgid "Confusables"
+msgstr "Verwechselbare"
+
+#: views/codepoint.html.php:175
+msgid "Elsewhere"
+msgstr "Anderswo"
+
+#: views/codepoint.html.php:179
+msgid "Unicode website"
+msgstr "Unicode-Webseite"
+
+#: views/codepoint.html.php:180
+msgid "Reference rendering on Unicode.org"
+msgstr "Referenz-Darstellung auf Unicode.org"
+
+#: views/codepoint.html.php:182
+msgid "Wikipedia"
+msgstr "Wikipedia"
+
+#: views/codepoint.html.php:185
+msgid "Unihan Database"
+msgstr "Unihan-Datenbank"
+
+#: views/codepoint.html.php:186
+msgid "Chinese Text Project"
+msgstr "Chinese Text Project"
+
+#: views/codepoint.html.php:193
+msgid "Complete Record"
+msgstr "Vollständiger Eintrag"
 
 #: views/block.html.php:2
 #, php-format
@@ -1077,6 +879,155 @@ msgstr "(PDF)"
 #: views/block.html.php:36
 msgid "Block at Decode Unicode"
 msgstr "Block bei Decode Unicode"
+
+#: views/footer.php:7
+#, php-format
+msgid "This is Codepoints.net, a site dedicated to all things characters, letters and Unicode. The site is run by %s. The content can be %s under the given terms. We’d like to thank %s for making Codepoints.net possible. %s are always welcome."
+msgstr "Hier ist Codepoints.net, eine Seite, die Schriftzeichen, Buchstaben und Unicode gewidmet ist. Die Seite wird von %s betrieben. Der Inhalt kann unter den beschriebenen Bedingungen %s. Wir möchten %s dafür danken, Codepoints.net möglich gemacht zu haben. %s sind immer willkommen."
+
+#: views/footer.php:9
+msgid "freely reused"
+msgstr "frei wiederverwendet werden"
+
+#: views/footer.php:10
+msgid "these fine people"
+msgstr "diesen tollen Leuten"
+
+#: views/footer.php:11
+msgid "Feedback and contributions"
+msgstr "Feedback und Beiträge"
+
+#: views/footer.php:13
+#, php-format
+msgid "We use cookies to enhance your experience and to develop the site further. We never track you for monetary reasons. If you do not want this, you can either use the Do-Not-Track feature of your browser or %s."
+msgstr "Wir verwenden Cookies, um dein Erlebnis zu verbessern und die Seite weiterzuentwickeln. Wir verfolgen dich nie aus monetären Gründen. Wenn du das nicht möchtest, kannst du entweder das Do-Not-Track-Feature deines Browsers verwenden oder %s."
+
+#: views/footer.php:14
+msgid "opt out explicitly"
+msgstr "explizit widersprechen"
+
+#: views/footer.php:17
+#: views/nav.php:17
+msgid "Start"
+msgstr "Start"
+
+#: views/footer.php:18
+msgid "Twitter"
+msgstr "Twitter"
+
+#: views/footer.php:19
+msgid "Blog"
+msgstr "Blog"
+
+#: views/footer.php:20
+#: views/nav.php:30
+msgid "About"
+msgstr "Über"
+
+#: views/scripts.php:2
+#: views/nav.php:28
+msgid "Scripts"
+msgstr "Schriften"
+
+#: views/scripts.php:3
+msgid "Browse Codepoints by script. “Scripts” are the different writing systems. They are presented geographically, so that you can identify quickly interesting ones."
+msgstr "Durchstöbere Codepunkte nach Schriftsystem. „Schriftsysteme“ sind unterschiedliche Schreibsysteme. Sie werden geografisch dargestellt, sodass du schnell interessante identifizieren kannst."
+
+#: views/scripts.php:65
+msgid "Browse Codepoints by Script"
+msgstr "Durchstöbere Codepunkte nach Schriftsystem"
+
+#: views/scripts.php:67
+msgid ""
+"Scripts used around the world. Drag the globe to rotate it.\n"
+"  Click on a country to see scripts used there."
+msgstr "Schriftsystem rund um die Welt. Ziehe den Globus, um ihn zu rotieren. Klicke auf ein Land, um die dort verwendeten Schriften zu sehen."
+
+#: views/scripts.php:80
+msgid ""
+"This is an interactive graphic of the world. You need an\n"
+"                SVG-enabled browser to use it. (SVG-enabled browsers are\n"
+"                Firefox, Opera, Google Chrome, Safari, and IE 9 or higher.)"
+msgstr "Dies ist eine interaktive Weltkarte. Du benötigst einen SVG-fähigen Browser, um sie zu nutzen. (SVG-fähige Browser sind Firefox, Opera, Google Chrome, Safari und IE 9 oder höher.)"
+
+#: views/scripts.php:94
+#, php-format
+msgid "%s%s%d%s characters%s are encoded in this script."
+msgstr "%s%s%d%s Schriftzeichen%s sind in diesem System kodiert."
+
+#: views/codepoint.embedded.php:24
+msgid "View on Codepoints.net"
+msgstr "Auf Codepoints.net ansehen"
+
+#: views/codepoint.embedded.php:126
+msgid "» View this character on Codepoints.net"
+msgstr "» Dieses Zeichen auf Codepoints.net ansehen"
+
+#: views/wizard.php:2
+#: views/front.php:25
+msgid "Find My Codepoint"
+msgstr "Finde meinen Codepunkt"
+
+#: views/wizard.php:3
+msgid "Find a certain character by answering a set of questions. The questions will narrow down possible candidates in the wide range of Unicode codepoints."
+msgstr "Finde ein bestimmtes Zeichen durch das Beantworten einiger Fragen. Die Fragen schränken mögliche Kandidaten aus dem weiten Bereich der Unicode-Codepunkte ein."
+
+#: views/wizard.php:13
+msgid "You search for a specific character? Answer the following questions and we try to figure out candidates."
+msgstr "Du suchst ein bestimmtes Schriftzeichen? Beantworte die folgenden Fragen und wir versuchen, Kandidaten zu finden."
+
+#: views/wizard.php:16
+msgid "We’re sorry, but for the wizard Javascript is needed."
+msgstr "Leider wird für diese Funktion Javascript benötigt."
+
+#: views/wizard.php:17
+msgid "We’d like to apologize for the inconvenience."
+msgstr "Bitte entschuldige die Unannehmlichkeiten."
+
+#: views/dailycp.php:2
+msgid "Codepoint of the Day"
+msgstr "Codepunkt des Tages"
+
+#: views/dailycp.php:3
+#, php-format
+msgid "Codepoint from %s"
+msgstr "Codepunkt am %s"
+
+#: views/dailycp.php:4
+msgid "Codepoints.net presents every day a new character from Unicode. "
+msgstr "Codepoints.net präsentiert jeden Tag ein neues Unicode-Zeichen."
+
+#: views/dailycp.php:6
+#, php-format
+msgid "Today: U+%s, %s"
+msgstr "Heute: U+%s, %s"
+
+#: views/dailycp.php:8
+#, php-format
+msgid "%s: U+%s, %s"
+msgstr "%s: U+%s, %s"
+
+#: views/dailycp.php:45
+#: views/dailycp_not.php:11
+#: views/front.php:83
+msgid "Codepoints of the Day"
+msgstr "Codepunkte des Tages"
+
+#: views/dailycp.php:71
+msgid "View full description of this codepoint."
+msgstr "Zeige volle Beschreibung dieses Codepunkts an."
+
+#: views/nav.php:14
+msgid "choose language"
+msgstr "Sprache wählen"
+
+#: views/nav.php:26
+msgid "Back to search results"
+msgstr "Zurück zu den Suchergebnissen"
+
+#: views/nav.php:29
+msgid "Random"
+msgstr "Zufall"
 
 #: views/codepoint/props.php:4
 msgid "Property"
@@ -1222,106 +1173,163 @@ msgstr "Das Neueste aus dem Blog:"
 msgid "...read on"
 msgstr "...weiterlesen"
 
-#: views/codepoint.html.php:16
-#, php-format
-msgid "%s, codepoint U+%04X %s in Unicode, is located in the block “%s”. It belongs to the %s script and is a %s."
-msgstr "%s, Codepunkt U+%04X %s in Unicode, liegt im Block „%s“. Es gehört zur %s-Schrift und ist ein %s."
+#: views/dailycp_not.php:2
+msgid "Codepoint of the Day: No Codepoint Found"
+msgstr "Codepunkt des Tages: Kein Codepunkt gefunden"
 
-#: views/codepoint.html.php:79
-msgid "Representations"
-msgstr "Darstellungen"
+#: views/dailycp_not.php:3
+msgid "Every day a new codepoint. Unfortunately not specifically this day."
+msgstr "Jeden Tag einen neuen Codepunkt. Nur leider nicht ausgerechnet an diesem Tag."
 
-#: views/codepoint.html.php:154
-msgid "Related Characters"
-msgstr "Verwandte Schriftzeichen"
+#: views/dailycp_not.php:15
+msgid "No Codepoint for this Date"
+msgstr "Kein Codepunkt für diesen Tag"
 
-#: views/codepoint.html.php:163
-msgid "Confusables"
-msgstr "Verwechselbare"
+#: views/dailycp_not.php:17
+msgid "Unfortunately we cannot find a codepoint for this date."
+msgstr "Leider können wir für diesen Tag keinen Codepunkt finden."
 
-#: views/codepoint.html.php:173
-msgid "Elsewhere"
-msgstr "Anderswo"
+#: views/front.php:1
+msgid "Find all Unicode characters from Hieroglyphs to Dingbats"
+msgstr "Finde alle Unicode-Schriftzeichen von Hieroglyphen bis Dingbats"
 
-#: views/codepoint.html.php:177
-msgid "Unicode website"
-msgstr "Unicode-Webseite"
+#: views/front.php:2
+msgid "Codepoints is a site dedicated to Unicode and all things related to codepoints, characters, glyphs and internationalization."
+msgstr "Codepoints ist eine Seite, die Unicode und allen Dingen rund um Schriftzeichen, Codepunkten, Buchstaben und Internationalisierung gewidmet ist."
 
-#: views/codepoint.html.php:178
-msgid "Reference rendering on Unicode.org"
-msgstr "Referenz-Darstellung auf Unicode.org"
+#: views/front.php:10
+msgid "Search a Character"
+msgstr "Suche ein Schriftzeichen"
 
-#: views/codepoint.html.php:180
-msgid "Wikipedia"
-msgstr "Wikipedia"
+#: views/front.php:11
+msgid "Enter a single character, like “丙” or “A”, or a term that describes the character, like “cyrillic” or “grass”"
+msgstr "Gib ein einzelnes Zeichen, wie „丙“ or „A“, oder einen Begriff, der das Zeichen beschreibt, wie „cyrillic“ oder „grass“, an"
 
-#: views/codepoint.html.php:183
-msgid "Unihan Database"
-msgstr "Unihan-Datenbank"
+#: views/front.php:16
+msgid ""
+"<strong>Codepoint</strong>, <em>n.</em> the position of a character in\n"
+"      an encoding system."
+msgstr "<strong>Codepunkt</strong>, <em>n.</em> die Position eines Zeichens in einem Kodiersystem."
 
-#: views/codepoint.html.php:184
-msgid "Chinese Text Project"
-msgstr "Chinese Text Project"
+#: views/front.php:20
+msgid "Start here:"
+msgstr "Starte hier:"
 
-#: views/codepoint.html.php:191
-msgid "Complete Record"
-msgstr "Vollständiger Eintrag"
+#: views/front.php:20
+msgid "Browse one by one through blocks of characters"
+msgstr "Stöbere eins nach dem anderen durch Blöcke von Schriftzeichen"
 
-#: views/glossary.php:2
-msgid "Glossary of Terms"
-msgstr "Glossar der Begriffe"
+#: views/front.php:21
+msgid "Browse Codepoints"
+msgstr "Durchstöbere Codepunkte"
 
-#: views/glossary.php:3
-msgid "This glossary explains central terms of the Unicode standard and character encodings in general."
-msgstr "Dieses Glossar erklärt die zentralen Begriffe des Unicode-Standards und von Zeichenkodierungen im Allgemeinen."
+#: views/front.php:24
+msgid "Need help?"
+msgstr "Hilfe gefällig?"
 
-#: views/glossary.php:7
-msgid "About this site"
-msgstr "Über diese Seite"
+#: views/front.php:24
+msgid "Answer questions to find matching characters"
+msgstr "Beantworte Fragen um passende Zeichen zu finden"
 
-#: views/glossary.php:17
+#: views/front.php:28
+msgid "Expert Search!"
+msgstr "Expertensuche!"
+
+#: views/front.php:28
+msgid "Search for characters with particular properties"
+msgstr "Suche nach Zeichen mit speziellen Eigenschaften"
+
+#: views/front.php:29
+msgid "Search Codepoint"
+msgstr "Codepunkt suchen"
+
+#: views/front.php:33
 #, php-format
 msgid ""
-"This page gives an overview of the terms and concepts\n"
-"    presented on this site. Unfortunately many definitions are taken directly\n"
-"    from the respective specification at the %sUnicode website%s and may\n"
-"    remain a bit technical. If you see this sign %s on a page, it means you can\n"
-"    access the definition from here by hovering over it."
-msgstr "Diese Seite gibt einen Überblick über Begriffe und Konzepte, die auf dieser Webseite dargestellt werden. Unglücklicher Weise sind viele Definitionen direkt von der entsprechenden Spezifikation auf der %sUnicode-Webseite%s entnommen und dürften etwas technisch anmuten. Wenn du dieses Zeichen %s auf einer Seite siehst, bedeutet das, dass du die hier dargestellte Definition dort siehst, wenn du mit der Maus über das Zeichen fährst."
+"Codepoints.net is dedicated to all the characters,\n"
+"          that are defined in the %s. Theoretically, these should be\n"
+"          <em>all characters ever used</em>. In practice Unicode has\n"
+"          <em>%s codepoints</em> defined at the moment, mapping characters\n"
+"          from %s to %s."
+msgstr "Codepoints.net ist allen Schriftzeichen gewidmet, die im %s definiert sind. Theoretisch sollten das <em>alle jemals verwendeten Zeichen</em> sein. In der Praxis hat Unicode derzeit <em>%s Codepunkte</em> definiert und umfasst Zeichen von %s bis %s."
 
-#: views/footer.php:7
+#: views/front.php:38
+msgid "Unicode Standard"
+msgstr "Unicode-Standard"
+
+#: views/front.php:40
+msgid "Egyptian Hieroglyphs"
+msgstr "ägyptischen Hieroglyphen"
+
+#: views/front.php:41
+msgid "Dingbats and Symbols"
+msgstr "Dingabts und Symbolen"
+
+#: views/front.php:44
 #, php-format
-msgid "This is Codepoints.net, a site dedicated to all things characters, letters and Unicode. The site is run by %s. The content can be %s under the given terms. We’d like to thank %s for making Codepoints.net possible. %s are always welcome."
-msgstr "Hier ist Codepoints.net, eine Seite, die Schriftzeichen, Buchstaben und Unicode gewidmet ist. Die Seite wird von %s betrieben. Der Inhalt kann unter den beschriebenen Bedingungen %s. Wir möchten %s dafür danken, Codepoints.net möglich gemacht zu haben. %s sind immer willkommen."
+msgid ""
+"All codepoints are arranged in 17 so-called\n"
+"       %s. These planes are further divided into several blocks with\n"
+"       %s being the first one. You can browse one by one by starting with\n"
+"       the first codepoint, %s or %s for a specific character. If you’re\n"
+"       not fully sure, try %s, to narrow down the candidates. Or maybe you\n"
+"       are more daring and want %s?"
+msgstr "Alle Codepunkte sind in 17 sogenannten %s angeordnet. Diese Ebenen sind weiter in einzelne Blöcke unterteilt mit %s als erstem. Du kannst sie einen nach dem anderen durchstöbern mit %s als erstem Codepunkt oder nach einem speziellen Charakter %s. Wenn du nicht vollkommen sicher bist, versuche %s um die Kandidaten einzuschränken. Oder vielleicht bist du wagemutig und versuchst %s?"
 
-#: views/footer.php:9
-msgid "freely reused"
-msgstr "frei wiederverwendet werden"
+#: views/front.php:50
+msgid "planes"
+msgstr "Ebenen"
 
-#: views/footer.php:10
-msgid "these fine people"
-msgstr "diesen tollen Leuten"
+#: views/front.php:51
+msgid "Basic Latin"
+msgstr "Basis-Lateinisch"
 
-#: views/footer.php:11
-msgid "Feedback and contributions"
-msgstr "Feedback und Beiträge"
+#: views/front.php:54
+msgid "“Find My Codepoint”"
+msgstr "„Finde meinen Codepunkt“"
 
-#: views/footer.php:13
+#: views/front.php:55
+msgid "a random codepoint"
+msgstr "einen zufälligen Codepunkt"
+
+#: views/front.php:86
+msgid "Codepoint of the Day:"
+msgstr "Codepunkt des Tages:"
+
+#: views/front.php:95
 #, php-format
-msgid "We use cookies to enhance your experience and to develop the site further. We never track you for monetary reasons. If you do not want this, you can either use the Do-Not-Track feature of your browser or %s."
-msgstr "Wir verwenden Cookies, um dein Erlebnis zu verbessern und die Seite weiterzuentwickeln. Wir verfolgen dich nie aus monetären Gründen. Wenn du das nicht möchtest, kannst du entweder das Do-Not-Track-Feature deines Browsers verwenden oder %s."
+msgid ""
+"U+%04X was added to Unicode in version\n"
+"            %s. It belongs to the block %s in the %s."
+msgstr "U+%04X wurde in Version %s zu Unicode hinzugefügt. Er gehört zum Block %s in der %s."
 
-#: views/footer.php:14
-msgid "opt out explicitly"
-msgstr "explizit widersprechen"
+#: views/front.php:103
+#, php-format
+msgid "This codepoint is %s."
+msgstr "Dieser Codepunkt ist %s."
 
-#: views/footer.php:18
-msgid "Twitter"
-msgstr "Twitter"
+#: views/front.php:104
+msgid "deprecated"
+msgstr "überholt"
 
-#: views/footer.php:19
-msgid "Blog"
-msgstr "Blog"
+#: views/front.php:109
+#, php-format
+msgid "This character is a %s and is %s…"
+msgstr "Dieses Schriftzeichen ist ein %s und ist %s…"
+
+#: views/front.php:111
+#, php-format
+msgid "%scommonly%s used"
+msgstr "%sallgemein%s verwendet"
+
+#: views/front.php:112
+#, php-format
+msgid "mainly used in the %s script"
+msgstr "hauptsächlich in der %s-Schrift verwendet"
+
+#: views/front.php:115
+msgid "» View full description of this codepoint."
+msgstr "» Zeige volle Beschreibung dieses Codepunkts an."
 
 #~ msgid "(U+04X to U+04X)"
 #~ msgstr "(U+%04X bis U+%04X)"
