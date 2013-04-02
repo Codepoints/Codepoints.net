@@ -254,7 +254,10 @@ include 'nav.php';
     </figure>
     <p><?php _e('The hosting is done on Uberspace, a phantastic provider with extremely
     helpful and flexible support.')?></p>
-    <p><?php _e('The %s names are derived from %s, which is curated by David Carlisle and provided together with the MathML specification of the W3C.', '<span class="latex">L<sup>A</sup>T<sub>E</sub>X</span>', 'http://www.w3.org/Math/characters/unicode.xml')?></p>
+    <p><?php printf(__('The %s names are derived from %s, which is curated by
+    David Carlisle and provided together with the MathML specification of the
+    W3C.'), '<span class="latex">L<sup>A</sup>T<sub>E</sub>X</span>',
+    '<a href="http://www.w3.org/Math/characters/unicode.xml">www.w3.org/Math/characters/unicode.xml</a>')?></p>
     <h2><?php _e('Fonts')?></h2>
     <p><?php _e('Many people base their work on Unicode. We want to thank the authors of
     these fonts, that they made it possible to re-use them for this project:')?>
