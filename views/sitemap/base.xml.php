@@ -2,46 +2,52 @@
   <url>
     <loc>http://codepoints.net/</loc>
     <changefreq>yearly</changefreq>
-  </url>
-  <url>
-    <loc>http://codepoints.net/planes</loc>
-    <changefreq>yearly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>http://codepoints.net/random</loc>
     <changefreq>always</changefreq>
+    <priority>0</priority>
   </url>
   <url>
     <loc>http://codepoints.net/about</loc>
     <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>http://codepoints.net/glossary</loc>
     <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>http://codepoints.net/scripts</loc>
     <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>http://codepoints.net/wizard</loc>
     <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>http://codepoints.net/search</loc>
     <changefreq>yearly</changefreq>
+    <priority>0.1</priority>
   </url>
   <url>
     <loc>http://codepoints.net/codepoint_of_the_day</loc>
     <changefreq>daily</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>http://codepoints.net/codepoint_of_the_day.xml</loc>
     <changefreq>daily</changefreq>
+    <priority>0</priority>
   </url>
   <url>
     <loc>http://codepoints.net/planes</loc>
     <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
   </url>
   <url>
     <loc>http://codepoints.net/basic_multilingual_plane</loc>
@@ -78,5 +84,6 @@
   <url>
     <loc>http://codepoints.net/opensearch.xml</loc>
     <changefreq>yearly</changefreq>
+    <priority>0.1</priority>
   </url>
 </urlset>

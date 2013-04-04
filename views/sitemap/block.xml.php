@@ -2,6 +2,7 @@
   <url>
     <loc>http://codepoints.net<?php e($router->getUrl($block))?></loc>
     <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
   </url>
   <?php foreach($block->get() as $cp):?>
     <url>
