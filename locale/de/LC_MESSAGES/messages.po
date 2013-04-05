@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-02 17:58+0200\n"
-"PO-Revision-Date: 2013-04-02 18:00+0100\n"
+"POT-Creation-Date: 2013-04-05 11:44+0200\n"
+"PO-Revision-Date: 2013-04-05 11:45+0100\n"
 "Last-Translator: Manuel Strehl <m.strehl@kinetiqa.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -571,16 +571,21 @@ msgstr "Keine Codepunkte entsprechen der gegebenen Suche."
 msgid "%s codepoints match the given search for %s properties."
 msgstr "%s Codepunkte entsprechen der gegebenen Suche nach %s Eigenschaften."
 
-#: views/result.php:28
+#: views/result.php:21
+#, php-format
+msgid "This is page %s of %s."
+msgstr "Dies ist Seite %s von %s."
+
+#: views/result.php:31
 msgid "Try “Find My Codepoint” again."
 msgstr "Versuche „Finde meinen Codepunkt“ noch einmal."
 
-#: views/result.php:50
+#: views/result.php:53
 #, php-format
 msgid "%s block matches %s:"
 msgstr "%s Block trifft auf %s zu:"
 
-#: views/result.php:50
+#: views/result.php:53
 #, php-format
 msgid "%s blocks match %s:"
 msgstr "%s Blöcke treffen auf %s zu:"

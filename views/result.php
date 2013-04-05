@@ -17,6 +17,9 @@ if ($fQuery === 0) {
     $hDescription = __("No codepoints match the given search.");
 } else {
     $hDescription = sprintf(__('%s codepoints match the given search for %s properties.'), $fQuery, $cQuery);
+    if ($page && $page > 1) {
+        $hDescription .= ' ' . sprintf(__('This is page %s of %s.'), $page, $pagination->getNumberOfPages());
+    }
 }
 include "header.php";
 include "nav.php";
