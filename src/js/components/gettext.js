@@ -1,14 +1,20 @@
 define(['jquery'], function($) {
-  var gettext = {}, default_ = "en",
+  var gettext,
       locale_path = '/static/locale',
       lang = document.documentElement.getAttribute('lang');
 
   if ('gettext' in window) {
     gettext = window.gettext;
   } else {
-    gettext.catalog = {};
+    gettext = {catalog:{}};
   }
 
+  /**
+   * translate a string by catalog lookup
+   *
+   * Occurances of "%s" are replaced by additional
+   * parameters.
+   */
   gettext.gettext = function(s) {
     var args = Array.prototype.slice.call(arguments, 1),
         item;
