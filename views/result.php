@@ -19,6 +19,8 @@ if ($fQuery === 0) {
     $hDescription = sprintf(__('%s codepoints match the given search for %s properties.'), $fQuery, $cQuery);
     if ($page && $page > 1) {
         $hDescription .= ' ' . sprintf(__('This is page %s of %s.'), $page, $pagination->getNumberOfPages());
+    } else {
+        $page = 1;
     }
 }
 include "header.php";
@@ -33,13 +35,15 @@ include "nav.php";
   <?php endif?>
   <?php if ($fQuery > 0):?>
     <?php /* <p><strong><?php e($fQuery)? ></strong> codepoints match<?php include "result/querytext.php"? ></p>*/?>
-    <?php echo $pagination?>
-    <ol class="block data">
-      <?php foreach ($result->get() as $cp => $na):
-        echo '<li value="' . $cp . '">'; cp($na); echo '</li>';
-      endforeach ?>
-    </ol>
-    <?php echo $pagination?>
+    <div class="cp-list" data-page="<?php echo $page?>">
+      <?php echo $pagination?>
+      <ol class="block data">
+        <?php foreach ($result->get() as $cp => $na):
+          echo '<li value="' . $cp . '">'; cp($na); echo '</li>';
+        endforeach ?>
+      </ol>
+      <?php echo $pagination?>
+    </div>
   <?php else:?>
     <?php if (isset($cps) && count($cps)):?>
       <ul class="data">

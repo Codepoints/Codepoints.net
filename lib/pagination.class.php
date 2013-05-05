@@ -52,7 +52,7 @@ class Pagination {
             $html .= '<ol class="pagination">';
             if ($this->showPrevNext) {
                 if ($this->page > 1) {
-                    $html .= sprintf('<li value="0" class="prev"><a href="'.$this->urlTemplate.'">previous</a></li>', $this->page - 1);
+                    $html .= sprintf('<li value="%s" class="prev"><a href="'.$this->urlTemplate.'">previous</a></li>', $this->page - 1, $this->page - 1);
                 } else {
                     $html .= '<li value="0" class="prev disabled"><span>previous</span>';
                 }
@@ -72,7 +72,7 @@ class Pagination {
             }
             if ($this->showPrevNext) {
                 if ($this->page < $n) {
-                    $html .= sprintf('<li value="0" class="next"><a href="'.$this->urlTemplate.'">next</a></li>', $this->page + 1);
+                    $html .= sprintf('<li value="%s" class="next"><a href="'.$this->urlTemplate.'">next</a></li>', $this->page + 1, $this->page + 1);
                 } else {
                     $html .= '<li value="0" class="next disabled"><span>next</span>';
                 }

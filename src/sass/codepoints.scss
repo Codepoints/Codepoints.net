@@ -199,6 +199,10 @@ input[type="text"] {
   @include pagination;
 }
 
+.cp-list {
+  @include pagination-animation;
+}
+
 .amp {
   font-style: italic;
   font-family: $serif;

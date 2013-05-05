@@ -1,5 +1,10 @@
-require(['jquery', 'components/gettext', 'jquery.ui', 'components/jquery.cachedajax',
-  'components/jquery.tooltip', 'components/jquery.glossary',
+require(['jquery',
+  'components/gettext',
+  'jquery.ui',
+  'components/jquery.cachedajax',
+  'components/jquery.tooltip',
+  'components/jquery.glossary',
+  'components/dyn_pagination',
   'components/load_font'], function($, gettext) {
 
 var _ = gettext.gettext;
@@ -35,6 +40,9 @@ $(function() {
 
   /** init tooltips */
   $(document).tooltip().glossary();
+
+  /** init pagination enhancer */
+  $('body').enhancePagination();
 
   /* scale the front headline text */
   var headline = $('.front h1'), resizer;
