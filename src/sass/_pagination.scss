@@ -1,0 +1,148 @@
+@import "compass";
+@import "buttons";
+@import "keyframes";
+@import "settings";
+
+@mixin pagination {
+  // pagination lists
+  list-style: none;
+  margin: 10px 0;
+  padding: 0;
+  text-align: center;
+  max-width: 1182px;
+  clear: left;
+
+  & li {
+    @include inline-block;
+    margin: 0 1px 0 0;
+    padding: 0;
+    &:before {
+      content: none;
+      display: inline;
+    }
+  }
+
+  & .ellipsis {
+    min-width: 36px;
+  }
+
+  & span {
+    @include inline-block;
+    @include button-active;
+    padding: 4px 8px;
+    min-width: 18px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    font-weight: bold;
+    cursor: default;
+  }
+
+  & a {
+    @include button-base;
+    min-width: 18px;
+    height: 24px;
+    line-height: 24px;
+  }
+
+  & .prev a,
+  & .next a,
+  & .prev span,
+  & .next span {
+    text-indent: -9999px;
+  }
+
+  & .prev a:after,
+  & .next a:after,
+  & .prev span:after,
+  & .next span:after {
+    border-color: transparent;
+    border-style: solid;
+    border-width: 8px;
+    width: 0;
+    height: 0;
+    display: block;
+    margin-top: -20px;
+    content: " ";
+  }
+
+  & .prev {
+    float: left;
+
+    & a:after {
+      border-color: transparent $cLink transparent transparent;
+      margin-left: -4px;
+    }
+  }
+
+  & .next {
+    float: right;
+
+    & a:after {
+      border-color: transparent transparent transparent $cLink;
+      margin-left: 6px;
+      margin-right: -6px;
+    }
+  }
+
+}
+
+
+@mixin pagination-animation {
+
+  & {
+    position: relative;
+    @include experimental(animation-duration, $tAnimationBase);
+    @include experimental(animation-fill-mode, forwards);
+    @include experimental(animation-timing-function, ease-out);
+    -webkit-transition: -webkit-transform $tAnimationBase ease 0s;
+    transition: transform $tAnimationBase ease 0s;
+  }
+
+  & .mask {
+    -webkit-transition-property: background-color;
+    transition-property: background-color;
+    -webkit-transition-duration: #{$tAnimationBase*10};
+    transition-duration: #{$tAnimationBase*10};
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+  }
+
+  &.waiting .mask {
+    z-index: 100;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    background-color: rgba(255,255,255,.5);
+  }
+
+  &.exiting {
+    position: absolute;
+    -webkit-animation-name: hide_content;
+    animation-name: hide_content;
+  }
+
+  &.entering {
+    -webkit-animation-name: show_content;
+    animation-name: show_content;
+  }
+
+  &.reverse.exiting {
+    -webkit-animation-name: show_content;
+    animation-name: show_content;
+    -webkit-animation-direction: reverse;
+    animation-direction: reverse;
+  }
+
+  &.reverse.entering {
+    -webkit-animation-name: hide_content;
+    animation-name: hide_content;
+    -webkit-animation-direction: reverse;
+    animation-direction: reverse;
+  }
+
+}
+

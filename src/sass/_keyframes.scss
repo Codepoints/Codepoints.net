@@ -1,0 +1,49 @@
+$dRotateIn: 5deg !default;
+
+@-webkit-keyframes show_content {
+  from {
+    opacity: 0;
+    left: 100%;
+    -webkit-transform: rotateY(-$dRotateIn);
+  } to {
+    opacity: 100%;
+    left: 0;
+    -webkit-transform: none;
+  }
+}
+
+@keyframes show_content {
+  from {
+    opacity: 0;
+    left: 100%;
+    transform: rotateY(-$dRotateIn);
+  } to {
+    opacity: 100%;
+    left: 0;
+    transform: none;
+  }
+}
+
+@-webkit-keyframes hide_content {
+  from {
+    opacity: 100%;
+    left: 0;
+    -webkit-transform: none;
+  } to {
+    opacity: 0;
+    left: -100%;
+    -webkit-transform: rotateY($dRotateIn);
+  }
+}
+
+@keyframes hide_content {
+  from {
+    opacity: 100%;
+    left: 0;
+    transform: none;
+  } to {
+    opacity: 0;
+    left: -100%;
+    transform: rotateY($dRotateIn);
+  }
+}
