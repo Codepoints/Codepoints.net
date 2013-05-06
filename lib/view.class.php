@@ -52,16 +52,23 @@ function _cp($cp, $rel='', $class='', $wrap='') {
         $cp = array($cp);
     }
     foreach ($cp as $c) {
-        if ($wrap) {
-            $r[] = sprintf('<a%s href="%s" title="%s"><%s class="cp%s">%s<img src="'.
-                '%s" alt="" height="16" width="16" /></%s></a>',
-                $rel, q($router->getUrl($c)), q($c->getName()), $wrap, $class,
-                q($c), q($c->getImage()), $wrap);
+        $img = $c->getImage();
+        if (substr($img, -strlen(Codepoint::$defaultImage)) ===
+            Codepoint::$defaultImage) {
+            $img = sprintf('<span class="img">%s</span>', $c->getChar());
         } else {
-            $r[] = sprintf('<a class="cp%s"%s href="%s" title="%s">%s<img src="'.
-                '%s" alt="" height="16" width="16" /></a>',
+            $img = sprintf('<img src="%s" alt="" height="16" width="16">',
+                        $img);
+        }
+        if ($wrap) {
+            $r[] = sprintf('<a%s href="%s" title="%s"><%s class="cp%s">%s'.
+                '%s</%s></a>',
+                $rel, q($router->getUrl($c)), q($c->getName()), $wrap, $class,
+                q($c), $img, $wrap);
+        } else {
+            $r[] = sprintf('<a class="cp%s"%s href="%s" title="%s">%s%s</a>',
                 $class, $rel, q($router->getUrl($c)), q($c->getName()), q($c),
-                q($c->getImage()));
+                $img);
         }
     }
     return join(' ', $r);
