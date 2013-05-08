@@ -1,40 +1,45 @@
 /**
  * make paginated pages animate smoother
  */
-define(['jquery'], function($) {
+define(['jquery',
+  'components/jquery.cachedajax'], function($) {
 
-  var animationDuration = 2000/*ms*/;
+  var animationDuration = 1000/*ms*/;
 
+  /**
+   * we wrap this in a jQuery plugin to have it at hands in later dynamic
+   * scenarios
+   */
   $.fn.enhancePagination = function() {
 
     this.on('click', '.cp-list .pagination a', function() {
       var $this = $(this),
+          href = this.href,
           current_list = $this.closest('.cp-list'),
           current_page = current_list.data('page'),
-          set = current_list.data('set'),
           mask = $('<div class="mask"></div>'),
           next_page = $this.closest('li').attr('value');
-      if (! set) {
-        set = [];
-        current_list.data('set', set);
-      }
-      set[current_page] = current_list;
 
       current_list.append(mask).delay(200).promise().then(function() {
         $(this).addClass('waiting');
       });
 
-      if (typeof set[next_page] !== 'undefined') {
-        var next_list = set[next_page];
-        handleSwitch(current_list, next_list, current_page > next_page);
-      } else {
-        $.get(this.href).then(function(data) {
-          var next_list = $($.parseHTML(data)).find('.cp-list');
-          set[next_page] = next_list;
-          next_list.data('set', set);
+      $.cachedAjax(href).then(function(data) {
+        var next_list = $($.parseHTML(data)).find('.cp-list');
+        if (next_list.length) {
+          if ('pushState' in window.history) {
+            window.history.pushState({
+              page: next_page
+            },
+            "",
+            href);
+          }
+          if ('_paq' in window) {
+            _paq.push(['trackPageView']);
+          }
           handleSwitch(current_list, next_list, current_page > next_page);
-        });
-      }
+        }
+      });
 
       return false;
     });
