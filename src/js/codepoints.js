@@ -5,6 +5,7 @@ require(['jquery',
   'components/jquery.tooltip',
   'components/jquery.glossary',
   'components/dyn_pagination',
+  'components/representations',
   'components/load_font'], function($, gettext) {
 
 var _ = gettext.gettext;
