@@ -22,6 +22,10 @@ $headdata .= sprintf('<meta name="twitter:site" content="@codepointsnet"/>
 <meta name="twitter:title" content="%s"/>
 <meta name="twitter:description" content="%s"/>',
 q($router->getUrl($codepoint)), q($title), q($hDescription));
+if (substr($codepoint->getImage(), -strlen(Codepoint::$defaultImage)) !==
+    Codepoint::$defaultImage) {
+        $headdata .= '<meta name="twitter:image" content="http://codepoints.net/api/v1/glyph/'.$codepoint->getId('hex').'"/>';
+}
 include "header.php";
 $nav = array();
 if ($prev) {
@@ -40,7 +44,7 @@ $s = function($cat) use ($router, $info, $props) {
     echo '</a>';
 };
 ?>
-<div class="payload codepoint" itemscope="itemscope" itemtype="http://schema.org/StructuredValue">
+<div class="payload codepoint" itemscope="itemscope" itemtype="http://schema.org/StructuredValue/Unicode/CodePoint">
   <figure>
     <span class="fig" itemprop="image"><?php e($codepoint->getSafeChar())?></span>
     <?php if ($codepoint->getId() > 0xFFFF):

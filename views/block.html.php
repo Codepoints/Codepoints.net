@@ -23,7 +23,7 @@ if ($next) {
 }
 include "nav.php";
 ?>
-<div class="payload block" itemscope="itemscope" itemtype="http://schema.org/Enumeration">
+<div class="payload block" itemscope="itemscope" itemtype="http://schema.org/Enumeration/Unicode/Block">
   <figure>
     <img src="/static/images/blocks/<?php e(str_replace(' ', '_', $block->getName()))?>.png" alt="<?php _e('Symbol representing this block in the Unidings font')?>" width="128" height="128" itemprop="image" />
   </figure>
@@ -44,7 +44,7 @@ include "nav.php";
                 break;
             }
             if (array_key_exists($i + $block_limits[0], $cps)) {
-                echo '<li value="' . ($i + $block_limits[0]) . '">'; cp($cps[$i + $block_limits[0]]); echo '</li>';
+                echo '<li itemscope="itemscope" itemtype="http://schema.org/StructuredValue/Unicode/CodePoint" value="' . ($i + $block_limits[0]) . '">'; cp($cps[$i + $block_limits[0]]); echo '</li>';
             } else {
                 echo '<li class="missing" value="'.($i + $block_limits[0]).'"><span>'.sprintf('%04X', $i + $block_limits[0]).'</span></li>';
             }
