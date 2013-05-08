@@ -42,7 +42,11 @@
     <?php if ($lang !== "en"):?>
       <script src="/static/locale/<?php e($lang)?>.js!<?php e(CACHE_BUST)?>"></script>
     <?php endif?>
+<?php if(CP_DEBUG):?>
+    <script src="/src/vendor/requirejs/require.js" data-main="/src/js/main"></script>
+<?php else:?>
     <script src="/static/js/codepoints.js!<?php e(CACHE_BUST)?>"></script>
+<?php endif?>
     <?php if (isset($footer_scripts)): foreach($footer_scripts as $sc):?>
         <script src="<?php e($sc)?>!<?php e(CACHE_BUST)?>"></script>
     <?php endforeach; endif?>

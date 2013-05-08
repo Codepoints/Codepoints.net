@@ -34,8 +34,9 @@ RewriteRule ^u(\+|\ |%20|%2B)?([A-Fa-f0-9]+)$   /U+$2 [R,L]
 # everything that doesn't match a real file
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !/static/.*
+RewriteCond %{REQUEST_FILENAME} !/src/.*
 RewriteRule .* index.php [L]
 
 # let assets be cache-busted with an "!"
-RewriteRule ^(static/.+)![a-z0-9]+      $1 [L]
+RewriteRule ^((src|static)/.+)![a-z0-9]+      $1 [L]
 
