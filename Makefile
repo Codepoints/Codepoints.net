@@ -56,6 +56,9 @@ ucd.sqlite: ucotd tools/scripts.sql tools/scripts_wp.sql \
 
 l10n: locale/messages.pot locale/js.pot
 
+l10n-finish:
+	tools/my-po2json.js de
+
 locale/messages.pot: index.php lib/*.php controllers/*.php views/*.php \
                      views/*/*.php
 	$(info * Compile translation strings)
