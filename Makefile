@@ -63,6 +63,7 @@ locale/messages.pot: index.php lib/*.php controllers/*.php views/*.php \
 		xargs xgettext -LPHP --from-code UTF-8 -k__ -k_e -k_n -kgettext -o $@
 
 locale/js.pot: $(JS_ALL)
+	#jsxgettext -k _ -o $@ $^
 	xgettext -LPerl --from-code UTF-8 -k_ -o - $^ | \
 		sed '/^#, perl-format$$/d' > $@
 

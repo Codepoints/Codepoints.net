@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-24 21:42+0100\n"
+"POT-Creation-Date: 2013-05-09 15:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,28 +53,65 @@ msgstr ""
 msgid "remove"
 msgstr ""
 
-#: src/js/codepoints.js:65
+#: src/js/codepoints.js:74
 msgid "top"
 msgstr ""
 
-#: src/js/codepoints.js:87
+#: src/js/codepoints.js:96
 msgid "Extended Search"
 msgstr ""
 
-#: src/js/codepoints.js:89
+#: src/js/codepoints.js:98
 msgid "Find My Codepoint"
 msgstr ""
 
-#: src/js/codepoints.js:168
+#: src/js/codepoints.js:177
 msgid "Read on:"
 msgstr ""
 
-#: src/js/codepoints.js:225
+#: src/js/codepoints.js:234
 msgid "Hide this message."
 msgstr ""
 
 #: src/js/components/load_font.js:27
 msgid "Font used above"
+msgstr ""
+
+#: src/js/components/representations.js:12
+#: src/js/components/representations.js:15
+msgid "show more"
+msgstr ""
+
+#: src/js/components/representations.js:15
+msgid "hide"
+msgstr ""
+
+#: src/js/components/representations.js:19
+msgid "RFC 5137"
+msgstr ""
+
+#: src/js/components/representations.js:22
+msgid "Python"
+msgstr ""
+
+#: src/js/components/representations.js:25
+msgid "Ruby"
+msgstr ""
+
+#: src/js/components/representations.js:28
+msgid "Perl"
+msgstr ""
+
+#: src/js/components/representations.js:31
+msgid "JavaScript, JSON and Java"
+msgstr ""
+
+#: src/js/components/representations.js:40
+msgid "C"
+msgstr ""
+
+#: src/js/components/representations.js:52
+msgid "CSS"
 msgstr ""
 
 #: src/js/wizard.js:114

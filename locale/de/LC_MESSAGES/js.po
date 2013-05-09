@@ -3,25 +3,28 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: Codepoints JS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-24 21:42+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2013-05-09 15:49+0200\n"
+"PO-Revision-Date: 2013-05-09 15:52+0100\n"
+"Last-Translator: Manuel Strehl <translate@manuel-strehl.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: de\n"
+"X-Poedit-Country: DE\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 
 #: src/js/scripts.js:21
 msgid "(%s codepoints)"
 msgstr "(%s Codepunkte)"
 
-#: src/js/scripts.js:23 src/js/scripts.js:134
+#: src/js/scripts.js:23
+#: src/js/scripts.js:134
 msgid "Source: %s"
 msgstr "Quelle: %s"
 
@@ -53,29 +56,66 @@ msgstr "klicken zum Ändern"
 msgid "remove"
 msgstr "entfernen"
 
-#: src/js/codepoints.js:65
+#: src/js/codepoints.js:74
 msgid "top"
 msgstr "oben"
 
-#: src/js/codepoints.js:87
+#: src/js/codepoints.js:96
 msgid "Extended Search"
 msgstr "Erweiterte Suche"
 
-#: src/js/codepoints.js:89
+#: src/js/codepoints.js:98
 msgid "Find My Codepoint"
 msgstr "Finde meinen Codepunkt"
 
-#: src/js/codepoints.js:168
+#: src/js/codepoints.js:177
 msgid "Read on:"
 msgstr "Weiterlesen:"
 
-#: src/js/codepoints.js:225
+#: src/js/codepoints.js:234
 msgid "Hide this message."
 msgstr "Diese Nachricht verstecken."
 
 #: src/js/components/load_font.js:27
 msgid "Font used above"
 msgstr "Oben verwendete Schriftart"
+
+#: src/js/components/representations.js:12
+#: src/js/components/representations.js:15
+msgid "show more"
+msgstr "mehr anzeigen"
+
+#: src/js/components/representations.js:15
+msgid "hide"
+msgstr "verbergen"
+
+#: src/js/components/representations.js:19
+msgid "RFC 5137"
+msgstr "RFC 5137"
+
+#: src/js/components/representations.js:22
+msgid "Python"
+msgstr "Python"
+
+#: src/js/components/representations.js:25
+msgid "Ruby"
+msgstr "Ruby"
+
+#: src/js/components/representations.js:28
+msgid "Perl"
+msgstr "Perl"
+
+#: src/js/components/representations.js:31
+msgid "JavaScript, JSON and Java"
+msgstr "JavaScript, JSON und Java"
+
+#: src/js/components/representations.js:40
+msgid "C"
+msgstr "C"
+
+#: src/js/components/representations.js:52
+msgid "CSS"
+msgstr "CSS"
 
 #: src/js/wizard.js:114
 msgid "Finished!"
@@ -88,3 +128,4 @@ msgstr "Bitte warten Sie einen Moment, wir machen diese %s Antworten produktiv."
 #: src/js/wizard.js:149
 msgid "Enough questions! Search now."
 msgstr "Genug Fragen! Jetzt suchen."
+
