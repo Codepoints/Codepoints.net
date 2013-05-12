@@ -1,0 +1,28 @@
+{
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "php-gettext/php-gettext",
+                "version": "1.0.11",
+                "dist": {
+                    "type": "tar",
+                    "url": "https://launchpad.net/php-gettext/trunk/1.0.11/+download/php-gettext-1.0.11.tar.gz"
+                },
+                "autoload": {
+                    "classmap": [
+                        "gettext.php",
+                        "streams.php"
+                    ]
+                }
+            }
+        }
+    ],
+    "require": {
+        "php-gettext/php-gettext" : "1.0.*",
+        "mustache/mustache": "2.3.*"
+    },
+    "autoload": {
+        "classmap": ["."]
+    }
+}

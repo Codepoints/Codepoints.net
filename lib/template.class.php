@@ -14,7 +14,7 @@ class Template {
     }
 
     public function __construct($template) {
-        $partials = new MustacheLoader(dirname(__FILE__)."/../static/tpl");
+        $partials = new Mustache_Loader_FilesystemLoader(dirname(__FILE__)."/../static/tpl");
         $this->mustache = new Mustache($template, null, $partials, null);
         $this->l10n = L10n::get('mustache');
     }
