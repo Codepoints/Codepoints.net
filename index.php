@@ -50,11 +50,9 @@ ini_set('zlib.output_compression', True);
 
 
 /**
- * load classes from lib/
+ * install autoloader
  */
-function __autoload($class) {
-    require_once 'lib/' . strtolower($class) . '.class.php';
-}
+require_once 'lib/vendor/autoload.php';
 
 
 /**
