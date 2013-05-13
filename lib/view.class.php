@@ -121,7 +121,7 @@ class View {
     public function __construct($view) {
         $base = dirname(__FILE__).'/../';
         if (is_file($base."static/tpl/$view.mustache")) {
-            $this->file = $base."static/tpl/$view.mustache";
+            $this->file = $view;
             $this->isTemplate = True;
         } else {
             $this->file = $base."views/$view.php";
@@ -133,7 +133,7 @@ class View {
         $params['router'] = Router::getRouter();
         $params['lang'] = L10n::getDefaultLanguage();
         if ($this->isTemplate) {
-            $tpl = new Template(file_get_contents($this->file));
+            $tpl = new Template($this->file);
             $out = $tpl->render($params);
         } else {
             extract($params);
