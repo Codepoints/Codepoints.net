@@ -76,12 +76,16 @@ vendor: src/component.json
 	cd src/vendor/jquery.ui && npm install && grunt build
 	cd src/vendor/webfontloader && rake
 
-test: $(PHP_ALL) $(JS_ALL) test-sass
+test: test-php test-sass test-js
+
+test-php: $(PHP_ALL)
 	$(info * Test PHP syntax)
 	@! find . -name \*.php -exec php -l '{}' \; | \
 		grep -v '^No syntax errors detected in '
+
+test-js: $(JS_ALL)
 	$(info * Test JS syntax)
-	@jshint $(JS_ALL)
+	@jshint $^
 
 test-sass: $(shell find src/sass -type f)
 	$(info * Test Sass syntax)
