@@ -117,7 +117,7 @@ $controllers = array(
     'index', 'about', 'api_login', 'api_script', 'codepoint_of_the_day',
     'planes', 'random', 'scripts', 'search', 'wizard', 'sitemap',
 
-    'api_font-face', 'api_bool', 'api_glyph', 'blog-preview',
+    'api_font-face', 'api_bool', 'api_name', 'api_glyph', 'blog-preview',
     'single_character', 'plane', 'codepoint', 'block', 'possible_name',
     'range',
 );
