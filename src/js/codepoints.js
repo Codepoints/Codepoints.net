@@ -250,6 +250,32 @@ $(function() {
     blog_preview.load('/blog-preview');
   }
 
+  /**
+   * display favorite CPs
+   */
+  var favorites = $('.favorites');
+  if (favorites.length) {
+    var fav_ul = $('<ul class="data"></ul>').appendTo(favorites);
+    $.ajax({
+      url: 'http://piwik.manuel-strehl.de/popular.php',
+      dataType: 'jsonp',
+    }).then(function(data) {
+      favorites.find('.wait').remove();
+      $.each(data, function() {
+        var label = this.label.replace(/U /, ""),
+            cp = $('<li><a class="cp" href="'+this.url+'">'+
+                  label+'<img alt="" src="/api/v1/glyph/'+label+'">'+
+                  '</a></li>');
+        cp.one('mouseenter', function() {
+          $.get('/api/v1/name/'+label).then(function(data) {
+            cp.attr('title', data).tooltip().trigger('mouseenter');
+          });
+        });
+        fav_ul.append(cp);
+      });
+    });
+  }
+
 });
 
 });

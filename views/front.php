@@ -118,6 +118,11 @@ include "nav.php";
     <?php endif?>
     <section class="bk blog-preview">
     </section>
+    <section class="bk favorites">
+        <h2><?php _e('The 20 most popular codepoints')?><br>
+        <small><?php _e('(by visits)')?></small></h2>
+        <p class ="wait" style="text-align: center"><img src="/static/images/ajax.gif" alt="Loading..."></p>
+    </section>
   </article>
 </div>
 <?php
