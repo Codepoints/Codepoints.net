@@ -258,7 +258,7 @@ $(function() {
     var fav_ul = $('<ul class="data"></ul>').appendTo(favorites);
     $.ajax({
       url: 'http://piwik.manuel-strehl.de/popular.php',
-      dataType: 'jsonp',
+      dataType: 'jsonp'
     }).then(function(data) {
       favorites.find('.wait').remove();
       $.each(data, function() {
@@ -268,7 +268,7 @@ $(function() {
                   '</a></li>');
         cp.one('mouseenter', function() {
           $.get('/api/v1/name/'+label).then(function(data) {
-            cp.attr('title', data).tooltip().trigger('mouseenter');
+            cp.attr('title', data).tooltip();
           });
         });
         fav_ul.append(cp);

@@ -55,6 +55,12 @@ $.fn.tooltip = function() {
     }).on('mouseleave click', function() {
       tip.stop(true, true).hide();
     });
+    if ("querySelector" in document) {
+      var hovered = $(origin.parent()[0].querySelector(":hover"));
+      if (hovered.index(origin) >= 0) {
+        origin.trigger("mouseenter");
+      }
+    }
   });
   return this;
 };
