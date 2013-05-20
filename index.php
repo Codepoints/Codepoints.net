@@ -179,7 +179,7 @@ if ($router->callAction() === False) {
     }
 
     $req = $router->getSetting('request');
-    $cps = codepoint::getForString(rawurldecode($req->trunkUrl), $db);
+    $cps = Codepoint::getForString(rawurldecode($req->trunkUrl), $db);
     $view = new View('error404');
     echo $view->render(compact('planes', 'block', 'plane', 'cps'));
 }
