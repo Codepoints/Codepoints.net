@@ -43,7 +43,29 @@
       <script src="/static/locale/<?php e($lang)?>.js!<?php e(CACHE_BUST)?>"></script>
     <?php endif?>
 <?php if(CP_DEBUG):?>
-    <script src="/src/vendor/requirejs/require.js" data-main="/src/js/main"></script>
+    <script src="/src/vendor/requirejs/require.js"></script>
+    <script>
+require.config({
+  "baseUrl": "/src/js/",
+  "paths": {
+    "almond": "/src/vendor/almond/almond",
+    "jquery": "/src/vendor/jquery/jquery",
+    "jquery.ui": "/src/vendor/jquery.ui/dist/jquery-ui",
+    "d3": "/src/vendor/d3/d3.v2",
+    "webfont": "/src/vendor/webfontloader/target/webfont"
+  },
+  "shim": {
+    "webfont": {
+      "exports": "WebFont"
+    },
+    "d3": {
+      "exports": "d3"
+    }
+  }
+});
+
+require(['codepoints']);
+    </script>
 <?php else:?>
     <script src="/static/js/codepoints.js!<?php e(CACHE_BUST)?>"></script>
 <?php endif?>
