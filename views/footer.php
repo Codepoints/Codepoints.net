@@ -55,6 +55,12 @@ require.config({
     "webfont": "/src/vendor/webfontloader/target/webfont"
   },
   "shim": {
+    "jquery": {
+      "exports": "jQuery"
+    },
+    "jquery.ui": {
+      "deps": ["jquery"]
+    },
     "webfont": {
       "exports": "WebFont"
     },
