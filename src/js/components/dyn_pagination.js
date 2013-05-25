@@ -2,7 +2,8 @@
  * make paginated pages animate smoother
  */
 define(['jquery',
-  'components/jquery.cachedajax'], function($) {
+  'components/jquery.cachedajax',
+  'components/jquery.tooltip'], function($) {
 
   var animationDuration = 1000/*ms*/;
 
@@ -49,12 +50,17 @@ define(['jquery',
 
   function handleSwitch(current_list, next_list, reverse) {
     var revclass = reverse? ' reverse':'';
-    current_list.find('.mask').remove();
-    current_list.removeClass('waiting').addClass('exiting'+revclass);
-    next_list.addClass('entering'+revclass).insertAfter(current_list);
+    current_list.find('.mask')
+                .remove();
+    current_list.removeClass('waiting')
+                .addClass('exiting'+revclass);
+    next_list.addClass('entering'+revclass)
+             .insertAfter(current_list)
+             .tooltip();
     window.setTimeout(function() {
       next_list.removeClass('entering'+revclass);
-      current_list.removeClass('exiting'+revclass).remove();
+      current_list.removeClass('exiting'+revclass)
+                  .remove();
     }, animationDuration);
   }
 
