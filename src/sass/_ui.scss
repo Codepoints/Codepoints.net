@@ -159,6 +159,9 @@
       width: 1.25em;
       content: "\f078";
     }
+    &.scratchpad a:before {
+      content: "\f044";
+    }
   }
 
   em, a {
