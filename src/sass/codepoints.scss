@@ -129,6 +129,16 @@ button,
   @include button-base;
 }
 
+.button--hi {
+  color: $cLink;
+  font-family: $sans;
+  line-height: 1.5;
+
+  &:hover, &:focus {
+    color: $cHighlight;
+  }
+}
+
 input[type="number"],
 input[type="password"],
 input[type="search"],
