@@ -75,6 +75,24 @@ $s = function($cat) use ($router, $info, $props) {
       <?php endif?>
     </dl>
   </aside>
+  <aside class="other codepoint--tools">
+    <p>
+      <a href="https://twitter.com/share?text=<?php _e(rawurlencode("U+".$codepoint->getId('hex').' '.$codepoint->getName().': '.$codepoint->getSafeChar()))?>&amp;url=<?php echo rawurlencode('http://codepoints.net'.$router->getUrl($codepoint))?>&amp;via=CodepointsNet&amp;hashtags=Unicode" target="_blank" class="button button--hi button--tweet"><i class="icon-twitter"></i> Tweet this codepoint</a>
+    </p>
+    <p>
+      <button type="button" class="button button--hi button--embed" data-link="#tools-embed-<?php _e($codepoint->getId('hex'))?>"><i class="icon-cog"></i> Embed this codepoint</button>
+    </p>
+    <div style="display:none" id="tools-embed-<?php _e($codepoint->getId('hex'))?>">
+      <p><?php _e('Embed this codepoint in your own website by simply
+      copy-and-pasting the following HTML snippet:')?></p>
+      <pre>&lt;iframe src="http://codepoints.net/U+<?php _e($codepoint->getId('hex'))?>?embed"
+        style="width: <span contenteditable="true">200px</span>; height: <span contenteditable="true">26px</span>;
+        border: 1px solid #444;">
+&lt;/iframe></pre>
+      <p><?php _e('If you want, you can freely change width and height to meet
+        your needs. The layout will adapt accordingly.')?></p>
+    </div>
+  </aside>
   <h1 itemprop="name">U+<?php e($codepoint->getId('hex'))?> <?php e($codepoint->getName())?></h1>
   <section class="abstract" itemprop="description">
     <?php include "codepoint/info.php"?>
