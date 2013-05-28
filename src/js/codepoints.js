@@ -276,6 +276,29 @@ $(function() {
     });
   }
 
+  /**
+   * handle single codepoint's toolbox
+   */
+  var $embed = $('.button--embed[data-link]');
+  if ($embed.length) {
+    var markup = $($embed.data('link'));
+    if (markup.length) {
+      $embed.on('click', function() {
+        markup.dialog({
+          title: _('Embed this codepoint'),
+          width: Math.min($(window).width(), 600),
+          open: function() {
+            var range = document.createRange();
+            range.selectNodeContents(markup.find('pre')[0]);
+            var sel = window.getSelection();
+            sel.removeAllRanges();
+            sel.addRange(range);
+          }
+        });
+      });
+    }
+  }
+
 });
 
 });
