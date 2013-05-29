@@ -31,7 +31,7 @@ js: static/js/build.txt static/js/html5shiv.js
 
 static/js/build.txt: src/build.js $(JS_ALL)
 	cd src && node vendor/r.js/dist/r.js -o build.js
-	-rm -fr static/js/components
+	-rm -fr static/js/components static/js/polyfills
 
 static/js/html5shiv.js: src/vendor/html5shiv/dist/html5shiv.js
 	<$< uglifyjs >$@

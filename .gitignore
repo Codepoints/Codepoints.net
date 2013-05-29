@@ -12,3 +12,4 @@
 /static/js/main.js
 /lib/composer.lock
 /cache/__Mustache_*.php
+/static/js/polyfills/
