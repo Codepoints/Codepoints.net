@@ -111,6 +111,11 @@ function _get($key, $default='') {
     return q($default);
 }
 
+function render($view, $params=array()) {
+    $view = new View($view);
+    echo $view->render($params);
+}
+
 
 class View {
 
@@ -119,12 +124,12 @@ class View {
     protected $isTemplate = False;
 
     public function __construct($view) {
-        $base = dirname(__FILE__).'/../';
-        if (is_file($base."static/tpl/$view.mustache")) {
+        $base = dirname(__DIR__);
+        if (is_file($base."/static/tpl/$view.mustache")) {
             $this->file = $view;
             $this->isTemplate = True;
         } else {
-            $this->file = $base."views/$view.php";
+            $this->file = $base."/views/$view.php";
         }
     }
 
@@ -132,6 +137,7 @@ class View {
         $params['info'] = UnicodeInfo::get();
         $params['router'] = Router::getRouter();
         $params['lang'] = L10n::getDefaultLanguage();
+
         if ($this->isTemplate) {
             $tpl = new Template($this->file);
             $out = $tpl->render($params);

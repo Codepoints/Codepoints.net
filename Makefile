@@ -1,5 +1,5 @@
 
-
+SHELL := /bin/bash
 JS_ALL := $(shell find src/js -type f -name \*.js)
 JS_ROOTS := $(wildcard src/js/*.js)
 JS_TARGET := $(patsubst src/js/%,static/js/%,$(JS_ROOTS))

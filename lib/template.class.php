@@ -6,24 +6,28 @@
  */
 class Template {
 
-    protected $mustache = null;
+    protected $template;
+    protected $mustache;
 
     public function __construct($template) {
+        $basedir = dirname(__DIR__);
         $l10n = L10n::get('mustache');
+        $this->template = $template;
         $this->mustache = new Mustache_Engine(array(
-            'cache' => __DIR__.'/../cache',
-            'loader' => new Mustache_Loader_FilesystemLoader(dirname(dirname(__FILE__)).'/static/tpl'),
-            'partials_loader' => new Mustache_Loader_FilesystemLoader(dirname(dirname(__FILE__)).'/static/tpl/partials'),
+            'cache' => "$basedir/cache",
+            'loader' => new Mustache_Loader_FilesystemLoader(
+                            "$basedir/static/tpl"),
+            'partials_loader' => new Mustache_Loader_FilesystemLoader(
+                                     "$basedir/static/tpl/partials"),
             'helpers' => array('_' => function ($s) use ($l10n) {
                 return $l10n->gettext($s);
             }),
             'strict_callables' => true,
         ));
-        $this->mustache->loadTemplate($template);
     }
 
     public function render($view = array()) {
-        return $this->mustache->render($view);
+        return $this->mustache->render($this->template, $view);
     }
 
 }
