@@ -1,4 +1,4 @@
-require(['jquery', 'jquery.ui'], function($) {
+require(['jquery', 'jqueryui/datepicker'], function($) {
   var cal = $('#ucotd_cal');
   cal.datepicker({
     dateFormat: "yy-mm-dd",

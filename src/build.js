@@ -8,7 +8,7 @@
   "paths": {
     "almond": "../vendor/almond/almond",
     "jquery": "../vendor/jquery/jquery",
-    "jquery.ui": "../vendor/jquery.ui/dist/jquery-ui",
+    "jqueryui": "../vendor/jquery.ui/jqueryui",
     "d3": "../vendor/d3/d3.v2",
     "webfont": "../vendor/webfontloader/target/webfont",
     "piwik": "http://piwik.manuel-strehl.de/piwik.js"

@@ -35,7 +35,7 @@ require.config({
   "paths": {
     "almond": "/src/vendor/almond/almond",
     "jquery": "/src/vendor/jquery/jquery",
-    "jquery.ui": "/src/vendor/jquery.ui/dist/jquery-ui",
+    "jqueryui": "/src/vendor/jquery.ui/jqueryui",
     "d3": "/src/vendor/d3/d3.v2",
     "webfont": "/src/vendor/webfontloader/target/webfont",
     "piwik": "http://piwik.manuel-strehl.de/piwik.js"

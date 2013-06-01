@@ -1,7 +1,7 @@
 /**
  * replace the title attribute with a custom tooltip
  */
-define(['jquery', 'jquery.ui'], function($) {
+define(['jquery', 'jqueryui/position'], function($) {
 var tipIDCounter = 0;
 
 $.fn.tooltip = function() {
@@ -55,6 +55,8 @@ $.fn.tooltip = function() {
     }).on('mouseleave click', function() {
       tip.stop(true, true).hide();
     });
+
+    // display tooltip, if element is currently hovered
     if ("querySelector" in document) {
       var hovered = $(origin.parent()[0].querySelector(":hover"));
       if (hovered.index(origin) >= 0) {

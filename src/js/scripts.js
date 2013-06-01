@@ -1,4 +1,9 @@
-require(['jquery', 'components/gettext', 'd3'], function($, gettext, d3) {
+require(['jquery',
+    'components/gettext',
+    'd3',
+    'jqueryui/accordion',
+    'jqueryui/dialog'],
+  function($, gettext, d3) {
 
 var $window = $(window),
     _ = gettext.gettext;

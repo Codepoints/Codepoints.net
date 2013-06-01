@@ -1,4 +1,10 @@
-require(['jquery', 'components/gettext', 'jquery.ui'], function($, gettext) {
+require(['jquery',
+    'components/gettext',
+    'jqueryui/button',
+    'jqueryui/dialog',
+    'jqueryui/menu'
+    ], function($, gettext) {
+
   var _ = gettext.gettext;
 
   /* search form enhancement */
