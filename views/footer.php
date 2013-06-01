@@ -47,6 +47,7 @@
     <script>
 require.config({
   "baseUrl": "/src/js/",
+  "urlArgs": "bust=" +  (new Date()).getTime(),
   "paths": {
     "almond": "/src/vendor/almond/almond",
     "jquery": "/src/vendor/jquery/jquery",
