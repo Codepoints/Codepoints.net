@@ -1,4 +1,5 @@
 require(['jquery',
+  'http://piwik.manuel-strehl.de/piwik',
   'components/gettext',
   'jquery.ui',
   'components/jquery.cachedajax',

@@ -124,24 +124,11 @@ $block = $codepoint->getBlock();
       </table>
     </section>
     <p class="note"><a target="_blank" href="http://codepoints.net<?php e($router->getUrl($codepoint))?>" rel="bookmark"><?php _e('» View this character on Codepoints.net')?></a></p>
-    <script id="_ts"><?php
-?>var _paq=_paq||[];<?php
-?>(function(){var u="http://piwik.manuel-strehl.de/";<?php
-  ?>_paq.push(['setSiteId',4]);<?php
-  ?>_paq.push(['setTrackerUrl',u+'piwik.php']);<?php
-  ?>_paq.push(['setCustomVariable',1,"mode","embedded","page"]);<?php
-  ?>_paq.push(['trackPageView']);<?php
-  ?>_paq.push(['enableLinkTracking']);<?php
-  ?>var d=document,<?php
-      ?>g=d.createElement('script'),<?php
-      ?>s=d.getElementsByTagName('script')[0];<?php
-  ?>g.type='text/javascript';<?php
-  ?>g.defer=true;<?php
-  ?>g.async=true;<?php
-  ?>g.src=u+'piwik.js';<?php
-  ?>s.parentNode.insertBefore(g,s);<?php
-?>})();<?php
-?></script>
+<?php
+    $trackingVars = array(
+        array("mode","embedded","page"));
+    include "partials/tracker.php";
+?>
     <script>WebFontConfig={google:{families:['Droid Serif:n,i,b,ib','Droid Sans:n,b']}};</script>
     <script src="/static/js/embedded.js!<?php e(CACHE_BUST)?>"></script>
   </body>

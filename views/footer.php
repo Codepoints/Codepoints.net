@@ -21,23 +21,7 @@
         </ul>
       </nav>
     </footer>
-    <script id="_ts"><?php
-?>var _paq=_paq||[];<?php
-?>(function(){<?php
-  ?>var u="http://piwik.manuel-strehl.de/";<?php
-  ?>_paq.push(['setSiteId',4]);<?php
-  ?>_paq.push(['setTrackerUrl',u+'piwik.php']);<?php
-  ?>_paq.push(['trackPageView']);<?php
-  ?>_paq.push(['enableLinkTracking']);<?php
-  ?>var d=document,<?php
-      ?>g=d.createElement('script'),<?php
-      ?>s=d.getElementsByTagName('script')[0];<?php
-  ?>g.type='text/javascript';<?php
-  ?>g.defer=true;<?php
-  ?>g.async=true;<?php
-  ?>g.src=u+'piwik.js';<?php
-  ?>s.parentNode.insertBefore(g,s);<?php
-?>})();</script>
+    <?php include "partials/tracker.php"; ?>
     <script>WebFontConfig={google:{families:['Droid Serif:n,i,b,ib','Droid Sans:n,b']}};</script>
     <?php if ($lang !== "en"):?>
       <script src="/static/locale/<?php e($lang)?>.js!<?php e(CACHE_BUST)?>"></script>
@@ -53,7 +37,8 @@ require.config({
     "jquery": "/src/vendor/jquery/jquery",
     "jquery.ui": "/src/vendor/jquery.ui/dist/jquery-ui",
     "d3": "/src/vendor/d3/d3.v2",
-    "webfont": "/src/vendor/webfontloader/target/webfont"
+    "webfont": "/src/vendor/webfontloader/target/webfont",
+    "piwik": "http://piwik.manuel-strehl.de/piwik"
   },
   "shim": {
     "jquery": {

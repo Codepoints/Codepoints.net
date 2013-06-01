@@ -1,1 +1,3 @@
-require(['components/load_font'], function() {});
+require([
+    'http://piwik.manuel-strehl.de/piwik',
+    'components/load_font'], function() {});

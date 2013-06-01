@@ -10,7 +10,8 @@
     "jquery": "../vendor/jquery/jquery",
     "jquery.ui": "../vendor/jquery.ui/dist/jquery-ui",
     "d3": "../vendor/d3/d3.v2",
-    "webfont": "../vendor/webfontloader/target/webfont"
+    "webfont": "../vendor/webfontloader/target/webfont",
+    "piwik": "http://piwik.manuel-strehl.de/piwik"
   },
   "shim": {
     "webfont": {
@@ -23,11 +24,13 @@
   "modules": [
     {
       "name": "codepoints",
-      "include": ["almond", "jquery.ui"]
+      "include": ["almond", "jquery.ui"],
+      "exclude": ["http://piwik.manuel-strehl.de/piwik.js"]
     },
     {
       "name": "embedded",
-      "include": ["almond"]
+      "include": ["almond"],
+      "exclude": ["http://piwik.manuel-strehl.de/piwik.js"]
     },
     {
       "name": "dailycp",
