@@ -11,7 +11,7 @@
     "jquery.ui": "../vendor/jquery.ui/dist/jquery-ui",
     "d3": "../vendor/d3/d3.v2",
     "webfont": "../vendor/webfontloader/target/webfont",
-    "piwik": "http://piwik.manuel-strehl.de/piwik"
+    "piwik": "http://piwik.manuel-strehl.de/piwik.js"
   },
   "shim": {
     "webfont": {

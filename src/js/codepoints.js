@@ -1,6 +1,6 @@
 require(['jquery',
-  'http://piwik.manuel-strehl.de/piwik',
   'components/gettext',
+  'http://piwik.manuel-strehl.de/piwik.js',
   'jquery.ui',
   'components/jquery.cachedajax',
   'components/jquery.tooltip',

@@ -38,7 +38,7 @@ require.config({
     "jquery.ui": "/src/vendor/jquery.ui/dist/jquery-ui",
     "d3": "/src/vendor/d3/d3.v2",
     "webfont": "/src/vendor/webfontloader/target/webfont",
-    "piwik": "http://piwik.manuel-strehl.de/piwik"
+    "piwik": "http://piwik.manuel-strehl.de/piwik.js"
   },
   "shim": {
     "jquery": {
