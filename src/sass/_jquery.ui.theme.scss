@@ -1,8 +1,9 @@
-/*
+/*!
  * jQuery UI CSS Framework @VERSION
+ * http://jqueryui.com
  *
- * Copyright 2012, AUTHORS.txt (http://jqueryui.com/about)
- * Dual licensed under the MIT or GPL Version 2 licenses.
+ * Copyright 2013 jQuery Foundation and other contributors
+ * Released under the MIT license.
  * http://jquery.org/license
  *
  * http://docs.jquery.com/UI/Theming/API
@@ -14,114 +15,173 @@
 /* Component containers
 ----------------------------------*/
 .ui-widget {
-  font-family: $sans;
-  font-size: 1em;
+	font-family: $sans;
+	font-size: 1em;
 }
 .ui-widget .ui-widget {
-  font-size: 1em;
+	font-size: 1em;
 }
-.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {
-  font-family: $sans;
-  font-size: 1em;
+.ui-widget input,
+.ui-widget select,
+.ui-widget textarea,
+.ui-widget button {
+	font-family: $sans;
+	font-size: 1em;
 }
 .ui-widget-content {
-  border: 1px solid $cBorderMedium;
-  background: $cBackBright;
-  color: $cTextBold;
+	border: 1px solid $cBorderMedium;
+	background: $cBackBright;
+	color: $cTextBold;
 }
 .ui-widget-content a {
 }
 .ui-widget-header {
-  border: 1px solid $cBorderMedium;
-  background: #cccccc url(../images/ui-bg_highlight-soft_75_cccccc_1x100.png) 50% 50% repeat-x;
-  color: $cTextBold;
-  font-weight: bold;
+	border: 1px solid $cBorderMedium;
+	background: #cccccc url(../images/ui-bg_highlight-soft_75_cccccc_1x100.png) 50% 50% repeat-x;
+	color: $cTextBold;
+	font-weight: bold;
 }
 .ui-widget-header a {
-  color: $cTextBold;
-  border-bottom: none;
+	color: $cTextBold;
+	border-bottom: none;
 }
 
 /* Interaction states
 ----------------------------------*/
-.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
-  font-weight: normal;
-  color: $cTextLight;
-  @include button-normal;
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default {
+	font-weight: normal;
+	color: $cTextLight;
+	@include button-normal;
 }
-.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited {
-  color: $cTextLight;
-  text-decoration: none;
+.ui-state-default a,
+.ui-state-default a:link,
+.ui-state-default a:visited {
+	color: $cTextLight;
+	text-decoration: none;
 }
-.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {
-  font-weight: normal;
-  color: $cTextBold;
-  @include button-focus;
+.ui-state-hover,
+.ui-widget-content .ui-state-hover,
+.ui-widget-header .ui-state-hover,
+.ui-state-focus,
+.ui-widget-content .ui-state-focus,
+.ui-widget-header .ui-state-focus {
+	font-weight: normal;
+	color: $cTextBold;
+	@include button-focus;
 }
-.ui-state-hover a, .ui-state-hover a:hover {
-  color: $cTextBold;
-  text-decoration: none;
+.ui-state-hover a,
+.ui-state-hover a:hover,
+.ui-state-hover a:link,
+.ui-state-hover a:visited {
+	color: $cTextBold;
+	text-decoration: none;
 }
-.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
-  font-weight: normal;
-  color: $cTextBold;
-  @include button-active;
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active {
+	font-weight: normal;
+	color: $cTextBold;
+	@include button-active;
 }
-.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {
-  color: $cTextBold;
-  text-decoration: none;
+.ui-state-active a,
+.ui-state-active a:link,
+.ui-state-active a:visited {
+	color: $cTextBold;
+	text-decoration: none;
 }
 .ui-widget :active {
-  outline: none;
+	outline: none;
 }
 
 /* Interaction Cues
 ----------------------------------*/
-.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
-  border: 1px solid #fcefa1/*{borderColorHighlight}*/;
-  background: #fbf9ee/*{bgColorHighlight}*/ url(../images/ui-bg_glass_55_fbf9ee_1x400.png)/*{bgImgUrlHighlight}*/ 50%/*{bgHighlightXPos}*/ 50%/*{bgHighlightYPos}*/ repeat-x/*{bgHighlightRepeat}*/;
-  color: #363636/*{fcHighlight}*/;
+.ui-state-highlight,
+.ui-widget-content .ui-state-highlight,
+.ui-widget-header .ui-state-highlight {
+	border: 1px solid #fcefa1/*{borderColorHighlight}*/;
+	background: #fbf9ee/*{bgColorHighlight}*/ url(../images/ui-bg_glass_55_fbf9ee_1x400.png)/*{bgImgUrlHighlight}*/ 50%/*{bgHighlightXPos}*/ 50%/*{bgHighlightYPos}*/ repeat-x/*{bgHighlightRepeat}*/;
+	color: #363636/*{fcHighlight}*/;
 }
-.ui-state-highlight a, .ui-widget-content .ui-state-highlight a,.ui-widget-header .ui-state-highlight a {
-  color: #363636/*{fcHighlight}*/;
+.ui-state-highlight a,
+.ui-widget-content .ui-state-highlight a,
+.ui-widget-header .ui-state-highlight a {
+	color: #363636/*{fcHighlight}*/;
 }
-.ui-state-error, .ui-widget-content .ui-state-error, .ui-widget-header .ui-state-error {
-  border: 1px solid #cd0a0a/*{borderColorError}*/;
-  background: #fef1ec/*{bgColorError}*/ url(../images/ui-bg_glass_95_fef1ec_1x400.png)/*{bgImgUrlError}*/ 50%/*{bgErrorXPos}*/ 50%/*{bgErrorYPos}*/ repeat-x/*{bgErrorRepeat}*/;
-  color: #cd0a0a/*{fcError}*/;
+.ui-state-error,
+.ui-widget-content .ui-state-error,
+.ui-widget-header .ui-state-error {
+	border: 1px solid #cd0a0a/*{borderColorError}*/;
+	background: #fef1ec/*{bgColorError}*/ url(../images/ui-bg_glass_95_fef1ec_1x400.png)/*{bgImgUrlError}*/ 50%/*{bgErrorXPos}*/ 50%/*{bgErrorYPos}*/ repeat-x/*{bgErrorRepeat}*/;
+	color: #cd0a0a/*{fcError}*/;
 }
-.ui-state-error a, .ui-widget-content .ui-state-error a, .ui-widget-header .ui-state-error a {
-  color: #cd0a0a/*{fcError}*/;
+.ui-state-error a,
+.ui-widget-content .ui-state-error a,
+.ui-widget-header .ui-state-error a {
+	color: #cd0a0a/*{fcError}*/;
 }
-.ui-state-error-text, .ui-widget-content .ui-state-error-text, .ui-widget-header .ui-state-error-text {
-  color: #cd0a0a/*{fcError}*/;
+.ui-state-error-text,
+.ui-widget-content .ui-state-error-text,
+.ui-widget-header .ui-state-error-text {
+	color: #cd0a0a/*{fcError}*/;
 }
-.ui-priority-primary, .ui-widget-content .ui-priority-primary, .ui-widget-header .ui-priority-primary {
-  font-weight: bold;
+.ui-priority-primary,
+.ui-widget-content .ui-priority-primary,
+.ui-widget-header .ui-priority-primary {
+	font-weight: bold;
 }
-.ui-priority-secondary, .ui-widget-content .ui-priority-secondary,  .ui-widget-header .ui-priority-secondary {
-  opacity: .7;
-  filter:Alpha(Opacity=70);
-  font-weight: normal;
+.ui-priority-secondary,
+.ui-widget-content .ui-priority-secondary,
+.ui-widget-header .ui-priority-secondary {
+	opacity: .7;
+	filter:Alpha(Opacity=70);
+	font-weight: normal;
 }
-.ui-state-disabled, .ui-widget-content .ui-state-disabled, .ui-widget-header .ui-state-disabled {
-  opacity: .35;
-  filter:Alpha(Opacity=35);
-  background-image: none;
+.ui-state-disabled,
+.ui-widget-content .ui-state-disabled,
+.ui-widget-header .ui-state-disabled {
+	opacity: .35;
+	filter:Alpha(Opacity=35);
+	background-image: none;
+}
+.ui-state-disabled .ui-icon {
+	filter:Alpha(Opacity=35); /* For IE8 - See #6059 */
 }
 
 /* Icons
 ----------------------------------*/
 
 /* states and images */
-.ui-icon { width: 16px; height: 16px; background-image: url(../images/ui-icons_222222_256x240.png); }
-.ui-widget-content .ui-icon {background-image: url(../images/ui-icons_222222_256x240.png); }
-.ui-widget-header .ui-icon {background-image: url(../images/ui-icons_222222_256x240.png); }
-.ui-state-default .ui-icon { background-image: url(../images/ui-icons_888888_256x240.png); }
-.ui-state-hover .ui-icon, .ui-state-focus .ui-icon {background-image: url(../images/ui-icons_454545_256x240.png); }
-.ui-state-active .ui-icon {background-image: url(../images/ui-icons_454545_256x240.png); }
-.ui-state-highlight .ui-icon {background-image: url(../images/ui-icons_2e83ff_256x240.png); }
-.ui-state-error .ui-icon, .ui-state-error-text .ui-icon {background-image: url(../images/ui-icons_cd0a0a_256x240.png); }
+.ui-icon {
+	width: 16px;
+	height: 16px;
+	background-position: 16px 16px;
+}
+.ui-icon,
+.ui-widget-content .ui-icon {
+	background-image: url(../images/ui-icons_222222_256x240.png);
+}
+.ui-widget-header .ui-icon {
+	background-image: url(../images/ui-icons_222222_256x240.png);
+}
+.ui-state-default .ui-icon {
+	background-image: url(../images/ui-icons_888888_256x240.png);
+}
+.ui-state-hover .ui-icon,
+.ui-state-focus .ui-icon {
+	background-image: url(../images/ui-icons_454545_256x240.png);
+}
+.ui-state-active .ui-icon {
+	background-image: url(../images/ui-icons_454545_256x240.png);
+}
+.ui-state-highlight .ui-icon {
+	background-image: url(../images/ui-icons_2e83ff_256x240.png);
+}
+.ui-state-error .ui-icon,
+.ui-state-error-text .ui-icon {
+	background-image: url(../images/ui-icons_cd0a0a_256x240.png);
+}
 
 /* positioning */
 .ui-icon-carat-1-n { background-position: 0 0; }
@@ -305,64 +365,80 @@
 ----------------------------------*/
 
 /* Corner radius */
-.ui-corner-all, .ui-corner-top, .ui-corner-left, .ui-corner-tl { -moz-border-radius-topleft: 2px; -webkit-border-top-left-radius: 2px; -khtml-border-top-left-radius: 2px; border-top-left-radius: 2px; }
-.ui-corner-all, .ui-corner-top, .ui-corner-right, .ui-corner-tr { -moz-border-radius-topright: 2px; -webkit-border-top-right-radius: 2px; -khtml-border-top-right-radius: 2px; border-top-right-radius: 2px; }
-.ui-corner-all, .ui-corner-bottom, .ui-corner-left, .ui-corner-bl { -moz-border-radius-bottomleft: 2px; -webkit-border-bottom-left-radius: 2px; -khtml-border-bottom-left-radius: 2px; border-bottom-left-radius: 2px; }
-.ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br { -moz-border-radius-bottomright: 2px; -webkit-border-bottom-right-radius: 2px; -khtml-border-bottom-right-radius: 2px; border-bottom-right-radius: 2px; }
+.ui-corner-all,
+.ui-corner-top,
+.ui-corner-left,
+.ui-corner-tl {
+	border-top-left-radius: 2px;
+}
+.ui-corner-all,
+.ui-corner-top,
+.ui-corner-right,
+.ui-corner-tr {
+	border-top-right-radius: 2px;
+}
+.ui-corner-all,
+.ui-corner-bottom,
+.ui-corner-left,
+.ui-corner-bl {
+	border-bottom-left-radius: 2px;
+}
+.ui-corner-all,
+.ui-corner-bottom,
+.ui-corner-right,
+.ui-corner-br {
+	border-bottom-right-radius: 2px;
+}
 
 /* Overlays */
 .ui-widget-overlay {
-  background: black;
-  opacity: .5;
-  filter: Alpha(Opacity=50);
+	background: black;
+	opacity: .5;
+	filter: Alpha(Opacity=50);
 }
-
 .ui-widget-shadow {
-  margin: -8px 0 0 -8px;
-  padding: 8px;
-  background: black;
-  opacity: .5;
-  filter: Alpha(Opacity=50);
-  -moz-border-radius: 2px;
-  -khtml-border-radius: 2px;
-  -webkit-border-radius: 2px;
-  border-radius: 2px;
+	margin: -8px 0 0 -8px;
+	padding: 8px;
+	background: black;
+	opacity: .5;
+	filter: Alpha(Opacity=50);
+	border-radius: 2px;
 }
 
 
 /* Customization */
 .ui-widget-content {
-  background: $cBackground url(../images/body.png);
+	background: $cBackground url(../images/body.png);
 }
 
 .ui-dialog {
-  padding: 0;
-  border: none;
-  box-shadow: 0 5px 5px -2px rgba(0,0,0,.5);
+	padding: 0;
+	border: none;
+	box-shadow: 0 5px 5px -2px rgba(0,0,0,.5);
 
-  .ui-dialog-titlebar {
-    background: black;
-    @include background(linear-gradient(top, black, #191919));
-    color: white;
-    border: none;
-    border-bottom: 1px solid black;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    font-weight: normal;
-    box-shadow: inset 0 -4px 2px -2px rgba(255,255,255,.1);
-  }
+	.ui-dialog-titlebar {
+	  background: black;
+	  @include background(linear-gradient(top, black, #191919));
+	  color: white;
+	  border: none;
+	  border-bottom: 1px solid black;
+	  border-bottom-right-radius: 0;
+	  border-bottom-left-radius: 0;
+	  padding-top: 0;
+	  padding-bottom: 0;
+	  font-weight: normal;
+	  box-shadow: inset 0 -4px 2px -2px rgba(255,255,255,.1);
+	}
 }
 
 .ui-menu {
-  z-index: 30;
+	z-index: 30;
 }
 
 .ui-menu-item a {
-  border-bottom: none;
-  color: $cTextBold;
-  &:hover, &:focus {
-    color: $cTextLight;
-  }
+	border-bottom: none;
+	color: $cTextBold;
+	&:hover, &:focus {
+	  color: $cTextLight;
+	}
 }
