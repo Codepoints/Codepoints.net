@@ -4,8 +4,9 @@
 define([
     'jquery',
     'components/gettext',
-    'polyfills/fromcodepoint'
-    ], function($, gettext, cp) {
+    'polyfills/fromcodepoint',
+    'components/unicodetools',
+    ], function($, gettext, cp, tools) {
 
   var _ = gettext.gettext;
 
@@ -35,7 +36,7 @@ define([
       if (scratchpad.length) {
         var ul = this.prepend('<ul class="data"></ul>').find('.data');
         $.each(scratchpad, function(i, v) {
-          ul.append('<li><a class="cp" href="http://codepoints.net/U+'+v.toString(16).toUpperCase()+'">'+v.toString(16).toUpperCase()+'</a></li>');
+          ul.append('<li><a class="cp" href="http://codepoints.net/U+'+tools.formatCodepoint(v)+'">'+tools.formatCodepoint(v)+'</a></li>');
         });
       } else {
         this.prepend('<p class="quiet">'+_('You have no codepoints here yet. Add one by clicking “Add to scratchpad” on the details page.')+'</p>');
