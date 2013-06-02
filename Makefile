@@ -16,7 +16,7 @@ all: test ucotd css js cachebust
         test-sass
 
 clean:
-	-rm -fr dist src/vendor
+	-rm -fr dist src/vendor node_modules .sass-cache
 
 dist: vendor all
 	mkdir $@
