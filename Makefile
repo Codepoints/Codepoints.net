@@ -74,7 +74,7 @@ vendor: bower.json
 	node_modules/bower/bin/bower install
 	$(MAKE) -C src/vendor/d3 d3.v2.js NODE_PATH=../../../node_modules
 	node_modules/jqueryui-amd/jqueryui-amd.js src/vendor/jquery.ui
-	cd src/vendor/webfontloader && rake
+	cd src/vendor/webfontloader && rake compile
 
 test: test-php test-sass test-js
 
