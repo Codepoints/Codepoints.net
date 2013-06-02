@@ -69,7 +69,7 @@ locale/js.pot: $(JS_ALL)
 	xgettext -LPerl --from-code UTF-8 -k_ -o - $^ | \
 		sed '/^#, perl-format$$/d' > $@
 
-vendor: src/component.json
+vendor: bower.json
 	bower install
 	$(MAKE) -C src/vendor/d3 d3.v2.js JS_UGLIFY=uglifyjs2
 	cd src/vendor/jquery.ui && npm install && grunt build
