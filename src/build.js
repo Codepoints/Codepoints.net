@@ -1,7 +1,7 @@
 {
   "appDir": "js/",
   "baseUrl": ".",
-  "dir": "../static/js",
+  "dir": "../codepoints.net/static/js",
   "keepBuildDir": true,
   "skipDirOptimize": false,
   //"removeCombined": true,

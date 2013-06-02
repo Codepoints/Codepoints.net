@@ -4,8 +4,8 @@ var po2json = require('po2json'),
     fs = require('fs'),
     jsondata = '', file, target;
 
-file = 'locale/'+lang+'/LC_MESSAGES/js.po';
-target = 'static/locale/'+lang+'.js';
+file = 'codepoints.net/locale/'+lang+'/LC_MESSAGES/js.po';
+target = 'codepoints.net/static/locale/'+lang+'.js';
 
 jsondata = po2json.parseSync(file);
 jsondata = jsondata[path.basename(file, '.po')];

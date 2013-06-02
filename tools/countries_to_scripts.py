@@ -337,7 +337,7 @@ for x in oscr.values():
 xall = list(set(xall))
 xall.sort()
 
-conn = sqlite3.connect('../ucd.sqlite')
+conn = sqlite3.connect('../codepoints.net/ucd.sqlite')
 cur = conn.cursor()
 cur.execute('select sc from script_abstract')
 yall = []
@@ -390,5 +390,5 @@ with open('countrynames.csv') as ff:
 
     result = {"type":"FeatureCollection","features":result}
 
-    json.dump(result, open('../static/world.json', 'wb'), separators=(',',':'))
+    json.dump(result, open('../codepoints.net/static/world.json', 'wb'), separators=(',',':'))
 
