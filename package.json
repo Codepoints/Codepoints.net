@@ -1,0 +1,23 @@
+{
+  "name": "Codepoints.net",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Boldewyn/Codepoints.net.git"
+  },
+  "keywords": [
+    "Unicode",
+    "codepoint",
+    "character",
+    "website"
+  ],
+  "dependencies": {
+    "uglify-js": "2.3.6",
+    "uglify-js2": "2.1.11",
+    "po2json": "0.0.6",
+    "jsxgettext": "0.0.5",
+    "bower": "0.9.2",
+    "jqueryui-amd": "0.0.2",
+    "jshint": "1.1.0"
+ }
+}

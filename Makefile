@@ -35,7 +35,7 @@ $(DOCROOT)static/js/build.txt: src/build.js $(JS_ALL)
 	-rm -fr $(DOCROOT)static/js/components $(DOCROOT)static/js/polyfills
 
 $(DOCROOT)static/js/html5shiv.js: src/vendor/html5shiv/dist/html5shiv.js
-	<$< uglifyjs >$@
+	<$< node_modules/uglify-js/bin/uglifyjs >$@
 
 cachebust: $(JS_ALL) $(CSS_TARGET)
 	$(info * Update Cache Bust Constant)
@@ -65,14 +65,15 @@ locale/messages.pot: $(PHP_ALL)
 	xargs xgettext -LPHP --from-code UTF-8 -k__ -k_e -k_n -kgettext -o $@ $(PHP_ALL)
 
 locale/js.pot: $(JS_ALL)
-	#jsxgettext -k _ -o $@ $^
+	#node_modules/jsxgettext/lib/cli.js -k _ -o $@ $^
 	xgettext -LPerl --from-code UTF-8 -k_ -o - $^ | \
 		sed '/^#, perl-format$$/d' > $@
 
 vendor: bower.json
-	bower install
-	$(MAKE) -C src/vendor/d3 d3.v2.js JS_UGLIFY=uglifyjs2
-	cd src/vendor/jquery.ui && npm install && grunt build
+	npm install
+	node_modules/bower/bin/bower install
+	$(MAKE) -C src/vendor/d3 d3.v2.js NODE_PATH=../../../node_modules
+	node_modules/jqueryui-amd/jqueryui-amd.js src/vendor/jquery.ui
 	cd src/vendor/webfontloader && rake
 
 test: test-php test-sass test-js
@@ -84,7 +85,7 @@ test-php: $(PHP_ALL)
 
 test-js: $(JS_ALL)
 	$(info * Test JS syntax)
-	@jshint $^
+	@node_modules/jshint/bin/jshint $^
 
 test-sass: $(shell find src/sass -type f)
 	$(info * Test Sass syntax)
