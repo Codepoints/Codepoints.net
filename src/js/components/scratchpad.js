@@ -25,7 +25,7 @@ define([
       scratchpad = [];
     }
 
-    $('<button type="button">'+_('empty scratchpad')+'</button>').on('click',
+    var btn_empty = $('<button type="button" class="scratchpad__empty">'+_('empty')+'</button>').on('click',
         function() {
           scratchpad = [];
           scratchNode.update();
@@ -38,8 +38,10 @@ define([
         $.each(scratchpad, function(i, v) {
           ul.append('<li><a class="cp" href="/U+'+tools.formatCodepoint(v)+'">'+tools.formatCodepoint(v)+'<span class="img">'+cp(v)+'</span></a></li>');
         });
+        btn_empty.prop("disabled", false);
       } else {
         this.prepend('<p class="quiet">'+_('You have no codepoints here yet. Add one by clicking “Add to scratchpad” on the details page.')+'</p>');
+        btn_empty.prop("disabled", true);
       }
       return this;
     }.bind(scratchNode);
