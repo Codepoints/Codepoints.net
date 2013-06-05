@@ -24,7 +24,7 @@
   "modules": [
     {
       "name": "codepoints",
-      "include": ["almond", "jquery.ui"],
+      "include": ["almond"],
       "exclude": ["http://piwik.manuel-strehl.de/piwik.js"]
     },
     {
@@ -34,23 +34,23 @@
     },
     {
       "name": "dailycp",
-      "exclude": ["jquery","jquery.ui","components/gettext"]
+      "exclude": ["jquery","components/gettext"]
     },
     {
       "name": "glossary",
-      "exclude": ["jquery","jquery.ui","components/gettext"]
+      "exclude": ["jquery","components/gettext"]
     },
     {
       "name": "scripts",
-      "exclude": ["jquery","jquery.ui","components/gettext"]
+      "exclude": ["jquery","components/gettext"]
     },
     {
       "name": "searchform",
-      "exclude": ["jquery","jquery.ui","components/gettext"]
+      "exclude": ["jquery","components/gettext"]
     },
     {
       "name": "wizard",
-      "exclude": ["jquery","jquery.ui","components/gettext"]
+      "exclude": ["jquery","components/gettext"]
     }
   ]
 }
