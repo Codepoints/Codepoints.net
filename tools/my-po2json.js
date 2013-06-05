@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var po2json = require('po2json'),
     lang = process.argv[2],
     path = require('path'),

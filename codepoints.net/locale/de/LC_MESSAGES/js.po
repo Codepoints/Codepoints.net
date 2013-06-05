@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Codepoints JS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 15:49+0200\n"
-"PO-Revision-Date: 2013-05-09 15:52+0100\n"
+"POT-Creation-Date: 2013-06-02 23:57+0200\n"
+"PO-Revision-Date: 2013-06-03 00:02+0100\n"
 "Last-Translator: Manuel Strehl <translate@manuel-strehl.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -19,62 +19,78 @@ msgstr ""
 "X-Poedit-Country: DE\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
-#: src/js/scripts.js:21
+#: src/js/scripts.js:26
 msgid "(%s codepoints)"
 msgstr "(%s Codepunkte)"
 
-#: src/js/scripts.js:23
-#: src/js/scripts.js:134
+#: src/js/scripts.js:28
+#: src/js/scripts.js:139
 msgid "Source: %s"
 msgstr "Quelle: %s"
 
-#: src/js/scripts.js:64
+#: src/js/scripts.js:69
 msgid "Native, Rare and Historic Scripts"
 msgstr "Native, seltene und historische Schriften"
 
-#: src/js/scripts.js:68
+#: src/js/scripts.js:73
 msgid "Scripts used in %s"
 msgstr "Schriften verwendet in %s"
 
-#: src/js/scripts.js:78
+#: src/js/scripts.js:83
 msgid "We don’t know about %s’s scripts, sorry!"
 msgstr "Wir wissen leider nichts über die Schriften in %s."
 
-#: src/js/scripts.js:80
+#: src/js/scripts.js:85
 msgid "Nothing Found for %s"
 msgstr "Nichts gefunden für %s"
 
-#: src/js/searchform.js:11
+#: src/js/searchform.js:17
 msgid "+ add new query"
 msgstr "+ neue Suche hinzufügen"
 
-#: src/js/searchform.js:162
+#: src/js/searchform.js:168
 msgid "click to change"
 msgstr "klicken zum Ändern"
 
-#: src/js/searchform.js:163
+#: src/js/searchform.js:169
 msgid "remove"
 msgstr "entfernen"
 
-#: src/js/codepoints.js:74
+#: src/js/codepoints.js:77
 msgid "top"
 msgstr "oben"
 
-#: src/js/codepoints.js:96
+#: src/js/codepoints.js:99
 msgid "Extended Search"
 msgstr "Erweiterte Suche"
 
-#: src/js/codepoints.js:98
+#: src/js/codepoints.js:101
 msgid "Find My Codepoint"
 msgstr "Finde meinen Codepunkt"
 
-#: src/js/codepoints.js:177
+#: src/js/codepoints.js:180
 msgid "Read on:"
 msgstr "Weiterlesen:"
 
-#: src/js/codepoints.js:234
+#: src/js/codepoints.js:237
 msgid "Hide this message."
 msgstr "Diese Nachricht verstecken."
+
+#: src/js/components/scratchpad.js:28
+msgid "empty"
+msgstr "leeren"
+
+#: src/js/components/scratchpad.js:43
+msgid "You have no codepoints here yet. Add one by clicking “Add to scratchpad” on the details page."
+msgstr "Du hast noch keine Codepunkte hier. Füge eines hinzu, indem du auf \"Zu Notizzettel“ auf der Detailseite klickst."
+
+#: src/js/components/scratchpad.js:52
+msgid "Scratchpad"
+msgstr "Notizzettel"
+
+#: src/js/components/scratchpad.js:61
+msgid "Add to scratchpad"
+msgstr "Zu Notizzettel"
 
 #: src/js/components/load_font.js:27
 msgid "Font used above"

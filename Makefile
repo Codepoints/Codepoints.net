@@ -4,7 +4,7 @@ DOCROOT := codepoints.net/
 JS_ALL := $(shell find src/js -type f -name \*.js)
 JS_ROOTS := $(wildcard src/js/*.js)
 JS_TARGET := $(patsubst src/js/%,$(DOCROOT)static/js/%,$(JS_ROOTS))
-PHP_ALL := $(shell find $(DOCROOT) -type f -name \*.php)
+PHP_ALL := $(shell find $(DOCROOT) -type f -not -path \*/lib/vendor/\* -name \*.php)
 SASS_ROOTS := $(wildcard src/sass/[^_]*.scss)
 CSS_TARGET := $(patsubst src/sass/%.scss,$(DOCROOT)static/css/%.css,$(SASS_ROOTS))
 PYTHON := python
@@ -58,15 +58,16 @@ $(DOCROOT)ucd.sqlite: ucotd tools/scripts.sql tools/scripts_wp.sql \
 l10n: $(DOCROOT)locale/messages.pot $(DOCROOT)locale/js.pot
 
 l10n-finish:
-	tools/my-po2json.js de
+	node tools/my-po2json.js de
 
-locale/messages.pot: $(PHP_ALL)
-	$(info * Compile translation strings)
-	xargs xgettext -LPHP --from-code UTF-8 -k__ -k_e -k_n -kgettext -o $@ $(PHP_ALL)
+$(DOCROOT)locale/messages.pot: $(PHP_ALL)
+	$(info * Compile PHP translation strings)
+	@xgettext -LPHP --from-code UTF-8 -k__ -k_e -k_n -kgettext -o $@ $(PHP_ALL)
 
-locale/js.pot: $(JS_ALL)
+$(DOCROOT)locale/js.pot: $(JS_ALL)
+	$(info * Compile JS translation strings)
 	#node_modules/jsxgettext/lib/cli.js -k _ -o $@ $^
-	xgettext -LPerl --from-code UTF-8 -k_ -o - $^ | \
+	@xgettext -LPerl --from-code UTF-8 -k_ -o - $^ | \
 		sed '/^#, perl-format$$/d' > $@
 
 vendor: bower.json
