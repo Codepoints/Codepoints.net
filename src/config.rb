@@ -2,10 +2,10 @@
 
 # Set this to the root of your project when deployed:
 http_path = "/"
-css_dir = "static/css"
+css_dir = "/codepoints.net/static/css"
 sass_dir = "src/sass"
-images_dir = "static/images"
-javascripts_dir = "static/js"
+images_dir = "/codepoints.net/static/images"
+javascripts_dir = "/codepoints.net/static/js"
 
 # You can select your preferred output style here (can be overridden via the command line):
 # output_style = :expanded or :nested or :compact or :compressed
