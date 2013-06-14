@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-02 23:57+0200\n"
+"POT-Creation-Date: 2013-06-11 22:39+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,41 +53,41 @@ msgstr ""
 msgid "remove"
 msgstr ""
 
-#: src/js/codepoints.js:77
+#: src/js/codepoints.js:79
 msgid "top"
 msgstr ""
 
-#: src/js/codepoints.js:99
+#: src/js/codepoints.js:101
 msgid "Extended Search"
 msgstr ""
 
-#: src/js/codepoints.js:101
+#: src/js/codepoints.js:103
 msgid "Find My Codepoint"
 msgstr ""
 
-#: src/js/codepoints.js:180
+#: src/js/codepoints.js:182
 msgid "Read on:"
 msgstr ""
 
-#: src/js/codepoints.js:237
+#: src/js/codepoints.js:239
 msgid "Hide this message."
 msgstr ""
 
-#: src/js/components/scratchpad.js:28
+#: src/js/components/scratchpad.js:35
 msgid "empty"
 msgstr ""
 
-#: src/js/components/scratchpad.js:43
+#: src/js/components/scratchpad.js:50
 msgid ""
 "You have no codepoints here yet. Add one by clicking “Add to scratchpad” on "
 "the details page."
 msgstr ""
 
-#: src/js/components/scratchpad.js:52
+#: src/js/components/scratchpad.js:59
 msgid "Scratchpad"
 msgstr ""
 
-#: src/js/components/scratchpad.js:61
+#: src/js/components/scratchpad.js:68
 msgid "Add to scratchpad"
 msgstr ""
 

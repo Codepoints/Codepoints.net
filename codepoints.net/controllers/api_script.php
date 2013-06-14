@@ -2,7 +2,7 @@
 
 $router->registerAction(function ($url, $o) {
     // Script description: script/Xxxx
-    if (preg_match('/^api\/script\/(?:[A-Z][a-z]{3})(?:%20[A-Z][a-z]{3})*$/', $url, $m)) {
+    if (preg_match('#^api/script/(?:[A-Z][a-z]{3})(?:%20[A-Z][a-z]{3})*$#', $url, $m)) {
         return True;
     }
     return False;
