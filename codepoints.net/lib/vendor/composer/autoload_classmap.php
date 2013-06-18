@@ -6,13 +6,15 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'APIException' => $baseDir . '/apiexception.class.php',
+    'API_v1' => $baseDir . '/api_v1.class.php',
     'Cache' => $baseDir . '/cache.class.php',
     'CachedFileReader' => $vendorDir . '/php-gettext/php-gettext/streams.php',
     'ChildContext' => $vendorDir . '/mustache/mustache/test/fixtures/examples/child_context/ChildContext.php',
     'Codepoint' => $baseDir . '/codepoint.class.php',
     'Comments' => $vendorDir . '/mustache/mustache/test/fixtures/examples/comments/Comments.php',
     'Complex' => $vendorDir . '/mustache/mustache/test/fixtures/examples/complex/complex.php',
-    'ComposerAutoloaderInit2e68b6a261bf10e6db3588bbc7e33d12' => $vendorDir . '/composer/autoload_real.php',
+    'ComposerAutoloaderInit4ef6abb301255e8241dbc3cf865f4914' => $vendorDir . '/composer/autoload_real.php',
     'Composer\\Autoload\\ClassLoader' => $vendorDir . '/composer/ClassLoader.php',
     'DB' => $baseDir . '/db.class.php',
     'DailyCP' => $baseDir . '/dailycp.class.php',
@@ -132,4 +134,5 @@ return array(
     'Whitespace' => $vendorDir . '/mustache/mustache/test/fixtures/examples/whitespace/Whitespace.php',
     'domain' => $vendorDir . '/php-gettext/php-gettext/gettext.inc',
     'gettext_reader' => $vendorDir . '/php-gettext/php-gettext/gettext.php',
+    'iAPIAccess' => $baseDir . '/iapiaccess.interface.php',
 );

@@ -72,4 +72,21 @@ function unicode_to_utf8($str) {
 } // unicode_to_utf8
 
 
+/**
+ * test, if a string is a possible codepoint
+ *
+ * Note: We don't test, if this is *really* a codepoint, i.e., connect to
+ * the database
+ */
+function maybeCodepoint($hexstring) {
+    if (strlen($hexstring) > 6) {
+        return false;
+    }
+    if (! ctype_xdigit($hexstring)) {
+        return false;
+    }
+    return true;
+}
+
+
 #EOF
