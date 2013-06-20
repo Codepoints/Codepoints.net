@@ -101,7 +101,7 @@ if (! CP_DEBUG && strlen($_SERVER['REQUEST_URI']) < 255 && ! count($_POST)) {
 /**
  * initialize DB connection and global router
  */
-$db = new DB('sqlite:'.dirname(__FILE__).'/ucd.sqlite');
+$db = new DB('sqlite:'.realpath(__DIR__.'/../ucd.sqlite'));
 $router = Router::getRouter();
 
 

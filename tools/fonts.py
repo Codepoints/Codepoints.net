@@ -17,7 +17,7 @@ create_statement = """CREATE TABLE IF NOT EXISTS codepoint_fonts (
 );"""
 
 def main(args):
-    conn = sqlite3.connect('../codepoints.net/ucd.sqlite')
+    conn = sqlite3.connect('../ucd.sqlite')
     cur = conn.cursor()
 
     debug = False

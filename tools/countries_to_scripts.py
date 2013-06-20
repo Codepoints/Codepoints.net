@@ -337,7 +337,7 @@ for x in oscr.values():
 xall = list(set(xall))
 xall.sort()
 
-conn = sqlite3.connect('../codepoints.net/ucd.sqlite')
+conn = sqlite3.connect('../ucd.sqlite')
 cur = conn.cursor()
 cur.execute('select sc from script_abstract')
 yall = []

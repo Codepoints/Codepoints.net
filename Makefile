@@ -44,14 +44,14 @@ cachebust: $(JS_ALL) $(CSS_TARGET)
 	$(info * Update Cache Bust Constant)
 	@sed -i '/^define(.CACHE_BUST., .\+.);$$/s/.*/define('"'CACHE_BUST', '"$$(cat $^ | sha1sum | awk '{ print $$1 }')"');/" $(DOCROOT)index.php
 
-db: $(DOCROOT)ucd.sqlite
+db: ucd.sqlite
 
 ucotd: tools/ucotd.*
 	$(info * Add Codepoint of the Day)
 	@cd tools; \
 	$(PYTHON) ucotd.py
 
-$(DOCROOT)ucd.sqlite: ucotd tools/scripts.sql tools/scripts_wp.sql \
+ucd.sqlite: ucotd tools/scripts.sql tools/scripts_wp.sql \
             tools/fonts/*_insert.sql tools/latex.sql
 	sqlite3 $@ <tools/scripts.sql
 	sqlite3 $@ <tools/scripts_wp.sql

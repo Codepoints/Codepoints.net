@@ -10,7 +10,7 @@ with open('ucotd.json') as f:
 tpl = ('INSERT OR REPLACE INTO dailycp ("date", cp, comment) '
        'VALUES (?, ?, ?);')
 
-conn = sqlite3.connect('../codepoints.net/ucd.sqlite')
+conn = sqlite3.connect('../ucd.sqlite')
 cur = conn.cursor()
 
 with open('ucotd.sql') as f:

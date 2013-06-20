@@ -34,7 +34,7 @@ th, td {
  * Get the CotD of today
  */
 function get_ucotd() {
-    $db = new PDO('sqlite:'.dirname(__FILE__).'/ucd.sqlite');
+    $db = new PDO('sqlite:'.realpath(__DIR__.'/../ucd.sqlite'));
     $stm = $db->prepare('SELECT cp, na, comment, date
                         FROM dailycp
                         LEFT JOIN codepoints USING ( cp )
