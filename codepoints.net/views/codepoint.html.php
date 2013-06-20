@@ -44,7 +44,7 @@ $s = function($cat) use ($router, $info, $props) {
     echo '</a>';
 };
 ?>
-<div class="payload codepoint" itemscope="itemscope" itemtype="http://schema.org/StructuredValue/Unicode/CodePoint">
+<div class="payload codepoint" data-cp="<?php _e($codepoint->getId())?>" itemscope="itemscope" itemtype="http://schema.org/StructuredValue/Unicode/CodePoint">
   <figure>
     <span class="fig" itemprop="image"><?php e($codepoint->getSafeChar())?></span>
     <?php if ($codepoint->getId() > 0xFFFF):

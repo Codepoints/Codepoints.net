@@ -28,14 +28,17 @@ css: $(CSS_TARGET)
 $(CSS_TARGET): $(DOCROOT)static/css/%.css : src/sass/%.scss
 	compass compile --force $<
 
-js: $(DOCROOT)static/js/build.txt $(DOCROOT)static/js/html5shiv.js
+js: $(DOCROOT)static/js/build.txt $(DOCROOT)static/js/html5shiv.js \
+    $(DOCROOT)static/ZeroCLipboard.swf
 
 $(DOCROOT)static/js/build.txt: src/build.js $(JS_ALL)
 	cd src && node vendor/r.js/dist/r.js -o build.js
-	-rm -fr $(DOCROOT)static/js/components $(DOCROOT)static/js/polyfills
 
 $(DOCROOT)static/js/html5shiv.js: src/vendor/html5shiv/dist/html5shiv.js
 	<$< node_modules/uglify-js/bin/uglifyjs >$@
+
+$(DOCROOT)static/ZeroCLipboard.swf: src/vendor/zeroclipboard/ZeroClipboard.swf
+	cp "$<" "$@"
 
 cachebust: $(JS_ALL) $(CSS_TARGET)
 	$(info * Update Cache Bust Constant)

@@ -2,7 +2,7 @@
   "appDir": "js/",
   "baseUrl": ".",
   "dir": "../codepoints.net/static/js",
-  "keepBuildDir": true,
+  "keepBuildDir": false,
   "skipDirOptimize": false,
   //"removeCombined": true,
   "paths": {
@@ -11,6 +11,7 @@
     "jqueryui": "../vendor/jquery.ui/jqueryui",
     "d3": "../vendor/d3/d3.v2",
     "webfont": "../vendor/webfontloader/target/webfont",
+    "zeroclipboard": "../vendor/zeroclipboard/ZeroClipboard",
     "piwik": "http://piwik.manuel-strehl.de/piwik.js"
   },
   "shim": {
@@ -19,6 +20,9 @@
     },
     "d3": {
       "exports": "d3"
+    },
+    "zeroclipboard": {
+      "exports": "ZeroClipboard"
     }
   },
   "modules": [

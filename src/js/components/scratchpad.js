@@ -5,10 +5,37 @@ define([
     'jquery',
     'components/gettext',
     'polyfills/fromcodepoint',
-    'components/unicodetools'
-    ], function($, gettext, cp, tools) {
+    'components/unicodetools',
+    'zeroclipboard'
+    ], function($, gettext, cp, tools, zeroclipboard) {
 
-  var _ = gettext.gettext;
+  var _ = gettext.gettext,
+      scratchpad = [],
+      scratchNode = $('<div class="scratchpad__container"></div>'),
+      scratchCtrl = $('<div class="scratchpad__controls"></div>').appendTo(scratchNode),
+      sp_max_length = 128;
+
+  /**
+   *
+   */
+  function update_scratchpad() {
+    if (scratchpad.length >= sp_max_length) {
+      scratchpad = scratchpad.slice(sp_max_length - scratchpad.length + 1);
+    }
+    scratchpad.push(
+      parseInt($('.payload').data('cp'), 10)
+    );
+    scratchNode.update();
+  }
+
+  /**
+    *
+    */
+  function empty_scratchpad() {
+    scratchpad = [];
+    scratchNode.update();
+  }
+
 
   return {
 
@@ -23,20 +50,15 @@ define([
       */
       if ('localStorage' in window) {
 
-        var scratchpad = JSON.parse(localStorage.getItem('scratchpad')),
-            scratchNode = $('<div class="scratchpad__container"></div>'),
-            scratchCtrl = $('<div class="scratchpad__controls"></div>').appendTo(scratchNode),
-            sp_max_length = 128;
+        scratchpad = JSON.parse(localStorage.getItem('scratchpad'));
 
         if (! $.isArray(scratchpad)) {
           scratchpad = [];
         }
 
-        var btn_empty = $('<button type="button" class="scratchpad__empty">'+_('empty')+'</button>').on('click',
-            function() {
-              scratchpad = [];
-              scratchNode.update();
-            }).appendTo(scratchCtrl);
+        var btn_empty = $('<button type="button" class="scratchpad__empty">'+_('empty')+'</button>')
+                         .on('click', empty_scratchpad)
+                         .appendTo(scratchCtrl);
 
         scratchNode.update = function() {
           this.find('.data, .quiet').remove();
@@ -66,15 +88,7 @@ define([
         var toolcontainer = $('.codepoint--tools');
         if (toolcontainer.length) {
           var btn = $('<p><button type="button" class="button button--hi"><i class="icon-edit"></i> '+_('Add to scratchpad')+'</button></p>')
-            .on('click', function() {
-              if (scratchpad.length >= sp_max_length) {
-                scratchpad = scratchpad.slice(sp_max_length - scratchpad.length + 1);
-              }
-              scratchpad.push(
-                parseInt($('.representations .repr-number').text(), 10)
-              );
-              scratchNode.update();
-            });
+            .on('click', update_scratchpad);
           toolcontainer.append(btn);
         }
 
