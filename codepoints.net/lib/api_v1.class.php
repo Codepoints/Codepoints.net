@@ -17,6 +17,11 @@ class API_v1 implements iAPIAccess {
     protected $_request;
 
     /**
+     * the response from calling a certain action
+     */
+    protected $_response;
+
+    /**
      * the database connection
      */
     protected $_db;
@@ -44,7 +49,9 @@ class API_v1 implements iAPIAccess {
      * finish the API response, print headers and content
      */
     public function finish() {
-        $this->_finish($this->_response);
+        if (! $this->_error) {
+            $this->_finish($this->_response);
+        }
     }
 
     /**
