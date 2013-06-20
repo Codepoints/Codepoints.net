@@ -3,7 +3,7 @@
 require_once __DIR__.'/../tools.php';
 
 $maxlength = 1024;
-$subactions = array('lower', 'upper', /*'nfc', 'nfd', 'nfkc', 'nfkd'*/);
+$subactions = array('lower', 'upper', 'nfc', 'nfd', 'nfkc', 'nfkd');
 
 if (! strpos($data, '/')) {
     $api->throwError(API_BAD_REQUEST, _('No transform action given'));
@@ -21,41 +21,58 @@ if (! in_array($action, $subactions)) {
 
 $codepoints = utf8_to_unicode($input);
 
+$mapped_cps = array();
 switch ($action) {
     case 'lower':
-        $relation = 'lc';
+        $mapped_cps = unicode_to_utf8(map_by_db($api->_db, $codepoints, 'lc'));
         break;
     case 'upper':
-        $relation = 'uc';
+        $mapped_cps = unicode_to_utf8(map_by_db($api->_db, $codepoints, 'uc'));
+        break;
+    case 'nfc':
+        $mapped_cps = normalizer_normalize($input, Normalizer::FORM_C);
+        break;
+    case 'nfd':
+        $mapped_cps = normalizer_normalize($input, Normalizer::FORM_D);
+        break;
+    case 'nfkc':
+        $mapped_cps = normalizer_normalize($input, Normalizer::FORM_KC);
+        break;
+    case 'nfkd':
+        $mapped_cps = normalizer_normalize($input, Normalizer::FORM_KD);
         break;
 }
 
-$stm = $api->_db->prepare("SELECT DISTINCT cp, other, \"order\"
-                             FROM codepoint_relation
-                            WHERE relation = ?
-                            AND cp != other
-                            AND cp IN (".join(",", array_fill(0, count($codepoints), '?')).")");
-$stm_input = $codepoints;
-array_unshift($stm_input, $relation);
-$stm->execute($stm_input);
-$result = $stm->fetchAll(PDO::FETCH_ASSOC);
-$mapping = array();
-foreach ($result as $set) {
-    if (! array_key_exists($set['cp'], $mapping)) {
-        $mapping[$set['cp']] = [];
-    }
-    $mapping[$set['cp']][(int)$set['order']] = $set['other'];
-}
+return $mapped_cps;
 
-$mapped_cps = array();
-foreach ($codepoints as $cp) {
-    if (array_key_exists($cp, $mapping)) {
-        $mapped_cps = array_merge($mapped_cps, $mapping[$cp]);
-    } else {
-        $mapped_cps[] = $cp;
+function map_by_db($db, $codepoints, $relation) {
+    $stm = $db->prepare("SELECT DISTINCT cp, other, \"order\"
+                                FROM codepoint_relation
+                                WHERE relation = ?
+                                AND cp != other
+                                AND cp IN (".join(",", array_fill(0, count($codepoints), '?')).")");
+    $stm_input = $codepoints;
+    array_unshift($stm_input, $relation);
+    $stm->execute($stm_input);
+    $result = $stm->fetchAll(PDO::FETCH_ASSOC);
+    $mapping = array();
+    foreach ($result as $set) {
+        if (! array_key_exists($set['cp'], $mapping)) {
+            $mapping[$set['cp']] = [];
+        }
+        $mapping[$set['cp']][(int)$set['order']] = $set['other'];
     }
-}
 
-return unicode_to_utf8($mapped_cps);
+    $mapped_cps = array();
+    foreach ($codepoints as $cp) {
+        if (array_key_exists($cp, $mapping)) {
+            $mapped_cps = array_merge($mapped_cps, $mapping[$cp]);
+        } else {
+            $mapped_cps[] = $cp;
+        }
+    }
+
+    return $mapped_cps;
+}
 
 #EOF
