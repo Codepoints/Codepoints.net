@@ -145,7 +145,8 @@ class API_v1 implements iAPIAccess {
             if ($this->_mime === 'image/png' ||
                 $this->_mime === 'text/plain') {
                 $content = $content['title'];
-            } elseif ($this->_mime === 'application/json') {
+            } elseif ($this->_mime === 'application/json' &&
+                strpos($_SERVER['HTTP_ACCEPT'], 'application/api-problem+json') !== false) {
                 $this->_mime = 'application/api-problem+json';
             }
             $this->_finish($content, array("status" => $status));
