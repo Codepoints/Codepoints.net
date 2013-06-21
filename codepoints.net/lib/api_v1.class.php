@@ -76,6 +76,9 @@ class API_v1 implements iAPIAccess {
                               _("This API method does not exist."));
         }
 
+        /* check some modification times and return a 304, if nothing
+         * changed
+         */
         $this->_mtime = max(filemtime(__DIR__."/api/{$this->_action}.php"),
                             filemtime(DB_PATH));
         if (array_key_exists("HTTP_IF_MODIFIED_SINCE", $_SERVER)) {
