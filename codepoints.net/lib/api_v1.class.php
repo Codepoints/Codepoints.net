@@ -37,6 +37,11 @@ class API_v1 implements iAPIAccess {
     protected $_mime = 'application/json';
 
     /**
+     * Last-Modified based on database mtime and api action file mtime
+     */
+    protected $_mtime;
+
+    /**
      * create a new API response
      */
     public function __construct($action, $request, $db) {
@@ -70,6 +75,16 @@ class API_v1 implements iAPIAccess {
             $this->throwError(API_PREREQUISITE_MISSING,
                               _("This API method does not exist."));
         }
+
+        $this->_mtime = max(filemtime(__DIR__."/api/{$this->_action}.php"),
+                            filemtime(DB_PATH));
+        if (array_key_exists("HTTP_IF_MODIFIED_SINCE", $_SERVER)) {
+            if (strtotime($_SERVER['HTTP_IF_MODIFIED_SINCE']) >= $this->_mtime) {
+                $this->_sendHeaders(array('status' => '304'));
+                exit();
+            }
+        }
+
         /* prepare environment */
         $api = $this;
         $this->_response = require __DIR__."/api/{$this->_action}.php";
@@ -149,9 +164,15 @@ class API_v1 implements iAPIAccess {
     protected function _sendHeaders(Array $additional = array()) {
         header('Content-Type: '.$this->_mime.'; charset=UTF-8');
         header('Access-Control-Allow-Origin: *');
+        header('Unicode-Version: '.UNICODE_VERSION);
+
+        if ($this->_mtime) {
+            header('Last-Modified: '.date("r", $this->_mtime));
+        }
+
         foreach ($additional as $key => $value) {
             if ($key === 'status') {
-                header('', true, $value);
+                header("Status: $value", true, $value);
             } else {
                 header("$key: $value");
             }
