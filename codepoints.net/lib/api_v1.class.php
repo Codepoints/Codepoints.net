@@ -146,6 +146,7 @@ class API_v1 implements iAPIAccess {
                 $this->_mime === 'text/plain') {
                 $content = $content['title'];
             } elseif ($this->_mime === 'application/json' &&
+                array_key_exists('HTTP_ACCEPT', $_SERVER) &&
                 strpos($_SERVER['HTTP_ACCEPT'], 'application/api-problem+json') !== false) {
                 $this->_mime = 'application/api-problem+json';
             }
@@ -185,6 +186,8 @@ class API_v1 implements iAPIAccess {
         header('Content-Type: '.$this->_mime.'; charset=UTF-8');
         header('Access-Control-Allow-Origin: *');
         header('Unicode-Version: '.UNICODE_VERSION);
+
+        header_remove('X-Powered-By');
 
         if ($this->_mtime) {
             header('Last-Modified: '.date("r", $this->_mtime));
