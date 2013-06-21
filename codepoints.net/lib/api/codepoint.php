@@ -16,8 +16,8 @@ try {
 
 $properties = $cp->getProperties();
 
-if (isset($_GET['p'])) {
-    $mask = array_filter(explode(',', $_GET['p']));
+if (isset($_GET['property'])) {
+    $mask = array_filter(explode(',', $_GET['property']));
     if (count($mask)) {
         $properties = array_intersect_key($properties, array_flip($mask));
     }

@@ -89,4 +89,25 @@ function maybeCodepoint($hexstring) {
 }
 
 
+/**
+ * Get the scheme+host part of the request
+ */
+function get_origin() {
+    $scheme = 'http';
+    if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] &&
+        $_SERVER['HTTPS'] !== 'off') {
+        $scheme .= 's';
+    }
+
+    if (isset($_SERVER['HTTP_HOST'])) {
+        $host = $_SERVER['HTTP_HOST'];
+    } else {
+        $host = $_SERVER['SERVER_NAME'];
+    }
+    $host = preg_replace('/[^a-zA-Z0-9.\-:\[\]]/', '', $host);
+
+    return "$scheme://$host/";
+}
+
+
 #EOF

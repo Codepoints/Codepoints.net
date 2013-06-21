@@ -6,7 +6,12 @@ $maxlength = 1024;
 $subactions = array('lower', 'upper', 'nfc', 'nfd', 'nfkc', 'nfkd');
 
 if (! strpos($data, '/')) {
-    $api->throwError(API_BAD_REQUEST, _('No transform action given'));
+    $possibilities = array();
+    $host = get_origin().'api/v1/transform';
+    foreach($subactions as $part) {
+        $possibilities["transform_{$part}_url"] = "$host/$part/{data}";
+    }
+    return $possibilities;
 }
 
 list($action, $input) = explode('/', $data, 2);

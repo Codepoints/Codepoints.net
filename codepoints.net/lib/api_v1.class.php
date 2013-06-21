@@ -1,6 +1,9 @@
 <?php
 
 
+require_once __DIR__.'/tools.php';
+
+
 /**
  * the handler for the Great Codepoints API V1
  */
@@ -71,6 +74,9 @@ class API_v1 implements iAPIAccess {
      * run the API action and collect response and errors
      */
     public function run($data = null) {
+        if ($this->_action === '') {
+            $this->_action = 'usage';
+        }
         if (! file_exists(__DIR__."/api/{$this->_action}.php")) {
             $this->throwError(API_PREREQUISITE_MISSING,
                               _("This API method does not exist."));
@@ -98,27 +104,32 @@ class API_v1 implements iAPIAccess {
      */
     public function handleError() {
         if ($this->_error) {
+            $host = get_origin().'api/v1';
             $status = 500;
             $content = array(
-                "error" => true,
-                "message" => _("An unknown error occured.")
+                "problemType" => "$host/problem/",
+                "title" => _("An unknown error occured.")
             );
             switch($this->_error[0]) {
                 case API_PREREQUISITE_MISSING:
                     $status = 404;
-                    $content['message'] = $this->_error[1];
+                    $content['title'] = $this->_error[1];
+                    $content['problemType'] .= 'prerequisite_missing';
                     break;
                 case API_REQUEST_TOO_LONG:
                     $status = 414;
-                    $content['message'] = $this->_error[1];
+                    $content['title'] = $this->_error[1];
+                    $content['problemType'] .= 'request_too_long';
                     break;
                 case API_NOT_FOUND:
                     $status = 404;
-                    $content['message'] = $this->_error[1];
+                    $content['title'] = $this->_error[1];
+                    $content['problemType'] .= 'not_found';
                     break;
                 case API_BAD_REQUEST:
                     $status = 400;
-                    $content['message'] = $this->_error[1];
+                    $content['title'] = $this->_error[1];
+                    $content['problemType'] .= 'bad_request';
                     break;
                 default:
                     if ($this->_error[0] >= 400 && $this->_error[0] < 600) {
@@ -126,13 +137,16 @@ class API_v1 implements iAPIAccess {
                         $status = $this->_error[0];
                     }
                     if (count($this->_error) > 1) {
-                        $content['message'] = $this->_error[1];
+                        $content['title'] = $this->_error[1];
                     }
                     break;
             }
 
-            if ($this->_mime === 'image/png') {
-                $content = $content['message'];
+            if ($this->_mime === 'image/png' ||
+                $this->_mime === 'text/plain') {
+                $content = $content['title'];
+            } elseif ($this->_mime === 'application/json') {
+                $this->_mime = 'application/api-problem+json';
             }
             $this->_finish($content, array("status" => $status));
         }
@@ -146,12 +160,14 @@ class API_v1 implements iAPIAccess {
             case 'text/plain':
                 if (is_array($thing)) {
                     return join(",", $thing);
-                }
-                if (is_object($thing)) {
+                } elseif (is_object($thing)) {
                     return $thing->__toString();
+                } else {
+                    return $thing;
                 }
-                return $thing;
             case 'application/json':
+            case 'application/api-problem+json':
+            case 'application/javascript':
                 return json_encode($thing, true);
             default:
                 // hope, that $thing is already in the right format
@@ -189,7 +205,8 @@ class API_v1 implements iAPIAccess {
     protected function _detectJSONP(&$data) {
         if (isset($_GET['callback']) &&
             preg_match('/^[_\$a-zA-Z][_\$a-zA-Z0-9]*$/', $_GET['callback']) &&
-            $this->_mime === 'application/json') {
+            in_array($this->_mime, array('application/json',
+                'application/api-problem+json', 'application/javascript'))) {
             $this->_mime = 'application/javascript';
             $data = $_GET['callback'].'('.$data.');';
         }
