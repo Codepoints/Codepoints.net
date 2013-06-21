@@ -1,5 +1,6 @@
 require(['jquery',
     'components/gettext',
+    'components/jquery.tooltip',
     'jqueryui/button',
     'jqueryui/dialog',
     'jqueryui/menu'

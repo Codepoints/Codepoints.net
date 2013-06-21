@@ -48,7 +48,7 @@ define('DB_PATH', realpath(__DIR__.'/../ucd.sqlite'));
 /**
  * cache busting string (the Makefile will manipulate this line)
  */
-define('CACHE_BUST', 'ce98d49f55c44f2b5e28a13953665dace909f460');
+define('CACHE_BUST', '2f734fdc40696d348d7d2ff1cf30733f861902a1');
 
 
 /* enable gzip compression of HTML */

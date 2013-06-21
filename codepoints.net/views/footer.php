@@ -37,6 +37,7 @@ require.config({
     "jquery": "/src/vendor/jquery/jquery",
     "jqueryui": "/src/vendor/jquery.ui/jqueryui",
     "d3": "/src/vendor/d3/d3.v2",
+    "zeroclipboard": "/src/vendor/zeroclipboard/ZeroClipboard",
     "webfont": "/src/vendor/webfontloader/target/webfont",
     "piwik": "http://piwik.manuel-strehl.de/piwik.js"
   },
