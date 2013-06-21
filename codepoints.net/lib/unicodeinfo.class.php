@@ -798,6 +798,22 @@ class UnicodeInfo {
             'supplementary_private_use_area-b' => 'Supplementary Private Use Area-B',
         ),
 
+        'age' => array(
+            "1.1" => "1.1",
+            "2.0" => "2.0",
+            "2.1" => "2.1",
+            "3.0" => "3.0",
+            "3.1" => "3.1",
+            "3.2" => "3.2",
+            "4.0" => "4.0",
+            "4.1" => "4.1",
+            "5.0" => "5.0",
+            "5.1" => "5.1",
+            "5.2" => "5.2",
+            "6.0" => "6.0",
+            "6.1" => "6.1",
+        ),
+
     );
 
     protected static $inst;

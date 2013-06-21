@@ -16,7 +16,7 @@
     <small class="nt"><?php _e('The decimal position of the codepoint')?></small>
   </p>
   <?php
-  foreach (array('blk', 'gc', 'bc', 'ccc', 'dt', 'nt', 'lb', 'ea',
+  foreach (array('age', 'blk', 'gc', 'bc', 'ccc', 'dt', 'nt', 'lb', 'ea',
                  'sc', 'SB', 'WB') as $cat) {
     include 'fieldset.php';
   }
