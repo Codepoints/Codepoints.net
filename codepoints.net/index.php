@@ -40,6 +40,12 @@ define('CP_DEBUG', 0);
 
 
 /**
+ * set database path
+ */
+define('DB_PATH', realpath(__DIR__.'/../ucd.sqlite'));
+
+
+/**
  * cache busting string (the Makefile will manipulate this line)
  */
 define('CACHE_BUST', 'ce98d49f55c44f2b5e28a13953665dace909f460');
@@ -101,7 +107,7 @@ if (! CP_DEBUG && strlen($_SERVER['REQUEST_URI']) < 255 && ! count($_POST)) {
 /**
  * initialize DB connection and global router
  */
-$db = new DB('sqlite:'.realpath(__DIR__.'/../ucd.sqlite'));
+$db = new DB('sqlite:'.DB_PATH);
 $router = Router::getRouter();
 
 
