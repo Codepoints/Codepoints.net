@@ -32,6 +32,7 @@ if (isset($_GET['property'])) {
 }
 
 header('Link: <http://codepoints.net/U+'.$cp->getId('hex').'>; rel=alternate', false);
+header('Link: <http://codepoints.net/api/v1/block'.Router::getRouter()->getUrl($cp->getBlock()).'>; rel=up', false);
 $next = $cp->getNext();
 if ($next) {
     header('Link: <http://codepoints.net/api/v1/codepoint/'.$next->getId('hex').'>; rel=next', false);
