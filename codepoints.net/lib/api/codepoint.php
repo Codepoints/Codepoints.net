@@ -2,8 +2,16 @@
 
 require_once __DIR__.'/../tools.php';
 
+if (! $data) {
+    $host = get_origin().'api/v1';
+    return array(
+        "codepoint_url" => "$host/codepoint/{codepoint}{?property*}",
+        "codepoint" => "/(0[0-9A-F]|10)?[0-9A-F]{4}/i",
+        "property" => UnicodeInfo::get()->getAllCategories(),
+    );
+}
 if (maybeCodepoint($data) === false) {
-    $api->throwError(API_BAD_REQUEST, _('No codepoint given'));
+    $api->throwError(API_BAD_REQUEST, _('No valid codepoint'));
 }
 
 $cp = Codepoint::getCP(hexdec($data), $api->_db);
