@@ -1,4 +1,6 @@
-define(['polyfills/fromcodepoint'], function() {
+define(['polyfills/fromcodepoint',
+    'polyfills/codepointat'],
+    function(fromCodePoint, codePointAt) {
 
   /**
    * calculate the surrogate pair for codepoints
@@ -27,9 +29,50 @@ define(['polyfills/fromcodepoint'], function() {
     return str;
   }
 
+  /**
+   * convert string to array of codepoints
+   */
+  function utf8_to_unicode(utf8) {
+    var unicode = [], len= utf8.length, i, chunk;
+    for (i = 0; i < len; i++) {
+      chunk = utf8.substr(i, 1).charCodeAt(0);
+      if (0xDC00 <= chunk && chunk <= 0xDFFF) {
+        // surrogate pair's second half: skip, because it should've
+        // been handled by the previous codePointAt call
+        continue;
+      }
+      unicode.push(codePointAt.call(utf8, i));
+    }
+    return unicode;
+  }
+
+
+  /**
+  * convert array of (int) codepoints to UTF-8 string
+  */
+  function unicode_to_utf8(unicode) {
+    return fromCodePoint.apply(null, unicode);
+  }
+
+
+  /**
+  * test, if a string is a possible codepoint
+  *
+  * Note: We don't test, if this is *really* a codepoint, i.e., connect to
+  * the database
+  */
+  function maybeCodepoint(hexstring) {
+      if (hexstring.length > 6 ||
+          hexstring.search(/[^a-fA-F0-9]/) > -1) {
+          return false;
+      }
+      return true;
+  }
+
   return {
     codepointToUTF16: codepointToUTF16,
-    formatCodepoint: formatCodepoint
+    formatCodepoint: formatCodepoint,
+    maybeCodepoint: maybeCodepoint
   };
 
 });
