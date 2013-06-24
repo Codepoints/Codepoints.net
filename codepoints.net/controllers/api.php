@@ -1,5 +1,9 @@
 <?php
 
+$router->registerAction('api/', function() {
+    Router::getRouter()->redirect('/api/v1/', 302);
+});
+
 $router->registerAction(function ($url, $o) {
     if ($url === 'api/v1/' || $url === 'api/v1') {
         return '';
