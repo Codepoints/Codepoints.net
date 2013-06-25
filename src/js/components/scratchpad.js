@@ -7,13 +7,18 @@ define([
     'polyfills/fromcodepoint',
     'components/unicodetools',
     'zeroclipboard'
-    ], function($, gettext, cp, tools, zeroclipboard) {
+    ], function($, gettext, cp, tools, ZeroClipboard) {
+
+  ZeroClipboard.setDefaults({
+    moviePath: '/static/ZeroClipboard.swf'
+  });
 
   var _ = gettext.gettext,
       scratchpad = [],
       scratchNode = $('<div class="scratchpad__container"></div>'),
       scratchCtrl = $('<div class="scratchpad__controls"></div>').appendTo(scratchNode),
-      sp_max_length = 128;
+      sp_max_length = 128,
+      clip = new ZeroClipboard();
 
   /**
    *
@@ -29,11 +34,33 @@ define([
   }
 
   /**
-    *
-    */
+   *
+   */
   function empty_scratchpad() {
     scratchpad = [];
     scratchNode.update();
+  }
+
+
+  /**
+   *
+   */
+  function copy_scratchpad() {
+    clip.setText("Copy me!");
+  }
+    clip.on( 'complete', function ( client, args ) {
+        alert("Copied text to clipboard: " + args.text );
+    });
+
+
+  /**
+   *
+   */
+  function show_scratchpad() {
+    var list = scratchpad.map(function(cp) {
+      return 'U+'+tools.formatCodepoint(cp);
+    });
+    window.location.href = '/'+list.join(',');
   }
 
 
@@ -58,6 +85,14 @@ define([
 
         var btn_empty = $('<button type="button" class="scratchpad__empty">'+_('empty')+'</button>')
                          .on('click', empty_scratchpad)
+                         .appendTo(scratchCtrl);
+
+        var btn_copy = $('<button type="button" class="scratchpad__copy">'+_('copy')+'</button>')
+                         .on('click', copy_scratchpad)
+                         .appendTo(scratchCtrl);
+
+        var btn_show = $('<button type="button" class="scratchpad__show">'+_('show')+'</button>')
+                         .on('click', show_scratchpad)
                          .appendTo(scratchCtrl);
 
         scratchNode.update = function() {
