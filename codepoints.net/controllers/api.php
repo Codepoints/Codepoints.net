@@ -1,6 +1,6 @@
 <?php
 
-$router->registerAction('api/', function() {
+$router->registerAction(array('api/', 'api'), function() {
     Router::getRouter()->redirect('/api/v1/', 302);
 });
 

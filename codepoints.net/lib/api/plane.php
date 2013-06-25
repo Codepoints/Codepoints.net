@@ -5,6 +5,7 @@ require_once __DIR__.'/../tools.php';
 if (! $data) {
     $host = get_origin().'api/v1';
     return array(
+        "description" => "show information about a Unicode plane",
         "plane_url" => "$host/plane/{plane}",
         "plane" => array_map(function ($plane) {
             return str_replace(' ', '_', strtolower($plane->getName()));

@@ -7,6 +7,7 @@ $properties = UnicodeInfo::get()->getAllCategories();
 if (! $data) {
     $host = get_origin().'api/v1';
     return array(
+        "description" => "Filter a string of characters by Unicode property. You can negate properties by appending a “!” to it: filter/string?age!=5.5 finds all characters in “string” that were *not* added in Unicode 5.5.",
         "filter_url" => "$host/filter/{data}{?property*}",
         "property" => $properties,
     );
