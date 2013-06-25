@@ -19,13 +19,18 @@ $sql_filter = array();
 $values = array();
 
 foreach ($_GET as $property => $value) {
+    $not = "";
+    if (substr($property, -1) === '!') {
+        $not = ' NOT ';
+        $property = substr($property, 0, -1);
+    }
     if (! array_key_exists($property, $properties)) {
         $api->throwError(API_BAD_REQUEST,
             sprintf(_('Cannot filter for unknown property %s'), $property));
     }
     $value = (array)$value;
     $column = str_replace('"', '""', $property);
-    $sql_filter[] = '"'.$column.'" IN ('.
+    $sql_filter[] = '"'.$column.'" '.$not.' IN ('.
                     join(',', array_fill(0, count($value), '?')).')';
     $values = array_merge($values, $value);
 }
