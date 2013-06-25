@@ -11,6 +11,7 @@ return array(
     "glyph_url" => "$host/glyph/{codepoint}",
     "name_url" => "$host/name/{codepoint}",
     "transform_url" => "$host/transform/{action}/{data}",
+    "filter_url" => "$host/filter/{data}{?property*}",
 );
 
 #EOF
