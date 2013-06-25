@@ -3,7 +3,7 @@
 require_once __DIR__.'/../tools.php';
 
 $maxlength = 1024;
-$subactions = array('lower', 'upper', 'nfc', 'nfd', 'nfkc', 'nfkd');
+$subactions = array('lower', 'upper', 'title', 'mirror', 'nfc', 'nfd', 'nfkc', 'nfkd');
 
 if (! strpos($data, '/')) {
     $possibilities = array();
@@ -34,6 +34,12 @@ switch ($action) {
     case 'upper':
         $mapped_cps = unicode_to_utf8(map_by_db($api->_db, $codepoints, 'uc'));
         break;
+    case 'title':
+        $mapped_cps = unicode_to_utf8(map_by_db($api->_db, $codepoints, 'tc'));
+        break;
+    case 'mirror':
+        $mapped_cps = unicode_to_utf8(map_by_db($api->_db, $codepoints, 'bmg'));
+        break;
     case 'nfc':
         $mapped_cps = normalizer_normalize($input, Normalizer::FORM_C);
         break;
@@ -50,6 +56,11 @@ switch ($action) {
 
 return $mapped_cps;
 
+
+/**
+ * map an array of codepoints to another array according to info from the
+ * codepoint_relation table
+ */
 function map_by_db($db, $codepoints, $relation) {
     $stm = $db->prepare("SELECT DISTINCT cp, other, \"order\"
                                 FROM codepoint_relation
