@@ -272,8 +272,8 @@ $(function() {
                   label+'<img alt="" src="/api/v1/glyph/'+label+'">'+
                   '</a></li>');
         cp.one('mouseenter', function() {
-          $.get('/api/v1/name/'+label).then(function(data) {
-            cp.attr('title', data).tooltip();
+          $.getJSON('/api/v1/codepoint/'+label+'?property=na').then(function(data) {
+            cp.attr('title', data.na).tooltip();
           });
         });
         fav_ul.append(cp);
