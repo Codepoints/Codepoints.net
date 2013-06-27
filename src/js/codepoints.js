@@ -1,7 +1,6 @@
 require(['jquery',
   'components/gettext',
   //'components/scratchpad',
-  'http://piwik.manuel-strehl.de/piwik.js',
   'jqueryui/dialog',
   'jqueryui/position',
   'components/jquery.cachedajax',
@@ -27,6 +26,8 @@ if (document.referrer.match(/^https?:\/\/translate.google(usercontent)?.[a-z.]+(
 }
 
 //scratchpad.init();
+
+$.getScript('http://piwik.manuel-strehl.de/piwik.js');
 
 $(function() {
   /**
