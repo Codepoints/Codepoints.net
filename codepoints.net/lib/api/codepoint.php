@@ -5,7 +5,7 @@ require_once __DIR__.'/../tools.php';
 if (! $data) {
     $host = get_origin().'api/v1';
     return array(
-        "description" => "show detailed information about a single codepoint. You can specify fields of interest with the “property” parameter: codepoint/1234?property=age,uc,lc",
+        "description" => _("show detailed information about a single codepoint. You can specify fields of interest with the “property” parameter: codepoint/1234?property=age,uc,lc"),
         "codepoint_url" => "$host/codepoint/{codepoint}{?property*}",
         "codepoint" => "/(0[0-9A-F]|10)?[0-9A-F]{4}/i",
         "property" => UnicodeInfo::get()->getAllCategories(),

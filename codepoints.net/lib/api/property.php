@@ -25,8 +25,12 @@ if ($data === 'block') {
 if (! in_array($data, $fields)) {
     $api->_mime = 'application/json';
     $api->throwError(API_BAD_REQUEST,
-        _('Unknown property'),
-        array('properties' => $fields));
+        $data ? _('Unknown property')
+              : _('Please specify a property to display'),
+        array(
+            'description' => _('show a PNG image where every codepoint is represented by one pixel. The pixel color determines the value.'),
+            'properties' => $fields,
+        ));
 }
 
 $gd = imagecreatetruecolor($width, $height);
