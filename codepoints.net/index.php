@@ -48,7 +48,7 @@ define('DB_PATH', realpath(__DIR__.'/../ucd.sqlite'));
 /**
  * cache busting string (the Makefile will manipulate this line)
  */
-define('CACHE_BUST', '4c3d249e2029b63e67b25dbc94b9000e60e18c2a');
+define('CACHE_BUST', '3a28401ecef7e6483863c07097ac508c7b2e74ec');
 
 
 /* enable gzip compression of HTML */
@@ -120,7 +120,7 @@ $router->addSetting('db', $db)
  * (i.e., simple string matches first)
  */
 $controllers = array(
-    'index', 'about', 'api_login', 'api_script', 'codepoint_of_the_day',
+    'index', 'about', 'api_login', 'codepoint_of_the_day',
     'planes', 'random', 'scripts', 'search', 'wizard', 'sitemap',
 
     'api_font-face', 'api',

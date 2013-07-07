@@ -39,7 +39,7 @@ function getScripts(scx) {
   var r;
   if (! (scx in scxCache)) {
     r = $.ajax({
-      url: '/api/script/' + scx,
+      url: '/api/v1/script/' + scx.replace(/\s+/g, ','),
       dataType: 'json'
     }).done(function (data) {
       scxCache[scx] = data;
@@ -132,7 +132,7 @@ $('#sclist').accordion({
       dd = dt.next('dd');
       dt.data('dd', dd);
       $.ajax({
-        url: '/api/script/' + sc,
+        url: '/api/v1/script/' + sc.replace(/\s+/, ','),
         dataType: 'json'
       }).done(function(data) {
         dd.append('<hr/>'+data[sc].abstract).append('<p class="nt">'+
