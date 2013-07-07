@@ -65,8 +65,8 @@ class API_v1 implements iAPIAccess {
     /**
      * generate an API error to forcefully jump to $this->handleError
      */
-    public function throwError($code, $message) {
-        $this->_error = array($code, $message);
+    public function throwError($code, $message, $data=null) {
+        $this->_error = array($code, $message, $data);
         throw new APIException($message);
     }
 
@@ -145,10 +145,14 @@ class API_v1 implements iAPIAccess {
             if ($this->_mime === 'image/png' ||
                 $this->_mime === 'text/plain') {
                 $content = $content['title'];
-            } elseif ($this->_mime === 'application/json' &&
-                array_key_exists('HTTP_ACCEPT', $_SERVER) &&
-                strpos($_SERVER['HTTP_ACCEPT'], 'application/api-problem+json') !== false) {
-                $this->_mime = 'application/api-problem+json';
+            } elseif ($this->_mime === 'application/json') {
+                if (array_key_exists('HTTP_ACCEPT', $_SERVER) &&
+                    strpos($_SERVER['HTTP_ACCEPT'], 'application/api-problem+json') !== false) {
+                    $this->_mime = 'application/api-problem+json';
+                }
+                if (count($this->_error) > 2 && $this->_error[2]) {
+                    $content += $this->_error[2];
+                }
             }
             $this->_finish($content, array("status" => $status));
         }
