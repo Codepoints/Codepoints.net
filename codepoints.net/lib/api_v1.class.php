@@ -190,6 +190,7 @@ class API_v1 implements iAPIAccess {
         header('Content-Type: '.$this->_mime.'; charset=UTF-8');
         header('Access-Control-Allow-Origin: *');
         header('Unicode-Version: '.UNICODE_VERSION);
+        header('Content-Language: ' . L10n::getDefaultLanguage());
 
         header_remove('X-Powered-By');
 
