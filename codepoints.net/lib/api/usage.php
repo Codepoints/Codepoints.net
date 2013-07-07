@@ -12,6 +12,7 @@ return array(
     "name_url" => "$host/name/{codepoint}",
     "transform_url" => "$host/transform/{action}/{data}",
     "filter_url" => "$host/filter/{data}{?property*}",
+    "property_url" => "$host/property/{property}",
 );
 
 #EOF

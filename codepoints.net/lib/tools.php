@@ -110,4 +110,34 @@ function get_origin() {
 }
 
 
+/**
+ * convert HSL to RGB colors
+ */
+function hsl2rgb($h, $s, $l) {
+    $h_temp = $h / 360;
+    $q = ($l < 0.5)? ($l * (1 + $s)) : ($l + $s - ($l*$s));
+    $p = 2*$l - $q;
+    $t_r = $h_temp + 1/3;
+    $t_g = $h_temp;
+    $t_b = $h_temp - 1/3;
+    foreach (array("r", "g", "b") as $C) {
+        if (${"t_$C"} < 0) {
+            ${"t_$C"} += 1;
+        } elseif (${"t_$C"} > 1) {
+            ${"t_$C"} -= 1;
+        }
+        if (${"t_$C"} < 1/6) {
+            $$C = $p+(($q-$p)*6*${"t_$C"});
+        } elseif (${"t_$C"} >= 1/6 && ${"t_$C"} < 0.5) {
+            $$C = $q;
+        } elseif (${"t_$C"} >= 0.5 && ${"t_$C"} < 2/3) {
+            $$C = $p+(($q-$p)*6*(2/3 - ${"t_$C"}));
+        } else {
+            $$C = $p;
+        }
+    }
+    return array($r, $g, $b);
+}
+
+
 #EOF
