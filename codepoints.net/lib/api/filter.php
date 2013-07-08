@@ -2,6 +2,7 @@
 
 require_once __DIR__.'/../tools.php';
 
+$maxlength = 1024;
 $properties = UnicodeInfo::get()->getAllCategories();
 
 if (! $data) {
@@ -11,6 +12,9 @@ if (! $data) {
         "filter_url" => "$host/filter/{data}{?property*}",
         "property" => $properties,
     );
+}
+if (mb_strlen($data, 'UTF-8') > $maxlength) {
+    $api->throwError(API_REQUEST_URI_TOO_LONG, sprintf(_('Request too long: Only %d characters allowed.'), $maxlength));
 }
 
 $codepoints = utf8_to_unicode($data);

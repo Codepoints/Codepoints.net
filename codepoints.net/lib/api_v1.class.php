@@ -123,25 +123,30 @@ class API_v1 implements iAPIAccess {
                 "title" => _("An unknown error occured.")
             );
             switch($this->_error[0]) {
-                case API_PRECONDITION_FAILED:
-                    $status = 412;
+                case API_BAD_REQUEST:
+                    $status = 400;
                     $content['title'] = $this->_error[1];
-                    $content['problemType'] .= 'precondition_failed';
-                    break;
-                case API_REQUEST_TOO_LONG:
-                    $status = 414;
-                    $content['title'] = $this->_error[1];
-                    $content['problemType'] .= 'request_too_long';
+                    $content['problemType'] .= 'bad_request';
                     break;
                 case API_NOT_FOUND:
                     $status = 404;
                     $content['title'] = $this->_error[1];
                     $content['problemType'] .= 'not_found';
                     break;
-                case API_BAD_REQUEST:
-                    $status = 400;
+                case API_PRECONDITION_FAILED:
+                    $status = 412;
                     $content['title'] = $this->_error[1];
-                    $content['problemType'] .= 'bad_request';
+                    $content['problemType'] .= 'precondition_failed';
+                    break;
+                case API_REQUEST_ENTITY_TOO_LARGE:
+                    $status = 413;
+                    $content['title'] = $this->_error[1];
+                    $content['problemType'] .= 'request_entity_too_large';
+                    break;
+                case API_REQUEST_URI_TOO_LONG:
+                    $status = 414;
+                    $content['title'] = $this->_error[1];
+                    $content['problemType'] .= 'request_uri_too_long';
                     break;
                 default:
                     if ($this->_error[0] >= 400 && $this->_error[0] < 600) {

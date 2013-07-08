@@ -18,8 +18,8 @@ if (! strpos($data, '/')) {
 
 list($action, $input) = explode('/', $data, 2);
 
-if (strlen($input) > $maxlength) {
-    $api->throwError(API_REQUEST_TOO_LONG, sprintf(_('Request too long: Only %d characters allowed.'), $maxlength));
+if (mb_strlen($input, 'UTF-8') > $maxlength) {
+    $api->throwError(API_REQUEST_URI_TOO_LONG, sprintf(_('Request too long: Only %d characters allowed.'), $maxlength));
 }
 
 if (! in_array($action, $subactions)) {

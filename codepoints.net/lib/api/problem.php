@@ -9,7 +9,7 @@ case "precondition_failed":
     $name = 'Prerequisite Missing';
     $info = "A prerequisite was not found. That means, that the action to be called does not exist. See $host/ for API usage.";
     break;
-case "request_too_long":
+case "request_uri_too_long":
     $name = 'Request Too Long';
     $info = "The request body (or the data in the URL) was too large. Try to reduce it.";
     break;
