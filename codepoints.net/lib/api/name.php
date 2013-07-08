@@ -9,10 +9,16 @@ if (isset($_SERVER['HTTP_ACCEPT']) &&
 }
 
 if (maybeCodepoint($data) === false) {
-    $api->throwError(API_BAD_REQUEST, _('No codepoint.'));
+    $api->throwError(API_BAD_REQUEST, _('No codepoint'));
 }
 
-$cp = Codepoint::getCP(hexdec($data), $api->_db);
-return $cp->getName();
+try {
+    $cp = Codepoint::getCP(hexdec($data), $api->_db);
+    $name = $cp->getName();
+} catch (Exception $e) {
+    $api->throwError(API_BAD_REQUEST, _('Not a codepoint'));
+}
+
+return $name;
 
 #EOF

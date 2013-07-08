@@ -23,6 +23,9 @@ $sql_filter = array();
 $values = array();
 
 foreach ($_GET as $property => $value) {
+    if ($property === 'callback') {
+        continue;
+    }
     $not = "";
     if (substr($property, -1) === '!') {
         $not = ' NOT ';

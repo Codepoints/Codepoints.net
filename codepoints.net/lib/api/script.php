@@ -27,8 +27,8 @@ if (! $found) {
         $scripts[$script['iso']] = $script['name'];
     }
     $api->throwError(API_NOT_FOUND, $data? _('This script is unknown') : _('Please specify a script'), array(
-        "description" => _("Specify one or more ISO short names separated by comma. The response is a list of detail informations about these scripts."),
-        "iso" => "/[A-Z][a-z]{3}/",
+        "detail" => _("Specify one or more ISO short names separated by comma. The response is a list of detail informations about these scripts."),
+        "iso" => "[A-Z][a-z]{3}",
         "scripts" => $scripts,
     ));
 }

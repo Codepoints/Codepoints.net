@@ -28,7 +28,7 @@ if (! in_array($data, $fields)) {
         $data ? _('Unknown property')
               : _('Please specify a property to display'),
         array(
-            'description' => _('show a PNG image where every codepoint is represented by one pixel. The pixel color determines the value.'),
+            'detail' => _('show a PNG image where every codepoint is represented by one pixel. The pixel color determines the value.'),
             'properties' => $fields,
         ));
 }

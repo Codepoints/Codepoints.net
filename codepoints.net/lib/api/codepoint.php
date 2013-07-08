@@ -7,7 +7,7 @@ if (! $data) {
     return array(
         "description" => _("show detailed information about a single codepoint. You can specify fields of interest with the “property” parameter: codepoint/1234?property=age,uc,lc"),
         "codepoint_url" => "$host/codepoint/{codepoint}{?property*}",
-        "codepoint" => "/(0[0-9A-F]|10)?[0-9A-F]{4}/i",
+        "codepoint" => "(10)?[A-Fa-f0-9]{4}|0[A-Fa-f0-9]{5}",
         "property" => UnicodeInfo::get()->getAllCategories(),
     );
 }
