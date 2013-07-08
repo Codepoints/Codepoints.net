@@ -60,10 +60,17 @@ class API_v1 implements iAPIAccess {
         if (! $this->_error) {
             $this->_finish($this->_response);
             flush();
-            PiwikTracker::$URL = 'http://piwik.manuel-strehl.de/';
-            $piwikTracker = new PiwikTracker(4);
-            $piwikTracker->setCustomVariable( 1, 'mode', 'api', 'page' );
-            $piwikTracker->doTrackPageView('API: '.$this->_action);
+
+            // track page views without ourself as referrer
+            if (! isset($_SERVER['HTTP_REFERER']) ||
+                ! $_SERVER['HTTP_REFERER'] ||
+                preg_replace('/^https?:\/\/([^\/]*)(\/.*)?$/', '$1',
+                    $_SERVER['HTTP_REFERER']) !== 'codepoints.net') {
+                PiwikTracker::$URL = 'http://piwik.manuel-strehl.de/';
+                $piwikTracker = new PiwikTracker(4);
+                $piwikTracker->setCustomVariable( 1, 'mode', 'api', 'page' );
+                $piwikTracker->doTrackPageView('API: '.$this->_action);
+            }
         }
     }
 
