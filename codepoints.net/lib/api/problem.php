@@ -5,7 +5,7 @@ require_once __DIR__.'/../tools.php';
 $host = get_origin().'api/v1';
 
 switch ($data) {
-case "prerequisite_missing":
+case "precondition_failed":
     $name = 'Prerequisite Missing';
     $info = "A prerequisite was not found. That means, that the action to be called does not exist. See $host/ for API usage.";
     break;

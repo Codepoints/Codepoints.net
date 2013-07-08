@@ -1,7 +1,7 @@
 <?php
 
 
-define('API_PREREQUISITE_MISSING', 2);
+define('API_PRECONDITION_FAILED', 2);
 define('API_REQUEST_TOO_LONG', 4);
 define('API_NOT_FOUND', 8);
 define('API_BAD_REQUEST', 16);

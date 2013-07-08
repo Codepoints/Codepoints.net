@@ -90,7 +90,7 @@ class API_v1 implements iAPIAccess {
             $this->_action = 'usage';
         }
         if (! file_exists(__DIR__."/api/{$this->_action}.php")) {
-            $this->throwError(API_PREREQUISITE_MISSING,
+            $this->throwError(API_NOT_FOUND,
                               _("This API method does not exist."));
         }
 
@@ -123,10 +123,10 @@ class API_v1 implements iAPIAccess {
                 "title" => _("An unknown error occured.")
             );
             switch($this->_error[0]) {
-                case API_PREREQUISITE_MISSING:
-                    $status = 404;
+                case API_PRECONDITION_FAILED:
+                    $status = 412;
                     $content['title'] = $this->_error[1];
-                    $content['problemType'] .= 'prerequisite_missing';
+                    $content['problemType'] .= 'precondition_failed';
                     break;
                 case API_REQUEST_TOO_LONG:
                     $status = 414;
