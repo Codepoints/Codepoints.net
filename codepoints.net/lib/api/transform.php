@@ -76,7 +76,7 @@ function map_by_db($db, $codepoints, $relation) {
     $mapping = array();
     foreach ($result as $set) {
         if (! array_key_exists($set['cp'], $mapping)) {
-            $mapping[$set['cp']] = [];
+            $mapping[$set['cp']] = array();
         }
         $mapping[$set['cp']][(int)$set['order']] = $set['other'];
     }
