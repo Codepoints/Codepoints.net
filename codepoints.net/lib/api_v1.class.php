@@ -59,6 +59,11 @@ class API_v1 implements iAPIAccess {
     public function finish() {
         if (! $this->_error) {
             $this->_finish($this->_response);
+            flush();
+            PiwikTracker::$URL = 'http://piwik.manuel-strehl.de/';
+            $piwikTracker = new PiwikTracker(4);
+            $piwikTracker->setCustomVariable( 1, 'mode', 'api', 'page' );
+            $piwikTracker->doTrackPageView('API: '.$this->_action);
         }
     }
 
