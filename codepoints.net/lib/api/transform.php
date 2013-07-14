@@ -7,7 +7,7 @@ $subactions = array('lower', 'upper', 'title', 'mirror', 'nfc', 'nfd', 'nfkc', '
 
 if (! strpos($data, '/')) {
     $possibilities = array(
-        "description" => "transform a string to another according to a mapping, e.g., making all characters upper-case.",
+        "description" => _("transform a string to another according to a mapping, e.g., making all characters upper-case."),
     );
     $host = get_origin().'api/v1/transform';
     foreach($subactions as $part) {

@@ -5,7 +5,7 @@ require_once __DIR__.'/../tools.php';
 if (! $data) {
     $host = get_origin().'api/v1';
     return array(
-        "description" => "show detailed information about a Unicode block",
+        "description" => _("show detailed information about a Unicode block"),
         "block_url" => "$host/block/{block}",
         "block" => array_map(function ($str) {
             return str_replace(' ', '_', strtolower($str));

@@ -23,12 +23,14 @@ if ($data === 'block') {
     $data = 'blk';
 }
 if (! in_array($data, $fields)) {
+    $host = get_origin().'api/v1';
     $api->_mime = 'application/json';
     $api->throwError(API_BAD_REQUEST,
         $data ? _('Unknown property')
               : _('Please specify a property to display'),
         array(
             'detail' => _('show a PNG image where every codepoint is represented by one pixel. The pixel color determines the value.'),
+            'property_url' => "$host/property/{property}",
             'properties' => $fields,
         ));
 }

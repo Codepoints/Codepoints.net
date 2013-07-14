@@ -16,7 +16,7 @@ try {
     $cp = Codepoint::getCP(hexdec($data), $api->_db);
     $name = $cp->getName();
 } catch (Exception $e) {
-    $api->throwError(API_BAD_REQUEST, _('Not a codepoint'));
+    $api->throwError(API_NOT_FOUND, _('Not a codepoint'));
 }
 
 return $name;
