@@ -83,7 +83,7 @@ class SearchResult extends UnicodeRange {
             $stm->execute($params);
             $r = $stm->fetch(PDO::FETCH_ASSOC);
             $stm->closeCursor();
-            $c = $r['c'];
+            $c = (int)$r['c'];
         }
         $this->count = $c;
 
