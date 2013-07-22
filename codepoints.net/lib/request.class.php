@@ -29,6 +29,8 @@ class Request {
 
     public $data;
 
+    public $method = "GET";
+
     public function __construct($url=Null) {
         if ($url === Null) {
             $url = $_SERVER['REQUEST_URI'];
@@ -64,6 +66,13 @@ class Request {
         if ($ext && array_key_exists($ext, $this->extensionTypeMap)) {
             $this->trunkUrl = substr($this->trunkUrl, 0, -strlen($ext)-1);
             $this->type = $this->extensionTypeMap[$ext];
+        }
+        if (array_key_exists('REQUEST_METHOD', $_SERVER)) {
+            $this->method = strtoupper($_SERVER['REQUEST_METHOD']);
+            if (! in_array($this->method, array("GET", "POST", "HEAD", "PUT",
+                                                "DELETE"))) {
+                $this->method = "GET";
+            }
         }
     }
 
