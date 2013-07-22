@@ -86,6 +86,16 @@ class API_v1 implements iAPIAccess {
      * run the API action and collect response and errors
      */
     public function run($data = null) {
+        if ($this->_request->method === "DELETE") {
+            $this->throwError(API_BAD_REQUEST,
+                              _("Ye?h, th?nks! You er?sed this codepoint. Are you h?ppy now?"));
+        }
+        if ($this->_request->method === "PUT" ||
+            $this->_request->method === "POST") {
+            $this->throwError(API_BAD_REQUEST,
+                              _("To create a new codepoint, please mail it to unicode@unicode.org."));
+        }
+
         if ($this->_action === '') {
             $this->_action = 'usage';
         }
