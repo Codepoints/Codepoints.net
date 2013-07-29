@@ -34,6 +34,10 @@ RewriteRule ^u(\+|\ |%20|%2B)?([A-Fa-f0-9]+)$   /U+$2 [R,L]
 # U+1234. (<- that's a dot at the end. Happens in Github bug trackers.)
 RewriteRule ^U\+([A-Fa-f0-9]+)\.$   /U+$1 [R,L]
 
+# +U1234 (<- typo in unicodehearts.com)
+# +1234 (<- missing the "U")
+RewriteRule ^\+[uU]?([A-Fa-f0-9]+)\.$   /U+$1 [R,L]
+
 # everything that doesn't match a real file
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !/static/.*
