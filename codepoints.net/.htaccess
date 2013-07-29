@@ -36,7 +36,7 @@ RewriteRule ^U\+([A-Fa-f0-9]+)\.$   /U+$1 [R,L]
 
 # +U1234 (<- typo in unicodehearts.com)
 # +1234 (<- missing the "U")
-RewriteRule ^\+[uU]?([A-Fa-f0-9]+)\.$   /U+$1 [R,L]
+RewriteRule ^(\+|%2B|%20)[uU]?([A-Fa-f0-9]+)\.$   /U+$2 [R,L]
 
 # everything that doesn't match a real file
 RewriteCond %{REQUEST_FILENAME} !-f
