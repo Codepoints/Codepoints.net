@@ -90,6 +90,11 @@ if ($return['count'] > 0) {
     $pagination = new Pagination($result->getCount(), $limit);
     $pagination->setPage($page);
     $return["last_page"] = $pagination->getNumberOfPages();
+    if ($return["last_page"] > 1) {
+        $get = $_GET;
+        $get['page'] = $return['last_page'];
+        header('Link: <http://codepoints.net/api/v1/search?'.http_build_query($get).'>; rel=last', false);
+    }
 
     foreach ($result->get() as $cp => $na) {
         $return["result"][] = $cp;
