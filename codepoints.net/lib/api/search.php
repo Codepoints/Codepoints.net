@@ -74,24 +74,29 @@ foreach ($_GET as $k => $v) {
 }
 
 $page = isset($_GET['page'])? intval($_GET['page']) : 1;
+$limit = isset($_GET['per_page'])? min(1000, intval($_GET['per_page'])) : 1000;
+$result->pageLength = $limit;
 $result->page = $page - 1;
 
-if ($result->getCount() === 0) {
-    return array("n" => 0);
-} else {
-    $pagination = new Pagination($result->getCount(), 128);
+$return = array(
+    "page" => $page,
+    "last_page" => 1,
+    "per_page" => $limit,
+    "count" => $result->getCount(),
+    "result" => array(),
+);
+
+if ($return['count'] > 0) {
+    $pagination = new Pagination($result->getCount(), $limit);
     $pagination->setPage($page);
-    $data = array();
+    $return["last_page"] = $pagination->getNumberOfPages();
+
     foreach ($result->get() as $cp => $na) {
-        $data[] = $cp;
+        $return["result"][] = $cp;
     }
-    return array(
-        "page" => $page,
-        "last_page" => $pagination->getNumberOfPages(),
-        "n" => $result->getCount(),
-        "result" => $data,
-    );
 }
+
+return $return;
 
 
 #EOF
