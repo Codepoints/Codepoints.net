@@ -15,7 +15,7 @@ return array(
     "filter_url" => "$host/filter/{data}{?property*}{?callback}",
     "property_url" => "$host/property/{property}",
     "script_url" => "$host/script/{iso}{?callback}",
-    "search_url" => "$host/search{?property}{&page}{&callback}",
+    "search_url" => "$host/search{?property}{&page}{&per_page}{&callback}",
     "patterns" => array(
         "codepoint" => "(10)?[A-Fa-f0-9]{4}|0[A-Fa-f0-9]{5}",
         "data" => ".{1,1024}",

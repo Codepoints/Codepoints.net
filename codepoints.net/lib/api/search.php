@@ -6,7 +6,7 @@ if (! count($_GET)) {
     $host = get_origin().'api/v1';
     return array(
         "description" => _("search for codepoints by their properties"),
-        "search_url" => "$host/search{?property}{&page}",
+        "search_url" => "$host/search{?property}{&page}{&per_page}{&callback}",
         "properties" => array(
             "q" => _("free search"),
             "int" => _("decimal codepoint"),
@@ -92,6 +92,7 @@ if ($return['count'] > 0) {
     $last_page = $pagination->getNumberOfPages();
     $return["last_page"] = $last_page;
     $link_header = 'Link: <http://codepoints.net/api/v1/search?';
+    header('Link: <http://codepoints.net/search?'.http_build_query($_GET).'>; rel=alternate', false);
     if ($page > 1 && $page <= $last_page) {
         $get = $_GET;
         $get['page'] = $page - 1;
