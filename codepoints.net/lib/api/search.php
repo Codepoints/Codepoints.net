@@ -89,12 +89,28 @@ $return = array(
 if ($return['count'] > 0) {
     $pagination = new Pagination($result->getCount(), $limit);
     $pagination->setPage($page);
-    $return["last_page"] = $pagination->getNumberOfPages();
-    if ($return["last_page"] > 1) {
+    $last_page = $pagination->getNumberOfPages();
+    $return["last_page"] = $last_page;
+    $link_header = 'Link: <http://codepoints.net/api/v1/search?';
+    if ($page > 1 && $page <= $last_page) {
         $get = $_GET;
-        $get['page'] = $return['last_page'];
-        header('Link: <http://codepoints.net/api/v1/search?'.http_build_query($get).'>; rel=last', false);
+        $get['page'] = $page - 1;
+        header($link_header.http_build_query($get).'>; rel=prev', false);
+    } elseif ($page > $last_page) {
+        $get = $_GET;
+        $get['page'] = $last_page;
+        header($link_header.http_build_query($get).'>; rel=prev', false);
     }
+    if ($page < $last_page) {
+        $get = $_GET;
+        $get['page'] = $page + 1;
+        header($link_header.http_build_query($get).'>; rel=next', false);
+    }
+    $get = $_GET;
+    $get['page'] = $last_page;
+    header($link_header.http_build_query($get).'>; rel=last', false);
+    $get['page'] = 1;
+    header($link_header.http_build_query($get).'>; rel=first', false);
 
     foreach ($result->get() as $cp => $na) {
         $return["result"][] = $cp;
