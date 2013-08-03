@@ -240,7 +240,7 @@ class API_v1 implements iAPIAccess {
      */
     protected function _detectJSONP(&$data) {
         if (isset($_GET['callback']) &&
-            preg_match('/^[_\$a-zA-Z][_\$a-zA-Z0-9]*$/', $_GET['callback']) &&
+            preg_match('/^[_\$a-zA-Z][_\$\.a-zA-Z0-9]*$/', $_GET['callback']) &&
             in_array($this->_mime, array('application/json',
                 'application/api-problem+json', 'application/javascript'))) {
             $this->_mime = 'application/javascript';
