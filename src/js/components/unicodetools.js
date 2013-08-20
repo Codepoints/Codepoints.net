@@ -6,13 +6,13 @@ define(['polyfills/fromcodepoint',
    * calculate the surrogate pair for codepoints
    * beyond the BMP
    */
-  function codepointToUTF16(cp) {
+  function codepoint_to_utf16(cp) {
     var surrogates = [];
     if (cp > 0xFFFF) {
       surrogates.push(Math.floor((cp - 0x10000) / 0x400) + 0xD800);
       surrogates.push((cp - 0x10000) % 0x400 + 0xDC00);
     } else {
-      surrogates.push(n);
+      surrogates.push(cp);
     }
     return surrogates;
   }
@@ -21,7 +21,7 @@ define(['polyfills/fromcodepoint',
    * take an integer and return an upper-case hex
    * representation with at least length 4
    */
-  function formatCodepoint(cp) {
+  function format_codepoint(cp) {
     var str = cp.toString(16).toUpperCase();
     while (str.length < 4) {
       str = "0" + str;
@@ -61,18 +61,21 @@ define(['polyfills/fromcodepoint',
   * Note: We don't test, if this is *really* a codepoint, i.e., connect to
   * the database
   */
-  function maybeCodepoint(hexstring) {
+  function maybe_codepoint(hexstring) {
       if (hexstring.length > 6 ||
-          hexstring.search(/[^a-fA-F0-9]/) > -1) {
+          hexstring.search(/[^a-fA-F0-9]/) > -1 ||
+          parseInt(hexstring, 16) > 0x10FFFF) {
           return false;
       }
       return true;
   }
 
   return {
-    codepointToUTF16: codepointToUTF16,
-    formatCodepoint: formatCodepoint,
-    maybeCodepoint: maybeCodepoint
+    codepoint_to_utf16: codepoint_to_utf16,
+    format_codepoint: format_codepoint,
+    maybe_codepoint: maybe_codepoint,
+    utf8_to_unicode: utf8_to_unicode,
+    unicode_to_utf8: unicode_to_utf8
   };
 
 });

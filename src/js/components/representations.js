@@ -1,4 +1,6 @@
-define(['jquery', 'components/gettext'], function($, gettext) {
+define(['jquery',
+    'components/gettext',
+    'components/unicodetools'], function($, gettext, tools) {
 
   var cp = $('.codepoint'),
       _ = gettext.gettext,
@@ -16,27 +18,29 @@ define(['jquery', 'components/gettext'], function($, gettext) {
                   );
                   secondary.toggle();
                 }).insertAfter(repr);
+
       addRepr(_('RFC 5137'), function(n) {
         return '\\u\''+n.toString(16).toUpperCase()+'\'';
       });
+
       addRepr(_('Python'), function(n) {
         return '\\u'+n.toString(16).toUpperCase();
       });
+
       addRepr(_('Ruby'), function(n) {
         return '\\u{'+n.toString(16).toUpperCase()+'}';
       });
+
       addRepr(_('Perl'), function(n) {
         return '"\\x{'+n.toString(16).toUpperCase()+'}"';
       });
+
       addRepr(_('JavaScript, JSON and Java'), function(n) {
-        if (n > 0xFFFF) {
-          var suropairs = '\\u' + (Math.floor((n - 0x10000) / 0x400) + 0xD800).toString(16).toUpperCase();
-          suropairs += '\\u' + ((n - 0x10000) % 0x400 + 0xDC00).toString(16).toUpperCase();
-          return suropairs;
-        } else {
-          return '\\u'+n.toString(16).toUpperCase();
-        }
+        return $.map(tools.codepoint_to_utf16(n), function(x) {
+          return '\\u'+x.toString(16).toUpperCase();
+        }).join('');
       });
+
       addRepr(_('C'), function(n) {
         var str = n.toString(16).toUpperCase(),
             pad = 4, chr = 'u';
@@ -49,6 +53,7 @@ define(['jquery', 'components/gettext'], function($, gettext) {
         }
         return '\\'+chr+str;
       });
+
       addRepr(_('CSS'), function(n) {
         var str = n.toString(16).toUpperCase();
         while (str.length < 6) {
@@ -56,6 +61,7 @@ define(['jquery', 'components/gettext'], function($, gettext) {
         }
         return '\\'+str;
       });
+
     }
   }
 
