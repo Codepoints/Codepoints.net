@@ -11,8 +11,7 @@
     "jqueryui": "../vendor/jquery.ui/jqueryui",
     "d3": "../vendor/d3/d3.v2",
     "webfont": "../vendor/webfontloader/target/webfont",
-    "zeroclipboard": "../vendor/zeroclipboard/ZeroClipboard",
-    "piwik": "http://piwik.manuel-strehl.de/piwik.js"
+    "zeroclipboard": "../vendor/zeroclipboard/ZeroClipboard"
   },
   "shim": {
     "webfont": {
@@ -29,16 +28,14 @@
     {
       "name": "codepoints",
       "include": ["almond"],
-      "exclude": ["http://piwik.manuel-strehl.de/piwik.js"]
     },
     {
       "name": "embedded",
       "include": ["almond"],
-      "exclude": ["http://piwik.manuel-strehl.de/piwik.js"]
     },
     {
       "name": "dailycp",
-      "exclude": ["jquery","components/gettext"]
+      "exclude": ["jquery","jqueryui/core","jqueryui/widget","components/gettext"]
     },
     {
       "name": "glossary",
@@ -46,11 +43,11 @@
     },
     {
       "name": "scripts",
-      "exclude": ["jquery","components/gettext"]
+      "exclude": ["jquery","jqueryui/core","jqueryui/dialog","components/gettext"]
     },
     {
       "name": "searchform",
-      "exclude": ["jquery","components/gettext"]
+      "exclude": ["jquery","jqueryui/core","jqueryui/dialog","components/gettext"]
     },
     {
       "name": "wizard",
