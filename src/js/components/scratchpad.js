@@ -1,3 +1,4 @@
+/* jshint unused:false */
 /**
  * add a scratchpad functionality
  */
@@ -49,7 +50,7 @@ define([
     clip.setText("Copy me!");
   }
     clip.on( 'complete', function ( client, args ) {
-        alert("Copied text to clipboard: " + args.text );
+        window.alert("Copied text to clipboard: " + args.text );
     });
 
 
@@ -76,6 +77,7 @@ define([
       * browsers or server-side syncing
       */
       if ('localStorage' in window) {
+        var localStorage = window.localStorage;
 
         scratchpad = JSON.parse(localStorage.getItem('scratchpad'));
 

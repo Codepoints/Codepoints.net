@@ -6,6 +6,19 @@ define(['jquery',
       _ = gettext.gettext,
       repr, secondary;
 
+  /**
+   * register a representation of this codepoint with its name and
+   * generator function
+   */
+  function addRepr(name, formula) {
+    var $el = $('<tr><th></th><td></td></tr>'),
+        code = parseInt(repr.find('.repr-number').text(), 10);
+    $el.find('th').text(name);
+    $el.find('td').text(formula(code));
+    repr.find('tbody').append($el.hide());
+    secondary = secondary.add($el);
+  }
+
   if (cp.length) {
     repr = $('.representations', cp);
 
@@ -63,15 +76,6 @@ define(['jquery',
       });
 
     }
-  }
-
-  function addRepr(name, formula) {
-    var $el = $('<tr><th></th><td></td></tr>'),
-        code = parseInt(repr.find('.repr-number').text(), 10);
-    $el.find('th').text(name);
-    $el.find('td').text(formula(code));
-    repr.find('tbody').append($el.hide());
-    secondary = secondary.add($el);
   }
 
 });

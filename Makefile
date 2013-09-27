@@ -9,6 +9,8 @@ SASS_ROOTS := $(wildcard src/sass/[^_]*.scss)
 CSS_TARGET := $(patsubst src/sass/%.scss,$(DOCROOT)static/css/%.css,$(SASS_ROOTS))
 PYTHON := python
 SAXON := saxonb-xslt
+JSHINT := node_modules/jshint/bin/jshint
+JSHINT_ARGS := --config src/jshint.js
 
 all: test ucotd css js cachebust
 
@@ -89,7 +91,7 @@ test-php: $(PHP_ALL)
 
 test-js: $(JS_ALL)
 	$(info * Test JS syntax)
-	@node_modules/jshint/bin/jshint $^
+	@$(JSHINT) $(JSHINT_ARGS) $^
 
 test-sass: $(shell find src/sass -type f)
 	$(info * Test Sass syntax)

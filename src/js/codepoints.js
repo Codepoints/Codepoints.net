@@ -35,7 +35,7 @@ $(function() {
   *
   * @see http://stackoverflow.com/questions/2837178
   */
-  var scrollElement = (function (tags) {
+  var scrollElement = (function () {
     var el = $(document.documentElement);
     if (el.scrollTop() > 0){
       return el;

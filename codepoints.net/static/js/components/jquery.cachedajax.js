@@ -1,0 +1,1 @@
+define(["jquery"],function(e){var t={};e.cachedAjax=function(n,r){var i;return n in t?(i=e.when(t[n]),r&&"success"in r?r.success(t[n]):e.isFunction(r)&&r(t[n])):i=e.get(n,r).done(function(e){t[n]=e}),i}});

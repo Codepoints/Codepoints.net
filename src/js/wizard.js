@@ -1,4 +1,5 @@
 require(['jquery', 'components/gettext'], function($, gettext) {
+  /* jshint unused:false */
 
   var _= gettext.gettext;
 
@@ -130,8 +131,8 @@ require(['jquery', 'components/gettext'], function($, gettext) {
     q.html.fadeOut('fast', function() {
       html.hide().insertAfter(q.html).fadeIn('fast');
       q.html.detach();
-      window.location.href = '?' + $.param(answers);
     });
+    window.location.href = '?' + $.param(answers);
   }
 
   /**

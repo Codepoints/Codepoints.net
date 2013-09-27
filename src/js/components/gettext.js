@@ -1,6 +1,5 @@
-define(['jquery'], function($) {
+define([], function() {
   var gettext,
-      locale_path = '/static/locale',
       lang = document.documentElement.getAttribute('lang');
 
   if ('gettext' in window) {

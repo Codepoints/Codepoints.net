@@ -1,0 +1,1 @@
+define([],function(){var e,t=document.documentElement.getAttribute("lang");return"gettext"in window?e=window.gettext:e={catalog:{}},e.gettext=function(n){var r=Array.prototype.slice.call(arguments,1),i;t in e.catalog&&n in e.catalog[t]&&(n=e.catalog[t][n]);while(r.length)i=r.shift(),n=n.replace(/%s/,i);return n},e});

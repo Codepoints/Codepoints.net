@@ -54,8 +54,7 @@ function getScripts(scx) {
  * show infos about used scripts in a country in a modal window
  */
 function showDetails(obj) {
-  var co = obj.id,
-      width = $window.width();
+  var width = $window.width();
   if (width > 800) {
     width = 800;
   }
@@ -63,7 +62,7 @@ function showDetails(obj) {
     getScripts(obj.properties.scripts.join(' ') +
              ' ' + obj.properties.oldscripts.join(' ')
     ).done(function(data) {
-      var d = $('<div></div>'), sc;
+      var d = $('<div></div>');
       $.each(obj.properties.scripts, renderScript(d, data));
       if (obj.properties.oldscripts.length) {
         d.append('<h2>'+_('Native, Rare and Historic Scripts')+'</h2>');
@@ -89,6 +88,40 @@ function showDetails(obj) {
       width: width()
     });
   }
+}
+
+var m0,
+    o0;
+
+function mousedown() {
+  m0 = [d3.event.pageX, d3.event.pageY];
+  o0 = projection.origin();
+  d3.event.preventDefault();
+}
+
+function mousemove() {
+  if (m0) {
+    var m1 = [d3.event.pageX, d3.event.pageY],
+        o1 = [o0[0] + (m0[0] - m1[0]) / 8, o0[1] + (m1[1] - m0[1]) / 8];
+    projection.origin(o1);
+    circle.origin(o1);
+    refresh();
+  }
+}
+
+function mouseup() {
+  if (m0) {
+    mousemove();
+    m0 = null;
+  }
+}
+
+function refresh(duration) {
+  (duration ? feature.transition().duration(duration) : feature).attr("d", clip);
+}
+
+function clip(d) {
+  return path(circle.clip(d));
 }
 
 var feature;
@@ -160,39 +193,5 @@ $('#sclist').accordion({
 d3.select(window)
     .on("mousemove", mousemove)
     .on("mouseup", mouseup);
-
-var m0,
-    o0;
-
-function mousedown() {
-  m0 = [d3.event.pageX, d3.event.pageY];
-  o0 = projection.origin();
-  d3.event.preventDefault();
-}
-
-function mousemove() {
-  if (m0) {
-    var m1 = [d3.event.pageX, d3.event.pageY],
-        o1 = [o0[0] + (m0[0] - m1[0]) / 8, o0[1] + (m1[1] - m0[1]) / 8];
-    projection.origin(o1);
-    circle.origin(o1);
-    refresh();
-  }
-}
-
-function mouseup() {
-  if (m0) {
-    mousemove();
-    m0 = null;
-  }
-}
-
-function refresh(duration) {
-  (duration ? feature.transition().duration(duration) : feature).attr("d", clip);
-}
-
-function clip(d) {
-  return path(circle.clip(d));
-}
 
 });

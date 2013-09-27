@@ -14,7 +14,6 @@ require(['jquery',
         submitset = $('.submitset', $form),
         addlist = $('<ul class="query-add ui-widget ui-widget-content ' +
                     'ui-corner-all"></ul>').insertBefore(submitset),
-        addfields = $(),
         add = $('<p><button type="button">'+_('+ add new query')+'</button></p>')
                 .insertBefore(submitset).find('button'),
         search_values = {},
@@ -135,7 +134,7 @@ require(['jquery',
 
     /** create a single search field item */
     function _createItem(property, value, input) {
-      var valclass = '', valclick = jQuery.noop;
+      var valclass = '', valclick = $.noop;
       if (input.is('select')) {
         valclass = ' y';
         valclick = function() {

@@ -47,7 +47,7 @@
     },
     {
       "name": "searchform",
-      "exclude": ["jquery","jqueryui/core","jqueryui/dialog","components/gettext"]
+      "exclude": ["jquery","jqueryui/core","jqueryui/dialog","components/gettext","components/jquery.tooltip"]
     },
     {
       "name": "wizard",

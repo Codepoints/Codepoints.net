@@ -36,7 +36,7 @@ define(['jquery',
             href);
           }
           if ('_paq' in window) {
-            _paq.push(['trackPageView']);
+            window._paq.push(['trackPageView']);
           }
           handleSwitch(current_list, next_list, current_page > next_page);
         }

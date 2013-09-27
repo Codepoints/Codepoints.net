@@ -57,7 +57,7 @@ $.fn.tooltip = function() {
     });
 
     // display tooltip, if element is currently hovered
-    if ("querySelector" in document) {
+    if (("querySelector" in document) && origin.parent().length) {
       var hovered = $(origin.parent()[0].querySelector(":hover"));
       if (hovered.index(origin) >= 0) {
         origin.trigger("mouseenter");
