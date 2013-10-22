@@ -59,7 +59,7 @@ ucd.sqlite: ucotd tools/scripts.sql tools/scripts_wp.sql \
             tools/fonts/*_insert.sql tools/latex.sql
 	sqlite3 $@ <tools/scripts.sql
 	sqlite3 $@ <tools/scripts_wp.sql
-	sqlite3 $@ <tools/fonts/*_insert.sql
+	for sql in tools/fonts/*_insert.sql; do sqlite3 $@ <$$sql; done
 	sqlite3 $@ <tools/latex.sql
 
 l10n: $(DOCROOT)locale/messages.pot $(DOCROOT)locale/js.pot

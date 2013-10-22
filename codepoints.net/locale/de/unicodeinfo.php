@@ -200,6 +200,8 @@ $info_localized = array(
         'kZVariant' => 'z-Variante',
         'blk' => 'Block',
         'scx' => 'Schrift-Erweiterung',
+        'bpb' => 'Bidi Paired Bracket',
+        'bpt' => 'Bidi Paired Bracket Type',
     ),
 
     'legend' => array(
@@ -257,6 +259,10 @@ $info_localized = array(
             'S' =>   'Segment-Trenner',
             'WS' =>  'Leerzeichen',
             'ON' =>  'anderes neutrales Zeichen',
+            'LRI' => 'Left To Right Isolate', // 6.3.0
+            'RLI' => 'Right To Left Isolate', // 6.3.0
+            'FSI' => 'First Strong Isolate', // 6.3.0
+            'PDI' => 'Pop Directional Isolate', // 6.3.0
         ),
 
         'ccc' => array(
@@ -349,6 +355,7 @@ $info_localized = array(
             'PO' => 'Postfix Numeric',
             'PR' => 'Prefix Numeric',
             'QU' => 'Zitat',
+            'RI' => 'Regional Indicator', // 6.2.0
             'SA' => 'komplexer Kontext',
             'SG' => 'Surrogat',
             'SP' => 'Leerzeichen',
@@ -483,6 +490,7 @@ $info_localized = array(
             'LV' => 'LV',
             'LVT' => 'LVT',
             'PP' => 'Prepend',
+            'RI' => 'Regional Indicator', // 6.2.0
             'SM' => 'SpacingMark',
             'T' => 'T',
             'V' => 'V',
@@ -509,9 +517,11 @@ $info_localized = array(
 
         'WB' => array( # tr29
             'CR' => 'CR',
+            'DQ' => 'Double Quote', // 6.3.0
             'EX' => 'ExtendNumLet',
             'Extend' => 'Extend',
             'FO' => 'Format',
+            'HL' => 'Hebrew Letter', // 6.3.0
             'KA' => 'Katakana',
             'LE' => 'ALetter',
             'LF' => 'LF',
@@ -520,6 +530,8 @@ $info_localized = array(
             'MN' => 'MidNum',
             'NL' => 'Newline',
             'NU' => 'Numeric',
+            'RI' => 'Regional Indicator', // 6.2.0
+            'SQ' => 'Single Quote', // 6.3.0
             'XX' => 'Other',
         ),
 
@@ -786,6 +798,12 @@ $info_localized = array(
             'supplementary_private_use_area-b' => 'Zusätzlicher Privatnutzungsbereich - B',
         ),
 
+        'bpt' => array(
+            'o' => 'Öffnend',
+            'c' => 'Schließend',
+            'n' => 'Kein',
+        ),
+
         'age' => array(
             "1.1" => "1,1",
             "2.0" => "2,0",
@@ -800,6 +818,8 @@ $info_localized = array(
             "5.2" => "5,2",
             "6.0" => "6,0",
             "6.1" => "6,1",
+            "6.2" => "6,2",
+            "6.3" => "6,3",
         ),
 
     ),

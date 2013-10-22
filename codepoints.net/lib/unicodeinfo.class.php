@@ -203,6 +203,8 @@ class UnicodeInfo {
         'kZVariant' => 'z Variant',
         'blk' => 'Block',
         'scx' => 'Script Extension',
+        'bpb' => 'Bidi Paired Bracket',
+        'bpt' => 'Bidi Paired Bracket Type',
     );
 
     protected $boolean = array( 'Bidi_M', 'Bidi_C', 'CE', 'Comp_Ex', 'XO_NFC',
@@ -269,6 +271,10 @@ class UnicodeInfo {
             'S' =>   'Segment Separator',
             'WS' =>  'White Space',
             'ON' =>  'Other Neutral',
+            'LRI' => 'Left To Right Isolate', // 6.3.0
+            'RLI' => 'Right To Left Isolate', // 6.3.0
+            'FSI' => 'First Strong Isolate', // 6.3.0
+            'PDI' => 'Pop Directional Isolate', // 6.3.0
         ),
 
         'ccc' => array(
@@ -361,6 +367,7 @@ class UnicodeInfo {
             'PO' => 'Postfix Numeric',
             'PR' => 'Prefix Numeric',
             'QU' => 'Quotation',
+            'RI' => 'Regional Indicator', // 6.2.0
             'SA' => 'Complex Context',
             'SG' => 'Surrogate',
             'SP' => 'Space',
@@ -495,6 +502,7 @@ class UnicodeInfo {
             'LV' => 'LV',
             'LVT' => 'LVT',
             'PP' => 'Prepend',
+            'RI' => 'Regional Indicator', // 6.2.0
             'SM' => 'SpacingMark',
             'T' => 'T',
             'V' => 'V',
@@ -521,9 +529,11 @@ class UnicodeInfo {
 
         'WB' => array( # tr29
             'CR' => 'CR',
+            'DQ' => 'Double Quote', // 6.3.0
             'EX' => 'ExtendNumLet',
             'Extend' => 'Extend',
             'FO' => 'Format',
+            'HL' => 'Hebrew Letter', // 6.3.0
             'KA' => 'Katakana',
             'LE' => 'ALetter',
             'LF' => 'LF',
@@ -532,6 +542,8 @@ class UnicodeInfo {
             'MN' => 'MidNum',
             'NL' => 'Newline',
             'NU' => 'Numeric',
+            'RI' => 'Regional Indicator', // 6.2.0
+            'SQ' => 'Single Quote', // 6.3.0
             'XX' => 'Other',
         ),
 
@@ -798,6 +810,12 @@ class UnicodeInfo {
             'supplementary_private_use_area-b' => 'Supplementary Private Use Area-B',
         ),
 
+        'bpt' => array(
+            'o' => 'Open',
+            'c' => 'Close',
+            'n' => 'None',
+        ),
+
         'age' => array(
             "1.1" => "1.1",
             "2.0" => "2.0",
@@ -812,6 +830,8 @@ class UnicodeInfo {
             "5.2" => "5.2",
             "6.0" => "6.0",
             "6.1" => "6.1",
+            "6.2" => "6.2",
+            "6.3" => "6.3",
         ),
 
     );
