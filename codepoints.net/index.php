@@ -36,7 +36,7 @@ date_default_timezone_set('Europe/Berlin');
 /**
  * define Unicode Version in use
  */
-define('UNICODE_VERSION', '6.1.0');
+define('UNICODE_VERSION', '6.3.0');
 
 
 /**
