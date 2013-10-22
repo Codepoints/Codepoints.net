@@ -1,20 +1,38 @@
 define(function() {
+  /*! http://mths.be/fromcodepoint v0.1.0 by @mathias */
   if (!String.fromCodePoint) {
-      /*!
-       * ES6 Unicode Shims 0.1
-       * (c) 2012 Steven Levithan <http://slevithan.com/>
-       * MIT License
-       */
-      String.fromCodePoint = function fromCodePoint () {
-          var chars = [], point, offset, units, i;
-          for (i = 0; i < arguments.length; ++i) {
-              point = arguments[i];
-              offset = point - 0x10000;
-              units = point > 0xFFFF ? [0xD800 + (offset >> 10), 0xDC00 + (offset & 0x3FF)] : [point];
-              chars.push(String.fromCharCode.apply(null, units));
-          }
-          return chars.join("");
-      };
+    String.fromCodePoint = function() {
+      var codeUnits = [];
+      var floor = Math.floor;
+      var highSurrogate;
+      var lowSurrogate;
+      var index = -1;
+      var length = arguments.length;
+      if (!length) {
+        return '';
+      }
+      while (++index < length) {
+        var codePoint = Number(arguments[index]);
+        if (
+          !isFinite(codePoint) || // `NaN`, `+Infinity`, or `-Infinity`
+          codePoint < 0 || // not a valid Unicode code point
+          codePoint > 0x10FFFF || // not a valid Unicode code point
+          floor(codePoint) != codePoint // not an integer
+        ) {
+          throw RangeError('Invalid code point: ' + codePoint);
+        }
+        if (codePoint <= 0xFFFF) { // BMP code point
+          codeUnits.push(codePoint);
+        } else { // Astral code point; split in surrogate halves
+          // http://mathiasbynens.be/notes/javascript-encoding#surrogate-formulae
+          codePoint -= 0x10000;
+          highSurrogate = (codePoint >> 10) + 0xD800;
+          lowSurrogate = (codePoint % 0x400) + 0xDC00;
+          codeUnits.push(highSurrogate, lowSurrogate);
+        }
+      }
+      return String.fromCharCode.apply(null, codeUnits);
+    };
   }
 
   return String.fromCodePoint;
