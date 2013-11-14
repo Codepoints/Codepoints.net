@@ -49,8 +49,11 @@ define([
   function copy_scratchpad() {
     clip.setText("Copy me!");
   }
-    clip.on( 'complete', function ( client, args ) {
+    clip.on('complete', function ( client, args ) {
         window.alert("Copied text to clipboard: " + args.text );
+    });
+    clip.on('dataRequested', function ( client, args ) {
+      clip.setText("Copy me!");
     });
 
 
@@ -59,7 +62,7 @@ define([
    */
   function show_scratchpad() {
     var list = scratchpad.map(function(cp) {
-      return 'U+'+tools.formatCodepoint(cp);
+      return 'U+'+tools.format_codepoint(cp);
     });
     window.location.href = '/'+list.join(',');
   }
@@ -90,8 +93,9 @@ define([
                          .appendTo(scratchCtrl);
 
         var btn_copy = $('<button type="button" class="scratchpad__copy">'+_('copy')+'</button>')
-                         .on('click', copy_scratchpad)
+                         //.on('click', copy_scratchpad)
                          .appendTo(scratchCtrl);
+        clip.glue(btn_copy);
 
         var btn_show = $('<button type="button" class="scratchpad__show">'+_('show')+'</button>')
                          .on('click', show_scratchpad)
@@ -102,7 +106,7 @@ define([
           if (scratchpad.length) {
             var ul = this.prepend('<ul class="data"></ul>').find('.data');
             $.each(scratchpad, function(i, v) {
-              ul.append('<li><a class="cp" href="/U+'+tools.formatCodepoint(v)+'">'+tools.formatCodepoint(v)+'<span class="img">'+cp(v)+'</span></a></li>');
+              ul.append('<li><a class="cp" href="/U+'+tools.format_codepoint(v)+'">'+tools.format_codepoint(v)+'<span class="img">'+cp(v)+'</span></a></li>');
             });
             scratchCtrl.show();
           } else {
@@ -117,6 +121,7 @@ define([
                         scratchNode.update().dialog({
                           title: _('Scratchpad')
                         });
+                        clip.reposition();
                         return false;
                       }).hide();
         $('.hd .primary').append(opener);
