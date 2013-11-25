@@ -61,7 +61,7 @@ class Request {
                 }
             }
         }
-        $ext = pathinfo($url, PATHINFO_EXTENSION);
+        $ext = pathinfo($this->trunkUrl, PATHINFO_EXTENSION);
         $ext = strtolower(ltrim($ext, '.'));
         if ($ext && array_key_exists($ext, $this->extensionTypeMap)) {
             $this->trunkUrl = substr($this->trunkUrl, 0, -strlen($ext)-1);

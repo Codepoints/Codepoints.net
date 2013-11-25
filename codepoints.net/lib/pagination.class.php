@@ -1,6 +1,9 @@
 <?php
 
 
+require_once __DIR__."/tools.php";
+
+
 /**
  * handle pagination
  */
@@ -29,7 +32,7 @@ class Pagination {
 
     public function getSet($set) {
         return array_slice($set, ($this->page - 1) * $this->pagesize,
-                           $this->pagesize, true);
+                           $this->pagesize);
     }
 
     public function getLimits() {
@@ -52,7 +55,7 @@ class Pagination {
             $html .= '<ol class="pagination">';
             if ($this->showPrevNext) {
                 if ($this->page > 1) {
-                    $html .= sprintf('<li value="%s" class="prev"><a href="'.$this->urlTemplate.'">previous</a></li>', $this->page - 1, $this->page - 1);
+                    $html .= sprintf('<li value="%s" class="prev"><a href="'.q($this->urlTemplate).'">previous</a></li>', $this->page - 1, $this->page - 1);
                 } else {
                     $html .= '<li value="0" class="prev disabled"><span>previous</span>';
                 }
@@ -63,7 +66,7 @@ class Pagination {
                     $html .= sprintf('<li class="current" value="%s"><span>%s</span></li>', $i, $i);
                     $ellipsis = false;
                 } elseif ($i === 1 || $i === $n || abs($this->page - $i) < $this->showPages) {
-                    $html .= sprintf('<li value="%s"><a href="'.$this->urlTemplate.'">%s</a></li>', $i, $i, $i);
+                    $html .= sprintf('<li value="%s"><a href="'.q($this->urlTemplate).'">%s</a></li>', $i, $i, $i);
                     $ellipsis = false;
                 } elseif (! $ellipsis) {
                     $html .= '<li value="0" class="ellipsis">…</li>';
@@ -72,7 +75,7 @@ class Pagination {
             }
             if ($this->showPrevNext) {
                 if ($this->page < $n) {
-                    $html .= sprintf('<li value="%s" class="next"><a href="'.$this->urlTemplate.'">next</a></li>', $this->page + 1, $this->page + 1);
+                    $html .= sprintf('<li value="%s" class="next"><a href="'.q($this->urlTemplate).'">next</a></li>', $this->page + 1, $this->page + 1);
                 } else {
                     $html .= '<li value="0" class="next disabled"><span>next</span>';
                 }
