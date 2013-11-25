@@ -140,4 +140,26 @@ function hsl2rgb($h, $s, $l) {
 }
 
 
+/**
+ * HTML-quote a string or all elements of an array
+ */
+function q($s) {
+    if (is_array($s)) {
+        return array_map('q', $s);
+    } elseif (is_string($s)) {
+        return htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
+    } else {
+        return $s;
+    }
+}
+
+
+/**
+ * shortcut for echo q()
+ */
+function e($s) {
+    echo q($s);
+}
+
+
 #EOF

@@ -1,20 +1,7 @@
 <?php
 
 
-function q($s) {
-    if (is_array($s)) {
-        return array_map('q', $s);
-    } elseif (is_string($s)) {
-        return htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
-    } else {
-        return $s;
-    }
-}
-
-
-function e($s) {
-    echo q($s);
-}
+require_once __DIR__."/tools.php";
 
 
 function _e($s) {
