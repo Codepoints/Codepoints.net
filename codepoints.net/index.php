@@ -28,6 +28,12 @@
 
 
 /**
+ * mute PHP's timezone warning
+ */
+date_default_timezone_set('Europe/Berlin');
+
+
+/**
  * define Unicode Version in use
  */
 define('UNICODE_VERSION', '6.1.0');
