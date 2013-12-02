@@ -11,6 +11,8 @@ PYTHON := python
 SAXON := saxonb-xslt
 JSHINT := node_modules/jshint/bin/jshint
 JSHINT_ARGS := --config src/jshint.js
+PHPUNIT := phpunit
+PHPUNIT_ARGS :=
 
 all: test ucotd css js cachebust
 
@@ -82,7 +84,10 @@ vendor: bower.json
 	node_modules/jqueryui-amd/jqueryui-amd.js src/vendor/jquery.ui
 	cd src/vendor/webfontloader && rake compile
 
-test: test-php test-sass test-js
+test: test-php test-phpunit test-sass test-js
+
+test-phpunit:
+	$(PHPUNIT) $(PHPUNIT_ARGS)
 
 test-php: $(PHP_ALL)
 	$(info * Test PHP syntax)

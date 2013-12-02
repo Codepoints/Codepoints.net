@@ -1,0 +1,22 @@
+<!--
+vim: ft=xml
+-->
+<phpunit colors="true">
+
+  <testsuite name="Mustache">
+    <directory suffix="Test.php">./test/phpunit/</directory>
+  </testsuite>
+
+  <filter>
+    <whitelist>
+      <directory suffix=".php">./codepoints.net/lib/</directory>
+      <directory suffix=".php">./codepoints.net/controllers/</directory>
+      <directory suffix=".php">./codepoints.net/views/</directory>
+      <file>./codepoints.net/index.php</file>
+      <exclude>
+        <directory suffix=".php">./codepoints.net/lib/vendor/</directory>
+      </exclude>
+    </whitelist>
+  </filter>
+
+</phpunit>
