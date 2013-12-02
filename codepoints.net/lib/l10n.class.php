@@ -1,7 +1,7 @@
 <?php
 
 
-require_once "lib/vendor/php-gettext/php-gettext/gettext.inc";
+require_once __DIR__."/vendor/php-gettext/php-gettext/gettext.inc";
 
 
 /**
