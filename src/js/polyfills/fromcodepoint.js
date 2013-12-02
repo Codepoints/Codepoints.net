@@ -17,7 +17,7 @@ define(function() {
           !isFinite(codePoint) || // `NaN`, `+Infinity`, or `-Infinity`
           codePoint < 0 || // not a valid Unicode code point
           codePoint > 0x10FFFF || // not a valid Unicode code point
-          floor(codePoint) != codePoint // not an integer
+          floor(codePoint) !== codePoint // not an integer
         ) {
           throw RangeError('Invalid code point: ' + codePoint);
         }
