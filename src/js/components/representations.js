@@ -75,6 +75,14 @@ define(['jquery',
         return '\\'+str;
       });
 
+      repr.on('click', 'td', function() {
+        var range = document.createRange();
+        range.selectNodeContents(this);
+        var selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+      });
+
     }
   }
 
