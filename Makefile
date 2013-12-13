@@ -87,7 +87,8 @@ vendor: bower.json
 test: test-php test-phpunit test-sass test-js
 
 test-phpunit:
-	$(PHPUNIT) $(PHPUNIT_ARGS)
+	$(info * Run PHPUnit tests)
+	@$(PHPUNIT) $(PHPUNIT_ARGS)
 
 test-php: $(PHP_ALL)
 	$(info * Test PHP syntax)
