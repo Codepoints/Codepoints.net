@@ -42,11 +42,14 @@ include "nav.php";
         Nirvana of Undefined Behaviour beyond the 17<sup>th</sup> plane, a land <a href="http://www.unicode.org/mail-arch/unicode-ml/y2003-m10/0234.html">no member of the Unicode mailing list has ever seen</a>.
       <?php else:?>
         <?php e(ceil(round($int / 0xFFFF, 2)))?><sup>th</sup> plane.
-      <?php endif?>
-      <?php if ($block):?>
-        You can find surrounding codepoints in the block
-        <?php bl($block, '', 'min')?>.
-      <?php endif?>
+      <?php endif;
+      if ($block):
+          printf(q(_('You can find surrounding codepoints in the block %s.')), _bl($block, '', 'min'));
+      endif?>
+      </p>
+      <p>
+        <?php printf(q(_('The Unicode Consortium adds new codepoints to the standard all the time. Visit %stheir website%s to find out about pending codepoints and whether this one is in the pipe.')), '<a href="http://www.unicode.org/alloc/Pipeline.html">', '</a>')?>
+        <?php _e('The following table shows typical representations of how the codepoint would look, if it existed. This may help you when debugging, but is not of real use otherwise.')?>
       </p>
     </section>
     <section>
