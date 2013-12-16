@@ -1,9 +1,10 @@
 <?php
 $title = __('Page not Found');
+$hDescription = __('HTTP error 404: This page doesn’t exist.');
 if (! is_null($int)) {
     $title = __('Codepoint not Found');
+    $hDescription = sprintf(__('The point U+%04X is no valid Unicode codepoint.'), $int);
 }
-$hDescription = __('HTTP error 404: This page doesn’t exist.');
 include "header.php";
 $nav = array();
 if ($prev) {
