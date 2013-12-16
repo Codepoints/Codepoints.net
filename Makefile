@@ -55,8 +55,9 @@ ucotd: tools/ucotd.*
 	@cd tools; \
 	$(PYTHON) ucotd.py
 
-ucd.sqlite: ucotd tools/scripts.sql tools/scripts_wp.sql \
+ucd.sqlite: ucotd tools/patch_db.sql tools/scripts.sql tools/scripts_wp.sql \
             tools/fonts/*_insert.sql tools/latex.sql
+	sqlite3 $@ <tools/patch_db.sql
 	sqlite3 $@ <tools/scripts.sql
 	sqlite3 $@ <tools/scripts_wp.sql
 	sqlite3 $@ <tools/fonts/*_insert.sql
