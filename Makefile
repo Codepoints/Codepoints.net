@@ -17,7 +17,7 @@ PHPUNIT_ARGS :=
 all: test ucotd css js cachebust
 
 .PHONY: all css js dist clean ucotd cachebust l10n test vendor db clearcache \
-        test-sass
+        test-sass test-php test-phpunit test-js init
 
 clean:
 	-rm -fr dist src/vendor node_modules .sass-cache
@@ -34,6 +34,15 @@ $(CSS_TARGET): $(DOCROOT)static/css/%.css : src/sass/%.scss
 
 js: $(DOCROOT)static/js/build.txt $(DOCROOT)static/js/html5shiv.js \
     $(DOCROOT)static/ZeroClipboard.swf
+
+init: src/vendor/jquery.ui/jqueryui src/vendor/webfontloader/target/webfont.js
+
+src/vendor/jquery.ui/jqueryui:
+	node_modules/.bin/jqueryui-amd src/vendor/jquery.ui
+
+src/vendor/webfontloader/target/webfont.js:
+	cd src/vendor/webfontloader && \
+		rake compile
 
 $(DOCROOT)static/js/build.txt: src/build.js $(JS_ALL)
 	cd src && node vendor/r.js/dist/r.js -o build.js
