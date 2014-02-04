@@ -3,7 +3,7 @@ Codepoints.net
 
 This is the code that powers [Codepoints.net](http://codepoints.net). You can
 find a short primer in the
-[index.php](https://github.com/Boldewyn/Codepoints.net/blob/master/index.php)
+[codepoints.net/index.php file](https://github.com/Boldewyn/Codepoints.net/blob/master/codepoints.net/index.php)
 on how the code flows.
 
 Feel free to open issues at the [bug tracker](https://github.com/Boldewyn/Codepoints.net/issues)
