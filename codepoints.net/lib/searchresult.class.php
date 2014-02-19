@@ -17,10 +17,15 @@ class SearchResult extends UnicodeRange {
 
     protected $count = 0;
 
+    protected $needConfusables = false;
+
     /**
      * add a query, connect it to previous via $connector
      */
     public function addQuery($field, $value, $op='=', $connector='AND') {
+        if ($field === 'confusables') {
+            $this->needConfusables = true;
+        }
         $this->query[] = array($field, $op, $value, $connector);
     }
 
@@ -44,11 +49,14 @@ class SearchResult extends UnicodeRange {
         list($search, $params) = $this->_getQuerySQL();
         $fields = 'codepoints.cp cp, na, na1,
              codepoint_image.image AS image,
-             blocks.name AS block,
+             blocks.name AS block';
+        if ($this->needConfusables) {
+            $fields .= ',
             (SELECT COUNT(*)
                FROM codepoint_confusables
               WHERE codepoint_confusables.cp = codepoints.cp
                  OR codepoint_confusables.other = codepoints.cp) confusables';
+        }
         $select = 'SELECT DISTINCT %s
         FROM codepoints
         LEFT JOIN codepoint_script USING ( cp )
