@@ -74,7 +74,9 @@ ucd.sqlite: ucotd tools/patch_db.sql tools/scripts.sql tools/scripts_wp.sql \
 	sqlite3 $@ <tools/patch_db.sql
 	sqlite3 $@ <tools/scripts.sql
 	sqlite3 $@ <tools/scripts_wp.sql
-	sqlite3 $@ <tools/fonts/*_insert.sql
+	for x in tools/fonts/*_insert.sql; do \
+		sqlite3 $@ < $$x; \
+	done
 	sqlite3 $@ <tools/latex.sql
 
 l10n: $(DOCROOT)locale/messages.pot $(DOCROOT)locale/js.pot
