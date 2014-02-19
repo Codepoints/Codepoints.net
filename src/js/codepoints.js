@@ -1,6 +1,6 @@
 require(['jquery',
   'components/gettext',
-  'components/scratchpad',
+  //'components/scratchpad',
   'jqueryui/dialog',
   'jqueryui/position',
   'components/jquery.cachedajax',
@@ -8,7 +8,7 @@ require(['jquery',
   'components/jquery.glossary',
   'components/dyn_pagination',
   'components/representations',
-  'components/load_font'], function($, gettext, scratchpad) {
+  'components/load_font'], function($, gettext/*, scratchpad*/) {
 
 var _ = gettext.gettext;
 
@@ -25,7 +25,7 @@ if (document.referrer.match(/^https?:\/\/translate.google(usercontent)?.[a-z.]+(
   }
 }
 
-scratchpad.init();
+//scratchpad.init();
 
 $.getScript('http://piwik.manuel-strehl.de/piwik.js');
 

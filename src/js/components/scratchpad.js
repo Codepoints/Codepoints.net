@@ -93,9 +93,9 @@ define([
                          .appendTo(scratchCtrl);
 
         var btn_copy = $('<button type="button" class="scratchpad__copy">'+_('copy')+'</button>')
-                         //.on('click', copy_scratchpad)
+                         .on('click', copy_scratchpad)
                          .appendTo(scratchCtrl);
-        clip.glue(btn_copy);
+        //clip.glue(btn_copy);
 
         var btn_show = $('<button type="button" class="scratchpad__show">'+_('show')+'</button>')
                          .on('click', show_scratchpad)
