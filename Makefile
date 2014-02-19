@@ -37,8 +37,12 @@ css: $(CSS_TARGET)
 $(CSS_TARGET): $(DOCROOT)static/css/%.css : src/sass/%.scss
 	compass compile --force $<
 
-js: $(DOCROOT)static/js/build.txt $(DOCROOT)static/js/html5shiv.js \
+js: src/vendor/jquery.ui \
+    $(DOCROOT)static/js/build.txt $(DOCROOT)static/js/html5shiv.js \
     $(DOCROOT)static/ZeroClipboard.swf
+
+src/vendor/jquery.ui:
+	node_modules/.bin/jqueryui-amd "$@"
 
 init: src/vendor/jquery.ui/jqueryui src/vendor/webfontloader/target/webfont.js
 
