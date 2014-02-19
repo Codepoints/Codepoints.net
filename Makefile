@@ -13,6 +13,11 @@ JSHINT := node_modules/jshint/bin/jshint
 JSHINT_ARGS := --config src/jshint.js
 PHPUNIT := phpunit
 PHPUNIT_ARGS :=
+ifdef COVERAGE
+PHPUNIT_REAL_ARGS := $(PHPUNIT_ARGS) --coverage-html ./coverage-report
+else
+PHPUNIT_REAL_ARGS := $(PHPUNIT_ARGS)
+endif
 
 all: test ucotd css js cachebust
 
@@ -98,7 +103,7 @@ test: test-php test-phpunit test-sass test-js
 
 test-phpunit:
 	$(info * Run PHPUnit tests)
-	@$(PHPUNIT) $(PHPUNIT_ARGS)
+	@$(PHPUNIT) $(PHPUNIT_REAL_ARGS)
 
 test-php: $(PHP_ALL)
 	$(info * Test PHP syntax)
