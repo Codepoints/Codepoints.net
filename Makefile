@@ -13,6 +13,11 @@ JSHINT := node_modules/jshint/bin/jshint
 JSHINT_ARGS := --config src/jshint.js
 PHPUNIT := phpunit
 PHPUNIT_ARGS :=
+ifdef COVERAGE
+PHPUNIT_REAL_ARGS := $(PHPUNIT_ARGS) --coverage-html ./coverage-report
+else
+PHPUNIT_REAL_ARGS := $(PHPUNIT_ARGS)
+endif
 
 all: test ucotd css js cachebust
 
@@ -32,8 +37,12 @@ css: $(CSS_TARGET)
 $(CSS_TARGET): $(DOCROOT)static/css/%.css : src/sass/%.scss
 	compass compile --force $<
 
-js: $(DOCROOT)static/js/build.txt $(DOCROOT)static/js/html5shiv.js \
+js: src/vendor/jquery.ui \
+    $(DOCROOT)static/js/build.txt $(DOCROOT)static/js/html5shiv.js \
     $(DOCROOT)static/ZeroClipboard.swf
+
+src/vendor/jquery.ui:
+	node_modules/.bin/jqueryui-amd "$@"
 
 init: src/vendor/jquery.ui/jqueryui src/vendor/webfontloader/target/webfont.js
 
@@ -69,7 +78,9 @@ ucd.sqlite: ucotd tools/patch_db.sql tools/scripts.sql tools/scripts_wp.sql \
 	sqlite3 $@ <tools/patch_db.sql
 	sqlite3 $@ <tools/scripts.sql
 	sqlite3 $@ <tools/scripts_wp.sql
-	sqlite3 $@ <tools/fonts/*_insert.sql
+	for x in tools/fonts/*_insert.sql; do \
+		sqlite3 $@ < $$x; \
+	done
 	sqlite3 $@ <tools/latex.sql
 
 l10n: $(DOCROOT)locale/messages.pot $(DOCROOT)locale/js.pot
@@ -98,7 +109,7 @@ test: test-php test-phpunit test-sass test-js
 
 test-phpunit:
 	$(info * Run PHPUnit tests)
-	@$(PHPUNIT) $(PHPUNIT_ARGS)
+	@$(PHPUNIT) $(PHPUNIT_REAL_ARGS)
 
 test-php: $(PHP_ALL)
 	$(info * Test PHP syntax)
