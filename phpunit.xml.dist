@@ -1,7 +1,7 @@
 <!--
 vim: ft=xml
 -->
-<phpunit colors="true">
+<phpunit colors="true" bootstrap="./test/phpunit/bootstrap.php">
 
   <testsuite name="Mustache">
     <directory suffix="Test.php">./test/phpunit/</directory>
@@ -12,9 +12,12 @@ vim: ft=xml
       <directory suffix=".php">./codepoints.net/lib/</directory>
       <directory suffix=".php">./codepoints.net/controllers/</directory>
       <directory suffix=".php">./codepoints.net/views/</directory>
-      <file>./codepoints.net/index.php</file>
       <exclude>
+        <file>./codepoints.net/index.php</file>
         <directory suffix=".php">./codepoints.net/lib/vendor/</directory>
+        <directory suffix=".php">./codepoints.net/lib/api/</directory>
+        <directory suffix=".php">./codepoints.net/controllers/</directory>
+        <directory suffix=".php">./codepoints.net/views/</directory>
       </exclude>
     </whitelist>
   </filter>

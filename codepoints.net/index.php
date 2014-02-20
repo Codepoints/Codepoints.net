@@ -54,7 +54,7 @@ define('DB_PATH', realpath(__DIR__.'/../ucd.sqlite'));
 /**
  * cache busting string (the Makefile will manipulate this line)
  */
-define('CACHE_BUST', '3a28401ecef7e6483863c07097ac508c7b2e74ec');
+define('CACHE_BUST', '793344ab286646877a43dbc47ece3786babb7620');
 
 
 /* enable gzip compression of HTML */
@@ -170,31 +170,43 @@ $router->registerUrl('Codepoint', function ($object) {
  * call the main action or produce a 404 error
  */
 if ($router->callAction() === False) {
-    header('HTTP/1.0 404 Not Found');
     $block = Null;
     $plane = Null;
-    $planes = UnicodePlane::getAll($db);
+    $int = Null;
+    $prev = Null;
+    $next = Null;
 
     // if the URL looks like a codepoint, give some extra hints
     if ($router->getSetting('noCP')) {
         $int = hexdec(substr($router->getSetting('request')->trunkUrl, 2));
-        try {
-            $block = UnicodeBlock::getForCodepoint($int,
-                                    $router->getSetting('db'));
-        } catch(Exception $e) {
-            foreach ($planes as $p) {
+        if ($int && $int >= 0 && $int <= 0x10FFFF) {
+            try {
+                $_cp = Codepoint::getCP($int, $router->getSetting('db'));
+                $prev = $_cp->getPrev();
+                $next = $_cp->getNext();
+            } catch(Exception $e) {}
+            try {
+                $block = UnicodeBlock::getForCodepoint($int,
+                                        $router->getSetting('db'));
+            } catch(Exception $e) {}
+            foreach (UnicodePlane::getAll($db) as $p) {
                 if ((int)$p->first <= $int && (int)$p->last >= $int) {
                     $plane = $p;
                     break;
                 }
             }
+        } else {
+            $int = Null; // re-set emptiness
         }
+    } else {
+        /* send the 404 only, if this is not a possible CP */
+        header('HTTP/1.0 404 Not Found');
     }
 
     $req = $router->getSetting('request');
     $cps = Codepoint::getForString(rawurldecode($req->trunkUrl), $db);
     $view = new View('error404');
-    echo $view->render(compact('planes', 'block', 'plane', 'cps'));
+    echo $view->render(compact('block', 'plane', 'cps', 'int', 'prev', 'next'));
 }
 
 

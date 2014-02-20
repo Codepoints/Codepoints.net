@@ -31,6 +31,10 @@
       <th><?php _e('HTML-Escape')?></th>
       <td>&amp;#x<?php e($codepoint->getId('hex'))?>;</td>
     </tr>
+    <tr>
+      <th><?php _e('Wrong ISO-8851-1 Mojibake')?></th>
+      <td><?php echo utf8_encode($codepoint->getSafeChar())?></td>
+    </tr>
 <?php $alias = $codepoint->getALias();
 $typeMap = array(
     'abbreviation' => _('abbreviation'),

@@ -13,11 +13,16 @@ JSHINT := node_modules/jshint/bin/jshint
 JSHINT_ARGS := --config src/jshint.js
 PHPUNIT := phpunit
 PHPUNIT_ARGS :=
+ifdef COVERAGE
+PHPUNIT_REAL_ARGS := $(PHPUNIT_ARGS) --coverage-html ./coverage-report
+else
+PHPUNIT_REAL_ARGS := $(PHPUNIT_ARGS)
+endif
 
 all: test ucotd css js cachebust
 
 .PHONY: all css js dist clean ucotd cachebust l10n test vendor db clearcache \
-        test-sass
+        test-sass test-php test-phpunit test-js init
 
 clean:
 	-rm -fr dist src/vendor node_modules .sass-cache
@@ -32,8 +37,21 @@ css: $(CSS_TARGET)
 $(CSS_TARGET): $(DOCROOT)static/css/%.css : src/sass/%.scss
 	compass compile --force $<
 
-js: $(DOCROOT)static/js/build.txt $(DOCROOT)static/js/html5shiv.js \
+js: src/vendor/jquery.ui \
+    $(DOCROOT)static/js/build.txt $(DOCROOT)static/js/html5shiv.js \
     $(DOCROOT)static/ZeroClipboard.swf
+
+src/vendor/jquery.ui:
+	node_modules/.bin/jqueryui-amd "$@"
+
+init: src/vendor/jquery.ui/jqueryui src/vendor/webfontloader/target/webfont.js
+
+src/vendor/jquery.ui/jqueryui:
+	node_modules/.bin/jqueryui-amd src/vendor/jquery.ui
+
+src/vendor/webfontloader/target/webfont.js:
+	cd src/vendor/webfontloader && \
+		rake compile
 
 $(DOCROOT)static/js/build.txt: src/build.js $(JS_ALL)
 	cd src && node vendor/r.js/dist/r.js -o build.js
@@ -55,11 +73,14 @@ ucotd: tools/ucotd.*
 	@cd tools; \
 	$(PYTHON) ucotd.py
 
-ucd.sqlite: ucotd tools/scripts.sql tools/scripts_wp.sql \
+ucd.sqlite: ucotd tools/patch_db.sql tools/scripts.sql tools/scripts_wp.sql \
             tools/fonts/*_insert.sql tools/latex.sql
+	sqlite3 $@ <tools/patch_db.sql
 	sqlite3 $@ <tools/scripts.sql
 	sqlite3 $@ <tools/scripts_wp.sql
-	for sql in tools/fonts/*_insert.sql; do sqlite3 $@ <$$sql; done
+	for x in tools/fonts/*_insert.sql; do \
+		sqlite3 $@ < $$x; \
+	done
 	sqlite3 $@ <tools/latex.sql
 
 l10n: $(DOCROOT)locale/messages.pot $(DOCROOT)locale/js.pot
@@ -87,7 +108,8 @@ vendor: bower.json
 test: test-php test-phpunit test-sass test-js
 
 test-phpunit:
-	$(PHPUNIT) $(PHPUNIT_ARGS)
+	$(info * Run PHPUnit tests)
+	@$(PHPUNIT) $(PHPUNIT_REAL_ARGS)
 
 test-php: $(PHP_ALL)
 	$(info * Test PHP syntax)
