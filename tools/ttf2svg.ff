@@ -2,5 +2,5 @@
 Open($1);
 Reencode("unicode");
 ScaleToEm(1000);
-Generate($fontname+".svg");
+Generate("svgfonts/"+$fontname+".svg");
 Quit(0);
