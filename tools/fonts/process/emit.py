@@ -6,6 +6,8 @@ import logging
 from   lxml import etree
 import subprocess
 
+from   process.settings import TARGET_DIR
+
 
 logger = logging.getLogger('codepoint.fonts')
 
@@ -28,23 +30,37 @@ def distributeGlyphs(glyphs, blocks):
 
 def generateFontFormats(block, block_data):
     """"""
-    with open('blockfonts/'+block+'.svg', 'w') as svgfile:
+    with open(TARGET_DIR+'fonts/'+block+'.svg', 'w') as svgfile:
         svgfile.write(etree.tostring(block_data["svgfont"]))
-    font = fontforge.open('blockfonts/'+block+'.svg')
-    font.generate('blockfonts/'+block+'.woff')
-    font.generate('blockfonts/'+block+'.ttf')
+    font = fontforge.open(TARGET_DIR+'fonts/'+block+'.svg')
+    font.generate(TARGET_DIR+'fonts/'+block+'.woff')
+    font.generate(TARGET_DIR+'fonts/'+block+'.ttf')
     font.close()
     subprocess.call([
         'ttf2eot',
-            'blockfonts/'+block+'.ttf',
-            'blockfonts/'+block+'.eot',
+            TARGET_DIR+'fonts/'+block+'.ttf',
+            TARGET_DIR+'fonts/'+block+'.eot',
     ])
 
 
 def generateBlockSQL(block, block_data):
     """"""
-    with open('blockfont_sql/'+block+'.sql', 'w') as sqlfile:
+    with open(TARGET_DIR+'sql/'+block+'.sql', 'w') as sqlfile:
         sqlfile.write(block_data["sql"])
+
+
+def generateMissingReport(blocks):
+    """"""
+    report = ""
+    for block, block_data in blocks.iteritems():
+        if len(block_data['cps']):
+            report += "{}: {} cps\n{}\n".format(
+                          (block, len(block_data['cps']), 78*"="))
+            #for cp in block_data['cps']:
+            #    report += 'U+{:04X} '.format(cp)
+            report += 78*"=" + "\n\n"
+    with open(TARGET_DIR+'missing.txt', 'w') as _file:
+        _file.write(report)
 
 
 #EOF

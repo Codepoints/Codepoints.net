@@ -13,3 +13,4 @@
 /codepoints.net/src
 /node_modules/
 /coverage-report/
+*.pyc

@@ -33,7 +33,7 @@ svg_font_skeleton = '''<svg xmlns="'''+xmlns_svg+'''" version="1.1">
 def getFonts():
     """get a prioretized list of fonts to respect"""
     fonts = json.load(open('fonts.json'))
-    return [(op.basename(op.splitext(font)[0]), font) for font in fonts]
+    return [(op.basename(op.splitext(font)[0]), font) for font in fonts if font[0] != "#"]
 
 
 def getSVGFont(item):
