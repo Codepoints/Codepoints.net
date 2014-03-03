@@ -38,14 +38,16 @@ define(['jquery',
 
       addRepr(_('Python'), function(n) {
         var str = n.toString(16).toUpperCase(),
-            pad = 4;
+            pad = 4,
+            prefix = '\\u';
         if (n > 0xFFFF) {
-          pad = 6;
+          pad = 8;
+          prefix = '\\U';
         }
         while (str.length < pad) {
           str = "0" + str;
         }
-        return '\\u'+str;
+        return prefix+str;
       });
 
       addRepr(_('Ruby'), function(n) {
