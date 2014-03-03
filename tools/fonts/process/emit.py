@@ -29,28 +29,27 @@ def distributeGlyphs(glyphs, blocks):
 
 
 def generateFontFormats(block, block_data):
-    """"""
+    """Create several font formats from an SVG font DOM tree"""
     with open(TARGET_DIR+'fonts/'+block+'.svg', 'w') as svgfile:
         svgfile.write(etree.tostring(block_data["svgfont"]))
     font = fontforge.open(TARGET_DIR+'fonts/'+block+'.svg')
     font.generate(TARGET_DIR+'fonts/'+block+'.woff')
     font.generate(TARGET_DIR+'fonts/'+block+'.ttf')
     font.close()
-    #subprocess.call([
-    #    'ttf2eot',
-    #        TARGET_DIR+'fonts/'+block+'.ttf',
-    #        TARGET_DIR+'fonts/'+block+'.eot',
-    #])
+    with open(TARGET_DIR+'fonts/'+block+'.eot', 'w') as eotfile:
+        subprocess.call(['ttf2eot', TARGET_DIR+'fonts/'+block+'.ttf'],
+                        stdout=eotfile)
 
 
 def generateBlockSQL(block, block_data):
-    """"""
+    """Generate SQL for each Unicode block about what codepoint uses which
+    font"""
     with open(TARGET_DIR+'sql/'+block+'.sql', 'w') as sqlfile:
         sqlfile.write(block_data["sql"])
 
 
 def generateMissingReport(blocks):
-    """"""
+    """Collect info about which codepoints are missing from fonts"""
     report = ""
     for block, block_data in blocks.iteritems():
         if len(block_data['cps']):
