@@ -33,7 +33,14 @@ svg_font_skeleton = '''<svg xmlns="'''+xmlns_svg+'''" version="1.1">
 def getFonts():
     """get a prioretized list of fonts to respect"""
     fonts = json.load(open('fonts.json'))
-    return [(op.basename(op.splitext(font)[0]), font) for font in fonts if font[0] != "#"]
+    payload = []
+    for font in fonts:
+        if font[0] == "#":
+            logger.info('skip {}'.format(font[1:]))
+            continue
+        payload.append((op.basename(op.splitext(font)[0]), font))
+
+    return payload
 
 
 def getSVGFont(item):
@@ -71,6 +78,7 @@ def getBlocks():
             cur.execute('SELECT cp FROM codepoints WHERE blk = ?', (block, ))
                .fetchall()
         ]
+        blocks[block]["len_cps"] = len(blocks[block]["cps"])
         blocks[block]["svgfont"] = etree.XML(svg_font_skeleton % (block, block))
         blocks[block]["svgfontel"] = fontXPath(blocks[block]["svgfont"])[0]
         blocks[block]["sql"] = ""

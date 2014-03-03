@@ -36,11 +36,11 @@ def generateFontFormats(block, block_data):
     font.generate(TARGET_DIR+'fonts/'+block+'.woff')
     font.generate(TARGET_DIR+'fonts/'+block+'.ttf')
     font.close()
-    subprocess.call([
-        'ttf2eot',
-            TARGET_DIR+'fonts/'+block+'.ttf',
-            TARGET_DIR+'fonts/'+block+'.eot',
-    ])
+    #subprocess.call([
+    #    'ttf2eot',
+    #        TARGET_DIR+'fonts/'+block+'.ttf',
+    #        TARGET_DIR+'fonts/'+block+'.eot',
+    #])
 
 
 def generateBlockSQL(block, block_data):
@@ -54,11 +54,11 @@ def generateMissingReport(blocks):
     report = ""
     for block, block_data in blocks.iteritems():
         if len(block_data['cps']):
-            report += "{}: {} cps\n{}\n".format(
-                          (block, len(block_data['cps']), 78*"="))
+            report += "{0}: {1:d}/{2:d} cps\n{3}\n".format(block,
+                    len(block_data['cps']), block_data['len_cps'], 78*"=")
             #for cp in block_data['cps']:
             #    report += 'U+{:04X} '.format(cp)
-            report += 78*"=" + "\n\n"
+            #report += 78*"=" + "\n\n"
     with open(TARGET_DIR+'missing.txt', 'w') as _file:
         _file.write(report)
 
