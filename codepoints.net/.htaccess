@@ -20,7 +20,7 @@ RewriteCond %{HTTP_HOST} ^www\.(.*) [NC]
 RewriteRule (.*) http://%1/$1 [R=301,L]
 
 # handle canonical favicon location
-RewriteRule ^favicon\.ico$ static/images/favicon.ico [R,L]
+RewriteRule ^favicon\.ico$ static/images/icon.svg [R,L]
 
 # don't redirect index.php
 RewriteRule ^index.php - [L]
