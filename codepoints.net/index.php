@@ -78,6 +78,15 @@ function flog($msg) {
 }
 
 
+if (array_key_exists('REQUEST_METHOD', $_SERVER) &&
+    strtoupper($_SERVER['REQUEST_METHOD']) === "POST") {
+    header('HTTP/1.0 405 Method Not Allowed');
+    $view = new View('error404');
+    die($view->render(array('block'=>null, 'plane'=>null, 'cps'=>null,
+                      'int'=>null, 'prev'=>null, 'next'=>null)));
+}
+
+
 /**
  * check for existing cached entry and exit here, if a match exists
  *
