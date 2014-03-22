@@ -35,10 +35,11 @@ def getFonts():
     fonts = json.load(open('fonts.json'))
     payload = []
     for font in fonts:
-        if font[0] == "#":
-            logger.info('skip {}'.format(font[1:]))
+        if font[0][0] == "#":
+            logger.info('skip {}'.format(font[0][1:]))
             continue
-        payload.append((op.basename(op.splitext(font)[0]), font))
+        font.insert(0, op.basename(op.splitext(font[0])[0]))
+        payload.append(font)
 
     return payload
 
@@ -78,7 +79,7 @@ def getBlocks():
             cur.execute('SELECT cp FROM codepoints WHERE blk = ?', (block, ))
                .fetchall()
         ]
-        blocks[block]["len_cps"] = len(blocks[block]["cps"])
+        blocks[block]["cps2"] = blocks[block]["cps"][:]
         blocks[block]["svgfont"] = etree.XML(svg_font_skeleton % (block, block))
         blocks[block]["svgfontel"] = fontXPath(blocks[block]["svgfont"])[0]
         blocks[block]["sql"] = ""

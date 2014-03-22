@@ -5,6 +5,10 @@ import fontforge
 import logging
 from   lxml import etree
 import subprocess
+import os
+import os.path as op
+import gzip
+from   wand.image import Image
 
 from   process.settings import TARGET_DIR
 
@@ -12,7 +16,7 @@ from   process.settings import TARGET_DIR
 logger = logging.getLogger('codepoint.fonts')
 
 
-sql_tpl = "INSERT OR REPLACE INTO codepoint_fonts (cp, font, id) VALUES (%s, '%s', '%s');"
+sql_tpl = "INSERT OR REPLACE INTO codepoint_fonts (cp, font, id, primary) VALUES (%s, '%s', '%s', %s);\n"
 
 
 def distributeGlyphs(glyphs, blocks):
@@ -24,7 +28,11 @@ def distributeGlyphs(glyphs, blocks):
             if cpn in block_data["cps"]:
                 block_data["cps"].remove(cpn)
                 block_data["svgfontel"].append(glyph)
-                block_data["sql"] += sql_tpl % (cpn, glyph.get('font-family'), block)
+                block_data["sql"] += sql_tpl % (cpn, glyph.get('font-family'), block, 1)
+                generateImages(glyph)
+                break
+            elif cpn in block_data["cps2"]:
+                block_data["sql"] += sql_tpl % (cpn, glyph.get('font-family'), block, 0)
                 break
 
 
@@ -54,12 +62,42 @@ def generateMissingReport(blocks):
     for block, block_data in blocks.iteritems():
         if len(block_data['cps']):
             report += "{0}: {1:d}/{2:d} cps\n{3}\n".format(block,
-                    len(block_data['cps']), block_data['len_cps'], 78*"=")
+                    len(block_data['cps']), len(block_data['cps2']), 78*"=")
             #for cp in block_data['cps']:
             #    report += 'U+{:04X} '.format(cp)
             #report += 78*"=" + "\n\n"
     with open(TARGET_DIR+'missing.txt', 'w') as _file:
         _file.write(report)
+
+
+def generateImages(glyph):
+    """generate one SVG and several PNG images from a glyph"""
+    d = glyph.get('d')
+    _unicode = ord(glyph.get('unicode'))
+    if not _unicode:
+        raise ValueError('No unicode: '+etree.tostring(glyph))
+    if not d:
+        logger.warn("no image for glyph {}".format(_unicode))
+    sub = '{:02X}'.format(_unicode / 0x1000)
+
+    if not op.isdir('{0}images/{1}'.format(TARGET_DIR, sub)):
+        os.mkdir('{0}images/{1}'.format(TARGET_DIR, sub))
+
+    svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -800 1000 1000"><path transform="scale(1,-1)" d="{}"/></svg>'.format(d)
+
+    with gzip.open('{0}images/{1}/{2:04X}.svgz'.format(
+                   TARGET_DIR, sub, _unicode), 'wb') as _file:
+        _file.write(svg)
+
+    with Image(blob=svg, format="svg") as img:
+        with img.convert('png') as converted:
+            converted.resize(16, 16)
+            converted.save(filename='{0}images/{1}/{2:04X}.16.png'.format(
+                   TARGET_DIR, sub, _unicode))
+        with img.convert('png') as converted:
+            converted.resize(120, 120)
+            converted.save(filename='{0}images/{1}/{2:04X}.120.png'.format(
+                   TARGET_DIR, sub, _unicode))
 
 
 #EOF

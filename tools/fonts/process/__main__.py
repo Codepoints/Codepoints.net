@@ -40,7 +40,11 @@ def main():
 
 
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO, handler=logging.StreamHandler())
+    _handler = logging.StreamHandler()
+    _handler.setFormatter(logging.Formatter("[fontprocessor:%(levelname)s] %(message)s"))
+    logger.setLevel(logging.INFO)
+    logger.addHandler(_handler)
     main()
+
 
 #EOF
