@@ -32,7 +32,7 @@
       <td>&amp;#x<?php e($codepoint->getId('hex'))?>;</td>
     </tr>
     <tr>
-      <th><?php _e('Wrong ISO-8851-1 Mojibake')?></th>
+      <th title="<?php _e('or ISO-8859-1, Latin 1, “us-ascii”, ...')?>"><?php _e('Wrong windows-1252 Mojibake')?></th>
       <td><?php echo utf8_encode($codepoint->getSafeChar())?></td>
     </tr>
 <?php $alias = $codepoint->getALias();

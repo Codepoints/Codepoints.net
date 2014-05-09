@@ -7,42 +7,141 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Codepoints JS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-02 23:57+0200\n"
-"PO-Revision-Date: 2013-06-11 22:33+0100\n"
-"Last-Translator: Manuel Strehl <translate@manuel-strehl.de>\n"
+"POT-Creation-Date: 2014-05-09 10:20+0200\n"
+"PO-Revision-Date: 2014-05-09 10:21+0100\n"
+"Last-Translator: Manuel Strehl <m.strehl@kinetiqa.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Language: de\n"
-"X-Poedit-Country: DE\n"
 "X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 1.5.4\n"
+"Language: de\n"
+
+#: src/js/wizard.js:115
+msgid "Finished!"
+msgstr "Fertig!"
+
+#: src/js/wizard.js:128
+msgid "Please wait a second, we’re making those %s answers productive."
+msgstr "Bitte warte einen Moment, wir machen diese %s Antworten produktiv."
+
+#: src/js/wizard.js:150
+msgid "Enough questions! Search now."
+msgstr "Genug Fragen! Jetzt suchen."
+
+#: src/js/components/representations.js:27
+#: src/js/components/representations.js:30
+msgid "show more"
+msgstr "mehr anzeigen"
+
+#: src/js/components/representations.js:30
+msgid "hide"
+msgstr "verbergen"
+
+#: src/js/components/representations.js:35
+msgid "RFC 5137"
+msgstr "RFC 5137"
+
+#: src/js/components/representations.js:39
+msgid "Python"
+msgstr "Python"
+
+#: src/js/components/representations.js:52
+msgid "Ruby"
+msgstr "Ruby"
+
+#: src/js/components/representations.js:56
+msgid "Perl"
+msgstr "Perl"
+
+#: src/js/components/representations.js:60
+msgid "JavaScript, JSON and Java"
+msgstr "JavaScript, JSON und Java"
+
+#: src/js/components/representations.js:66
+msgid "C"
+msgstr "C"
+
+#: src/js/components/representations.js:79
+msgid "CSS"
+msgstr "CSS"
+
+#: src/js/components/scratchpad.js:91
+msgid "empty"
+msgstr "leeren"
+
+#: src/js/components/scratchpad.js:95
+msgid "copy"
+msgstr "kopieren"
+
+#: src/js/components/scratchpad.js:100
+msgid "show"
+msgstr "anzeigen"
+
+#: src/js/components/scratchpad.js:113
+msgid ""
+"You have no codepoints here yet. Add one by clicking “Add to scratchpad” on "
+"the details page."
+msgstr ""
+"Du hast noch keine Codepunkte hier. Füge einen hinzu, indem du auf \"Zu "
+"Notizzettel“ auf seiner Detailseite klickst."
+
+#: src/js/components/scratchpad.js:122
+msgid "Scratchpad"
+msgstr "Notizzettel"
+
+#: src/js/components/scratchpad.js:132
+msgid "Add to scratchpad"
+msgstr "Zu Notizzettel"
+
+#: src/js/components/load_font.js:27
+msgid "Font used above"
+msgstr "Oben verwendete Schriftart"
 
 #: src/js/scripts.js:26
 msgid "(%s codepoints)"
 msgstr "(%s Codepunkte)"
 
 #: src/js/scripts.js:28
-#: src/js/scripts.js:139
 msgid "Source: %s"
 msgstr "Quelle: %s"
 
-#: src/js/scripts.js:69
+#: src/js/scripts.js:68
 msgid "Native, Rare and Historic Scripts"
 msgstr "Native, seltene und historische Schriften"
 
-#: src/js/scripts.js:73
+#: src/js/scripts.js:72
 msgid "Scripts used in %s"
 msgstr "Schriften verwendet in %s"
 
-#: src/js/scripts.js:83
+#: src/js/scripts.js:82
 msgid "We don’t know about %s’s scripts, sorry!"
 msgstr "Wir wissen leider nichts über die Schriften in %s."
 
-#: src/js/scripts.js:85
+#: src/js/scripts.js:84
 msgid "Nothing Found for %s"
 msgstr "Nichts gefunden für %s"
+
+#: src/js/codepoints.js:80
+msgid "top"
+msgstr "oben"
+
+#: src/js/codepoints.js:102
+msgid "Extended Search"
+msgstr "Erweiterte Suche"
+
+#: src/js/codepoints.js:104
+msgid "Find My Codepoint"
+msgstr "Finde meinen Codepunkt"
+
+#: src/js/codepoints.js:183
+msgid "Read on:"
+msgstr "Weiterlesen:"
+
+#: src/js/codepoints.js:240
+msgid "Hide this message."
+msgstr "Diese Nachricht verstecken."
 
 #: src/js/searchform.js:17
 msgid "+ add new query"
@@ -55,93 +154,3 @@ msgstr "klicken zum Ändern"
 #: src/js/searchform.js:169
 msgid "remove"
 msgstr "entfernen"
-
-#: src/js/codepoints.js:77
-msgid "top"
-msgstr "oben"
-
-#: src/js/codepoints.js:99
-msgid "Extended Search"
-msgstr "Erweiterte Suche"
-
-#: src/js/codepoints.js:101
-msgid "Find My Codepoint"
-msgstr "Finde meinen Codepunkt"
-
-#: src/js/codepoints.js:180
-msgid "Read on:"
-msgstr "Weiterlesen:"
-
-#: src/js/codepoints.js:237
-msgid "Hide this message."
-msgstr "Diese Nachricht verstecken."
-
-#: src/js/components/scratchpad.js:28
-msgid "empty"
-msgstr "leeren"
-
-#: src/js/components/scratchpad.js:43
-msgid "You have no codepoints here yet. Add one by clicking “Add to scratchpad” on the details page."
-msgstr "Du hast noch keine Codepunkte hier. Füge einen hinzu, indem du auf \"Zu Notizzettel“ auf seiner Detailseite klickst."
-
-#: src/js/components/scratchpad.js:52
-msgid "Scratchpad"
-msgstr "Notizzettel"
-
-#: src/js/components/scratchpad.js:61
-msgid "Add to scratchpad"
-msgstr "Zu Notizzettel"
-
-#: src/js/components/load_font.js:27
-msgid "Font used above"
-msgstr "Oben verwendete Schriftart"
-
-#: src/js/components/representations.js:12
-#: src/js/components/representations.js:15
-msgid "show more"
-msgstr "mehr anzeigen"
-
-#: src/js/components/representations.js:15
-msgid "hide"
-msgstr "verbergen"
-
-#: src/js/components/representations.js:19
-msgid "RFC 5137"
-msgstr "RFC 5137"
-
-#: src/js/components/representations.js:22
-msgid "Python"
-msgstr "Python"
-
-#: src/js/components/representations.js:25
-msgid "Ruby"
-msgstr "Ruby"
-
-#: src/js/components/representations.js:28
-msgid "Perl"
-msgstr "Perl"
-
-#: src/js/components/representations.js:31
-msgid "JavaScript, JSON and Java"
-msgstr "JavaScript, JSON und Java"
-
-#: src/js/components/representations.js:40
-msgid "C"
-msgstr "C"
-
-#: src/js/components/representations.js:52
-msgid "CSS"
-msgstr "CSS"
-
-#: src/js/wizard.js:114
-msgid "Finished!"
-msgstr "Fertig!"
-
-#: src/js/wizard.js:127
-msgid "Please wait a second, we’re making those %s answers productive."
-msgstr "Bitte warte einen Moment, wir machen diese %s Antworten produktiv."
-
-#: src/js/wizard.js:149
-msgid "Enough questions! Search now."
-msgstr "Genug Fragen! Jetzt suchen."
-
