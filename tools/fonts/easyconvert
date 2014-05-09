@@ -1,0 +1,21 @@
+#!/bin/bash
+
+find src -type f -name '[^.]*.[to]tf' -print0 |
+while read -r -d $'\0' font
+do
+  EM=$(python -c 'import fontforge; f = fontforge.open("'"$font"'"); print f.em' 2>/dev/null)
+  if [[ $EM == "2048" ]]; then
+    echo "Processing $font"
+    BASE=$(basename -s .otf -s .ttf $font)
+    cat <<SCRIPT | fontforge -lang=ff -script /proc/self/fd/0 "$font"
+#!/usr/bin/fontforge
+
+Open(\$1);
+Reencode("unicode");
+Generate("src_manual/${BASE}.svg");
+Quit(0);
+SCRIPT
+  else
+    echo "Skipping $font"
+  fi
+done

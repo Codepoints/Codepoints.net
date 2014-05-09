@@ -7,27 +7,27 @@ from   lxml import etree
 import os.path as op
 import sqlite3
 import subprocess
+from   process.settings import EM_SIZE
 
 
 logger = logging.getLogger('codepoint.fonts')
 
 
 ffGlyphXPath = etree.XPath('//glyph[string-length(@unicode) = 1]')
-xmlns_svg = 'http://www.w.3.org/2000/svg'
-glyphXPath = etree.XPath('//svg:glyph', namespaces={ 'svg': xmlns_svg })
+xmlns_svg = 'http://www.w3.org/2000/svg'
 fontXPath = etree.XPath('//svg:font', namespaces={ 'svg': xmlns_svg })
 
 
 svg_font_skeleton = '''<svg xmlns="'''+xmlns_svg+'''" version="1.1">
   <defs>
-    <font id="%s" horiz-adv-x="1000">
+    <font id="%s" horiz-adv-x="{0}">
       <font-face
         font-family="%s"
         font-weight="400"
-        units-per-em="1000"/>
+        units-per-em="{0}"/>
     </font>
   </defs>
-</svg>'''
+</svg>'''.format(EM_SIZE)
 
 
 def getFonts():
@@ -49,7 +49,7 @@ def getSVGFont(item):
     svgfont = 'svgsrc/'+item[0]+'.svg'
     if not op.isfile(svgfont):
         font = fontforge.open(item[1])
-        font.em = 1000
+        font.em = EM_SIZE
         font.generate(svgfont)
         font.close()
         subprocess.call([
@@ -75,15 +75,24 @@ def getBlocks():
             cur.execute('SELECT DISTINCT blk FROM codepoints;').fetchall() }
 
     for block in blocks.keys():
-        blocks[block]["cps"] = [ x[0] for x in
+        cps = [ x[0] for x in
             cur.execute('SELECT cp FROM codepoints WHERE blk = ?', (block, ))
                .fetchall()
         ]
-        blocks[block]["cps2"] = blocks[block]["cps"][:]
-        blocks[block]["svgfont"] = etree.XML(svg_font_skeleton % (block, block))
-        blocks[block]["svgfontel"] = fontXPath(blocks[block]["svgfont"])[0]
-        blocks[block]["sql"] = ""
+        prefix = ""
+        if len(cps) > 2500:
+            prefix = "1"
+        for x in range(1, len(cps)/2500 + 2):
+            name = block + prefix
+            prefix = str(x+1)
+            if name not in blocks:
+                blocks[name] = {}
+            blocks[name]["cps"] = cps[(x-1)*2500:x*2500]
+            blocks[name]["cps2"] = cps[(x-1)*2500:x*2500]
+            blocks[name]["svgfont"] = etree.XML(svg_font_skeleton % (block, block))
+            blocks[name]["svgfontel"] = fontXPath(blocks[name]["svgfont"])[0]
+            blocks[name]["sql"] = ""
 
-    return blocks
+    return {block: block_data for block, block_data in blocks.iteritems() if "cps" in block_data}
 
 
