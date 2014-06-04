@@ -1,22 +1,18 @@
 #!/usr/bin/env python
 
 
-from   collections import OrderedDict
 import json
 import logging
 from   lxml import etree
 import os
 import os.path as op
 
-from   process.collect import getBlocks
-from   process.emit import emit, emit_sql
-from   process.settings import TARGET_DIR
+from   process.collect import get_blocks, load_cache
+from   process.emit import emit, emit_sql, finish_fonts, generate_missing_report
+from   process.settings import TARGET_DIR, LOG_LEVEL
 
 
 logger = logging.getLogger('codepoint.fonts')
-
-
-ffGlyphXPath = etree.XPath('//glyph[string-length(@unicode) = 1]')
 
 
 def init():
@@ -26,60 +22,66 @@ def init():
     for dir_ in ['fonts', 'sql', 'images']:
         if not op.isdir(TARGET_DIR+dir_):
             os.makedirs(TARGET_DIR+dir_)
+    _handler = logging.StreamHandler()
+    _handler.setFormatter(logging.Formatter(
+        "[fontprocessor:%(levelname)s] %(message)s"))
+    logger.addHandler(_handler)
+    _handler = logging.FileHandler(TARGET_DIR+'process.log')
+    _handler.setFormatter(logging.Formatter(
+        "[%(levelname)s] %(message)s"))
+    logger.addHandler(_handler)
+    logger.setLevel(LOG_LEVEL)
 
 
 def main():
     """"""
-    init()
-    cps = {}
-    counter = 0
     with open('font-family.json') as _fontlist:
         fontlist = json.load(_fontlist)
 
-    for font_file, font_family in fontlist:
-        logger.info("Handling font {}".format(font_file))
+    ffGlyphXPath = etree.XPath('//glyph[string-length(@unicode) = 1]')
+
+    blocks = get_blocks()
+
+    len_fontlist = len(fontlist)
+    cps = load_cache()
+    counter = 0
+
+    for item, (font_file, font_family) in enumerate(fontlist):
+        logger.info("Handling font {} ({}/{})".format(font_file, item, len_fontlist))
         with open(font_file) as svg:
             r = etree.parse(svg)
-        for glyph in ffGlyphXPath(r):
+        glyphs = ffGlyphXPath(r)
+        len_glyphs = len(glyphs)
+        for i, glyph in enumerate(glyphs):
+            # TODO: DEBUG
+            if counter > 3: break
             cp = glyph.get("unicode")
-            cpn = '{0:04X}'.format(ord(cp))
+            ocp = ord(cp)
+            logger.info("  | Glyph {:3d}/{} ({}) of {}".format(i+1, len_glyphs,
+                        cp.encode('utf-8') if ocp >= 32 else '?', font_file))
+            cpn = '{0:04X}'.format(ocp)
             d = glyph.get("d", False)
-            if d and cpn not in cps:
+            if d and ocp not in cps:
                 counter += 1
-                cps[cpn] = [ d, font_family ]
-                emit(cp, d, font_family)
-            elif cpn in cps:
+                cps[ocp] = [ font_family ]
+                emit(cp, d, font_family, blocks)
+            elif ocp in cps:
                 emit_sql(cp, font_family, 0)
-                cps[cpn].append(font_family)
+                cps[ocp].append(font_family)
 
-    with open('result.json', 'wb') as result:
-        json.dump(cps, result, sort_keys=True,
-                               indent=4, separators=(',', ': '))
+    finish_fonts(blocks)
+
+    #with open('result.json', 'wb') as result:
+    #    json.dump(cps, result, sort_keys=True,
+    #                           indent=4, separators=(',', ': '))
 
     logger.info("Handled {} cps".format(counter))
 
-    #blocks, fonts = init()
-
-    #for item in fonts:
-    #    logger.info("Handling font {}".format(item[0]))
-    #    glyphs = getSVGFont(item)
-    #    distributeGlyphs(glyphs, blocks)
-
-    #for block, block_data in blocks.iteritems():
-    #    logger.info("Handling block {}".format(block))
-    #    generateFontFormats(block, block_data)
-    #    generateBlockSQL(block, block_data)
-
-    #generateMissingReport(blocks)
+    generate_missing_report(cps)
 
 
 if __name__ == "__main__":
-    _handler = logging.StreamHandler()
-    _handler.setFormatter(logging.Formatter(
-        "[fontprocessor:%(levelname)s] %(message)s"))
-    logger.setLevel(logging.INFO)
-    logger.setLevel(logging.DEBUG)
-    logger.addHandler(_handler)
+    init()
     main()
 
 
