@@ -2,29 +2,24 @@
 
 
 import fontforge
+import gzip
 import json
 import logging
 from   lxml import etree
-import subprocess
 import os
 import os.path as op
-import gzip
+import subprocess
+from   time import sleep
 
 from   process.collect import get_all_codepoints
+from   process.clean import clean_images, clean_sql, clean_font
 from   process.settings import TARGET_DIR, EM_SIZE, PNG_WIDTHS, DB_PNG_WIDTH
 
 
 logger = logging.getLogger('codepoint.fonts')
 
 
-sql_tpl = ("INSERT OR REPLACE INTO codepoint_fonts (cp, font, id, primary) "
-           "VALUES (%s, '%s', '%s', %s);\n")
-sqlimg_tpl = ("INSERT OR REPLACE INTO codepoint_image (cp, image) "
-              "VALUES (%s, '%s');\n")
-
 xmlns_svg = 'http://www.w3.org/2000/svg'
-
-fontXPath = etree.XPath('//svg:font', namespaces={ 'svg': xmlns_svg })
 
 svg_font_skeleton = '''<svg xmlns="'''+xmlns_svg+'''" version="1.1">
   <defs>
@@ -33,6 +28,7 @@ svg_font_skeleton = '''<svg xmlns="'''+xmlns_svg+'''" version="1.1">
         font-family="%s"
         font-weight="400"
         units-per-em="{0}"/>
+      {{}}
     </font>
   </defs>
 </svg>'''.format(EM_SIZE)
@@ -63,7 +59,7 @@ def generate_missing_report(cps):
 
 """.format(block, info[1], info[0], info[1]*100/info[0], missing))
 
-    with open(TARGET_DIR+'cache.json', 'w') as _file:
+    with open(TARGET_DIR+'cache/cache.json', 'w') as _file:
         # store as .items() to preserve numeric key
         json.dump(cps.items(), _file)
 
@@ -73,6 +69,8 @@ def emit_png(cp):
     the appropriate .svgz file in place. Also append PNG data to SQL file
     for populating codepoint_image table."""
     ocp = ord(cp)
+    processes = []
+
     for width in PNG_WIDTHS:
         target = '{0}images/{1:02X}/{2:04X}.{3}.png'.format(TARGET_DIR,
                         ocp / 0x1000, ocp, width)
@@ -110,9 +108,9 @@ def emit_png(cp):
             ])
         logger.debug(' '.join(args))
         with open(os.devnull, 'w') as devnull:
-            subprocess.Popen(' '.join(args), shell=True, executable="/bin/bash",
-                stderr=devnull)
-    return True
+            processes.append(subprocess.Popen(' '.join(args), shell=True, executable="/bin/bash",
+                stderr=devnull))
+    return processes
 
 
 def emit_svg(cp, d):
@@ -149,13 +147,16 @@ def emit_images(cp, d):
         os.mkdir('{0}images/{1}'.format(TARGET_DIR, sub))
 
     emit_svg(cp, d)
-    emit_png(cp)
-    return True
+    processes = emit_png(cp)
+    return processes
 
 
 def emit_sql(cp, font_family, primary=1):
     """Create a SQL row with font info for this CP.
     If primary=1, the font is the one used to render the example glyph."""
+
+    sql_tpl = ("INSERT OR REPLACE INTO codepoint_fonts (cp, font, id, primary) "
+               "VALUES (%s, '%s', '%s', %s);\n")
 
     sql = sql_tpl % (ord(cp), font_family,
             font_family, # TODO: make this a useful entry!
@@ -172,10 +173,8 @@ def emit_font(cp, d, blocks):
 
     for blk in blocks:
         if blk[1] <= ocp and blk[2] >= ocp:
-            if len(blk) < 4:
-                blk.append(etree.XML(svg_font_skeleton % (blk[0], blk[0])))
-                blk.append(fontXPath(blk[3]))
-            blk[4].append(etree.XML('<glyph unicode="&#%s;" d="%s"/>' % (ocp, d)))
+            with open('{}cache/font_{}.tmp'.format(TARGET_DIR, blk[0]), 'a') as font:
+                font.write('<glyph unicode="&#%s;" d="%s"/>\n' % (ocp, d))
             return True
 
     logger.warning('No block found for U+{:04X}'.format(ocp))
@@ -184,9 +183,34 @@ def emit_font(cp, d, blocks):
 
 def emit(cp, d, font_family, blocks):
     """take the path and do whatever magic is needed"""
-    emit_images(cp, d)
-    emit_font(cp, d, blocks)
-    emit_sql(cp, font_family)
+    processes = []
+    try:
+        done = 0
+        processes = emit_images(cp, d)
+        done = 1
+        emit_font(cp, d, blocks)
+        done = 2
+        emit_sql(cp, font_family)
+        done = 3
+    except (KeyboardInterrupt, SystemExit):
+        i = 0
+        while len(filter(lambda p: p.poll() is None, processes)):
+            if i % 6 == 0:
+                logger.warning('Waiting for subprocesses to end...')
+            i += 1
+            sleep(0.5)
+        if done < 3:
+            # clean up
+            logger.warning('Clean up last cp: U+{:04X}'.format(ord(cp)))
+            # TODO: do the clean-up!
+            clean_images(cp)
+            if done > 2:
+                clean_sql(cp, font_family)
+            if done > 1:
+                clean_font(cp, blocks)
+        else:
+            logger.info('No clean-up needed. Last cp: U+{:04X}'.format(ord(cp)))
+        raise
     return True
 
 
@@ -194,11 +218,16 @@ def finish_fonts(blocks):
     """Create several font formats from an SVG font DOM tree"""
     for blk in blocks:
         block = blk[0]
-        if len(blk) < 4:
-            logger.warning('No fonts created for block {}!'.format(block))
+        cache = '{}cache/font_{}.tmp'.format(TARGET_DIR, block)
+        if not op.isfile(cache) or \
+           not os.stat(cache).st_size:
+            logger.info('No font created for block {}...'.format(block))
             continue
+        else:
+            logger.info('Creating font for block {}...'.format(block))
         with open(TARGET_DIR+'fonts/'+block+'.svg', 'w') as svgfile:
-            svgfile.write(etree.tostring(blk[3]))
+            with open(cache) as _cache:
+                svgfile.write(svg_font_skeleton.format(_cache.read()))
         font = fontforge.open(TARGET_DIR+'fonts/'+block+'.svg')
         font.generate(TARGET_DIR+'fonts/'+block+'.woff')
         font.generate(TARGET_DIR+'fonts/'+block+'.ttf')

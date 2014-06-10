@@ -37,9 +37,9 @@ def get_all_codepoints():
 
 def load_cache():
     """load already handled codepoints"""
-    if not LOAD_CACHE or not op.isfile(TARGET_DIR+'cache.json'):
+    if not LOAD_CACHE or not op.isfile(TARGET_DIR+'cache/cache.json'):
         return {}
-    with open(TARGET_DIR+'cache.json') as _file:
+    with open(TARGET_DIR+'cache/cache.json') as _file:
         cache = json.load(_file)
     # cache is a list of lists. Restore dict w/ numeric keys
     return dict(cache)
