@@ -33,11 +33,7 @@ define(['jquery',
                 }).insertAfter(repr);
 
       addRepr(_('RFC 5137'), function(n) {
-        var str = n.toString(16).toUpperCase();
-        while (str.length < 4) { // at least 4 hexdigits
-          str = "0" + str;
-        }
-        return '\\u\'' + str + '\'';
+        return '\\u\'' + tools.format_codepoint(n) + '\'';
       });
 
       addRepr(_('Python'), function(n) {
