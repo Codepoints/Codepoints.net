@@ -6,7 +6,7 @@ import logging
 import os.path as op
 import sqlite3
 
-from   process.settings import TARGET_DIR, LOAD_CACHE
+from   process.settings import TARGET_DIR, LOAD_CACHE, BLOCK_SPLIT_SIZE
 
 
 logger = logging.getLogger('codepoint.fonts')
@@ -18,8 +18,8 @@ def get_blocks():
     cur = conn.cursor()
     blocks = []
     for x in cur.execute('SELECT name, first, last FROM blocks;').fetchall():
-        if (x[2] - x[1]) > 1024:
-            logger.warning('Skipping block {} due to size'.format(x[0]))
+        if (x[2] - x[1]) > BLOCK_SPLIT_SIZE:
+            logger.warning('Skipping block {} due to size ({})'.format(x[0], x[2] - x[1]))
             continue
         blocks.append([ x[0].replace(' ', '_'), x[1], x[2] ])
     return blocks

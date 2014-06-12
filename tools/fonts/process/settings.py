@@ -28,4 +28,7 @@ LOG_LEVEL = _l.INFO
 LOAD_CACHE = True
 
 
+# when blocks are regarded as too large and need to be split
+BLOCK_SPLIT_SIZE = 2000
+
 #EOF

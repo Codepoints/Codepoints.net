@@ -21,6 +21,7 @@ logger = logging.getLogger('codepoint.fonts')
 def init():
     """"""
     def raiser(signal, frame):
+        logger.warning('Received signal for shutdown. Cleaning up...')
         raise KeyboardInterrupt
         sys.exit(0)
     signal.signal(signal.SIGINT, raiser)
@@ -31,13 +32,15 @@ def init():
             os.makedirs(TARGET_DIR+dir_)
     _handler = logging.StreamHandler()
     _handler.setFormatter(logging.Formatter(
-        "[fontprocessor:%(levelname)s] %(message)s"))
+        "[%(levelname)s] %(message)s"))
+    _handler.setLevel(LOG_LEVEL)
     logger.addHandler(_handler)
     _handler = logging.FileHandler(TARGET_DIR+'process.log')
     _handler.setFormatter(logging.Formatter(
-        "[%(levelname)s] %(message)s"))
+        "[%(asctime)s %(levelname)s] %(message)s"))
+    _handler.setLevel(logging.DEBUG)
     logger.addHandler(_handler)
-    logger.setLevel(LOG_LEVEL)
+    logger.setLevel(logging.DEBUG)
 
 
 def main():

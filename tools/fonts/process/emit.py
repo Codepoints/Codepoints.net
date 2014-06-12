@@ -175,6 +175,7 @@ def emit_font(cp, d, blocks):
         if blk[1] <= ocp and blk[2] >= ocp:
             with open('{}cache/font_{}.tmp'.format(TARGET_DIR, blk[0]), 'a') as font:
                 font.write('<glyph unicode="&#%s;" d="%s"/>\n' % (ocp, d))
+            logger.debug('Put U+{:04X} in font for block {}'.format(ocp, blk[0]))
             return True
 
     logger.warning('No block found for U+{:04X}'.format(ocp))
@@ -221,7 +222,7 @@ def finish_fonts(blocks):
         cache = '{}cache/font_{}.tmp'.format(TARGET_DIR, block)
         if not op.isfile(cache) or \
            not os.stat(cache).st_size:
-            logger.info('No font created for block {}...'.format(block))
+            logger.debug('No font created for block {}...'.format(block))
             continue
         else:
             logger.info('Creating font for block {}...'.format(block))
