@@ -59,7 +59,7 @@ define(['jquery',
 
       addRepr(_('JavaScript, JSON and Java'), function(n) {
         return $.map(tools.codepoint_to_utf16(n), function(x) {
-          return '\\u'+x.toString(16).toUpperCase();
+          return '\\u' + tools.format_codepoint(x);
         }).join('');
       });
 
