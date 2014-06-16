@@ -63,16 +63,12 @@ def clean_sql(cp, font_family, primary=1):
         r"INSERT OR REPLACE INTO codepoint_fonts \(cp, font, id, primary\) VALUES ({}, '{}',".format(ocp, font_family))
 
 
-def clean_font(cp, blocks):
+def clean_font(cp, block):
     """"""
-    ocp = ord(cp)
-
-    for blk in blocks:
-        if blk[1] <= ocp and blk[2] >= ocp:
-            _strip_line_from_file(
-                '{}cache/font_{}.tmp'.format(TARGET_DIR, blk[0]),
-                r'<glyph unicode="&#{};" d="'.format(ocp))
-            return True
+    _strip_line_from_file(
+        '{}cache/font_{}.tmp'.format(TARGET_DIR, block[0]),
+        r'<glyph unicode="&#{};" d="'.format(ord(cp)))
+    return True
 
 
 def _strip_line_from_file(file_, regex):

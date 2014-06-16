@@ -65,35 +65,47 @@ def main():
         len_glyphs = len(glyphs)
 
         for i, glyph in enumerate(glyphs):
-            added = False
             cp = glyph.get("unicode")
             ocp = ord(cp)
-            logger.info("  | Glyph {:3d}/{} ({}) of {}".format(i+1, len_glyphs,
-                        cp.encode('utf-8') if ocp >= 32 else '?', font_file))
             cpn = '{0:04X}'.format(ocp)
             d = glyph.get("d", False)
+            done = False
 
-            try:
-                if d and ocp not in cps:
-                    counter += 1
-                    emit(cp, d, font_family, blocks)
-                    cps[ocp] = [ font_family ]
-                elif ocp in cps and font_family not in cps[ocp]:
-                    emit_sql(cp, font_family, 0)
-                    cps[ocp].append(font_family)
-                added = True
-            except (KeyboardInterrupt, SystemExit):
-                if cps and ocp and ocp in cps:
-                    del cps[ocp]
-                logger.warning('Shutting down, creating fonts and reports.')
-                finish_fonts(blocks)
-                generate_missing_report(cps)
-                raise
+            for blk in blocks:
+                if blk[1] <= ocp and blk[2] >= ocp:
 
-    finish_fonts(blocks)
+                    try:
+                        if d and ocp not in cps:
+                            counter += 1
+                            logger.info("  | Glyph {:3d}/{} ({}) of {}".format(i+1, len_glyphs,
+                                cp.encode('utf-8') if ocp >= 32 else '?', font_file))
+                            emit(cp, d, font_family, blk)
+                            cps[ocp] = [ font_family ]
+                        elif ocp in cps and font_family not in cps[ocp]:
+                            logger.debug("  | Glyph {:3d}/{} ({}) of {}".format(i+1, len_glyphs,
+                                cp.encode('utf-8') if ocp >= 32 else '?', font_file))
+                            emit_sql(cp, font_family, 0)
+                            cps[ocp].append(font_family)
+                    except (KeyboardInterrupt, SystemExit):
+                        if cps and ocp and ocp in cps:
+                            del cps[ocp]
+                        logger.warning('Shutting down, creating fonts and reports.')
+                        finish(cps, blocks)
+                        raise
 
+                    done = True
+                    break
+
+            if not done:
+                logger.warning('No block found for U+{:04X}: not processed.'.format(ocp))
+
+    finish(cps, blocks)
+
+
+def finish(cps, blocks):
+    """end the processing with the appropriate steps"""
     logger.info("Handled {} cps".format(counter))
-
+    finish_fonts(blocks)
     generate_missing_report(cps)
 
 

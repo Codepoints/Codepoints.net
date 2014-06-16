@@ -32,18 +32,27 @@
   ["svgsrc/Akkadian.svg", "Akkadian"],
   ["svgsrc/Analecta401.svg", "Analecta"],
   ["svgsrc/Anatolian.svg", "Anatolian"],
+
   ["svgsrc/AndroidEmoji.svg", "Android Emoji"],
+
   ["svgsrc/BabelStoneHan.svg", "BabelStone Han"],
   ["svgsrc/BabelStoneOghamR.svg", "BabelStone Ogham"],
+
   ["svgsrc/damase_v.2.svg", "MPH 2B Damase"],
+
   ["svgsrc/HANNOM-A.svg", "HAN NOM A"],
   ["svgsrc/HANNOM-B.svg", "HAN NOM B"],
+
   ["svgsrc/IndUni-T-Roman.svg", "IndUni-T"],
+
   ["svgsrc/Junicode.svg", "Junicode"],
+
   ["svgsrc/ManchuFont2005.svg", "Manchu2005"],
+
   ["svgsrc/Maya.svg", "Maya"],
   ["svgsrc/Musica.svg", "Musica"],
   ["svgsrc/Myanmar3.svg", "Myanmar3"],
+
   ["svgsrc/NotoSansAvestan-Regular.svg", "Noto Sans Avestan"],
   ["svgsrc/NotoSansBengali-Regular.svg", "Noto Sans Bengali"],
   ["svgsrc/NotoSansBengaliUI-Regular.svg", "Noto Sans Bengali UI"],
@@ -81,14 +90,18 @@
   ["svgsrc/NotoSansUgaritic-Regular.svg", "Noto Sans Ugaritic"],
   ["svgsrc/NotoSansVai-Regular.svg", "Noto Sans Vai"],
   ["svgsrc/NotoSerifLao-Regular.svg", "Noto Serif Lao"],
+
   ["svgsrc/Roboto-Regular.svg", "Roboto"],
   ["svgsrc/RobotoCondensed-Regular.svg", "Roboto Condensed"],
   ["svgsrc/Roboto-Light.svg", "Roboto"],
   ["svgsrc/Roboto-Thin.svg", "Roboto"],
+
   ["svgsrc/SourceCodePro-Regular.svg", "Source Code Pro"],
   ["svgsrc/SourceSansPro-Regular.svg", "Source Sans Pro"],
+
   ["svgsrc/STIXMath-Regular.svg", "STIX Math"],
   ["svgsrc/STIX-Regular.svg", "STIX"],
+
   ["svgsrc/UnBatang.svg", "UnBatang"],
   ["svgsrc/UnDinaru.svg", "UnDinaru"],
   ["svgsrc/UnDinaruLight.svg", "UnDinaru"]

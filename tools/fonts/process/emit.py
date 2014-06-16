@@ -167,29 +167,20 @@ def emit_sql(cp, font_family, primary=1):
         sqlfile.write(sql)
 
 
-def emit_font(cp, d, blocks):
+def emit_font(cp, d, block):
     """"""
-    ocp = ord(cp)
-
-    for blk in blocks:
-        if blk[1] <= ocp and blk[2] >= ocp:
-            with open('{}cache/font_{}.tmp'.format(TARGET_DIR, blk[0]), 'a') as font:
-                font.write('<glyph unicode="&#%s;" d="%s"/>\n' % (ocp, d))
-            logger.debug('Put U+{:04X} in font for block {}'.format(ocp, blk[0]))
-            return True
-
-    logger.warning('No block found for U+{:04X}'.format(ocp))
-    return False
+    with open('{}cache/font_{}.tmp'.format(TARGET_DIR, block[0]), 'a') as font:
+        font.write('<glyph unicode="&#%s;" d="%s"/>\n' % (ord(cp), d))
 
 
-def emit(cp, d, font_family, blocks):
+def emit(cp, d, font_family, block):
     """take the path and do whatever magic is needed"""
     processes = []
     try:
         done = 0
         processes = emit_images(cp, d)
         done = 1
-        emit_font(cp, d, blocks)
+        emit_font(cp, d, block)
         done = 2
         emit_sql(cp, font_family)
         done = 3
@@ -208,7 +199,7 @@ def emit(cp, d, font_family, blocks):
             if done > 2:
                 clean_sql(cp, font_family)
             if done > 1:
-                clean_font(cp, blocks)
+                clean_font(cp, block)
         else:
             logger.info('No clean-up needed. Last cp: U+{:04X}'.format(ord(cp)))
         raise
