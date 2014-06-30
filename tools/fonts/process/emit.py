@@ -168,7 +168,8 @@ def emit_sql(cp, font_family, primary=1):
 
 
 def emit_font(cp, d, block):
-    """"""
+    """Write the glyph element to a cache file for later pick-up
+    by another method"""
     with open('{}cache/font_{}.tmp'.format(TARGET_DIR, block[0]), 'a') as font:
         font.write('<glyph unicode="&#%s;" d="%s"/>\n' % (ord(cp), d))
 

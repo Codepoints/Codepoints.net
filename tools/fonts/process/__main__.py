@@ -70,6 +70,10 @@ def main():
             cpn = '{0:04X}'.format(ocp)
             d = glyph.get("d", False)
             done = False
+            if 0xE000 <= ocp <= 0xF8FF or \
+               0xF0000 <= ocp <= 0x10FFFF:
+                # private use areas. Skip.
+                continue
 
             for blk in blocks:
                 if blk[1] <= ocp and blk[2] >= ocp:
@@ -90,7 +94,7 @@ def main():
                         if cps and ocp and ocp in cps:
                             del cps[ocp]
                         logger.warning('Shutting down, creating fonts and reports.')
-                        finish(cps, blocks)
+                        finish(cps, blocks, counter)
                         raise
 
                     done = True
@@ -99,10 +103,10 @@ def main():
             if not done:
                 logger.warning('No block found for U+{:04X}: not processed.'.format(ocp))
 
-    finish(cps, blocks)
+    finish(cps, blocks, counter)
 
 
-def finish(cps, blocks):
+def finish(cps, blocks, counter):
     """end the processing with the appropriate steps"""
     logger.info("Handled {} cps".format(counter))
     finish_fonts(blocks)
