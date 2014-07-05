@@ -57,10 +57,21 @@ def main():
     counter = 0
 
     for item, (font_file, font_family) in enumerate(fontlist):
+        if font_file[0] == "#":
+            logger.warning("Skipping font {}".format(font_file[1:]))
+            continue
+
         logger.info("Handling font {} ({}/{})".format(font_file, item, len_fontlist))
 
-        with open(font_file) as svg:
-            r = etree.parse(svg)
+        try:
+            with open(font_file) as svg:
+                r = etree.parse(svg)
+        except IOError:
+            logger.warning('Could not open %s' % font_file)
+            continue
+        except etree.XMLSyntaxError:
+            logger.warning('Could not parse %s, no XML' % font_file)
+            continue
         glyphs = ffGlyphXPath(r)
         len_glyphs = len(glyphs)
 

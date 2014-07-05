@@ -29,6 +29,8 @@ LOAD_CACHE = True
 
 
 # when blocks are regarded as too large and need to be split
-BLOCK_SPLIT_SIZE = 2000
+# The value is chosen so that blocks are split in as equal sizes
+# as possible.
+BLOCK_SPLIT_SIZE = 2400
 
 #EOF

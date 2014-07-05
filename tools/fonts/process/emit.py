@@ -49,15 +49,17 @@ def generate_missing_report(cps):
     with open(TARGET_DIR+'report.txt', 'w') as _file:
         for block, info in blocks.iteritems():
             missing = ''
-            if info[1]:
+            marker = 'O'
+            if info[0] > info[1]:
+                marker = 'X'
+            if info[1] and info[0] > info[1]:
                 missing = '\n    Missing: {}'.format(
                         ' '.join([
                             'U+{:04X}'.format(cp)
                             for cp in info[2] ]))
-            _file.write("""Block {}:
-    {} of {} ({: 3.0F}%){}
+            _file.write("""{} {: 3.0F}% of block {} ({} of {}){}
 
-""".format(block, info[1], info[0], info[1]*100/info[0], missing))
+""".format(marker, info[1]*100/info[0], block, info[1], info[0], missing))
 
     with open(TARGET_DIR+'cache/cache.json', 'w') as _file:
         # store as .items() to preserve numeric key

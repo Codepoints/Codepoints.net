@@ -35,13 +35,9 @@
 
   ["svgsrc/AndroidEmoji.svg", "Android Emoji"],
 
-  ["svgsrc/BabelStoneHan.svg", "BabelStone Han"],
   ["svgsrc/BabelStoneOghamR.svg", "BabelStone Ogham"],
 
   ["svgsrc/damase_v.2.svg", "MPH 2B Damase"],
-
-  ["svgsrc/HANNOM-A.svg", "HAN NOM A"],
-  ["svgsrc/HANNOM-B.svg", "HAN NOM B"],
 
   ["svgsrc/IndUni-T-Roman.svg", "IndUni-T"],
 
@@ -53,27 +49,41 @@
   ["svgsrc/Musica.svg", "Musica"],
   ["svgsrc/Myanmar3.svg", "Myanmar3"],
 
+  ["svgsrc/NotoSansArmenian-Regular.svg", "Noto Sans Armenian"],
   ["svgsrc/NotoSansAvestan-Regular.svg", "Noto Sans Avestan"],
   ["svgsrc/NotoSansBengali-Regular.svg", "Noto Sans Bengali"],
   ["svgsrc/NotoSansBengaliUI-Regular.svg", "Noto Sans Bengali UI"],
   ["svgsrc/NotoSansCarian-Regular.svg", "Noto Sans Carian"],
+  ["svgsrc/NotoSansCham-Regular.svg", "Noto Sans Cham"],
   ["svgsrc/NotoSansCherokee-Regular.svg", "Noto Sans Cherokee"],
   ["svgsrc/NotoSansCoptic-Regular.svg", "Noto Sans Coptic"],
   ["svgsrc/NotoSansDeseret-Regular.svg", "Noto Sans Deseret"],
+  ["svgsrc/NotoSansDevanagari-Regular.svg", "Noto Sans Devanagari"],
+  ["svgsrc/NotoSansDevanagariUI-Regular.svg", "Noto Sans Devanagari UI"],
   ["svgsrc/NotoSansEgyptianHieroglyphs-Regular.svg", "Noto Sans Egyptian Hieroglyphs"],
+  ["svgsrc/NotoSansEthiopic-Regular.svg", "Noto Sans Ethiopic"],
+  ["svgsrc/NotoSansGeorgian-Regular.svg", "Noto Sans Georgian"],
   ["svgsrc/NotoSansGlagolitic-Regular.svg", "Noto Sans Glagolitic"],
+  ["svgsrc/NotoSansGujarati-Regular.svg", "Noto Sans Gujarati"],
+  ["svgsrc/NotoSansGujaratiUI-Regular.svg", "Noto Sans Gujarati UI"],
+  ["svgsrc/NotoSansGurmukhi-Regular.svg", "Noto Sans Gurmukhi"],
+  ["svgsrc/NotoSansGurmukhiUI-Regular.svg", "Noto Sans Gurmukhi UI"],
+  ["svgsrc/NotoSansHebrew-Regular.svg", "Noto Sans Hebrew"],
   ["svgsrc/NotoSansImperialAramaic-Regular.svg", "Noto Sans Imperial Aramaic"],
   ["svgsrc/NotoSansKannada-Regular.svg", "Noto Sans Kannada"],
   ["svgsrc/NotoSansKannadaUI-Regular.svg", "Noto Sans Kannada UI"],
   ["svgsrc/NotoSansKayahLi-Regular.svg", "Noto Sans Kayah Li"],
   ["svgsrc/NotoSansKhmer-Regular.svg", "Noto Sans Khmer"],
-  ["svgsrc/NotoSansKhmerUI-Regular.svg", "Noto Sans UI Khmer"],
+  ["svgsrc/NotoSansKhmerUI-Regular.svg", "Noto Sans Khmer UI"],
+  ["svgsrc/NotoSansKufiArabic-Regular.svg", "Noto Sans Kufi Arabic"],
   ["svgsrc/NotoSansLao-Regular.svg", "Noto Sans Lao"],
   ["svgsrc/NotoSansLaoUI-Regular.svg", "Noto Sans Lao UI"],
   ["svgsrc/NotoSansLisu-Regular.svg", "Noto Sans Lisu"],
   ["svgsrc/NotoSansLycian-Regular.svg", "Noto Sans Lycian"],
   ["svgsrc/NotoSansLydian-Regular.svg", "Noto Sans Lydian"],
+  ["svgsrc/NotoSansMalayalam-Regular.svg", "Noto Sans Malayalam"],
   ["svgsrc/NotoSansMalayalam.svg", "Noto Sans Malayalam"],
+  ["svgsrc/NotoSansMalayalamUI-Regular.svg", "Noto Sans Malayalam UI"],
   ["svgsrc/NotoSansMalayalamUI.svg", "Noto Sans Malayalam UI"],
   ["svgsrc/NotoSansMeeteiMayek-Regular.svg", "Noto Sans Meetei Mayek"],
   ["svgsrc/NotoSansNKo-Regular.svg", "Noto Sans NKo"],
@@ -81,15 +91,26 @@
   ["svgsrc/NotoSansOldTurkic-Regular.svg", "Noto Sans Old Turkic"],
   ["svgsrc/NotoSansOsmanya-Regular.svg", "Noto Sans Osmanya"],
   ["svgsrc/NotoSansPhoenician-Regular.svg", "Noto Sans Phoenician"],
+  ["svgsrc/NotoSans-Regular.svg", "Noto Sans"],
   ["svgsrc/NotoSansShavian-Regular.svg", "Noto Sans Shavian"],
   ["svgsrc/NotoSansSymbols-Regular.svg", "Noto Sans Symbols"],
   ["svgsrc/NotoSansTagalog-Regular.svg", "Noto Sans Tagalog"],
-  ["svgsrc/NotoSansTaiTham-Regular.svg", "Noto Sans Tai Tham"],
+  ["svgsrc/NotoSansTaiTham-Regular.svg", "Noto Sans Tai ThamNoto Sans Tai Tham"],
+  ["svgsrc/NotoSansTamil-Regular.svg", "Noto Sans Tamil"],
+  ["svgsrc/NotoSansTamilUI-Regular.svg", "Noto Sans Tamil UI"],
   ["svgsrc/NotoSansTelugu-Regular.svg", "Noto Sans Telugu"],
   ["svgsrc/NotoSansTeluguUI-Regular.svg", "Noto Sans Telugu UI"],
+  ["svgsrc/NotoSansThai-Regular.svg", "Noto Sans Thai"],
+  ["svgsrc/NotoSansThaiUI-Regular.svg", "Noto Sans Thai UI"],
   ["svgsrc/NotoSansUgaritic-Regular.svg", "Noto Sans Ugaritic"],
+  ["svgsrc/NotoSansUI-Regular.svg", "Noto Sans UI"],
   ["svgsrc/NotoSansVai-Regular.svg", "Noto Sans Vai"],
+  ["svgsrc/NotoSerifArmenian-Regular.svg", "Noto Serif Armenian"],
+  ["svgsrc/NotoSerifGeorgian-Regular.svg", "Noto Serif Georgian"],
+  ["svgsrc/NotoSerifKhmer-Regular.svg", "Noto Serif Khmer"],
   ["svgsrc/NotoSerifLao-Regular.svg", "Noto Serif Lao"],
+  ["svgsrc/NotoSerif-Regular.svg", "Noto Serif"],
+  ["svgsrc/NotoSerifThai-Regular.svg", "Noto Serif Thai"],
 
   ["svgsrc/Roboto-Regular.svg", "Roboto"],
   ["svgsrc/RobotoCondensed-Regular.svg", "Roboto Condensed"],
@@ -104,5 +125,21 @@
 
   ["svgsrc/UnBatang.svg", "UnBatang"],
   ["svgsrc/UnDinaru.svg", "UnDinaru"],
-  ["svgsrc/UnDinaruLight.svg", "UnDinaru"]
+  ["svgsrc/UnDinaruLight.svg", "UnDinaru"],
+
+  ["svgsrc/amiri-regular.svg", "Amiri"],
+  ["svgsrc/amiri-quran.svg", "Amiri"],
+
+  ["svgsrc/Arimo-Regular.svg", "Arimo"],
+  ["svgsrc/Cousine-Regular.svg", "Cousine"],
+
+  ["svgsrc/Tinos-Regular.svg", "Tinos"],
+  ["svgsrc/Tibetan-Machine-Unicode.svg", "Tibetan Machine Unicode"],
+
+  ["svgsrc/BabelStoneHan.svg", "BabelStone Han"],
+
+  ["svgsrc/HANNOM-A.svg", "HAN NOM A"],
+  ["svgsrc/HANNOM-B.svg", "HAN NOM B"],
+
+  ["#svgsrc/Quivira.svg", "Quivira"]
 ]

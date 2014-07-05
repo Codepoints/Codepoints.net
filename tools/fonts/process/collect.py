@@ -18,10 +18,15 @@ def get_blocks():
     cur = conn.cursor()
     blocks = []
     for x in cur.execute('SELECT name, first, last FROM blocks;').fetchall():
-        if (x[2] - x[1]) > BLOCK_SPLIT_SIZE:
-            logger.warning('Skipping block {} due to size ({})'.format(x[0], x[2] - x[1]))
+        if x[1] in [0xE000, 0xF0000, 0x100000]:
+            # private use blocks: skip
             continue
-        blocks.append([ x[0].replace(' ', '_'), x[1], x[2] ])
+        if (x[2] - x[1]) > BLOCK_SPLIT_SIZE:
+            logger.warning('Splitting block {} due to size ({})'.format(x[0], x[2] - x[1]))
+            for n in range((x[2]-x[1]) / BLOCK_SPLIT_SIZE):
+                blocks.append([ '%s_%s' % (x[0].replace(' ', '_'), n), x[1], x[1] + n*BLOCK_SPLIT_SIZE - 1 ])
+        else:
+            blocks.append([ x[0].replace(' ', '_'), x[1], x[2] ])
     return blocks
 
 
