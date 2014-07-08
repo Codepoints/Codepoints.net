@@ -16,14 +16,14 @@ CREATE TABLE IF NOT EXISTS fonts (
 -- set up mapping table
 --
 CREATE TABLE IF NOT EXISTS codepoint_fonts (
-    cp      INTEGER(7) REFERENCES codepoints,
-    font    TEXT,
-    id      TEXT, -- the font ID used as filename
-    primary INTEGER(1) DEFAULT 0, -- used for rendering
+    cp        INTEGER(7) REFERENCES codepoints,
+    font      TEXT,
+    "id"      TEXT, -- the font ID used as filename
+    "primary" INTEGER(1) DEFAULT 0, -- used for rendering
     PRIMARY KEY (cp, font)
 );
 CREATE INDEX IF NOT EXISTS codepoint_fonts_cp ON codepoint_fonts ( cp );
-CREATE INDEX IF NOT EXISTS codepoint_fonts_cp_primary ON codepoint_fonts ( cp, primary );
+CREATE INDEX IF NOT EXISTS codepoint_fonts_cp_primary ON codepoint_fonts ( cp, "primary" );
 
 
 --

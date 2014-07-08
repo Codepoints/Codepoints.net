@@ -139,12 +139,12 @@ def main():
         ('Zzzz', 'ISO_15924#Special_codes'),
     ]
     sqlfile = codecs.open('scripts_wp.sql', 'w', 'utf-8')
-    sqlfile.write("""CREATE TABLE script_abstract (
+    sqlfile.write("""CREATE TABLE IF NOT EXISTS script_abstract (
         sc TEXT(4),
         abstract TEXT,
         src TEXT(255)
     );\n""")
-    sqltpl = u"INSERT INTO script_abstract ( sc, abstract, src ) VALUES ( '%s', '%s', '%s' );\n"
+    sqltpl = u"INSERT OR REPLACE INTO script_abstract ( sc, abstract, src ) VALUES ( '%s', '%s', '%s' );\n"
     c = len(scripts)
     for i, sc in enumerate(scripts):
         s = "%6s / %s" % (i, c)

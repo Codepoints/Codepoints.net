@@ -69,19 +69,23 @@ cachebust: $(JS_ALL) $(CSS_TARGET)
 db: ucd.sqlite
 
 ucotd: tools/ucotd.*
-	$(info * Add Codepoint of the Day)
+	@echo "* Add Codepoint of the Day"
 	@cd tools; \
 	$(PYTHON) ucotd.py
 
-ucd.sqlite: ucotd tools/patch_db.sql tools/scripts.sql tools/scripts_wp.sql \
-            tools/fonts/*_insert.sql tools/latex.sql
-	sqlite3 $@ <tools/patch_db.sql
-	sqlite3 $@ <tools/scripts.sql
-	sqlite3 $@ <tools/scripts_wp.sql
-	for x in tools/fonts/*_insert.sql; do \
-		sqlite3 $@ < $$x; \
+ucd.sqlite: ucotd tools/scripts.sql tools/scripts_wp.sql \
+            tools/latex.sql tools/fonts/fonts.sql \
+            tools/fonts/target/sql/*.sql
+	@echo "* Add additional info to DB"
+	@sqlite3 $@ <tools/scripts.sql
+	@sqlite3 $@ <tools/scripts_wp.sql
+	@sqlite3 $@ <tools/latex.sql
+	@echo "* Add font info"
+	@sqlite3 $@ <tools/fonts/fonts.sql
+	@for SQL in $$(find tools/fonts/target/sql -type f); do \
+		echo "  + Processing $$SQL"; \
+		python tools/insert.py $$SQL $@; \
 	done
-	sqlite3 $@ <tools/latex.sql
 
 l10n: $(DOCROOT)locale/messages.pot $(DOCROOT)locale/js.pot
 

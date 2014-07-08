@@ -120,7 +120,10 @@ def main():
 def finish(cps, blocks, counter):
     """end the processing with the appropriate steps"""
     logger.info("Handled {} cps".format(counter))
-    finish_fonts(blocks)
+    try:
+        finish_fonts(blocks)
+    except (KeyboardInterrupt, SystemExit):
+        pass
     generate_missing_report(cps)
 
 

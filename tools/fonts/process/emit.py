@@ -157,7 +157,7 @@ def emit_sql(cp, font_family, primary=1):
     """Create a SQL row with font info for this CP.
     If primary=1, the font is the one used to render the example glyph."""
 
-    sql_tpl = ("INSERT OR REPLACE INTO codepoint_fonts (cp, font, id, primary) "
+    sql_tpl = ('INSERT OR REPLACE INTO codepoint_fonts (cp, font, "id", "primary") '
                "VALUES (%s, '%s', '%s', %s);\n")
 
     sql = sql_tpl % (ord(cp), font_family,
