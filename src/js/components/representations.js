@@ -33,19 +33,20 @@ define(['jquery',
                 }).insertAfter(repr);
 
       addRepr(_('RFC 5137'), function(n) {
-        return '\\u\''+n.toString(16).toUpperCase()+'\'';
+        return '\\u\'' + tools.format_codepoint(n) + '\'';
       });
 
       addRepr(_('Python'), function(n) {
         var str = n.toString(16).toUpperCase(),
-            pad = 4;
+            pad = 4, chr = 'u';
         if (n > 0xFFFF) {
-          pad = 6;
+          pad = 8;
+          chr = 'U';
         }
         while (str.length < pad) {
           str = "0" + str;
         }
-        return '\\u'+str;
+        return '\\'+chr+str;
       });
 
       addRepr(_('Ruby'), function(n) {
@@ -58,7 +59,7 @@ define(['jquery',
 
       addRepr(_('JavaScript, JSON and Java'), function(n) {
         return $.map(tools.codepoint_to_utf16(n), function(x) {
-          return '\\u'+x.toString(16).toUpperCase();
+          return '\\u' + tools.format_codepoint(x);
         }).join('');
       });
 

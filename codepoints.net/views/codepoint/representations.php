@@ -32,8 +32,8 @@
       <td>&amp;#x<?php e($codepoint->getId('hex'))?>;</td>
     </tr>
     <tr>
-      <th><?php _e('Wrong ISO-8851-1 Mojibake')?></th>
-      <td><?php echo utf8_encode($codepoint->getSafeChar())?></td>
+      <th title="<?php _e('approx. ISO-8859-1, Latin 1, “us-ascii”, ...')?>"><?php _e('Wrong windows-1252 Mojibake')?></th>
+      <td><?php echo iconv('windows-1252', 'utf8', $codepoint->getSafeChar())?></td>
     </tr>
 <?php $alias = $codepoint->getALias();
 $typeMap = array(

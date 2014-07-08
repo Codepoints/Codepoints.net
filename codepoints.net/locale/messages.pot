@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#: codepoints.net/lib/api/related.php:8
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-11 22:39+0200\n"
+"POT-Creation-Date: 2014-05-09 21:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,7 +49,6 @@ msgid ""
 msgstr ""
 
 #: codepoints.net/views/search/form.php:9
-#: codepoints.net/views/quicksearch.php:3
 msgid "Name:"
 msgstr ""
 
@@ -77,8 +77,97 @@ msgid "no"
 msgstr ""
 
 #: codepoints.net/views/search/form.php:43 codepoints.net/views/front.php:12
-#: codepoints.net/views/front.php:53 codepoints.net/views/quicksearch.php:5
+#: codepoints.net/views/front.php:53 codepoints.net/views/quicksearch.php:4
 msgid "search"
+msgstr ""
+
+#: codepoints.net/views/error404.php:2
+msgid "Page not Found"
+msgstr ""
+
+#: codepoints.net/views/error404.php:3
+msgid "HTTP error 404: This page doesn’t exist."
+msgstr ""
+
+#: codepoints.net/views/error404.php:5
+msgid "Codepoint not Found"
+msgstr ""
+
+#: codepoints.net/views/error404.php:6
+#, php-format
+msgid "The point U+%04X is no valid Unicode codepoint."
+msgstr ""
+
+#: codepoints.net/views/error404.php:38
+msgid "This codepoint doesn’t exist."
+msgstr ""
+
+#: codepoints.net/views/error404.php:48
+#, php-format
+msgid "You can find surrounding codepoints in the block %s."
+msgstr ""
+
+#: codepoints.net/views/error404.php:52
+#, php-format
+msgid ""
+"The Unicode Consortium adds new codepoints to the standard all the time. "
+"Visit %stheir website%s to find out about pending codepoints and whether "
+"this one is in the pipe."
+msgstr ""
+
+#: codepoints.net/views/error404.php:53
+msgid ""
+"The following table shows typical representations of how the codepoint would "
+"look, if it existed. This may help you when debugging, but is not of real "
+"use otherwise."
+msgstr ""
+
+#: codepoints.net/views/error404.php:60
+#: codepoints.net/views/codepoint.embedded.php:57
+#: codepoints.net/views/codepoint/representations.php:5
+msgid "System"
+msgstr ""
+
+#: codepoints.net/views/error404.php:61
+#: codepoints.net/views/codepoint.embedded.php:58
+#: codepoints.net/views/codepoint/representations.php:6
+msgid "Representation"
+msgstr ""
+
+#: codepoints.net/views/error404.php:66 codepoints.net/views/dailycp.php:54
+#: codepoints.net/views/codepoint.embedded.php:63
+#: codepoints.net/views/codepoint/representations.php:11
+#: codepoints.net/views/codepoint.html.php:64
+msgid "Nº"
+msgstr ""
+
+#: codepoints.net/views/error404.php:70 codepoints.net/views/dailycp.php:56
+#: codepoints.net/views/codepoint.embedded.php:67
+#: codepoints.net/views/codepoint/representations.php:15
+#: codepoints.net/views/codepoint.html.php:66
+msgid "UTF-8"
+msgstr ""
+
+#: codepoints.net/views/error404.php:84
+#: codepoints.net/views/codepoint.embedded.php:71
+#: codepoints.net/views/codepoint/representations.php:19
+msgid "UTF-16"
+msgstr ""
+
+#: codepoints.net/views/error404.php:98
+#: codepoints.net/views/codepoint.embedded.php:75
+#: codepoints.net/views/codepoint/representations.php:23
+msgid "UTF-32"
+msgstr ""
+
+#: codepoints.net/views/error404.php:112
+#: codepoints.net/views/codepoint.embedded.php:79
+#: codepoints.net/views/codepoint/representations.php:27
+msgid "URL-Quoted"
+msgstr ""
+
+#: codepoints.net/views/error404.php:136
+msgid "Search other codepoints:"
 msgstr ""
 
 #: codepoints.net/views/plane.html.php:6
@@ -733,20 +822,6 @@ msgstr ""
 msgid "%s: U+%s, %s"
 msgstr ""
 
-#: codepoints.net/views/dailycp.php:54
-#: codepoints.net/views/codepoint.embedded.php:63
-#: codepoints.net/views/codepoint/representations.php:11
-#: codepoints.net/views/codepoint.html.php:64
-msgid "Nº"
-msgstr ""
-
-#: codepoints.net/views/dailycp.php:56
-#: codepoints.net/views/codepoint.embedded.php:67
-#: codepoints.net/views/codepoint/representations.php:15
-#: codepoints.net/views/codepoint.html.php:66
-msgid "UTF-8"
-msgstr ""
-
 #: codepoints.net/views/dailycp.php:63
 #: codepoints.net/views/codepoint.embedded.php:48
 #: codepoints.net/views/codepoint.html.php:73
@@ -1072,35 +1147,10 @@ msgstr ""
 msgid "View on Codepoints.net"
 msgstr ""
 
-#: codepoints.net/views/codepoint.embedded.php:57
-#: codepoints.net/views/codepoint/representations.php:5
-msgid "System"
-msgstr ""
-
-#: codepoints.net/views/codepoint.embedded.php:58
-#: codepoints.net/views/codepoint/representations.php:6
-msgid "Representation"
-msgstr ""
-
-#: codepoints.net/views/codepoint.embedded.php:71
-#: codepoints.net/views/codepoint/representations.php:19
-msgid "UTF-16"
-msgstr ""
-
-#: codepoints.net/views/codepoint.embedded.php:75
-#: codepoints.net/views/codepoint/representations.php:23
-msgid "UTF-32"
-msgstr ""
-
-#: codepoints.net/views/codepoint.embedded.php:79
-#: codepoints.net/views/codepoint/representations.php:27
-msgid "URL-Quoted"
-msgstr ""
-
 #: codepoints.net/views/codepoint.embedded.php:83
 #: codepoints.net/views/codepoint.embedded.php:90
 #: codepoints.net/views/codepoint/representations.php:31
-#: codepoints.net/views/codepoint/representations.php:43
+#: codepoints.net/views/codepoint/representations.php:47
 msgid "HTML-Escape"
 msgstr ""
 
@@ -1156,31 +1206,39 @@ msgstr ""
 msgid "Representations"
 msgstr ""
 
-#: codepoints.net/views/codepoint/representations.php:36
-msgid "abbreviation"
+#: codepoints.net/views/codepoint/representations.php:35
+msgid "approx. ISO-8859-1, Latin 1, “us-ascii”, ..."
 msgstr ""
 
-#: codepoints.net/views/codepoint/representations.php:37
-msgid "alias"
-msgstr ""
-
-#: codepoints.net/views/codepoint/representations.php:38
-msgid "alternate"
-msgstr ""
-
-#: codepoints.net/views/codepoint/representations.php:39
-msgid "control"
+#: codepoints.net/views/codepoint/representations.php:35
+msgid "Wrong windows-1252 Mojibake"
 msgstr ""
 
 #: codepoints.net/views/codepoint/representations.php:40
-msgid "correction"
+msgid "abbreviation"
 msgstr ""
 
 #: codepoints.net/views/codepoint/representations.php:41
-msgid "digraph"
+msgid "alias"
 msgstr ""
 
 #: codepoints.net/views/codepoint/representations.php:42
+msgid "alternate"
+msgstr ""
+
+#: codepoints.net/views/codepoint/representations.php:43
+msgid "control"
+msgstr ""
+
+#: codepoints.net/views/codepoint/representations.php:44
+msgid "correction"
+msgstr ""
+
+#: codepoints.net/views/codepoint/representations.php:45
+msgid "digraph"
+msgstr ""
+
+#: codepoints.net/views/codepoint/representations.php:46
 msgid "figment"
 msgstr ""
 
@@ -1447,4 +1505,187 @@ msgstr ""
 
 #: codepoints.net/views/footer.php:19
 msgid "Blog"
+msgstr ""
+
+#: codepoints.net/lib/api_v1.class.php:91
+msgid "Ye?h, th?nks! You er?sed this codepoint. Are you h?ppy now?"
+msgstr ""
+
+#: codepoints.net/lib/api_v1.class.php:96
+msgid "To create a new codepoint, please mail it to unicode@unicode.org."
+msgstr ""
+
+#: codepoints.net/lib/api_v1.class.php:104
+msgid "This API method does not exist."
+msgstr ""
+
+#: codepoints.net/lib/api_v1.class.php:133
+msgid "An unknown error occured."
+msgstr ""
+
+#: codepoints.net/lib/api/codepoint.php:8
+msgid ""
+"show detailed information about a single codepoint. You can specify fields "
+"of interest with the “property” parameter: codepoint/1234?property=age,uc,lc"
+msgstr ""
+
+#: codepoints.net/lib/api/codepoint.php:15
+#: codepoints.net/lib/api/related.php:15
+msgid "No valid codepoint"
+msgstr ""
+
+#: codepoints.net/lib/api/codepoint.php:22
+#: codepoints.net/lib/api/related.php:22 codepoints.net/lib/api/name.php:20
+msgid "Not a codepoint"
+msgstr ""
+
+#: codepoints.net/lib/api/property.php:29
+msgid "Unknown property"
+msgstr ""
+
+#: codepoints.net/lib/api/property.php:30
+msgid "Please specify a property to display"
+msgstr ""
+
+#: codepoints.net/lib/api/property.php:32
+msgid ""
+"show a PNG image where every codepoint is represented by one pixel. The "
+"pixel color determines the value."
+msgstr ""
+
+#: codepoints.net/lib/api/filter.php:11
+msgid ""
+"Filter a string of characters by Unicode property. You can negate properties "
+"by appending a “!” to it: filter/string?age!=5.5 finds all characters in "
+"“string” that were *not* added in Unicode 5.5."
+msgstr ""
+
+#: codepoints.net/lib/api/filter.php:17
+#: codepoints.net/lib/api/transform.php:23
+#, php-format
+msgid "Request too long: Only %d characters allowed."
+msgstr ""
+
+#: codepoints.net/lib/api/filter.php:36
+#, php-format
+msgid "Cannot filter for unknown property %s"
+msgstr ""
+
+#: codepoints.net/lib/api/filter.php:49
+msgid "Cannot filter."
+msgstr ""
+
+#: codepoints.net/lib/api/search.php:8
+msgid "search for codepoints by their properties"
+msgstr ""
+
+#: codepoints.net/lib/api/search.php:11
+msgid "free search"
+msgstr ""
+
+#: codepoints.net/lib/api/search.php:12
+msgid "decimal codepoint"
+msgstr ""
+
+#: codepoints.net/lib/api/problem.php:9
+msgid "Prerequisite Missing"
+msgstr ""
+
+#: codepoints.net/lib/api/problem.php:10
+#, php-format
+msgid ""
+"A prerequisite was not found. That means, that the action to be called does "
+"not exist. See %s/ for API usage."
+msgstr ""
+
+#: codepoints.net/lib/api/problem.php:13
+msgid "Request Too Long"
+msgstr ""
+
+#: codepoints.net/lib/api/problem.php:14
+msgid ""
+"The request body (or the data in the URL) was too large. Try to reduce it."
+msgstr ""
+
+#: codepoints.net/lib/api/problem.php:17
+msgid "Bad Request"
+msgstr ""
+
+#: codepoints.net/lib/api/problem.php:18
+#, php-format
+msgid ""
+"The client made a bad request, for example, by not specifying a required "
+"parameter. See %s/ for API usage."
+msgstr ""
+
+#: codepoints.net/lib/api/problem.php:21
+msgid "Not Found"
+msgstr ""
+
+#: codepoints.net/lib/api/problem.php:22
+msgid ""
+"The requested resource was not found. This can, for example, happen for non-"
+"existing codepoints."
+msgstr ""
+
+#: codepoints.net/lib/api/problem.php:25
+msgid "Error"
+msgstr ""
+
+#: codepoints.net/lib/api/problem.php:26
+msgid "An unspecific error occurred."
+msgstr ""
+
+#: codepoints.net/lib/api/plane.php:8
+msgid "show information about a Unicode plane"
+msgstr ""
+
+#: codepoints.net/lib/api/plane.php:20
+msgid "Not a plane"
+msgstr ""
+
+#: codepoints.net/lib/api/usage.php:8
+msgid ""
+"Welcome to codepoint.net’s Unicode API. Most requests are JSON-based. The "
+"API supports for those requests JSONP via the `callback` GET parameter. The "
+"`glyph` and `property` methods return PNG images. When problems appear, the "
+"API response conforms to <http://tools.ietf.org/html/draft-nottingham-http-"
+"problem-04>."
+msgstr ""
+
+#: codepoints.net/lib/api/transform.php:10
+msgid ""
+"transform a string to another according to a mapping, e.g., making all "
+"characters upper-case."
+msgstr ""
+
+#: codepoints.net/lib/api/transform.php:27
+#, php-format
+msgid "Unknown transform action %s"
+msgstr ""
+
+#: codepoints.net/lib/api/block.php:8
+msgid "show detailed information about a Unicode block"
+msgstr ""
+
+#: codepoints.net/lib/api/block.php:20
+msgid "Not a block"
+msgstr ""
+
+#: codepoints.net/lib/api/name.php:13
+msgid "No codepoint"
+msgstr ""
+
+#: codepoints.net/lib/api/script.php:29
+msgid "This script is unknown"
+msgstr ""
+
+#: codepoints.net/lib/api/script.php:29
+msgid "Please specify a script"
+msgstr ""
+
+#: codepoints.net/lib/api/script.php:30
+msgid ""
+"Specify one or more ISO short names separated by comma. The response is a "
+"list of detail informations about these scripts."
 msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-11 22:39+0200\n"
+"POT-Creation-Date: 2014-05-09 21:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,23 +21,23 @@ msgstr ""
 msgid "(%s codepoints)"
 msgstr ""
 
-#: src/js/scripts.js:28 src/js/scripts.js:139
+#: src/js/scripts.js:28
 msgid "Source: %s"
 msgstr ""
 
-#: src/js/scripts.js:69
+#: src/js/scripts.js:68
 msgid "Native, Rare and Historic Scripts"
 msgstr ""
 
-#: src/js/scripts.js:73
+#: src/js/scripts.js:72
 msgid "Scripts used in %s"
 msgstr ""
 
-#: src/js/scripts.js:83
+#: src/js/scripts.js:82
 msgid "We don’t know about %s’s scripts, sorry!"
 msgstr ""
 
-#: src/js/scripts.js:85
+#: src/js/scripts.js:84
 msgid "Nothing Found for %s"
 msgstr ""
 
@@ -53,41 +53,49 @@ msgstr ""
 msgid "remove"
 msgstr ""
 
-#: src/js/codepoints.js:79
+#: src/js/codepoints.js:80
 msgid "top"
 msgstr ""
 
-#: src/js/codepoints.js:101
+#: src/js/codepoints.js:102
 msgid "Extended Search"
 msgstr ""
 
-#: src/js/codepoints.js:103
+#: src/js/codepoints.js:104
 msgid "Find My Codepoint"
 msgstr ""
 
-#: src/js/codepoints.js:182
+#: src/js/codepoints.js:183
 msgid "Read on:"
 msgstr ""
 
-#: src/js/codepoints.js:239
+#: src/js/codepoints.js:240
 msgid "Hide this message."
 msgstr ""
 
-#: src/js/components/scratchpad.js:35
+#: src/js/components/scratchpad.js:91
 msgid "empty"
 msgstr ""
 
-#: src/js/components/scratchpad.js:50
+#: src/js/components/scratchpad.js:95
+msgid "copy"
+msgstr ""
+
+#: src/js/components/scratchpad.js:100
+msgid "show"
+msgstr ""
+
+#: src/js/components/scratchpad.js:113
 msgid ""
 "You have no codepoints here yet. Add one by clicking “Add to scratchpad” on "
 "the details page."
 msgstr ""
 
-#: src/js/components/scratchpad.js:59
+#: src/js/components/scratchpad.js:122
 msgid "Scratchpad"
 msgstr ""
 
-#: src/js/components/scratchpad.js:68
+#: src/js/components/scratchpad.js:132
 msgid "Add to scratchpad"
 msgstr ""
 
@@ -95,51 +103,51 @@ msgstr ""
 msgid "Font used above"
 msgstr ""
 
-#: src/js/components/representations.js:12
-#: src/js/components/representations.js:15
+#: src/js/components/representations.js:27
+#: src/js/components/representations.js:30
 msgid "show more"
 msgstr ""
 
-#: src/js/components/representations.js:15
+#: src/js/components/representations.js:30
 msgid "hide"
 msgstr ""
 
-#: src/js/components/representations.js:19
+#: src/js/components/representations.js:35
 msgid "RFC 5137"
 msgstr ""
 
-#: src/js/components/representations.js:22
+#: src/js/components/representations.js:39
 msgid "Python"
 msgstr ""
 
-#: src/js/components/representations.js:25
+#: src/js/components/representations.js:52
 msgid "Ruby"
 msgstr ""
 
-#: src/js/components/representations.js:28
+#: src/js/components/representations.js:56
 msgid "Perl"
 msgstr ""
 
-#: src/js/components/representations.js:31
+#: src/js/components/representations.js:60
 msgid "JavaScript, JSON and Java"
 msgstr ""
 
-#: src/js/components/representations.js:40
+#: src/js/components/representations.js:66
 msgid "C"
 msgstr ""
 
-#: src/js/components/representations.js:52
+#: src/js/components/representations.js:79
 msgid "CSS"
 msgstr ""
 
-#: src/js/wizard.js:114
+#: src/js/wizard.js:115
 msgid "Finished!"
 msgstr ""
 
-#: src/js/wizard.js:127
+#: src/js/wizard.js:128
 msgid "Please wait a second, we’re making those %s answers productive."
 msgstr ""
 
-#: src/js/wizard.js:149
+#: src/js/wizard.js:150
 msgid "Enough questions! Search now."
 msgstr ""
