@@ -32,6 +32,16 @@ class UnicodeBlock extends UnicodeRange {
     protected $limits;
 
     /**
+     * the Wikipedia abstract of this block (lang->text mapping array)
+     */
+    protected $abstract = array();
+
+    /**
+     * the version this block was introduced
+     */
+    protected $version;
+
+    /**
      * create a new UnicodeBlock
      *
      * If $name is given and $r is Null, the block is looked up in the
@@ -40,7 +50,10 @@ class UnicodeBlock extends UnicodeRange {
     public function __construct($name, $db, $r=NULL) {
         if ($r === NULL) { // performance: allow to specify range
             $query = $db->prepare("
-                SELECT name, first, last FROM blocks
+                SELECT name, first, last, abstract
+                FROM blocks
+                LEFT JOIN block_abstract
+                    ON blocks.name = block_abstract.block
                 WHERE replace(replace(lower(name), '_', ''), ' ', '') = :name
                 LIMIT 1");
             $query->execute(array(':name' => str_replace(array(' ', '_'), '',
@@ -64,6 +77,49 @@ class UnicodeBlock extends UnicodeRange {
     }
     public function __toString() {
         return $this->name;
+    }
+
+    /**
+     * get the block's Wikipedia abstract
+     */
+    public function getAbstract($lang='en') {
+        if (! array_key_exists($lang, $this->abstract)) {
+            $query = $this->db->prepare("
+                SELECT abstract
+                  FROM block_abstract
+                 WHERE replace(replace(lower(block), '_', ''), ' ', '') = ?
+                   AND lang = ?");
+            $query->execute(array(str_replace(array(' ', '_'), '',
+                                  strtolower($this->name)), $lang));
+            $r = $query->fetch(PDO::FETCH_ASSOC);
+            if (array_key_exists('abstract', $r)) {
+                $this->abstract[$lang] = $r['abstract'];
+            } else {
+                $this->abstract[$lang] = '';
+            }
+        }
+        return $this->abstract[$lang];
+    }
+
+    /**
+     * get the earliest Unicode version where this block appeared
+     */
+    public function getVersion() {
+        if (!$this->version) {
+            $query = $this->db->prepare("
+                SELECT c.age
+                    FROM codepoints c, blocks b
+                    WHERE replace(replace(lower(b.name), '_', ''), ' ', '') = ?
+                    AND c.cp >= b.first
+                    AND c.cp <= b.last
+                    GROUP BY c.age");
+            $query->execute(array(str_replace(array(' ', '_'), '',
+                                    strtolower($this->name))));
+            $r = $query->fetchAll(PDO::FETCH_COLUMN, 0);
+            sort($r, SORT_NUMERIC);
+            $this->version = $r[0];
+        }
+        return $this->version;
     }
 
     /**
