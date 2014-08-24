@@ -271,15 +271,13 @@ class Codepoint {
      */
     public function getFonts() {
         if ($this->fonts === NULL) {
-            $fonts = array();
-            $query = $this->db->prepare('SELECT font, id
+            $query = $this->db->prepare('SELECT font, "id", "primary"
                                            FROM codepoint_fonts
-                                          WHERE cp = :cp');
+                                          WHERE cp = :cp
+                                       ORDER BY "primary" desc, "id"');
             $query->execute(array(':cp' => $this->id));
-            $fonts = $query->fetchAll(PDO::FETCH_ASSOC);
+            $this->fonts = $query->fetchAll(PDO::FETCH_ASSOC);
             $query->closeCursor();
-
-            $this->fonts = $fonts;
         }
         return $this->fonts;
     }

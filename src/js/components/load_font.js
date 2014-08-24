@@ -12,14 +12,15 @@ define(['jquery', 'components/gettext', 'webfont'], function($, gettext, WebFont
         var cp_font = font_opts.eq(0).val(),
             cp_fam  = $.trim(font_opts.eq(0).text());
         if (cp_font) {
+          var block_id = $('.codepoint').data('blockId');
           WebFont.load({
             custom: {
               families: [cp_font],
-              urls: ['/api/font-face/'+encodeURIComponent(cp_font)+'.css']
+              urls: ['/api/font-face/blocks/'+encodeURIComponent(block_id)+'.css']
             },
             active: function() {
               cp_fig.css({
-                fontFamily: '"'+cp_fam+'", serif'
+                fontFamily: '"blocks/'+encodeURIComponent(block_id)+'", serif'
               });
               var _aside = cp_fig.closest('figure').next('aside');
               if (_aside.length) {

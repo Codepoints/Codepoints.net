@@ -44,15 +44,23 @@ $s = function($cat) use ($router, $info, $props) {
     echo '</a>';
 };
 ?>
-<div class="payload codepoint" data-cp="<?php _e($codepoint->getId())?>" itemscope="itemscope" itemtype="http://schema.org/StructuredValue/Unicode/CodePoint">
+<div class="payload codepoint"
+     data-cp="<?php _e($codepoint->getId())?>"
+     data-block-id="<?php _e(str_replace(' ', '_', $block->getName()))?>"
+     itemscope="itemscope"
+     itemtype="http://schema.org/StructuredValue/Unicode/CodePoint">
   <figure>
     <span class="fig" itemprop="image"><?php e($codepoint->getSafeChar())?></span>
-    <?php if ($codepoint->getId() > 0xFFFF):
+    <?php if (true||$codepoint->getId() > 0xFFFF):
         $fonts = $codepoint->getFonts();
         if (count($fonts)):?>
           <datalist id="fonts">
             <?php foreach ($fonts as $font):?>
-              <option value="<?php e($font['id'])?>"><?php e($font['font'])?></option>
+              <option value="<?php e($font['id'])?>"
+                <?php if ($font['primary'] === '1'):?>
+                  data-primary
+                <?php endif?>
+              ><?php e($font['font'])?></option>
             <?php endforeach?>
           </datalist>
         <?php endif?>
