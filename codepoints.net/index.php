@@ -139,7 +139,7 @@ $controllers = array(
     'planes', 'random', 'scripts', 'search', 'wizard', 'sitemap',
 
     'api_font-face', 'api',
-    'blog-preview',
+    'blog-preview', 'font',
     'single_character', 'plane', 'codepoint', 'block', 'possible_name',
     'range',
 );
