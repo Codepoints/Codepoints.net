@@ -23,12 +23,12 @@ xmlns_svg = 'http://www.w3.org/2000/svg'
 
 svg_font_skeleton = '''<svg xmlns="'''+xmlns_svg+'''" version="1.1">
   <defs>
-    <font id="%s" horiz-adv-x="{0}">
+    <font id="{{0}}" horiz-adv-x="{0}">
       <font-face
-        font-family="%s"
+        font-family="{{0}}"
         font-weight="400"
         units-per-em="{0}"/>
-      {{}}
+      {{1}}
     </font>
   </defs>
 </svg>'''.format(EM_SIZE)
@@ -222,7 +222,7 @@ def finish_fonts(blocks):
             logger.info('Creating font for block {}...'.format(block))
         with open(TARGET_DIR+'fonts/'+block+'.svg', 'w') as svgfile:
             with open(cache) as _cache:
-                svgfile.write(svg_font_skeleton.format(_cache.read()))
+                svgfile.write(svg_font_skeleton.format(block, _cache.read()))
         font = fontforge.open(TARGET_DIR+'fonts/'+block+'.svg')
         font.generate(TARGET_DIR+'fonts/'+block+'.woff')
         font.generate(TARGET_DIR+'fonts/'+block+'.ttf')
