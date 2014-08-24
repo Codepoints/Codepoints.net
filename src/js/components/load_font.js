@@ -26,7 +26,7 @@ define(['jquery', 'components/gettext', 'webfont'], function($, gettext, WebFont
               if (_aside.length) {
                 _aside.find('dl:eq(0)')
                       .append('<dt>'+_('Font used above')+'</dt>' +
-                              '<dd>'+cp_font+'</dd>');
+                              '<dd>'+cp_fam+'</dd>');
               }
             }
           });
