@@ -173,21 +173,21 @@ def emit_sql(cp, font_family, primary=1):
         sqlfile.write(sql)
 
 
-def emit_font(cp, d, block):
+def emit_font(cp, glyph, block):
     """Write the glyph element to a cache file for later pick-up
     by another method"""
     with open('{}cache/font_{}.tmp'.format(TARGET_DIR, block[0]), 'a') as font:
-        font.write('<glyph unicode="&#%s;" d="%s"/>\n' % (ord(cp), d))
+        font.write(etree.tostring(glyph))
 
 
-def emit(cp, d, font_family, block):
+def emit(cp, d, font_family, block, glyph):
     """take the path and do whatever magic is needed"""
     processes = []
     try:
         done = 0
         processes = emit_images(cp, d)
         done = 1
-        emit_font(cp, d, block)
+        emit_font(cp, glyph, block)
         done = 2
         emit_sql(cp, font_family)
         done = 3

@@ -94,7 +94,7 @@ def main():
                             counter += 1
                             logger.info("  | Glyph {:3d}/{} ({}) of {}".format(i+1, len_glyphs,
                                 cp.encode('utf-8') if ocp >= 32 else '?', font_file))
-                            emit(cp, d, font_family, blk)
+                            emit(cp, d, font_family, blk, glyph)
                             cps[ocp] = [ font_family ]
                         elif ocp in cps and font_family not in cps[ocp]:
                             logger.debug("  | Glyph {:3d}/{} ({}) of {}".format(i+1, len_glyphs,
