@@ -13,7 +13,8 @@ from   time import sleep
 
 from   process.collect import get_all_codepoints
 from   process.clean import clean_images, clean_sql, clean_font
-from   process.settings import TARGET_DIR, EM_SIZE, PNG_WIDTHS, DB_PNG_WIDTH
+from   process.settings import TARGET_DIR, EM_SIZE, PNG_WIDTHS, DB_PNG_WIDTH, \
+                               CREATE_IMAGES
 
 
 logger = logging.getLogger('codepoint.fonts')
@@ -143,6 +144,9 @@ def emit_svg(cp, d):
 def emit_images(cp, d):
     """Take a codepoint and its glyph path data and create all needed
     images"""
+    if not CREATE_IMAGES:
+        return []
+
     sub = '{:02X}'.format(ord(cp) / 0x1000)
 
     if not op.isdir('{0}images/{1}'.format(TARGET_DIR, sub)):

@@ -12,6 +12,10 @@ TARGET_DIR = 'target/'
 EM_SIZE = 2048
 
 
+# Wether to create images at all
+CREATE_IMAGES = False
+
+
 # Pre-rendered PNG images
 PNG_WIDTHS = [16, 120]
 
