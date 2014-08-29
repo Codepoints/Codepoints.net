@@ -75,12 +75,12 @@ function _bl($bl, $rel='', $class='', $wrap='') {
     }
     if ($wrap) {
         $r = sprintf('<a%s href="%s"><%s class="bl%s"><img src="%sstatic/images/'.
-                'blocks.min/%s.png" alt="" width="16" height="16" /> %s</%s></a>',
+                'blocks/%s.svgz" alt="" width="16" height="16" /> %s</%s></a>',
                 $rel, q($router->getUrl($bl)), $wrap, $class, q($router->getUrl()),
                 q(str_replace(' ', '_', $bl->getName())), q($bl->getName()), $wrap);
     } else {
         $r = sprintf('<a class="bl%s"%s href="%s"><img src="%sstatic/images/'.
-                'blocks.min/%s.png" alt="" width="16" height="16" /> %s</a>',
+                'blocks/%s.svgz" alt="" width="16" height="16" /> %s</a>',
                 $class, $rel, q($router->getUrl($bl)), q($router->getUrl()),
                 q(str_replace(' ', '_', $bl->getName())), q($bl->getName()));
     }
