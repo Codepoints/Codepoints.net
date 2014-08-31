@@ -3,6 +3,7 @@
    store them as separate images"""
 
 
+import gzip
 from   lxml import etree
 import os
 import sqlite3
@@ -26,9 +27,18 @@ def main():
     for block in cur.execute('SELECT name, first FROM blocks;').fetchall():
         name = block[0].replace(' ', '_')
         id_ = 'u%04X' % block[1]
-        path = [ path for path in paths if path.get('id') == id_ ][0]
-        with open('target/blocks/{}.svg'.format(name), 'wb') as img:
-            img.write(SVG.format(path.get('d')))
+        for path in paths:
+            path_id = path.get('id')
+            if path_id in [ "u0000", "u0080" ]:
+                continue
+            if path_id == "u0020":
+                path_id = "u0000"
+            if path_id == "u00A0":
+                path_id = "u0080"
+            if (path_id == id_):
+                with gzip.open('target/blocks/{}.svgz'.format(name), 'wb') as img:
+                    img.write(SVG.format(path.get('d')))
+                break
 
 
 if __name__ == "__main__":
