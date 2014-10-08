@@ -1010,6 +1010,21 @@ class UnicodeInfo {
             'Braille Patterns', 'Specials', 'Enclosed Alphanumerics', 'Enclosed Alphanumeric Supplement'),
     );
 
+    /**
+     * shortcuts for general categories
+     * See <http://www.unicode.org/reports/tr44/#General_Category_Values>
+     */
+    public static $gc_shortcuts = array(
+        "LC" => array("Lu", "Ll", "Lt"),
+        "L" =>  array("Lu", "Ll", "Lt", "Lm", "Lo"),
+        "M" =>  array("Mn", "Mc", "Me"),
+        "N" =>  array("Nd", "Nl", "No"),
+        "P" =>  array("Pc", "Pd", "Ps", "Pe", "Pi", "Pf", "Po"),
+        "S" =>  array("Sm", "Sc", "Sk", "So"),
+        "Z" =>  array("Zs", "Zl", "Zp"),
+        "C" =>  array("Cc", "Cf", "Cs", "Co", "Cn"),
+    );
+
 }
 
 
