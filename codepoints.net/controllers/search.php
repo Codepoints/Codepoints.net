@@ -64,9 +64,7 @@ $router->registerAction('search', function ($request, $o) {
                 }
             }
         } elseif ($k === 'gc' && array_key_exists($v, UnicodeInfo::$gc_shortcuts)) {
-            foreach(UnicodeInfo::$gc_shortcuts[$v] as $gc) {
-                $result->addQuery('gc', $gc, '=', 'OR');
-            }
+            $result->addQuery('gc', UnicodeInfo::$gc_shortcuts[$v]);
         } elseif ($v && in_array($k, $cats)) {
             $result->addQuery($k, $v);
         }
