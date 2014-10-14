@@ -78,7 +78,9 @@ $router->registerAction('search', function ($request, $o) {
             $view = new View('result');
             echo $view->render(compact('result', 'blocks', 'cps',
                                        'page'));
-        } elseif ($result->getCount() === 1) {
+        } elseif ($result->getCount() === 1 && $page === 1) {
+            /* redirect, if only one cp is found. Do not so on follow-up
+             * pages, since that will torpedo pagination */
             $cp = $result->current();
             $router->redirect('U+'.$cp);
         } else {
