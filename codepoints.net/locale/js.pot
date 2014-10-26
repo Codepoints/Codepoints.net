@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-09 21:02+0200\n"
+"POT-Creation-Date: 2014-10-26 22:34+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,62 +16,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: src/js/scripts.js:26
-msgid "(%s codepoints)"
-msgstr ""
-
-#: src/js/scripts.js:28
-msgid "Source: %s"
-msgstr ""
-
-#: src/js/scripts.js:68
-msgid "Native, Rare and Historic Scripts"
-msgstr ""
-
-#: src/js/scripts.js:72
-msgid "Scripts used in %s"
-msgstr ""
-
-#: src/js/scripts.js:82
-msgid "We don’t know about %s’s scripts, sorry!"
-msgstr ""
-
-#: src/js/scripts.js:84
-msgid "Nothing Found for %s"
-msgstr ""
-
-#: src/js/searchform.js:17
-msgid "+ add new query"
-msgstr ""
-
-#: src/js/searchform.js:168
-msgid "click to change"
-msgstr ""
-
-#: src/js/searchform.js:169
-msgid "remove"
-msgstr ""
-
-#: src/js/codepoints.js:80
-msgid "top"
-msgstr ""
-
-#: src/js/codepoints.js:102
-msgid "Extended Search"
-msgstr ""
-
-#: src/js/codepoints.js:104
-msgid "Find My Codepoint"
-msgstr ""
-
-#: src/js/codepoints.js:183
-msgid "Read on:"
-msgstr ""
-
-#: src/js/codepoints.js:240
-msgid "Hide this message."
-msgstr ""
 
 #: src/js/components/scratchpad.js:91
 msgid "empty"
@@ -97,10 +41,6 @@ msgstr ""
 
 #: src/js/components/scratchpad.js:132
 msgid "Add to scratchpad"
-msgstr ""
-
-#: src/js/components/load_font.js:27
-msgid "Font used above"
 msgstr ""
 
 #: src/js/components/representations.js:27
@@ -140,6 +80,10 @@ msgstr ""
 msgid "CSS"
 msgstr ""
 
+#: src/js/components/load_font.js:28
+msgid "Font used above"
+msgstr ""
+
 #: src/js/wizard.js:115
 msgid "Finished!"
 msgstr ""
@@ -150,4 +94,60 @@ msgstr ""
 
 #: src/js/wizard.js:150
 msgid "Enough questions! Search now."
+msgstr ""
+
+#: src/js/searchform.js:17
+msgid "+ add new query"
+msgstr ""
+
+#: src/js/searchform.js:168
+msgid "click to change"
+msgstr ""
+
+#: src/js/searchform.js:169
+msgid "remove"
+msgstr ""
+
+#: src/js/scripts.js:26
+msgid "(%s codepoints)"
+msgstr ""
+
+#: src/js/scripts.js:28
+msgid "Source: %s"
+msgstr ""
+
+#: src/js/scripts.js:68
+msgid "Native, Rare and Historic Scripts"
+msgstr ""
+
+#: src/js/scripts.js:72
+msgid "Scripts used in %s"
+msgstr ""
+
+#: src/js/scripts.js:82
+msgid "We don’t know about %s’s scripts, sorry!"
+msgstr ""
+
+#: src/js/scripts.js:84
+msgid "Nothing Found for %s"
+msgstr ""
+
+#: src/js/codepoints.js:80
+msgid "top"
+msgstr ""
+
+#: src/js/codepoints.js:102
+msgid "Extended Search"
+msgstr ""
+
+#: src/js/codepoints.js:104
+msgid "Find My Codepoint"
+msgstr ""
+
+#: src/js/codepoints.js:183
+msgid "Read on:"
+msgstr ""
+
+#: src/js/codepoints.js:240
+msgid "Hide this message."
 msgstr ""
