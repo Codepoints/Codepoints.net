@@ -162,4 +162,26 @@ function e($s) {
 }
 
 
+/**
+ * a continuous color generator for usage in the API
+ *
+ * @see http://krazydad.com/tutorials/makecolors.php for the maths
+ */
+function getNextColor($frequency1, $frequency2, $frequency3,
+    $phase1, $phase2, $phase3, $center = null, $width = null) {
+    static $i = 0;
+    if (is_null($center)) {
+        $center = 128;
+    }
+    if (is_null($width)) {
+        $width = 127;
+    }
+    $red = min(255, max(0, round( sin($frequency1*$i + $phase1) * $width + $center)));
+    $grn = min(255, max(0, round( sin($frequency2*$i + $phase2) * $width + $center)));
+    $blu = min(255, max(0, round( sin($frequency3*$i + $phase3) * $width + $center)));
+    $i += 1;
+    return array($red, $grn, $blu);
+}
+
+
 #EOF

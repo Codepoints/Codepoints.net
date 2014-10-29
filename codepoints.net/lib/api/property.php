@@ -56,7 +56,24 @@ default:
 }
 $result = $api->_db->query($query)->fetchAll(PDO::FETCH_ASSOC);
 
-$colorseed = 0;
+$coloroptions = array(
+    'frequency1' => 1.666,
+    'frequency2' => 2.666,
+    'frequency3' => 3.666,
+    'phase1' => 0,
+    'phase2' => 2,
+    'phase3' => 4,
+);
+if ($data === 'age') {
+    $coloroptions = array(
+        'frequency1' => .2,
+        'frequency2' => .2,
+        'frequency3' => .2,
+        'phase1' => 1.6,
+        'phase2' => -0.6,
+        'phase3' => 4.0,
+    );
+}
 $colors = array();
 
 foreach ($result as $cp) {
@@ -68,7 +85,7 @@ foreach ($result as $cp) {
         $cp['Q'] = '1';
     }
     if (! array_key_exists($cp['Q'], $colors)) {
-        $rgb = hsl2rgb(( ($colorseed++) * 53 ) % 360, 0.5, 100);
+        $rgb = call_user_func_array('getNextColor', $coloroptions);
         array_unshift($rgb, $gd);
         $colors[$cp['Q']] = call_user_func_array('imagecolorallocate', $rgb);
     }
