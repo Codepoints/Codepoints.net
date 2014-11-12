@@ -18,6 +18,18 @@ $router->registerAction('search', function ($request, $o) {
                 // seems to be one single character
                 $result->addQuery('cp', unpack('N', mb_convert_encoding($v,
                                         'UCS-4BE', 'UTF-8')));
+            } elseif (preg_match('/^\s*&[#0-9a-z]+;\s*$/i', $v)) {
+                $v = trim($v);
+                /* seems to be a single HTML escape sequence */
+                $vv = html_entity_decode($v);
+                if (mb_strlen($vv, 'UTF-8') === 1) {
+                    $result->addQuery('cp', unpack('N',
+                        mb_convert_encoding($vv, 'UCS-4BE', 'UTF-8')));
+                } elseif ($v[1] !== '#') {
+                    $result->addQuery('alias', ltrim(rtrim($v, ';'), '&'), '=', 'OR');
+                } else {
+                    # TODO we should warn about invalid escape sequence here
+                }
             } else {
                 foreach (preg_split('/\s+/', $v) as $vv) {
                     if (ctype_xdigit($vv) && in_array(strlen($vv), array(4,5,6))) {
