@@ -18,20 +18,23 @@ $router->registerAction('search', function ($request, $o) {
                 // seems to be one single character
                 $result->addQuery('cp', unpack('N', mb_convert_encoding($v,
                                         'UCS-4BE', 'UTF-8')));
-            } elseif (preg_match('/^\s*&[#0-9a-z]+;\s*$/i', $v)) {
-                $v = trim($v);
-                /* seems to be a single HTML escape sequence */
-                $vv = html_entity_decode($v);
-                if (mb_strlen($vv, 'UTF-8') === 1) {
-                    $result->addQuery('cp', unpack('N',
-                        mb_convert_encoding($vv, 'UCS-4BE', 'UTF-8')));
-                } elseif ($v[1] !== '#') {
-                    $result->addQuery('alias', ltrim(rtrim($v, ';'), '&'), '=', 'OR');
-                } else {
-                    # TODO we should warn about invalid escape sequence here
-                }
             } else {
                 foreach (preg_split('/\s+/', $v) as $vv) {
+                    if (preg_match('/^&#?[0-9a-z]+;$/i', $vv)) {
+                        /* seems to be a single HTML escape sequence */
+                        if ($vv[1] === '#') {
+                            $vv = substr($vv, 2, -1);
+                            if (strtolower($vv[0]) === 'x') {
+                                $n = intval(substr($vv, 1), 16);
+                            } else {
+                                $n = intval($vv, 10);
+                            }
+                            $result->addQuery('cp', $n, '=', 'OR');
+                        } else {
+                            $result->addQuery('alias', substr($vv, 1, -1), '=', 'OR');
+                        }
+                        continue;
+                    }
                     if (ctype_xdigit($vv) && in_array(strlen($vv), array(4,5,6))) {
                         $result->addQuery('cp', hexdec($vv), '=', 'OR');
                     }
