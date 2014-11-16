@@ -34,7 +34,8 @@ RewriteRule ^u(\+|\ |%20|%2B)?([A-Fa-f0-9]+)$   /U+$2 [R,L]
 # U+1234. (<- that's a dot at the end. Happens in Github bug trackers.)
 # U+1234/char (<- sometimes people write URL/codepoint, but autodetection
 #                 adds the description to the URL. Meh.)
-RewriteRule ^U\+([A-Fa-f0-9]+)(\.|/.*)$   /U+$1 [R,L]
+# U+1234). (<- Bugzilla being too greedy when parsing URLs in text)
+RewriteRule ^U\+([A-Fa-f0-9]+)(\.|/.*|\).*)$   /U+$1 [R,L]
 
 # +U1234 (<- typo in unicodehearts.com)
 # +1234 (<- missing the "U")
