@@ -29,7 +29,11 @@
 
                                    /* TEAM */
 
-Author: Manuel Strehl, @m_strehl
+Lead: Manuel Strehl, @m_strehl
+Contributors:
+    - Mathias Bynens <https://github.com/mathiasbynens>
+    - zed <https://github.com/zed>
+    - Martijn Pieters <https://github.com/mjpieters>
 Hosting: Uberspace.de
 
 
@@ -67,7 +71,7 @@ Images:
 Texts:
     - There are many texts from Wikipedia throughout the site. All texts are
       marked with the corresponding URL back to WP. Thanks to all the awesome
-      authors providing such information for free to the world.
+      authors providing such information for free to the world!
 
 Inspiration: Thanks to:
     - Decode Unicode for the “reference implementation” of a Unicode

@@ -244,7 +244,15 @@ include 'nav.php';
       of characters. The same holds for the authors of Wikipedia, who gather
       knowledge about many parts of the lettering universe. Their share is an
       important part of this site.')?></p>
-      <p><?php printf(__('Many thanks go to two sites with a similar goal but other emphasis in
+    <p><?php _e('The developers supporting this site with their knowledge, bug
+      reports and input take a fair share in keeping it awesome. We want to
+      thank specifically the people contributing code:')?></p>
+    <ul>
+      <li><a href="https://github.com/mathiasbynens">Mathias Bynens</a></li>
+      <li><a href="https://github.com/mjpieters">Martijn Pieters</a></li>
+      <li><a href="https://github.com/zed">zed</a></li>
+    </ul>
+    <p><?php printf(__('Many thanks go to two sites with a similar goal but other emphasis in
       the presentation of the Unicode standard: %s and %s.'),
       '<a href="http://decodeunicode.org">Decode Unicode</a>',
       '<a href="http://graphemica.com">Graphemica</a>')?>

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-26 22:35+0100\n"
-"PO-Revision-Date: 2014-10-26 22:43+0100\n"
+"POT-Creation-Date: 2014-11-17 23:38+0100\n"
+"PO-Revision-Date: 2014-11-17 23:39+0100\n"
 "Last-Translator: Manuel Strehl <translate@manuel-strehl.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -1589,6 +1589,16 @@ msgstr ""
 "gemacht."
 
 #: codepoints.net/views/about.php:247
+msgid ""
+"The developers supporting this site with their knowledge, bug\n"
+"      reports and input take a fair share in keeping it awesome. We want to\n"
+"      thank specifically the people contributing code:"
+msgstr ""
+"Die Entwickler, die diese Seite mit ihrem Wissen, Fehlermeldungen und "
+"Eingaben unterstützen, haben wesentlichen Anteil daran, dass sie großartig "
+"bleibt. Wir möchten besonders den Leuten danken, die Code beigetragen haben:"
+
+#: codepoints.net/views/about.php:255
 #, php-format
 msgid ""
 "Many thanks go to two sites with a similar goal but other emphasis in\n"
@@ -1597,7 +1607,7 @@ msgstr ""
 "Vielen Dank sagen wir auch zwei Seiten mit einem ähnlichen Ziel aber anderen "
 "Schwerpunkten in der Präsentation des Unicode-Standards: %s und %s."
 
-#: codepoints.net/views/about.php:255
+#: codepoints.net/views/about.php:263
 msgid ""
 "The hosting is done on Uberspace, a phantastic provider with extremely\n"
 "    helpful and flexible support."
@@ -1605,7 +1615,7 @@ msgstr ""
 "Das Hosting geschieht auf Servern von Uberspace, einem fantastischen "
 "Provider mit extrem hilfreichem und flexiblem Support."
 
-#: codepoints.net/views/about.php:257
+#: codepoints.net/views/about.php:265
 #, php-format
 msgid ""
 "The %s names are derived from %s, which is curated by\n"
@@ -1616,11 +1626,11 @@ msgstr ""
 "Die %s-Bezeichner sind von %s abgeleitet, gepflegt von David Carlisle und "
 "mit der MathML-Spezifikation des W3C verteilt."
 
-#: codepoints.net/views/about.php:261
+#: codepoints.net/views/about.php:269
 msgid "Fonts"
 msgstr "Schriftarten"
 
-#: codepoints.net/views/about.php:262
+#: codepoints.net/views/about.php:270
 msgid ""
 "Many people base their work on Unicode. We want to thank the authors of\n"
 "    these fonts, that they made it possible to re-use them for this project:"
@@ -1629,7 +1639,7 @@ msgstr ""
 "Schriften danken, dass sie die Verwendung für dieses Projekt möglich gemacht "
 "haben:"
 
-#: codepoints.net/views/about.php:266
+#: codepoints.net/views/about.php:274
 #, php-format
 msgid ""
 "Roman Czyborra, David Starner, Qianqian Fang, Changwoo Ryu and Paul\n"
@@ -1638,20 +1648,20 @@ msgstr ""
 "Roman Czyborra, David Starner, Qianqian Fang, Changwoo Ryu und Paul Hardy "
 "für %sGNU Unifont%s"
 
-#: codepoints.net/views/about.php:271
+#: codepoints.net/views/about.php:279
 msgid "The Deja Vu Project"
 msgstr "Das Deja Vu-Projekt"
 
-#: codepoints.net/views/about.php:272
+#: codepoints.net/views/about.php:280
 #, php-format
 msgid "%sMichael Everson%s for the Last Resort font"
 msgstr "%sMichael Everson%s für die Last Resort-Schriftart"
 
-#: codepoints.net/views/about.php:274
+#: codepoints.net/views/about.php:282
 msgid "Image Attribution"
 msgstr "Bildzuschreibung"
 
-#: codepoints.net/views/about.php:275
+#: codepoints.net/views/about.php:283
 #, php-format
 msgid ""
 "The background image on the front page is released under the Creative\n"
@@ -1667,7 +1677,7 @@ msgstr ""
 "Reichs von Karl dem Großen%s, %sWünschelrutengänger aus dem 18. Jhd.%s und "
 "%sein NASA-Marsrover%s."
 
-#: codepoints.net/views/about.php:290
+#: codepoints.net/views/about.php:298
 #, php-format
 msgid ""
 "The “We’re Open Source” image is released under the Creative Commons\n"
@@ -1677,12 +1687,12 @@ msgstr ""
 "Das „We’re Open Source“-Bild ist unter der Creative Commons Attribution Non-"
 "Commercial No-Derivations-Lizenz von %sFlickr-Nutzer tima%s veröffentlicht."
 
-#: codepoints.net/views/about.php:294
+#: codepoints.net/views/about.php:302
 #, php-format
 msgid "The icons are part of the %sFont Awesome%s icon set."
 msgstr "Die Icons sind Teil des %sFont Awesome%s-Iconsets."
 
-#: codepoints.net/views/about.php:297
+#: codepoints.net/views/about.php:305
 #, php-format
 msgid ""
 "Finally I’d like to thank %sMathias Bynens%s\n"
