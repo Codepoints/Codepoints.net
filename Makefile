@@ -109,7 +109,7 @@ vendor: bower.json
 	node_modules/jqueryui-amd/jqueryui-amd.js src/vendor/jquery.ui
 	cd src/vendor/webfontloader && rake compile
 
-test: test-php test-phpunit test-sass test-js
+test: test-php test-phpunit test-sass test-js test-casper
 
 test-phpunit:
 	$(info * Run PHPUnit tests)
@@ -127,6 +127,10 @@ test-js: $(JS_ALL)
 test-sass: $(shell find src/sass -type f)
 	$(info * Test Sass syntax)
 	@sass --check $^
+
+test-casper:
+	$(info * run CasperJS tests)
+	@cd test/casperjs; casperjs test --pre=bootstrap.js --fail-fast test_*.js
 
 clearcache:
 	rm -f $(DOCROOT)cache/_cache_* $(DOCROOT)cache/blog-preview*
