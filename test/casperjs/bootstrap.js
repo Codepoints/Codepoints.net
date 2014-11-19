@@ -1,8 +1,8 @@
 
 var sys = require('system');
 var home = sys.env.CASPER_HOME || 'http://codepoints.localhost/';
-var width = 1280;
-var height = 900;
+var width = parseInt(sys.env.CASPER_WIDTH, 10) || 1280;
+var height = parseInt(sys.env.CASPER_HEIGHT, 10) || 900;
 
 function _take_screenshot(type) {
   var path = sys.env.PWD + '/screenshots/' + type + Date.now() + '.png';

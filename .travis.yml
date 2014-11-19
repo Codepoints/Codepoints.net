@@ -2,11 +2,9 @@ language:
   - php
   - node_js
 php:
-  - 5.3
-  - 5.4
   - 5.5
 install:
   - npm install
   - npm install -g casperjs
 script:
-    - make test-phpunit test-php test-js test-casper
+    - CASPER_HOME=http://localhost/ make test-phpunit test-php test-js test-casper CASPER_ARGS=
