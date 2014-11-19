@@ -1,11 +1,11 @@
 
-var home = 'http://codepoints.localhost/';
-var width = 800;
-var height = 800;
+var sys = require('system');
+var home = sys.env.CASPER_HOME || 'http://codepoints.localhost/';
+var width = 1280;
+var height = 900;
 
 function _take_screenshot(type) {
-  var path = require('system').env.PWD + '/screenshots/' +
-              type + Date.now() + '.png';
+  var path = sys.env.PWD + '/screenshots/' + type + Date.now() + '.png';
   casper.capture(path);
   casper.echo('Screenshot saved to '+path);
 }

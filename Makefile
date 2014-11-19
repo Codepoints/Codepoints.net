@@ -13,6 +13,8 @@ JSHINT := node_modules/jshint/bin/jshint
 JSHINT_ARGS := --config src/jshint.js
 PHPUNIT := phpunit
 PHPUNIT_ARGS :=
+CASPERJS := casperjs
+CASPERJS_ARGS := --fail-fast
 ifdef COVERAGE
 PHPUNIT_REAL_ARGS := $(PHPUNIT_ARGS) --coverage-html ./coverage-report
 else
@@ -130,7 +132,7 @@ test-sass: $(shell find src/sass -type f)
 
 test-casper:
 	$(info * run CasperJS tests)
-	@cd test/casperjs; casperjs test --pre=bootstrap.js --fail-fast test_*.js
+	@cd test/casperjs; $(CASPERJS) test --pre=bootstrap.js $(CASPERJS_ARGS) test_*.js
 
 clearcache:
 	rm -f $(DOCROOT)cache/_cache_* $(DOCROOT)cache/blog-preview*
