@@ -52,13 +52,13 @@ $router->registerAction('search', function ($request, $o) {
                     $result->addQuery('alias', $vv, 'LIKE', 'OR');
                     $result->addQuery('abstract', $vv, 'LIKE', 'OR');
                     if (preg_match('/\blowercase\b/i', $vv)) {
-                        $result->addQuery('gc', 'lc', '=', 'OR');
+                        $result->addQuery('gc', 'Ll', '=', 'OR');
                     }
                     if (preg_match('/\buppercase\b/i', $vv)) {
-                        $result->addQuery('gc', 'uc', '=', 'OR');
+                        $result->addQuery('gc', 'Lu', '=', 'OR');
                     }
                     if (preg_match('/\btitlecase\b/i', $vv)) {
-                        $result->addQuery('gc', 'tc', '=', 'OR');
+                        $result->addQuery('gc', 'Lt', '=', 'OR');
                     }
                     $blocks = array_unique(array_merge($blocks,
                                         UnicodeBlock::search($vv, $o['db'])));
