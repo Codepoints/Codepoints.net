@@ -27,6 +27,12 @@
       <link rel="canonical" href="http://codepoints.net<?php e($canonical)?>" />
     <?php endif?>
     <?php echo isset($headdata)? $headdata : ''?>
+    <?php if ($lang !== 'en'):?>
+      <link rel="alternate" hreflang="en" href="http://codepoints.net<?php e($canonical.(strpos($canonical, '?') !== false? '&' : '?').'lang=en')?>" />
+    <?php endif?>
+    <?php if ($lang !== 'de'):?>
+      <link rel="alternate" hreflang="de" href="http://codepoints.net<?php e($canonical.(strpos($canonical, '?') !== false? '&' : '?').'lang=de')?>" />
+    <?php endif?>
   </head>
   <body>
     <div class="stage">
