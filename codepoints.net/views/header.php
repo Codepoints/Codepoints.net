@@ -14,7 +14,7 @@
     <!--[if lt IE 9]>
       <link rel="stylesheet" href="/static/css/ie.css!<?php e(CACHE_BUST)?>"/>
     <![endif]-->
-    <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="/static/images/favicon.ico"/>
+    <link rel="icon" href="/static/images/icon.svg"/>
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/static/images/icon144.png"/>
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/images/icon114.png"/>
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/static/images/icon72.png"/>
