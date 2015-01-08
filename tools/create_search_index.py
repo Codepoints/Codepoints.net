@@ -63,6 +63,16 @@ def get_aliases(cp):
     return map(lambda s: s[0], res.fetchall())
 
 
+def has_confusables(cp):
+    """whether the CP has any confusables"""
+    res = cur.execute('''
+            SELECT COUNT(*)
+               FROM codepoint_confusables
+              WHERE codepoint_confusables.cp = ?
+                 OR codepoint_confusables.other = ?''', (cp,cp))
+    return res.fetchone()[0]
+
+
 conn = sqlite3.connect((dirname(__file__) or '.')+'/../ucd.sqlite')
 conn.row_factory = sqlite3.Row
 cur = conn.cursor()
@@ -90,12 +100,14 @@ i = 0
 for item in res.fetchall():
     i += 1
     cp = item['cp']
+
     for j, weight in (('na', 100), ('na1', 90), ('kDefinition', 50)):
         if item[j]:
             for w in re.split(r'\s+', item[j].lower()):
                 exec_sql('''
                 INSERT INTO search_index (cp, term, weight)
                 VALUES (?, ?, ?);''', (cp, w, weight))
+
     for prop in item.keys():
         if (prop not in ('na', 'na1', 'kDefinition', 'cp') and
             prop is not None):
@@ -104,14 +116,24 @@ for item in res.fetchall():
             exec_sql(u'''
             INSERT INTO search_index (cp, term, weight)
             VALUES (?, ?, ?);''', (cp, u'{}:{}'.format(prop, item[prop]), 50))
+
     for w in get_aliases(cp):
         exec_sql('''
         INSERT INTO search_index (cp, term, weight)
         VALUES (?, ?, 40);''', (cp, w))
+
     for w in get_abstract_tokens(cp):
         exec_sql('''
         INSERT INTO search_index (cp, term, weight)
         VALUES (?, ?, 1);''', (cp, w))
+
+    h = '0'
+    if has_confusables(cp):
+        h = '1'
+    exec_sql('''
+        INSERT INTO search_index (cp, term, weight)
+        VALUES (?, ?, 50);''', (cp, 'confusables:'+h))
+
     if EXECUTE_DIRECTLY and i % 1000 == 0:
         print 'U+%04X' % cp
 
