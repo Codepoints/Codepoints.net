@@ -1,4 +1,18 @@
 #!/usr/bin/python
+"""
+Create the search index table and fill it
+
+The search index is a simple table that contains codepoints and their
+search terms: name, abstract, ... We create it from the other information
+stored in the ucd.sqlite database. Some, like abstract and kDefinition,
+get split, stopwords removed and inserted in pieces.
+
+The terms are weighted. That means, each term has an associated number
+representing its importance for the codepoint. Names get the highest weight,
+words in the Wikipedia abstract the lowest. This ensures, that the search
+for "ox" finds U+1F402 OX before any other codepoint that happens to
+relate to oxen.
+"""
 
 from bs4 import BeautifulSoup
 import nltk
@@ -10,9 +24,23 @@ import re
 stopwords = nltk.corpus.stopwords.words('english')
 punctrm = re.compile(ur'[!-/:-@\[-`{-~\u2212\u201C\u201D]', re.UNICODE)
 
+EXECUTE_DIRECTLY = True
+SQL = ''
+
+
+def exec_sql(*sql):
+    """execute or store an SQL query"""
+    if EXECUTE_DIRECTLY:
+        cur.execute(*sql)
+    else:
+        sql0 = sql[0]
+        for x in sql[1:]:
+            sql0 = sql0.replace('?', x, 1)
+        SQL += "\n" + sql0
+
 
 def get_abstract_tokens(cp):
-    """"""
+    """Fetch abstract for cp and split it in tokens"""
     abstract = (cur.execute("SELECT abstract FROM codepoint_abstract WHERE cp = ? AND lang = 'en'", (cp,)).fetchone() or [None])[0]
     if abstract:
         terms = BeautifulSoup(abstract).get_text()
@@ -30,53 +58,66 @@ def get_abstract_tokens(cp):
 
 
 def get_aliases(cp):
-    """"""
+    """get all aliases of a codepoint"""
     res = cur.execute("SELECT alias FROM codepoint_alias WHERE cp = ?", (cp,))
     return map(lambda s: s[0], res.fetchall())
 
 
 conn = sqlite3.connect((dirname(__file__) or '.')+'/../ucd.sqlite')
+conn.row_factory = sqlite3.Row
 cur = conn.cursor()
 
-cur.execute('DROP INDEX IF EXISTS search_index_term;')
-cur.execute('DROP TABLE IF EXISTS search_index;')
+# drop existing index. We build it from scratch
+exec_sql('DROP INDEX IF EXISTS search_index_term;')
+exec_sql('DROP TABLE IF EXISTS search_index;')
 
-cur.execute('''
+# create the table/index for the search index
+exec_sql('''
     CREATE TABLE
         search_index (
             cp INTEGER(7) REFERENCES codepoints,
             term TEXT,
             weight INTEGER(2) DEFAULT 1
         )''')
-cur.execute('''
+exec_sql('''
     CREATE INDEX
         search_index_term
         ON search_index ( term )''')
 
-res = cur.execute('SELECT cp, na, na1, kDefinition FROM codepoints')
+res = cur.execute('SELECT * FROM codepoints')
 
 i = 0
 for item in res.fetchall():
     i += 1
-    item = list(item)
-    cp = item.pop(0)
-    for j, weight in enumerate([100,90,50]):
+    cp = item['cp']
+    for j, weight in (('na', 100), ('na1', 90), ('kDefinition', 50)):
         if item[j]:
             for w in re.split(r'\s+', item[j].lower()):
-                cur.execute('''
+                exec_sql('''
                 INSERT INTO search_index (cp, term, weight)
                 VALUES (?, ?, ?);''', (cp, w, weight))
+    for prop in item.keys():
+        if (prop not in ('na', 'na1', 'kDefinition', 'cp') and
+            prop is not None):
+            # all other properties get stored as foo:bar pairs, with foo
+            # as property and bar as its value
+            exec_sql(u'''
+            INSERT INTO search_index (cp, term, weight)
+            VALUES (?, ?, ?);''', (cp, u'{}:{}'.format(prop, item[prop]), 50))
     for w in get_aliases(cp):
-        cur.execute('''
+        exec_sql('''
         INSERT INTO search_index (cp, term, weight)
         VALUES (?, ?, 40);''', (cp, w))
     for w in get_abstract_tokens(cp):
-        cur.execute('''
+        exec_sql('''
         INSERT INTO search_index (cp, term, weight)
         VALUES (?, ?, 1);''', (cp, w))
-    if i == 1000:
+    if EXECUTE_DIRECTLY and i % 1000 == 0:
         print 'U+%04X' % cp
 
 cur.close()
 conn.commit()
 conn.close()
+
+if SQL:
+    print SQL
