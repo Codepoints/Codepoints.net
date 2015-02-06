@@ -39,7 +39,7 @@ require.config({
     "d3": "/src/vendor/d3/d3.v2",
     "zeroclipboard": "/src/vendor/zeroclipboard/ZeroClipboard",
     "webfont": "/src/vendor/webfontloader/target/webfont",
-    "piwik": "http://piwik.manuel-strehl.de/piwik.js"
+    "piwik": "http://stats.codepoints.net/piwik.js"
   },
   "shim": {
     "jquery": {

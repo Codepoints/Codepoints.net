@@ -232,9 +232,9 @@ include 'nav.php';
       instructions:'), '<a href="http://piwik.org">Piwik</a>')?>
     </p>
     <iframe frameborder="no" width="100%" height="200px"
-            src="http://piwik.manuel-strehl.de/index.php?module=CoreAdminHome&action=optOut">
+            src="http://stats.codepoints.net/index.php?module=CoreAdminHome&action=optOut">
             <p><?php printf(__('Your Browser doesn’t support frames. Please visit %sthis page%s.'),
-                '<a href="http://piwik.manuel-strehl.de/index.php?module=CoreAdminHome&amp;action=optOut">', '</a>')?></p>
+                '<a href="http://stats.codepoints.net/index.php?module=CoreAdminHome&amp;action=optOut">', '</a>')?></p>
     </iframe>
   </section>
   <section id="attribution">

@@ -1,7 +1,7 @@
 <script><?php
 ?>var _paq=[<?php
 ?>['setSiteId',4],<?php
-?>['setTrackerUrl','http://piwik.manuel-strehl.de/piwik.php'],<?php
+?>['setTrackerUrl','http://stats.codepoints.net/piwik.php'],<?php
 if (isset($trackerVars) && $trackerVars):
     foreach($trackervars as $i => $var):
         ?>['setCustomVariable',<?php echo $i+1?>,"<?php
