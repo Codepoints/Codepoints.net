@@ -13,7 +13,7 @@ AddDefaultCharset utf-8
 # we send the same header from index.php, too b/c of
 # http://serverfault.com/a/383063/13201
 <IfModule mod_headers.c>
-  Header set Strict-Transport-Security "max-age=16070400; includeSubDomains"
+  Header set Strict-Transport-Security "max-age=16070400; includeSubDomains; preload"
 </IfModule>
 
 ErrorDocument 404 /index.php
