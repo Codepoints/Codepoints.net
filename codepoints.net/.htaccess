@@ -9,6 +9,11 @@ AddDefaultCharset utf-8
   Deny From All
 </Files>
 
+# see https://git.io/hsts
+<IfModule mod_headers.c>
+  Header set Strict-Transport-Security "max-age=16070400; includeSubDomains"
+</IfModule>
+
 ErrorDocument 404 /index.php
 
 RewriteEngine On
