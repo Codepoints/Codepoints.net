@@ -61,7 +61,7 @@ foreach ($cps as $status) {
     $class = '';
 
     if ($len < 111) {
-        $s .= sprintf(' http://codepoints.net/U+%04X', $status['cp']);
+        $s .= sprintf(' https://codepoints.net/U+%04X', $status['cp']);
         $len = mb_strlen($s, 'UTF-8');
     }
     if ($len > 140) {

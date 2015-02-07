@@ -19,6 +19,8 @@
       <?php $stem = array(
           'http://'.$_SERVER['HTTP_HOST'].$router->getUrl('search?'),
           'http://'.$_SERVER['HTTP_HOST'].$router->getUrl('wizard?'),
+          'https://'.$_SERVER['HTTP_HOST'].$router->getUrl('search?'),
+          'https://'.$_SERVER['HTTP_HOST'].$router->getUrl('wizard?'),
       );
       if (array_key_exists('HTTP_REFERER', $_SERVER)):
           foreach ($stem as $stemX):

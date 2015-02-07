@@ -30,14 +30,14 @@ $return = array(
     "last" => sprintf("U+%04X", $block_limits[1]),
 );
 
-header('Link: <http://codepoints.net'.Router::getRouter()->getUrl($block).'>; rel=alternate', false);
-header('Link: <http://codepoints.net/api/v1/plane'.Router::getRouter()->getUrl($plane).'>; rel=up', false);
+header('Link: <https://codepoints.net'.Router::getRouter()->getUrl($block).'>; rel=alternate', false);
+header('Link: <https://codepoints.net/api/v1/plane'.Router::getRouter()->getUrl($plane).'>; rel=up', false);
 if ($next) {
-    header('Link: <http://codepoints.net/api/v1/block'.Router::getRouter()->getUrl($next).'>; rel=next', false);
+    header('Link: <https://codepoints.net/api/v1/block'.Router::getRouter()->getUrl($next).'>; rel=next', false);
     $return["next_block"] = $next->getName();
 }
 if ($prev) {
-    header('Link: <http://codepoints.net/api/v1/block'.Router::getRouter()->getUrl($prev).'>; rel=prev', false);
+    header('Link: <https://codepoints.net/api/v1/block'.Router::getRouter()->getUrl($prev).'>; rel=prev', false);
     $return["prev_block"] = $prev->getName();
 }
 

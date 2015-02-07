@@ -17,10 +17,10 @@ $block = $codepoint->getBlock();
     <link rel="author" href="/humans.txt" />
     <link rel="author" href="https://plus.google.com/107008580830183396063?rel=author" />
     <link rel="publisher" href="https://plus.google.com/115373008615574082246" />
-    <link rel="canonical" href="http://codepoints.net<?php e($router->getUrl($codepoint))?>" />
+    <link rel="canonical" href="https://codepoints.net<?php e($router->getUrl($codepoint))?>" />
   </head>
   <body class="embedded codepoint">
-    <a target="_blank" href="http://codepoints.net<?php e($router->getUrl($codepoint))?>"
+    <a target="_blank" href="https://codepoints.net<?php e($router->getUrl($codepoint))?>"
        title="<?php _e('View on Codepoints.net')?>">
       <figure>
         <span class="fig"><?php e($codepoint->getSafeChar())?></span>
@@ -123,7 +123,7 @@ $block = $codepoint->getBlock();
         </tbody>
       </table>
     </section>
-    <p class="note"><a target="_blank" href="http://codepoints.net<?php e($router->getUrl($codepoint))?>" rel="bookmark"><?php _e('» View this character on Codepoints.net')?></a></p>
+    <p class="note"><a target="_blank" href="https://codepoints.net<?php e($router->getUrl($codepoint))?>" rel="bookmark"><?php _e('» View this character on Codepoints.net')?></a></p>
 <?php
     $trackingVars = array(
         array("mode","embedded","page"));

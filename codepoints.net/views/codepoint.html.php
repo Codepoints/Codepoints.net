@@ -18,13 +18,13 @@ $hDescription = sprintf(__('%s, codepoint U+%04X %s in Unicode, is located in th
     $codepoint->getId(), $codepoint->getName(), $block->getName(), $info->getLabel('sc', $props['sc']), $info->getLabel('gc', $props['gc']));
 $canonical = $router->getUrl($codepoint);
 $headdata .= sprintf('<meta name="twitter:site" content="@codepointsnet"/>
-<meta name="twitter:url" content="http://codepoints.net%s"/>
+<meta name="twitter:url" content="https://codepoints.net%s"/>
 <meta name="twitter:title" content="%s"/>
 <meta name="twitter:description" content="%s"/>',
 q($router->getUrl($codepoint)), q($title), q($hDescription));
 if (substr($codepoint->getImage(), -strlen(Codepoint::$defaultImage)) !==
     Codepoint::$defaultImage) {
-        $headdata .= '<meta name="twitter:image" content="http://codepoints.net/api/v1/glyph/'.$codepoint->getId('hex').'"/>';
+        $headdata .= '<meta name="twitter:image" content="https://codepoints.net/api/v1/glyph/'.$codepoint->getId('hex').'"/>';
 }
 include "header.php";
 $nav = array();
@@ -85,7 +85,7 @@ $s = function($cat) use ($router, $info, $props) {
   </aside>
   <aside class="other codepoint--tools">
     <p>
-      <a href="https://twitter.com/share?text=<?php _e(rawurlencode("U+".$codepoint->getId('hex').' '.$codepoint->getName().': '.$codepoint->getSafeChar()))?>&amp;url=<?php echo rawurlencode('http://codepoints.net'.$router->getUrl($codepoint))?>&amp;via=CodepointsNet&amp;hashtags=Unicode" target="_blank" class="button button--hi button--tweet"><i class="icon-twitter"></i> Tweet this codepoint</a>
+      <a href="https://twitter.com/share?text=<?php _e(rawurlencode("U+".$codepoint->getId('hex').' '.$codepoint->getName().': '.$codepoint->getSafeChar()))?>&amp;url=<?php echo rawurlencode('https://codepoints.net'.$router->getUrl($codepoint))?>&amp;via=CodepointsNet&amp;hashtags=Unicode" target="_blank" class="button button--hi button--tweet"><i class="icon-twitter"></i> Tweet this codepoint</a>
     </p>
     <p>
       <button type="button" class="button button--hi button--embed" data-link="#tools-embed-<?php _e($codepoint->getId('hex'))?>"><i class="icon-cog"></i> Embed this codepoint</button>
@@ -93,7 +93,7 @@ $s = function($cat) use ($router, $info, $props) {
     <div style="display:none" id="tools-embed-<?php _e($codepoint->getId('hex'))?>">
       <p><?php _e('Embed this codepoint in your own website by simply
       copy-and-pasting the following HTML snippet:')?></p>
-      <pre>&lt;iframe src="http://codepoints.net/U+<?php _e($codepoint->getId('hex'))?>?embed"
+      <pre>&lt;iframe src="https://codepoints.net/U+<?php _e($codepoint->getId('hex'))?>?embed"
         style="width: <span contenteditable="true">200px</span>; height: <span contenteditable="true">26px</span>;
         border: 1px solid #444;">
 &lt;/iframe></pre>

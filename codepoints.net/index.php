@@ -23,7 +23,7 @@
  * `make ucd.sqlite`, when you copied it here.)
  *
  * This code is dually licensed under GPL and MIT. See
- * <http://codepoints.net/about#this_site> for details.
+ * <https://codepoints.net/about#this_site> for details.
  */
 
 

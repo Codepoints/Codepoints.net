@@ -10,7 +10,7 @@ $router->registerAction('api/login', function ($request, $o) {
 
     $ch = curl_init();
     $data= array('assertation' => $_GET['assertation'],
-                 'audience' => 'http://codepoints.net');
+                 'audience' => 'https://codepoints.net');
     //set the url, number of POST vars, POST data
     curl_setopt($ch, CURLOPT_URL, 'https://browserid.org/verify');
     curl_setopt($ch, CURLOPT_POST, True);

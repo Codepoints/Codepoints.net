@@ -1,1 +1,1 @@
-Sitemap: http://codepoints.net/sitemap.xml
+Sitemap: https://codepoints.net/sitemap.xml

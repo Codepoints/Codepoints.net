@@ -24,14 +24,14 @@
     <link rel="author" href="https://plus.google.com/107008580830183396063?rel=author" />
     <link rel="publisher" href="https://plus.google.com/115373008615574082246" />
     <?php if(isset($canonical) && $canonical):?>
-      <link rel="canonical" href="http://codepoints.net<?php e($canonical)?>" />
+      <link rel="canonical" href="https://codepoints.net<?php e($canonical)?>" />
     <?php endif?>
     <?php echo isset($headdata)? $headdata : ''?>
     <?php if ($lang !== 'en'):?>
-      <link rel="alternate" hreflang="en" href="http://codepoints.net<?php e($canonical.(strpos($canonical, '?') !== false? '&' : '?').'lang=en')?>" />
+      <link rel="alternate" hreflang="en" href="https://codepoints.net<?php e($canonical.(strpos($canonical, '?') !== false? '&' : '?').'lang=en')?>" />
     <?php endif?>
     <?php if ($lang !== 'de'):?>
-      <link rel="alternate" hreflang="de" href="http://codepoints.net<?php e($canonical.(strpos($canonical, '?') !== false? '&' : '?').'lang=de')?>" />
+      <link rel="alternate" hreflang="de" href="https://codepoints.net<?php e($canonical.(strpos($canonical, '?') !== false? '&' : '?').'lang=de')?>" />
     <?php endif?>
   </head>
   <body>

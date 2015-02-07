@@ -22,7 +22,7 @@ $hDescription = sprintf(__('U+%04X is a Unicode codepoint in the block “%s”.
     $codepoint, $block->getName());
 $canonical = $router->getUrl(sprintf('U+%04X', $codepoint));
 $headdata .= sprintf('<meta name="twitter:site" content="@codepointsnet"/>
-<meta name="twitter:url" content="http://codepoints.net%s"/>
+<meta name="twitter:url" content="https://codepoints.net%s"/>
 <meta name="twitter:title" content="%s"/>
 <meta name="twitter:description" content="%s"/>',
 q($canonical), q($title), q($hDescription));

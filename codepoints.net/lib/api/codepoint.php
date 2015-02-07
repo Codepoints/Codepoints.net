@@ -32,15 +32,15 @@ if (isset($_GET['property'])) {
     }
 }
 
-header('Link: <http://codepoints.net/U+'.$cp->getId('hex').'>; rel=alternate', false);
-header('Link: <http://codepoints.net/api/v1/block'.Router::getRouter()->getUrl($cp->getBlock()).'>; rel=up', false);
+header('Link: <https://codepoints.net/U+'.$cp->getId('hex').'>; rel=alternate', false);
+header('Link: <https://codepoints.net/api/v1/block'.Router::getRouter()->getUrl($cp->getBlock()).'>; rel=up', false);
 $next = $cp->getNext();
 if ($next) {
-    header('Link: <http://codepoints.net/api/v1/codepoint/'.$next->getId('hex').'>; rel=next', false);
+    header('Link: <https://codepoints.net/api/v1/codepoint/'.$next->getId('hex').'>; rel=next', false);
 }
 $prev = $cp->getPrev();
 if ($prev) {
-    header('Link: <http://codepoints.net/api/v1/codepoint/'.$prev->getId('hex').'>; rel=prev', false);
+    header('Link: <https://codepoints.net/api/v1/codepoint/'.$prev->getId('hex').'>; rel=prev', false);
 }
 
 return $properties;

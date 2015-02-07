@@ -32,13 +32,13 @@ $return = array(
     }, $blocks),
 );
 
-header('Link: <http://codepoints.net'.Router::getRouter()->getUrl($plane).'>; rel=alternate', false);
+header('Link: <https://codepoints.net'.Router::getRouter()->getUrl($plane).'>; rel=alternate', false);
 if ($next) {
-    header('Link: <http://codepoints.net/api/v1/plane'.Router::getRouter()->getUrl($next).'>; rel=next', false);
+    header('Link: <https://codepoints.net/api/v1/plane'.Router::getRouter()->getUrl($next).'>; rel=next', false);
     $return["next_plane"] = $next->getName();
 }
 if ($prev) {
-    header('Link: <http://codepoints.net/api/v1/plane'.Router::getRouter()->getUrl($prev).'>; rel=prev', false);
+    header('Link: <https://codepoints.net/api/v1/plane'.Router::getRouter()->getUrl($prev).'>; rel=prev', false);
     $return["prev_plane"] = $prev->getName();
 }
 
