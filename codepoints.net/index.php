@@ -34,6 +34,12 @@ date_default_timezone_set('Europe/Berlin');
 
 
 /**
+ * set HSTS header
+ */
+header('Strict-Transport-Security: max-age=16070400; includeSubDomains');
+
+
+/**
  * define Unicode Version in use
  */
 define('UNICODE_VERSION', '7.0.0');
