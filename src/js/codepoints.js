@@ -27,7 +27,7 @@ if (document.referrer.match(/^https?:\/\/translate.google(usercontent)?.[a-z.]+(
 
 //scratchpad.init();
 
-$.getScript('http://stats.codepoints.net/piwik.js');
+$.getScript('https://stats.codepoints.net/piwik.js');
 
 $(function() {
   /**
@@ -263,7 +263,7 @@ $(function() {
   if (favorites.length) {
     var fav_ul = $('<ul class="data"></ul>').appendTo(favorites);
     $.ajax({
-      url: 'http://stats.codepoints.net/popular.php',
+      url: 'https://stats.codepoints.net/popular.php',
       dataType: 'jsonp'
     }).then(function(data) {
       favorites.find('.wait').remove();

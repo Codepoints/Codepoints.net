@@ -66,7 +66,7 @@ class API_v1 implements iAPIAccess {
                 ! $_SERVER['HTTP_REFERER'] ||
                 preg_replace('/^https?:\/\/([^\/]*)(\/.*)?$/', '$1',
                     $_SERVER['HTTP_REFERER']) !== 'codepoints.net') {
-                PiwikTracker::$URL = 'http://stats.codepoints.net/';
+                PiwikTracker::$URL = 'https://stats.codepoints.net/';
                 $piwikTracker = new PiwikTracker(4);
                 $piwikTracker->setCustomVariable( 1, 'mode', 'api', 'page' );
                 $piwikTracker->doTrackPageView('API: '.$this->_action);
