@@ -17,15 +17,18 @@ relate to oxen.
 from bs4 import BeautifulSoup
 import nltk
 from os.path import dirname
-import sqlite3
 import re
+import sqlite3
+import sys
 
 
 stopwords = nltk.corpus.stopwords.words('english')
 punctrm = re.compile(ur'[!-/:-@\[-`{-~\u2212\u201C\u201D]', re.UNICODE)
+wnl = nltk.WordNetLemmatizer()
 
 EXECUTE_DIRECTLY = True
-SQL = ''
+if len(sys.argv) > 1 and sys.argv[1] == '--print':
+    EXECUTE_DIRECTLY = False
 
 
 def exec_sql(*sql):
@@ -33,10 +36,10 @@ def exec_sql(*sql):
     if EXECUTE_DIRECTLY:
         cur.execute(*sql)
     else:
-        sql0 = sql[0]
-        for x in sql[1:]:
-            sql0 = sql0.replace('?', x, 1)
-        SQL += "\n" + sql0
+        sql0 = sql[0].decode('UTF-8').replace('?', "'{}'")
+        if len(sql) > 1:
+            sql0 = sql0.format(*map(lambda s: isinstance(s, basestring) and s.replace("'", "''") or s, sql[1]))
+        print sql0.encode('UTF-8')
 
 
 def get_abstract_tokens(cp):
@@ -45,15 +48,18 @@ def get_abstract_tokens(cp):
     if abstract:
         terms = BeautifulSoup(abstract).get_text()
         tokens = \
-            list(
+            [wnl.lemmatize(t) for t in
                 set(
                     filter(lambda w: re.sub(punctrm, '', w) != '',
                         [w for w
                             in map(lambda s: s.lower(),
                                 nltk.word_tokenize(terms))
-                            if w not in stopwords])))
+                            if w not in stopwords]
+                    )
+                )
+            ]
     else:
-        tokens = ['']
+        tokens = []
     return tokens
 
 
@@ -88,13 +94,13 @@ exec_sql('''
             cp INTEGER(7) REFERENCES codepoints,
             term TEXT,
             weight INTEGER(2) DEFAULT 1
-        )''')
+        );''')
 exec_sql('''
     CREATE INDEX
         search_index_term
-        ON search_index ( term )''')
+        ON search_index ( term );''')
 
-res = cur.execute('SELECT * FROM codepoints')
+res = cur.execute('SELECT * FROM codepoints;')
 
 i = 0
 for item in res.fetchall():
@@ -110,7 +116,7 @@ for item in res.fetchall():
 
     for prop in item.keys():
         if (prop not in ('na', 'na1', 'kDefinition', 'cp') and
-            prop is not None):
+            prop is not None and item[prop] is not None):
             # all other properties get stored as foo:bar pairs, with foo
             # as property and bar as its value
             exec_sql(u'''
@@ -134,12 +140,9 @@ for item in res.fetchall():
         INSERT INTO search_index (cp, term, weight)
         VALUES (?, ?, 50);''', (cp, 'confusables:'+h))
 
-    if EXECUTE_DIRECTLY and i % 1000 == 0:
-        print 'U+%04X' % cp
+    if i % 1000 == 0:
+        print '-- U+%04X' % cp
 
 cur.close()
 conn.commit()
 conn.close()
-
-if SQL:
-    print SQL
