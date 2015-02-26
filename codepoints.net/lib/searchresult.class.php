@@ -21,8 +21,12 @@ class SearchResult extends UnicodeRange {
 
     /**
      * add a query, connect it to previous via $connector
+     *
+     * Note, that 'AND' as connector is usually not what you want, since
+     * all searches act solely on the "terms" column of search_index, thus
+     * making "AND" searches empty sets.
      */
-    public function addQuery($field, $value, $op='=', $connector='AND') {
+    public function addQuery($field, $value, $op='=', $connector='OR') {
         if ($field === 'confusables') {
             $this->needConfusables = true;
         }
@@ -47,32 +51,26 @@ class SearchResult extends UnicodeRange {
         }
 
         list($search, $params) = $this->_getQuerySQL();
-        $fields = 'codepoints.cp cp, na, na1,
-             codepoint_image.image AS image,
-             blocks.name AS block';
-        if ($this->needConfusables) {
-            $fields .= ',
-            (SELECT COUNT(*)
-               FROM codepoint_confusables
-              WHERE codepoint_confusables.cp = codepoints.cp
-                 OR codepoint_confusables.other = codepoints.cp) confusables';
-        }
-        $select = 'SELECT DISTINCT %s
-        FROM codepoints
-        LEFT JOIN codepoint_script USING ( cp )
-        LEFT JOIN codepoint_alias USING ( cp )
-        LEFT JOIN codepoint_abstract USING ( cp )
-        LEFT JOIN codepoint_image USING ( cp )
-        LEFT JOIN blocks ON blocks.first <= codepoints.cp AND blocks.last >= codepoints.cp
-        WHERE %s';
+        $select = 'SELECT %s FROM search_index WHERE %s GROUP BY cp %s';
 
-        $stm = $this->db->prepare(sprintf($select, $fields, $search.' LIMIT '.($this->page * $this->pageLength).','.$this->pageLength));
+        $stm = $this->db->prepare(sprintf($select, 'cp', $search, 'ORDER BY SUM(weight) DESC LIMIT '.($this->page * $this->pageLength).','.$this->pageLength));
         $stm->execute($params);
         $r = $stm->fetchAll(PDO::FETCH_ASSOC);
         $names = array();
         $stm->closeCursor();
         if ($r !== False) {
+            $stm = $this->db->prepare(sprintf('
+                SELECT cp, na, na1, image
+                  FROM codepoints
+             LEFT JOIN codepoint_image USING ( cp )
+                 WHERE cp IN ( %s )', join(',', array_map(function($item) {
+                return $item['cp'];
+            }, $r))));
+            $stm->execute();
+            $r = $stm->fetchAll(PDO::FETCH_ASSOC);
             foreach ($r as $cp) {
+                /* TODO here we have lost the weight ordering. We must use the
+                 * original result or somehow re-gain the old order. */
                 if (! $cp['image']) {
                     $cp['image'] = '';
                 }
@@ -87,7 +85,10 @@ class SearchResult extends UnicodeRange {
         // query is LIMITed
         $c = count($this->set);
         if ($this->page > 1 || $c === $this->pageLength) {
-            $stm = $this->db->prepare(sprintf($select, 'COUNT(*) AS c', $search));
+            $stm = $this->db->prepare(sprintf('
+                 SELECT COUNT(*) AS c FROM (
+                     SELECT cp FROM search_index WHERE %s GROUP BY cp
+                 )', $search));
             $stm->execute($params);
             $r = $stm->fetch(PDO::FETCH_ASSOC);
             $stm->closeCursor();
@@ -115,7 +116,7 @@ class SearchResult extends UnicodeRange {
         if (count($this->query) === 0) {
             /* if there are no queries defined but a set to look into, use this.
              * This is basically to ensure compatibility with UnicodeRange. */
-            $search = "codepoints.cp IN (" . join(',', $this->_set) . ")";
+            $search = "cp IN (" . join(',', $this->_set) . ")";
         } else {
             foreach ($this->query as $i => $q) {
                 if ($search !== '') {
@@ -125,36 +126,44 @@ class SearchResult extends UnicodeRange {
                 }
                 if (is_array($q[2])) {
                     /* the query value is an array: we construct an "IN ()" SQL
-                    * statement. */
-                    $tmp = array_map(array($this->db, 'quote'), $q[2]);
+                     * statement. */
+                    $x = $q[0];
+                    if ($x === 'block') { $x = 'blk'; }
+                    $tmp = array_map(function ($s) use ($x) {
+                        if ($x !== 'cp') {
+                            $s = "$x:$s";
+                        }
+                        return $this->db->quote($s);
+                    }, $q[2]);
                     if ($q[1] === '=') {
                         $q[1] = 'IN';
                     } elseif ($q[1] === '!=') {
                         $q[1] = 'NOT IN';
                     }
                     if ($q[0] === 'cp') {
-                        $search .= " codepoints.cp ${q[1]} ( " . join(',', $tmp) . " )";
-                    } elseif ($q[0] === 'block') {
-                        $search .= " blocks.name ${q[1]} ( " . join(',', $tmp) . " )";
+                        $search .= " cp ${q[1]} ( " . join(',', $tmp) . " )";
                     } else {
-                        $search .= " `${q[0]}` ${q[1]} ( " . join(',', $tmp) . " )";
+                        $search .= " term ${q[1]} ( " . join(',', $tmp) . " )";
                     }
+                } elseif ($q[0] === 'term') {
+                    $search .= " term ${q[1]} :q$i ";
+                    $params[':q'.$i] = "${q[2]}";
                 } elseif ($q[0] === 'na' || $q[0] === 'na1') {
                     /* match names loosely, especially to make the search case-insensiitve */
-                    $search .= " `${q[0]}` LIKE :q$i ";
-                    $params[':q'.$i] = "%${q[2]}%";
+                    $search .= " term LIKE :q$i ";
+                    $params[':q'.$i] = "${q[2]}";
                 } elseif ($q[0] === 'cp' || $q[0] === 'int') {
-                    /* handle "cp" specially to fight "ambiguous column" SQLite errors */
-                    $search .= " codepoints.cp = :q$i ";
+                    /* handle "cp" specially and search "cp" column directly */
+                    $search .= " cp = :q$i ";
                     $params[':q'.$i] = $q[2];
                 } elseif ($q[0] === 'block') {
-                    $search .= " blocks.name = :q$i ";
-                    $params[':q'.$i] = $q[2];
+                    $search .= " term = :q$i ";
+                    $params[':q'.$i] = 'blk:'.$q[2];
                 } else {
                     /* the default is to query the column $q0 with the comparison $q1
                      * for a value $q2 */
-                    $search .= " `${q[0]}` ${q[1]} :q$i ";
-                    $params[':q'.$i] = $q[2];
+                    $search .= " term ${q[1]} :q$i ";
+                    $params[':q'.$i] = $q[0].':'.$q[2];
                 }
             }
         }

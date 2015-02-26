@@ -113,6 +113,13 @@ for item in res.fetchall():
                 exec_sql('''
                 INSERT INTO search_index (cp, term, weight)
                 VALUES (?, ?, ?);''', (cp, w, weight))
+                if '-' in w:
+                    # we need this to find cps like "TAG HYPHEN-MINUS"
+                    # when searching for "hyphen".
+                    for w2 in w.split('-'):
+                        exec_sql('''
+                        INSERT INTO search_index (cp, term, weight)
+                        VALUES (?, ?, ?);''', (cp, w2, weight-20))
 
     for prop in item.keys():
         if (prop not in ('na', 'na1', 'kDefinition', 'cp') and
