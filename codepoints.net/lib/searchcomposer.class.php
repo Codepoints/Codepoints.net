@@ -14,6 +14,8 @@ class SearchComposer {
 
     public function getSearchResult() {
         $result = $this->searchResult;
+        $cats = UnicodeInfo::get()->getCategoryKeys();
+        $cats = array_merge($cats, array('int'));
 
         foreach ($this->queries as $k => $v) {
             if ($k === 'q') {

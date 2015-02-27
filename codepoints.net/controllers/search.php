@@ -4,8 +4,6 @@ $router->registerAction('search', function ($request, $o) {
     // Search
     $router = Router::getRouter();
     $info = UnicodeInfo::get();
-    $cats = $info->getCategoryKeys();
-    $cats = array_merge($cats, array('int'));
     $blocks = array();
     $_q = Null;
     if (array_key_exists('q', $_GET)) {
