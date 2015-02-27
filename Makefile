@@ -143,3 +143,8 @@ tools/latex.sql: tools/latex.xsl tools/latex.xml
 tools/latex.xml:
 	wget -O tools/latex.xml http://www.w3.org/Math/characters/unicode.xml
 	wget -O tools/charlist.dtd http://www.w3.org/Math/characters/charlist.dtd
+
+search_index:
+	cd tools && python create_search_index.py --print > search_index.sql
+	cd tools && python insert.py search_index.sql ../ucd.sqlite
+.PHONY: search_index
