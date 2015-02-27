@@ -27,10 +27,10 @@
       <link rel="canonical" href="https://codepoints.net<?php e($canonical)?>" />
     <?php endif?>
     <?php echo isset($headdata)? $headdata : ''?>
-    <?php if ($lang !== 'en'):?>
+    <?php if (isset($canonical) && $lang !== 'en'):?>
       <link rel="alternate" hreflang="en" href="https://codepoints.net<?php e($canonical.(strpos($canonical, '?') !== false? '&' : '?').'lang=en')?>" />
     <?php endif?>
-    <?php if ($lang !== 'de'):?>
+    <?php if (isset($canonical) && $lang !== 'de'):?>
       <link rel="alternate" hreflang="de" href="https://codepoints.net<?php e($canonical.(strpos($canonical, '?') !== false? '&' : '?').'lang=de')?>" />
     <?php endif?>
   </head>
