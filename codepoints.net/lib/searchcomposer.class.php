@@ -63,7 +63,15 @@ class SearchComposer {
         $r = ['cp' => [], 'term' => []];
         $sc = array_map('strtolower', UnicodeInfo::get()->getLegendForCategory('sc'));
 
-        foreach (preg_split('/\s+/', $q) as $v) {
+        $terms = preg_split('/\s+/', $q);
+        $i = 0;
+        foreach ($terms as $v) {
+            $i += 1;
+            $low_v = strtolower($v);
+            $next_term = null;
+            if (count($terms) > $i) {
+                $next_term = $terms[$i+1];
+            }
 
             if (mb_strlen($v, 'UTF-8') === 1) {
                 /* seems to be one single character */
@@ -75,7 +83,7 @@ class SearchComposer {
                 /* seems to be a single HTML escape sequence */
                 if ($v[1] === '#') {
                     $v = substr($v, 2, -1);
-                    if (strtolower($v[0]) === 'x') {
+                    if ($lower_v[0] === 'x') {
                         $n = intval(substr($v, 1), 16);
                     } else {
                         $n = intval($v, 10);
@@ -98,7 +106,7 @@ class SearchComposer {
                 $r['cp'][] = hexdec($v);
             }
 
-            if (substr(strtolower($v), 0, 2) === 'u+' &&
+            if (substr($low_v, 0, 2) === 'u+' &&
                 ctype_xdigit(substr($v, 2)) &&
                 in_array(strlen($v), [6,7,8])) {
                 $r['cp'][] = hexdec(substr($v, 2));
@@ -109,25 +117,33 @@ class SearchComposer {
             }
 
             $r['term'][] = $v;
+            $r['term'][] = $low_v;
 
-            if (preg_match('/\blowercase\b/i', $v)) {
+            if (preg_match('/\blowercase\b/', $low_v)) {
                 $r['term'][] = 'gc:Ll';
             }
-            if (preg_match('/\buppercase\b/i', $v)) {
+            if (preg_match('/\buppercase\b/', $low_v)) {
                 $r['term'][] = 'gc:Lu';
             }
-            if (preg_match('/\btitlecase\b/i', $v)) {
+            if (preg_match('/\btitlecase\b/', $low_v)) {
                 $r['term'][] = 'gc:Lt';
             }
-            if (strtolower($v) === 'number') {
+            if ($low_v === 'number') {
                 $r['term'][] = 'nt:De';
                 $r['term'][] = 'nt:Di';
                 $r['term'][] = 'nt:Nu';
             }
 
-            $v_sc = array_search(strtolower($v), $sc);
+            $v_sc = array_search($low_v, $sc);
             if ($v_sc) {
                 $r['term'][] = 'sc:'.$v_sc;
+            }
+
+            if ($next_term) {
+                $v_sc = array_search($low_v.' '.strtolower($next_term), $sc);
+                if ($v_sc) {
+                    $r['term'][] = 'sc:'.$v_sc;
+                }
             }
         }
 
