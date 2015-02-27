@@ -63,6 +63,17 @@ def get_abstract_tokens(cp):
     return tokens
 
 
+def get_decomp(cp):
+    """get the decomposition mapping of a codepoint"""
+    dms = cur.execute("""SELECT "other" FROM codepoint_relation
+                       WHERE cp = ? AND relation = 'dm' ORDER BY "order" ASC""",
+                       (cp,)).fetchall()
+
+    if len(dms) and dms[0][0] != cp:
+        return reduce(lambda x, y: x + unichr(int(y[0])), dms, u'').lower()
+    return None
+
+
 def get_aliases(cp):
     """get all aliases of a codepoint"""
     res = cur.execute("SELECT alias FROM codepoint_alias WHERE cp = ?", (cp,))
@@ -139,6 +150,12 @@ for item in res.fetchall():
         exec_sql('''
         INSERT INTO search_index (cp, term, weight)
         VALUES (?, ?, 1);''', (cp, w))
+
+    dm = get_decomp(cp)
+    if dm:
+        exec_sql('''
+        INSERT INTO search_index (cp, term, weight)
+        VALUES (?, ?, 30);''', (cp, dm))
 
     h = '0'
     if has_confusables(cp):
