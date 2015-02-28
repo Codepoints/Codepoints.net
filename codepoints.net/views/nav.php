@@ -9,7 +9,13 @@
         <option value="de"<?php if ($lang === 'de'):?> selected="selected"<?php endif?>>deutsch</option>
       </select>
       <?php foreach ($_GET as $k => $v): if ($k !== 'lang'):?>
-        <input type="hidden" name="<?php e($k)?>" value="<?php e($v)?>" />
+        <?php if (is_array($v)): ?>
+          <?php foreach ($v as $vv):?>
+            <input type="hidden" name="<?php e($k)?>[]" value="<?php e($vv)?>" />
+          <?php endforeach?>
+        <?php else: ?>
+          <input type="hidden" name="<?php e($k)?>" value="<?php e($v)?>" />
+        <?php endif ?>
       <?php endif;endforeach?>
       <noscript><button type="submit"><?php _e('choose language')?></button></noscript>
     </form>
