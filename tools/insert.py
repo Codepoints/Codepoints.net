@@ -25,20 +25,29 @@ if not os.path.isfile(db):
 conn = sqlite3.connect(db)
 cur = conn.cursor()
 
-sql = sqlfile.read()
-inserts = sql.split(";\n")
-
 sys.stdout.write(10*' ')
 sys.stdout.flush()
-for i, insert in enumerate(inserts):
+
+i = 0
+query = sqlfile.readline()
+while query:
+    while query[-2:] != ";\n":
+        tmp = sqlfile.readline()
+        query += tmp
+        if tmp == "":
+            query += ";"
+            break
     try:
-        cur.execute(insert+';')
+        cur.execute(query)
     except sqlite3.OperationalError, e:
-        print insert
+        print query
         raise
+    i += 1
     if i > 0 and i % 1000 == 0:
         sys.stdout.write(10*'\b' + '%10s' % i)
         sys.stdout.flush()
+    query = sqlfile.readline()
+
 sys.stdout.write('\n')
 
 cur.close()
