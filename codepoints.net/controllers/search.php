@@ -8,10 +8,12 @@ $router->registerAction('search', function ($request, $o) {
     $_q = Null;
     if (array_key_exists('q', $_GET)) {
         $_q = $_GET['q'];
-        preg_match_all('/\b[a-z0-9 \\-]+\b/i', $_q, $m);
+        preg_match_all('/\b[a-z][a-z0-9 \\-]+\b/i', $_q, $m);
         foreach ($m as $_m) {
-            $blocks = array_unique(array_merge($blocks,
-                        UnicodeBlock::search($_m[0], $o['db'])));
+            if (count($_m)) {
+                $blocks = array_unique(array_merge($blocks,
+                          UnicodeBlock::search($_m[0], $o['db'])));
+            }
         }
     }
     $q = new SearchComposer($_GET, $o['db']);
