@@ -53,30 +53,45 @@ class SearchResult extends UnicodeRange {
         list($search, $params) = $this->_getQuerySQL();
         $select = 'SELECT %s FROM search_index WHERE %s GROUP BY cp %s';
 
-        $stm = $this->db->prepare(sprintf($select, 'cp', $search, 'ORDER BY SUM(weight) DESC LIMIT '.($this->page * $this->pageLength).','.$this->pageLength));
+        $stm = $this->db->prepare(sprintf($select, 'cp', $search,
+            'ORDER BY SUM(weight) DESC LIMIT '.
+            ($this->page * $this->pageLength).','.$this->pageLength));
         $stm->execute($params);
         $r = $stm->fetchAll(PDO::FETCH_ASSOC);
         $names = array();
         $stm->closeCursor();
         if ($r !== False) {
+            $cps_ordered = array_map(function($item) {
+                               return $item['cp'];
+                           }, $r);
             $stm = $this->db->prepare(sprintf('
                 SELECT cp, na, na1, image
                   FROM codepoints
              LEFT JOIN codepoint_image USING ( cp )
-                 WHERE cp IN ( %s )', join(',', array_map(function($item) {
-                return $item['cp'];
-            }, $r))));
+                 WHERE cp IN ( %s )', join(',', $cps_ordered)));
             $stm->execute();
-            $r = $stm->fetchAll(PDO::FETCH_ASSOC);
-            foreach ($r as $cp) {
-                /* TODO here we have lost the weight ordering. We must use the
-                 * original result or somehow re-gain the old order. */
-                if (! $cp['image']) {
-                    $cp['image'] = '';
+            $r2 = $stm->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($cps_ordered as $n) {
+                foreach ($r2 as $cp) {
+                    if ($n === $cp['cp']) {
+                        if (! $cp['image']) {
+                            $cp['image'] = '';
+                        }
+                        $names[intval($cp['cp'])] = Codepoint::getCP(
+                            intval($cp['cp']),
+                            $this->db,
+                            array(
+                                'name' => $cp['na']?
+                                    $cp['na'] :
+                                    ($cp['na1']?
+                                        $cp['na1'].'*' : '<control>'),
+                                'image' => 'data:image/png;base64,' .
+                                           $cp['image'],
+                            )
+                        );
+                        break;
+                    }
                 }
-                $names[intval($cp['cp'])] = Codepoint::getCP(intval($cp['cp']),
-                    $this->db, array('name' => $cp['na']? $cp['na'] : ($cp['na1']? $cp['na1'].'*' : '<control>'),
-                    'image' => 'data:image/png;base64,' . $cp['image']));
             }
         }
         $this->set = $names;
@@ -149,7 +164,8 @@ class SearchResult extends UnicodeRange {
                     $search .= " term ${q[1]} :q$i ";
                     $params[':q'.$i] = "${q[2]}";
                 } elseif ($q[0] === 'na' || $q[0] === 'na1') {
-                    /* match names loosely, especially to make the search case-insensiitve */
+                    /* match names loosely, especially to make the search
+                     * case-insensiitve */
                     $search .= " term LIKE :q$i ";
                     $params[':q'.$i] = "${q[2]}";
                 } elseif ($q[0] === 'cp' || $q[0] === 'int') {
@@ -160,8 +176,8 @@ class SearchResult extends UnicodeRange {
                     $search .= " term = :q$i ";
                     $params[':q'.$i] = 'blk:'.$q[2];
                 } else {
-                    /* the default is to query the column $q0 with the comparison $q1
-                     * for a value $q2 */
+                    /* the default is to query the column $q0 with the
+                     * comparison $q1 for a value $q2 */
                     $search .= " term ${q[1]} :q$i ";
                     $params[':q'.$i] = $q[0].':'.$q[2];
                 }

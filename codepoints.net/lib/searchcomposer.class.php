@@ -100,6 +100,8 @@ class SearchComposer {
                 /* an URL-encoded UTF-8 character */
                 $r['cp'][] = unpack('N', mb_convert_encoding(rawurldecode($v),
                                     'UCS-4BE', 'UTF-8'));
+                /* continue, b/c this is a very specific search */
+                continue;
             }
 
             if (ctype_xdigit($v) && in_array(strlen($v), [4,5,6])) {
@@ -118,6 +120,10 @@ class SearchComposer {
 
             $r['term'][] = $v;
             $r['term'][] = $low_v;
+            $singular = $this->_getSingular($low_v);
+            if ($singular !== $low_v) {
+                $r['term'][] = $singular;
+            }
 
             if (preg_match('/\blowercase\b/', $low_v)) {
                 $r['term'][] = 'gc:Ll';
@@ -145,9 +151,33 @@ class SearchComposer {
                     $r['term'][] = 'sc:'.$v_sc;
                 }
             }
+
+            /* TODO do the same as above for sc: with blk: */
         }
 
         return $r;
+    }
+
+    private function _getSingular($term) {
+        if ($term === 'children') {
+            return 'child';
+        }
+        if ($term === 'men') {
+            return 'man';
+        }
+        if ($term === 'women') {
+            return 'woman';
+        }
+        if (preg_match('/^[a-rt-z]+(s|sh|ch|o)es$/', $term)) {
+            return substr($term, 0, -1);
+        }
+        if (preg_match('/^[a-rt-z]{2,}s$/', $term)) {
+            return substr($term, 0, -1);
+        }
+        if (preg_match('/^[a-z]+[bcdfghj-np-tv-z]ies$/', $term)) {
+            return substr($term, 0, -3).'y';
+        }
+        return $term;
     }
 
 }
