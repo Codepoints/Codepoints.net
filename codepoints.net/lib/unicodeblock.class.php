@@ -92,7 +92,7 @@ class UnicodeBlock extends UnicodeRange {
             $query->execute(array(str_replace(array(' ', '_'), '',
                                   strtolower($this->name)), $lang));
             $r = $query->fetch(PDO::FETCH_ASSOC);
-            if (array_key_exists('abstract', $r)) {
+            if ($r && array_key_exists('abstract', $r)) {
                 $this->abstract[$lang] = $r['abstract'];
             } else {
                 $this->abstract[$lang] = '';
@@ -116,8 +116,12 @@ class UnicodeBlock extends UnicodeRange {
             $query->execute(array(str_replace(array(' ', '_'), '',
                                     strtolower($this->name))));
             $r = $query->fetchAll(PDO::FETCH_COLUMN, 0);
-            sort($r, SORT_NUMERIC);
-            $this->version = $r[0];
+            if (! $r) {
+                $this->version = '1.0';
+            } else {
+                sort($r, SORT_NUMERIC);
+                $this->version = $r[0];
+            }
         }
         return $this->version;
     }
