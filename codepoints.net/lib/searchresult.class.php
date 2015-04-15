@@ -51,11 +51,17 @@ class SearchResult extends UnicodeRange {
         }
 
         list($search, $params) = $this->_getQuerySQL();
-        $select = 'SELECT %s FROM search_index WHERE %s GROUP BY cp %s';
+        $select = 'SELECT %s FROM search_index WHERE %s %s';
 
-        $stm = $this->db->prepare(sprintf($select, 'cp', $search,
-            'ORDER BY SUM(weight) DESC LIMIT '.
-            ($this->page * $this->pageLength).','.$this->pageLength));
+        if (count($this->query) === 0) {
+            $stm = $this->db->prepare(sprintf($select, 'distinct cp', $search,
+                'ORDER BY cp ASC LIMIT '.
+                ($this->page * $this->pageLength).','.$this->pageLength));
+        } else {
+            $stm = $this->db->prepare(sprintf($select, 'cp', $search,
+                'GROUP BY cp ORDER BY SUM(weight) DESC LIMIT '.
+                ($this->page * $this->pageLength).','.$this->pageLength));
+        }
         $stm->execute($params);
         $r = $stm->fetchAll(PDO::FETCH_ASSOC);
         $names = array();
@@ -100,10 +106,18 @@ class SearchResult extends UnicodeRange {
         // query is LIMITed
         $c = count($this->set);
         if ($this->page > 1 || $c === $this->pageLength) {
-            $stm = $this->db->prepare(sprintf('
-                 SELECT COUNT(*) AS c FROM (
-                     SELECT cp FROM search_index WHERE %s GROUP BY cp
-                 )', $search));
+            if (count($this->query) === 0) {
+                $stm = $this->db->prepare(sprintf('
+                    SELECT COUNT(DISTINCT cp) AS c
+                        FROM search_index
+                        WHERE %s', $search));
+            } else {
+                $stm = $this->db->prepare(sprintf('
+                    SELECT COUNT(DISTINCT cp) AS c
+                        FROM search_index
+                        WHERE %s
+                        GROUP BY cp', $search));
+            }
             $stm->execute($params);
             $r = $stm->fetch(PDO::FETCH_ASSOC);
             $stm->closeCursor();
