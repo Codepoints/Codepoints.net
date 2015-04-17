@@ -16,3 +16,5 @@
 *.pyc
 /ucd.sqlite.*
 /test/casperjs/screenshots/
+/tools/encoding
+/tools/encoding-aliases.sql

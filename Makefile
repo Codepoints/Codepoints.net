@@ -28,6 +28,7 @@ all: test ucotd css js cachebust
 
 clean:
 	-rm -fr dist src/vendor node_modules .sass-cache
+	-rm -f tools/encoding-aliases.sql
 
 dist: vendor all
 	mkdir $@
@@ -77,7 +78,8 @@ ucotd: tools/ucotd.*
 
 ucd.sqlite: ucotd tools/scripts.sql tools/scripts_wp.sql \
             tools/latex.sql tools/fonts/fonts.sql \
-            tools/fonts/target/sql/*.sql
+            tools/fonts/target/sql/*.sql \
+            tools/encoding-aliases.sql
 	@echo "* Add additional info to DB"
 	@sqlite3 $@ <tools/scripts.sql
 	@sqlite3 $@ <tools/scripts_wp.sql
@@ -88,6 +90,18 @@ ucd.sqlite: ucotd tools/scripts.sql tools/scripts_wp.sql \
 		echo "  + Processing $$SQL"; \
 		python tools/insert.py $$SQL $@; \
 	done
+	@sqlite3 $@ <tools/encoding-aliases.sql
+
+tools/encoding-aliases.sql: tools/encoding tools/encoding/index-*.txt
+	-true > $@
+	cd tools && \
+	for enc in encoding/index-*.txt; do \
+		encoding-aliases.py $$enc >> encoding-aliases.sql; \
+	done
+
+tools/encoding:
+	test -d tools/encoding || git clone git@github.com:whatwg/encoding.git tools/encoding
+	cd tools/encoding && git pull
 
 l10n: $(DOCROOT)locale/messages.pot $(DOCROOT)locale/js.pot
 
