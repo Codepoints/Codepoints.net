@@ -59,7 +59,7 @@ $typeMap = array(
         <th><?php if (array_key_exists($a['type'], $typeMap)) {
             echo $typeMap[$a['type']];
         } elseif (substr($a['type'], 0, 4) === 'enc:') {
-            e(sprintf(_('Encoding: %s'),
+            e(sprintf(_('Encoding: %s (hex bytes)'),
                 strtoupper(substr($a['type'], 4))));
         } else {
             e($a['type']);

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-19 21:12+0200\n"
+"POT-Creation-Date: 2015-04-19 21:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -121,7 +121,7 @@ msgstr ""
 
 #: codepoints.net/views/codepoint/representations.php:62
 #, php-format
-msgid "Encoding: %s"
+msgid "Encoding: %s (hex bytes)"
 msgstr ""
 
 #: codepoints.net/views/codepoint/info.php:4
