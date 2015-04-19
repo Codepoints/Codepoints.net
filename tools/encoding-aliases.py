@@ -25,7 +25,7 @@ def encode(encoding, pointer, codepoint):
     #    offset = 0x62
     #    if trail < 0x3F:
     #        offset = 0x40
-    #    return '{:02X}{:02X}'.format(lead, trail + offset)
+    #    return '{:02X} {:02X}'.format(lead, trail + offset)
     elif encoding == 'jis0208': # alias euc-jp
         if codepoint == 0xA5:
             return '5C'
@@ -36,11 +36,11 @@ def encode(encoding, pointer, codepoint):
         else:
             lead = pointer / 94 + 0xA1
             trail = pointer % 94 + 0xA1
-            return '{:02X}{:02X}'.format(lead, trail)
+            return '{:02X} {:02X}'.format(lead, trail)
     elif encoding == 'euc-kr':
         lead = pointer / 190 + 0x81
         trail = pointer % 190 + 0x41
-        return '{:02X}{:02X}'.format(lead, trail)
+        return '{:02X} {:02X}'.format(lead, trail)
     return False
 
 
