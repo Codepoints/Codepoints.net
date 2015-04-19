@@ -5,11 +5,6 @@ import re
 import sys
 
 
-def format_bytes(n):
-    """"""
-    return reduce(lambda x, y: x if not x and y == '00' else y if not x else x+' '+y,
-        re.findall('..?', '{0:0100X}'.format(n)), '') or '00'
-
 def encode(encoding, pointer, codepoint):
     """"""
     if encoding in ('ibm866', 'iso-8859-2', 'iso-8859-3', 'iso-8859-4',
@@ -21,15 +16,16 @@ def encode(encoding, pointer, codepoint):
             'windows-1257', 'windows-1258', 'x-mac-cyrillic',):
         # single-byte encoding
         return '{:02X}'.format(pointer + 0x80)
-    elif encoding == 'big5':
-        lead = pointer / 157 + 0x81
-        if lead < 0xA1:
-            return False
-        trail = pointer % 157
-        offset = 0x62
-        if trail < 0x3F:
-            offset = 0x40
-        return '{:02X}{:02X}'.format(lead, trail + offset)
+    # Big5 is already encoded as property kBigFive:
+    #elif encoding == 'big5':
+    #    lead = pointer / 157 + 0x81
+    #    if lead < 0xA1:
+    #        return False
+    #    trail = pointer % 157
+    #    offset = 0x62
+    #    if trail < 0x3F:
+    #        offset = 0x40
+    #    return '{:02X}{:02X}'.format(lead, trail + offset)
     elif encoding == 'jis0208': # alias euc-jp
         if codepoint == 0xA5:
             return '5C'
