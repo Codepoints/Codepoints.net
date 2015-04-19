@@ -257,6 +257,11 @@ include 'nav.php';
       '<a href="http://decodeunicode.org">Decode Unicode</a>',
       '<a href="http://graphemica.com">Graphemica</a>')?>
     </p>
+    <p><?php printf(__('The WHATWG publishes an %sencoding standard%s, that is used
+        here for additional encoding information for codepoints. Its main editor is %s.'),
+        '<a href="https://encoding.spec.whatwg.org/">',
+        '</a>',
+        '<a href="https://annevankesteren.nl/">Anne van Kesteren</a>')?></p>
     <figure class="other">
       <a href="https://uberspace.de" rel="external"><img src="/static/images/uberspace.png" alt="Hosted on Asteroids" /></a>
     </figure>
