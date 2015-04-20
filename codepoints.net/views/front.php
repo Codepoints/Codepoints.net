@@ -125,6 +125,18 @@ include "nav.php";
     </section>
   </article>
 </div>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "WebSite",
+  "url": "https://codepoints.net/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://codepoints.net/search?q={q}",
+    "query-input": "required name=q"
+  }
+}
+</script>
 <?php
 $footer_scripts = array("/static/js/dailycp.js");
 include "footer.php"?>
