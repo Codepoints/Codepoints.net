@@ -112,19 +112,19 @@ $hex = sprintf('U+%04X', $codepoint);
 <!DOCTYPE html>
 <html lang="<?php e($lang)?>">
   <head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <title><?php e($hex)?> PRIVATE USE CODEPOINT – Codepoints</title>
-    <meta name="author" content="Manuel Strehl"/>
+    <meta name="author" content="Manuel Strehl">
     <!--[if lt IE 9]>
       <script src="/static/js/html5shiv.js!<?php e(CACHE_BUST)?>"></script>
     <![endif]-->
-    <link rel="stylesheet" href="/static/css/embedded.css!<?php e(CACHE_BUST)?>"/>
-    <link rel="author" href="/humans.txt" />
-    <link rel="author" href="https://plus.google.com/107008580830183396063?rel=author" />
-    <link rel="publisher" href="https://plus.google.com/115373008615574082246" />
-    <link rel="canonical" href="https://codepoints.net<?php e($router->getUrl($hex))?>" />
+    <link rel="stylesheet" href="/static/css/embedded.css!<?php e(CACHE_BUST)?>">
+    <link rel="author" href="/humans.txt">
+    <link rel="author" href="https://plus.google.com/107008580830183396063?rel=author">
+    <link rel="publisher" href="https://plus.google.com/115373008615574082246">
+    <link rel="canonical" href="https://codepoints.net<?php e($router->getUrl($hex))?>">
   </head>
   <body class="embedded codepoint">
     <a target="_blank" href="https://codepoints.net<?php e($router->getUrl($hex))?>"

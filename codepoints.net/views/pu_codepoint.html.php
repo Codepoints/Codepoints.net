@@ -11,20 +11,20 @@ if ($codepoint <= 0xF8FF) {
 } else {
     $block = new UnicodeBlock('Supplementary Private Use Area-B', $db);
 }
-$headdata = sprintf('<link rel="up" href="%s"/>', q($router->getUrl($block)));
+$headdata = sprintf('<link rel="up" href="%s">', q($router->getUrl($block)));
 if ($prev):
-    $headdata .= '<link rel="prev" href="' . q($router->getUrl($prev)) . '" />';
+    $headdata .= '<link rel="prev" href="' . q($router->getUrl($prev)) . '">';
 endif;
 if ($next):
-    $headdata .= '<link rel="next" href="' . q($router->getUrl($next)) . '" />';
+    $headdata .= '<link rel="next" href="' . q($router->getUrl($next)) . '">';
 endif;
 $hDescription = sprintf(__('U+%04X is a Unicode codepoint in the block “%s”. It is a so-called “private use” codepoint, deliberately not assigned to any character.'),
     $codepoint, $block->getName());
 $canonical = $router->getUrl(sprintf('U+%04X', $codepoint));
-$headdata .= sprintf('<meta name="twitter:site" content="@codepointsnet"/>
-<meta name="twitter:url" content="https://codepoints.net%s"/>
-<meta name="twitter:title" content="%s"/>
-<meta name="twitter:description" content="%s"/>',
+$headdata .= sprintf('<meta name="twitter:site" content="@codepointsnet">
+<meta name="twitter:url" content="https://codepoints.net%s">
+<meta name="twitter:title" content="%s">
+<meta name="twitter:description" content="%s">',
 q($canonical), q($title), q($hDescription));
 include "header.php";
 $nav = array();

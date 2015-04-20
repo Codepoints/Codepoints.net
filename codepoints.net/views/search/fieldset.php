@@ -25,8 +25,7 @@ if ($cat === 'blk') {
       <input type="checkbox" name="<?php e($cat2)?>[]" value="<?php e($k)?>"
              id="s_<?php e($cat2)?>_<?php e($k)?>"
              <?php if ((is_array($tmp_v) && in_array($k, $tmp_v)) ||
-                       (is_string($tmp_v) && $k === $tmp_v)):?>checked="checked"<?php endif?>
-             />
+                       (is_string($tmp_v) && $k === $tmp_v)):?>checked="checked"<?php endif?>>
       <label for="s_<?php e($cat2)?>_<?php e($k)?>"><?php if (is_array($v)) {
             e(end($v));
         } else {

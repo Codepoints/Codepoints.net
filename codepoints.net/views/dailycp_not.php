@@ -2,7 +2,7 @@
 $title = __('Codepoint of the Day: No Codepoint Found');
 $hDescription = __('Every day a new codepoint. Unfortunately not specifically this day.');
 $canonical = '/codepoint_of_the_day?date='.$date;
-$headdata = '<link rel="alternate" type="application/atom+xml" href="' . q($router->getUrl('codepoint_of_the_day.xml')). '"/>';
+$headdata = '<link rel="alternate" type="application/atom+xml" href="' . q($router->getUrl('codepoint_of_the_day.xml')). '">';
 include "header.php";
 include "nav.php";
 ?>

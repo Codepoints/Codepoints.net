@@ -2,17 +2,17 @@
       class="extended searchform">
   <p class="stringsearch">
   <label for="s_q"><?php _e('Free search:')?></label>
-    <input type="text" name="q" id="s_q" value="<?php echo _get('q')?>" />
+    <input type="text" name="q" id="s_q" value="<?php echo _get('q')?>">
     <small class="nt"><?php _e('Any information about the character, that doesn’t fit the categories below')?></small>
   </p>
   <p class="stringsearch">
   <label for="s_na"><?php _e('Name:')?></label>
-    <input type="text" name="na" id="s_na" value="<?php echo _get('na')?>" />
+    <input type="text" name="na" id="s_na" value="<?php echo _get('na')?>">
     <small class="nt"><?php _e('The Unicode name (or parts) of the character')?></small>
   </p>
   <p class="stringsearch">
     <label for="s_int"><?php _e('Decimal:')?></label>
-    <input type="number" name="int" id="s_int" value="<?php echo _get('int')?>" />
+    <input type="number" name="int" id="s_int" value="<?php echo _get('int')?>">
     <small class="nt"><?php _e('The decimal position of the codepoint')?></small>
   </p>
   <?php

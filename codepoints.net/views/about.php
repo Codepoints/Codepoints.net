@@ -137,27 +137,27 @@ include 'nav.php';
     </p>
     <address>
       <p>
-        <strong>Manuel Strehl</strong><br/>
+        <strong>Manuel Strehl</strong><br>
         <img class="protocol_s" alt="Adresse identisch mit dem Eintrag für den Admin-C, den man bei der DENiC herausfinden kann"
-            src="/static/images/address.png" width="220" height="40" />
+            src="/static/images/address.png" width="220" height="40">
       </p>
       <p>
         <?php _e('E-Mail:')?> <img class="protocol_s" alt="website (Klammeraffe) diese Domain ohne www"
-            src="/static/images/email.png" width="220" height="20" /><br />
-        <?php _e('WWW:')?> www.manuel-strehl.de/about/contact<br/>
+            src="/static/images/email.png" width="220" height="20"><br>
+        <?php _e('WWW:')?> www.manuel-strehl.de/about/contact<br>
         <?php _e('Tel.:')?> <img class="protocol_s" alt="Siehe Adresse"
-            src="/static/images/phone.png" width="220" height="20" />
+            src="/static/images/phone.png" width="220" height="20">
       </p>
     </address>
     <figure class="other">
-      <img src="/static/images/were_open.jpg" alt="" />
+      <img src="/static/images/were_open.jpg" alt="">
     </figure>
     <h2><?php _e('The Content on this Site')?></h2>
     <p>
-      <?php printf(__('The content on this website reflects the information found in<br/>
+      <?php printf(__('The content on this website reflects the information found in<br>
       <em>The Unicode Consortium.</em> The Unicode Standard, Version %s,
-      (Mountain View, CA: The Unicode Consortium, 2012. ISBN 978-1-936213-02-3)<br/>
-      %s,<br/>
+      (Mountain View, CA: The Unicode Consortium, 2012. ISBN 978-1-936213-02-3)<br>
+      %s,<br>
       which happens to be the most relevant version of the Unicode Standard
       as of August, 2012.'),
       q(UNICODE_VERSION),
@@ -263,7 +263,7 @@ include 'nav.php';
         '</a>',
         '<a href="https://annevankesteren.nl/">Anne van Kesteren</a>')?></p>
     <figure class="other">
-      <a href="https://uberspace.de" rel="external"><img src="/static/images/uberspace.png" alt="Hosted on Asteroids" /></a>
+      <a href="https://uberspace.de" rel="external"><img src="/static/images/uberspace.png" alt="Hosted on Asteroids"></a>
     </figure>
     <p><?php _e('The hosting is done on Uberspace, a phantastic provider with extremely
     helpful and flexible support.')?></p>
@@ -306,7 +306,7 @@ include 'nav.php';
     </p>
     <p><?php printf(__('The icons are part of the %sFont Awesome%s icon set.'),
         '<a href="http://fortawesome.github.com/Font-Awesome">', '</a>')?></p>
-    <hr/>
+    <hr>
     <p><?php printf(__('Finally I’d like to thank %sMathias Bynens%s
     for pushing me to publish this site at last.'),
     '<a href="http://mathiasbynens.be">', '</a>')?></p>

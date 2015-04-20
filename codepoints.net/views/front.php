@@ -8,7 +8,7 @@ include "nav.php";
   <h1><?php e('Codepoints')?></h1>
   <form method="get" action="<?php e($router->getUrl('SearchResult'))?>" class="searchform">
     <p><input type="text" name="q" placeholder="<?php _e('Search a Character')?>"
-       title="<?php _e('Enter a single character, like “丙” or “A”, or a term that describes the character, like “cyrillic” or “grass”')?>" />
+       title="<?php _e('Enter a single character, like “丙” or “A”, or a term that describes the character, like “cyrillic” or “grass”')?>">
        <button type="submit"><span><?php _e('search')?></span></button></p>
   </form>
   <article>

@@ -6,25 +6,25 @@ $props = $codepoint->getProperties();
 $block = $codepoint->getBlock();
 $relatives = $codepoint->related();
 $confusables = $codepoint->getConfusables();
-$headdata = sprintf('<link rel="up" href="%s"/>', q($router->getUrl($block)));
+$headdata = sprintf('<link rel="up" href="%s">', q($router->getUrl($block)));
 if ($prev):
-    $headdata .= '<link rel="prev" href="' . q($router->getUrl($prev)) . '" />';
+    $headdata .= '<link rel="prev" href="' . q($router->getUrl($prev)) . '">';
 endif;
 if ($next):
-    $headdata .= '<link rel="next" href="' . q($router->getUrl($next)) . '" />';
+    $headdata .= '<link rel="next" href="' . q($router->getUrl($next)) . '">';
 endif;
 $hDescription = sprintf(__('%s, codepoint U+%04X %s in Unicode, is located in the block “%s”. It belongs to the %s script and is a %s.'),
     $codepoint->getSafeChar(),
     $codepoint->getId(), $codepoint->getName(), $block->getName(), $info->getLabel('sc', $props['sc']), $info->getLabel('gc', $props['gc']));
 $canonical = $router->getUrl($codepoint);
-$headdata .= sprintf('<meta name="twitter:site" content="@codepointsnet"/>
-<meta name="twitter:url" content="https://codepoints.net%s"/>
-<meta name="twitter:title" content="%s"/>
-<meta name="twitter:description" content="%s"/>',
+$headdata .= sprintf('<meta name="twitter:site" content="@codepointsnet">
+<meta name="twitter:url" content="https://codepoints.net%s">
+<meta name="twitter:title" content="%s">
+<meta name="twitter:description" content="%s">',
 q($router->getUrl($codepoint)), q($title), q($hDescription));
 if (substr($codepoint->getImage(), -strlen(Codepoint::$defaultImage)) !==
     Codepoint::$defaultImage) {
-        $headdata .= '<meta name="twitter:image" content="https://codepoints.net/api/v1/glyph/'.$codepoint->getId('hex').'"/>';
+        $headdata .= '<meta name="twitter:image" content="https://codepoints.net/api/v1/glyph/'.$codepoint->getId('hex').'">';
 }
 include "header.php";
 $nav = array();

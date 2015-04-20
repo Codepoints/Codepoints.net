@@ -27,7 +27,7 @@ include "nav.php";
 ?>
 <div class="payload block" itemscope="itemscope" itemtype="http://schema.org/Enumeration/Unicode/Block">
   <figure>
-    <img src="/static/images/blocks/<?php e(str_replace(' ', '_', $block->getName()))?>.svgz" alt="<?php _e('Symbol representing this block in the Unidings font')?>" width="128" height="128" itemprop="image" />
+    <img src="/static/images/blocks/<?php e(str_replace(' ', '_', $block->getName()))?>.svgz" alt="<?php _e('Symbol representing this block in the Unidings font')?>" width="128" height="128" itemprop="image">
   </figure>
   <h1 itemprop="name"><?php e($block->getName());?></h1>
   <p itemprop="description">
@@ -42,7 +42,7 @@ include "nav.php";
   <?php if (count($cps) === 0):?>
     <p itemprop="description"><?php printf(__('This block has not defined any codepoints between U+%04X and U+%04X.'), $block_limits[0], $block_limits[1])?></p>
   <?php else:?>
-    <p><a href="http://www.unicode.org/charts/PDF/U<?php f('%04X', $block_limits[0])?>.pdf"><?php _e('Chart at Unicode.org')?></a> <?php _e('(PDF)')?><br/>
+    <p><a href="http://www.unicode.org/charts/PDF/U<?php f('%04X', $block_limits[0])?>.pdf"><?php _e('Chart at Unicode.org')?></a> <?php _e('(PDF)')?><br>
     <a href="http://decodeunicode.org/<?php e(str_replace(' ', '_', strtolower($block->getName())))?>"><?php _e('Block at Decode Unicode')?></a></p>
     <div class="cp-list" data-page="<?php echo $page?>">
       <?php echo $pagination?>

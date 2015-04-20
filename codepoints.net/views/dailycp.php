@@ -13,14 +13,14 @@ $props = $codepoint->getProperties();
 $block = $codepoint->getBlock();
 $relatives = $codepoint->related();
 $confusables = $codepoint->getConfusables();
-$headdata = sprintf('<link rel="up" href="%s"/>', q($router->getUrl($block)));
+$headdata = sprintf('<link rel="up" href="%s">', q($router->getUrl($block)));
 if ($prev):
-    $headdata .= '<link rel="prev" href="' . q($router->getUrl($prev)) . '" />';
+    $headdata .= '<link rel="prev" href="' . q($router->getUrl($prev)) . '">';
 endif;
 if ($next):
-    $headdata .= '<link rel="next" href="' . q($router->getUrl($next)) . '" />';
+    $headdata .= '<link rel="next" href="' . q($router->getUrl($next)) . '">';
 endif;
-$headdata .= '<link rel="alternate" type="application/atom+xml" href="' . q($router->getUrl('codepoint_of_the_day.xml')). '"/>';
+$headdata .= '<link rel="alternate" type="application/atom+xml" href="' . q($router->getUrl('codepoint_of_the_day.xml')). '">';
 $nav = array();
 if ($prev) {
     $nav['prev'] = _cp($prev, 'prev', 'min', 'span');
