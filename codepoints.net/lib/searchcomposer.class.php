@@ -70,7 +70,7 @@ class SearchComposer {
             $low_v = strtolower($v);
             $next_term = null;
             if (count($terms) > $i) {
-                $next_term = $terms[$i+1];
+                $next_term = $terms[$i];
             }
 
             if (mb_strlen($v, 'UTF-8') === 1) {
