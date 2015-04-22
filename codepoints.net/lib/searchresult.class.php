@@ -115,8 +115,7 @@ class SearchResult extends UnicodeRange {
                 $stm = $this->db->prepare(sprintf('
                     SELECT COUNT(DISTINCT cp) AS c
                         FROM search_index
-                        WHERE %s
-                        GROUP BY cp', $search));
+                        WHERE %s', $search));
             }
             $stm->execute($params);
             $r = $stm->fetch(PDO::FETCH_ASSOC);
