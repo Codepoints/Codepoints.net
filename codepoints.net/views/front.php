@@ -127,13 +127,17 @@ include "nav.php";
 </div>
 <script type="application/ld+json">
 {
-  "@context": "http://schema.org",
-  "@type": "WebSite",
-  "url": "https://codepoints.net/",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://codepoints.net/search?q={q}",
-    "query-input": "required name=q"
+  "@context":"http://schema.org",
+  "@type":"WebSite",
+  "url":"https://codepoints.net/",
+  "name":"Codepoints",
+  "alternateName":"All Unicode characters from Hieroglyphs to Dingbats",
+  "image":"https://codepoints.net/static/images/icon.svg",
+  "isBasedOn":"http://unicode.org",
+  "potentialAction":{
+    "@type":"SearchAction",
+    "target":"https://codepoints.net/search?q={q}",
+    "query-input":"required name=q"
   }
 }
 </script>
