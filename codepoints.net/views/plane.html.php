@@ -6,6 +6,11 @@ $next = $plane->getNext();
 $hDescription = sprintf(__('The Unicode plane %s contains %s blocks and spans codepoints from U+%04X to U+%04X.'),
     $plane->getName(), count($blocks), $plane->first, $plane->last);
 $canonical = $router->getUrl($plane);
+/* add breadcrumbs as linked data: Unicode > Plane */
+$headdata = '<script type="application/ld+json">{"@context": "http://schema.org","@type": "BreadcrumbList","itemListElement":[
+{"@type":"ListItem","position":1,"item":{"@id":"https://codepoints.net/planes","name":"Unicode"}},
+{"@type":"ListItem","position":2,"item":{"@id":"'.q($router->getUrl($plane)).'","name":"'.q($plane->name).'"}}
+]}</script>';
 include "header.php";
 $nav = array();
 if ($prev) {

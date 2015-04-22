@@ -4,6 +4,7 @@ $prev = $codepoint->getPrev();
 $next = $codepoint->getNext();
 $props = $codepoint->getProperties();
 $block = $codepoint->getBlock();
+$plane = $codepoint->getPlane();
 $relatives = $codepoint->related();
 $confusables = $codepoint->getConfusables();
 $headdata = sprintf('<link rel="up" href="%s">', q($router->getUrl($block)));
@@ -26,6 +27,13 @@ if (substr($codepoint->getImage(), -strlen(Codepoint::$defaultImage)) !==
     Codepoint::$defaultImage) {
         $headdata .= '<meta name="twitter:image" content="https://codepoints.net/api/v1/glyph/'.$codepoint->getId('hex').'">';
 }
+/* add breadcrumbs as linked data: Unicode > Plane > Block > this CP */
+$headdata .= '<script type="application/ld+json">{"@context": "http://schema.org","@type": "BreadcrumbList","itemListElement":[
+{"@type":"ListItem","position":1,"item":{"@id":"https://codepoints.net/planes","name":"Unicode"}},
+{"@type":"ListItem","position":2,"item":{"@id":"'.q($router->getUrl($plane)).'","name":"'.q($plane->name).'"}},
+{"@type":"ListItem","position":3,"item":{"@id":"'.q($router->getUrl($block)).'","name":"'.q($block->getName()).'"}},
+{"@type":"ListItem","position":4,"item":{"@id":"'.q($canonical).'","name":"'.q($title).'"}}
+]}</script>';
 include "header.php";
 $nav = array();
 if ($prev) {

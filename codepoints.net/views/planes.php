@@ -1,6 +1,10 @@
 <?php $title = __('Unicode Planes');
 $hDescription = __('Unicode defines 17 planes, in which all the codepoints are separated.');
 $canonical = '/planes';
+/* add breadcrumbs as linked data: Unicode (> ...) */
+$headdata = '<script type="application/ld+json">{"@context": "http://schema.org","@type": "BreadcrumbList","itemListElement":[
+{"@type":"ListItem","position":1,"item":{"@id":"https://codepoints.net/planes","name":"Unicode"}}
+]}</script>';
 include "header.php";
 include "nav.php";
 ?>
