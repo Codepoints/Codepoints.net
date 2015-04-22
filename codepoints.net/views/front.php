@@ -133,7 +133,7 @@ include "nav.php";
   "name":"Codepoints",
   "alternateName":"All Unicode characters from Hieroglyphs to Dingbats",
   "image":"https://codepoints.net/static/images/icon.svg",
-  "isBasedOn":"http://unicode.org",
+  "sameAs":["https://twitter.com/CodepointsNet"],
   "potentialAction":{
     "@type":"SearchAction",
     "target":"https://codepoints.net/search?q={q}",
