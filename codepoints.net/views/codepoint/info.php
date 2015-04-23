@@ -184,7 +184,15 @@
 <?php
     /* show additional information, if any is present: */
     if (is_file(__DIR__.'/../../data/U+'.$codepoint->getId('hex').'.md')) {
-        echo \Michelf\Markdown::defaultTransform(file_get_contents(__DIR__.'/../../data/U+'.$codepoint->getId('hex').'.md'));
+        $parser = new \Michelf\Markdown;
+        $parser->empty_element_suffix = ">";
+        $parser->url_filter_func = function($url) {
+            if (substr($url, 0, 3) === 'cp:') {
+                $url = '/'.substr($url, 3);
+            }
+            return $url;
+        };
+        echo $parser->transform(file_get_contents(__DIR__.'/../../data/U+'.$codepoint->getId('hex').'.md'));
     }
 ?>
 
