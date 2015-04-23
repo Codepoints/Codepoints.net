@@ -181,6 +181,13 @@
         q($info->getLabel('GCB', $props['GCB'])).'</a>');
 ?></p>
 
+<?php
+    /* show additional information, if any is present: */
+    if (is_file(__DIR__.'/../../data/U+'.$codepoint->getId('hex').'.md')) {
+        echo \Michelf\Markdown::defaultTransform(file_get_contents(__DIR__.'/../../data/U+'.$codepoint->getId('hex').'.md'));
+    }
+?>
+
 <!-- Wikipedia -->
 <?php if (array_key_exists('abstract', $props) && $props['abstract']):?>
   <p><?php printf(__('The %sWikipedia%s has the following information about this codepoint:'), '<a href="http://en.wikipedia.org/wiki/%'.q($codepoint->getRepr('UTF-8', '%')).'">', '</a>')?></p>

@@ -20,7 +20,8 @@
     ],
     "require": {
         "php-gettext/php-gettext" : "1.0.*",
-        "mustache/mustache": "2.3.*"
+        "mustache/mustache": "2.3.*",
+        "michelf/php-markdown": "~1.5"
     },
     "autoload": {
         "classmap": ["."]
