@@ -216,6 +216,23 @@ $s = function($cat) use ($router, $info, $props) {
         q($info->getLabel('GCB', $props['GCB'])).'</a>');
 ?>
     </p>
+
+<?php
+    /* show additional information, if any is present: */
+    $ext_file = sprintf('%s/../data/U+%04X.%s.md', __DIR__, $codepoint, $lang);
+    if (is_file($ext_file)) {
+        $parser = new \Michelf\Markdown;
+        $parser->empty_element_suffix = ">";
+        $parser->url_filter_func = function($url) {
+            if (substr($url, 0, 3) === 'cp:') {
+                $url = '/'.substr($url, 3);
+            }
+            return $url;
+        };
+        echo $parser->transform(file_get_contents($ext_file));
+    }
+?>
+
     <p><?php printf(__('The %sWikipedia%s has the following information about Private Use codepoints:'), '<a href="http://en.wikipedia.org/wiki/Private_Use_Areas">', '</a>')?></p>
     <blockquote cite="http://en.wikipedia.org/wiki/Private_Use_Areas">
       <p>In Unicode, the <b>Private Use Areas (PUA)</b> are three ranges of code points (<code>U+E000</code>–<code>U+F8FF</code> in the BMP, and in planes 15 and 16) that, by definition, will not be assigned characters by the Unicode Consortium. The code points in these areas can not be considered as standardized characters in Unicode itself. They are intentionally left undefined so that third parties may define their own characters without conflicting with Unicode Consortium assignments. Under the Unicode Stability Policy, the Private Use Areas will remain allocated for that purpose in all future Unicode versions.</p>

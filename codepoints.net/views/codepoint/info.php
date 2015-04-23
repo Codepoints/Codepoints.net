@@ -183,7 +183,8 @@
 
 <?php
     /* show additional information, if any is present: */
-    if (is_file(__DIR__.'/../../data/U+'.$codepoint->getId('hex').'.md')) {
+    $ext_file = sprintf('%s/../../data/U+%04X.%s.md', __DIR__, $codepoint->getId(), $lang);
+    if (is_file($ext_file)) {
         $parser = new \Michelf\Markdown;
         $parser->empty_element_suffix = ">";
         $parser->url_filter_func = function($url) {
@@ -192,7 +193,7 @@
             }
             return $url;
         };
-        echo $parser->transform(file_get_contents(__DIR__.'/../../data/U+'.$codepoint->getId('hex').'.md'));
+        echo $parser->transform(file_get_contents($ext_file));
     }
 ?>
 
