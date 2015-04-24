@@ -2,13 +2,13 @@
 $title = __('Page not Found');
 $hDescription = __('HTTP error 404: This page doesn’t exist.');
 if (! is_null($int)) {
-    $title = __('Codepoint not Found');
+    $title = sprintf(__('Codepoint U+%04X not Found'), $int);
     $hDescription = sprintf(__('The point U+%04X is no valid Unicode codepoint.'), $int);
 }
 $nav = array();
 if ($prev) {
     $nav['prev'] = _cp($prev, 'prev', 'min', 'span');
-    $hDescription .= ' '.sprintf(_('The closest previous codepoint is U+%04X.'), $prev->getId());
+    $hDescription .= ' '.sprintf(__('The closest previous codepoint is U+%04X.'), $prev->getId());
 } elseif ($plane && $plane->getPrev()) {
     $nav["prev"] = '<a rel="prev" href="'.q($router->getUrl($plane->getPrev())).'">'.q($plane->getPrev()->name).'</a>';
 }
@@ -21,7 +21,7 @@ if ($block) {
 }
 if ($next) {
     $nav['next'] = _cp($next, 'next', 'min', 'span');
-    $hDescription .= ' '.sprintf(_('The closest next codepoint is U+%04X.'), $next->getId());
+    $hDescription .= ' '.sprintf(__('The closest next codepoint is U+%04X.'), $next->getId());
 } elseif ($plane && $plane->getNext()) {
     $nav["next"] = '<a rel="next" href="'.q($router->getUrl($plane->getNext())).'">'.q($plane->getNext()->name).'</a>';
 }
@@ -47,11 +47,11 @@ include "nav.php";
         <?php e(ceil(round($int / 0xFFFF, 2)))?><sup>th</sup> plane.
       <?php endif;
       if ($block):
-          printf(q(_('You can find surrounding codepoints in the block %s.')), _bl($block, '', 'min'));
+          printf(q(__('You can find surrounding codepoints in the block %s.')), _bl($block, '', 'min'));
       endif?>
       </p>
       <p>
-        <?php printf(q(_('The Unicode Consortium adds new codepoints to the standard all the time. Visit %stheir website%s to find out about pending codepoints and whether this one is in the pipe.')), '<a href="http://www.unicode.org/alloc/Pipeline.html">', '</a>')?>
+        <?php printf(q(__('The Unicode Consortium adds new codepoints to the standard all the time. Visit %stheir website%s to find out about pending codepoints and whether this one is in the pipe.')), '<a href="http://www.unicode.org/alloc/Pipeline.html">', '</a>')?>
         <?php _e('The following table shows typical representations of how the codepoint would look, if it existed. This may help you when debugging, but is not of real use otherwise.')?>
       </p>
     </section>

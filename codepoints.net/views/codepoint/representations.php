@@ -42,14 +42,14 @@
     <?php endif ?>
 <?php $alias = $codepoint->getALias();
 $typeMap = array(
-    'abbreviation' => _('abbreviation'),
-    'alias' => _('alias'),
-    'alternate' => _('alternate'),
-    'control' => _('control'),
-    'correction' => _('correction'),
-    'digraph' => _('digraph'),
-    'figment' => _('figment'),
-    'html' => _('HTML-Escape'),
+    'abbreviation' => __('abbreviation'),
+    'alias' => __('alias'),
+    'alternate' => __('alternate'),
+    'control' => __('control'),
+    'correction' => __('correction'),
+    'digraph' => __('digraph'),
+    'figment' => __('figment'),
+    'html' => __('HTML-Escape'),
     'latex' => '<span class="latex">L<sup>a</sup>T<sub>e</sub>X</span>',
 );
     foreach ($alias as $a):?>
@@ -59,7 +59,7 @@ $typeMap = array(
         <th><?php if (array_key_exists($a['type'], $typeMap)) {
             echo $typeMap[$a['type']];
         } elseif (substr($a['type'], 0, 4) === 'enc:') {
-            e(sprintf(_('Encoding: %s (hex bytes)'),
+            e(sprintf(__('Encoding: %s (hex bytes)'),
                 strtoupper(substr($a['type'], 4))));
         } else {
             e($a['type']);
