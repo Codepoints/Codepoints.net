@@ -5,10 +5,10 @@ if (! is_null($int)) {
     $title = __('Codepoint not Found');
     $hDescription = sprintf(__('The point U+%04X is no valid Unicode codepoint.'), $int);
 }
-include "header.php";
 $nav = array();
 if ($prev) {
     $nav['prev'] = _cp($prev, 'prev', 'min', 'span');
+    $hDescription .= ' '.sprintf(_('The closest previous codepoint is U+%04Xs.', $prev->getId()));
 } elseif ($plane && $plane->getPrev()) {
     $nav["prev"] = '<a rel="prev" href="'.q($router->getUrl($plane->getPrev())).'">'.q($plane->getPrev()->name).'</a>';
 }
@@ -21,9 +21,11 @@ if ($block) {
 }
 if ($next) {
     $nav['next'] = _cp($next, 'next', 'min', 'span');
+    $hDescription .= ' '.sprintf(_('The closest next codepoint is U+%04Xs.', $next->getId()));
 } elseif ($plane && $plane->getNext()) {
     $nav["next"] = '<a rel="next" href="'.q($router->getUrl($plane->getNext())).'">'.q($plane->getNext()->name).'</a>';
 }
+include "header.php";
 include "nav.php";
 ?>
 <div class="payload codepoint error">
