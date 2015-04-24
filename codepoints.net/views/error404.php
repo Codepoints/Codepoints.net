@@ -8,7 +8,7 @@ if (! is_null($int)) {
 $nav = array();
 if ($prev) {
     $nav['prev'] = _cp($prev, 'prev', 'min', 'span');
-    $hDescription .= ' '.sprintf(_('The closest previous codepoint is U+%04Xs.', $prev->getId()));
+    $hDescription .= ' '.sprintf(_('The closest previous codepoint is U+%04X.'), $prev->getId());
 } elseif ($plane && $plane->getPrev()) {
     $nav["prev"] = '<a rel="prev" href="'.q($router->getUrl($plane->getPrev())).'">'.q($plane->getPrev()->name).'</a>';
 }
@@ -21,7 +21,7 @@ if ($block) {
 }
 if ($next) {
     $nav['next'] = _cp($next, 'next', 'min', 'span');
-    $hDescription .= ' '.sprintf(_('The closest next codepoint is U+%04Xs.', $next->getId()));
+    $hDescription .= ' '.sprintf(_('The closest next codepoint is U+%04X.'), $next->getId());
 } elseif ($plane && $plane->getNext()) {
     $nav["next"] = '<a rel="next" href="'.q($router->getUrl($plane->getNext())).'">'.q($plane->getNext()->name).'</a>';
 }
