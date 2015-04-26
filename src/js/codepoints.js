@@ -268,6 +268,9 @@ $(function() {
     }).then(function(data) {
       favorites.find('.wait').remove();
       $.each(data, function() {
+        if (this.label.substr(0, 2) !== "U ") {
+          return; // a.k.a. continue
+        }
         var label = this.label.replace(/U /, ""),
             cp = $('<li><a class="cp" href="'+this.url+'">'+
                   label+'<img alt="" src="/api/v1/glyph/'+label+'">'+
