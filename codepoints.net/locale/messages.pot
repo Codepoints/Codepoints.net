@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-19 21:18+0200\n"
+"POT-Creation-Date: 2015-05-02 22:59+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,66 +18,66 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: codepoints.net/views/codepoint/representations.php:1
-#: codepoints.net/views/pu_codepoint.html.php:226
+#: codepoints.net/views/pu_codepoint.html.php:243
 msgid "Representations"
 msgstr ""
 
 #: codepoints.net/views/codepoint/representations.php:5
-#: codepoints.net/views/error404.php:60
-#: codepoints.net/views/pu_codepoint.html.php:230
+#: codepoints.net/views/error404.php:62
+#: codepoints.net/views/pu_codepoint.html.php:247
 #: codepoints.net/views/codepoint.embedded.php:57
 msgid "System"
 msgstr ""
 
 #: codepoints.net/views/codepoint/representations.php:6
-#: codepoints.net/views/error404.php:61
-#: codepoints.net/views/pu_codepoint.html.php:231
+#: codepoints.net/views/error404.php:63
+#: codepoints.net/views/pu_codepoint.html.php:248
 #: codepoints.net/views/codepoint.embedded.php:58
 msgid "Representation"
 msgstr ""
 
 #: codepoints.net/views/codepoint/representations.php:11
-#: codepoints.net/views/dailycp.php:54 codepoints.net/views/error404.php:66
-#: codepoints.net/views/codepoint.html.php:72
+#: codepoints.net/views/dailycp.php:54 codepoints.net/views/error404.php:68
+#: codepoints.net/views/codepoint.html.php:80
 #: codepoints.net/views/pu_codepoint.html.php:165
-#: codepoints.net/views/pu_codepoint.html.php:236
+#: codepoints.net/views/pu_codepoint.html.php:253
 #: codepoints.net/views/codepoint.embedded.php:63
 msgid "Nº"
 msgstr ""
 
 #: codepoints.net/views/codepoint/representations.php:15
-#: codepoints.net/views/dailycp.php:56 codepoints.net/views/error404.php:70
-#: codepoints.net/views/codepoint.html.php:74
+#: codepoints.net/views/dailycp.php:56 codepoints.net/views/error404.php:72
+#: codepoints.net/views/codepoint.html.php:82
 #: codepoints.net/views/pu_codepoint.html.php:167
-#: codepoints.net/views/pu_codepoint.html.php:240
+#: codepoints.net/views/pu_codepoint.html.php:257
 #: codepoints.net/views/codepoint.embedded.php:67
 msgid "UTF-8"
 msgstr ""
 
 #: codepoints.net/views/codepoint/representations.php:19
-#: codepoints.net/views/error404.php:84
-#: codepoints.net/views/pu_codepoint.html.php:244
+#: codepoints.net/views/error404.php:86
+#: codepoints.net/views/pu_codepoint.html.php:261
 #: codepoints.net/views/codepoint.embedded.php:71
 msgid "UTF-16"
 msgstr ""
 
 #: codepoints.net/views/codepoint/representations.php:23
-#: codepoints.net/views/error404.php:98
-#: codepoints.net/views/pu_codepoint.html.php:248
+#: codepoints.net/views/error404.php:100
+#: codepoints.net/views/pu_codepoint.html.php:265
 #: codepoints.net/views/codepoint.embedded.php:75
 msgid "UTF-32"
 msgstr ""
 
 #: codepoints.net/views/codepoint/representations.php:27
-#: codepoints.net/views/error404.php:112
-#: codepoints.net/views/pu_codepoint.html.php:252
+#: codepoints.net/views/error404.php:114
+#: codepoints.net/views/pu_codepoint.html.php:269
 #: codepoints.net/views/codepoint.embedded.php:79
 msgid "URL-Quoted"
 msgstr ""
 
 #: codepoints.net/views/codepoint/representations.php:31
 #: codepoints.net/views/codepoint/representations.php:52
-#: codepoints.net/views/pu_codepoint.html.php:256
+#: codepoints.net/views/pu_codepoint.html.php:273
 #: codepoints.net/views/codepoint.embedded.php:83
 #: codepoints.net/views/codepoint.embedded.php:90
 msgid "HTML-Escape"
@@ -258,7 +258,7 @@ msgid ""
 "        type %s for sentence and %s for word breaks. The %s is %s."
 msgstr ""
 
-#: codepoints.net/views/codepoint/info.php:186
+#: codepoints.net/views/codepoint/info.php:202
 #, php-format
 msgid "The %sWikipedia%s has the following information about this codepoint:"
 msgstr ""
@@ -330,7 +330,7 @@ msgstr ""
 
 #: codepoints.net/views/dailycp.php:63
 #: codepoints.net/views/pu_codepoint.embedded.php:147
-#: codepoints.net/views/codepoint.html.php:81
+#: codepoints.net/views/codepoint.html.php:89
 #: codepoints.net/views/codepoint.embedded.php:48
 msgid "Numeric Value"
 msgstr ""
@@ -349,40 +349,40 @@ msgstr ""
 msgid "The Unicode block %s contains the codepoints from U+%04X to U+%04X."
 msgstr ""
 
-#: codepoints.net/views/block.html.php:30
+#: codepoints.net/views/block.html.php:36
 msgid "Symbol representing this block in the Unidings font"
 msgstr ""
 
-#: codepoints.net/views/block.html.php:34
+#: codepoints.net/views/block.html.php:40
 #, php-format
 msgid "Block from U+%04X to U+%04X."
 msgstr ""
 
-#: codepoints.net/views/block.html.php:35
+#: codepoints.net/views/block.html.php:41
 #, php-format
 msgid ""
-"This block was introduced in Unicode version %s. It comprises %d codepoints."
-msgstr ""
-
-#: codepoints.net/views/block.html.php:37
-#, php-format
-msgid "The %sWikipedia%s provides the following information on block %s:"
+"This block was introduced in Unicode version %s. It contains %s codepoints."
 msgstr ""
 
 #: codepoints.net/views/block.html.php:43
 #, php-format
+msgid "The %sWikipedia%s provides the following information on block %s:"
+msgstr ""
+
+#: codepoints.net/views/block.html.php:49
+#, php-format
 msgid "This block has not defined any codepoints between U+%04X and U+%04X."
 msgstr ""
 
-#: codepoints.net/views/block.html.php:45
+#: codepoints.net/views/block.html.php:51
 msgid "Chart at Unicode.org"
 msgstr ""
 
-#: codepoints.net/views/block.html.php:45
+#: codepoints.net/views/block.html.php:51
 msgid "(PDF)"
 msgstr ""
 
-#: codepoints.net/views/block.html.php:46
+#: codepoints.net/views/block.html.php:52
 msgid "Block at Decode Unicode"
 msgstr ""
 
@@ -611,16 +611,16 @@ msgstr ""
 msgid "Unicode defines 17 planes, in which all the codepoints are separated."
 msgstr ""
 
-#: codepoints.net/views/planes.php:9
+#: codepoints.net/views/planes.php:13
 msgid "a representation of the Unicode logo"
 msgstr ""
 
-#: codepoints.net/views/planes.php:15 codepoints.net/views/plane.html.php:27
+#: codepoints.net/views/planes.php:19 codepoints.net/views/plane.html.php:32
 #, php-format
 msgid "(U+%04X to U+%04X)"
 msgstr ""
 
-#: codepoints.net/views/planes.php:18
+#: codepoints.net/views/planes.php:22
 #, php-format
 msgid ""
 "The Unicode standard arranges the characters in 17 so-called planes of\n"
@@ -632,11 +632,11 @@ msgid ""
 "     the almost full %s."
 msgstr ""
 
-#: codepoints.net/views/planes.php:24
+#: codepoints.net/views/planes.php:28
 msgid "Basic Multilingual Plane"
 msgstr ""
 
-#: codepoints.net/views/planes.php:27
+#: codepoints.net/views/planes.php:31
 #, php-format
 msgid ""
 "The %s contains mostly ancient characters, like Egyptian Hieroglyphs,\n"
@@ -655,15 +655,15 @@ msgid ""
 "     can be freely assigned by third-party programs to whatever seems useful."
 msgstr ""
 
-#: codepoints.net/views/planes.php:37
+#: codepoints.net/views/planes.php:41
 msgid "second plane"
 msgstr ""
 
-#: codepoints.net/views/planes.php:38
+#: codepoints.net/views/planes.php:42
 msgid "Supplementary Ideographic Plane"
 msgstr ""
 
-#: codepoints.net/views/planes.php:39
+#: codepoints.net/views/planes.php:43
 msgid "Supplementary Special Purpose Plane"
 msgstr ""
 
@@ -741,7 +741,8 @@ msgid "HTTP error 404: This page doesn’t exist."
 msgstr ""
 
 #: codepoints.net/views/error404.php:5
-msgid "Codepoint not Found"
+#, php-format
+msgid "Codepoint U+%04X not Found"
 msgstr ""
 
 #: codepoints.net/views/error404.php:6
@@ -749,16 +750,26 @@ msgstr ""
 msgid "The point U+%04X is no valid Unicode codepoint."
 msgstr ""
 
-#: codepoints.net/views/error404.php:38
+#: codepoints.net/views/error404.php:11
+#, php-format
+msgid "The closest previous codepoint is U+%04X."
+msgstr ""
+
+#: codepoints.net/views/error404.php:24
+#, php-format
+msgid "The closest next codepoint is U+%04X."
+msgstr ""
+
+#: codepoints.net/views/error404.php:40
 msgid "This codepoint doesn’t exist."
 msgstr ""
 
-#: codepoints.net/views/error404.php:48
+#: codepoints.net/views/error404.php:50
 #, php-format
 msgid "You can find surrounding codepoints in the block %s."
 msgstr ""
 
-#: codepoints.net/views/error404.php:52
+#: codepoints.net/views/error404.php:54
 #, php-format
 msgid ""
 "The Unicode Consortium adds new codepoints to the standard all the time. "
@@ -766,14 +777,14 @@ msgid ""
 "this one is in the pipe."
 msgstr ""
 
-#: codepoints.net/views/error404.php:53
+#: codepoints.net/views/error404.php:55
 msgid ""
 "The following table shows typical representations of how the codepoint would "
 "look, if it existed. This may help you when debugging, but is not of real "
 "use otherwise."
 msgstr ""
 
-#: codepoints.net/views/error404.php:136
+#: codepoints.net/views/error404.php:138
 msgid "Search other codepoints:"
 msgstr ""
 
@@ -858,72 +869,72 @@ msgid ""
 "+%04X."
 msgstr ""
 
-#: codepoints.net/views/plane.html.php:22
+#: codepoints.net/views/plane.html.php:27
 #, php-format
 msgid "Plane from U+%04X to U+%04X."
 msgstr ""
 
-#: codepoints.net/views/plane.html.php:24
+#: codepoints.net/views/plane.html.php:29
 msgid "Blocks in this plane"
 msgstr ""
 
-#: codepoints.net/views/plane.html.php:31
+#: codepoints.net/views/plane.html.php:36
 msgid "There are no blocks defined in this plane."
 msgstr ""
 
-#: codepoints.net/views/codepoint.html.php:16
+#: codepoints.net/views/codepoint.html.php:17
 #, php-format
 msgid ""
 "%s, codepoint U+%04X %s in Unicode, is located in the block “%s”. It belongs "
 "to the %s script and is a %s."
 msgstr ""
 
-#: codepoints.net/views/codepoint.html.php:94
+#: codepoints.net/views/codepoint.html.php:102
 msgid ""
 "Embed this codepoint in your own website by simply\n"
 "      copy-and-pasting the following HTML snippet:"
 msgstr ""
 
-#: codepoints.net/views/codepoint.html.php:100
+#: codepoints.net/views/codepoint.html.php:108
 msgid ""
 "If you want, you can freely change width and height to meet\n"
 "        your needs. The layout will adapt accordingly."
 msgstr ""
 
-#: codepoints.net/views/codepoint.html.php:113
+#: codepoints.net/views/codepoint.html.php:121
 msgid "Related Characters"
 msgstr ""
 
-#: codepoints.net/views/codepoint.html.php:122
+#: codepoints.net/views/codepoint.html.php:130
 msgid "Confusables"
 msgstr ""
 
-#: codepoints.net/views/codepoint.html.php:132
+#: codepoints.net/views/codepoint.html.php:140
 msgid "Elsewhere"
 msgstr ""
 
-#: codepoints.net/views/codepoint.html.php:136
+#: codepoints.net/views/codepoint.html.php:144
 msgid "Unicode website"
 msgstr ""
 
-#: codepoints.net/views/codepoint.html.php:137
+#: codepoints.net/views/codepoint.html.php:145
 msgid "Reference rendering on Unicode.org"
 msgstr ""
 
-#: codepoints.net/views/codepoint.html.php:139
+#: codepoints.net/views/codepoint.html.php:147
 msgid "Wikipedia"
 msgstr ""
 
-#: codepoints.net/views/codepoint.html.php:142
+#: codepoints.net/views/codepoint.html.php:150
 msgid "Unihan Database"
 msgstr ""
 
-#: codepoints.net/views/codepoint.html.php:143
+#: codepoints.net/views/codepoint.html.php:151
 msgid "Chinese Text Project"
 msgstr ""
 
-#: codepoints.net/views/codepoint.html.php:150
-#: codepoints.net/views/pu_codepoint.html.php:263
+#: codepoints.net/views/codepoint.html.php:158
+#: codepoints.net/views/pu_codepoint.html.php:280
 msgid "Complete Record"
 msgstr ""
 
@@ -1227,11 +1238,11 @@ msgstr ""
 #: codepoints.net/views/about.php:157
 #, php-format
 msgid ""
-"The content on this website reflects the information found in<br/>\n"
+"The content on this website reflects the information found in<br>\n"
 "      <em>The Unicode Consortium.</em> The Unicode Standard, Version %s,\n"
 "      (Mountain View, CA: The Unicode Consortium, 2012. ISBN "
-"978-1-936213-02-3)<br/>\n"
-"      %s,<br/>\n"
+"978-1-936213-02-3)<br>\n"
+"      %s,<br>\n"
 "      which happens to be the most relevant version of the Unicode Standard\n"
 "      as of August, 2012."
 msgstr ""
@@ -1563,7 +1574,7 @@ msgid ""
 "block %s."
 msgstr ""
 
-#: codepoints.net/views/pu_codepoint.html.php:219
+#: codepoints.net/views/pu_codepoint.html.php:236
 #, php-format
 msgid ""
 "The %sWikipedia%s has the following information about Private Use codepoints:"
