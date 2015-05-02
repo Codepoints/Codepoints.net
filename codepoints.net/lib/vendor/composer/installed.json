@@ -20,23 +20,27 @@
     },
     {
         "name": "mustache/mustache",
-        "version": "v2.3.1",
-        "version_normalized": "2.3.1.0",
+        "version": "v2.8.0",
+        "version_normalized": "2.8.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/bobthecow/mustache.php.git",
-            "reference": "v2.3.1"
+            "reference": "64c28cc73e01d5edcef7de8cb2b16782615f648a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/bobthecow/mustache.php/zipball/v2.3.1",
-            "reference": "v2.3.1",
+            "url": "https://api.github.com/repos/bobthecow/mustache.php/zipball/64c28cc73e01d5edcef7de8cb2b16782615f648a",
+            "reference": "64c28cc73e01d5edcef7de8cb2b16782615f648a",
             "shasum": ""
         },
         "require": {
             "php": ">=5.2.4"
         },
-        "time": "2013-04-25 15:23:30",
+        "require-dev": {
+            "fabpot/php-cs-fixer": "~1.6",
+            "phpunit/phpunit": "~3.7|~4.0"
+        },
+        "time": "2015-04-01 06:37:33",
         "type": "library",
         "installation-source": "dist",
         "autoload": {

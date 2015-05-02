@@ -4,7 +4,7 @@
 /*
  * This file is part of Mustache.php.
  *
- * (c) 2012 Justin Hileman
+ * (c) 2010-2014 Justin Hileman
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -12,7 +12,7 @@
 
 /**
  * A shell script to create a single-file class cache of the entire Mustache
- * library:
+ * library.
  *
  *     $ bin/build_bootstrap.php
  *
@@ -20,45 +20,49 @@
  * containing all Mustache library classes. This file can then be included in
  * your project, rather than requiring the Mustache Autoloader.
  */
-$baseDir = realpath(dirname(__FILE__).'/..');
+$baseDir = realpath(dirname(__FILE__) . '/..');
 
-require $baseDir.'/src/Mustache/Autoloader.php';
+require $baseDir . '/src/Mustache/Autoloader.php';
 Mustache_Autoloader::register();
 
 // delete the old file
-$file = $baseDir.'/mustache.php';
+$file = $baseDir . '/mustache.php';
 if (file_exists($file)) {
     unlink($file);
 }
 
 // and load the new one
 SymfonyClassCollectionLoader::load(array(
-    '\Mustache_Engine',
-    '\Mustache_Compiler',
-    '\Mustache_Context',
-    '\Mustache_Exception',
-    '\Mustache_Exception_InvalidArgumentException',
-    '\Mustache_Exception_LogicException',
-    '\Mustache_Exception_RuntimeException',
-    '\Mustache_Exception_SyntaxException',
-    '\Mustache_Exception_UnknownFilterException',
-    '\Mustache_Exception_UnknownHelperException',
-    '\Mustache_Exception_UnknownTemplateException',
-    '\Mustache_HelperCollection',
-    '\Mustache_LambdaHelper',
-    '\Mustache_Loader',
-    '\Mustache_Loader_ArrayLoader',
-    '\Mustache_Loader_CascadingLoader',
-    '\Mustache_Loader_FilesystemLoader',
-    '\Mustache_Loader_InlineLoader',
-    '\Mustache_Loader_MutableLoader',
-    '\Mustache_Loader_StringLoader',
-    '\Mustache_Logger',
-    '\Mustache_Logger_AbstractLogger',
-    '\Mustache_Logger_StreamLogger',
-    '\Mustache_Parser',
-    '\Mustache_Template',
-    '\Mustache_Tokenizer',
+    'Mustache_Engine',
+    'Mustache_Cache',
+    'Mustache_Cache_AbstractCache',
+    'Mustache_Cache_FilesystemCache',
+    'Mustache_Cache_NoopCache',
+    'Mustache_Compiler',
+    'Mustache_Context',
+    'Mustache_Exception',
+    'Mustache_Exception_InvalidArgumentException',
+    'Mustache_Exception_LogicException',
+    'Mustache_Exception_RuntimeException',
+    'Mustache_Exception_SyntaxException',
+    'Mustache_Exception_UnknownFilterException',
+    'Mustache_Exception_UnknownHelperException',
+    'Mustache_Exception_UnknownTemplateException',
+    'Mustache_HelperCollection',
+    'Mustache_LambdaHelper',
+    'Mustache_Loader',
+    'Mustache_Loader_ArrayLoader',
+    'Mustache_Loader_CascadingLoader',
+    'Mustache_Loader_FilesystemLoader',
+    'Mustache_Loader_InlineLoader',
+    'Mustache_Loader_MutableLoader',
+    'Mustache_Loader_StringLoader',
+    'Mustache_Logger',
+    'Mustache_Logger_AbstractLogger',
+    'Mustache_Logger_StreamLogger',
+    'Mustache_Parser',
+    'Mustache_Template',
+    'Mustache_Tokenizer',
 ), dirname($file), basename($file, '.php'));
 
 /**
@@ -68,12 +72,11 @@ SymfonyClassCollectionLoader::load(array(
  * the unnecessary bits removed.
  *
  * @license http://www.opensource.org/licenses/MIT
- *
  * @author Fabien Potencier <fabien@symfony.com>
  */
 class SymfonyClassCollectionLoader
 {
-    static private $loaded;
+    private static $loaded;
 
     const HEADER = <<<EOS
 <?php
@@ -81,7 +84,7 @@ class SymfonyClassCollectionLoader
 /*
  * This file is part of Mustache.php.
  *
- * (c) %d Justin Hileman
+ * (c) 2010-%d Justin Hileman
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -91,14 +94,14 @@ EOS;
     /**
      * Loads a list of classes and caches them in one big file.
      *
-     * @param array   $classes    An array of classes to load
-     * @param string  $cacheDir   A cache directory
-     * @param string  $name       The cache name prefix
-     * @param string  $extension  File extension of the resulting file
+     * @param array  $classes   An array of classes to load
+     * @param string $cacheDir  A cache directory
+     * @param string $name      The cache name prefix
+     * @param string $extension File extension of the resulting file
      *
      * @throws InvalidArgumentException When class can't be loaded
      */
-    static public function load(array $classes, $cacheDir, $name, $extension = '.php')
+    public static function load(array $classes, $cacheDir, $name, $extension = '.php')
     {
         // each $name can only be loaded once per PHP process
         if (isset(self::$loaded[$name])) {
@@ -117,9 +120,9 @@ EOS;
             $content .= preg_replace(array('/^\s*<\?php/', '/\?>\s*$/'), '', file_get_contents($r->getFileName()));
         }
 
-        $cache  = $cacheDir.'/'.$name.$extension;
+        $cache  = $cacheDir . '/' . $name . $extension;
         $header = sprintf(self::HEADER, strftime('%Y'));
-        self::writeCacheFile($cache, $header . substr(self::stripComments('<?php '.$content), 5));
+        self::writeCacheFile($cache, $header . substr(self::stripComments('<?php ' . $content), 5));
     }
 
     /**
@@ -130,7 +133,7 @@ EOS;
      *
      * @throws RuntimeException when a cache file cannot be written
      */
-    static private function writeCacheFile($file, $content)
+    private static function writeCacheFile($file, $content)
     {
         $tmpFile = tempnam(dirname($file), basename($file));
         if (false !== @file_put_contents($tmpFile, $content) && @rename($tmpFile, $file)) {
@@ -152,7 +155,7 @@ EOS;
      *
      * @return string The PHP string with the comments removed
      */
-    static private function stripComments($source)
+    private static function stripComments($source)
     {
         if (!function_exists('token_get_all')) {
             return $source;

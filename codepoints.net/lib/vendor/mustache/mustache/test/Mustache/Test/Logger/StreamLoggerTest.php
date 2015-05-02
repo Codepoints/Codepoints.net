@@ -3,7 +3,7 @@
 /*
  * This file is part of Mustache.php.
  *
- * (c) 2012 Justin Hileman
+ * (c) 2010-2014 Justin Hileman
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -14,23 +14,26 @@
  */
 class Mustache_Test_Logger_StreamLoggerTest extends PHPUnit_Framework_TestCase
 {
-    public function testAcceptsFilename()
+    /**
+     * @dataProvider acceptsStreamData
+     */
+    public function testAcceptsStream($name, $stream)
     {
-        $name   = tempnam(sys_get_temp_dir(), 'mustache-test');
-        $logger = new Mustache_Logger_StreamLogger($name);
+        $logger = new Mustache_Logger_StreamLogger($stream);
         $logger->log(Mustache_Logger::CRITICAL, 'message');
 
         $this->assertEquals("CRITICAL: message\n", file_get_contents($name));
     }
 
-    public function testAcceptsResource()
+    public function acceptsStreamData()
     {
-        $name   = tempnam(sys_get_temp_dir(), 'mustache-test');
-        $file   = fopen($name, 'a');
-        $logger = new Mustache_Logger_StreamLogger($file);
-        $logger->log(Mustache_Logger::CRITICAL, 'message');
+        $one = tempnam(sys_get_temp_dir(), 'mustache-test');
+        $two = tempnam(sys_get_temp_dir(), 'mustache-test');
 
-        $this->assertEquals("CRITICAL: message\n", file_get_contents($name));
+        return array(
+            array($one, $one),
+            array($two, fopen($two, 'a')),
+        );
     }
 
     /**
@@ -52,13 +55,13 @@ class Mustache_Test_Logger_StreamLoggerTest extends PHPUnit_Framework_TestCase
     {
         $stream = tmpfile();
         $logger = new Mustache_Logger_StreamLogger($stream, $logLevel);
-        $logger->log($level, "logged");
+        $logger->log($level, 'logged');
 
         rewind($stream);
         $result = fread($stream, 1024);
 
         if ($shouldLog) {
-            $this->assertContains("logged", $result);
+            $this->assertContains('logged', $result);
         } else {
             $this->assertEmpty($result);
         }
@@ -131,7 +134,7 @@ class Mustache_Test_Logger_StreamLoggerTest extends PHPUnit_Framework_TestCase
                 Mustache_Logger::ERROR,
                 'error message',
                 array('name' => 'foo', 'number' => 42),
-                "ERROR: error message\n"
+                "ERROR: error message\n",
             ),
 
             // with interpolation
@@ -139,7 +142,7 @@ class Mustache_Test_Logger_StreamLoggerTest extends PHPUnit_Framework_TestCase
                 Mustache_Logger::ERROR,
                 'error {name}-{number}',
                 array('name' => 'foo', 'number' => 42),
-                "ERROR: error foo-42\n"
+                "ERROR: error foo-42\n",
             ),
 
             // with iterpolation false positive
@@ -147,7 +150,7 @@ class Mustache_Test_Logger_StreamLoggerTest extends PHPUnit_Framework_TestCase
                 Mustache_Logger::ERROR,
                 'error {nothing}',
                 array('name' => 'foo', 'number' => 42),
-                "ERROR: error {nothing}\n"
+                "ERROR: error {nothing}\n",
             ),
 
             // with interpolation injection
@@ -155,7 +158,7 @@ class Mustache_Test_Logger_StreamLoggerTest extends PHPUnit_Framework_TestCase
                 Mustache_Logger::ERROR,
                 '{foo}',
                 array('foo' => '{bar}', 'bar' => 'FAIL'),
-                "ERROR: {bar}\n"
+                "ERROR: {bar}\n",
             ),
         );
     }

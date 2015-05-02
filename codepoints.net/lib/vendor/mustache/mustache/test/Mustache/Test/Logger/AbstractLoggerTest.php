@@ -3,7 +3,7 @@
 /*
  * This file is part of Mustache.php.
  *
- * (c) 2012 Justin Hileman
+ * (c) 2010-2014 Justin Hileman
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -16,7 +16,7 @@ class Mustache_Test_Logger_AbstractLoggerTest extends PHPUnit_Framework_TestCase
 {
     public function testEverything()
     {
-        $logger = new Mustache_Test_Logger_TestLogger;
+        $logger = new Mustache_Test_Logger_TestLogger();
 
         $logger->emergency('emergency message');
         $logger->alert('alert message');
@@ -49,9 +49,9 @@ class Mustache_Test_Logger_TestLogger extends Mustache_Logger_AbstractLogger
     /**
      * Logs with an arbitrary level.
      *
-     * @param mixed $level
+     * @param mixed  $level
      * @param string $message
-     * @param array $context
+     * @param array  $context
      */
     public function log($level, $message, array $context = array())
     {

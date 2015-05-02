@@ -3,7 +3,7 @@
 /*
  * This file is part of Mustache.php.
  *
- * (c) 2012 Justin Hileman
+ * (c) 2010-2014 Justin Hileman
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -47,7 +47,11 @@ class Mustache_Loader_FilesystemLoader implements Mustache_Loader
      */
     public function __construct($baseDir, array $options = array())
     {
-        $this->baseDir = rtrim(realpath($baseDir), '/');
+        $this->baseDir = $baseDir;
+
+        if (strpos($this->baseDir, '://') === false) {
+            $this->baseDir = realpath($this->baseDir);
+        }
 
         if (!is_dir($this->baseDir)) {
             throw new Mustache_Exception_RuntimeException(sprintf('FilesystemLoader baseDir must be a directory: %s', $baseDir));

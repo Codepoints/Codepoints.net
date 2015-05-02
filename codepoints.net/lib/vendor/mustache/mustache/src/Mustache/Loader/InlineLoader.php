@@ -3,7 +3,7 @@
 /*
  * This file is part of Mustache.php.
  *
- * (c) 2013 Justin Hileman
+ * (c) 2010-2014 Justin Hileman
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -35,16 +35,17 @@
  *         'mustache.loader' => new Mustache_Loader_InlineLoader(__FILE__, __COMPILER_HALT_OFFSET__)
  *     ));
  *
- *     $app->get('/{name}', function() use ($app) {
+ *     $app->get('/{name}', function ($name) use ($app) {
  *         return $app['mustache']->render('hello', compact('name'));
  *     })
  *     ->value('name', 'world');
+ *
+ *     // ...
  *
  *     __halt_compiler();
  *
  *     @@ hello
  *     Hello, {{ name }}!
- *
  */
 class Mustache_Loader_InlineLoader implements Mustache_Loader
 {
@@ -54,6 +55,7 @@ class Mustache_Loader_InlineLoader implements Mustache_Loader
 
     /**
      * The InlineLoader requires a filename and offset to process templates.
+     *
      * The magic constants `__FILE__` and `__COMPILER_HALT_OFFSET__` are usually
      * perfectly suited to the job:
      *

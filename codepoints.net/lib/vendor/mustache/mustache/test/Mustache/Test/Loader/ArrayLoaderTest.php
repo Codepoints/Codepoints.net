@@ -3,7 +3,7 @@
 /*
  * This file is part of Mustache.php.
  *
- * (c) 2012 Justin Hileman
+ * (c) 2010-2014 Justin Hileman
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -17,7 +17,7 @@ class Mustache_Test_Loader_ArrayLoaderTest extends PHPUnit_Framework_TestCase
     public function testConstructor()
     {
         $loader = new Mustache_Loader_ArrayLoader(array(
-            'foo' => 'bar'
+            'foo' => 'bar',
         ));
 
         $this->assertEquals('bar', $loader->load('foo'));
@@ -26,7 +26,7 @@ class Mustache_Test_Loader_ArrayLoaderTest extends PHPUnit_Framework_TestCase
     public function testSetAndLoadTemplates()
     {
         $loader = new Mustache_Loader_ArrayLoader(array(
-            'foo' => 'bar'
+            'foo' => 'bar',
         ));
         $this->assertEquals('bar', $loader->load('foo'));
 
@@ -46,7 +46,7 @@ class Mustache_Test_Loader_ArrayLoaderTest extends PHPUnit_Framework_TestCase
      */
     public function testMissingTemplatesThrowExceptions()
     {
-        $loader = new Mustache_Loader_ArrayLoader;
+        $loader = new Mustache_Loader_ArrayLoader();
         $loader->load('not_a_real_template');
     }
 }

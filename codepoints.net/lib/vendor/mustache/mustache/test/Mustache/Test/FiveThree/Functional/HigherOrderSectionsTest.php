@@ -3,7 +3,7 @@
 /*
  * This file is part of Mustache.php.
  *
- * (c) 2012 Justin Hileman
+ * (c) 2010-2014 Justin Hileman
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -19,16 +19,16 @@ class Mustache_Test_FiveThree_Functional_HigherOrderSectionsTest extends PHPUnit
 
     public function setUp()
     {
-        $this->mustache = new Mustache_Engine;
+        $this->mustache = new Mustache_Engine();
     }
 
     public function testAnonymousFunctionSectionCallback()
     {
         $tpl = $this->mustache->loadTemplate('{{#wrapper}}{{name}}{{/wrapper}}');
 
-        $foo = new Mustache_Test_FiveThree_Functional_Foo;
+        $foo = new Mustache_Test_FiveThree_Functional_Foo();
         $foo->name = 'Mario';
-        $foo->wrapper = function($text) {
+        $foo->wrapper = function ($text) {
             return sprintf('<div class="anonymous">%s</div>', $text);
         };
 
@@ -40,7 +40,7 @@ class Mustache_Test_FiveThree_Functional_HigherOrderSectionsTest extends PHPUnit
         $one = $this->mustache->loadTemplate('{{name}}');
         $two = $this->mustache->loadTemplate('{{#wrap}}{{name}}{{/wrap}}');
 
-        $foo = new Mustache_Test_FiveThree_Functional_Foo;
+        $foo = new Mustache_Test_FiveThree_Functional_Foo();
         $foo->name = 'Luigi';
 
         $this->assertEquals($foo->name, $one->render($foo));
@@ -53,9 +53,9 @@ class Mustache_Test_FiveThree_Functional_HigherOrderSectionsTest extends PHPUnit
 
         $data = array(
             'name' => 'Bob',
-            'wrap' => function($text) {
+            'wrap' => function ($text) {
                 return sprintf('[[%s]]', $text);
-            }
+            },
         );
 
         $this->assertEquals(sprintf('[[%s]]', $data['name']), $tpl->render($data));
@@ -70,7 +70,7 @@ class Mustache_Test_FiveThree_Functional_Foo
 
     public function __construct()
     {
-        $this->wrap = function($text) {
+        $this->wrap = function ($text) {
             return sprintf('<em>%s</em>', $text);
         };
     }
