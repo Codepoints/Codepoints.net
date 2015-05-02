@@ -40,6 +40,18 @@ header('Strict-Transport-Security: max-age=16070400; includeSubDomains; preload'
 
 
 /**
+ * set X-UA-Compat, if necessary
+ */
+if (array_key_exists('HTTP_USER_AGENT', $_SERVER)) {
+    $ua = strtolower($_SERVER['HTTP_USER_AGENT']);
+    if (strpos($ua, 'opera') === false &&
+        (strpos($ua, 'msie') !== false ||
+         strpos($ua, 'trident') !== false)) {
+    header('X-UA-Compatible: IE=edge,chrome=1');
+}
+
+
+/**
  * define Unicode Version in use
  */
 define('UNICODE_VERSION', '7.0.0');
