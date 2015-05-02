@@ -80,6 +80,12 @@ def get_aliases(cp):
     return map(lambda s: s[0], res.fetchall())
 
 
+def get_block(cp):
+    """get block name of a codepoint"""
+    res = cur.execute("SELECT name FROM blocks WHERE first <= ? AND last >= ?", (cp,cp))
+    return res.fetchone()[0]
+
+
 def has_confusables(cp):
     """whether the CP has any confusables"""
     res = cur.execute('''
@@ -163,6 +169,11 @@ for item in res.fetchall():
     exec_sql('''
         INSERT INTO search_index (cp, term, weight)
         VALUES (?, ?, 50);''', (cp, 'confusables:'+h))
+
+    block = get_block(cp)
+    exec_sql('''
+        INSERT INTO search_index (cp, term, weight)
+        VALUES (?, ?, 30);''', (cp, 'blk:%s' % block))
 
     if i % 1000 == 0:
         print '-- U+%04X' % cp

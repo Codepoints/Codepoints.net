@@ -185,7 +185,7 @@ class SearchResult extends UnicodeRange {
                     /* handle "cp" specially and search "cp" column directly */
                     $search .= " cp = :q$i ";
                     $params[':q'.$i] = $q[2];
-                } elseif ($q[0] === 'block') {
+                } elseif ($q[0] === 'block' || $q[0] === 'blk') {
                     $search .= " term = :q$i ";
                     $params[':q'.$i] = 'blk:'.$q[2];
                 } else {

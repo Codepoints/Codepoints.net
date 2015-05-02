@@ -50,7 +50,7 @@ class SearchComposer {
                         $result->addQuery($k, $vv);
                     }
                 }
-            } elseif (in_array($k, $cats)) {
+            } elseif (in_array($k, $cats) || $k === 'block') {
                 $result->addQuery($k, $v);
             }
             // else: that's an unrecognized option: Ignore it.
