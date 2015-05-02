@@ -47,7 +47,8 @@ if (array_key_exists('HTTP_USER_AGENT', $_SERVER)) {
     if (strpos($ua, 'opera') === false &&
         (strpos($ua, 'msie') !== false ||
          strpos($ua, 'trident') !== false)) {
-    header('X-UA-Compatible: IE=edge,chrome=1');
+        header('X-UA-Compatible: IE=edge,chrome=1');
+    }
 }
 
 
