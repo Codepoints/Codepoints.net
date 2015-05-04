@@ -115,7 +115,7 @@ exec_sql('''
 exec_sql('''
     CREATE INDEX
         search_index_term
-        ON search_index ( term );''')
+        ON search_index ( term COLLATE NOCASE );''')
 
 res = cur.execute('SELECT * FROM codepoints;')
 
