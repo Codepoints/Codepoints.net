@@ -34,25 +34,6 @@ date_default_timezone_set('Europe/Berlin');
 
 
 /**
- * set HSTS header
- */
-header('Strict-Transport-Security: max-age=16070400; includeSubDomains; preload');
-
-
-/**
- * set X-UA-Compat, if necessary
- */
-if (array_key_exists('HTTP_USER_AGENT', $_SERVER)) {
-    $ua = strtolower($_SERVER['HTTP_USER_AGENT']);
-    if (strpos($ua, 'opera') === false &&
-        (strpos($ua, 'msie') !== false ||
-         strpos($ua, 'trident') !== false)) {
-        header('X-UA-Compatible: IE=edge,chrome=1');
-    }
-}
-
-
-/**
  * define Unicode Version in use
  */
 define('UNICODE_VERSION', '7.0.0');
@@ -84,6 +65,32 @@ ini_set('zlib.output_compression', True);
  * install autoloader
  */
 require_once 'lib/vendor/autoload.php';
+
+
+/**
+ * set HSTS header
+ */
+header('Strict-Transport-Security: max-age=16070400; includeSubDomains; preload');
+
+
+/**
+ * set X-UA-Compat, if necessary
+ */
+if (array_key_exists('HTTP_USER_AGENT', $_SERVER)) {
+    $ua = strtolower($_SERVER['HTTP_USER_AGENT']);
+    if (strpos($ua, 'opera') === false &&
+        (strpos($ua, 'msie') !== false ||
+         strpos($ua, 'trident') !== false)) {
+        header('X-UA-Compatible: IE=edge,chrome=1');
+    }
+}
+
+
+/**
+ * allow caching resources for an hour
+ */
+header('Cache-Control: public, mag-age=3600');
+header('Expires: ' . gmdate('D, d M Y H:i:s', time() + 3600) . ' GMT');
 
 
 /**
