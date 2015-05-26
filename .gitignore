@@ -7,7 +7,6 @@
 /codepoints.net/static/js/polyfills/
 /ucd.sqlite
 /.sass-cache
-/src/vendor
 /tools/charlist.dtd
 /tools/latex.xml
 /codepoints.net/src

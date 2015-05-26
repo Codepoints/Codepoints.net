@@ -27,7 +27,7 @@ all: test ucotd css js cachebust
         test-sass test-php test-phpunit test-js init
 
 clean:
-	-rm -fr dist src/vendor node_modules .sass-cache
+	-rm -fr dist node_modules .sass-cache
 	-rm -f tools/encoding-aliases.sql
 
 dist: vendor all
@@ -40,29 +40,29 @@ css: $(CSS_TARGET)
 $(CSS_TARGET): $(DOCROOT)static/css/%.css : src/sass/%.scss
 	compass compile --force $<
 
-js: src/vendor/jquery.ui \
+js: node_modules/jquery-ui \
     $(DOCROOT)static/js/build.txt $(DOCROOT)static/js/html5shiv.js \
     $(DOCROOT)static/ZeroClipboard.swf
 
-src/vendor/jquery.ui:
+node_modules/jquery-ui:
 	node_modules/.bin/jqueryui-amd "$@"
 
-init: src/vendor/jquery.ui/jqueryui src/vendor/webfontloader/target/webfont.js
+init: node_modules/jquery-ui/jqueryui node_modules/webfontloader/target/webfont.js
 
-src/vendor/jquery.ui/jqueryui:
-	node_modules/.bin/jqueryui-amd src/vendor/jquery.ui
+node_modules/jquery-ui/jqueryui:
+	node_modules/.bin/jqueryui-amd "$@"
 
-src/vendor/webfontloader/target/webfont.js:
-	cd src/vendor/webfontloader && \
+node_modules/webfontloader/target/webfont.js:
+	cd node_modules/webfontloader && \
 		rake compile
 
 $(DOCROOT)static/js/build.txt: src/build.js $(JS_ALL)
-	cd src && node vendor/r.js/dist/r.js -o build.js
+	cd src && ../node_modules/.bin/r.js -o build.js
 
-$(DOCROOT)static/js/html5shiv.js: src/vendor/html5shiv/dist/html5shiv.js
+$(DOCROOT)static/js/html5shiv.js: node_modules/html5shiv/dist/html5shiv.js
 	<$< node_modules/uglify-js/bin/uglifyjs >$@
 
-$(DOCROOT)static/ZeroClipboard.swf: src/vendor/zeroclipboard/ZeroClipboard.swf
+$(DOCROOT)static/ZeroClipboard.swf: node_modules/zeroclipboard/ZeroClipboard.swf
 	cp "$<" "$@"
 
 cachebust: $(JS_ALL) $(CSS_TARGET)
@@ -118,12 +118,11 @@ $(DOCROOT)locale/js.pot: $(JS_ALL)
 	@xgettext -LPerl --from-code UTF-8 -k_ -o - $^ | \
 		sed '/^#, perl-format$$/d' > $@
 
-vendor: bower.json
+vendor:
 	npm install
-	node_modules/bower/bin/bower install
-	$(MAKE) -C src/vendor/d3 d3.v2.js NODE_PATH=../../../node_modules
-	node_modules/jqueryui-amd/jqueryui-amd.js src/vendor/jquery.ui
-	cd src/vendor/webfontloader && rake compile
+	$(MAKE) -C node_modules/d3 d3.v2.js NODE_PATH=../../../node_modules
+	node_modules/jqueryui-amd/jqueryui-amd.js node_modules/jquery-ui
+	cd node_modules/webfontloader && rake compile
 
 test: test-php test-phpunit test-sass test-js test-casper
 

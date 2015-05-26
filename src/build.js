@@ -6,12 +6,12 @@
   "skipDirOptimize": false,
   //"removeCombined": true,
   "paths": {
-    "almond": "../vendor/almond/almond",
-    "jquery": "../vendor/jquery/jquery",
-    "jqueryui": "../vendor/jquery.ui/jqueryui",
-    "d3": "../vendor/d3/d3.v2",
-    "webfont": "../vendor/webfontloader/target/webfont",
-    "zeroclipboard": "../vendor/zeroclipboard/ZeroClipboard"
+    "almond": "../../node_modules/almond/almond",
+    "jquery": "../../node_modules/jquery/dist/jquery",
+    "jqueryui": "../../node_modules/jquery-ui/jqueryui",
+    "d3": "../../node_modules/d3/d3.v2",
+    "webfont": "../../node_modules/webfontloader/target/webfont",
+    "zeroclipboard": "../../node_modules/zeroclipboard/dist/ZeroClipboard"
   },
   "shim": {
     "webfont": {
