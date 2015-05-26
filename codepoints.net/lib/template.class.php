@@ -19,9 +19,15 @@ class Template {
                             "$basedir/static/tpl"),
             'partials_loader' => new Mustache_Loader_FilesystemLoader(
                                      "$basedir/static/tpl/partials"),
-            'helpers' => array('_' => function ($s) use ($l10n) {
-                return $l10n->gettext($s);
-            }),
+            'helpers' => array(
+                '_' => function ($s) use ($l10n) {
+                    return $l10n->gettext($s);
+                },
+                'get_url' => function ($url) {
+                    return Router::getRouter()->getUrl($url);
+                },
+                'CACHE_BUST' => CACHE_BUST,
+            ),
             'strict_callables' => true,
         ));
     }
