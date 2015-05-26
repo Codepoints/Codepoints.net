@@ -75,44 +75,48 @@ def emit_png(cp):
     processes = []
 
     for width in PNG_WIDTHS:
-        target = '{0}images/{1:02X}/{2:04X}.{3}.png'.format(TARGET_DIR,
-                        ocp / 0x1000, ocp, width)
-        args = [
-            'inkscape',
-                '--without-gui', '--export-background-opacity=0',
-                '--export-png={}'.format(target),
-                '--export-width={}'.format(width),
-                '{0}images/{1:02X}/{2:04X}.svgz'.format(
-                    TARGET_DIR, ocp / 0x1000, ocp),
-                '1>&2',
-            '&&',
-            'optipng',
-                '-quiet',
-                '-o7',
-                target,
-        ]
-        if width == DB_PNG_WIDTH:
-            # we use w=16 icons as source for data URIs and store them
-            # in the DB
-            args.extend([
-                '&&',
-                'touch',
-                    '{0}sql/{1:02X}_img.sql'.format(TARGET_DIR, ocp / 0x1000),
-                '&&',
-                'base64',
-                    '-w0',
-                    target,
-                    '|',
-                'cat',
-                    '<(echo -n "INSERT OR REPLACE INTO codepoint_image (cp, image) VALUES ({}, \'")'.format(ocp),
-                    '-',
-                    '<(echo "\');")',
-                    '>> {0}sql/{1:02X}_img.sql'.format(TARGET_DIR, ocp / 0x1000),
-            ])
-        logger.debug(' '.join(args))
-        with open(os.devnull, 'w') as devnull:
-            processes.append(subprocess.Popen(' '.join(args), shell=True, executable="/bin/bash",
-                stderr=devnull))
+        #target = '{0}images/{1:02X}/{2:04X}.{3}.png'.format(TARGET_DIR,
+        #                ocp / 0x1000, ocp, width)
+        #args = [
+        #    'inkscape',
+        #        '--without-gui', '--export-background-opacity=0',
+        #        '--export-png={}'.format(target),
+        #        '--export-width={}'.format(width),
+        #        '{0}images/{1:02X}/{2:04X}.svgz'.format(
+        #            TARGET_DIR, ocp / 0x1000, ocp),
+        #        '1>&2',
+        #    '&&',
+        #    'optipng',
+        #        '-quiet',
+        #        '-o7',
+        #        target,
+        #]
+        #if width == DB_PNG_WIDTH:
+        #    # we use w=16 icons as source for data URIs and store them
+        #    # in the DB
+        #    args.extend([
+        #        '&&',
+        #        'touch',
+        #            '{0}sql/{1:02X}_img.sql'.format(TARGET_DIR, ocp / 0x1000),
+        #        '&&',
+        #        'base64',
+        #            '-w0',
+        #            target,
+        #            '|',
+        #        'cat',
+        #            '<(echo -n "INSERT OR REPLACE INTO codepoint_image (cp, image) VALUES ({}, \'")'.format(ocp),
+        #            '-',
+        #            '<(echo "\');")',
+        #            '>> {0}sql/{1:02X}_img.sql'.format(TARGET_DIR, ocp / 0x1000),
+        #    ])
+        #logger.debug(' '.join(args))
+        #with open(os.devnull, 'w') as devnull:
+        #    processes.append(subprocess.Popen(' '.join(args), shell=True, executable="/bin/bash",
+        #        stderr=devnull))
+        processes.append(subprocess.Popen([
+            op.dirname(__file__) + '/emit_image.sh', ocp, target_dir,
+            width, "--db" if width == DB_PNG_WIDTH else ''
+        ]))
     return processes
 
 
