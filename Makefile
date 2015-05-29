@@ -9,7 +9,7 @@ SASS_ROOTS := $(wildcard src/sass/[^_]*.scss)
 CSS_TARGET := $(patsubst src/sass/%.scss,$(DOCROOT)static/css/%.css,$(SASS_ROOTS))
 PYTHON := python
 SAXON := saxonb-xslt
-JSHINT := node_modules/jshint/bin/jshint
+JSHINT := node_modules/.bin/jshint
 JSHINT_ARGS := --config src/jshint.js
 PHPUNIT := phpunit
 PHPUNIT_ARGS :=
@@ -60,7 +60,7 @@ $(DOCROOT)static/js/build.txt: src/build.js $(JS_ALL)
 	cd src && ../node_modules/.bin/r.js -o build.js
 
 $(DOCROOT)static/js/html5shiv.js: node_modules/html5shiv/dist/html5shiv.js
-	<$< node_modules/uglify-js/bin/uglifyjs >$@
+	<$< node_modules/.bin/uglifyjs -c -m >$@
 
 $(DOCROOT)static/ZeroClipboard.swf: node_modules/zeroclipboard/ZeroClipboard.swf
 	cp "$<" "$@"
