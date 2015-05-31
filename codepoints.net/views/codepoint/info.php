@@ -1,10 +1,11 @@
 <!-- codepoint -->
 <p><?php
     $plane = $codepoint->getPlane();
-    printf(__('U+%04X was added to Unicode in version %s. It belongs to the block %s in the %s.'),
+    printf(__('U+%04X was added to Unicode in version %s (%s). It belongs to the block %s in the %s.'),
         $codepoint->getId(),
         '<a href="'.q($router->getUrl('search?age='.$props['age'])).'">'.
         q($info->getLabel('age', $props['age'])).'</a>',
+        $info->getYearForAge($props['age']),
         _bl($block),
         '<a class="pl" href="'.q($router->getUrl($plane)).'">'.q($plane->name).'</a>');
 

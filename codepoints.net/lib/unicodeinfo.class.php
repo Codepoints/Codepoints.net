@@ -837,6 +837,26 @@ class UnicodeInfo {
 
     );
 
+    protected $age_to_year = array(
+        "1.1" => "1993",
+        "2.0" => "1996",
+        "2.1" => "1998",
+        "3.0" => "1999",
+        "3.1" => "2001",
+        "3.2" => "2002",
+        "4.0" => "2003",
+        "4.1" => "2005",
+        "5.0" => "2006",
+        "5.1" => "2008",
+        "5.2" => "2009",
+        "6.0" => "2010",
+        "6.1" => "2012",
+        "6.2" => "2012",
+        "6.3" => "2013",
+        "7.0" => "2014",
+        "8.0" => "2015",
+    );
+
     protected static $inst;
 
     protected function __construct($lang='en') {
@@ -922,6 +942,16 @@ class UnicodeInfo {
             return $this->legend[$cat];
         }
         return array();
+    }
+
+    /**
+     * get publishing year for a Unicode version
+     */
+    public function getYearForAge($age) {
+        if (array_key_exists($age, $this->age_to_year)) {
+            return $this->age_to_year[$age];
+        }
+        return '-';
     }
 
     public static $archaicScripts = array(
