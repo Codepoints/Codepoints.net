@@ -111,7 +111,15 @@ class SearchComposer {
             if (substr($low_v, 0, 2) === 'u+' &&
                 ctype_xdigit(substr($v, 2)) &&
                 in_array(strlen($v), [6,7,8])) {
+                // U+1F456 escapes
                 $r['cp'][] = hexdec(substr($v, 2));
+            }
+
+            if (substr($low_v, 0, 1) === 'u' &&
+                ctype_xdigit(substr($v, 1)) &&
+                in_array(strlen($v), [5,6,7,8,9])) {
+                // U0001F456 escapes
+                $r['cp'][] = hexdec(substr($v, 1));
             }
 
             if (ctype_digit($v) && strlen($v) < 8) {
