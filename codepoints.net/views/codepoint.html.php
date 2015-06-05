@@ -18,7 +18,9 @@ $hDescription = sprintf(__('%s, codepoint U+%04X %s in Unicode, is located in th
     $codepoint->getSafeChar(),
     $codepoint->getId(), $codepoint->getName(), $block->getName(), $info->getLabel('sc', $props['sc']), $info->getLabel('gc', $props['gc']));
 $canonical = $router->getUrl($codepoint);
-$headdata .= sprintf('<meta name="twitter:site" content="@codepointsnet">
+$headdata .= sprintf('
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@codepointsnet">
 <meta name="twitter:url" content="https://codepoints.net%s">
 <meta name="twitter:title" content="%s">
 <meta name="twitter:description" content="%s">',
