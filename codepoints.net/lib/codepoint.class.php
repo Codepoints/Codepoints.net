@@ -130,7 +130,7 @@ class Codepoint {
         if ($this->name === NULL) {
             $props = $this->getProperties();
             if ($props === False) {
-                throw new Exception('This Codepoint doesnt exist: '.$this->id);
+                throw new Exception('This Codepoint does not exist: '.$this->id);
             } else {
                 if (isset($props['na']) && $props['na']) {
                     $this->name = $props['na'];
@@ -146,6 +146,9 @@ class Codepoint {
                     }
                     if ($this->name === NULL) {
                         $this->name = '<control>';
+                        if ($props['NChar'] === '1') {
+                            $this->name = 'NONCHARACTER';
+                        }
                     }
                 }
             }

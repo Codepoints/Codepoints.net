@@ -42,7 +42,7 @@ define('UNICODE_VERSION', '7.0.0');
 /**
  * set DEBUG level
  */
-define('CP_DEBUG', 0);
+define('CP_DEBUG', 1);
 
 
 /**
@@ -89,8 +89,10 @@ if (array_key_exists('HTTP_USER_AGENT', $_SERVER)) {
 /**
  * allow caching resources for an hour
  */
-header('Cache-Control: public, mag-age=3600');
-header('Expires: ' . gmdate('D, d M Y H:i:s', time() + 3600) . ' GMT');
+if (! CP_DEBUG) {
+    header('Cache-Control: public, mag-age=3600');
+    header('Expires: ' . gmdate('D, d M Y H:i:s', time() + 3600) . ' GMT');
+}
 
 
 /**

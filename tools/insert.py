@@ -50,5 +50,6 @@ while query:
 
 sys.stdout.write('\n')
 
+conn.commit()
 cur.close()
 conn.close()
