@@ -406,7 +406,11 @@ class Codepoint {
      */
     public function getBlock() {
         if ($this->block === NULL) {
-            $this->block = UnicodeBlock::getForCodepoint($this);
+            try {
+                $this->block = UnicodeBlock::getForCodepoint($this);
+            } catch (Exception $e) {
+                $this->block = false;
+            }
         }
         return $this->block;
     }

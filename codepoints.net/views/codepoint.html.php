@@ -7,7 +7,12 @@ $block = $codepoint->getBlock();
 $plane = $codepoint->getPlane();
 $relatives = $codepoint->related();
 $confusables = $codepoint->getConfusables();
-$headdata = sprintf('<link rel="up" href="%s">', q($router->getUrl($block)));
+
+if ($block) {
+    $headdata = sprintf('<link rel="up" href="%s">', q($router->getUrl($block)));
+} else {
+    $headdata = sprintf('<link rel="up" href="%s">', q($router->getUrl($plane)));
+}
 if ($prev):
     $headdata .= '<link rel="prev" href="' . q($router->getUrl($prev)) . '">';
 endif;
@@ -16,7 +21,7 @@ if ($next):
 endif;
 $hDescription = sprintf(__('%s, codepoint U+%04X %s in Unicode, is located in the block “%s”. It belongs to the %s script and is a %s.'),
     $codepoint->getSafeChar(),
-    $codepoint->getId(), $codepoint->getName(), $block->getName(), $info->getLabel('sc', $props['sc']), $info->getLabel('gc', $props['gc']));
+    $codepoint->getId(), $codepoint->getName(), $block? $block->getName() : '-', $info->getLabel('sc', $props['sc']), $info->getLabel('gc', $props['gc']));
 $canonical = $router->getUrl($codepoint);
 $headdata .= sprintf('
 <meta name="twitter:card" content="summary">
@@ -33,7 +38,7 @@ if (substr($codepoint->getImage(), -strlen(Codepoint::$defaultImage)) !==
 $headdata .= '<script type="application/ld+json">{"@context": "http://schema.org","@type": "BreadcrumbList","itemListElement":[
 {"@type":"ListItem","position":1,"item":{"@id":"https://codepoints.net/planes","name":"Unicode"}},
 {"@type":"ListItem","position":2,"item":{"@id":"'.q($router->getUrl($plane)).'","name":"'.q($plane->name).'"}},
-{"@type":"ListItem","position":3,"item":{"@id":"'.q($router->getUrl($block)).'","name":"'.q($block->getName()).'"}},
+'.($block?'{"@type":"ListItem","position":3,"item":{"@id":"'.q($router->getUrl($block)).'","name":"'.q($block->getName()).'"}},':'').'
 {"@type":"ListItem","position":4,"item":{"@id":"'.q($canonical).'","name":"'.q($title).'"}}
 ]}</script>';
 include "header.php";
@@ -41,7 +46,11 @@ $nav = array();
 if ($prev) {
     $nav['prev'] = _cp($prev, 'prev', 'min', 'span');
 }
-$nav["up"] = _bl($block, 'up', 'min', 'span');
+if ($block) {
+    $nav["up"] = _bl($block, 'up', 'min', 'span');
+} else {
+    $nav["up"] = '<a class="pl" rel="up" href="'.q($router->getUrl($plane)).'">'.q($plane->getName()).'</a>';
+}
 if ($next) {
     $nav['next'] = _cp($next, 'next', 'min', 'span');
 }
@@ -56,7 +65,7 @@ $s = function($cat) use ($router, $info, $props) {
 ?>
 <div class="payload codepoint"
      data-cp="<?php _e($codepoint->getId())?>"
-     data-block-id="<?php _e(str_replace(' ', '_', $block->getName()))?>"
+     data-block-id="<?php _e(str_replace(' ', '_', $block? $block->getName():'-'))?>"
      itemscope="itemscope"
      itemtype="http://schema.org/StructuredValue/Unicode/CodePoint">
   <figure>

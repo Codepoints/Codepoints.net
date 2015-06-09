@@ -6,7 +6,7 @@
         '<a href="'.q($router->getUrl('search?age='.$props['age'])).'">'.
         q($info->getLabel('age', $props['age'])).'</a>',
         $info->getYearForAge($props['age']),
-        _bl($block),
+        $block? _bl($block):'-',
         '<a class="pl" href="'.q($router->getUrl($plane)).'">'.q($plane->name).'</a>');
 
     if ($props['Dep']) {
