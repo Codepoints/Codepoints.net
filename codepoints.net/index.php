@@ -42,7 +42,7 @@ define('UNICODE_VERSION', '7.0.0');
 /**
  * set DEBUG level
  */
-define('CP_DEBUG', 1);
+define('CP_DEBUG', 0);
 
 
 /**
