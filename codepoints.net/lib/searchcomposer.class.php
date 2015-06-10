@@ -142,6 +142,9 @@ class SearchComposer {
             if (preg_match('/\btitlecase\b/', $low_v)) {
                 $r['term'][] = 'gc:Lt';
             }
+            if (preg_match('/\bnon-?char(acter)?\b/', $low_v)) {
+                $r['term'][] = 'NChar:1';
+            }
             if ($low_v === 'number') {
                 $r['term'][] = 'nt:De';
                 $r['term'][] = 'nt:Di';
