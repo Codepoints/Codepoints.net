@@ -81,6 +81,7 @@ ucd.sqlite: ucotd tools/scripts.sql tools/scripts_wp.sql \
             tools/fonts/target/sql/*.sql \
             tools/encoding-aliases.sql
 	@echo "* Add additional info to DB"
+	@sqlite3 $@ <tools/aliases.sql
 	@sqlite3 $@ <tools/scripts.sql
 	@sqlite3 $@ <tools/scripts_wp.sql
 	@sqlite3 $@ <tools/latex.sql
@@ -91,6 +92,8 @@ ucd.sqlite: ucotd tools/scripts.sql tools/scripts_wp.sql \
 		python tools/insert.py $$SQL $@; \
 	done
 	@sqlite3 $@ <tools/encoding-aliases.sql
+	@echo "* Create search index"
+	@$(MAKE) search_index
 
 tools/encoding-aliases.sql: tools/encoding tools/encoding/index-*.txt
 	-true > $@
