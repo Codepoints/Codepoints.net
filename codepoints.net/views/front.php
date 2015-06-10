@@ -96,7 +96,7 @@ include "nav.php";
             %s. It belongs to the block %s in the %s.'),
             $codepoint->getId(),
             '<a href="'.q($router->getUrl('search?age='.$props['age'])).'">'.q($info->getLabel('age', $props['age'])).'</a>',
-            _bl($block),
+            $block? _bl($block) : 'NB',
             '<a class="pl" href="'.q($router->getUrl($plane)).'">'.q($plane->name).'</a>'
         );
     if ($props['Dep']):

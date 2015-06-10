@@ -13,7 +13,10 @@ $props = $codepoint->getProperties();
 $block = $codepoint->getBlock();
 $relatives = $codepoint->related();
 $confusables = $codepoint->getConfusables();
-$headdata = sprintf('<link rel="up" href="%s">', q($router->getUrl($block)));
+$headdata = '';
+if ($block) {
+    $headdata = sprintf('<link rel="up" href="%s">', q($router->getUrl($block)));
+}
 if ($prev):
     $headdata .= '<link rel="prev" href="' . q($router->getUrl($prev)) . '">';
 endif;
@@ -25,7 +28,9 @@ $nav = array();
 if ($prev) {
     $nav['prev'] = _cp($prev, 'prev', 'min', 'span');
 }
-$nav["up"] = _bl($block, 'up', 'min', 'span');
+if ($block) {
+    $nav["up"] = _bl($block, 'up', 'min', 'span');
+}
 if ($next) {
     $nav['next'] = _cp($next, 'next', 'min', 'span');
 }
