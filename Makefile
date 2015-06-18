@@ -153,6 +153,9 @@ test-casper:
 clearcache:
 	rm -f $(DOCROOT)cache/_cache_* $(DOCROOT)cache/blog-preview*
 
+tools/scripts_wp.sql: tools/scripts_wp.py
+	cd tools && python scripts_wp.py
+
 tools/latex.sql: tools/latex.xsl tools/latex.xml
 	$(SAXON) -xsl:tools/latex.xsl -s:tools/latex.xml -o:$@
 

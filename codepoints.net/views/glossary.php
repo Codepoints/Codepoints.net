@@ -148,10 +148,10 @@ include 'nav.php';
     <dd>Used in Ideographic Description Sequences. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="IDST">IDS Trinary Operator</dt>
     <dd>Used in Ideographic Description Sequences. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
-    <dt id="InMC">Indic Matra Category</dt>
-    <dd>A provisional property defining the placement categories for dependent vowels in Indic scripts. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dt id="InPC">Indic Positional Category</dt>
+    <dd>A property defining the placement categories for dependent vowels, viramas, combining marks, and other characters used in Indic scripts. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="InSC">Indic Syllabic Category</dt>
-    <dd>A provisional property defining the structural categories of syllabic components in Indic scripts. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
+    <dd>A property defining the structural categories of syllabic components in Indic scripts. <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>
     <dt id="isc">ISO Comment (deprecated, stabilized)</dt>
     <dd>ISO 10646 comment field. It was used for notes that appeared in parentheses in the 10646 names list, or contained an asterisk to mark an Annex P note.
       <p>As of Unicode 5.2.0, this field no longer contains any non-null values.</p> <small>(Source: <a href="http://unicode.org/reports/tr44/">UAX44</a>)</small></dd>

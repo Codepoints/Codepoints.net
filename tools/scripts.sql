@@ -1,4 +1,5 @@
 
+INSERT OR REPLACE INTO scripts (iso, name) VALUES ('Ahom', 'Ahom');
 INSERT OR REPLACE INTO scripts (iso, name) VALUES ('Arab', 'Arabic');
 INSERT OR REPLACE INTO scripts (iso, name) VALUES ('Armi', 'Imperial_Aramaic');
 INSERT OR REPLACE INTO scripts (iso, name) VALUES ('Armn', 'Armenian');
@@ -33,9 +34,12 @@ INSERT OR REPLACE INTO scripts (iso, name) VALUES ('Guru', 'Gurmukhi');
 INSERT OR REPLACE INTO scripts (iso, name) VALUES ('Hang', 'Hangul');
 INSERT OR REPLACE INTO scripts (iso, name) VALUES ('Hani', 'Han');
 INSERT OR REPLACE INTO scripts (iso, name) VALUES ('Hano', 'Hanunoo');
+INSERT OR REPLACE INTO scripts (iso, name) VALUES ('Hatr', 'Hatran');
 INSERT OR REPLACE INTO scripts (iso, name) VALUES ('Hebr', 'Hebrew');
 INSERT OR REPLACE INTO scripts (iso, name) VALUES ('Hira', 'Hiragana');
+INSERT OR REPLACE INTO scripts (iso, name) VALUES ('Hluw', 'Anatolian_Hieroglyphs');
 INSERT OR REPLACE INTO scripts (iso, name) VALUES ('Hrkt', 'Katakana_Or_Hiragana');
+INSERT OR REPLACE INTO scripts (iso, name) VALUES ('Hung', 'Old_Hungarian');
 INSERT OR REPLACE INTO scripts (iso, name) VALUES ('Ital', 'Old_Italic');
 INSERT OR REPLACE INTO scripts (iso, name) VALUES ('Java', 'Javanese');
 INSERT OR REPLACE INTO scripts (iso, name) VALUES ('Kali', 'Kayah_Li');
@@ -59,6 +63,7 @@ INSERT OR REPLACE INTO scripts (iso, name) VALUES ('Mero', 'Meroitic_Hieroglyphs
 INSERT OR REPLACE INTO scripts (iso, name) VALUES ('Mlym', 'Malayalam');
 INSERT OR REPLACE INTO scripts (iso, name) VALUES ('Mong', 'Mongolian');
 INSERT OR REPLACE INTO scripts (iso, name) VALUES ('Mtei', 'Meetei_Mayek');
+INSERT OR REPLACE INTO scripts (iso, name) VALUES ('Mult', 'Multani');
 INSERT OR REPLACE INTO scripts (iso, name) VALUES ('Mymr', 'Myanmar');
 INSERT OR REPLACE INTO scripts (iso, name) VALUES ('Nkoo', 'Nko');
 INSERT OR REPLACE INTO scripts (iso, name) VALUES ('Ogam', 'Ogham');
@@ -76,6 +81,7 @@ INSERT OR REPLACE INTO scripts (iso, name) VALUES ('Runr', 'Runic');
 INSERT OR REPLACE INTO scripts (iso, name) VALUES ('Samr', 'Samaritan');
 INSERT OR REPLACE INTO scripts (iso, name) VALUES ('Sarb', 'Old_South_Arabian');
 INSERT OR REPLACE INTO scripts (iso, name) VALUES ('Saur', 'Saurashtra');
+INSERT OR REPLACE INTO scripts (iso, name) VALUES ('Sgnw', 'Sutton_SignWriting');
 INSERT OR REPLACE INTO scripts (iso, name) VALUES ('Shaw', 'Shavian');
 INSERT OR REPLACE INTO scripts (iso, name) VALUES ('Shrd', 'Sharada');
 INSERT OR REPLACE INTO scripts (iso, name) VALUES ('Sinh', 'Sinhala');

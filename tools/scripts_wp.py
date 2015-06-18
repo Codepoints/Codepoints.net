@@ -12,6 +12,7 @@ from StringIO import StringIO
 
 def main():
     scripts = [
+        ('Ahom', 'Ahom_alphabet'),
         ('Arab', 'Arabic_script'),
         ('Armi', 'Aramaic_script'),
         ('Armn', 'Armenian_alphabet'),
@@ -51,8 +52,10 @@ def main():
         ('Hano', 'Hanun%C3%B3%27o_script'),
         ('Hans', 'Simplified_Chinese_characters'),
         ('Hant', 'Traditional_Chinese_characters'),
+        ('Hatr', 'Aramaic_of_Hatra'),
         ('Hebr', 'Hebrew_alphabet'),
         ('Hira', 'Hiragana'),
+        ('Hluw', 'Anatolian_hieroglyphs'),
         ('Hrkt', 'Hiragana_or_Katakana'),
         ('Hung', 'Old_Hungarian_script'),
         ('Ital', 'Old_Italic_script'),
@@ -85,6 +88,7 @@ def main():
         ('Mong', 'Classical_Mongolian_alphabet'),
         ('Mroo', 'Mro_script'),
         ('Mtei', 'Meitei_Mayek_script'),
+        ('Mult', 'Multani_alphabet'),
         ('Mymr', 'Burmese_alphabet'),
         ('Narb', 'Old_North_Arabian_alphabet'),
         ('Nbat', 'Nabataean_alphabet'),
@@ -107,6 +111,7 @@ def main():
         ('Samr', 'Samaritan_script'),
         ('Sarb', 'Old_South_Arabian_alphabet'),
         ('Saur', 'Saurashtra_script'),
+        ('Sngw', 'SignWriting'),
         ('Shaw', 'Shavian_alphabet'),
         ('Shrd', '%C5%9A%C4%81rad%C4%81_script'),
         ('Sinh', 'Sinhala_script'),

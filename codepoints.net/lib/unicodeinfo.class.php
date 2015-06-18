@@ -62,7 +62,7 @@ class UnicodeInfo {
         'hst' => 'Hangul Syllable Type',
         'JSN' => 'Jamo Short Name',
         'InSC' => 'Indic Syllabic Category',
-        'InMC' => 'Indic Matra Category',
+        'InPC' => 'Indic Positional Category',
         'IDS' => 'ID Start',
         'OIDS' => 'Other ID Start',
         'XIDS' => 'XID Start',
@@ -833,6 +833,7 @@ class UnicodeInfo {
             "6.2" => "6.2",
             "6.3" => "6.3",
             "7.0" => "7.0",
+            "8.0" => "8.0",
         ),
 
     );
