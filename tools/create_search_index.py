@@ -83,7 +83,10 @@ def get_aliases(cp):
 def get_block(cp):
     """get block name of a codepoint"""
     res = cur.execute("SELECT name FROM blocks WHERE first <= ? AND last >= ?", (cp,cp))
-    return res.fetchone()[0]
+    blk = res.fetchone()
+    if blk:
+        blk = blk[0]
+    return blk
 
 
 def has_confusables(cp):
@@ -127,53 +130,46 @@ for item in res.fetchall():
     for j, weight in (('na', 100), ('na1', 90), ('kDefinition', 50)):
         if item[j]:
             for w in re.split(r'\s+', item[j].lower()):
-                exec_sql('''
-                INSERT INTO search_index (cp, term, weight)
-                VALUES (?, ?, ?);''', (cp, w, weight))
+                exec_sql('INSERT INTO search_index (cp, term, weight) '
+                    'VALUES (?, ?, ?);', (cp, w, weight))
                 if '-' in w:
                     # we need this to find cps like "TAG HYPHEN-MINUS"
                     # when searching for "hyphen".
                     for w2 in w.split('-'):
-                        exec_sql('''
-                        INSERT INTO search_index (cp, term, weight)
-                        VALUES (?, ?, ?);''', (cp, w2, weight-20))
+                        exec_sql('INSERT INTO search_index (cp, term, weight) '
+                            'VALUES (?, ?, ?);', (cp, w2, weight-20))
 
     for prop in item.keys():
         if (prop not in ('na', 'na1', 'kDefinition', 'cp') and
             prop is not None and item[prop] is not None):
             # all other properties get stored as foo:bar pairs, with foo
             # as property and bar as its value
-            exec_sql(u'''
-            INSERT INTO search_index (cp, term, weight)
-            VALUES (?, ?, ?);''', (cp, u'{}:{}'.format(prop, item[prop]), 50))
+            exec_sql(u'INSERT INTO search_index (cp, term, weight) '
+                u'VALUES (?, ?, ?);', (cp, u'{}:{}'.format(prop, item[prop]), 50))
 
     for w in get_aliases(cp):
-        exec_sql('''
-        INSERT INTO search_index (cp, term, weight)
-        VALUES (?, ?, 40);''', (cp, w))
+        exec_sql('INSERT INTO search_index (cp, term, weight) '
+            'VALUES (?, ?, 40);', (cp, w))
 
     for w in get_abstract_tokens(cp):
-        exec_sql('''
-        INSERT INTO search_index (cp, term, weight)
-        VALUES (?, ?, 1);''', (cp, w))
+        exec_sql('INSERT INTO search_index (cp, term, weight) '
+            'VALUES (?, ?, 1);', (cp, w))
 
     dm = get_decomp(cp)
     if dm:
-        exec_sql('''
-        INSERT INTO search_index (cp, term, weight)
-        VALUES (?, ?, 30);''', (cp, dm))
+        exec_sql('INSERT INTO search_index (cp, term, weight) '
+            'VALUES (?, ?, 30);', (cp, dm))
 
     h = '0'
     if has_confusables(cp):
         h = '1'
-    exec_sql('''
-        INSERT INTO search_index (cp, term, weight)
-        VALUES (?, ?, 50);''', (cp, 'confusables:'+h))
+    exec_sql('INSERT INTO search_index (cp, term, weight) '
+        'VALUES (?, ?, 50);', (cp, 'confusables:'+h))
 
     block = get_block(cp)
-    exec_sql('''
-        INSERT INTO search_index (cp, term, weight)
-        VALUES (?, ?, 30);''', (cp, 'blk:%s' % block))
+    if block:
+        exec_sql('INSERT INTO search_index (cp, term, weight) '
+            'VALUES (?, ?, 30);', (cp, 'blk:%s' % block))
 
     if i % 1000 == 0:
         print '-- U+%04X' % cp
