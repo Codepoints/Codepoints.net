@@ -38,7 +38,10 @@ include "nav.php";
   <h1 itemprop="name"><?php e($block->getName());?></h1>
   <p itemprop="description">
      <?php printf(__('Block from U+%04X to U+%04X.'), $block_limits[0], $block_limits[1])?>
-     <?php printf(__('This block was introduced in Unicode version %s. It contains %s codepoints.'), $block->getVersion(), '<strong>'.$block_count.'</strong>')?></p>
+     <?php printf(__('This block was introduced in Unicode version %s (%s). It contains %s codepoints.'),
+         $block->getVersion(),
+         $info->getYearForAge($block->getVersion()),
+         '<strong>'.$block_count.'</strong>')?></p>
   <?php if ($abstract):?>
     <p><?php printf(__('The %sWikipedia%s provides the following information on block %s:'), '<a href="http://en.wikipedia.org/wiki/'.q(str_replace(' ', '_', $block)).'_(Unicode_block)">', '</a>', $block->getName())?></p>
     <blockquote cite="http://en.wikipedia.org/wiki/<?php e(str_replace(' ', '_', $block))?>_(Unicode_block)">
