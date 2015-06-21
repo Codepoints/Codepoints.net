@@ -150,9 +150,14 @@ if (! CP_DEBUG && strlen($_SERVER['REQUEST_URI']) < 255 && ! count($_POST)) {
 /**
  * initialize DB connection and global router
  */
-$db = new DB('sqlite:'.DB_PATH);
+$dbconfig = parse_ini_file(dirname(__DIR__).'/db.conf', true);
+$db = new DB(
+    'mysql:host=localhost;dbname='.$dbconfig['clientreadonly']['database'],
+    $dbconfig['clientreadonly']['user'],
+    $dbconfig['clientreadonly']['password'],
+    [PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',]);
+unset($dbconfig);
 $router = Router::getRouter();
-
 
 $router->addSetting('db', $db)
        ->addSetting('info', UnicodeInfo::get());

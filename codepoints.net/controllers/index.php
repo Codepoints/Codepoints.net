@@ -3,7 +3,7 @@
 $router->registerAction('', function ($request, $o) {
     // Index
     $view = new View('front');
-    $x = $o['db']->prepare('SELECT COUNT(*) AS c FROM codepoints');
+    $x = $o['db']->prepare('SELECT COUNT(*) AS c FROM codepoints USE INDEX (PRIMARY)');
     $x->execute();
     $row = $x->fetch();
     $Daily = new DailyCP();
