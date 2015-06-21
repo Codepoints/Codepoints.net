@@ -26,7 +26,8 @@ class SearchComposer {
                     $result->addQuery('cp', $cp);
                 }
                 foreach ($q['term'] as $term) {
-                    $result->addQuery('term', $term);
+                    $result->addQuery('term', $term.'%', 'LIKE');
+                    $result->addQuery('term', $term.':%', 'NOT LIKE', 'AND');
                 }
             } elseif ($k === 'scx') {
                 // scx is a list of sc's
