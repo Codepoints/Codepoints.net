@@ -2,7 +2,7 @@
 -- set up font table
 --
 CREATE TABLE IF NOT EXISTS fonts (
-    "id"      TEXT PRIMARY KEY,
+    `id`      TEXT PRIMARY KEY,
     name      TEXT,
     author    TEXT,
     publisher TEXT,
@@ -17,20 +17,20 @@ CREATE TABLE IF NOT EXISTS fonts (
 --
 CREATE TABLE IF NOT EXISTS codepoint_fonts (
     cp        INTEGER(7) REFERENCES codepoints,
-    font      TEXT,
-    "id"      TEXT, -- the font ID used as filename
-    "primary" INTEGER(1) DEFAULT 0, -- used for rendering
-    PRIMARY KEY (cp, font)
+    font      VARCHAR(255),
+    `id`      VARCHAR(255), -- the font ID used as filename
+    `primary` INTEGER(1) DEFAULT 0, -- used for rendering
+    PRIMARY KEY (cp, font),
+    INDEX codepoint_fonts_cp ( cp ),
+    INDEX codepoint_fonts_cp_primary ( cp, `primary` )
 );
-CREATE INDEX IF NOT EXISTS codepoint_fonts_cp ON codepoint_fonts ( cp );
-CREATE INDEX IF NOT EXISTS codepoint_fonts_cp_primary ON codepoint_fonts ( cp, "primary" );
 
 
 --
 -- insert font data
 --
 INSERT OR REPLACE INTO fonts
-    ("id",
+    (`id`,
         name, author, publisher, url, copyright, license)
 VALUES
 ( 'Aegean', 'Aegean', 'George Douros', '', 'http://users.teilar.gr/~g1951d/', 'Fonts in this site are offered free for any use; they may be installed, embedded, opened, edited, modified, regenerated, posted, packaged and redistributed.', ''),

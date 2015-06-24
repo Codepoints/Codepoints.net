@@ -145,9 +145,9 @@ def main():
     ]
     sqlfile = codecs.open('scripts_wp.sql', 'w', 'utf-8')
     sqlfile.write("""CREATE TABLE IF NOT EXISTS script_abstract (
-        sc TEXT(4),
-        abstract TEXT,
-        src TEXT(255)
+        sc VARCHAR(4),
+        abstract MEDIUMTEXT,
+        src VARCHAR(255)
     );\n""")
     sqltpl = u"INSERT OR REPLACE INTO script_abstract ( sc, abstract, src ) VALUES ( '%s', '%s', '%s' );\n"
     c = len(scripts)
@@ -174,5 +174,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
