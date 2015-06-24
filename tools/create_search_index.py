@@ -103,22 +103,14 @@ conn = sqlite3.connect((dirname(__file__) or '.')+'/../ucd.sqlite')
 conn.row_factory = sqlite3.Row
 cur = conn.cursor()
 
-# drop existing index. We build it from scratch
-exec_sql('DROP INDEX IF EXISTS search_index_term;')
-exec_sql('DROP TABLE IF EXISTS search_index;')
-
 # create the table/index for the search index
 exec_sql('''
-    CREATE TABLE
-        search_index (
-            cp INTEGER(7) REFERENCES codepoints,
-            term TEXT,
-            weight INTEGER(2) DEFAULT 1
-        );''')
-exec_sql('''
-    CREATE INDEX
-        search_index_term
-        ON search_index ( term COLLATE NOCASE );''')
+    CREATE TABLE IF NOT EXISTS search_index(
+        cp INTEGER(7) REFERENCES codepoints,
+        term VARCHAR(255) ,
+        weight INTEGER(2) DEFAULT 1,
+        INDEX search_index_term (term)
+    );''')
 
 res = cur.execute('SELECT * FROM codepoints;')
 
@@ -126,6 +118,9 @@ i = 0
 for item in res.fetchall():
     i += 1
     cp = item['cp']
+
+    # delete previous entries
+    exec_sql(u'DELETE FROM search_index WHERE cp = ?', (cp,))
 
     for j, weight in (('na', 100), ('na1', 90), ('kDefinition', 50)):
         if item[j]:
