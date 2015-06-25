@@ -182,7 +182,8 @@ class Codepoint {
             // (e.g., uppercase)
             $query = $this->db->prepare('SELECT *
                                            FROM codepoint_relation
-                                          WHERE cp = :cp');
+                                          WHERE cp = :cp
+                                       ORDER BY `order`');
             $query->execute(array(':cp' => $this->id));
             $rel = $query->fetchAll(PDO::FETCH_ASSOC);
             $query->closeCursor();
