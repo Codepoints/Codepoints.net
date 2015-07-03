@@ -17,6 +17,11 @@ $sql->execute(array(hexdec($data)));
 $img = $sql->fetchColumn();
 
 if ($img) {
+    if (! CP_DEBUG) {
+        /* extend caching to 1 week */
+        header('Cache-Control: public, mag-age=604800');
+        header('Expires: ' . gmdate('D, d M Y H:i:s', time() + 604800) . ' GMT');
+    }
     return base64_decode($img);
 } else {
     $api->throwError(API_NOT_FOUND,
