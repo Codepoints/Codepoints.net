@@ -32,6 +32,9 @@
     <?php if (isset($canonical) && $lang !== 'de'):?>
       <link rel="alternate" hreflang="de" href="https://codepoints.net<?php e($canonical.(strpos($canonical, '?') !== false? '&' : '?').'lang=de')?>">
     <?php endif?>
+    <?php if (isset($canonical) && isset($_GET['lang'])):?>
+      <link rel="alternate" hreflang="x-default" href="https://codepoints.net<?php e($canonical)?>">
+    <?php endif?>
   </head>
   <body>
     <div class="stage">
