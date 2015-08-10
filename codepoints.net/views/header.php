@@ -26,10 +26,10 @@
       <link rel="canonical" href="https://codepoints.net<?php e($canonical)?>">
     <?php endif?>
     <?php echo isset($headdata)? $headdata : ''?>
-    <?php if (isset($canonical) && $lang !== 'en'):?>
+    <?php if (isset($canonical) && ($lang !== 'en' || ! isset($_GET['lang']))):?>
       <link rel="alternate" hreflang="en" href="https://codepoints.net<?php e($canonical.(strpos($canonical, '?') !== false? '&' : '?').'lang=en')?>">
     <?php endif?>
-    <?php if (isset($canonical) && $lang !== 'de'):?>
+    <?php if (isset($canonical) && ($lang !== 'de' || ! isset($_GET['lang']))):?>
       <link rel="alternate" hreflang="de" href="https://codepoints.net<?php e($canonical.(strpos($canonical, '?') !== false? '&' : '?').'lang=de')?>">
     <?php endif?>
     <?php if (isset($canonical) && isset($_GET['lang'])):?>
