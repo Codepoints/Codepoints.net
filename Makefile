@@ -137,6 +137,8 @@ test-php: $(PHP_ALL)
 	$(info * Test PHP syntax)
 	@! find $(DOCROOT) -name \*.php -exec php -l '{}' \; | \
 		grep -v '^No syntax errors detected in '
+	$(info * Call PHP CodeSniffer)
+	@phpcs
 
 test-js: $(JS_ALL)
 	$(info * Test JS syntax)
