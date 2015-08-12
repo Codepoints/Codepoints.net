@@ -77,8 +77,8 @@ include "nav.php";
                             bin2hex(
                                 mb_convert_encoding('&#'.$int.';', 'UTF-8', 'HTML-ENTITIES')
                             )
-                        )
-                    , 2)
+                        ),
+                        2)
                 )
             )?></td>
           </tr>
@@ -91,8 +91,8 @@ include "nav.php";
                             bin2hex(
                                 mb_convert_encoding('&#'.$int.';', 'UTF-16', 'HTML-ENTITIES')
                             )
-                        )
-                    , 2)
+                        ),
+                        2)
                 )
             )?></td>
           </tr>
@@ -105,8 +105,8 @@ include "nav.php";
                             bin2hex(
                                 mb_convert_encoding('&#'.$int.';', 'UTF-32', 'HTML-ENTITIES')
                             )
-                        )
-                    , 2)
+                        ),
+                        2)
                 )
             )?></td>
           </tr>
@@ -119,8 +119,8 @@ include "nav.php";
                             bin2hex(
                                 mb_convert_encoding('&#'.$int.';', 'UTF-8', 'HTML-ENTITIES')
                             )
-                        )
-                    , 2)
+                        ),
+                        2)
                 )
             )?></td>
           </tr>
@@ -136,6 +136,9 @@ include "nav.php";
     </ul>
   <?php endif?>
   <p><?php _e('Search other codepoints:')?></p>
-  <?php $searchprefix = 'err_'; include "quicksearch.php"; unset($searchprefix); ?>
+  <?php
+    $searchprefix = 'err_';
+    include "quicksearch.php";
+    unset($searchprefix); ?>
 </div>
 <?php include "footer.php"?>

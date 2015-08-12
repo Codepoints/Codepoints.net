@@ -39,7 +39,9 @@ include "nav.php";
       <?php echo $pagination?>
       <ol class="block data">
         <?php foreach ($result->get() as $cp => $na):
-          echo '<li value="' . $cp . '">'; cp($na); echo '</li>';
+            echo '<li value="' . $cp . '">';
+            cp($na);
+            echo '</li>';
         endforeach ?>
       </ol>
       <?php echo $pagination?>
@@ -57,7 +59,9 @@ include "nav.php";
   <p><?php printf($cBlocks === 1? __('%s block matches %s:') : __('%s blocks match %s:'), '<strong>'.q($cBlocks).'</strong>', '<strong>'.q(_get('q')).'</strong>')?><p>
     <ol class="data">
       <?php foreach ($blocks as $bl):
-        echo '<li>'; bl($bl); echo '</li>';
+          echo '<li>';
+          bl($bl);
+          echo '</li>';
       endforeach ?>
     </ol>
   <?php endif?>

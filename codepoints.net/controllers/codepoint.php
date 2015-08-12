@@ -15,11 +15,11 @@ $router->registerAction(function ($url, $o) {
         } catch (Exception $e) {
             $router = Router::getRouter();
             $router->addSetting('noCP', true);
-            return False;
+            return false;
         }
         return $codepoint;
     }
-    return False;
+    return false;
 }, function ($request, $o) {
     $root = 'codepoint';
     if (is_int($request->data)) {

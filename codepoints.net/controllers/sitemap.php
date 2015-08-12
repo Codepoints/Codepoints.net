@@ -24,11 +24,11 @@ $router
             $block = new UnicodeBlock(substr(substr($url, 8), 0),
                                       $o['db']);
         } catch(Exception $e) {
-            return False;
+            return false;
         }
         return $block;
     }
-    return False;
+    return false;
 }, function($request, $o) {
     header('Content-Type: application/xml; charset=utf-8');
     $view = new View('sitemap/block.xml');

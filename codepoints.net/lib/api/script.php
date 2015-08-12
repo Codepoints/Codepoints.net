@@ -1,7 +1,7 @@
 <?php
 
 $j = array();
-$found = False;
+$found = false;
 $stm = $api->_db->prepare('SELECT abstract, src
                             FROM script_abstract WHERE sc = ?');
 
@@ -16,7 +16,7 @@ foreach (explode(',', $data) as $sc) {
         );
         $found = true;
     } else {
-        $j[$sc] = Null;
+        $j[$sc] = null;
     }
 }
 

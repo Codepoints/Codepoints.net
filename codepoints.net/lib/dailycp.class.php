@@ -6,13 +6,13 @@
  */
 class DailyCP {
 
-    protected $b = NULL;
+    protected $b = null;
     protected $db;
 
     /**
      * construct with DB instance
      */
-    public function __construct($db=NULL) {
+    public function __construct($db=null) {
         $this->db = $db;
     }
 
@@ -25,7 +25,7 @@ class DailyCP {
         $q->execute(array($date));
         $data = $q->fetch(PDO::FETCH_NUM);
         if (! $data) {
-            $data = NULL;
+            $data = null;
         }
         return $data;
     }

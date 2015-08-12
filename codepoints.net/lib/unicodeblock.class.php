@@ -44,11 +44,11 @@ class UnicodeBlock extends UnicodeRange {
     /**
      * create a new UnicodeBlock
      *
-     * If $name is given and $r is Null, the block is looked up in the
+     * If $name is given and $r is null, the block is looked up in the
      * database. If $r is set, the relevant items are taken from there.
      */
-    public function __construct($name, $db, $r=NULL) {
-        if ($r === NULL) { // performance: allow to specify range
+    public function __construct($name, $db, $r=null) {
+        if ($r === null) { // performance: allow to specify range
             $query = $db->prepare("
                 SELECT name, first, last, abstract
                 FROM blocks
@@ -60,7 +60,7 @@ class UnicodeBlock extends UnicodeRange {
                                   strtolower($name))));
             $r = $query->fetch(PDO::FETCH_ASSOC);
             $query->closeCursor();
-            if ($r === False) {
+            if ($r === false) {
                 throw new Exception('No block named ' . $name);
             }
         }
@@ -149,10 +149,10 @@ class UnicodeBlock extends UnicodeRange {
     }
 
     /**
-     * get the previous block or False
+     * get the previous block or false
      */
     public function getPrev() {
-        if ($this->prev === NULL) {
+        if ($this->prev === null) {
             $query = $this->db->prepare("
             SELECT name, first, last FROM blocks
              WHERE first < :cp AND last < :cp
@@ -161,8 +161,8 @@ class UnicodeBlock extends UnicodeRange {
             $query->execute(array(':cp' => $this->limits[0]));
             $r = $query->fetch(PDO::FETCH_ASSOC);
             $query->closeCursor();
-            if ($r === False) {
-                $this->prev = False;
+            if ($r === false) {
+                $this->prev = false;
             } else {
                 $this->prev = new static('', $this->db, $r);
             }
@@ -171,10 +171,10 @@ class UnicodeBlock extends UnicodeRange {
     }
 
     /**
-     * get the next block or False
+     * get the next block or false
      */
     public function getNext() {
-        if ($this->next === NULL) {
+        if ($this->next === null) {
             $query = $this->db->prepare("
             SELECT name, first, last FROM blocks
              WHERE first > :cp AND last > :cp
@@ -183,8 +183,8 @@ class UnicodeBlock extends UnicodeRange {
             $query->execute(array(':cp' => $this->limits[1]));
             $r = $query->fetch(PDO::FETCH_ASSOC);
             $query->closeCursor();
-            if ($r === False) {
-                $this->next = False;
+            if ($r === false) {
+                $this->next = false;
             } else {
                 $this->next = new static('', $this->db, $r);
             }
@@ -196,7 +196,7 @@ class UnicodeBlock extends UnicodeRange {
      * get the plane this block belongs to
      */
     public function getPlane() {
-        if ($this->plane === NULL) {
+        if ($this->plane === null) {
             $query = $this->db->prepare("
             SELECT name, first, last FROM planes
              WHERE first <= :first AND last >= :last
@@ -205,7 +205,7 @@ class UnicodeBlock extends UnicodeRange {
                                   ':last' => $this->limits[1]));
             $r = $query->fetch(PDO::FETCH_ASSOC);
             $query->closeCursor();
-            if ($r === False) {
+            if ($r === false) {
                 throw new Exception("No plane found for block.");
             } else {
                 $this->plane = new UnicodePlane('', $this->db, $r);
@@ -217,7 +217,7 @@ class UnicodeBlock extends UnicodeRange {
     /**
      * get the block for a specific codepoint
      */
-    public static function getForCodepoint($cp, $db=NULL) {
+    public static function getForCodepoint($cp, $db=null) {
         if ($cp instanceof Codepoint) {
             $db = $cp->getDB();
             $cp = $cp->getId();
@@ -229,7 +229,7 @@ class UnicodeBlock extends UnicodeRange {
         $query->execute(array(':cp' => $cp));
         $r = $query->fetch(PDO::FETCH_ASSOC);
         $query->closeCursor();
-        if ($r === False) {
+        if ($r === false) {
             throw new Exception('No block contains this codepoint: ' . $cp);
         }
         return new static('', $db, $r);

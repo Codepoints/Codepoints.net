@@ -14,9 +14,9 @@ class UnicodePlane {
     /**
      * create a new plane instance, optionally prefilled
      */
-    public function __construct($name, $db, $r=NULL) {
+    public function __construct($name, $db, $r=null) {
         $this->db = $db;
-        if ($r === NULL) {
+        if ($r === null) {
             $query = $this->db->prepare("
                 SELECT name, first, last FROM planes
                 WHERE replace(replace(lower(name), '_', ''), ' ', '') = :name
@@ -25,7 +25,7 @@ class UnicodePlane {
                                         strtolower($name))));
             $r = $query->fetch(PDO::FETCH_ASSOC);
             $query->closeCursor();
-            if ($r === False) {
+            if ($r === false) {
                 throw new Exception('No plane named ' . $name);
             }
         }
@@ -45,7 +45,7 @@ class UnicodePlane {
      * get all blocks belonging to this plane
      */
     public function getBlocks() {
-        if ($this->blocks === NULL) {
+        if ($this->blocks === null) {
             $query = $this->db->prepare("
                 SELECT name, first, last FROM blocks
                 WHERE first >= :first AND last <= :last");
@@ -54,7 +54,7 @@ class UnicodePlane {
             $r = $query->fetchAll(PDO::FETCH_ASSOC);
             $query->closeCursor();
             $this->blocks = array();
-            if ($r !== False) {
+            if ($r !== false) {
                 foreach ($r as $b) {
                     $this->blocks[] = new UnicodeBlock('', $this->db, $b);
                 }
@@ -64,10 +64,10 @@ class UnicodePlane {
     }
 
     /**
-     * get previous plane or False
+     * get previous plane or false
      */
     public function getPrev() {
-        if ($this->prev === NULL) {
+        if ($this->prev === null) {
             $query = $this->db->prepare('SELECT name, first, last
                 FROM planes
                 WHERE last < ?
@@ -76,8 +76,8 @@ class UnicodePlane {
             $query->execute(array($this->first));
             $r = $query->fetch(PDO::FETCH_ASSOC);
             $query->closeCursor();
-            if ($r === False) {
-                $this->prev = False;
+            if ($r === false) {
+                $this->prev = false;
             } else {
                 $this->prev = new self('', $this->db, $r);
             }
@@ -86,10 +86,10 @@ class UnicodePlane {
     }
 
     /**
-     * get next plane or False
+     * get next plane or false
      */
     public function getNext() {
-        if ($this->next === NULL) {
+        if ($this->next === null) {
             $query = $this->db->prepare('SELECT name, first, last
                 FROM planes
                 WHERE first > ?
@@ -98,8 +98,8 @@ class UnicodePlane {
             $query->execute(array($this->last));
             $r = $query->fetch(PDO::FETCH_ASSOC);
             $query->closeCursor();
-            if ($r === False) {
-                $this->next = False;
+            if ($r === false) {
+                $this->next = false;
             } else {
                 $this->next = new self('', $this->db, $r);
             }
@@ -110,7 +110,7 @@ class UnicodePlane {
     /**
      * get plane of a specific codepoint
      */
-    public static function getForCodepoint($cp, $db=NULL) {
+    public static function getForCodepoint($cp, $db=null) {
         if ($cp instanceof Codepoint) {
             $db = $cp->getDB();
             $cp = $cp->getId();
@@ -122,7 +122,7 @@ class UnicodePlane {
         $query->execute(array(':cp' => $cp));
         $r = $query->fetch(PDO::FETCH_ASSOC);
         $query->closeCursor();
-        if ($r === False) {
+        if ($r === false) {
             throw new Exception('No plane contains this codepoint: ' . $cp);
         }
         return new self('', $db, $r);

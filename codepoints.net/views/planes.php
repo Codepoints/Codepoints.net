@@ -27,7 +27,7 @@ include "nav.php";
      the almost full %s.'),
     '<a href="'.q($router->getUrl($planes[0])).'">'.__('Basic Multilingual Plane').'</a>')?>
   </p>
-  <p><?php $_sspp = array_slice($planes ,-3, 1);
+  <p><?php $_sspp = array_slice($planes, -3, 1);
     printf(__('The %s contains mostly ancient characters, like Egyptian Hieroglyphs,
      and graphic symbols, for example Mahjongg tiles or emoticons. Thirdly the
      %s hosts lots of East Asian characters, that

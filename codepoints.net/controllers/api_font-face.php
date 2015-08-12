@@ -5,7 +5,7 @@ $router->registerAction(function ($url, $o) {
     if (substr($url, 0, 14) === 'api/font-face/') {
         return preg_replace('/[^a-zA-Z0-9_.\/-]/', '', substr($url, 14));
     }
-    return False;
+    return false;
 }, function($request) {
     $font = $request->data;
     $offset = 60 * 60 * 24 * 365;

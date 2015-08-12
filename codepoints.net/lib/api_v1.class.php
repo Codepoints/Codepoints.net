@@ -85,7 +85,7 @@ class API_v1 implements iAPIAccess {
     /**
      * run the API action and collect response and errors
      */
-    public function run($data = null) {
+    public function run($data=null) {
         if ($this->_request->method === "DELETE") {
             $this->throwError(API_BAD_REQUEST,
                               _("Ye?h, th?nks! You er?sed this codepoint. Are you h?ppy now?"));
@@ -198,10 +198,12 @@ class API_v1 implements iAPIAccess {
                 } else {
                     return $thing;
                 }
+                break;
             case 'application/json':
             case 'application/api-problem+json':
             case 'application/javascript':
                 return json_encode($thing, true);
+                break;
             default:
                 // hope, that $thing is already in the right format
                 return $thing;
@@ -213,7 +215,7 @@ class API_v1 implements iAPIAccess {
      *
      * Also sends CORS header
      */
-    protected function _sendHeaders(Array $additional = array()) {
+    protected function _sendHeaders(Array $additional=array()) {
         header('Content-Type: '.$this->_mime.'; charset=UTF-8');
         header('Access-Control-Allow-Origin: *');
         header('Unicode-Version: '.UNICODE_VERSION);
@@ -251,7 +253,7 @@ class API_v1 implements iAPIAccess {
     /**
      * do the output and header sending
      */
-    protected function _finish($content, $headers = array()) {
+    protected function _finish($content, $headers=array()) {
         $data = $this->_encode($content);
 
         $this->_detectJSONP($data);

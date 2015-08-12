@@ -9,8 +9,9 @@ function utf8_to_unicode($str) {
     $unicode = array();
     $values = array();
     $lookingFor = 1;
+    $lenstr = strlen($str);
 
-    for ($i = 0; $i < strlen( $str ); $i++ ) {
+    for ($i = 0; $i < $lenstr; $i++) {
 
         $thisValue = ord( $str[ $i ] );
 
@@ -168,7 +169,7 @@ function e($s) {
  * @see http://krazydad.com/tutorials/makecolors.php for the maths
  */
 function getNextColor($frequency1, $frequency2, $frequency3,
-    $phase1, $phase2, $phase3, $center = null, $width = null) {
+    $phase1, $phase2, $phase3, $center=null, $width=null) {
     static $i = 0;
     if (is_null($center)) {
         $center = 128;

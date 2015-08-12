@@ -31,13 +31,13 @@ class Request {
 
     public $method = "GET";
 
-    public function __construct($url=Null) {
-        if ($url === Null) {
+    public function __construct($url=null) {
+        if ($url === null) {
             $url = $_SERVER['REQUEST_URI'];
         }
         $this->url = $this->trunkUrl = $url;
-        if (strpos($url, '?') !== False) {
-            $this->trunkUrl = strstr($url, '?', True);
+        if (strpos($url, '?') !== false) {
+            $this->trunkUrl = strstr($url, '?', true);
         }
         if (array_key_exists('HTTP_ACCEPT', $_SERVER)) {
             $types = explode(',', $_SERVER['HTTP_ACCEPT']);

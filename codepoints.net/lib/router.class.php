@@ -42,13 +42,13 @@ class Router {
     /**
      * get the action for an URL
      *
-     * If no URL matches, the function returns Null
+     * If no URL matches, the function returns null
      */
-    public function getAction($url=Null) {
-        if ($url === Null) {
+    public function getAction($url=null) {
+        if ($url === null) {
             $url = substr($_SERVER['REQUEST_URI'],
                                  strlen($this->baseURL));
-            if ($url === False) {
+            if ($url === false) {
                 $url = '';
             }
         }
@@ -67,33 +67,33 @@ class Router {
             } else {
                 $r = ($action[0] === $tUrl);
             }
-            if ($r !== False) {
+            if ($r !== false) {
                 $req->data = $r;
                 return array($action[1], $req);
             }
         }
-        return Null;
+        return null;
     }
 
     /**
      * call the registered action for an URL
      *
-     * If no registered action is found, the function returns False.
+     * If no registered action is found, the function returns false.
      */
-    public function callAction($url=Null) {
+    public function callAction($url=null) {
         $action = $this->getAction($url);
-        if ($action !== Null) {
+        if ($action !== null) {
             if ($this->settings['request']->type === 'text/html') {
                 header('Content-Type: text/html; charset=utf-8');
             }
             try {
                 $action[0]($action[1], $this->settings);
             } catch (RoutingError $e) {
-                return False;
+                return false;
             }
-            return True;
+            return true;
         }
-        return False;
+        return false;
     }
 
     /**
@@ -107,7 +107,7 @@ class Router {
     /**
      * get a setting, that applies to all possible actions
      */
-    public function getSetting($key, $default=Null) {
+    public function getSetting($key, $default=null) {
         if (array_key_exists($key, $this->settings)) {
             return $this->settings[$key];
         }
@@ -125,9 +125,9 @@ class Router {
     /**
      * get the URL for an object based on registerUrl input
      */
-    public function getUrl($object=Null) {
+    public function getUrl($object=null) {
         $path = '';
-        if ($object === Null) {
+        if ($object === null) {
             return $this->baseURL;
         } elseif (is_string($object)) {
             $class = $object;
@@ -149,9 +149,9 @@ class Router {
      *
      * When setting, returns the old base URL
      */
-    public function base($val=NULL) {
+    public function base($val=null) {
         $b = $this->baseURL;
-        if ($val !== NULL) {
+        if ($val !== null) {
             $this->baseURL = $val;
         }
         return $b;

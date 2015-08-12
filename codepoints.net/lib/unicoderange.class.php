@@ -38,7 +38,7 @@ class UnicodeRange implements Iterator {
      * prepare the set by fetching codepoints
      */
     protected function _prepare() {
-        if ($this->set === Null) {
+        if ($this->set === null) {
             $this->set = $this->fetchNames($this->_set);
         }
     }
@@ -74,7 +74,7 @@ class UnicodeRange implements Iterator {
 
     public function valid() {
         $this->_prepare();
-        return key($this->set) !== NULL;
+        return key($this->set) !== null;
     }
 
     /**
@@ -85,7 +85,7 @@ class UnicodeRange implements Iterator {
         $this->_prepare();
         $indices = array_keys($this->set);
         if (! count($indices)) {
-            return Null;
+            return null;
         }
         return array($indices[0], end($indices));
     }
@@ -97,7 +97,7 @@ class UnicodeRange implements Iterator {
         $this->_prepare();
         $r = array_keys($this->set);
         if (! count($r)) {
-            return Null;
+            return null;
         }
         return $r[0];
     }
@@ -165,7 +165,7 @@ class UnicodeRange implements Iterator {
             $query->execute();
             $r = $query->fetchAll(PDO::FETCH_ASSOC);
             $query->closeCursor();
-            if ($r !== False) {
+            if ($r !== false) {
                 foreach ($r as $cp) {
                     if (! $cp['image']) {
                         $cp['image'] = '';
@@ -249,7 +249,7 @@ class UnicodeRange implements Iterator {
         if (count($matches) === 2) {
             return intval($matches[1], 16);
         }
-        return NULL;
+        return null;
     }
 
 }

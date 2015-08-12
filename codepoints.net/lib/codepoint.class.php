@@ -41,14 +41,14 @@ class Codepoint {
      */
     public function getId($type='dec') {
         switch ($type) {
-        case 'hex':
-            return self::hex($this->id);
-        case 'full':
-            return $this->__toString();
-        case 'name':
-            return $this->getName();
-        default:
-            return $this->id;
+            case 'hex':
+                return self::hex($this->id);
+            case 'full':
+                return $this->__toString();
+            case 'name':
+                return $this->getName();
+            default:
+                return $this->id;
         }
     }
 
@@ -107,7 +107,7 @@ class Codepoint {
      * get an image representing the character
      */
     public function getImage() {
-        if ($this->image === NULL) {
+        if ($this->image === null) {
             $props = $this->getProperties();
             $r = $props['image'];
             if (! $r) {
@@ -127,9 +127,9 @@ class Codepoint {
      * fetch name
      */
     public function getName() {
-        if ($this->name === NULL) {
+        if ($this->name === null) {
             $props = $this->getProperties();
-            if ($props === False) {
+            if ($props === false) {
                 throw new Exception('This Codepoint does not exist: '.$this->id);
             } else {
                 if (isset($props['na']) && $props['na']) {
@@ -144,7 +144,7 @@ class Codepoint {
                             break;
                         }
                     }
-                    if ($this->name === NULL) {
+                    if ($this->name === null) {
                         $this->name = '<control>';
                         if ($props['NChar'] === '1') {
                             $this->name = 'NONCHARACTER';
@@ -160,7 +160,7 @@ class Codepoint {
      * fetch its properties
      */
     public function getProperties() {
-        if ($this->properties === NULL) {
+        if ($this->properties === null) {
             $query = $this->db->prepare('
                 SELECT *, (SELECT codepoint_image.image
                              FROM codepoint_image
@@ -200,7 +200,7 @@ class Codepoint {
 
             // if the abstract is empty for a lowercase letter, take the
             // one of the corresponding uppercase character
-            if ($this->properties['abstract'] === NULL &&
+            if ($this->properties['abstract'] === null &&
                 $this->properties['gc'] === 'Ll' &&
                 array_key_exists('uc', $this->properties)) {
                 if ($this->properties['uc'] instanceof Codepoint) {
@@ -216,7 +216,7 @@ class Codepoint {
      * fetch characters that can be confused with the current one
      */
     public function getConfusables() {
-        if ($this->confusables === NULL) {
+        if ($this->confusables === null) {
             $confusables = array();
             $query = $this->db->prepare('SELECT *
                                            FROM codepoint_confusables
@@ -274,7 +274,7 @@ class Codepoint {
      * fetch fonts that include this codepoint
      */
     public function getFonts() {
-        if ($this->fonts === NULL) {
+        if ($this->fonts === null) {
             $query = $this->db->prepare('SELECT font, "id", "primary"
                                            FROM codepoint_fonts
                                           WHERE cp = :cp
@@ -290,7 +290,7 @@ class Codepoint {
      * fetch related characters
      */
     public function related() {
-        if ($this->related === NULL) {
+        if ($this->related === null) {
             $this->related = array();
             $query = $this->db->prepare('SELECT cp
                                            FROM codepoint_relation
@@ -309,7 +309,7 @@ class Codepoint {
     /**
      * fetch one property, possibly already as new self
      */
-    public function getProp($prop, $default=NULL) {
+    public function getProp($prop, $default=null) {
         $props = $this->getProperties();
         if (array_key_exists($prop, $props)) {
             if (in_array($prop, array('bmg','suc','slc','stc','scf'))) {
@@ -345,7 +345,7 @@ class Codepoint {
                     return false;
                 } else {
                     return null;
-            }
+                }
             } else {
                 return $props[$prop];
             }
@@ -406,7 +406,7 @@ class Codepoint {
      * get the containing Unicode Block
      */
     public function getBlock() {
-        if ($this->block === NULL) {
+        if ($this->block === null) {
             try {
                 $this->block = UnicodeBlock::getForCodepoint($this);
             } catch (Exception $e) {
@@ -420,7 +420,7 @@ class Codepoint {
      * get the containing Unicode Plane
      */
     public function getPlane() {
-        if ($this->plane === NULL) {
+        if ($this->plane === null) {
             $this->plane = UnicodePlane::getForCodepoint($this);
         }
         return $this->plane;
@@ -430,7 +430,7 @@ class Codepoint {
      * get a set of alias names for this codepoint
      */
     public function getAlias() {
-        if ($this->alias === NULL) {
+        if ($this->alias === null) {
             $query = $this->db->prepare('SELECT cp, alias, `type`
                                            FROM codepoint_alias
                                           WHERE cp = :cp');
@@ -442,10 +442,10 @@ class Codepoint {
     }
 
     /**
-     * get the previous codepoint (or False)
+     * get the previous codepoint (or false)
      */
     public function getPrev() {
-        if ($this->prev === NULL) {
+        if ($this->prev === null) {
             $query = $this->db->prepare('SELECT cp FROM codepoints
                     WHERE cp < :cp
                     ORDER BY cp DESC
@@ -463,10 +463,10 @@ class Codepoint {
     }
 
     /**
-     * get the next codepoint (or False)
+     * get the next codepoint (or false)
      */
     public function getNext() {
-        if ($this->next === NULL) {
+        if ($this->next === null) {
             $query = $this->db->prepare('SELECT cp FROM codepoints
                     WHERE cp > :cp
                     ORDER BY cp ASC
@@ -500,8 +500,8 @@ class Codepoint {
      * int-to-hex with formatting
      */
     public static function hex($int) {
-        if ($int === NULL || $int === False) {
-            return NULL;
+        if ($int === null || $int === false) {
+            return null;
         }
         return sprintf("%04X", $int);
     }
@@ -519,7 +519,7 @@ class Codepoint {
                                 strtolower($name))));
         $r = $query->fetch(PDO::FETCH_ASSOC);
         $query->closeCursor();
-        if ($r === False) {
+        if ($r === false) {
             throw new Exception('No codepoint named ' . $name);
         }
         return new self($r['cp'], $db, array(

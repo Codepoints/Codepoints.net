@@ -10,7 +10,7 @@ $router->registerAction(function ($url, $o) {
     } elseif (substr($url, 0, 7) === 'api/v1/') {
         return substr($url, 7);
     }
-    return False;
+    return false;
 }, function($request, $o) {
     $action = $data = "";
     if ($request->data) {

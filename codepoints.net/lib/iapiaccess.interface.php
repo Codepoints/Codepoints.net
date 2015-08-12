@@ -17,7 +17,7 @@ interface iAPIAccess {
 
     public function finish();
 
-    public function run($data = null);
+    public function run($data=null);
 
     public function handleError();
 

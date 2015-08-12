@@ -1,0 +1,90 @@
+<ruleset name="CP Standard">
+
+  <arg name="extensions" value="php" />
+  <arg name="report" value="full" />
+
+  <file>./codepoints.net/controllers</file>
+  <file>./codepoints.net/index.php</file>
+  <file>./codepoints.net/lib</file>
+  <file>./codepoints.net/ucotd.php</file>
+  <file>./codepoints.net/views</file>
+
+  <exclude-pattern>*/codepoints.net/lib/vendor/*</exclude-pattern>
+  <exclude-pattern>*/codepoints.net/views/sitemap/base.xml.php</exclude-pattern>
+
+  <rule ref="Generic.CodeAnalysis"/>
+  <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter">
+    <exclude-pattern>*/codepoints.net/lib/api_v1.class.php</exclude-pattern>
+  </rule>
+  <rule ref="Generic.CodeAnalysis.EmptyStatement.DetectedCATCH">
+    <severity>0</severity>
+  </rule>
+  <rule ref="Generic.ControlStructures.InlineControlStructure"/>
+  <rule ref="Generic.Files.ByteOrderMark"/>
+  <rule ref="Generic.Files.LineEndings">
+    <properties>
+      <property name="eolChar" value="\n"/>
+    </properties>
+  </rule>
+  <rule ref="Generic.Formatting.DisallowMultipleStatements"/>
+  <rule ref="Generic.Functions.FunctionCallArgumentSpacing"/>
+  <rule ref="Generic.NamingConventions.UpperCaseConstantName"/>
+  <rule ref="Generic.PHP.CharacterBeforePHPOpeningTag">
+    <exclude-pattern>*/codepoints.net/ucotd.php</exclude-pattern>
+    <exclude-pattern>*/codepoints.net/views/*</exclude-pattern>
+  </rule>
+  <rule ref="Generic.PHP.DeprecatedFunctions"/>
+  <rule ref="Generic.PHP.DisallowShortOpenTag"/>
+  <rule ref="Generic.PHP.ForbiddenFunctions"/>
+  <rule ref="Generic.PHP.LowerCaseConstant"/>
+  <rule ref="Generic.PHP.LowerCaseKeyword"/>
+  <rule ref="Generic.PHP.NoSilencedErrors">
+    <exclude-pattern>*/codepoints.net/lib/view.class.php</exclude-pattern>
+  </rule>
+  <rule ref="Generic.PHP.Syntax"/>
+  <rule ref="Generic.WhiteSpace.ScopeIndent">
+    <exclude-pattern>*/codepoints.net/views/*</exclude-pattern>
+    <properties>
+      <property name="ignoreIndentationTokens" type="array" value="T_COMMENT,T_DOC_COMMENT_OPEN_TAG"/>
+    </properties>
+  </rule>
+  <rule ref="Generic.WhiteSpace.DisallowTabIndent"/>
+
+  <rule ref="PEAR.Functions.ValidDefaultValue"/>
+
+  <!--
+  <rule ref="PSR1.Classes.ClassDeclaration"/>
+  <rule ref="PSR1.Files.SideEffects"/>
+  -->
+
+  <rule ref="PSR2.Classes.PropertyDeclaration"/>
+  <rule ref="PSR2.Classes.PropertyDeclaration.Underscore">
+    <severity>0</severity>
+  </rule>
+  <rule ref="PSR2.ControlStructures.ControlStructureSpacing"/>
+  <rule ref="PSR2.ControlStructures.ElseIfDeclaration"/>
+  <rule ref="PSR2.ControlStructures.SwitchDeclaration"/>
+  <rule ref="PSR2.Files.EndFileNewline"/>
+  <rule ref="PSR2.Files.ClosingTag"/>
+  <rule ref="PSR2.Methods.MethodDeclaration"/>
+  <rule ref="PSR2.Methods.MethodDeclaration.Underscore">
+    <severity>0</severity>
+  </rule>
+  <rule ref="PSR2.Namespaces.NamespaceDeclaration"/>
+  <rule ref="PSR2.Namespaces.UseDeclaration"/>
+
+  <rule ref="Squiz.ControlStructures.ForEachLoopDeclaration"/>
+  <rule ref="Squiz.ControlStructures.ForLoopDeclaration"/>
+  <rule ref="Squiz.ControlStructures.LowercaseDeclaration"/>
+  <rule ref="Squiz.Functions.FunctionDeclaration"/>
+  <rule ref="Squiz.Functions.FunctionDeclarationArgumentSpacing">
+    <properties>
+      <property name="equalsSpacing" value="0"/>
+    </properties>
+  </rule>
+  <rule ref="Squiz.Functions.LowercaseFunctionKeywords"/>
+  <rule ref="Squiz.Scope.MethodScope"/>
+  <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace"/>
+  <rule ref="Squiz.WhiteSpace.ScopeKeywordSpacing"/>
+
+</ruleset>

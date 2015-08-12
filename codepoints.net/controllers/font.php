@@ -4,7 +4,7 @@ $router->registerAction(function ($url, $o) {
     if (substr($url, 0, 5) === 'font/') {
         return urldecode(substr($url, 5));
     }
-    return False;
+    return false;
 }, function($request, $o) {
     $name = $request->data;
     $data = $o['db']->prepare('

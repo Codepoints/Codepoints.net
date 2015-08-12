@@ -35,7 +35,7 @@ class L10n {
     /**
      * construct a new l10n wrapper
      */
-    function __construct($lang = Null, $domain = Null) {
+    public function __construct($lang=null, $domain=null) {
         $this->setLanguage($lang);
         if ($domain) {
             $this->domain = $domain;
@@ -46,7 +46,7 @@ class L10n {
     /**
      * set the language in use
      */
-    public function setLanguage($lang=NULL) {
+    public function setLanguage($lang=null) {
         if (! $lang) {
             $lang = L10n::getDefaultLanguage();
         }
@@ -91,7 +91,7 @@ class L10n {
      */
     public static function get($domain="messages") {
         if (! array_key_exists($domain, self::$instances)) {
-            self::$instances[$domain] = new self(Null, $domain);
+            self::$instances[$domain] = new self(null, $domain);
         }
         return self::$instances[$domain];
     }

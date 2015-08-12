@@ -103,7 +103,7 @@ $router->registerAction('wizard', function ($request, $o) {
                 $pagination->setPage($page);
                 $view = new View('result');
                 $blocks = array();
-                $wizard = True;
+                $wizard = true;
                 echo $view->render(compact('result', 'blocks', 'pagination',
                                         'page', 'wizard'));
             }

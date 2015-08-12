@@ -48,7 +48,7 @@
       <tr class="p_<?php e($k)?>">
         <th class="gl" data-term="<?php e($k)?>"><?php e($info->getCategory($k))?> <small>(<?php e($k)?>)</small></th>
         <td>
-        <?php if ($v === '' || $v === Null):?>
+        <?php if ($v === '' || $v === null):?>
           <span class="x">—</span>
         <?php elseif (in_array($k, $bools)):?>
           <span class="<?php if ($v):?>y">✔<?php else:?>n">✘<?php endif?></span>

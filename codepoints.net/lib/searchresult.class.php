@@ -43,9 +43,9 @@ class SearchResult extends UnicodeRange {
     /**
      * do the search
      */
-    protected function fetchNames($set=Null) {
+    protected function fetchNames($set=null) {
         $query = $this->query;
-        if ($set !== Null) {
+        if ($set !== null) {
             $this->sanitizeSet($set);
             $this->_set = $set;
         }
@@ -66,10 +66,10 @@ class SearchResult extends UnicodeRange {
         $r = $stm->fetchAll(PDO::FETCH_ASSOC);
         $names = array();
         $stm->closeCursor();
-        if ($r !== False) {
+        if ($r !== false) {
             $cps_ordered = array_map(function($item) {
-                               return $item['cp'];
-                           }, $r);
+                return $item['cp'];
+            }, $r);
             $stm = $this->db->prepare(sprintf('
                 SELECT cp, na, na1, image
                   FROM codepoints

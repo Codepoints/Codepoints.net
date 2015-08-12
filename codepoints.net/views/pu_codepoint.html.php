@@ -142,8 +142,8 @@ $repr = function($coding='UTF-8') use ($codepoint) {
                 bin2hex(
                     mb_convert_encoding('&#'.$codepoint.';', $coding, 'HTML-ENTITIES')
                 )
-            )
-        , 2)
+            ),
+        2)
     );
 };
 

@@ -27,34 +27,34 @@ class Cache {
     public function write($path, $content) {
         if (! $this->_checkSize()) {
             flog(sprintf('Cache is full [%s]', $path));
-            return False;
+            return false;
         }
         if (! is_dir(CACHE_FOLDER)) {
-            mkdir(CACHE_FOLDER, 0777, True);
+            mkdir(CACHE_FOLDER, 0777, true);
         }
         $gz = gzopen($this->_getPath($path), 'w9');
-        if ($gz === False) {
-            return False;
+        if ($gz === false) {
+            return false;
         }
         gzwrite($gz, $content);
         gzclose($gz);
-        return True;
+        return true;
     }
 
     /**
      * fetch content from the cache
      *
-     * returns False, if nothing found or index.php is more recent
+     * returns false, if nothing found or index.php is more recent
      */
-    public function fetch($path, $zipped=False) {
+    public function fetch($path, $zipped=false) {
         $rpath = $this->_getPath($path);
         if (! is_file($rpath)) {
-            return False;
+            return false;
         }
         if (filemtime($rpath) < filemtime(dirname(__FILE__).'/../index.php')) {
             // clear cache, if index.php has changed
             unlink($rpath);
-            return False;
+            return false;
         }
         if ($zipped) {
             $r = file_get_contents($rpath);
@@ -86,13 +86,13 @@ class Cache {
      */
     protected function _checkSize() {
         if (! is_dir(CACHE_FOLDER)) {
-            return True;
+            return true;
         }
         $size = exec('du -b '.escapeshellarg(CACHE_FOLDER).' | awk "{print \$1}"');
         if ((int)$size > $this->allowedCacheSize) {
-            return False;
+            return false;
         }
-        return True;
+        return true;
     }
 
     /**

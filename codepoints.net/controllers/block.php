@@ -6,11 +6,11 @@ $router->registerAction(function ($url, $o) {
         try {
             $block = new UnicodeBlock($url, $o['db']);
         } catch(Exception $e) {
-            return False;
+            return false;
         }
         return $block;
     }
-    return False;
+    return false;
 }, function($request) {
     $block = $request->data;
     $view = new View('block.html');

@@ -90,7 +90,7 @@ include "nav.php";
         </figure>
         <div class="abstract">
           <p>
-<?php 
+<?php
     $plane = $codepoint->getPlane();
     printf(__('U+%04X was added to Unicode in version
             %s. It belongs to the block %s in the %s.'),

@@ -9,12 +9,12 @@ $router->registerAction(function ($url, $o) {
             try {
                 $plane = new UnicodePlane(substr($url, 0, -6), $o['db']);
             } catch(Exception $e) {
-                return False;
+                return false;
             }
         }
         return $plane;
     }
-    return False;
+    return false;
 }, function($request) {
     $plane = $request->data;
     $view = new View('plane.html');

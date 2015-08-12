@@ -10,7 +10,7 @@ $router->registerAction('codepoint_of_the_day', function($request, $o) {
         echo $view->render(compact('cps'));
         return;
     }
-    $date = NULL;
+    $date = null;
     $today = date('Y-m-d');
     if (isset($_GET['date'])) {
         if (preg_match('/^20[0-9]{2}-[01][0-9]-[0-3][0-9]$/', $_GET['date'])) {

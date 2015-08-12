@@ -58,7 +58,7 @@ define('CACHE_BUST', '52a637bd6bb36ade069dc5c31e84d63b2b940678');
 
 
 /* enable gzip compression of HTML */
-ini_set('zlib.output_compression', True);
+ini_set('zlib.output_compression', true);
 
 
 /**
@@ -99,10 +99,10 @@ if (! CP_DEBUG) {
  * log $msg to /tmp/codepoints.log
  */
 function flog($msg) {
-   if (CP_DEBUG) {
-       error_log(sprintf("[%s] %s\n", date("c"), trim($msg)), 3,
-                 '/tmp/codepoints.log');
-   }
+    if (CP_DEBUG) {
+        error_log(sprintf("[%s] %s\n", date("c"), trim($msg)), 3,
+                  '/tmp/codepoints.log');
+    }
 }
 
 
@@ -124,12 +124,12 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER) &&
 if (! CP_DEBUG && strlen($_SERVER['REQUEST_URI']) < 255 && ! count($_POST)) {
     $cache = new Cache();
     // we return the already gzipped cache entry, if the browser requests it
-    $zipped = False;
+    $zipped = false;
     $xgzip = '';
     if (isset($_SERVER['HTTP_ACCEPT_ENCODING']) &&
-        strpos($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip') !== False) {
-        $zipped = True;
-        if (strpos($_SERVER['HTTP_ACCEPT_ENCODING'], 'x-gzip') !== False) {
+        strpos($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip') !== false) {
+        $zipped = true;
+        if (strpos($_SERVER['HTTP_ACCEPT_ENCODING'], 'x-gzip') !== false) {
             $xgzip = 'x-';
         }
     }
@@ -139,7 +139,7 @@ if (! CP_DEBUG && strlen($_SERVER['REQUEST_URI']) < 255 && ! count($_POST)) {
         header('Content-Type: text/html; charset=utf-8');
         if ($zipped) {
             flog('Send gzipped Cache hit');
-            ini_set('zlib.output_compression', False);
+            ini_set('zlib.output_compression', false);
             header('Content-Encoding: '.$xgzip.'gzip');
         }
         die($cData);
@@ -211,12 +211,12 @@ $router->registerUrl('Codepoint', function ($object) {
 /**
  * call the main action or produce a 404 error
  */
-if ($router->callAction() === False) {
-    $block = Null;
-    $plane = Null;
-    $int = Null;
-    $prev = Null;
-    $next = Null;
+if ($router->callAction() === false) {
+    $block = null;
+    $plane = null;
+    $int = null;
+    $prev = null;
+    $next = null;
 
     // if the URL looks like a codepoint, give some extra hints
     if ($router->getSetting('noCP')) {
@@ -238,7 +238,7 @@ if ($router->callAction() === False) {
                 }
             }
         } else {
-            $int = Null; // re-set emptiness
+            $int = null; // re-set emptiness
         }
     } else {
         /* send the 404 only, if this is not a possible CP */

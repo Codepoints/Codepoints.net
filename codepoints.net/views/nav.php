@@ -32,7 +32,10 @@
           foreach ($stem as $stemX):
               if (substr($_SERVER['HTTP_REFERER'], 0, strlen($stemX)) === $stemX):?>
                   <li class="up"><a href="<?php e($_SERVER['HTTP_REFERER'])?>"><?php _e('Back to search results')?></a></li>
-      <?php break; endif; endforeach; endif?>
+                  <?php break;
+              endif;
+          endforeach;
+      endif?>
       <li class="scripts"><a href="<?php e($router->getUrl('scripts'))?>"><?php _e('Scripts')?></a></li>
       <li class="random"><a href="<?php e($router->getUrl().'random')?>"><?php _e('Random')?></a></li>
       <li class="about"><a href="<?php e($router->getUrl().'about')?>"><?php _e('About')?></a></li>

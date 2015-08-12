@@ -108,13 +108,13 @@ class View {
 
     protected $file;
 
-    protected $isTemplate = False;
+    protected $isTemplate = false;
 
     public function __construct($view) {
         $base = dirname(__DIR__);
         if (is_file($base."/static/tpl/$view.mustache")) {
             $this->file = $view;
-            $this->isTemplate = True;
+            $this->isTemplate = true;
         } else {
             $this->file = $base."/views/$view.php";
         }

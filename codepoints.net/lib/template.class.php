@@ -32,7 +32,7 @@ class Template {
         ));
     }
 
-    public function render($view = array()) {
+    public function render($view=array()) {
         return $this->mustache->render($this->template, $view);
     }
 

@@ -5,7 +5,7 @@ $router->registerAction('search', function ($request, $o) {
     $router = Router::getRouter();
     $info = UnicodeInfo::get();
     $blocks = array();
-    $_q = Null;
+    $_q = null;
     if (array_key_exists('q', $_GET)) {
         $_q = $_GET['q'];
         preg_match_all('/\b[a-z][a-z0-9 \\-]+\b/i', $_q, $m);
