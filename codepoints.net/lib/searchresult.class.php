@@ -106,17 +106,10 @@ class SearchResult extends UnicodeRange {
         // query is LIMITed
         $c = count($this->set);
         if ($this->page > 1 || $c === $this->pageLength) {
-            if (count($this->query) === 0) {
-                $stm = $this->db->prepare(sprintf('
-                    SELECT COUNT(DISTINCT cp) AS c
-                        FROM search_index
-                        WHERE %s', $search));
-            } else {
-                $stm = $this->db->prepare(sprintf('
-                    SELECT COUNT(DISTINCT cp) AS c
-                        FROM search_index
-                        WHERE %s', $search));
-            }
+            $stm = $this->db->prepare(sprintf('
+                SELECT COUNT(DISTINCT cp) AS c
+                    FROM search_index
+                    WHERE %s', $search));
             $stm->execute($params);
             $r = $stm->fetch(PDO::FETCH_ASSOC);
             $stm->closeCursor();
