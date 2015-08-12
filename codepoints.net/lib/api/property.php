@@ -2,8 +2,8 @@
 
 require_once __DIR__.'/../tools.php';
 
-$width = 512;
-$height = 384;
+$width = 256;
+$height = 256 * 3; // three planes high
 
 $fields = array(
     'cp', 'age', 'gc', 'ccc', 'bc', 'Bidi_M', 'Bidi_C', 'dt', 'CE', 
@@ -78,7 +78,7 @@ $colors = array();
 
 foreach ($result as $cp) {
     $_x = $cp['cp'] % $width;
-    $_y = round($cp['cp'] / $width);
+    $_y = floor($cp['cp'] / $width);
     if ($data === 'cp') {
         // codepoints are only checked for existance. There's no use coloring
         // each CP in an individual color
