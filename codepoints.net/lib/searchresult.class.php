@@ -59,7 +59,7 @@ class SearchResult extends UnicodeRange {
                 ($this->page * $this->pageLength).','.$this->pageLength));
         } else {
             $stm = $this->db->prepare(sprintf($select, 'cp', $search,
-                'GROUP BY cp ORDER BY SUM(weight) DESC LIMIT '.
+                'GROUP BY cp ORDER BY SUM(weight) DESC, cp ASC LIMIT '.
                 ($this->page * $this->pageLength).','.$this->pageLength));
         }
         $stm->execute($params);
