@@ -1,0 +1,14 @@
+@mixin pie-clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  *zoom: 1;
+}
+
+@mixin inline-block() {
+  display: inline-block;
+  *zoom: 1;
+  *display: inline;
+}

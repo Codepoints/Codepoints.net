@@ -1,5 +1,5 @@
 
-@import "compass";
+@import "mixins";
 @import "normalize";
 @import "settings";
 @import "ui";
@@ -42,8 +42,8 @@ h3 {
 a:link {
   color: $cLink;
   text-decoration: none;
-  @include transition-property("color, border-color");
-  @include transition-duration(.5s);
+  transition-property: color, border-color;
+  transition-duration: .5s;
 }
 
 a:visited {

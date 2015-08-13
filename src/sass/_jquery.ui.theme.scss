@@ -418,7 +418,7 @@
 
 	.ui-dialog-titlebar {
 	  background: black;
-	  @include background(linear-gradient(top, black, #191919));
+	  background: linear-gradient(to bottom, black, #191919);
 	  color: white;
 	  border: none;
 	  border-bottom: 1px solid black;

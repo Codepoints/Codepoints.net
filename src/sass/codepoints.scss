@@ -1,5 +1,5 @@
 
-@import "compass";
+@import "mixins";
 @import "normalize";
 @import "settings";
 @import "ui";
@@ -60,8 +60,8 @@ section {
 a:link {
   color: $cLink;
   text-decoration: none;
-  @include transition-property("color, border-color");
-  @include transition-duration(.5s);
+  transition-property: color, border-color;
+  transition-duration: .5s;
 }
 
 a:visited {
@@ -349,7 +349,7 @@ input[type="text"] {
   margin: 0 auto;
   select {
     margin: 0 0 15px;
-    @include opacity(.67);
+    opacity: .67;
     float: right;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -357,14 +357,14 @@ input[type="text"] {
     @include button-normal;
     &:focus, &:hover {
       @include button-focus;
-      @include opacity(1);
+      opacity: 1;
       outline: none;
       position: relative;
       z-index: 10;
     }
     &:active {
       @include button-active;
-      @include opacity(1);
+      opacity: 1;
       outline: none;
       position: relative;
       z-index: 10;

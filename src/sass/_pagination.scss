@@ -1,4 +1,3 @@
-@import "compass";
 @import "buttons";
 @import "keyframes";
 @import "settings";
@@ -92,19 +91,15 @@
 
   & {
     position: relative;
-    @include experimental(animation-duration, $tAnimationBase);
-    @include experimental(animation-fill-mode, forwards);
-    @include experimental(animation-timing-function, ease-out);
-    -webkit-transition: -webkit-transform $tAnimationBase ease 0s;
+    animation-duration: $tAnimationBase;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
     transition: transform $tAnimationBase ease 0s;
   }
 
   & .mask {
-    -webkit-transition-property: background-color;
     transition-property: background-color;
-    -webkit-transition-duration: #{$tAnimationBase*10};
     transition-duration: #{$tAnimationBase*10};
-    -webkit-transition-timing-function: ease-out;
     transition-timing-function: ease-out;
   }
 

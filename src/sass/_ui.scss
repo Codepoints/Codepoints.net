@@ -2,10 +2,7 @@
 
 @mixin user-select($select) {
   // make text un-selectable
-  $select: unquote($select);
-  @include experimental(user-select, $select,
-    -moz, -webkit, not -o, not -ms, -khtml, official
-  );
+  user-select: unquote($select);
 }
 
 @mixin selection($bg, $fg, $ts: none) {
@@ -56,11 +53,11 @@
     font-style: normal;
     line-height: 15px;
     text-align: center;
-    @include border-radius(2px);
+    border-radius: 2px;
     text-shadow: none;
   }
   & .missing span {
-    @include background(linear-gradient(top, rgba(255,255,255,.5), rgba(255,255,255,0)));
+    background: linear-gradient(to bottom, rgba(255,255,255,.5), rgba(255,255,255,0));
     border: 1px solid $cBackground;
     color: $cTextBright;
     height: 43px;
@@ -242,8 +239,8 @@
   background: transparentize($cBackground, .5);
   text-decoration: none;
   color: $color;
-  @include transition-property('box-shadow, border-color');
-  @include transition-duration(.3s);
+  transition-property: box-shadow, border-color;
+  transition-duration: .3s;
   outline: none;
   box-shadow: 0 1px rgba(255,255,255,.67),
               1px 0 rgba(255,255,255,.33),
@@ -254,7 +251,7 @@
   &:hover {
     text-shadow: 0 1px white;
     background: white;
-    @include background(linear-gradient(top, rgba(255,255,255,.5), rgba(127,127,127,0)));
+    background: linear-gradient(to bottom, rgba(255,255,255,.5), rgba(127,127,127,0));
     border-color: $cBorderMedium;
     border-bottom-color: $cBorder;
     box-shadow: 0 0 3px $cBrightMark,
@@ -270,16 +267,15 @@
 @mixin scale-img {
   // scale a contained image on hover
   .img, img {
-    @include transition-property(all);
-    @include transition-duration(.5s);
+    transition-property: all;
+    transition-duration: .5s;
   }
   &:focus,
   &:hover {
     .img, img {
       image-rendering: optimizeSpeed;
-      @include transform(scale(2));
-      @include background(radial-gradient(center, contain, rgba(255,255,255,.3),
-      rgba(255,255,255,0)));
+      transform: scale(2);
+      background: radial-gradient(center, contain, rgba(255,255,255,.3), rgba(255,255,255,0));
     }
   }
 }

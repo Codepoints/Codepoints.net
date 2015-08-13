@@ -1,20 +1,34 @@
 
 SHELL := /bin/bash
 DOCROOT := codepoints.net/
+
 JS_ALL := $(shell find src/js -type f -name \*.js)
 JS_ROOTS := $(wildcard src/js/*.js)
 JS_TARGET := $(patsubst src/js/%,$(DOCROOT)static/js/%,$(JS_ROOTS))
+
 PHP_ALL := $(shell find $(DOCROOT) -type f -not -path \*/lib/vendor/\* -name \*.php)
+
 SASS_ROOTS := $(wildcard src/sass/[^_]*.scss)
 CSS_TARGET := $(patsubst src/sass/%.scss,$(DOCROOT)static/css/%.css,$(SASS_ROOTS))
+
 PYTHON := python
 SAXON := saxonb-xslt
+
 JSHINT := node_modules/.bin/jshint
 JSHINT_ARGS := --config src/jshint.js
+
+SASS := node_modules/.bin/node-sass
+SASS_ARGS := --quiet --include-path=src/sass
+
+POSTCSS := node_modules/.bin/postcss
+POSTCSS_ARGS := --use autoprefixer --use postcss-import --use cssnano
+
 PHPUNIT := phpunit
 PHPUNIT_ARGS :=
+
 CASPERJS := casperjs
 CASPERJS_ARGS := --fail-fast
+
 ifdef COVERAGE
 PHPUNIT_REAL_ARGS := $(PHPUNIT_ARGS) --coverage-html ./coverage-report
 else
@@ -24,7 +38,7 @@ endif
 all: test ucotd css js cachebust
 
 .PHONY: all css js dist clean ucotd cachebust l10n test vendor db clearcache \
-        test-sass test-php test-phpunit test-js init
+        test-php test-phpunit test-js init
 
 clean:
 	-rm -fr dist node_modules .sass-cache
@@ -38,7 +52,7 @@ dist: vendor all
 css: $(CSS_TARGET)
 
 $(CSS_TARGET): $(DOCROOT)static/css/%.css : src/sass/%.scss
-	compass compile --force $<
+	<"$<" $(SASS) $(SASS_ARGS) | $(POSTCSS) $(POSTCSS_ARGS) >"$@"
 
 js: node_modules/jquery-ui \
     $(DOCROOT)static/js/build.txt $(DOCROOT)static/js/html5shiv.js \
@@ -127,7 +141,7 @@ vendor:
 	node_modules/jqueryui-amd/jqueryui-amd.js node_modules/jquery-ui
 	cd node_modules/webfontloader && rake compile
 
-test: test-php test-phpunit test-sass test-js test-casper
+test: test-php test-phpunit test-js test-casper
 
 test-phpunit:
 	$(info * Run PHPUnit tests)
@@ -143,10 +157,6 @@ test-php: $(PHP_ALL)
 test-js: $(JS_ALL)
 	$(info * Test JS syntax)
 	@$(JSHINT) $(JSHINT_ARGS) $^
-
-test-sass: $(shell find src/sass -type f)
-	$(info * Test Sass syntax)
-	@sass --check $^
 
 test-casper:
 	$(info * run CasperJS tests)
