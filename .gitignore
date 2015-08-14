@@ -1,7 +1,6 @@
 /codepoints.net/cache/blog-preview.*
 /codepoints.net/cache/_cache_*
 /codepoints.net/cache/__Mustache_*.php
-/codepoints.net/lib/composer.lock
 /codepoints.net/static/js/build.txt
 /codepoints.net/static/js/main.js
 /codepoints.net/static/js/polyfills/
