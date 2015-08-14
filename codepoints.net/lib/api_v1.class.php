@@ -118,6 +118,7 @@ class API_v1 implements iAPIAccess {
 
         /* prepare environment */
         $api = $this;
+        $data = $data; // appease PHP_CS
         $this->_response = require __DIR__."/api/{$this->_action}.php";
     }
 
