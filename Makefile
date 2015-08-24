@@ -143,9 +143,9 @@ $(DOCROOT)locale/js.pot: $(JS_ALL)
 
 vendor: $(DOCROOT)/lib/vendor/autoload.php
 	npm install
-	$(MAKE) -C node_modules/d3 d3.v2.js NODE_PATH=../../../node_modules
-	node_modules/jqueryui-amd/jqueryui-amd.js node_modules/jquery-ui
-	cd node_modules/webfontloader && rake compile
+	#$(MAKE) -C node_modules/d3 d3.v2.js NODE_PATH=../../../node_modules
+	#node_modules/jqueryui-amd/jqueryui-amd.js node_modules/jquery-ui
+	#cd node_modules/webfontloader && rake compile
 
 $(DOCROOT)/lib/vendor/autoload.php: composer.lock
 
