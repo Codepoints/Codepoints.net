@@ -142,16 +142,19 @@ $(DOCROOT)locale/js.pot: $(JS_ALL)
 	@xgettext -LPerl --from-code UTF-8 -k_ -o - $^ | \
 		sed '/^#, perl-format$$/d' > $@
 
-vendor: $(DOCROOT)/lib/vendor/autoload.php
+vendor: $(DOCROOT)lib/vendor/autoload.php
 	npm install
 	#$(MAKE) -C node_modules/d3 d3.v2.js NODE_PATH=../../../node_modules
 	#node_modules/jqueryui-amd/jqueryui-amd.js node_modules/jquery-ui
 	#cd node_modules/webfontloader && rake compile
 
-$(DOCROOT)/lib/vendor/autoload.php: composer.lock
+$(DOCROOT)lib/vendor/autoload.php: composer.lock
+	@mkdir -p $(DOCROOT)lib/vendor
+	composer install $(COMPOSER_ARGS)
+	touch $@
 
 composer.lock: composer.json
-	composer install $(COMPOSER_ARGS)
+	touch $@
 
 test: test-php test-phpunit test-js test-casper
 

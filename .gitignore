@@ -4,6 +4,7 @@
 /codepoints.net/static/js/build.txt
 /codepoints.net/static/js/main.js
 /codepoints.net/static/js/polyfills/
+/codepoints.net/lib/vendor
 /ucd.sqlite
 /.sass-cache
 /tools/charlist.dtd
