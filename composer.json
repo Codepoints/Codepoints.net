@@ -18,6 +18,9 @@
             }
         }
     ],
+    "config": {
+      "vendor-dir": "codepoints.net/lib/vendor"
+    },
     "require": {
         "php-gettext/php-gettext" : "1.0.*",
         "mustache/mustache": "2.8.*",

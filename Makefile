@@ -2,6 +2,8 @@
 SHELL := /bin/bash
 DOCROOT := codepoints.net/
 
+DEPLOY :=
+
 JS_ALL := $(shell find src/js -type f -name \*.js)
 JS_ROOTS := $(wildcard src/js/*.js)
 JS_TARGET := $(patsubst src/js/%,$(DOCROOT)static/js/%,$(JS_ROOTS))
@@ -35,7 +37,13 @@ else
 PHPUNIT_REAL_ARGS := $(PHPUNIT_ARGS)
 endif
 
-all: test ucotd css js cachebust
+COMPOSER_ARGS :=
+ifeq ($(DEPLOY), true)
+COMPOSER_ARGS := --no-dev
+endif
+
+
+all: vendor test ucotd css js cachebust
 
 .PHONY: all css js dist clean ucotd cachebust l10n test vendor db clearcache \
         test-php test-phpunit test-js init
@@ -44,7 +52,7 @@ clean:
 	-rm -fr dist node_modules .sass-cache
 	-rm -f tools/encoding-aliases.sql
 
-dist: vendor all
+dist: all
 	mkdir $@
 	cp -r $(DOCROOT) $@
 	sed -i 's/define(.CP_DEBUG., .);/define('"'CP_DEBUG'"', 0);/' $@/$(DOCROOT)index.php
@@ -135,11 +143,16 @@ $(DOCROOT)locale/js.pot: $(JS_ALL)
 	@xgettext -LPerl --from-code UTF-8 -k_ -o - $^ | \
 		sed '/^#, perl-format$$/d' > $@
 
-vendor:
+vendor: $(DOCROOT)/lib/vendor/autoload.php
 	npm install
 	$(MAKE) -C node_modules/d3 d3.v2.js NODE_PATH=../../../node_modules
 	node_modules/jqueryui-amd/jqueryui-amd.js node_modules/jquery-ui
 	cd node_modules/webfontloader && rake compile
+
+$(DOCROOT)/lib/vendor/autoload.php: composer.lock
+
+composer.lock: composer.json
+	composer install $(COMPOSER_ARGS)
 
 test: test-php test-phpunit test-js test-casper
 
