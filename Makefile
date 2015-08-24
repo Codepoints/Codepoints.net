@@ -52,7 +52,8 @@ clean:
 	-rm -fr dist node_modules .sass-cache
 	-rm -f tools/encoding-aliases.sql
 
-deploy: vendor css js cachebust
+#deploy: vendor css js cachebust
+deploy: vendor cachebust
 	sed -i 's/define(.CP_DEBUG., .);/define('"'CP_DEBUG'"', 0);/' $(DOCROOT)index.php
 
 css: $(CSS_TARGET)
