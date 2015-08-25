@@ -25,8 +25,11 @@ SASS_ARGS := --quiet --include-path=src/sass
 POSTCSS := node_modules/.bin/postcss
 POSTCSS_ARGS := --use autoprefixer --use postcss-import --use cssnano
 
-PHPUNIT := phpunit
+PHPUNIT := $(DOCROOT)lib/vendor/bin/phpunit
 PHPUNIT_ARGS :=
+
+PHPCS := $(DOCROOT)lib/vendor/bin/phpcs
+PHPCS_ARGS :=
 
 CASPERJS := casperjs
 CASPERJS_ARGS := --fail-fast
@@ -164,10 +167,10 @@ test-phpunit:
 
 test-php: $(PHP_ALL)
 	$(info * Test PHP syntax)
-	@! find $(DOCROOT) -name \*.php -exec php -l '{}' \; | \
+	@! echo $^ | xargs -n 1 php -l | \
 		grep -v '^No syntax errors detected in '
 	$(info * Call PHP CodeSniffer)
-	@phpcs
+	@$(PHPCS) $(PHPCS_ARGS)
 
 test-js: $(JS_ALL)
 	$(info * Test JS syntax)
