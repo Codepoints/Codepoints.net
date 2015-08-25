@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "af74a49fa6e7485979ae7b0cc779a3b8",
+    "hash": "8e782395b519eb671381aaee81f0e0ae",
     "packages": [
         {
             "name": "michelf/php-markdown",

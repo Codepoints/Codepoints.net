@@ -1,4 +1,6 @@
 {
+    "name": "codepoints/codepoints.net",
+    "description": "A visual guide to the wonders of Unicode",
     "repositories": [
         {
             "type": "package",
