@@ -3,7 +3,7 @@
     $plane = $codepoint->getPlane();
     printf(__('U+%04X was added to Unicode in version %s (%s). It belongs to the block %s in the %s.'),
         $codepoint->getId(),
-        '<a href="'.q($router->getUrl('search?age='.$props['age'])).'">'.
+        '<a rel="nofollow" href="'.q($router->getUrl('search?age='.$props['age'])).'">'.
         q($info->getLabel('age', $props['age'])).'</a>',
         $info->getYearForAge($props['age']),
         $block? _bl($block):'-',
@@ -12,7 +12,7 @@
     if ($props['Dep']) {
         echo ' ';
         printf(__('This codepoint is %sdeprecated%s.'),
-        '<a href="'.q($router->getUrl('search?Dep=1')).'">', '</a>');
+        '<a rel="nofollow" href="'.q($router->getUrl('search?Dep=1')).'">', '</a>');
     }
 ?></p>
 
@@ -20,30 +20,30 @@
 <p><?php
     if ($props['sc'] === 'Zyyy') {
         printf(__('This character is a %s and is %scommonly%s used, that is, in no specific script.'),
-            '<a href="'.q($router->getUrl('search?gc='.$props['gc'])).'">'.
+            '<a rel="nofollow" href="'.q($router->getUrl('search?gc='.$props['gc'])).'">'.
             q($info->getLabel('gc', $props['gc'])).'</a>',
-            '<a href="'.q($router->getUrl('search?sc='.$props['sc'])).'">',
+            '<a rel="nofollow" href="'.q($router->getUrl('search?sc='.$props['sc'])).'">',
             '</a>');
     } elseif ($props['sc'] === 'Zinh') {
         printf(__('This character is a %s and %sinherits%s its %sscript property%s from the preceding character.'),
-            '<a href="'.q($router->getUrl('search?gc='.$props['gc'])).'">'.
+            '<a rel="nofollow" href="'.q($router->getUrl('search?gc='.$props['gc'])).'">'.
             q($info->getLabel('gc', $props['gc'])).'</a>',
-            '<a href="'.q($router->getUrl('search?sc='.$props['sc'])).'">',
+            '<a rel="nofollow" href="'.q($router->getUrl('search?sc='.$props['sc'])).'">',
             '</a>',
             '<span class="gl" data-term="sc">',
             '</span>');
     } else {
         printf(__('This character is a %s and is mainly used in the %s script.'),
-            '<a href="'.q($router->getUrl('search?gc='.$props['gc'])).'">'.
+            '<a rel="nofollow" href="'.q($router->getUrl('search?gc='.$props['gc'])).'">'.
             q($info->getLabel('gc', $props['gc'])).'</a>',
-            '<a href="'.q($router->getUrl('search?sc='.$props['sc'])).'">'.
+            '<a rel="nofollow" href="'.q($router->getUrl('search?sc='.$props['sc'])).'">'.
             q($info->getLabel('sc', $props['sc'])).'</a>');
     }
 
     $buf=array();
     foreach(explode(' ', $props['scx']) as $sc) {
         if ($sc !== $props['sc']) {
-            $buf[] = '<a href="'.q($router->getUrl('search?scx='.$props['scx'])).'">'.
+            $buf[] = '<a rel="nofollow" href="'.q($router->getUrl('search?scx='.$props['scx'])).'">'.
                     q($info->getLabel('sc', $sc)).'</a>';
         }
     }
@@ -75,9 +75,9 @@
     if($props['nt'] !== 'None') {
         echo ' ';
         printf(__('The codepoint has the %s value %s.'),
-        '<a href="'.q($router->getUrl('search?nt='.$props['nt'])).'">'.
+        '<a rel="nofollow" href="'.q($router->getUrl('search?nt='.$props['nt'])).'">'.
         q($info->getLabel('nt', $props['nt'])).'</a>',
-        '<a href="'.q($router->getUrl('search?nv='.$props['nv'])).'">'.
+        '<a rel="nofollow" href="'.q($router->getUrl('search?nv='.$props['nv'])).'">'.
         q($info->getLabel('nv', $props['nv'])).'</a>');
     }
 
@@ -120,36 +120,36 @@
 
     if ($props['dt'] === 'none') {
         printf(__('The glyph is %snot a composition%s.'),
-            '<a href="'.q($router->getUrl('search?dt=none')).'">',
+            '<a rel="nofollow" href="'.q($router->getUrl('search?dt=none')).'">',
             '</a>');
     } else {
         printf(__('The glyph is a %s composition of the glyphs %s.'),
-            '<a href="'.q($router->getUrl('search?dt='.$props['dt'])).'">'.
+            '<a rel="nofollow" href="'.q($router->getUrl('search?dt='.$props['dt'])).'">'.
             q($info->getLabel('dt', $props['dt'])).'</a>',
             _cp($props['dm'], '', 'min'));
     }
 
     echo ' ';
     printf(__('It has a %s %s.'),
-        '<a href="'.q($router->getUrl('search?ea='.$props['ea'])).'">'.
+        '<a rel="nofollow" href="'.q($router->getUrl('search?ea='.$props['ea'])).'">'.
         q($info->getLabel('ea', $props['ea'])).'</a>',
         q($info->getCategory('ea')));
 
     if ($props['Bidi_M']) {
         echo ' ';
         printf(__('In bidirectional context it acts as %s and is %smirrored%s.'),
-            '<a href="'.q($router->getUrl('search?bc='.$props['bc'])).'">'.
+            '<a rel="nofollow" href="'.q($router->getUrl('search?bc='.$props['bc'])).'">'.
             q($info->getLabel('bc', $props['bc'])).'</a>',
-            '<a href="'.q($router->getUrl('search?bc='.$props['bc'].'&bm='.
+            '<a rel="nofollow" href="'.q($router->getUrl('search?bc='.$props['bc'].'&bm='.
             (int)$props['Bidi_M'])).'">',
             '</a>'
         );
     } else {
         echo ' ';
         printf(__('In bidirectional context it acts as %s and is %snot mirrored%s.'),
-            '<a href="'.q($router->getUrl('search?bc='.$props['bc'])).'">'.
+            '<a rel="nofollow" href="'.q($router->getUrl('search?bc='.$props['bc'])).'">'.
             q($info->getLabel('bc', $props['bc'])).'</a>',
-            '<a href="'.q($router->getUrl('search?bc='.$props['bc'].'&bm='.
+            '<a rel="nofollow" href="'.q($router->getUrl('search?bc='.$props['bc'].'&bm='.
             (int)$props['Bidi_M'])).'">',
             '</a>'
         );
@@ -171,14 +171,14 @@
     printf(__('In text U+%04X behaves as %s regarding line breaks. It has
         type %s for sentence and %s for word breaks. The %s is %s.'),
         $codepoint->getId(),
-        '<a href="'.q($router->getUrl('search?lb='.$props['lb'])).'">'.
+        '<a rel="nofollow" href="'.q($router->getUrl('search?lb='.$props['lb'])).'">'.
         q($info->getLabel('lb', $props['lb'])).'</a>',
-        '<a href="'.q($router->getUrl('search?SB='.$props['SB'])).'">'.
+        '<a rel="nofollow" href="'.q($router->getUrl('search?SB='.$props['SB'])).'">'.
         q($info->getLabel('SB', $props['SB'])).'</a>',
-        '<a href="'.q($router->getUrl('search?WB='.$props['WB'])).'">'.
+        '<a rel="nofollow" href="'.q($router->getUrl('search?WB='.$props['WB'])).'">'.
         q($info->getLabel('WB', $props['WB'])).'</a>',
             q($info->getCategory('GCB')),
-        '<a href="'.q($router->getUrl('search?GCB='.$props['GCB'])).'">'.
+        '<a rel="nofollow" href="'.q($router->getUrl('search?GCB='.$props['GCB'])).'">'.
         q($info->getLabel('GCB', $props['GCB'])).'</a>');
 ?></p>
 

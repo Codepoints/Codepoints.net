@@ -92,7 +92,7 @@ include 'nav.php';
         <dt data-sc="<?php e($sc['iso'])?>" class="sc_<?php e($sc['iso'])?>"><a href="#"><?php e(str_replace('_', ' ', $sc['name']))?></a></dt>
         <dd>
           <p><?php printf(__('%s%s%d%s characters%s are encoded in this script.'),
-            '<a href="/search?sc[]='.q($sc['iso']).'">',
+            '<a rel="nofollow" href="/search?sc[]='.q($sc['iso']).'">',
             '<span class="nchar">', $sc['count'], '</span>',
             '</a>')?></p>
         </dd>

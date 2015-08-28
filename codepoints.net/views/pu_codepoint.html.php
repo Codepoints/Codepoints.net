@@ -148,7 +148,7 @@ $repr = function($coding='UTF-8') use ($codepoint) {
 };
 
 $s = function($cat) use ($router, $info, $props) {
-    echo '<a href="';
+    echo '<a rel="nofollow" href="';
     e($router->getUrl('search?'.$cat.'='.rawurlencode($props[$cat])));
     echo '">';
     e($info->getLabel($cat, $props[$cat]));
@@ -168,7 +168,7 @@ $s = function($cat) use ($router, $info, $props) {
       <dd><?php e($repr())?></dd>
       <?php foreach(array('gc', 'sc', 'bc', 'dt', 'ea') as $cat):?>
         <dt><?php e($info->getCategory($cat))?></dt>
-        <dd><a href="<?php e('search?'.$cat.'='.$props[$cat])?>"><?php e($info->getLabel($cat, $props[$cat]))?></a></dd>
+        <dd><a rel="nofollow" href="<?php e('search?'.$cat.'='.$props[$cat])?>"><?php e($info->getLabel($cat, $props[$cat]))?></a></dd>
       <?php endforeach?>
     </dl>
   </aside>
@@ -176,27 +176,27 @@ $s = function($cat) use ($router, $info, $props) {
   <section class="abstract">
     <p>
 <?php printf(__('This is a Private Use codepoint. That is, it is deliberately not assigned to any character. It was added to Unicode in version %s and belongs to the block %s.'),
-    '<a href="'.q($router->getUrl('search?age='.$props['age'])).'">'.$props['age'].'</a>',
+    '<a rel="nofollow" href="'.q($router->getUrl('search?age='.$props['age'])).'">'.$props['age'].'</a>',
     '<a href="'.q($router->getUrl($block)).'">'.$block.'</a>');
 ?>
     </p>
     <p>
 <?php
     printf(__('The glyph is %snot a composition%s.'),
-        '<a href="'.q($router->getUrl('search?dt=none')).'">',
+        '<a rel="nofollow" href="'.q($router->getUrl('search?dt=none')).'">',
         '</a>');
 
     echo ' ';
     printf(__('It has a %s %s.'),
-        '<a href="'.q($router->getUrl('search?ea='.$props['ea'])).'">'.
+        '<a rel="nofollow" href="'.q($router->getUrl('search?ea='.$props['ea'])).'">'.
         q($info->getLabel('ea', $props['ea'])).'</a>',
         q($info->getCategory('ea')));
 
     echo ' ';
     printf(__('In bidirectional context it acts as %s and is %snot mirrored%s.'),
-        '<a href="'.q($router->getUrl('search?bc='.$props['bc'])).'">'.
+        '<a rel="nofollow" href="'.q($router->getUrl('search?bc='.$props['bc'])).'">'.
         q($info->getLabel('bc', $props['bc'])).'</a>',
-        '<a href="'.q($router->getUrl('search?bc='.$props['bc'].'&bm='.
+        '<a rel="nofollow" href="'.q($router->getUrl('search?bc='.$props['bc'].'&bm='.
         (int)$props['Bidi_M'])).'">',
         '</a>'
     );
@@ -205,14 +205,14 @@ $s = function($cat) use ($router, $info, $props) {
     printf(__('In text U+%04X behaves as %s regarding line breaks. It has
         type %s for sentence and %s for word breaks. The %s is %s.'),
         $codepoint,
-        '<a href="'.q($router->getUrl('search?lb='.$props['lb'])).'">'.
+        '<a rel="nofollow" href="'.q($router->getUrl('search?lb='.$props['lb'])).'">'.
         q($info->getLabel('lb', $props['lb'])).'</a>',
-        '<a href="'.q($router->getUrl('search?SB='.$props['SB'])).'">'.
+        '<a rel="nofollow" href="'.q($router->getUrl('search?SB='.$props['SB'])).'">'.
         q($info->getLabel('SB', $props['SB'])).'</a>',
-        '<a href="'.q($router->getUrl('search?WB='.$props['WB'])).'">'.
+        '<a rel="nofollow" href="'.q($router->getUrl('search?WB='.$props['WB'])).'">'.
         q($info->getLabel('WB', $props['WB'])).'</a>',
             q($info->getCategory('GCB')),
-        '<a href="'.q($router->getUrl('search?GCB='.$props['GCB'])).'">'.
+        '<a rel="nofollow" href="'.q($router->getUrl('search?GCB='.$props['GCB'])).'">'.
         q($info->getLabel('GCB', $props['GCB'])).'</a>');
 ?>
     </p>
@@ -233,7 +233,7 @@ $s = function($cat) use ($router, $info, $props) {
     }
 ?>
 
-    <p><?php printf(__('The %sWikipedia%s has the following information about Private Use codepoints:'), '<a href="http://en.wikipedia.org/wiki/Private_Use_Areas">', '</a>')?></p>
+    <p><?php printf(__('The %sWikipedia%s has the following information about Private Use codepoints:'), '<a rel="nofollow" href="http://en.wikipedia.org/wiki/Private_Use_Areas">', '</a>')?></p>
     <blockquote cite="http://en.wikipedia.org/wiki/Private_Use_Areas">
       <p>In Unicode, the <b>Private Use Areas (PUA)</b> are three ranges of code points (<code>U+E000</code>–<code>U+F8FF</code> in the BMP, and in planes 15 and 16) that, by definition, will not be assigned characters by the Unicode Consortium. The code points in these areas can not be considered as standardized characters in Unicode itself. They are intentionally left undefined so that third parties may define their own characters without conflicting with Unicode Consortium assignments. Under the Unicode Stability Policy, the Private Use Areas will remain allocated for that purpose in all future Unicode versions.</p>
       <p>Assignments to Private Use Area characters need not be "private" in the sense of strictly internal to an organisation; a number of assignment schemes have been published by several organisations. Such publication may include a font that supports the definition (showing the glyphs), and software making use of the private-use characters (e.g. a graphics character for a "print document" function). By definition, multiple private parties may assign different characters to the same code point, with the consequence that a user may see one private character from an installed font where a different one was intended.</p>

@@ -56,7 +56,7 @@ if ($next) {
 }
 include "nav.php";
 $s = function($cat) use ($router, $info, $props) {
-    echo '<a href="';
+    echo '<a rel="nofollow" href="';
     e($router->getUrl('search?'.$cat.'='.rawurlencode($props[$cat])));
     echo '">';
     e($info->getLabel($cat, $props[$cat]));
@@ -94,11 +94,11 @@ $s = function($cat) use ($router, $info, $props) {
       <dd><?php e($codepoint->getRepr('UTF-8'))?></dd>
       <?php foreach(array('gc', 'sc', 'bc', 'dt', 'ea') as $cat):?>
         <dt><?php e($info->getCategory($cat))?></dt>
-        <dd><a href="<?php e('search?'.$cat.'='.$props[$cat])?>"><?php e($info->getLabel($cat, $props[$cat]))?></a></dd>
+        <dd><a rel="nofollow" href="<?php e('search?'.$cat.'='.$props[$cat])?>"><?php e($info->getLabel($cat, $props[$cat]))?></a></dd>
       <?php endforeach?>
       <?php if($props['nt'] !== 'None'):?>
       <dt><?php _e('Numeric Value')?></dt>
-        <dd><a href="<?php e('search?nt='.$props['nt'])?>"><?php e($info->getLabel('nt', $props['nt']).' '.$props['nv'])?></a></dd>
+        <dd><a rel="nofollow" href="<?php e('search?nt='.$props['nt'])?>"><?php e($info->getLabel('nt', $props['nt']).' '.$props['nv'])?></a></dd>
       <?php endif?>
     </dl>
   </aside>

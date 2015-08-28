@@ -37,8 +37,8 @@
           endforeach;
       endif?>
       <li class="scripts"><a href="<?php e($router->getUrl('scripts'))?>"><?php _e('Scripts')?></a></li>
-      <li class="random"><a href="<?php e($router->getUrl().'random')?>"><?php _e('Random')?></a></li>
-      <li class="about"><a href="<?php e($router->getUrl().'about')?>"><?php _e('About')?></a></li>
+      <li class="random"><a rel="nofollow" href="<?php e($router->getUrl().'random')?>"><?php _e('Random')?></a></li>
+      <li class="about"><a rel="nofollow" href="<?php e($router->getUrl().'about')?>"><?php _e('About')?></a></li>
     </ul>
     <?php if (count($nav)):?>
       <ul class="secondary">

@@ -56,7 +56,7 @@
           <?php cp($v, '', 'min') ?>
         <?php elseif ($k === 'scx'):
         foreach(explode(' ', $v) as $sc):?>
-            <a href="<?php e($router->getUrl('search?'.$k.'='.$v))?>"><?php e($info->getLabel('sc', $sc))?></a>
+            <a rel="nofollow" href="<?php e($router->getUrl('search?'.$k.'='.$v))?>"><?php e($info->getLabel('sc', $sc))?></a>
         <?php endforeach;
         elseif (in_array($k, array('kCompatibilityVariant', 'kDefinition',
             'kSemanticVariant', 'kSimplifiedVariant',

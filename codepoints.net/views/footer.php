@@ -6,12 +6,12 @@
       <nav>
         <p class="tx"><?php printf(__('This is Codepoints.net, a site dedicated to all things characters, letters and Unicode. The site is run by %s. The content can be %s under the given terms. We’d like to thank %s for making Codepoints.net possible. %s are always welcome.'),
           '<a href="http://www.manuel-strehl.de">Manuel Strehl</a>',
-          '<a href="'.q($router->getUrl('about')).'#this_site">'.__('freely reused').'</a>',
-          '<a href="'.q($router->getUrl('about')).'#attribution">'.__('these fine people').'</a>',
-          '<a href="https://github.com/Boldewyn/codepoints.net">'.__('Feedback and contributions').'</a>')?></p>
+          '<a rel="nofollow" href="'.q($router->getUrl('about')).'#this_site">'.__('freely reused').'</a>',
+          '<a rel="nofollow" href="'.q($router->getUrl('about')).'#attribution">'.__('these fine people').'</a>',
+          '<a rel="nofollow" href="https://github.com/Codepoints/codepoints.net">'.__('Feedback and contributions').'</a>')?></p>
         <?php if (! isset($_COOKIE) || ! isset($_COOKIE['_eu']) || $_COOKIE['_eu'] !== 'hide'):?>
         <p class="tx cookies"><?php printf(__('We use cookies to enhance your experience and to develop the site further. We never track you for monetary reasons. If you do not want this, you can either use the Do-Not-Track feature of your browser or %s.'),
-            '<a href="'.q($router->getUrl('about')).'#this_site">'.__('opt out explicitly').'</a>')?></p>
+            '<a rel="nofollow" href="'.q($router->getUrl('about')).'#this_site">'.__('opt out explicitly').'</a>')?></p>
         <?php endif?>
         <ul>
           <li><a href="/"><?php _e('Start')?></a></li>

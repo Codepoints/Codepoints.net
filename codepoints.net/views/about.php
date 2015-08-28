@@ -170,8 +170,8 @@ include 'nav.php';
       The source code for this site is %s. If you like, fork the code,
       enhance it and send me a pull request. (If you don’t have a Github account,
       please send the git patch via e-mail.)'),
-    '<a href="https://github.com/Boldewyn/codepoints.net/issues">'.__('bug tracker').'</a>',
-    '<a href="https://github.com/Boldewyn/codepoints.net">'.__('live on Github').' <i class="icon-github"></i></a>'
+    '<a href="https://github.com/Codepoints/codepoints.net/issues">'.__('bug tracker').'</a>',
+    '<a href="https://github.com/Codepoints/codepoints.net">'.__('live on Github').' <i class="icon-github"></i></a>'
     )?>
     </p>
     <p>
