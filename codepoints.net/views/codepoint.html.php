@@ -150,7 +150,6 @@ $s = function($cat) use ($router, $info, $props) {
   <section>
     <h2><?php _e('Elsewhere')?></h2>
     <ul>
-      <li><a href="http://decodeunicode.org/en/U+<?php e($codepoint->getId('hex'))?>">Decode Unicode</a></li>
       <li><a href="http://fileformat.info/info/unicode/char/<?php e($codepoint->getId('hex'))?>/index.htm">Fileformat.info</a></li>
       <li><a href="http://unicode.org/cldr/utility/character.jsp?a=<?php e($codepoint->getId('hex'))?>"><?php _e('Unicode website')?></a></li>
       <li><a href="http://www.unicode.org/cgi-bin/refglyph?24-<?php e($codepoint->getId('hex'))?>"><?php _e('Reference rendering on Unicode.org')?></a></li>
@@ -163,6 +162,7 @@ $s = function($cat) use ($router, $info, $props) {
       <?php endif?>
       <li><a href="http://graphemica.com/<?php e(rawurlencode($codepoint->getChar()))?>">Graphemica</a></li>
       <li><a href="http://www.isthisthingon.org/unicode/index.phtml?glyph=<?php e($codepoint->getId('hex'))?>">The UniSearcher</a></li>
+      <li><a href="http://scriptsource.org/char/U<?php printf('%06X', $codepoint->getId())?>">ScriptSource</a></li>
     </ul>
   </section>
   <section>
