@@ -51,7 +51,7 @@ class SearchResult extends UnicodeRange {
         }
 
         list($search, $params) = $this->_getQuerySQL();
-        $select = 'SELECT %s FROM search_index WHERE %s %s';
+        $select = 'SELECT SQL_CALC_FOUND_ROWS %s FROM search_index WHERE %s %s';
 
         if (count($this->query) === 0) {
             $stm = $this->db->prepare(sprintf($select, 'distinct cp', $search,
@@ -64,9 +64,18 @@ class SearchResult extends UnicodeRange {
         }
         $stm->execute($params);
         $r = $stm->fetchAll(PDO::FETCH_ASSOC);
-        $names = array();
         $stm->closeCursor();
+
+        $names = array();
+        $this->count = 0;
+
         if ($r !== false) {
+            $stm = $this->db->prepare('SELECT FOUND_ROWS() AS c');
+            $stm->execute();
+            $r2 = $stm->fetch(PDO::FETCH_ASSOC);
+            $stm->closeCursor();
+            $this->count = (int)$r2['c'];
+
             $cps_ordered = array_map(function($item) {
                 return $item['cp'];
             }, $r);
@@ -101,21 +110,6 @@ class SearchResult extends UnicodeRange {
             }
         }
         $this->set = $names;
-
-        // we need to get the count separately, because the above
-        // query is LIMITed
-        $c = count($this->set);
-        if ($this->page > 1 || $c === $this->pageLength) {
-            $stm = $this->db->prepare(sprintf('
-                SELECT COUNT(DISTINCT cp) AS c
-                    FROM search_index
-                    WHERE %s', $search));
-            $stm->execute($params);
-            $r = $stm->fetch(PDO::FETCH_ASSOC);
-            $stm->closeCursor();
-            $c = (int)$r['c'];
-        }
-        $this->count = $c;
 
         return $this->set;
     }
