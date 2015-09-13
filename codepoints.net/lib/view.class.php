@@ -44,8 +44,8 @@ function _cp($cp, $rel='', $class='', $wrap='') {
             Codepoint::$defaultImage) {
             $img = sprintf('<span class="img">%s</span>', $c->getChar());
         } else {
-            $img = sprintf('<img src="%s" alt="" height="16" width="16">',
-                        $img);
+            $img = sprintf('<img src="%s" alt="%s" height="16" width="16">',
+                        $img, $c->getChar());
         }
         if ($wrap) {
             $r[] = sprintf('<a%s href="%s" title="%s"><%s class="cp%s">%s'.
