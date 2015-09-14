@@ -226,10 +226,16 @@ input[type="text"] {
 }
 
 
-.min.cp {
-  @include scale-img;
-  img {
-    margin-left: .4em;
+.cp {
+  &:before {
+    content: attr(data-cp);
+  }
+
+  &.min {
+    @include scale-img;
+    img {
+      margin-left: .4em;
+    }
   }
 }
 
