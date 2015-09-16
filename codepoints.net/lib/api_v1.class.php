@@ -2,6 +2,7 @@
 
 
 require_once __DIR__.'/tools.php';
+require_once __DIR__.'/vendor/PiwikTracker.php';
 
 
 /**
