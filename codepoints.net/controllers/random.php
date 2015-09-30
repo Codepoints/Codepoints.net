@@ -6,7 +6,7 @@ $router->registerAction('random', function ($request, $o) {
         SELECT cp
             FROM codepoints
             ORDER BY (
-                ABS(RANDOM())/10000000000000 * (
+                ABS(RAND())/10000000000000 * (
                     CASE
                     WHEN
                         -- U+20000..U+2FFFF CJK in 3rd plane
