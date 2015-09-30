@@ -1,12 +1,15 @@
 <?php
 
 $router->registerAction('random', function ($request, $o) {
-    // random codepoint
+    /* select a (quasi-)random codepoint. We add some weight to codepoints
+     * so that CJK and Hangul ones are more seldom, because otherwise they
+     * would be selected over 90% of time. That's a bit unfair for all non-
+     * CJK languages... */
     $x = $o['db']->prepare('
         SELECT cp
             FROM codepoints
             ORDER BY (
-                ABS(RAND())/10000000000000 * (
+                RAND() * (
                     CASE
                     WHEN
                         -- U+20000..U+2FFFF CJK in 3rd plane
