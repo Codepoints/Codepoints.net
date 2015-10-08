@@ -18,8 +18,13 @@ from bs4 import BeautifulSoup
 import nltk
 from os.path import dirname
 import re
-import sqlite3
+import MySQLdb
 import sys
+import ConfigParser
+
+
+config = ConfigParser.RawConfigParser()
+config.read((dirname(dirname(__file__)) or '..')+'/db.conf')
 
 
 stopwords = nltk.corpus.stopwords.words('english')
@@ -31,20 +36,33 @@ if len(sys.argv) > 1 and sys.argv[1] == '--print':
     EXECUTE_DIRECTLY = False
 
 
+def sql_convert(s):
+    """"""
+    if isinstance(s, basestring):
+        s = "'"+s.replace("\\", "\\\\").replace("'", "\\'")+"'"
+        if isinstance(s, str):
+            s = s.decode('utf-8')
+    elif isinstance(s, long):
+        s = int(s)
+    return s
+
+
 def exec_sql(*sql):
     """execute or store an SQL query"""
     if EXECUTE_DIRECTLY:
         cur.execute(*sql)
     else:
-        sql0 = sql[0].decode('UTF-8').replace('?', "'{}'")
+        sql0 = sql[0].decode('UTF-8')
         if len(sql) > 1:
-            sql0 = sql0.format(*map(lambda s: isinstance(s, basestring) and s.replace("'", "''") or s, sql[1]))
+            params = tuple(map(sql_convert, sql[1]))
+            sql0 = sql0 % params
         print sql0.encode('UTF-8')
 
 
 def get_abstract_tokens(cp):
     """Fetch abstract for cp and split it in tokens"""
-    abstract = (cur.execute("SELECT abstract FROM codepoint_abstract WHERE cp = ? AND lang = 'en'", (cp,)).fetchone() or [None])[0]
+    cur.execute("SELECT abstract FROM codepoint_abstract WHERE cp = %s AND lang = 'en'", (cp,))
+    abstract = (cur.fetchone() or {'abstract':None})['abstract']
     if abstract:
         terms = BeautifulSoup(abstract).get_text()
         tokens = \
@@ -65,43 +83,60 @@ def get_abstract_tokens(cp):
 
 def get_decomp(cp):
     """get the decomposition mapping of a codepoint"""
-    dms = cur.execute("""SELECT "other" FROM codepoint_relation
-                       WHERE cp = ? AND relation = 'dm' ORDER BY "order" ASC""",
-                       (cp,)).fetchall()
+    cur.execute("""SELECT `other` FROM codepoint_relation
+                   WHERE cp = %s AND relation = 'dm' ORDER BY `order` ASC""",
+                   (cp,))
+    dms = cur.fetchall()
 
-    if len(dms) and dms[0][0] != cp:
-        return reduce(lambda x, y: x + unichr(int(y[0])), dms, u'').lower()
+    if len(dms) and dms[0]['other'] != cp:
+        return reduce(lambda x, y: x + unichr(int(y['other'])), dms, u'').lower()
     return None
 
 
 def get_aliases(cp):
     """get all aliases of a codepoint"""
-    res = cur.execute("SELECT alias FROM codepoint_alias WHERE cp = ?", (cp,))
-    return map(lambda s: s[0], res.fetchall())
+    cur.execute("SELECT alias FROM codepoint_alias WHERE cp = %s", (cp,))
+    return map(lambda s: s['alias'], cur.fetchall())
 
 
 def get_block(cp):
     """get block name of a codepoint"""
-    res = cur.execute("SELECT name FROM blocks WHERE first <= ? AND last >= ?", (cp,cp))
-    blk = res.fetchone()
+    cur.execute("SELECT name FROM blocks WHERE first <= %s AND last >= %s", (cp,cp))
+    blk = cur.fetchone()
     if blk:
-        blk = blk[0]
+        blk = blk['name']
     return blk
+
+
+def get_script(cp):
+    """get script of a codepoint"""
+    cur.execute("SELECT sc FROM codepoint_script WHERE cp = %s", (cp,))
+    sc = cur.fetchone()
+    if sc:
+        sc = sc['sc']
+    return sc
 
 
 def has_confusables(cp):
     """whether the CP has any confusables"""
-    res = cur.execute('''
-            SELECT COUNT(*)
+    cur.execute('''
+            SELECT COUNT(*) AS c
                FROM codepoint_confusables
-              WHERE codepoint_confusables.cp = ?
-                 OR codepoint_confusables.other = ?''', (cp,cp))
-    return res.fetchone()[0]
+              WHERE codepoint_confusables.cp = %s
+                 OR codepoint_confusables.other = %s''', (cp,cp))
+    return cur.fetchone()['c']
 
 
-conn = sqlite3.connect((dirname(__file__) or '.')+'/../ucd.sqlite')
-conn.row_factory = sqlite3.Row
-cur = conn.cursor()
+conn = MySQLdb.connect(
+        host='localhost',
+        user=config.get('clientreadonly', 'user'),
+        passwd=config.get('clientreadonly', 'password'),
+        db=config.get('clientreadonly', 'database'))
+conn.set_character_set('utf8')
+cur = conn.cursor(MySQLdb.cursors.DictCursor)
+cur.execute('SET NAMES utf8;')
+cur.execute('SET CHARACTER SET utf8;')
+cur.execute('SET character_set_connection=utf8;')
 
 # create the table/index for the search index
 exec_sql('''
@@ -112,59 +147,80 @@ exec_sql('''
         INDEX search_index_term (term)
     );''')
 
-res = cur.execute('SELECT * FROM codepoints;')
+cur.execute('SELECT * FROM codepoints;')
+all_cps = cur.fetchall()
 
 i = 0
-for item in res.fetchall():
+for item in all_cps:
     i += 1
     cp = item['cp']
 
     # delete previous entries
-    exec_sql(u'DELETE FROM search_index WHERE cp = ?', (cp,))
+    exec_sql(u'DELETE FROM search_index WHERE cp = %s;', (cp,))
+
+    exec_sql(u'INSERT INTO search_index (cp, term, weight) '
+             u'VALUES (%s, %s, 80);', (cp, u'int:{}'.format(cp)))
 
     for j, weight in (('na', 100), ('na1', 90), ('kDefinition', 50)):
         if item[j]:
             for w in re.split(r'\s+', item[j].lower()):
                 exec_sql('INSERT INTO search_index (cp, term, weight) '
-                    'VALUES (?, ?, ?);', (cp, w, weight))
+                    'VALUES (%s, %s, %s);', (cp, w, weight))
                 if '-' in w:
                     # we need this to find cps like "TAG HYPHEN-MINUS"
                     # when searching for "hyphen".
                     for w2 in w.split('-'):
                         exec_sql('INSERT INTO search_index (cp, term, weight) '
-                            'VALUES (?, ?, ?);', (cp, w2, weight-20))
+                            'VALUES (%s, %s, %s);', (cp, w2, weight-20))
 
     for prop in item.keys():
         if (prop not in ('na', 'na1', 'kDefinition', 'cp') and
             prop is not None and item[prop] is not None):
             # all other properties get stored as foo:bar pairs, with foo
             # as property and bar as its value
+            _i = item[prop]
+            if type(_i) is str:
+                _i = _i.decode('utf-8')
+            elif type(_i) is long:
+                _i = int(_i)
             exec_sql(u'INSERT INTO search_index (cp, term, weight) '
-                u'VALUES (?, ?, ?);', (cp, u'{}:{}'.format(prop, item[prop]), 50))
+                u'VALUES (%s, %s, %s);', (cp, u'%s:%s' % (prop, _i), 50))
+            if prop == 'scx':
+                scx = _i.split(u' ')
+                for sc in scx:
+                    # add for search by script ("sc:%"), but with lesser weight
+                    # than true sc below:
+                    exec_sql(u'INSERT INTO search_index (cp, term, weight) '
+                        u'VALUES (%s, %s, 25);', (cp, u'sc:{}'.format(sc)))
 
     for w in get_aliases(cp):
         exec_sql('INSERT INTO search_index (cp, term, weight) '
-            'VALUES (?, ?, 40);', (cp, w))
+            'VALUES (%s, %s, 40);', (cp, w))
 
     for w in get_abstract_tokens(cp):
         exec_sql('INSERT INTO search_index (cp, term, weight) '
-            'VALUES (?, ?, 1);', (cp, w))
+            'VALUES (%s, %s, 1);', (cp, w))
 
     dm = get_decomp(cp)
     if dm:
         exec_sql('INSERT INTO search_index (cp, term, weight) '
-            'VALUES (?, ?, 30);', (cp, dm))
+            'VALUES (%s, %s, 30);', (cp, dm))
 
     h = '0'
     if has_confusables(cp):
         h = '1'
     exec_sql('INSERT INTO search_index (cp, term, weight) '
-        'VALUES (?, ?, 50);', (cp, 'confusables:'+h))
+        'VALUES (%s, %s, 50);', (cp, 'confusables:'+h))
 
     block = get_block(cp)
     if block:
         exec_sql('INSERT INTO search_index (cp, term, weight) '
-            'VALUES (?, ?, 30);', (cp, 'blk:%s' % block))
+            'VALUES (%s, %s, 30);', (cp, 'blk:%s' % block))
+
+    script = get_script(cp)
+    if script:
+        exec_sql('INSERT INTO search_index (cp, term, weight) '
+            'VALUES (%s, %s, 50);', (cp, 'sc:%s' % script))
 
     if i % 1000 == 0:
         print '-- U+%04X' % cp
