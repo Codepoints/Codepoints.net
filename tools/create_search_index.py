@@ -15,18 +15,22 @@ relate to oxen.
 """
 
 from bs4 import BeautifulSoup
-import nltk
-from os.path import dirname
-import re
-import MySQLdb
-import sys
+import codecs
 import ConfigParser
+from markdown import markdown
+import MySQLdb
+import nltk
+from os.path import dirname, isfile, realpath
+import re
+import sys
 
 
+# get database connection settings
 config = ConfigParser.RawConfigParser()
 config.read((dirname(dirname(__file__)) or '..')+'/db.conf')
 
 
+# pre-create the NLP structures for later splitting text
 stopwords = nltk.corpus.stopwords.words('english')
 punctrm = re.compile(ur'[!-/:-@\[-`{-~\u2212\u201C\u201D]', re.UNICODE)
 wnl = nltk.WordNetLemmatizer()
@@ -37,7 +41,7 @@ if len(sys.argv) > 1 and sys.argv[1] == '--print':
 
 
 def sql_convert(s):
-    """"""
+    """format a string to be printed in an SQL statement"""
     if isinstance(s, basestring):
         s = "'"+s.replace("\\", "\\\\").replace("'", "\\'")+"'"
         if isinstance(s, str):
@@ -59,23 +63,43 @@ def exec_sql(*sql):
         print sql0.encode('UTF-8')
 
 
+def tokenize(terms):
+    """create a stream of tokens from plain text"""
+    return [wnl.lemmatize(t) for t in
+            set(
+                filter(lambda w: re.sub(punctrm, '', w) != '',
+                    [w for w
+                        in map(lambda s: s.lower(),
+                            nltk.word_tokenize(terms))
+                        if w not in stopwords]
+                )
+            )
+        ]
+
+
+def get_addinfo_tokens(cp):
+    """fetch, if exists, the tokens from the additional Markdown file"""
+    tokens = []
+    mdfile = dirname(dirname(realpath(__file__))) + \
+             ('/codepoints.net/data/U+%04X.en.md' % cp)
+
+    if not isfile(mdfile):
+        return tokens
+
+    with codecs.open(mdfile, 'r', 'utf-8') as f:
+        abstract = markdown(f.read())
+        terms = BeautifulSoup(abstract).get_text()
+        tokens = tokenize(terms)
+    return tokens
+
+
 def get_abstract_tokens(cp):
     """Fetch abstract for cp and split it in tokens"""
     cur.execute("SELECT abstract FROM codepoint_abstract WHERE cp = %s AND lang = 'en'", (cp,))
     abstract = (cur.fetchone() or {'abstract':None})['abstract']
     if abstract:
         terms = BeautifulSoup(abstract).get_text()
-        tokens = \
-            [wnl.lemmatize(t) for t in
-                set(
-                    filter(lambda w: re.sub(punctrm, '', w) != '',
-                        [w for w
-                            in map(lambda s: s.lower(),
-                                nltk.word_tokenize(terms))
-                            if w not in stopwords]
-                    )
-                )
-            ]
+        tokens = tokenize(terms)
     else:
         tokens = []
     return tokens
@@ -127,6 +151,73 @@ def has_confusables(cp):
     return cur.fetchone()['c']
 
 
+def term(cp, term, weight):
+    """create a new search term query"""
+    exec_sql('INSERT INTO search_index (cp, term, weight) '
+             'VALUES (%s, %s, %s);', (cp, term, weight))
+
+
+def handle_row(item):
+    """take a codepoint row from db and create search index terms"""
+    cp = item['cp']
+
+    # delete previous entries
+    exec_sql(u'DELETE FROM search_index WHERE cp = %s;', (cp,))
+
+    term(cp, u'int:{}'.format(cp), 80)
+
+    for j, weight in (('na', 100), ('na1', 90), ('kDefinition', 50)):
+        if item[j]:
+            for w in re.split(r'\s+', item[j].lower()):
+                term(cp, w, weight)
+                if '-' in w:
+                    # we need this to find cps like "TAG HYPHEN-MINUS"
+                    # when searching for "hyphen".
+                    for w2 in w.split('-'):
+                        term(cp, w2, weight-20)
+
+    for prop in item.keys():
+        if (prop not in ('na', 'na1', 'kDefinition', 'cp') and
+            prop is not None and item[prop] is not None):
+            # all other properties get stored as foo:bar pairs, with foo
+            # as property and bar as its value
+            _i = item[prop]
+            if type(_i) is str:
+                _i = _i.decode('utf-8')
+            elif type(_i) is long:
+                _i = int(_i)
+            term(cp, u'%s:%s' % (prop, _i), 50)
+            if prop == 'scx':
+                scx = _i.split(u' ')
+                for sc in scx:
+                    # add for search by script ("sc:%"), but with lesser weight
+                    # than true sc below:
+                    term(cp, u'sc:{}'.format(sc), 25)
+
+    for w in get_aliases(cp):
+        term(cp, w, 40)
+
+    for w in get_abstract_tokens(cp):
+        term(cp, w, 1)
+
+    dm = get_decomp(cp)
+    if dm:
+        term(cp, dm, 30)
+
+    h = '0'
+    if has_confusables(cp):
+        h = '1'
+    term(cp, 'confusables:'+h, 50)
+
+    block = get_block(cp)
+    if block:
+        term(cp, 'blk:%s' % block, 30)
+
+    script = get_script(cp)
+    if script:
+        term(cp, 'sc:%s' % script, 50)
+
+
 conn = MySQLdb.connect(
         host='localhost',
         user=config.get('clientreadonly', 'user'),
@@ -153,77 +244,12 @@ all_cps = cur.fetchall()
 i = 0
 for item in all_cps:
     i += 1
-    cp = item['cp']
 
-    # delete previous entries
-    exec_sql(u'DELETE FROM search_index WHERE cp = %s;', (cp,))
-
-    exec_sql(u'INSERT INTO search_index (cp, term, weight) '
-             u'VALUES (%s, %s, 80);', (cp, u'int:{}'.format(cp)))
-
-    for j, weight in (('na', 100), ('na1', 90), ('kDefinition', 50)):
-        if item[j]:
-            for w in re.split(r'\s+', item[j].lower()):
-                exec_sql('INSERT INTO search_index (cp, term, weight) '
-                    'VALUES (%s, %s, %s);', (cp, w, weight))
-                if '-' in w:
-                    # we need this to find cps like "TAG HYPHEN-MINUS"
-                    # when searching for "hyphen".
-                    for w2 in w.split('-'):
-                        exec_sql('INSERT INTO search_index (cp, term, weight) '
-                            'VALUES (%s, %s, %s);', (cp, w2, weight-20))
-
-    for prop in item.keys():
-        if (prop not in ('na', 'na1', 'kDefinition', 'cp') and
-            prop is not None and item[prop] is not None):
-            # all other properties get stored as foo:bar pairs, with foo
-            # as property and bar as its value
-            _i = item[prop]
-            if type(_i) is str:
-                _i = _i.decode('utf-8')
-            elif type(_i) is long:
-                _i = int(_i)
-            exec_sql(u'INSERT INTO search_index (cp, term, weight) '
-                u'VALUES (%s, %s, %s);', (cp, u'%s:%s' % (prop, _i), 50))
-            if prop == 'scx':
-                scx = _i.split(u' ')
-                for sc in scx:
-                    # add for search by script ("sc:%"), but with lesser weight
-                    # than true sc below:
-                    exec_sql(u'INSERT INTO search_index (cp, term, weight) '
-                        u'VALUES (%s, %s, 25);', (cp, u'sc:{}'.format(sc)))
-
-    for w in get_aliases(cp):
-        exec_sql('INSERT INTO search_index (cp, term, weight) '
-            'VALUES (%s, %s, 40);', (cp, w))
-
-    for w in get_abstract_tokens(cp):
-        exec_sql('INSERT INTO search_index (cp, term, weight) '
-            'VALUES (%s, %s, 1);', (cp, w))
-
-    dm = get_decomp(cp)
-    if dm:
-        exec_sql('INSERT INTO search_index (cp, term, weight) '
-            'VALUES (%s, %s, 30);', (cp, dm))
-
-    h = '0'
-    if has_confusables(cp):
-        h = '1'
-    exec_sql('INSERT INTO search_index (cp, term, weight) '
-        'VALUES (%s, %s, 50);', (cp, 'confusables:'+h))
-
-    block = get_block(cp)
-    if block:
-        exec_sql('INSERT INTO search_index (cp, term, weight) '
-            'VALUES (%s, %s, 30);', (cp, 'blk:%s' % block))
-
-    script = get_script(cp)
-    if script:
-        exec_sql('INSERT INTO search_index (cp, term, weight) '
-            'VALUES (%s, %s, 50);', (cp, 'sc:%s' % script))
+    handle_row(item)
 
     if i % 1000 == 0:
-        print '-- U+%04X' % cp
+        print '-- U+%04X' % item['cp']
+
 
 cur.close()
 conn.commit()
