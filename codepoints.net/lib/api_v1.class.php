@@ -131,34 +131,34 @@ class API_v1 implements iAPIAccess {
             $host = get_origin().'api/v1';
             $status = 500;
             $content = array(
-                "problemType" => "$host/problem/",
+                "type" => "$host/problem/",
                 "title" => _("An unknown error occured.")
             );
             switch($this->_error[0]) {
                 case API_BAD_REQUEST:
                     $status = 400;
                     $content['title'] = $this->_error[1];
-                    $content['problemType'] .= 'bad_request';
+                    $content['type'] .= 'bad_request';
                     break;
                 case API_NOT_FOUND:
                     $status = 404;
                     $content['title'] = $this->_error[1];
-                    $content['problemType'] .= 'not_found';
+                    $content['type'] .= 'not_found';
                     break;
                 case API_PRECONDITION_FAILED:
                     $status = 412;
                     $content['title'] = $this->_error[1];
-                    $content['problemType'] .= 'precondition_failed';
+                    $content['type'] .= 'precondition_failed';
                     break;
                 case API_REQUEST_ENTITY_TOO_LARGE:
                     $status = 413;
                     $content['title'] = $this->_error[1];
-                    $content['problemType'] .= 'request_entity_too_large';
+                    $content['type'] .= 'request_entity_too_large';
                     break;
                 case API_REQUEST_URI_TOO_LONG:
                     $status = 414;
                     $content['title'] = $this->_error[1];
-                    $content['problemType'] .= 'request_uri_too_long';
+                    $content['type'] .= 'request_uri_too_long';
                     break;
                 default:
                     if ($this->_error[0] >= 400 && $this->_error[0] < 600) {
@@ -176,9 +176,10 @@ class API_v1 implements iAPIAccess {
                 $content = $content['title'];
             } elseif ($this->_mime === 'application/json') {
                 if (array_key_exists('HTTP_ACCEPT', $_SERVER) &&
-                    strpos($_SERVER['HTTP_ACCEPT'], 'application/api-problem+json') !== false) {
-                    $this->_mime = 'application/api-problem+json';
+                    strpos($_SERVER['HTTP_ACCEPT'], 'application/problem+json') !== false) {
+                    $this->_mime = 'application/problem+json';
                 }
+                $content['status'] = $status;
                 if (count($this->_error) > 2 && $this->_error[2]) {
                     $content += $this->_error[2];
                 }
@@ -202,7 +203,7 @@ class API_v1 implements iAPIAccess {
                 }
                 break;
             case 'application/json':
-            case 'application/api-problem+json':
+            case 'application/problem+json':
             case 'application/javascript':
                 return json_encode($thing, true);
                 break;
@@ -246,7 +247,7 @@ class API_v1 implements iAPIAccess {
         if (isset($_GET['callback']) &&
             preg_match('/^[_\$a-zA-Z][_\$\.a-zA-Z0-9]*$/', $_GET['callback']) &&
             in_array($this->_mime, array('application/json',
-                'application/api-problem+json', 'application/javascript'))) {
+                'application/problem+json', 'application/javascript'))) {
             $this->_mime = 'application/javascript';
             $data = $_GET['callback'].'('.$data.');';
         }
