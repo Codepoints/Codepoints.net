@@ -16,8 +16,12 @@ if (! isset($_GET['url'])) {
 }
 
 $format = 'json';
-if (isset($_GET['format']) && $_GET['format'] === 'xml') {
-    $format = 'xml';
+if (isset($_GET['format'])) {
+    if ($_GET['format'] === 'xml') {
+        $format = 'xml';
+    } elseif ($_GET['format'] !== 'json') {
+        $api->throwError(501, _('Unknown format parameter'));
+    }
 }
 
 $maxwidth = 640;
