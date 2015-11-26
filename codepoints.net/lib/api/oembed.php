@@ -38,7 +38,7 @@ if (! isset($_GET['url']) || ! $_GET['url']) {
     $api->throwError(API_BAD_REQUEST, _('Required parameter "url" is missing.'));
 }
 $url = $_GET['url'];
-if (! preg_match('/^https?:\/\/(www\.)?codepoints\.[a-z]+$/', $url)) {
+if (! preg_match('/^https?:\/\/(www\.)?codepoints\.[a-z]+\//', $url)) {
     $api->throwError(API_NOT_FOUND, _('Invalid URL'));
 }
 
