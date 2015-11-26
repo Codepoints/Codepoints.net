@@ -21,13 +21,13 @@ if (isset($_GET['format']) && $_GET['format'] === 'xml') {
 }
 
 $maxwidth = 640;
-if (isset($_GET['maxwidth']) && is_numeric($_GET['maxwidth'])) {
-    $maxwidth = intval($_GET['maxwidth']);
+if (isset($_GET['maxwidth']) && ctype_digit($_GET['maxwidth'])) {
+    $maxwidth = max(26, intval($_GET['maxwidth']));
 }
 
 $maxheight = 640;
-if (isset($_GET['maxheight']) && is_numeric($_GET['maxheight'])) {
-    $maxheight = intval($_GET['maxheight']);
+if (isset($_GET['maxheight']) && ctype_digit($_GET['maxheight'])) {
+    $maxheight = max(40, intval($_GET['maxheight']));
 }
 
 $url = $_GET['url'];
