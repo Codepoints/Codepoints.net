@@ -28,8 +28,10 @@ $headdata .= sprintf('
 <meta name="twitter:site" content="@codepointsnet">
 <meta name="twitter:url" content="https://codepoints.net%s">
 <meta name="twitter:title" content="%s">
-<meta name="twitter:description" content="%s">',
-q($router->getUrl($codepoint)), q($title), q($hDescription));
+<meta name="twitter:description" content="%s">
+<link rel="alternate" type="application/json+oembed" href="https://codepoints.net/api/v1/oembed?url=%s&amp;format=json">
+<link rel="alternate" type="text/xml+oembed" href="https://codepoints.net/api/v1/oembed?url=%s&amp;format=xml">',
+q($router->getUrl($codepoint)), q($title), q($hDescription), q(rawurlencode('https://codepoints.net'.$canonical)), q(rawurlencode('https://codepoints.net'.$canonical)));
 if (substr($codepoint->getImage(), -strlen(Codepoint::$defaultImage)) !==
     Codepoint::$defaultImage) {
         $headdata .= '<meta name="twitter:image" content="https://codepoints.net/api/v1/glyph/'.$codepoint->getId('hex').'">';
