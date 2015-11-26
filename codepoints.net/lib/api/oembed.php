@@ -34,12 +34,15 @@ if (isset($_GET['maxheight']) && ctype_digit($_GET['maxheight'])) {
     $maxheight = max(40, intval($_GET['maxheight']));
 }
 
+if (! isset($_GET['url']) || ! $_GET['url']) {
+    $api->throwError(API_BAD_REQUEST, _('Required parameter "url" is missing.'));
+}
 $url = $_GET['url'];
-if (substr($url, 0, strlen($origin)) !== $origin) {
+if (! preg_match('/^https?:\/\/(www\.)?codepoints\.[a-z]+$/', $url)) {
     $api->throwError(API_NOT_FOUND, _('Invalid URL'));
 }
 
-$path = substr($url, strlen($origin));
+$path = preg_replace('/^https?:\/\/(www\.)?codepoints\.[a-z]+\//', '', $url);
 if (preg_match('/^[Uu](?:\\+| |%20)([A-Fa-f0-9]{1,6})$/', $path, $matches)) {
     $dec = hexdec($matches[1]);
 } elseif (mb_strlen($path, 'UTF-8') === 1) {
