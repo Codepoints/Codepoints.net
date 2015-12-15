@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-07 09:56+0200\n"
+"POT-Creation-Date: 2015-12-15 09:32+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -626,12 +626,12 @@ msgstr ""
 msgid "Try “Find My Codepoint” again."
 msgstr ""
 
-#: codepoints.net/views/result.php:57
+#: codepoints.net/views/result.php:59
 #, php-format
 msgid "%s block matches %s:"
 msgstr ""
 
-#: codepoints.net/views/result.php:57
+#: codepoints.net/views/result.php:59
 #, php-format
 msgid "%s blocks match %s:"
 msgstr ""
@@ -817,7 +817,7 @@ msgid ""
 "to the %s script and is a %s."
 msgstr ""
 
-#: codepoints.net/views/codepoint.html.php:91
+#: codepoints.net/views/codepoint.html.php:93
 #: codepoints.net/views/pu_codepoint.html.php:165
 #: codepoints.net/views/pu_codepoint.html.php:253
 #: codepoints.net/views/codepoint.embedded.php:63
@@ -826,7 +826,7 @@ msgstr ""
 msgid "Nº"
 msgstr ""
 
-#: codepoints.net/views/codepoint.html.php:93
+#: codepoints.net/views/codepoint.html.php:95
 #: codepoints.net/views/pu_codepoint.html.php:167
 #: codepoints.net/views/pu_codepoint.html.php:257
 #: codepoints.net/views/codepoint.embedded.php:67
@@ -835,58 +835,58 @@ msgstr ""
 msgid "UTF-8"
 msgstr ""
 
-#: codepoints.net/views/codepoint.html.php:100
+#: codepoints.net/views/codepoint.html.php:102
 #: codepoints.net/views/codepoint.embedded.php:48
 #: codepoints.net/views/pu_codepoint.embedded.php:147
 #: codepoints.net/views/dailycp.php:68
 msgid "Numeric Value"
 msgstr ""
 
-#: codepoints.net/views/codepoint.html.php:113
+#: codepoints.net/views/codepoint.html.php:115
 msgid ""
 "Embed this codepoint in your own website by simply\n"
 "      copy-and-pasting the following HTML snippet:"
 msgstr ""
 
-#: codepoints.net/views/codepoint.html.php:119
+#: codepoints.net/views/codepoint.html.php:121
 msgid ""
 "If you want, you can freely change width and height to meet\n"
 "        your needs. The layout will adapt accordingly."
 msgstr ""
 
-#: codepoints.net/views/codepoint.html.php:132
+#: codepoints.net/views/codepoint.html.php:134
 msgid "Related Characters"
 msgstr ""
 
-#: codepoints.net/views/codepoint.html.php:141
+#: codepoints.net/views/codepoint.html.php:143
 msgid "Confusables"
 msgstr ""
 
-#: codepoints.net/views/codepoint.html.php:151
+#: codepoints.net/views/codepoint.html.php:153
 msgid "Elsewhere"
 msgstr ""
 
-#: codepoints.net/views/codepoint.html.php:155
+#: codepoints.net/views/codepoint.html.php:156
 msgid "Unicode website"
 msgstr ""
 
-#: codepoints.net/views/codepoint.html.php:156
+#: codepoints.net/views/codepoint.html.php:157
 msgid "Reference rendering on Unicode.org"
 msgstr ""
 
-#: codepoints.net/views/codepoint.html.php:158
+#: codepoints.net/views/codepoint.html.php:159
 msgid "Wikipedia"
 msgstr ""
 
-#: codepoints.net/views/codepoint.html.php:161
+#: codepoints.net/views/codepoint.html.php:162
 msgid "Unihan Database"
 msgstr ""
 
-#: codepoints.net/views/codepoint.html.php:162
+#: codepoints.net/views/codepoint.html.php:163
 msgid "Chinese Text Project"
 msgstr ""
 
-#: codepoints.net/views/codepoint.html.php:169
+#: codepoints.net/views/codepoint.html.php:171
 #: codepoints.net/views/pu_codepoint.html.php:280
 msgid "Complete Record"
 msgstr ""
@@ -1079,11 +1079,11 @@ msgstr ""
 msgid "Blog"
 msgstr ""
 
-#: codepoints.net/views/footer.php:20 codepoints.net/views/nav.php:38
+#: codepoints.net/views/footer.php:20 codepoints.net/views/nav.php:41
 msgid "About"
 msgstr ""
 
-#: codepoints.net/views/scripts.php:2 codepoints.net/views/nav.php:36
+#: codepoints.net/views/scripts.php:2 codepoints.net/views/nav.php:39
 msgid "Scripts"
 msgstr ""
 
@@ -1246,7 +1246,7 @@ msgstr ""
 msgid "Back to search results"
 msgstr ""
 
-#: codepoints.net/views/nav.php:37
+#: codepoints.net/views/nav.php:40
 msgid "Random"
 msgstr ""
 
@@ -1664,6 +1664,31 @@ msgid ""
 "list of detail informations about these scripts."
 msgstr ""
 
+#: codepoints.net/lib/api/oembed.php:9
+msgid "oEmbed API endpoint for URLs matching “codepoints.net”"
+msgstr ""
+
+#: codepoints.net/lib/api/oembed.php:23
+msgid "Unknown format parameter"
+msgstr ""
+
+#: codepoints.net/lib/api/oembed.php:38
+msgid "Required parameter \"url\" is missing."
+msgstr ""
+
+#: codepoints.net/lib/api/oembed.php:42
+msgid "Invalid URL"
+msgstr ""
+
+#: codepoints.net/lib/api/oembed.php:51
+msgid ""
+"URL path must be single character (UTF-8 encoded) or match /U+[A-F0-9]{4,6}/."
+msgstr ""
+
+#: codepoints.net/lib/api/oembed.php:58
+msgid "Not a valid codepoint URL"
+msgstr ""
+
 #: codepoints.net/lib/api/filter.php:11
 msgid ""
 "Filter a string of characters by Unicode property. You can negate properties "
@@ -1751,22 +1776,23 @@ msgid ""
 "Welcome to codepoint.net’s Unicode API. Most requests are JSON-based. The "
 "API supports for those requests JSONP via the `callback` GET parameter. The "
 "`glyph` and `property` methods return PNG images. When problems appear, the "
-"API response conforms to <http://tools.ietf.org/html/draft-nottingham-http-"
-"problem-04>."
+"API response conforms to <https://tools.ietf.org/html/draft-ietf-appsawg-"
+"http-problem-02>. Documentation is published at <https://github.com/"
+"Codepoints/codepoints.net/wiki/API>."
 msgstr ""
 
-#: codepoints.net/lib/api_v1.class.php:91
+#: codepoints.net/lib/api_v1.class.php:92
 msgid "Ye?h, th?nks! You er?sed this codepoint. Are you h?ppy now?"
 msgstr ""
 
-#: codepoints.net/lib/api_v1.class.php:96
+#: codepoints.net/lib/api_v1.class.php:97
 msgid "To create a new codepoint, please mail it to unicode@unicode.org."
 msgstr ""
 
-#: codepoints.net/lib/api_v1.class.php:104
+#: codepoints.net/lib/api_v1.class.php:105
 msgid "This API method does not exist."
 msgstr ""
 
-#: codepoints.net/lib/api_v1.class.php:133
+#: codepoints.net/lib/api_v1.class.php:135
 msgid "An unknown error occured."
 msgstr ""

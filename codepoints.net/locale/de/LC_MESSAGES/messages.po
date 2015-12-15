@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-07 09:56+0200\n"
-"PO-Revision-Date: 2015-08-07 09:58+0100\n"
+"POT-Creation-Date: 2015-12-15 09:32+0100\n"
+"PO-Revision-Date: 2015-12-15 09:41+0100\n"
 "Last-Translator: Manuel Strehl <m.strehl@kinetiqa.de>\n"
 "Language-Team: Codepoints.net <info@codepoints.net>\n"
 "Language: de\n"
@@ -786,12 +786,12 @@ msgstr "Dies ist Seite %s von %s."
 msgid "Try “Find My Codepoint” again."
 msgstr "Versuche „Finde meinen Codepunkt“ noch einmal."
 
-#: codepoints.net/views/result.php:57
+#: codepoints.net/views/result.php:59
 #, php-format
 msgid "%s block matches %s:"
 msgstr "%s Block trifft auf %s zu:"
 
-#: codepoints.net/views/result.php:57
+#: codepoints.net/views/result.php:59
 #, php-format
 msgid "%s blocks match %s:"
 msgstr "%s Blöcke treffen auf %s zu:"
@@ -1012,7 +1012,7 @@ msgstr ""
 "%s, Codepunkt U+%04X %s in Unicode, liegt im Block „%s“. Es gehört zur %s-"
 "Schrift und ist ein %s."
 
-#: codepoints.net/views/codepoint.html.php:91
+#: codepoints.net/views/codepoint.html.php:93
 #: codepoints.net/views/pu_codepoint.html.php:165
 #: codepoints.net/views/pu_codepoint.html.php:253
 #: codepoints.net/views/codepoint.embedded.php:63
@@ -1021,7 +1021,7 @@ msgstr ""
 msgid "Nº"
 msgstr "Nr."
 
-#: codepoints.net/views/codepoint.html.php:93
+#: codepoints.net/views/codepoint.html.php:95
 #: codepoints.net/views/pu_codepoint.html.php:167
 #: codepoints.net/views/pu_codepoint.html.php:257
 #: codepoints.net/views/codepoint.embedded.php:67
@@ -1030,14 +1030,14 @@ msgstr "Nr."
 msgid "UTF-8"
 msgstr "UTF-8"
 
-#: codepoints.net/views/codepoint.html.php:100
+#: codepoints.net/views/codepoint.html.php:102
 #: codepoints.net/views/codepoint.embedded.php:48
 #: codepoints.net/views/pu_codepoint.embedded.php:147
 #: codepoints.net/views/dailycp.php:68
 msgid "Numeric Value"
 msgstr "Numerischer Wert"
 
-#: codepoints.net/views/codepoint.html.php:113
+#: codepoints.net/views/codepoint.html.php:115
 msgid ""
 "Embed this codepoint in your own website by simply\n"
 "      copy-and-pasting the following HTML snippet:"
@@ -1045,7 +1045,7 @@ msgstr ""
 "Bette diesen Codepunkt einfach auf deiner eigenen Webseite ein, indem du das "
 "folgende HTML-Schnippsel kopierst:"
 
-#: codepoints.net/views/codepoint.html.php:119
+#: codepoints.net/views/codepoint.html.php:121
 msgid ""
 "If you want, you can freely change width and height to meet\n"
 "        your needs. The layout will adapt accordingly."
@@ -1053,39 +1053,39 @@ msgstr ""
 "Wenn du möchtest, kannst du Höhe und Breite frei anpassen. Das Layout wird "
 "sich entsprechend anpassen."
 
-#: codepoints.net/views/codepoint.html.php:132
+#: codepoints.net/views/codepoint.html.php:134
 msgid "Related Characters"
 msgstr "Verwandte Schriftzeichen"
 
-#: codepoints.net/views/codepoint.html.php:141
+#: codepoints.net/views/codepoint.html.php:143
 msgid "Confusables"
 msgstr "Verwechselbare"
 
-#: codepoints.net/views/codepoint.html.php:151
+#: codepoints.net/views/codepoint.html.php:153
 msgid "Elsewhere"
 msgstr "Anderswo"
 
-#: codepoints.net/views/codepoint.html.php:155
+#: codepoints.net/views/codepoint.html.php:156
 msgid "Unicode website"
 msgstr "Unicode-Webseite"
 
-#: codepoints.net/views/codepoint.html.php:156
+#: codepoints.net/views/codepoint.html.php:157
 msgid "Reference rendering on Unicode.org"
 msgstr "Referenz-Darstellung auf Unicode.org"
 
-#: codepoints.net/views/codepoint.html.php:158
+#: codepoints.net/views/codepoint.html.php:159
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
-#: codepoints.net/views/codepoint.html.php:161
+#: codepoints.net/views/codepoint.html.php:162
 msgid "Unihan Database"
 msgstr "Unihan-Datenbank"
 
-#: codepoints.net/views/codepoint.html.php:162
+#: codepoints.net/views/codepoint.html.php:163
 msgid "Chinese Text Project"
 msgstr "Chinese Text Project"
 
-#: codepoints.net/views/codepoint.html.php:169
+#: codepoints.net/views/codepoint.html.php:171
 #: codepoints.net/views/pu_codepoint.html.php:280
 msgid "Complete Record"
 msgstr "Vollständiger Eintrag"
@@ -1298,11 +1298,11 @@ msgstr "Twitter"
 msgid "Blog"
 msgstr "Blog"
 
-#: codepoints.net/views/footer.php:20 codepoints.net/views/nav.php:38
+#: codepoints.net/views/footer.php:20 codepoints.net/views/nav.php:41
 msgid "About"
 msgstr "Über"
 
-#: codepoints.net/views/scripts.php:2 codepoints.net/views/nav.php:36
+#: codepoints.net/views/scripts.php:2 codepoints.net/views/nav.php:39
 msgid "Scripts"
 msgstr "Schriften"
 
@@ -1484,7 +1484,7 @@ msgstr "Sprache wählen"
 msgid "Back to search results"
 msgstr "Zurück zu den Suchergebnissen"
 
-#: codepoints.net/views/nav.php:37
+#: codepoints.net/views/nav.php:40
 msgid "Random"
 msgstr "Zufall"
 
@@ -1860,7 +1860,7 @@ msgstr "(nach Besuchern)"
 
 #: codepoints.net/lib/api/block.php:8
 msgid "show detailed information about a Unicode block"
-msgstr ""
+msgstr "zeige detaillierte Informationen über einen Unicode-Block"
 
 #: codepoints.net/lib/api/block.php:20
 msgid "Not a block"
@@ -1920,17 +1920,42 @@ msgstr ""
 
 #: codepoints.net/lib/api/script.php:29
 msgid "This script is unknown"
-msgstr ""
+msgstr "Dieses Schriftsystem ist unbekannt"
 
 #: codepoints.net/lib/api/script.php:29
 msgid "Please specify a script"
-msgstr ""
+msgstr "Bitte geben Sie ein Schriftsystem an"
 
 #: codepoints.net/lib/api/script.php:30
 msgid ""
 "Specify one or more ISO short names separated by comma. The response is a "
 "list of detail informations about these scripts."
 msgstr ""
+
+#: codepoints.net/lib/api/oembed.php:9
+msgid "oEmbed API endpoint for URLs matching “codepoints.net”"
+msgstr ""
+
+#: codepoints.net/lib/api/oembed.php:23
+msgid "Unknown format parameter"
+msgstr "Unbekannter format-Parameter"
+
+#: codepoints.net/lib/api/oembed.php:38
+msgid "Required parameter \"url\" is missing."
+msgstr ""
+
+#: codepoints.net/lib/api/oembed.php:42
+msgid "Invalid URL"
+msgstr "Ungültige URL"
+
+#: codepoints.net/lib/api/oembed.php:51
+msgid ""
+"URL path must be single character (UTF-8 encoded) or match /U+[A-F0-9]{4,6}/."
+msgstr ""
+
+#: codepoints.net/lib/api/oembed.php:58
+msgid "Not a valid codepoint URL"
+msgstr "Keine gültige Codepunkt-URL"
 
 #: codepoints.net/lib/api/filter.php:11
 msgid ""
@@ -1948,11 +1973,11 @@ msgstr ""
 #: codepoints.net/lib/api/filter.php:36
 #, php-format
 msgid "Cannot filter for unknown property %s"
-msgstr ""
+msgstr "Kann nicht nach unbekannter Eigenschaft %s filtern"
 
 #: codepoints.net/lib/api/filter.php:49
 msgid "Cannot filter."
-msgstr ""
+msgstr "Kann nicht filtern."
 
 #: codepoints.net/lib/api/transform.php:10
 msgid ""
@@ -1963,7 +1988,7 @@ msgstr ""
 #: codepoints.net/lib/api/transform.php:27
 #, php-format
 msgid "Unknown transform action %s"
-msgstr ""
+msgstr "Unbekannte Transformationsaktion %s"
 
 #: codepoints.net/lib/api/problem.php:9
 msgid "Prerequisite Missing"
@@ -1984,6 +2009,8 @@ msgstr ""
 msgid ""
 "The request body (or the data in the URL) was too large. Try to reduce it."
 msgstr ""
+"Der Anfrage-Body (oder die Daten in der URL) war zu lang. Versuchen Sie, ihn "
+"zu kürzen."
 
 #: codepoints.net/lib/api/problem.php:17
 msgid "Bad Request"
@@ -1995,6 +2022,8 @@ msgid ""
 "The client made a bad request, for example, by not specifying a required "
 "parameter. See %s/ for API usage."
 msgstr ""
+"Der Client erzeugte eine schlechte Anfrage, z.B., indem ein benötigter "
+"Parameter nicht angegeben wurde. Siehe %s/ für die Verwendung der API."
 
 #: codepoints.net/lib/api/problem.php:21
 msgid "Not Found"
@@ -2005,6 +2034,8 @@ msgid ""
 "The requested resource was not found. This can, for example, happen for non-"
 "existing codepoints."
 msgstr ""
+"Die angefragte Ressource wurde nicht gefunden. Das kann z.B. für nicht-"
+"existierende Codepunkte passieren."
 
 #: codepoints.net/lib/api/problem.php:25
 msgid "Error"
@@ -2019,25 +2050,32 @@ msgid ""
 "Welcome to codepoint.net’s Unicode API. Most requests are JSON-based. The "
 "API supports for those requests JSONP via the `callback` GET parameter. The "
 "`glyph` and `property` methods return PNG images. When problems appear, the "
-"API response conforms to <http://tools.ietf.org/html/draft-nottingham-http-"
-"problem-04>."
+"API response conforms to <https://tools.ietf.org/html/draft-ietf-appsawg-"
+"http-problem-02>. Documentation is published at <https://github.com/"
+"Codepoints/codepoints.net/wiki/API>."
 msgstr ""
+"Willkommen bei codepoint.net’s Unicode-API. Die meisten Antworten sind JSON-"
+"basiert. Die API unterstützt für diese Anfragen JSONP über den `callback`-"
+"GET-Parameter. Die Methoden `glyph` und `property` geben PNG-Bilder zurück. "
+"Wenn es Probleme gibt, folgt die API-Antwort der Struktur aus <https://tools."
+"ietf.org/html/draft-ietf-appsawg-http-problem-02>. Dokumentation ist unter "
+"<https://github.com/Codepoints/codepoints.net/wiki/API> zu finden."
 
-#: codepoints.net/lib/api_v1.class.php:91
+#: codepoints.net/lib/api_v1.class.php:92
 msgid "Ye?h, th?nks! You er?sed this codepoint. Are you h?ppy now?"
 msgstr ""
 
-#: codepoints.net/lib/api_v1.class.php:96
+#: codepoints.net/lib/api_v1.class.php:97
 msgid "To create a new codepoint, please mail it to unicode@unicode.org."
 msgstr ""
 "Um einen neuen Codepunkt zu erzeugen, schicken Sie ihn bitte per E-Mail an "
 "unicode@unicode.org."
 
-#: codepoints.net/lib/api_v1.class.php:104
+#: codepoints.net/lib/api_v1.class.php:105
 msgid "This API method does not exist."
 msgstr "Diese API-Methode existiert nicht."
 
-#: codepoints.net/lib/api_v1.class.php:133
+#: codepoints.net/lib/api_v1.class.php:135
 msgid "An unknown error occured."
 msgstr "Ein unbekannter Fehler ist aufgetaucht."
 
