@@ -961,6 +961,7 @@ class UnicodeInfo {
         "Lyci", "Lydi", "Merc", "Mero", "Mtei", "Ogam", "Orkh", "Osma", "Phag",
         "Phli", "Phnx", "Prti", "Rjng", "Runr", "Samr", "Sarb", "Shaw", "Shrd",
         "Sylo", "Syrc", "Takr", "Tfng", "Ugar", "Xpeo", "Xsux",
+        /* archaic and recent: */ "Zyyy",
     );
 
     public static $recentScripts = array(
@@ -971,6 +972,7 @@ class UnicodeInfo {
         "Mymr", "Nkoo", "Olck", "Orya", "Plrd", "Saur", "Sinh", "Sora", "Sund",
         "Tagb", "Tale", "Talu", "Taml", "Tavt", "Telu", "Tglg", "Thaa", "Thai",
         "Tibt", "Vaii", "Yiii",
+        /* archaic and recent: */ "Zyyy",
     );
 
     public static $regionToBlock = array(
@@ -995,7 +997,8 @@ class UnicodeInfo {
             'Phonetic Extensions', 'Phonetic Extensions Supplement', 'Runic',
             'Shavian', 'Spacing Modifier Letters', 'Ancient Greek Musical Notation',
             'Ancient Greek Numbers', 'Ancient Symbols', 'Byzantine Musical Symbols',
-            'Aegean Numbers', 'Lycian', 'Phaistos Disc', 'Superscripts and Subscripts',),
+            'Aegean Numbers', 'Lycian', 'Phaistos Disc', 'Superscripts and Subscripts',
+            'General Punctuation',),
         'Middle_East' => array('Alphabetic Presentation Forms', 'Arabic',
             'Old South Arabian', 'Arabic Extended-A', 'Arabic Mathematical Alphabetic Symbols',
             'Arabic Presentation Forms-A', 'Arabic Presentation Forms-B',

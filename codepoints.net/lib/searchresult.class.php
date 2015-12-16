@@ -17,8 +17,6 @@ class SearchResult extends UnicodeRange {
 
     protected $count = 0;
 
-    protected $needConfusables = false;
-
     /**
      * add a query, connect it to previous via $connector
      *
@@ -27,9 +25,6 @@ class SearchResult extends UnicodeRange {
      * making "AND" searches empty sets.
      */
     public function addQuery($field, $value, $op='=', $connector='OR') {
-        if ($field === 'confusables') {
-            $this->needConfusables = true;
-        }
         $this->query[] = array($field, $op, $value, $connector);
     }
 
