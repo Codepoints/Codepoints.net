@@ -4,7 +4,7 @@ Version 1.0
 
 This domain complies with user opt-outs from tracking via the "Do Not Track"
 or "DNT" header  [http://www.w3.org/TR/tracking-dnt/].  This file will always
-be posted via HTTPS at https://codepoints.net/.well-known/dnt-policy.txt
+be posted via HTTPS at https://example-domain.com/.well-known/dnt-policy.txt
 to indicate this fact.
 
 SCOPE
