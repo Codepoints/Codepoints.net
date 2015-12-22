@@ -111,6 +111,7 @@ $s = function($cat) use ($router, $info, $props) {
     <p>
       <button type="button" class="button button--hi button--embed" data-link="#tools-embed-<?php _e($codepoint->getId('hex'))?>"><i class="icon-cog"></i> Embed this codepoint</button>
     </p>
+    <p><a class="button button--hi" href="http://www.unicode.org/consortium/adopt-a-character.html?str=U%2B<?php echo urlencode($codepoint->getId('hex'))?>"><?php _e('Adopt this code point')?></a></p>
     <div style="display:none" id="tools-embed-<?php _e($codepoint->getId('hex'))?>">
       <p><?php _e('Embed this codepoint in your own website by simply
       copy-and-pasting the following HTML snippet:')?></p>
