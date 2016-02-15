@@ -7,28 +7,44 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Codepoints JS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-09 10:20+0200\n"
-"PO-Revision-Date: 2014-05-09 10:21+0100\n"
-"Last-Translator: Manuel Strehl <m.strehl@kinetiqa.de>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2016-02-15 21:02+0100\n"
+"PO-Revision-Date: 2016-02-15 21:02+0100\n"
+"Last-Translator: Manuel Strehl <translate@manuel-strehl.de>\n"
+"Language-Team: \n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.5.4\n"
-"Language: de\n"
+"X-Generator: Poedit 1.8.4\n"
 
-#: src/js/wizard.js:115
-msgid "Finished!"
-msgstr "Fertig!"
+#: src/js/components/scratchpad.js:91
+msgid "empty"
+msgstr "leeren"
 
-#: src/js/wizard.js:128
-msgid "Please wait a second, we’re making those %s answers productive."
-msgstr "Bitte warte einen Moment, wir machen diese %s Antworten produktiv."
+#: src/js/components/scratchpad.js:95
+msgid "copy"
+msgstr "kopieren"
 
-#: src/js/wizard.js:150
-msgid "Enough questions! Search now."
-msgstr "Genug Fragen! Jetzt suchen."
+#: src/js/components/scratchpad.js:100
+msgid "show"
+msgstr "anzeigen"
+
+#: src/js/components/scratchpad.js:113
+msgid ""
+"You have no codepoints here yet. Add one by clicking “Add to scratchpad” on "
+"the details page."
+msgstr ""
+"Du hast noch keine Codepunkte hier. Füge einen hinzu, indem du auf \"Zu "
+"Notizzettel“ auf seiner Detailseite klickst."
+
+#: src/js/components/scratchpad.js:122
+msgid "Scratchpad"
+msgstr "Notizzettel"
+
+#: src/js/components/scratchpad.js:132
+msgid "Add to scratchpad"
+msgstr "Zu Notizzettel"
 
 #: src/js/components/representations.js:27
 #: src/js/components/representations.js:30
@@ -67,37 +83,33 @@ msgstr "C"
 msgid "CSS"
 msgstr "CSS"
 
-#: src/js/components/scratchpad.js:91
-msgid "empty"
-msgstr "leeren"
-
-#: src/js/components/scratchpad.js:95
-msgid "copy"
-msgstr "kopieren"
-
-#: src/js/components/scratchpad.js:100
-msgid "show"
-msgstr "anzeigen"
-
-#: src/js/components/scratchpad.js:113
-msgid ""
-"You have no codepoints here yet. Add one by clicking “Add to scratchpad” on "
-"the details page."
-msgstr ""
-"Du hast noch keine Codepunkte hier. Füge einen hinzu, indem du auf \"Zu "
-"Notizzettel“ auf seiner Detailseite klickst."
-
-#: src/js/components/scratchpad.js:122
-msgid "Scratchpad"
-msgstr "Notizzettel"
-
-#: src/js/components/scratchpad.js:132
-msgid "Add to scratchpad"
-msgstr "Zu Notizzettel"
-
-#: src/js/components/load_font.js:27
+#: src/js/components/load_font.js:28
 msgid "Font used above"
 msgstr "Oben verwendete Schriftart"
+
+#: src/js/wizard.js:115
+msgid "Finished!"
+msgstr "Fertig!"
+
+#: src/js/wizard.js:128
+msgid "Please wait a second, we’re making those %s answers productive."
+msgstr "Bitte warte einen Moment, wir machen diese %s Antworten produktiv."
+
+#: src/js/wizard.js:150
+msgid "Enough questions! Search now."
+msgstr "Genug Fragen! Jetzt suchen."
+
+#: src/js/searchform.js:17
+msgid "+ add new query"
+msgstr "+ neue Suche hinzufügen"
+
+#: src/js/searchform.js:168
+msgid "click to change"
+msgstr "klicken zum Ändern"
+
+#: src/js/searchform.js:169
+msgid "remove"
+msgstr "entfernen"
 
 #: src/js/scripts.js:26
 msgid "(%s codepoints)"
@@ -142,15 +154,3 @@ msgstr "Weiterlesen:"
 #: src/js/codepoints.js:240
 msgid "Hide this message."
 msgstr "Diese Nachricht verstecken."
-
-#: src/js/searchform.js:17
-msgid "+ add new query"
-msgstr "+ neue Suche hinzufügen"
-
-#: src/js/searchform.js:168
-msgid "click to change"
-msgstr "klicken zum Ändern"
-
-#: src/js/searchform.js:169
-msgid "remove"
-msgstr "entfernen"

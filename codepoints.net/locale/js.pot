@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-07 09:56+0200\n"
+"POT-Creation-Date: 2016-02-15 20:55+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,16 +17,30 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/js/wizard.js:115
-msgid "Finished!"
+#: src/js/components/scratchpad.js:91
+msgid "empty"
 msgstr ""
 
-#: src/js/wizard.js:128
-msgid "Please wait a second, we’re making those %s answers productive."
+#: src/js/components/scratchpad.js:95
+msgid "copy"
 msgstr ""
 
-#: src/js/wizard.js:150
-msgid "Enough questions! Search now."
+#: src/js/components/scratchpad.js:100
+msgid "show"
+msgstr ""
+
+#: src/js/components/scratchpad.js:113
+msgid ""
+"You have no codepoints here yet. Add one by clicking “Add to scratchpad” on "
+"the details page."
+msgstr ""
+
+#: src/js/components/scratchpad.js:122
+msgid "Scratchpad"
+msgstr ""
+
+#: src/js/components/scratchpad.js:132
+msgid "Add to scratchpad"
 msgstr ""
 
 #: src/js/components/representations.js:27
@@ -66,34 +80,32 @@ msgstr ""
 msgid "CSS"
 msgstr ""
 
-#: src/js/components/scratchpad.js:91
-msgid "empty"
-msgstr ""
-
-#: src/js/components/scratchpad.js:95
-msgid "copy"
-msgstr ""
-
-#: src/js/components/scratchpad.js:100
-msgid "show"
-msgstr ""
-
-#: src/js/components/scratchpad.js:113
-msgid ""
-"You have no codepoints here yet. Add one by clicking “Add to scratchpad” on "
-"the details page."
-msgstr ""
-
-#: src/js/components/scratchpad.js:122
-msgid "Scratchpad"
-msgstr ""
-
-#: src/js/components/scratchpad.js:132
-msgid "Add to scratchpad"
-msgstr ""
-
 #: src/js/components/load_font.js:28
 msgid "Font used above"
+msgstr ""
+
+#: src/js/wizard.js:115
+msgid "Finished!"
+msgstr ""
+
+#: src/js/wizard.js:128
+msgid "Please wait a second, we’re making those %s answers productive."
+msgstr ""
+
+#: src/js/wizard.js:150
+msgid "Enough questions! Search now."
+msgstr ""
+
+#: src/js/searchform.js:17
+msgid "+ add new query"
+msgstr ""
+
+#: src/js/searchform.js:168
+msgid "click to change"
+msgstr ""
+
+#: src/js/searchform.js:169
+msgid "remove"
 msgstr ""
 
 #: src/js/scripts.js:26
@@ -138,16 +150,4 @@ msgstr ""
 
 #: src/js/codepoints.js:240
 msgid "Hide this message."
-msgstr ""
-
-#: src/js/searchform.js:17
-msgid "+ add new query"
-msgstr ""
-
-#: src/js/searchform.js:168
-msgid "click to change"
-msgstr ""
-
-#: src/js/searchform.js:169
-msgid "remove"
 msgstr ""
