@@ -1,0 +1,150 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: codepoints\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-02-15 20:55+0100\n"
+"PO-Revision-Date: 2016-02-16 23:06+0100\n"
+"Last-Translator: Manuel Strehl <translate@manuel-strehl.de>\n"
+"Language-Team: Polish\n"
+"Language: pl_PL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 1.8.4\n"
+"X-Crowdin-Project: codepoints\n"
+"X-Crowdin-Language: pl\n"
+"X-Crowdin-File: js.pot\n"
+
+#: src/js/components/scratchpad.js:91
+msgid "empty"
+msgstr "pusty"
+
+#: src/js/components/scratchpad.js:95
+msgid "copy"
+msgstr "kopiowanie"
+
+#: src/js/components/scratchpad.js:100
+msgid "show"
+msgstr "pokaż"
+
+#: src/js/components/scratchpad.js:113
+msgid "You have no codepoints here yet. Add one by clicking “Add to scratchpad” on the details page."
+msgstr "Nie masz jeszcze tutaj współrzędnej kodowej. Dodaj jakąś klikając na \"Dodaj do notatnika\" na stronie szczegółów."
+
+#: src/js/components/scratchpad.js:122
+msgid "Scratchpad"
+msgstr "Notatnik"
+
+#: src/js/components/scratchpad.js:132
+msgid "Add to scratchpad"
+msgstr "Dodać do notatnika"
+
+#: src/js/components/representations.js:27
+#: src/js/components/representations.js:30
+msgid "show more"
+msgstr "pokaż więcej"
+
+#: src/js/components/representations.js:30
+msgid "hide"
+msgstr "ukryj"
+
+#: src/js/components/representations.js:35
+msgid "RFC 5137"
+msgstr "RFC 5137"
+
+#: src/js/components/representations.js:39
+msgid "Python"
+msgstr "Python"
+
+#: src/js/components/representations.js:52
+msgid "Ruby"
+msgstr "Ruby"
+
+#: src/js/components/representations.js:56
+msgid "Perl"
+msgstr "Perl"
+
+#: src/js/components/representations.js:60
+msgid "JavaScript, JSON and Java"
+msgstr "JavaScript, JSON i Java"
+
+#: src/js/components/representations.js:66
+msgid "C"
+msgstr "C"
+
+#: src/js/components/representations.js:79
+msgid "CSS"
+msgstr "CSS"
+
+#: src/js/components/load_font.js:28
+msgid "Font used above"
+msgstr "Font użyty powyżej"
+
+#: src/js/wizard.js:115
+msgid "Finished!"
+msgstr "Gotowe!"
+
+#: src/js/wizard.js:128
+msgid "Please wait a second, we’re making those %s answers productive."
+msgstr "Proszę zaczekać, robimy te odpowiedzi %s produktywne."
+
+#: src/js/wizard.js:150
+msgid "Enough questions! Search now."
+msgstr "Wystarczy pytań! Teraz szukaj."
+
+#: src/js/searchform.js:17
+msgid "+ add new query"
+msgstr "+ Dodaj nową kwerendę"
+
+#: src/js/searchform.js:168
+msgid "click to change"
+msgstr "kliknij, aby zmienić"
+
+#: src/js/searchform.js:169
+msgid "remove"
+msgstr "usuń"
+
+#: src/js/scripts.js:26
+msgid "(%s codepoints)"
+msgstr "(%s współrzędnych)"
+
+#: src/js/scripts.js:28
+msgid "Source: %s"
+msgstr "Źródło: %s"
+
+#: src/js/scripts.js:68
+msgid "Native, Rare and Historic Scripts"
+msgstr "Rdzenne, rzadkie i historyczne skrypty"
+
+#: src/js/scripts.js:72
+msgid "Scripts used in %s"
+msgstr "Skrypty używane w %s"
+
+#: src/js/scripts.js:82
+msgid "We don’t know about %s’s scripts, sorry!"
+msgstr "Nie wiemy o %s skryptów, przepraszamy!"
+
+#: src/js/scripts.js:84
+msgid "Nothing Found for %s"
+msgstr "Nic nie znaleziono dla %s"
+
+#: src/js/codepoints.js:80
+msgid "top"
+msgstr "do góry"
+
+#: src/js/codepoints.js:102
+msgid "Extended Search"
+msgstr "Zaawansowane szukanie"
+
+#: src/js/codepoints.js:104
+msgid "Find My Codepoint"
+msgstr "Znajdź moją współrzędną kodową"
+
+#: src/js/codepoints.js:183
+msgid "Read on:"
+msgstr "Czytaj dalej:"
+
+#: src/js/codepoints.js:240
+msgid "Hide this message."
+msgstr "Ukryj ten komunikat."
