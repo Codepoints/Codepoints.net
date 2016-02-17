@@ -170,7 +170,8 @@ class Codepoint {
                             WHERE codepoint_script.cp = codepoints.cp) sc,
                           (SELECT codepoint_abstract.abstract
                              FROM codepoint_abstract
-                            WHERE codepoint_abstract.cp = codepoints.cp) abstract
+                            WHERE codepoint_abstract.cp = codepoints.cp
+                              AND lang = \'en\') abstract
                 FROM codepoints
                 WHERE cp = :cp LIMIT 1');
             $query->execute(array(':cp' => $this->id));
@@ -210,6 +211,38 @@ class Codepoint {
             }
         }
         return $this->properties;
+    }
+
+    /**
+     * fetch abstract for a character for a certain language
+     */
+    public function getLocalizedAbstract($lang) {
+        $query = $this->db->prepare('
+            SELECT abstract
+                FROM codepoint_abstract
+            WHERE cp = ?
+                AND lang = ?');
+        $query->execute(array($this->id, $lang));
+        $abstract = $query->fetch(PDO::FETCH_ASSOC);
+        $query->closeCursor();
+        if ($abstract) {
+            return $abstract['abstract'];
+        }
+
+        $props = $this->getProperties();
+        if ($props['gc'] === 'Ll' &&
+            array_key_exists('uc', $props) &&
+            $props['uc'] instanceof Codepoint) {
+
+            $query->execute(array($props['uc']->id, $lang));
+            $abstract = $query->fetch(PDO::FETCH_ASSOC);
+            $query->closeCursor();
+            if ($abstract) {
+                return $abstract['abstract'];
+            }
+        }
+
+        return '';
     }
 
     /**

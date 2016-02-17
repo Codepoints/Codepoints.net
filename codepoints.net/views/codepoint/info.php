@@ -199,9 +199,16 @@
 ?>
 
 <!-- Wikipedia -->
-<?php if (array_key_exists('abstract', $props) && $props['abstract']):?>
-  <p><?php printf(__('The %sWikipedia%s has the following information about this codepoint:'), '<a href="http://en.wikipedia.org/wiki/%'.q($codepoint->getRepr('UTF-8', '%')).'">', '</a>')?></p>
-  <blockquote cite="http://en.wikipedia.org/wiki/%<?php e($codepoint->getRepr('UTF-8', '%'))?>">
-    <?php echo strip_tags($props['abstract'], '<p><b><strong class="selflink"><strong><em><i><var><sup><sub><tt><ul><ol><li><samp><small><hr><h2><h3><h4><h5><dfn><dl><dd><dt><u><abbr><big><blockquote><br><center><del><ins><kbd>')?>
+<?php
+$wikilang = $lang;
+$wikiabstract = $codepoint->getLocalizedAbstract($lang);
+if ($wikilang !== 'en' && ! $wikiabstract) {
+    $wikilang = 'en';
+    $wikiabstract = $codepoint->getLocalizedAbstract('en');
+}
+if ($wikiabstract):?>
+  <p><?php printf(__('The %sWikipedia%s has the following information about this codepoint:'), '<a href="https://'.$wikilang.'.wikipedia.org/wiki/%'.q($codepoint->getRepr('UTF-8', '%')).'">', '</a>')?></p>
+  <blockquote cite="https://<?php e($wikilang)?>.wikipedia.org/wiki/%<?php e($codepoint->getRepr('UTF-8', '%'))?>">
+    <?php echo strip_tags($wikiabstract, '<p><b><strong class="selflink"><strong><em><i><var><sup><sub><tt><ul><ol><li><samp><small><hr><h2><h3><h4><h5><dfn><dl><dd><dt><u><abbr><big><blockquote><br><center><del><ins><kbd>')?>
   </blockquote>
 <?php endif?>
