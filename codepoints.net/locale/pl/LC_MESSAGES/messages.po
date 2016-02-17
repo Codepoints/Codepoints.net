@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: codepoints\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-02-15 20:55+0100\n"
-"PO-Revision-Date: 2016-02-16 23:06+0100\n"
+"PO-Revision-Date: 2016-02-17 21:52+0100\n"
 "Last-Translator: Manuel Strehl <translate@manuel-strehl.de>\n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
@@ -429,7 +429,7 @@ msgstr "» Zobacz ten znak na Codepoints.net"
 
 #: codepoints.net/views/front.php:1
 msgid "Find all Unicode characters from Hieroglyphs to Dingbats"
-msgstr "Znaleźć wszystkie znaki Unicode od bloku hieroglifów do bloku ornamentów"
+msgstr "Wszystkie znaki Unicode od hieroglifów do ornamentów"
 
 #: codepoints.net/views/front.php:2
 msgid "Codepoints is a site dedicated to Unicode and all things related to codepoints, characters, glyphs and internationalization."
@@ -1575,6 +1575,8 @@ msgid ""
 "The “We’re Open Source” image is released under the Creative Commons\n"
 "       Attribution Non-Commercial No-Derivations license by %sFlickr user tima%s."
 msgstr ""
+"Rysunek \"We 're Open Source\" jest udostepniony na licencji Creative Commons\n"
+" Attribution Non-Commercial No-Derivations  przez %sużytkownika Flickr  tima%s."
 
 #: codepoints.net/views/about.php:307
 #, php-format
@@ -1619,208 +1621,208 @@ msgstr ""
 #: codepoints.net/views/scripts.php:94
 #, php-format
 msgid "%s%s%d%s characters%s are encoded in this script."
-msgstr ""
+msgstr "%s%s%d%s znaków%s jest zakodowanych dla tego skryptu."
 
 #: codepoints.net/views/search/form.php:4
 msgid "Free search:"
-msgstr ""
+msgstr "Wyszukiwanie swobodne:"
 
 #: codepoints.net/views/search/form.php:6
 msgid "Any information about the character, that doesn’t fit the categories below"
-msgstr ""
+msgstr "Wszelkie informacje na temat znaku, które nie pasują do poniższych kategorii"
 
 #: codepoints.net/views/search/form.php:9
 msgid "Name:"
-msgstr ""
+msgstr "Nazwa:"
 
 #: codepoints.net/views/search/form.php:11
 msgid "The Unicode name (or parts) of the character"
-msgstr ""
+msgstr "Nazwa znaku w Unicode (lub jej część)"
 
 #: codepoints.net/views/search/form.php:14
 msgid "Decimal:"
-msgstr ""
+msgstr "Zapis dziesiętny:"
 
 #: codepoints.net/views/search/form.php:16
 msgid "The decimal position of the codepoint"
-msgstr ""
+msgstr "Zapis dziesiętny wartości współrzędnej kodowej"
 
 #: codepoints.net/views/search/form.php:36
 msgid "any"
-msgstr ""
+msgstr "wszelkie"
 
 #: codepoints.net/views/search/form.php:37
 msgid "yes"
-msgstr ""
+msgstr "tak"
 
 #: codepoints.net/views/search/form.php:38
 msgid "no"
-msgstr ""
+msgstr "nie"
 
 #: codepoints.net/views/dailycp_not.php:2
 msgid "Codepoint of the Day: No Codepoint Found"
-msgstr ""
+msgstr "Współrzędna kodowa dnia: nie znaleziona"
 
 #: codepoints.net/views/dailycp_not.php:3
 msgid "Every day a new codepoint. Unfortunately not specifically this day."
-msgstr ""
+msgstr "Codziennie nowa współrzędna kodowa. Niestety akurat nie dzisiaj."
 
 #: codepoints.net/views/dailycp_not.php:15
 msgid "No Codepoint for this Date"
-msgstr ""
+msgstr "Brak współrzędnej kodowej dla tej daty"
 
 #: codepoints.net/views/dailycp_not.php:17
 msgid "Unfortunately we cannot find a codepoint for this date."
-msgstr ""
+msgstr "Niestety nie możemy znaleźć współrzędnej kodowej dla tej daty."
 
 #: codepoints.net/views/pu_codepoint.html.php:21
 #, php-format
 msgid "U+%04X is a Unicode codepoint in the block “%s”. It is a so-called “private use” codepoint, deliberately not assigned to any character."
-msgstr ""
+msgstr "U +%04X jest współrzędną kodową Unicode w bloku \"%s\". To jest tzw współrzędna \"użytku prywatnego\", celowo nie przypisana do żadnego znaku."
 
 #: codepoints.net/views/pu_codepoint.html.php:178
 #, php-format
 msgid "This is a Private Use codepoint. That is, it is deliberately not assigned to any character. It was added to Unicode in version %s and belongs to the block %s."
-msgstr ""
+msgstr "To jest współrzędna kodowa użytku prywatnego. Oznacza to, że celowo nie jest przypisana do żadnego znaku. Została dodana do Unicode w wersji%s i należy do bloku %s."
 
 #: codepoints.net/views/pu_codepoint.html.php:236
 #, php-format
 msgid "The %sWikipedia%s has the following information about Private Use codepoints:"
-msgstr ""
+msgstr "%sWikipedia%s ma następujące informacje na temat współrzędnych kodowych użytku prywatnego:"
 
 #: codepoints.net/views/blog-preview.php:1
 msgid "Latest from the blog:"
-msgstr ""
+msgstr "Najnowsze informacje z bloga:"
 
 #: codepoints.net/views/blog-preview.php:3
 msgid "...read on"
-msgstr ""
+msgstr "...czytaj dalej"
 
 #: codepoints.net/lib/api_v1.class.php:92
 msgid "Ye?h, th?nks! You er?sed this codepoint. Are you h?ppy now?"
-msgstr ""
+msgstr "Ye?h, th?nks! You er?sed this codepoint. Are you h?ppy now?"
 
 #: codepoints.net/lib/api_v1.class.php:97
 msgid "To create a new codepoint, please mail it to unicode@unicode.org."
-msgstr ""
+msgstr "Aby utworzyć nową współrzedną kodową proszę napisać na adres unicode@unicode.org."
 
 #: codepoints.net/lib/api_v1.class.php:105
 msgid "This API method does not exist."
-msgstr ""
+msgstr "Ta metoda API nie istnieje."
 
 #: codepoints.net/lib/api_v1.class.php:135
 msgid "An unknown error occured."
-msgstr ""
+msgstr "Wystąpił nieznany błąd."
 
 #: codepoints.net/lib/api/plane.php:8
 msgid "show information about a Unicode plane"
-msgstr ""
+msgstr "pokaż informacje o płaszczyźnie Unicode"
 
 #: codepoints.net/lib/api/plane.php:20
 msgid "Not a plane"
-msgstr ""
+msgstr "Nie płaszczyzna"
 
 #: codepoints.net/lib/api/filter.php:11
 msgid "Filter a string of characters by Unicode property. You can negate properties by appending a “!” to it: filter/string?age!=5.5 finds all characters in “string” that were *not* added in Unicode 5.5."
-msgstr ""
+msgstr "Filtruj ciąg znaków według właściwość Unicode. Można zanegować właściwości dołączając do nich \"!\": filter/string? age! = 5.5 znajdzie wszystkie znaki w \"string\", które *nie* były dodane w Unicode 5.5."
 
 #: codepoints.net/lib/api/filter.php:17
 #: codepoints.net/lib/api/transform.php:23
 #, php-format
 msgid "Request too long: Only %d characters allowed."
-msgstr ""
+msgstr "Żądanie zbyt długie: tylko %d znaków dozwolonych."
 
 #: codepoints.net/lib/api/filter.php:36
 #, php-format
 msgid "Cannot filter for unknown property %s"
-msgstr ""
+msgstr "Nie można filtrować według nieznanej właściwości %s"
 
 #: codepoints.net/lib/api/filter.php:49
 msgid "Cannot filter."
-msgstr ""
+msgstr "Nie można filtrować."
 
 #: codepoints.net/lib/api/oembed.php:9
 msgid "oEmbed API endpoint for URLs matching “codepoints.net”"
-msgstr ""
+msgstr "punkt końcowy oEmbed API dla adresów URL pasujących do \"codepoints.net\""
 
 #: codepoints.net/lib/api/oembed.php:23
 msgid "Unknown format parameter"
-msgstr ""
+msgstr "Nieznany parametr formatu"
 
 #: codepoints.net/lib/api/oembed.php:38
 msgid "Required parameter \"url\" is missing."
-msgstr ""
+msgstr "Brakuje wymaganego parametru \"url\"."
 
 #: codepoints.net/lib/api/oembed.php:42
 msgid "Invalid URL"
-msgstr ""
+msgstr "Nieprawidłowy adres URL"
 
 #: codepoints.net/lib/api/oembed.php:51
 msgid "URL path must be single character (UTF-8 encoded) or match /U+[A-F0-9]{4,6}/."
-msgstr ""
+msgstr "Ścieżka URL musi być pojedynczym znakiem (zakodowanym w formacie UTF-8) lub mieć postać /u +[A-F0-9]{4,6} /."
 
 #: codepoints.net/lib/api/oembed.php:58
 msgid "Not a valid codepoint URL"
-msgstr ""
+msgstr "Niepoprawny URL współrzędnej kodowej"
 
 #: codepoints.net/lib/api/block.php:8
 msgid "show detailed information about a Unicode block"
-msgstr ""
+msgstr "pokaż szczegółowe informacje o bloku Unicode"
 
 #: codepoints.net/lib/api/block.php:20
 msgid "Not a block"
-msgstr ""
+msgstr "Nie blok"
 
 #: codepoints.net/lib/api/codepoint.php:8
 msgid "show detailed information about a single codepoint. You can specify fields of interest with the “property” parameter: codepoint/1234?property=age,uc,lc"
-msgstr ""
+msgstr "pokaż szczegółowe informacje na temat pojedynczej współrzędnej kodowej. Można określić pola zainteresowania za pomocą parametrem \"property\": codepoint/1234?property=age,uc,lc"
 
 #: codepoints.net/lib/api/codepoint.php:15
 #: codepoints.net/lib/api/related.php:15
 msgid "No valid codepoint"
-msgstr ""
+msgstr "To nie jest poprawna współrzędna kodowa"
 
 #: codepoints.net/lib/api/codepoint.php:22 codepoints.net/lib/api/name.php:20
 #: codepoints.net/lib/api/related.php:22
 msgid "Not a codepoint"
-msgstr ""
+msgstr "To nie współrzędna kodowa"
 
 #: codepoints.net/lib/api/usage.php:8
 msgid "Welcome to codepoint.net’s Unicode API. Most requests are JSON-based. The API supports for those requests JSONP via the `callback` GET parameter. The `glyph` and `property` methods return PNG images. When problems appear, the API response conforms to <https://tools.ietf.org/html/draft-ietf-appsawg-http-problem-02>. Documentation is published at <https://github.com/Codepoints/codepoints.net/wiki/API>."
-msgstr ""
+msgstr "Zapraszamy do interfejsu API dla codepoint.net. Większość żądań korzysta z JSON. Interfejs API obsługuje dla tych wniosków JSONP za pośrednictwem 'zwrotnego' parametru GET. Metody \"glyph\" i \"property\" zwracają obrazy PNG. Gdy pojawiają się problemy, reakcja API jest zgodna z < https://tools.ietf.org/html/draft-ietf-appsawg-http-problem-02 >. Dokumentacja została opublikowana w < https://github.com/Codepoints/codepoints.net/wiki/API >."
 
 #: codepoints.net/lib/api/name.php:13
 msgid "No codepoint"
-msgstr ""
+msgstr "Nie ma współrzędnej kodowej"
 
 #: codepoints.net/lib/api/transform.php:10
 msgid "transform a string to another according to a mapping, e.g., making all characters upper-case."
-msgstr ""
+msgstr "przekształć ciąg znaków na inny według odwzorowania, np., zmiana kaszty na górną dla wszystkich znaków."
 
 #: codepoints.net/lib/api/transform.php:27
 #, php-format
 msgid "Unknown transform action %s"
-msgstr ""
+msgstr "Nieznana akcja przekształcenia %s"
 
 #: codepoints.net/lib/api/search.php:8
 msgid "search for codepoints by their properties"
-msgstr ""
+msgstr "wyszukiwanie współrzędnych według ich właściwości"
 
 #: codepoints.net/lib/api/search.php:11
 msgid "free search"
-msgstr ""
+msgstr "wyszukiwanie swobodne"
 
 #: codepoints.net/lib/api/search.php:12
 msgid "decimal codepoint"
-msgstr ""
+msgstr "dziesiętna wartość współrzędnej kodowej"
 
 #: codepoints.net/lib/api/related.php:8
 msgid "get related codepoints"
-msgstr ""
+msgstr "pobierz powiązane współrzędne kodowe"
 
 #: codepoints.net/lib/api/script.php:29
 msgid "This script is unknown"
-msgstr ""
+msgstr "Ten skrypt jest nieznany"
 
 #: codepoints.net/lib/api/script.php:29
 msgid "Please specify a script"
