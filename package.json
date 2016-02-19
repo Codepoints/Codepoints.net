@@ -20,7 +20,7 @@
     "jqueryui-amd": "0.0.2",
     "jshint": "1.1.0",
     "json2": "^0.4.0",
-    "jsxgettext": "0.0.5",
+    "jsxgettext": "^0.8.2",
     "po2json": "0.0.6",
     "requirejs": "^2.1.4",
     "uglify-js": "2.3.6",

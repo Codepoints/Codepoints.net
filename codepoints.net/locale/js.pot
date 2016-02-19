@@ -1,21 +1,14 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-15 20:55+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2016-02-19 22:22+0000\n"
 
 #: src/js/components/scratchpad.js:91
 msgid "empty"
@@ -96,6 +89,209 @@ msgstr ""
 msgid "Enough questions! Search now."
 msgstr ""
 
+#: src/js/wizard.js:176
+msgid "What’s the airspeed velocity of an unladen swallow?"
+msgstr ""
+
+#: src/js/wizard.js:177
+msgid "An African, or"
+msgstr ""
+
+#: src/js/wizard.js:178
+msgid "A European Swallow?"
+msgstr ""
+
+#: src/js/wizard.js:182
+msgid "Where does the character appear usually?"
+msgstr ""
+
+#: src/js/wizard.js:183
+msgid "Africa <small>(without Arabic)</small>"
+msgstr ""
+
+#: src/js/wizard.js:184
+msgid "America <small>(originally, <i>e. g.</i> Cherokee, not Latin)</small>"
+msgstr ""
+
+#: src/js/wizard.js:185
+msgid "Europe <small>(Latin, Cyrillic, …)</small>"
+msgstr ""
+
+#: src/js/wizard.js:186
+msgid "Middle East"
+msgstr ""
+
+#: src/js/wizard.js:187
+msgid "Central Asia"
+msgstr ""
+
+#: src/js/wizard.js:188
+msgid "East Asia <small>(Chinese, Korean, Japanese, …)</small>"
+msgstr ""
+
+#: src/js/wizard.js:189
+msgid "South Asia <small>(Indian)</small>"
+msgstr ""
+
+#: src/js/wizard.js:190
+msgid "Southeast Asia <small>(Thai, Khmer, …)</small>"
+msgstr ""
+
+#: src/js/wizard.js:191
+msgid "Philippines, Indonesia, Oceania"
+msgstr ""
+
+#: src/js/wizard.js:192
+msgid "Nowhere specific"
+msgstr ""
+
+#: src/js/wizard.js:193
+#: src/js/wizard.js:200
+#: src/js/wizard.js:210
+#: src/js/wizard.js:218
+#: src/js/wizard.js:225
+#: src/js/wizard.js:232
+#: src/js/wizard.js:240
+#: src/js/wizard.js:253
+msgid "I don’t know"
+msgstr ""
+
+#: src/js/wizard.js:197
+msgid "Is it a number of any kind?"
+msgstr ""
+
+#: src/js/wizard.js:198
+#: src/js/wizard.js:223
+msgid "Yes"
+msgstr ""
+
+#: src/js/wizard.js:199
+#: src/js/wizard.js:224
+msgid "No"
+msgstr ""
+
+#: src/js/wizard.js:204
+msgid "Has the character a case (upper, lower, title)?"
+msgstr ""
+
+#: src/js/wizard.js:205
+msgid "Yes, it’s lowercase"
+msgstr ""
+
+#: src/js/wizard.js:206
+msgid "Yes, it’s uppercase"
+msgstr ""
+
+#: src/js/wizard.js:207
+msgid "Yes, it’s titlecase"
+msgstr ""
+
+#: src/js/wizard.js:208
+msgid "Yes, but I don’t know the case"
+msgstr ""
+
+#: src/js/wizard.js:209
+msgid "No, it’s uncased"
+msgstr ""
+
+#: src/js/wizard.js:214
+msgid "Is the character some kind of symbol or dingbat?"
+msgstr ""
+
+#: src/js/wizard.js:215
+msgid "Yes <small>(It isn’t part of usually written text)</small>"
+msgstr ""
+
+#: src/js/wizard.js:216
+msgid "No <small>(But it is some kind of control character)</small>"
+msgstr ""
+
+#: src/js/wizard.js:217
+msgid "No <small>(It may appear in text, like letters or punctuation)</small>"
+msgstr ""
+
+#: src/js/wizard.js:222
+msgid "Is the character some kind of punctuation?"
+msgstr ""
+
+#: src/js/wizard.js:229
+msgid "Is the character incomplete on its own, like a diacritic sign?"
+msgstr ""
+
+#: src/js/wizard.js:230
+msgid "Yes <small>(It’s usually found together with another character)</small>"
+msgstr ""
+
+#: src/js/wizard.js:231
+msgid "No <small>(It stands on its own)</small>"
+msgstr ""
+
+#: src/js/wizard.js:236
+msgid "Is the character composed of two others?"
+msgstr ""
+
+#: src/js/wizard.js:237
+msgid "Yes <small>(It is based on two or more other characters)</small>"
+msgstr ""
+
+#: src/js/wizard.js:238
+msgid ""
+"Sort of <small>(It’s got some quiggly lines or dots, like “Ä” or "
+"“ٷ”)</small>"
+msgstr ""
+
+#: src/js/wizard.js:239
+msgid "No <small>(It is a genuine character)</small>"
+msgstr ""
+
+#: src/js/wizard.js:244
+msgid "Off the top of your head, can the character be confused with another one?"
+msgstr ""
+
+#: src/js/wizard.js:245
+msgid "Yes <small>(Like latin “A” and greek “Α”, alpha)</small>"
+msgstr ""
+
+#: src/js/wizard.js:246
+msgid "No <small>(I have no such pair in mind)</small>"
+msgstr ""
+
+#: src/js/wizard.js:250
+msgid "Is it an archaic character or is it in use today?"
+msgstr ""
+
+#: src/js/wizard.js:251
+msgid "Yep, noone would use that anymore!"
+msgstr ""
+
+#: src/js/wizard.js:252
+msgid "Nah, seen it yesterday in the newspaper"
+msgstr ""
+
+#: src/js/wizard.js:257
+msgid "Do you know the number of strokes the character has?"
+msgstr ""
+
+#: src/js/wizard.js:258
+msgid "This much"
+msgstr ""
+
+#: src/js/wizard.js:259
+msgid "Nope, never counted them"
+msgstr ""
+
+#: src/js/wizard.js:263
+msgid "Do you happen to know the meaning of the character?"
+msgstr ""
+
+#: src/js/wizard.js:264
+msgid "This is (part of) what I’m looking for"
+msgstr ""
+
+#: src/js/wizard.js:265
+msgid "I don’t speak that language"
+msgstr ""
+
 #: src/js/searchform.js:17
 msgid "+ add new query"
 msgstr ""
@@ -113,6 +309,7 @@ msgid "(%s codepoints)"
 msgstr ""
 
 #: src/js/scripts.js:28
+#: src/js/scripts.js:172
 msgid "Source: %s"
 msgstr ""
 
@@ -150,4 +347,8 @@ msgstr ""
 
 #: src/js/codepoints.js:240
 msgid "Hide this message."
+msgstr ""
+
+#: src/js/codepoints.js:297
+msgid "Embed this codepoint"
 msgstr ""
