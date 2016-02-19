@@ -141,9 +141,7 @@ $(DOCROOT)locale/messages.pot: $(PHP_ALL)
 
 $(DOCROOT)locale/js.pot: $(JS_ALL)
 	$(info * Compile JS translation strings)
-	#node_modules/jsxgettext/lib/cli.js -k _ -o $@ $^
-	@xgettext -LPerl --from-code UTF-8 -k_ -o - $^ | \
-		sed '/^#, perl-format$$/d' > $@
+	@node_modules/jsxgettext/lib/cli.js -k _ -o $@ $^
 
 vendor: $(DOCROOT)lib/vendor/autoload.php
 	npm install
