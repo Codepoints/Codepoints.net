@@ -93,31 +93,24 @@ cachebust: $(JS_ALL) $(CSS_TARGET)
 	$(info * Update Cache Bust Constant)
 	@sed -i '/^define(.CACHE_BUST., .\+.);$$/s/.*/define('"'CACHE_BUST', '"$$(cat $^ | sha1sum | awk '{ print $$1 }')"');/" $(DOCROOT)index.php
 
-db: ucd.sqlite
+db: db.conf
+
+db.conf:
+	# To get the database up and running, create a file
+	# `db.conf` in the folder of this Makefile with this content:
+	#
+	# [clientreadonly]
+	# password=mysql-password
+	# user=mysql-user
+	# database=mysql-database
+	#
+	# Then download https://dumps.codepoints.net/latest.sql.gz and
+	# feed it into the above database.
 
 ucotd: tools/ucotd.*
 	@echo "* Add Codepoint of the Day"
 	@cd tools; \
 	$(PYTHON) ucotd.py
-
-ucd.sqlite: ucotd tools/scripts.sql tools/scripts_wp.sql \
-            tools/latex.sql tools/fonts/fonts.sql \
-            tools/fonts/target/sql/*.sql \
-            tools/encoding-aliases.sql
-	@echo "* Add additional info to DB"
-	@sqlite3 $@ <tools/aliases.sql
-	@sqlite3 $@ <tools/scripts.sql
-	@sqlite3 $@ <tools/scripts_wp.sql
-	@sqlite3 $@ <tools/latex.sql
-	@echo "* Add font info"
-	@sqlite3 $@ <tools/fonts/fonts.sql
-	@for SQL in $$(find tools/fonts/target/sql -type f); do \
-		echo "  + Processing $$SQL"; \
-		python tools/insert.py $$SQL $@; \
-	done
-	@sqlite3 $@ <tools/encoding-aliases.sql
-	@echo "* Create search index"
-	@$(MAKE) search_index
 
 tools/encoding-aliases.sql: tools/encoding tools/encoding/index-*.txt
 	-true > $@
@@ -193,5 +186,4 @@ tools/latex.xml:
 
 search_index:
 	cd tools && python create_search_index.py --print > search_index.sql
-	cd tools && python insert.py search_index.sql ../ucd.sqlite
 .PHONY: search_index

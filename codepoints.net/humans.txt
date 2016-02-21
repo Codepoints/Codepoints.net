@@ -41,10 +41,10 @@ Hosting: Uberspace.de
 
 Online: https://github.com/Boldewyn/Codepoints.net
 Bugs: https://github.com/Boldewyn/Codepoints.net/issues
-Technology: PHP (sorry!), SQLite, HTML5, CSS 3, JavaScript, Sass
+Technology: PHP (sorry!), MySQL, HTML5, CSS 3, JavaScript, Sass
 Libs: jQuery, jQuery UI
 Data: The Unicode Standard
-Database: SQLite version of the Unicode standard via
+Database: MySQL version of the Unicode standard via
     <https://github.com/Boldewyn/unicodeinfo>
 
 

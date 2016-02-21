@@ -5,7 +5,6 @@
 /codepoints.net/static/js/main.js
 /codepoints.net/static/js/polyfills/
 /codepoints.net/lib/vendor
-/ucd.sqlite
 /.sass-cache
 /tools/charlist.dtd
 /tools/latex.xml
@@ -13,7 +12,6 @@
 /node_modules/
 /coverage-report/
 *.pyc
-/ucd.sqlite.*
 /test/casperjs/screenshots/
 /tools/encoding
 /tools/encoding-aliases.sql

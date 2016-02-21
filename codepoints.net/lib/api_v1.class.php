@@ -105,11 +105,10 @@ class API_v1 implements iAPIAccess {
                               _("This API method does not exist."));
         }
 
-        /* check some modification times and return a 304, if nothing
+        /* check modification time of index.php and return a 304, if nothing
          * changed
          */
-        $this->_mtime = max(filemtime(__DIR__."/api/{$this->_action}.php"),
-                            filemtime(DB_PATH));
+        $this->_mtime = filemtime(__DIR__."/api/{$this->_action}.php");
         if (array_key_exists("HTTP_IF_MODIFIED_SINCE", $_SERVER)) {
             if (strtotime($_SERVER['HTTP_IF_MODIFIED_SINCE']) >= $this->_mtime) {
                 $this->_sendHeaders(array('status' => '304'));
