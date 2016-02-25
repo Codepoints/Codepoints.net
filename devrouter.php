@@ -11,6 +11,7 @@
 $req = preg_replace('/![a-zA-Z0-9]+$/', '', $_SERVER["REQUEST_URI"]);
 $req = preg_replace('/^\/index\.php/', '', $req);
 $_SERVER['REQUEST_URI'] = $req;
+$_SERVER['PHP_SELF'] = $req;
 $ext = pathinfo($req, PATHINFO_EXTENSION);
 
 $mimetype = [
@@ -26,17 +27,15 @@ $mimetype = [
     'ttf' => 'application/octet-stream',
 ];
 
-if (in_array($ext, ['png', 'jpg', 'jpeg', 'gif', 'css', 'js', 'svg', 'svgz', 'woff', 'ttf'])) {
-    $filename = dirname(__FILE__).'/codepoints.net'.$req;
-    if (is_file($filename)) {
-        header('Content-Type: '.$mimetype[$ext]);
-        if ($ext === 'svgz') {
-            header('Content-Encoding: gzip');
-        }
-        readfile($filename);
-    } else {
-        return false; // Liefere die angefragte Ressource direkt aus
+$filename = dirname(__FILE__).'/codepoints.net'.$req;
+$static_extensions = ['png', 'jpg', 'jpeg', 'gif', 'css', 'js', 'svg', 'svgz',
+                      'woff', 'ttf'];
+if (in_array($ext, $static_extensions) && is_file($filename)) {
+    header('Content-Type: '.$mimetype[$ext]);
+    if ($ext === 'svgz') {
+        header('Content-Encoding: gzip');
     }
+    readfile($filename);
 } else {
     require dirname(__FILE__).'/codepoints.net/index.php';
 }
