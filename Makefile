@@ -91,9 +91,19 @@ $(DOCROOT)static/js/html5shiv.js: node_modules/html5shiv/dist/html5shiv.js
 	<$< $(UGLIFY) $(UGLIFY_ARGS) >$@
 
 
-cachebust: $(JS_ALL) $(CSS_TARGET)
+cachebust: $(JS_ALL) $(CSS_TARGET) $(DOCROOT)lib/cachebust.php
 	$(info * Update Cache Bust Constant)
 	@sed -i '/^define(.CACHE_BUST., .\+.);$$/s/.*/define('"'CACHE_BUST', '"$$(cat $^ | sha1sum | awk '{ print $$1 }')"');/" $(DOCROOT)index.php
+
+$(DOCROOT)lib/cachebust.php: $(JS_ALL) $(CSS_TARGET)
+	( \
+		echo '<?php $$cachebust = ['; \
+		cd $(DOCROOT) && find static/ -type f | \
+			xargs md5sum | \
+			awk '{ print $$2 " " $$1 }' | \
+			sed 's/\(.\+\) \(.\+\)/"\1"=>"\2",/'; \
+		echo '];'; \
+	) > $(DOCROOT)lib/cachebust.php
 
 
 db: db.conf
