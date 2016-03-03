@@ -64,34 +64,33 @@ css: $(CSS_TARGET)
 $(CSS_TARGET): $(DOCROOT)static/css/%.css : src/sass/%.scss
 	<"$<" $(SASS) $(SASS_ARGS) | $(POSTCSS) $(POSTCSS_ARGS) >"$@"
 
-js: node_modules/jquery-ui \
-    $(DOCROOT)static/js/build.txt $(DOCROOT)static/js/html5shiv.js \
-    $(DOCROOT)static/ZeroClipboard.swf
+js: $(DOCROOT)static/js/main.js \
+    $(DOCROOT)static/js/about.js \
+    $(DOCROOT)static/js/codepoint.js \
+    $(DOCROOT)static/js/front.js \
+    $(DOCROOT)static/js/html5shiv.js
 
-node_modules/jquery-ui:
-	node_modules/.bin/jqueryui-amd "$@"
+$(DOCROOT)static/js/main.js: src/js/main.js
+	node_modules/.bin/jspm build $< $@ \
+		--format global --global-name $$(basename $< .js) --global-deps "{'jquery': 'jQuery'}" \
+		--minify --skip-source-maps
 
-init: node_modules/jquery-ui/jqueryui node_modules/webfontloader/target/webfont.js
-
-node_modules/jquery-ui/jqueryui:
-	node_modules/.bin/jqueryui-amd "$@"
-
-node_modules/webfontloader/target/webfont.js:
-	cd node_modules/webfontloader && \
-		rake compile
-
-$(DOCROOT)static/js/build.txt: src/build.js $(JS_ALL)
-	cd src && ../node_modules/.bin/r.js -o build.js
+$(DOCROOT)static/js/about.js \
+$(DOCROOT)static/js/codepoint.js \
+$(DOCROOT)static/js/front.js \
+: $(DOCROOT)static/js/%.js: src/js/%.js
+	node_modules/.bin/jspm build $< $@ \
+		--format global --global-name $$(basename $< .js) --global-deps "{'jquery': 'jQuery'}" \
+		--minify --skip-source-maps
 
 $(DOCROOT)static/js/html5shiv.js: node_modules/html5shiv/dist/html5shiv.js
 	<$< node_modules/.bin/uglifyjs -c -m >$@
 
-$(DOCROOT)static/ZeroClipboard.swf: node_modules/zeroclipboard/ZeroClipboard.swf
-	cp "$<" "$@"
 
 cachebust: $(JS_ALL) $(CSS_TARGET)
 	$(info * Update Cache Bust Constant)
 	@sed -i '/^define(.CACHE_BUST., .\+.);$$/s/.*/define('"'CACHE_BUST', '"$$(cat $^ | sha1sum | awk '{ print $$1 }')"');/" $(DOCROOT)index.php
+
 
 db: db.conf
 
@@ -139,8 +138,6 @@ $(DOCROOT)locale/js.pot: $(JS_ALL)
 vendor: $(DOCROOT)lib/vendor/autoload.php
 	npm install
 	#$(MAKE) -C node_modules/d3 d3.v2.js NODE_PATH=../../../node_modules
-	#node_modules/jqueryui-amd/jqueryui-amd.js node_modules/jquery-ui
-	#cd node_modules/webfontloader && rake compile
 
 $(DOCROOT)lib/vendor/autoload.php: composer.lock
 	@mkdir -p $(DOCROOT)lib/vendor

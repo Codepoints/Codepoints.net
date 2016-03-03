@@ -173,4 +173,6 @@ $s = function($cat) use ($router, $info, $props) {
     <?php include "codepoint/props.php"?>
   </section>
 </div>
-<?php include "footer.php"?>
+<?php
+$footer_scripts = array("/static/js/codepoint.js");
+include "footer.php"?>
