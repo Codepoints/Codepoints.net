@@ -7,6 +7,7 @@ SystemJS.config({
   transpiler: "plugin-babel",
 
   map: {
+    "d3": "npm:d3@3.5.16",
     "jquery": "npm:jquery@2.2.1",
     "jquery-ui": "github:components/jqueryui@1.11.4",
     "plugin-babel": "npm:systemjs-plugin-babel@0.0.7",

@@ -67,7 +67,13 @@ $(CSS_TARGET): $(DOCROOT)static/css/%.css : src/sass/%.scss
 js: $(DOCROOT)static/js/main.js \
     $(DOCROOT)static/js/about.js \
     $(DOCROOT)static/js/codepoint.js \
+    $(DOCROOT)static/js/dailycp.js \
+    $(DOCROOT)static/js/embedded.js \
     $(DOCROOT)static/js/front.js \
+    $(DOCROOT)static/js/glossary.js \
+    $(DOCROOT)static/js/scripts.js \
+    $(DOCROOT)static/js/searchform.js \
+    $(DOCROOT)static/js/wizard.js \
     $(DOCROOT)static/js/html5shiv.js
 
 $(DOCROOT)static/js/main.js: src/js/main.js
@@ -77,7 +83,13 @@ $(DOCROOT)static/js/main.js: src/js/main.js
 
 $(DOCROOT)static/js/about.js \
 $(DOCROOT)static/js/codepoint.js \
+$(DOCROOT)static/js/dailycp.js \
+$(DOCROOT)static/js/embedded.js \
 $(DOCROOT)static/js/front.js \
+$(DOCROOT)static/js/glossary.js \
+$(DOCROOT)static/js/scripts.js \
+$(DOCROOT)static/js/searchform.js \
+$(DOCROOT)static/js/wizard.js \
 : $(DOCROOT)static/js/%.js: src/js/%.js
 	node_modules/.bin/jspm build $< $@ \
 		--format global --global-name $$(basename $< .js) --global-deps "{'jquery': 'jQuery'}" \
