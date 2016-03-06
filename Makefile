@@ -5,8 +5,8 @@ DOCROOT := codepoints.net/
 DEPLOY :=
 
 JS_ALL := $(shell find src/js -type f -name \*.js)
-JS_ROOTS := $(wildcard src/js/*.js)
-JS_TARGET := $(patsubst src/js/%,$(DOCROOT)static/js/%,$(JS_ROOTS))
+JS_SOURCES := $(wildcard src/js/*.js)
+JS_TARGETS := $(patsubst src/js/%,$(DOCROOT)static/js/%,$(JS_SOURCES))
 
 PHP_ALL := $(shell find $(DOCROOT) -type f -not -path \*/lib/vendor/\* -name \*.php)
 
@@ -64,36 +64,25 @@ css: $(CSS_TARGET)
 $(CSS_TARGET): $(DOCROOT)static/css/%.css : src/sass/%.scss
 	<"$<" $(SASS) $(SASS_ARGS) | $(POSTCSS) $(POSTCSS_ARGS) >"$@"
 
-js: $(DOCROOT)static/js/main.js \
-    $(DOCROOT)static/js/about.js \
-    $(DOCROOT)static/js/codepoint.js \
-    $(DOCROOT)static/js/dailycp.js \
-    $(DOCROOT)static/js/embedded.js \
-    $(DOCROOT)static/js/front.js \
-    $(DOCROOT)static/js/glossary.js \
-    $(DOCROOT)static/js/scripts.js \
-    $(DOCROOT)static/js/searchform.js \
-    $(DOCROOT)static/js/wizard.js \
-    $(DOCROOT)static/js/html5shiv.js
 
-$(DOCROOT)static/js/main.js: src/js/main.js
-	node_modules/.bin/jspm build $< $@ \
-		--format global --global-name $$(basename $< .js) --global-deps "{'jquery': 'jQuery'}" \
-		--minify --skip-source-maps
+js: $(JS_TARGETS)
 
-$(DOCROOT)static/js/about.js \
-$(DOCROOT)static/js/codepoint.js \
-$(DOCROOT)static/js/dailycp.js \
-$(DOCROOT)static/js/embedded.js \
-$(DOCROOT)static/js/front.js \
-$(DOCROOT)static/js/glossary.js \
-$(DOCROOT)static/js/scripts.js \
-$(DOCROOT)static/js/searchform.js \
-$(DOCROOT)static/js/wizard.js \
-: $(DOCROOT)static/js/%.js: src/js/%.js
-	node_modules/.bin/jspm build $< $@ \
-		--format global --global-name $$(basename $< .js) --global-deps "{'jquery': 'jQuery'}" \
-		--minify --skip-source-maps
+$(JS_TARGETS): $(DOCROOT)static/js/%.js: src/js/%.js
+	@if [[ $$(basename $@) == 'main.js' ]]; then \
+		node_modules/.bin/jspm build $< $@ \
+			--format global \
+			--global-name $$(basename $@ .js) \
+			--global-deps "{'jquery': 'jQuery'}" \
+			--minify --skip-source-maps ; \
+	else \
+		node_modules/.bin/jspm build $< \
+			$@ \
+			--format global \
+			--global-name $$(basename $@ .js) \
+			--global-deps "{'jquery': 'jQuery'}" \
+			--minify --skip-source-maps ; \
+	fi
+
 
 $(DOCROOT)static/js/html5shiv.js: node_modules/html5shiv/dist/html5shiv.js
 	<$< node_modules/.bin/uglifyjs -c -m >$@

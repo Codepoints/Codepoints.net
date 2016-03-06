@@ -1,8 +1,8 @@
 'use strict';
 
 
-import jquery from 'jquery';
-import jq_ui from 'jquery-ui';
+import 'jquery';
+import 'jquery-ui';
 import _ from './toolbox/gettext';
 import smooth_internal_links from './effects/smooth_internal_links';
 import add_to_top_link from './effects/add_to_top_link';

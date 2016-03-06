@@ -16,7 +16,7 @@ if ('gettext' in window) {
  * Occurances of "%s" are replaced by additional
  * parameters.
  */
-export default function(s) {
+export default function _(s) {
   var args = Array.prototype.slice.call(arguments, 1),
       item;
 
