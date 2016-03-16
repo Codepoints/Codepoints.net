@@ -149,11 +149,13 @@ $(DOCROOT)lib/vendor/autoload.php: composer.lock
 composer.lock: composer.json
 	touch $@
 
-jspm_packages/system.js: $(JSPM)
+jspm_packages/system.js: node_modules/jspm/README.md
 	$(JSPM) install
+	touch $@
 
-$(JSPM): package.json
+node_modules/jspm/README.md: package.json
 	npm install
+	touch $@
 
 test: test-php test-phpunit test-js test-casper
 
