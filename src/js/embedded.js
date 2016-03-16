@@ -1,7 +1,7 @@
 'use strict';
 
 
-import jquery from 'jquery';
+import 'jquery';
 import load_font from './components/cp_font';
 
 
