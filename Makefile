@@ -139,9 +139,7 @@ $(DOCROOT)locale/js.pot: $(JS_ALL)
 	$(info * Compile JS translation strings)
 	@node_modules/jsxgettext/lib/cli.js -k _ -o $@ $^
 
-vendor: $(DOCROOT)lib/vendor/autoload.php
-	npm install
-	#$(MAKE) -C node_modules/d3 d3.v2.js NODE_PATH=../../../node_modules
+vendor: $(DOCROOT)lib/vendor/autoload.php $(JSPM) jspm_packages/system.js
 
 $(DOCROOT)lib/vendor/autoload.php: composer.lock
 	@mkdir -p $(DOCROOT)lib/vendor
@@ -150,6 +148,12 @@ $(DOCROOT)lib/vendor/autoload.php: composer.lock
 
 composer.lock: composer.json
 	touch $@
+
+jspm_packages/system.js: $(JSPM)
+	$(JSPM) install
+
+$(JSPM): package.json
+	npm install
 
 test: test-php test-phpunit test-js test-casper
 
