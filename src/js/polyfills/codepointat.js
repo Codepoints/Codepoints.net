@@ -1,4 +1,7 @@
-define(function() {
+'use strict';
+
+
+export default function() {
   /*! http://mths.be/codepointat v0.1.0 by @mathias */
   if (!String.prototype.codePointAt) {
     String.prototype.codePointAt = function(position) {
@@ -31,4 +34,4 @@ define(function() {
   }
 
   return String.prototype.codePointAt;
-});
+}

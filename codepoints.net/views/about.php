@@ -312,4 +312,6 @@ include 'nav.php';
     '<a href="http://mathiasbynens.be">', '</a>')?></p>
   </section>
 </div>
-<?php include 'footer.php'?>
+<?php
+$footer_scripts = array("/static/js/about.js");
+include "footer.php"?>

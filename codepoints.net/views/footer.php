@@ -26,9 +26,9 @@
     <?php if ($lang !== "en"):?>
       <script src="/static/locale/<?php e($lang)?>.js!<?php e(CACHE_BUST)?>"></script>
     <?php endif?>
-    <script src="/static/js/codepoints.js!<?php e(CACHE_BUST)?>"></script>
-    <?php if (isset($footer_scripts)): foreach($footer_scripts as $sc):?>
-        <script src="<?php e($sc)?>!<?php e(CACHE_BUST)?>"></script>
-    <?php endforeach; endif?>
+    <script src="/static/js/main.js!<?php e(CACHE_BUST)?>" async
+      <?php if (isset($footer_scripts)): ?>
+        id="additional-scripts" data-src='<?php e(json_encode($footer_scripts))?>'
+      <?php endif?>></script>
   </body>
 </html>

@@ -150,7 +150,8 @@ input[type="text"] {
   display: none;
 }
 
-@import "jquery.ui.all";
+@import "./jspm_packages/github/components/jqueryui@1.11.4/themes/base/base.css";
+@import "jquery.ui.theme";
 
 .payload {
   padding: 10px 10px 30px;
@@ -201,7 +202,8 @@ input[type="text"] {
   }
 }
 
-.tooltip {
+.tooltip,
+.ui-tooltip {
   @include tooltip;
 }
 

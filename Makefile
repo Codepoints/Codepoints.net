@@ -5,8 +5,8 @@ DOCROOT := codepoints.net/
 DEPLOY :=
 
 JS_ALL := $(shell find src/js -type f -name \*.js)
-JS_ROOTS := $(wildcard src/js/*.js)
-JS_TARGET := $(patsubst src/js/%,$(DOCROOT)static/js/%,$(JS_ROOTS))
+JS_SOURCES := $(wildcard src/js/*.js)
+JS_TARGETS := $(patsubst src/js/%,$(DOCROOT)static/js/%,$(JS_SOURCES))
 
 PHP_ALL := $(shell find $(DOCROOT) -type f -not -path \*/lib/vendor/\* -name \*.php)
 
@@ -33,6 +33,14 @@ PHPCS_ARGS :=
 
 CASPERJS := casperjs
 CASPERJS_ARGS := --fail-fast
+
+JSPM := node_modules/.bin/jspm
+JSPM_BUILD_ARGS := --format global \
+    --global-deps "{'jquery': 'jQuery'}" \
+    --minify --skip-source-maps
+
+UGLIFY := node_modules/.bin/uglifyjs
+UGLIFY_ARGS := --compress --mangle
 
 ifdef COVERAGE
 PHPUNIT_REAL_ARGS := $(PHPUNIT_ARGS) --coverage-html ./coverage-report
@@ -64,34 +72,29 @@ css: $(CSS_TARGET)
 $(CSS_TARGET): $(DOCROOT)static/css/%.css : src/sass/%.scss
 	<"$<" $(SASS) $(SASS_ARGS) | $(POSTCSS) $(POSTCSS_ARGS) >"$@"
 
-js: node_modules/jquery-ui \
-    $(DOCROOT)static/js/build.txt $(DOCROOT)static/js/html5shiv.js \
-    $(DOCROOT)static/ZeroClipboard.swf
 
-node_modules/jquery-ui:
-	node_modules/.bin/jqueryui-amd "$@"
+js: $(JS_TARGETS)
 
-init: node_modules/jquery-ui/jqueryui node_modules/webfontloader/target/webfont.js
+$(JS_TARGETS): $(DOCROOT)static/js/%.js: src/js/%.js
+	@if [[ $$(basename $@) == 'main.js' ]]; then \
+		$(JSPM) build $< $@ \
+			--global-name $$(basename $@ .js) \
+			$(JSPM_BUILD_ARGS) ; \
+	else \
+		$(JSPM) build $< $@ \
+			--global-name $$(basename $@ .js) \
+			$(JSPM_BUILD_ARGS) ; \
+	fi
 
-node_modules/jquery-ui/jqueryui:
-	node_modules/.bin/jqueryui-amd "$@"
-
-node_modules/webfontloader/target/webfont.js:
-	cd node_modules/webfontloader && \
-		rake compile
-
-$(DOCROOT)static/js/build.txt: src/build.js $(JS_ALL)
-	cd src && ../node_modules/.bin/r.js -o build.js
 
 $(DOCROOT)static/js/html5shiv.js: node_modules/html5shiv/dist/html5shiv.js
-	<$< node_modules/.bin/uglifyjs -c -m >$@
+	<$< $(UGLIFY) $(UGLIFY_ARGS) >$@
 
-$(DOCROOT)static/ZeroClipboard.swf: node_modules/zeroclipboard/ZeroClipboard.swf
-	cp "$<" "$@"
 
 cachebust: $(JS_ALL) $(CSS_TARGET)
 	$(info * Update Cache Bust Constant)
 	@sed -i '/^define(.CACHE_BUST., .\+.);$$/s/.*/define('"'CACHE_BUST', '"$$(cat $^ | sha1sum | awk '{ print $$1 }')"');/" $(DOCROOT)index.php
+
 
 db: db.conf
 
@@ -139,8 +142,6 @@ $(DOCROOT)locale/js.pot: $(JS_ALL)
 vendor: $(DOCROOT)lib/vendor/autoload.php
 	npm install
 	#$(MAKE) -C node_modules/d3 d3.v2.js NODE_PATH=../../../node_modules
-	#node_modules/jqueryui-amd/jqueryui-amd.js node_modules/jquery-ui
-	#cd node_modules/webfontloader && rake compile
 
 $(DOCROOT)lib/vendor/autoload.php: composer.lock
 	@mkdir -p $(DOCROOT)lib/vendor

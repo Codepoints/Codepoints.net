@@ -142,5 +142,5 @@ include "nav.php";
 }
 </script>
 <?php
-$footer_scripts = array("/static/js/dailycp.js");
+$footer_scripts = array("/static/js/front.js", "/static/js/dailycp.js");
 include "footer.php"?>
