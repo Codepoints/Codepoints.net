@@ -34,6 +34,14 @@ PHPCS_ARGS :=
 CASPERJS := casperjs
 CASPERJS_ARGS := --fail-fast
 
+JSPM := node_modules/.bin/jspm
+JSPM_BUILD_ARGS := --format global \
+    --global-deps "{'jquery': 'jQuery'}" \
+    --minify --skip-source-maps
+
+UGLIFY := node_modules/.bin/uglifyjs
+UGLIFY_ARGS := --compress --mangle
+
 ifdef COVERAGE
 PHPUNIT_REAL_ARGS := $(PHPUNIT_ARGS) --coverage-html ./coverage-report
 else
@@ -69,23 +77,18 @@ js: $(JS_TARGETS)
 
 $(JS_TARGETS): $(DOCROOT)static/js/%.js: src/js/%.js
 	@if [[ $$(basename $@) == 'main.js' ]]; then \
-		node_modules/.bin/jspm build $< $@ \
-			--format global \
+		$(JSPM) build $< $@ \
 			--global-name $$(basename $@ .js) \
-			--global-deps "{'jquery': 'jQuery'}" \
-			--minify --skip-source-maps ; \
+			$(JSPM_BUILD_ARGS) ; \
 	else \
-		node_modules/.bin/jspm build $< \
-			$@ \
-			--format global \
+		$(JSPM) build $< $@ \
 			--global-name $$(basename $@ .js) \
-			--global-deps "{'jquery': 'jQuery'}" \
-			--minify --skip-source-maps ; \
+			$(JSPM_BUILD_ARGS) ; \
 	fi
 
 
 $(DOCROOT)static/js/html5shiv.js: node_modules/html5shiv/dist/html5shiv.js
-	<$< node_modules/.bin/uglifyjs -c -m >$@
+	<$< $(UGLIFY) $(UGLIFY_ARGS) >$@
 
 
 cachebust: $(JS_ALL) $(CSS_TARGET)
