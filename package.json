@@ -36,6 +36,7 @@
       "d3": "npm:d3@2.10",
       "jquery": "npm:jquery@^2.2.1",
       "jquery-ui": "github:components/jqueryui@^1.11.4",
+      "plugin-babel": "npm:systemjs-plugin-babel@0.0.7",
       "webfontloader": "npm:webfontloader@^1.6.22"
     },
     "devDependencies": {},
