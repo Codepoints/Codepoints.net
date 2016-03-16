@@ -202,7 +202,8 @@ input[type="text"] {
   }
 }
 
-.tooltip {
+.tooltip,
+.ui-tooltip {
   @include tooltip;
 }
 
