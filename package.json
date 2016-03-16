@@ -12,27 +12,19 @@
     "website"
   ],
   "dependencies": {
-    "almond": "^0.2.4",
-    "d3": "^2.10.0",
     "html5shiv": "^3.7.0",
-    "jquery": "^1.9.1",
-    "jquery-ui": "^1.10.1",
-    "jqueryui-amd": "0.0.2",
-    "jshint": "1.1.0",
-    "json2": "^0.4.0",
-    "jsxgettext": "^0.8.2",
-    "po2json": "0.0.6",
-    "requirejs": "^2.1.4",
-    "uglify-js": "2.3.6",
-    "webfontloader": "^1.2.0",
     "zeroclipboard": "^1.3.2"
   },
   "devDependencies": {
     "autoprefixer": "^5.2.0",
     "cssnano": "^2.2.0",
+    "jshint": "1.1.0",
+    "jsxgettext": "^0.8.2",
     "node-sass": "^3.2.0",
+    "po2json": "0.0.6",
     "postcss-cli": "^1.5.0",
-    "postcss-import": "^6.2.0"
+    "postcss-import": "^6.2.0",
+    "uglify-js": "2.3.6"
   },
   "jspm": {
     "name": "Codepoints.net",
@@ -41,6 +33,8 @@
     },
     "dependencies": {
       "d3": "npm:d3@2.10",
+      "jquery": "npm:jquery@^2.2.1",
+      "jquery-ui": "github:components/jqueryui@^1.11.4",
       "webfontloader": "npm:webfontloader@^1.6.22"
     },
     "devDependencies": {},
@@ -75,6 +69,13 @@
       "zlib": "github:jspm/nodelibs-zlib@^0.2.0-alpha"
     },
     "overrides": {
+      "github:components/jqueryui@1.11.4": {
+        "main": "jquery-ui.js",
+        "registry": "jspm",
+        "dependencies": {
+          "jquery": "*"
+        }
+      },
       "npm:browserify-zlib@0.1.4": {
         "dependencies": {
           "readable-stream": "^2.0.2",
@@ -88,6 +89,9 @@
         "ignore": [
           "test.js"
         ]
+      },
+      "npm:jquery@2.2.1": {
+        "format": "amd"
       }
     }
   }
