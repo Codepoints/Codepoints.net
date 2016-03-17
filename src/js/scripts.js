@@ -1,4 +1,5 @@
 'use strict';
+/* jshint -W003 */
 
 
 import _ from './toolbox/gettext';

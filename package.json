@@ -18,7 +18,7 @@
   "devDependencies": {
     "autoprefixer": "^5.2.0",
     "cssnano": "^2.2.0",
-    "jshint": "1.1.0",
+    "jshint": "^2.9.1",
     "jspm": "^0.17.0-beta.11",
     "jsxgettext": "^0.8.2",
     "node-sass": "^3.2.0",
@@ -87,10 +87,58 @@
           "_stream_transform": "readable-stream/transform"
         }
       },
+      "npm:caseless@0.11.0": {
+        "format": "cjs",
+        "meta": {
+          "*": {
+            "globals": {
+              "process": "process"
+            }
+          },
+          "*.json": {
+            "format": "json"
+          }
+        },
+        "map": {}
+      },
+      "npm:combined-stream@1.0.5": {
+        "main": "lib/combined_stream",
+        "format": "cjs",
+        "meta": {
+          "*": {
+            "globals": {
+              "process": "process"
+            }
+          },
+          "*.json": {
+            "format": "json"
+          },
+          "lib/*": {
+            "globals": {
+              "Buffer": "buffer/global"
+            }
+          }
+        },
+        "map": {}
+      },
       "npm:inherits@2.0.1": {
         "ignore": [
           "test.js"
         ]
+      },
+      "npm:is-typedarray@1.0.0": {
+        "format": "cjs",
+        "meta": {
+          "*": {
+            "globals": {
+              "process": "process"
+            }
+          },
+          "*.json": {
+            "format": "json"
+          }
+        },
+        "map": {}
       },
       "npm:jquery@2.2.1": {
         "format": "amd"
