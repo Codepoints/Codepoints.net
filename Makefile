@@ -75,7 +75,7 @@ $(CSS_TARGET): $(DOCROOT)static/css/%.css : src/sass/%.scss
 	@<"$<" $(SASS) $(SASS_ARGS) | $(POSTCSS) $(POSTCSS_ARGS) >"$@"
 
 
-js: $(JS_TARGETS)
+js: $(JS_TARGETS) $(DOCROOT)static/js/html5shiv.js
 
 $(JS_TARGETS): $(DOCROOT)static/js/%.js: src/js/%.js
 	$(info * build $@)
