@@ -139,7 +139,7 @@ $(DOCROOT)locale/js.pot: $(JS_ALL)
 	$(info * Compile JS translation strings)
 	@node_modules/jsxgettext/lib/cli.js -k _ -o $@ $^
 
-vendor: $(DOCROOT)lib/vendor/autoload.php $(JSPM) jspm_packages/system.js
+vendor: $(DOCROOT)lib/vendor/autoload.php jspm_packages/system.js
 
 $(DOCROOT)lib/vendor/autoload.php: composer.lock
 	@mkdir -p $(DOCROOT)lib/vendor
