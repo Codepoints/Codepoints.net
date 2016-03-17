@@ -11,6 +11,7 @@ import floating_header from './effects/floating_header';
 import keyboard_navigation from './effects/keyboard_navigation';
 import better_pagination from './components/better_pagination';
 import glossary_links from './components/glossary_links';
+import back_to_search from './components/back_to_search';
 
 
 function load(dependency) {
@@ -31,6 +32,7 @@ floating_header($('header.hd'));
 keyboard_navigation();
 better_pagination($(document));
 glossary_links($(document));
+back_to_search();
 
 $(document).tooltip();
 

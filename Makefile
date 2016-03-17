@@ -77,7 +77,7 @@ $(CSS_TARGET): $(DOCROOT)static/css/%.css : src/sass/%.scss
 
 js: $(JS_TARGETS) $(DOCROOT)static/js/html5shiv.js
 
-$(JS_TARGETS): $(DOCROOT)static/js/%.js: src/js/%.js
+$(JS_TARGETS): $(DOCROOT)static/js/%.js: src/js/%.js src/js/*/*.js
 	$(info * build $@)
 	@if [[ ! -f $(JSPM) ]]; then $(MAKE) vendor; fi
 	@if [[ $$(basename $@) == 'main.js' ]]; then \
