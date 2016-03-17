@@ -33,6 +33,7 @@
       "lib": "src/js"
     },
     "dependencies": {
+      "clipboard": "npm:clipboard@^1.5.9",
       "d3": "npm:d3@2.10",
       "jquery": "npm:jquery@^2.2.1",
       "jquery-ui": "github:components/jqueryui@^1.11.4",
