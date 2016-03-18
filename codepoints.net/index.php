@@ -83,7 +83,8 @@ header("Content-Security-Policy: ".
     "style-src 'self' 'unsafe-inline'; ".
     "img-src 'self' data: https://stats.codepoints.net; ".
     "media-src 'none'; ".
-    "child-src 'none'; ".
+    "frame-src 'self' https://stats.codepoints.net; ".
+    "child-src 'self' https://stats.codepoints.net; ".
     "font-src 'self' data:; ".
     "connect-src 'self' https://stats.codepoints.net; ".
     "report-uri https://report-uri.io/report/codepoints");
