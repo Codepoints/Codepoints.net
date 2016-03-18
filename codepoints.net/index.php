@@ -54,7 +54,7 @@ define('DB_PATH', realpath(__DIR__.'/../ucd.sqlite'));
 /**
  * cache busting string (the Makefile will manipulate this line)
  */
-define('CACHE_BUST', '217c26bbee7755f1e14dcd18c1413d9f04951670');
+define('CACHE_BUST', 'e1307df0d19be0cc7e34fc68646c544c28454335');
 
 
 /* enable gzip compression of HTML */
@@ -68,9 +68,28 @@ require_once 'lib/vendor/autoload.php';
 
 
 /**
- * set HSTS header
+ * set HSTS and other security headers
  */
 header('Strict-Transport-Security: max-age=16070400; includeSubDomains; preload');
+header('X-Xss-Protection: 1; mode=block');
+header('X-Content-Type-Options: nosniff');
+
+
+/**
+ * set a (very weak) CSP header
+ */
+header("Content-Security-Policy: ".
+    "default-src 'self'; ".
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://stats.codepoints.net; ".
+    "object-src 'none'; ".
+    "style-src 'self' 'unsafe-inline'; ".
+    "img-src 'self' data: https://stats.codepoints.net; ".
+    "media-src 'none'; ".
+    "frame-src 'self' https://stats.codepoints.net; ".
+    "child-src 'self' https://stats.codepoints.net; ".
+    "font-src 'self' data:; ".
+    "connect-src 'self' https://stats.codepoints.net; ".
+    "report-uri https://report-uri.io/report/codepoints");
 
 
 /**

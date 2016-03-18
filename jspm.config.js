@@ -1,15 +1,24 @@
 SystemJS.config({
+  transpiler: "plugin-babel",
+  packages: {
+    "Codepoints.net": {
+      "main": "main.js",
+      "format": "es6"
+    }
+  }
+});
+
+SystemJS.config({
   packageConfigPaths: [
     "npm:@*/*.json",
     "npm:*.json",
     "github:*/*.json"
   ],
-  transpiler: "plugin-babel",
-
   map: {
     "assert": "github:jspm/nodelibs-assert@0.2.0-alpha",
     "buffer": "github:jspm/nodelibs-buffer@0.2.0-alpha",
     "child_process": "github:jspm/nodelibs-child_process@0.2.0-alpha",
+    "clipboard": "npm:clipboard@1.5.9",
     "constants": "github:jspm/nodelibs-constants@0.2.0-alpha",
     "contextify": "npm:contextify@0.1.15",
     "crypto": "github:jspm/nodelibs-crypto@0.2.0-alpha",
@@ -41,12 +50,7 @@ SystemJS.config({
     "webfontloader": "npm:webfontloader@1.6.22",
     "zlib": "github:jspm/nodelibs-zlib@0.2.0-alpha"
   },
-
   packages: {
-    "Codepoints.net": {
-      "main": "main.js",
-      "format": "es6"
-    },
     "github:components/jqueryui@1.11.4": {
       "map": {
         "jquery": "npm:jquery@2.2.1"
@@ -186,6 +190,18 @@ SystemJS.config({
         "inherits": "npm:inherits@2.0.1"
       }
     },
+    "npm:clipboard@1.5.9": {
+      "map": {
+        "good-listener": "npm:good-listener@1.1.7",
+        "select": "npm:select@1.0.6",
+        "tiny-emitter": "npm:tiny-emitter@1.0.2"
+      }
+    },
+    "npm:closest@0.0.1": {
+      "map": {
+        "matches-selector": "npm:matches-selector@0.0.1"
+      }
+    },
     "npm:combined-stream@1.0.5": {
       "map": {
         "delayed-stream": "npm:delayed-stream@1.0.0"
@@ -252,6 +268,11 @@ SystemJS.config({
         "assert-plus": "npm:assert-plus@1.0.0"
       }
     },
+    "npm:delegate@3.0.1": {
+      "map": {
+        "closest": "npm:closest@0.0.1"
+      }
+    },
     "npm:des.js@1.0.0": {
       "map": {
         "inherits": "npm:inherits@2.0.1",
@@ -293,6 +314,11 @@ SystemJS.config({
     "npm:generate-object-property@1.2.0": {
       "map": {
         "is-property": "npm:is-property@1.0.2"
+      }
+    },
+    "npm:good-listener@1.1.7": {
+      "map": {
+        "delegate": "npm:delegate@3.0.1"
       }
     },
     "npm:har-validator@2.0.6": {
