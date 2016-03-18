@@ -1,16 +1,5 @@
 'use strict';
 
-/* scale the front headline text.
- * TODO: replace with CSS */
-var headline = $('.front h1'), resizer;
-// with hat tip to fittext.js
-resizer = function () {
-  headline.css('font-size', Math.max(Math.min(headline.width() / 7.5,
-                                              160), 20));
-};
-resizer();
-$(window).on("load resize", resizer);
-
 /* display latest blog post */
 $('.blog-preview').load('/blog-preview');
 
