@@ -74,6 +74,22 @@ header('Strict-Transport-Security: max-age=16070400; includeSubDomains; preload'
 
 
 /**
+ * set a (very weak) CSP header
+ */
+header("Content-Security-Policy: ".
+    "default-src 'self'; ".
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://stats.codepoints.net; ".
+    "object-src 'none'; ".
+    "style-src 'self' 'unsafe-inline'; ".
+    "img-src 'self' data: https://stats.codepoints.net; ".
+    "media-src 'none'; ".
+    "child-src 'none'; ".
+    "font-src 'self' data:; ".
+    "connect-src 'self' https://stats.codepoints.net; ".
+    "report-uri https://report-uri.io/report/codepoints");
+
+
+/**
  * set X-UA-Compat, if necessary
  */
 if (array_key_exists('HTTP_USER_AGENT', $_SERVER)) {
