@@ -14,6 +14,8 @@ AddDefaultCharset utf-8
 # http://serverfault.com/a/383063/13201
 <IfModule mod_headers.c>
   Header set Strict-Transport-Security "max-age=16070400; includeSubDomains; preload"
+  Header always set X-Xss-Protection "1; mode=block"
+  Header always set X-Content-Type-Options "nosniff"
 </IfModule>
 
 ErrorDocument 404 /index.php
