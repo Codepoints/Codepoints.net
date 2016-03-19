@@ -101,5 +101,5 @@ include 'nav.php';
   </section>
 </div>
 <?php
-$footer_scripts = array('/static/js/scripts.js');
+$footer_scripts = array(url('/static/js/scripts.js'));
 include 'footer.php'?>

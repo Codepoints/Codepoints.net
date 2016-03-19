@@ -562,5 +562,5 @@ include 'nav.php';
   </dl>
 </div>
 <?php
-$footer_scripts = array('/static/js/glossary.js');
+$footer_scripts = array(url('/static/js/glossary.js'));
 include 'footer.php'?>

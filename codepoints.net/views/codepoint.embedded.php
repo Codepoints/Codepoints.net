@@ -11,9 +11,9 @@ $block = $codepoint->getBlock();
     <title>U+<?php e($codepoint->getId('hex'). ' ' . $codepoint->getName())?> – Codepoints</title>
     <meta name="author" content="Manuel Strehl">
     <!--[if lt IE 9]>
-      <script src="/static/js/html5shiv.js!<?php e(CACHE_BUST)?>"></script>
+      <script src="<?php echo url('/static/js/html5shiv.js')?>"></script>
     <![endif]-->
-    <link rel="stylesheet" href="/static/css/embedded.css!<?php e(CACHE_BUST)?>">
+    <link rel="stylesheet" href="<?php echo url('/static/css/embedded.css')?>">
     <link rel="author" href="/humans.txt">
     <link rel="author" href="https://plus.google.com/107008580830183396063?rel=author">
     <link rel="publisher" href="https://plus.google.com/115373008615574082246">
@@ -130,6 +130,6 @@ $block = $codepoint->getBlock();
     include "partials/tracker.php";
 ?>
     <script>WebFontConfig={google:{families:['Droid Serif:n,i,b,ib','Droid Sans:n,b']}};</script>
-    <script src="/static/js/embedded.js!<?php e(CACHE_BUST)?>"></script>
+    <script src="<?php echo url('/static/js/embedded.js')?>"></script>
   </body>
 </html>

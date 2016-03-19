@@ -24,9 +24,9 @@
     <?php include "partials/tracker.php"; ?>
     <script>WebFontConfig={google:{families:['Droid Serif:n,i,b,ib','Droid Sans:n,b']}};</script>
     <?php if ($lang !== "en"):?>
-      <script src="/static/locale/<?php e($lang)?>.js!<?php e(CACHE_BUST)?>"></script>
+      <script src="<?php echo url('/static/locale/'.$lang.'.js')?>"></script>
     <?php endif?>
-    <script src="/static/js/main.js!<?php e(CACHE_BUST)?>" async
+    <script src="<?php echo url('/static/js/main.js')?>" async
       <?php if (isset($footer_scripts)): ?>
         id="additional-scripts" data-src='<?php e(json_encode($footer_scripts))?>'
       <?php endif?>></script>
