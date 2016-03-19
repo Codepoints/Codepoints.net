@@ -73,16 +73,14 @@ function _bl($bl, $rel='', $class='', $wrap='') {
     if ($class) {
         $class = ' '.q($class);
     }
+    $img = url(sprintf('/static/images/blocks/%s.svgz',
+        q(str_replace(' ', '_', $bl->getName()))));
     if ($wrap) {
-        $r = sprintf('<a%s href="%s"><%s class="bl%s"><img src="%sstatic/images/'.
-                'blocks/%s.svgz" alt="" width="16" height="16" /> %s</%s></a>',
-                $rel, q($router->getUrl($bl)), $wrap, $class, q($router->getUrl()),
-                q(str_replace(' ', '_', $bl->getName())), q($bl->getName()), $wrap);
+        $r = sprintf('<a%s href="%s"><%s class="bl%s"><img src="%s" alt="" width="16" height="16" /> %s</%s></a>',
+                $rel, q($router->getUrl($bl)), $wrap, $class, $img, q($bl->getName()), $wrap);
     } else {
-        $r = sprintf('<a class="bl%s"%s href="%s"><img src="%sstatic/images/'.
-                'blocks/%s.svgz" alt="" width="16" height="16" /> %s</a>',
-                $class, $rel, q($router->getUrl($bl)), q($router->getUrl()),
-                q(str_replace(' ', '_', $bl->getName())), q($bl->getName()));
+        $r = sprintf('<a class="bl%s"%s href="%s"><img src="%s" alt="" width="16" height="16" /> %s</a>',
+                $class, $rel, q($router->getUrl($bl)), $img, q($bl->getName()));
     }
     return $r;
 }
@@ -103,6 +101,16 @@ function render($view, $params=array()) {
     echo $view->render($params);
 }
 
+function url($url) {
+    static $cachebust;
+    if (! $cachebust) {
+        require_once __DIR__.'/cachebust.php';
+    }
+    if (array_key_exists(ltrim($url, '/'), $cachebust)) {
+        $url .= '!'.$cachebust[ltrim($url, '/')];
+    }
+    return $url;
+}
 
 class View {
 

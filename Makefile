@@ -8,6 +8,9 @@ JS_ALL := $(shell find src/js -type f -name \*.js)
 JS_SOURCES := $(wildcard src/js/*.js)
 JS_TARGETS := $(patsubst src/js/%,$(DOCROOT)static/js/%,$(JS_SOURCES))
 
+# no colon, re-evaluate variable on building cache buster
+STATICS_ALL = $(shell find $(DOCROOT)static -type f)
+
 PHP_ALL := $(shell find $(DOCROOT) -type f -not -path \*/lib/vendor/\* -name \*.php)
 
 SASS_ROOTS := $(wildcard src/sass/[^_]*.scss)
@@ -97,9 +100,18 @@ $(DOCROOT)static/js/html5shiv.js: node_modules/html5shiv/dist/html5shiv.js
 node_modules/html5shiv/dist/html5shiv.js: vendor
 
 
-cachebust: $(JS_ALL) $(CSS_TARGET)
-	$(info * Update Cache Bust Constant)
-	@sed -i '/^define(.CACHE_BUST., .\+.);$$/s/.*/define('"'CACHE_BUST', '"$$(cat $^ | sha1sum | awk '{ print $$1 }')"');/" $(DOCROOT)index.php
+cachebust: $(JS_ALL) $(CSS_TARGET) $(DOCROOT)lib/cachebust.php
+
+$(DOCROOT)lib/cachebust.php: $(STATICS_ALL)
+	$(info * pre-calculate hashes for statc files)
+	@( \
+		echo '<?php $$cachebust = ['; \
+		echo '$^' | \
+			xargs md5sum | \
+			awk '{ print $$2 " " $$1 }' | \
+			sed 's/codepoints.net\/\(.\+\) \(.\+\)/"\1"=>"\2",/'; \
+		echo '];'; \
+	) > $(DOCROOT)lib/cachebust.php
 
 
 db: db.conf

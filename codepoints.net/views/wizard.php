@@ -19,5 +19,5 @@ include "nav.php";
   </div>
 </div>
 <?php
-$footer_scripts = array("/static/js/wizard.js");
+$footer_scripts = array(url("/static/js/wizard.js"));
 include "footer.php"?>

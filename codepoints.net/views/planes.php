@@ -10,7 +10,7 @@ include "nav.php";
 ?>
 <div class="payload planes">
   <figure>
-    <img src="/static/images/unicode-logo-framed.png" alt="<?php _e('a representation of the Unicode logo')?>" width="128" height="128">
+    <img src="<?php echo url('/static/images/unicode-logo-framed.png')?>" alt="<?php _e('a representation of the Unicode logo')?>" width="128" height="128">
   </figure>
   <h1><?php e($title)?></h1>
   <ol style="margin-left: 140px">
