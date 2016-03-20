@@ -34,7 +34,13 @@ th, td {
  * Get the CotD of today
  */
 function get_ucotd() {
-    $db = new PDO('sqlite:'.realpath(__DIR__.'/../ucd.sqlite'));
+    $dbconfig = parse_ini_file(dirname(__DIR__).'/db.conf', true);
+    $db = new DB(
+        'mysql:host=localhost;dbname='.$dbconfig['clientreadonly']['database'],
+        $dbconfig['clientreadonly']['user'],
+        $dbconfig['clientreadonly']['password'],
+        [PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',]);
+    unset($dbconfig);
     $stm = $db->prepare('SELECT cp, na, comment, date
                         FROM dailycp
                         LEFT JOIN codepoints USING ( cp )

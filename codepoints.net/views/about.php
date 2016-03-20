@@ -139,18 +139,18 @@ include 'nav.php';
       <p>
         <strong>Manuel Strehl</strong><br>
         <img class="protocol_s" alt="Adresse identisch mit dem Eintrag für den Admin-C, den man bei der DENiC herausfinden kann"
-            src="/static/images/address.png" width="220" height="40">
+        src="<?php echo url('/static/images/address.png')?>" width="220" height="40">
       </p>
       <p>
         <?php _e('E-Mail:')?> <img class="protocol_s" alt="website (Klammeraffe) diese Domain ohne www"
-            src="/static/images/email.png" width="220" height="20"><br>
+            src="<?php echo url('/static/images/email.png')?>" width="220" height="20"><br>
         <?php _e('WWW:')?> www.manuel-strehl.de/about/contact<br>
         <?php _e('Tel.:')?> <img class="protocol_s" alt="Siehe Adresse"
-            src="/static/images/phone.png" width="220" height="20">
+            src="<?php echo url('/static/images/phone.png')?>" width="220" height="20">
       </p>
     </address>
     <figure class="other">
-      <img src="/static/images/were_open.jpg" alt="">
+      <img src="<?php echo url('/static/images/were_open.jpg')?>" alt="">
     </figure>
     <h2><?php _e('The Content on this Site')?></h2>
     <p>
@@ -263,7 +263,7 @@ include 'nav.php';
         '</a>',
         '<a href="https://annevankesteren.nl/">Anne van Kesteren</a>')?></p>
     <figure class="other">
-      <a href="https://uberspace.de" rel="external"><img src="/static/images/uberspace.png" alt="Hosted on Asteroids"></a>
+      <a href="https://uberspace.de" rel="external"><img src="<?php echo url('/static/images/uberspace.png')?>" alt="Hosted on Asteroids"></a>
     </figure>
     <p><?php _e('The hosting is done on Uberspace, a phantastic provider with extremely
     helpful and flexible support.')?></p>
@@ -312,4 +312,6 @@ include 'nav.php';
     '<a href="http://mathiasbynens.be">', '</a>')?></p>
   </section>
 </div>
-<?php include 'footer.php'?>
+<?php
+$footer_scripts = array(url("/static/js/about.js"));
+include "footer.php"?>

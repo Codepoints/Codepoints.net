@@ -1,12 +1,12 @@
-require(['jquery',
-    'components/gettext',
-    'd3',
-    'jqueryui/accordion',
-    'jqueryui/dialog'],
-  function($, gettext, d3) {
+'use strict';
+/* jshint -W003 */
 
-var $window = $(window),
-    _ = gettext.gettext;
+
+import _ from './toolbox/gettext';
+import d3 from 'd3';
+
+
+var $window = $(window);
 
 /**
  * show info about a single script in the opening modal dialog
@@ -193,5 +193,3 @@ $('#sclist').accordion({
 d3.select(window)
     .on("mousemove", mousemove)
     .on("mouseup", mouseup);
-
-});

@@ -5,8 +5,11 @@ DOCROOT := codepoints.net/
 DEPLOY :=
 
 JS_ALL := $(shell find src/js -type f -name \*.js)
-JS_ROOTS := $(wildcard src/js/*.js)
-JS_TARGET := $(patsubst src/js/%,$(DOCROOT)static/js/%,$(JS_ROOTS))
+JS_SOURCES := $(wildcard src/js/*.js)
+JS_TARGETS := $(patsubst src/js/%,$(DOCROOT)static/js/%,$(JS_SOURCES))
+
+# no colon, re-evaluate variable on building cache buster
+STATICS_ALL = $(shell find $(DOCROOT)static -type f)
 
 PHP_ALL := $(shell find $(DOCROOT) -type f -not -path \*/lib/vendor/\* -name \*.php)
 
@@ -34,6 +37,14 @@ PHPCS_ARGS :=
 CASPERJS := casperjs
 CASPERJS_ARGS := --fail-fast
 
+JSPM := node_modules/.bin/jspm
+JSPM_BUILD_ARGS := --format global \
+    --global-deps "{'jquery': 'jQuery'}" \
+    --minify --skip-source-maps
+
+UGLIFY := node_modules/.bin/uglifyjs
+UGLIFY_ARGS := --compress --mangle
+
 ifdef COVERAGE
 PHPUNIT_REAL_ARGS := $(PHPUNIT_ARGS) --coverage-html ./coverage-report
 else
@@ -46,7 +57,7 @@ COMPOSER_ARGS := --no-dev
 endif
 
 
-all: vendor test ucotd css js cachebust
+all: vendor test css js cachebust
 
 .PHONY: all css js dist clean ucotd cachebust l10n test vendor db clearcache \
         test-php test-phpunit test-js init
@@ -62,62 +73,65 @@ deploy: vendor cachebust
 css: $(CSS_TARGET)
 
 $(CSS_TARGET): $(DOCROOT)static/css/%.css : src/sass/%.scss
-	<"$<" $(SASS) $(SASS_ARGS) | $(POSTCSS) $(POSTCSS_ARGS) >"$@"
+	$(info * build $@)
+	@if [[ ! -f $(SASS) ]]; then $(MAKE) vendor; fi
+	@<"$<" $(SASS) $(SASS_ARGS) | $(POSTCSS) $(POSTCSS_ARGS) >"$@"
 
-js: node_modules/jquery-ui \
-    $(DOCROOT)static/js/build.txt $(DOCROOT)static/js/html5shiv.js \
-    $(DOCROOT)static/ZeroClipboard.swf
 
-node_modules/jquery-ui:
-	node_modules/.bin/jqueryui-amd "$@"
+js: $(JS_TARGETS) $(DOCROOT)static/js/html5shiv.js
 
-init: node_modules/jquery-ui/jqueryui node_modules/webfontloader/target/webfont.js
+$(JS_TARGETS): $(DOCROOT)static/js/%.js: src/js/%.js src/js/*/*.js
+	$(info * build $@)
+	@if [[ ! -f $(JSPM) ]]; then $(MAKE) vendor; fi
+	@if [[ $$(basename $@) == 'main.js' ]]; then \
+		$(JSPM) build $< $@ \
+			--global-name $$(basename $@ .js) \
+			$(JSPM_BUILD_ARGS) ; \
+	else \
+		$(JSPM) build $< $@ \
+			--global-name $$(basename $@ .js) \
+			$(JSPM_BUILD_ARGS) ; \
+	fi
 
-node_modules/jquery-ui/jqueryui:
-	node_modules/.bin/jqueryui-amd "$@"
-
-node_modules/webfontloader/target/webfont.js:
-	cd node_modules/webfontloader && \
-		rake compile
-
-$(DOCROOT)static/js/build.txt: src/build.js $(JS_ALL)
-	cd src && ../node_modules/.bin/r.js -o build.js
 
 $(DOCROOT)static/js/html5shiv.js: node_modules/html5shiv/dist/html5shiv.js
-	<$< node_modules/.bin/uglifyjs -c -m >$@
+	<$< $(UGLIFY) $(UGLIFY_ARGS) >$@
 
-$(DOCROOT)static/ZeroClipboard.swf: node_modules/zeroclipboard/ZeroClipboard.swf
-	cp "$<" "$@"
+node_modules/html5shiv/dist/html5shiv.js: vendor
 
-cachebust: $(JS_ALL) $(CSS_TARGET)
-	$(info * Update Cache Bust Constant)
-	@sed -i '/^define(.CACHE_BUST., .\+.);$$/s/.*/define('"'CACHE_BUST', '"$$(cat $^ | sha1sum | awk '{ print $$1 }')"');/" $(DOCROOT)index.php
 
-db: ucd.sqlite
+cachebust: $(JS_ALL) $(CSS_TARGET) $(DOCROOT)lib/cachebust.php
+
+$(DOCROOT)lib/cachebust.php: $(STATICS_ALL)
+	$(info * pre-calculate hashes for statc files)
+	@( \
+		echo '<?php $$cachebust = ['; \
+		echo '$^' | \
+			xargs md5sum | \
+			awk '{ print $$2 " " $$1 }' | \
+			sed 's/codepoints.net\/\(.\+\) \(.\+\)/"\1"=>"\2",/'; \
+		echo '];'; \
+	) > $(DOCROOT)lib/cachebust.php
+
+
+db: db.conf
+
+db.conf:
+	# To get the database up and running, create a file
+	# `db.conf` in the folder of this Makefile with this content:
+	#
+	# [clientreadonly]
+	# password=mysql-password
+	# user=mysql-user
+	# database=mysql-database
+	#
+	# Then download https://dumps.codepoints.net/latest.sql.gz and
+	# feed it into the above database.
 
 ucotd: tools/ucotd.*
 	@echo "* Add Codepoint of the Day"
 	@cd tools; \
 	$(PYTHON) ucotd.py
-
-ucd.sqlite: ucotd tools/scripts.sql tools/scripts_wp.sql \
-            tools/latex.sql tools/fonts/fonts.sql \
-            tools/fonts/target/sql/*.sql \
-            tools/encoding-aliases.sql
-	@echo "* Add additional info to DB"
-	@sqlite3 $@ <tools/aliases.sql
-	@sqlite3 $@ <tools/scripts.sql
-	@sqlite3 $@ <tools/scripts_wp.sql
-	@sqlite3 $@ <tools/latex.sql
-	@echo "* Add font info"
-	@sqlite3 $@ <tools/fonts/fonts.sql
-	@for SQL in $$(find tools/fonts/target/sql -type f); do \
-		echo "  + Processing $$SQL"; \
-		python tools/insert.py $$SQL $@; \
-	done
-	@sqlite3 $@ <tools/encoding-aliases.sql
-	@echo "* Create search index"
-	@$(MAKE) search_index
 
 tools/encoding-aliases.sql: tools/encoding tools/encoding/index-*.txt
 	-true > $@
@@ -144,19 +158,26 @@ $(DOCROOT)locale/js.pot: $(JS_ALL)
 	$(info * Compile JS translation strings)
 	@node_modules/jsxgettext/lib/cli.js -k _ -o $@ $^
 
-vendor: $(DOCROOT)lib/vendor/autoload.php
-	npm install
-	#$(MAKE) -C node_modules/d3 d3.v2.js NODE_PATH=../../../node_modules
-	#node_modules/jqueryui-amd/jqueryui-amd.js node_modules/jquery-ui
-	#cd node_modules/webfontloader && rake compile
+vendor: $(DOCROOT)lib/vendor/autoload.php jspm_packages/system.js
 
 $(DOCROOT)lib/vendor/autoload.php: composer.lock
 	@mkdir -p $(DOCROOT)lib/vendor
 	composer install $(COMPOSER_ARGS)
-	touch $@
+	@touch $@
 
 composer.lock: composer.json
-	touch $@
+	@touch $@
+
+jspm_packages/system.js: node_modules/jspm/README.md
+	$(JSPM) install
+	@touch $@
+
+node_modules/jspm/README.md: package.json
+	npm install
+	$(info * patch jsxgettext)
+	@-patch node_modules/jsxgettext/lib/jsxgettext.js 80_jsxgettext.diff \
+		--forward --quiet --reject-file=-
+	@touch $@
 
 test: test-php test-phpunit test-js test-casper
 
@@ -177,7 +198,8 @@ test-js: $(JS_ALL)
 
 test-casper:
 	$(info * run CasperJS tests)
-	@cd test/casperjs; $(CASPERJS) test --pre=bootstrap.js $(CASPERJS_ARGS) test_*.js
+	$(info Buhu! They do not run cleanly, yet. #FIXME)
+	@#cd test/casperjs; $(CASPERJS) test --pre=bootstrap.js $(CASPERJS_ARGS) test_*.js
 
 clearcache:
 	rm -f $(DOCROOT)cache/_cache_* $(DOCROOT)cache/blog-preview*
@@ -194,5 +216,4 @@ tools/latex.xml:
 
 search_index:
 	cd tools && python create_search_index.py --print > search_index.sql
-	cd tools && python insert.py search_index.sql ../ucd.sqlite
 .PHONY: search_index

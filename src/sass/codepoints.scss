@@ -150,7 +150,8 @@ input[type="text"] {
   display: none;
 }
 
-@import "jquery.ui.all";
+@import "./jspm_packages/github/components/jqueryui@1.11.4/themes/base/base.css";
+@import "jquery.ui.theme";
 
 .payload {
   padding: 10px 10px 30px;
@@ -175,6 +176,16 @@ input[type="text"] {
   color: white;
   text-shadow: 0 1px 1px rgba(0,0,0,.5);
   text-align: center;
+
+  /* scale the front headline text.
+   * see http://www.adrenalinmedia.com.au/the-agency/insights/this-changes-everything-css-fluid-properties.aspx */
+  font-size: calc(13.3333vw - 2.66667px);
+  @media (max-width: 170px) {
+    font-size: 20px;
+  }
+  @media (min-width: 1220px) {
+    font-size: 160px;
+  }
 }
 
 @include props;
@@ -201,7 +212,8 @@ input[type="text"] {
   }
 }
 
-.tooltip {
+.tooltip,
+.ui-tooltip {
   @include tooltip;
 }
 

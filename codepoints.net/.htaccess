@@ -5,7 +5,7 @@ AddDefaultCharset utf-8
   ForceType application/opensearchdescription+xml
 </Files>
 
-<Files ~ "^(ucd\.sqlite|config\.rb|Makefile)$">
+<Files ~ "^(config\.rb|Makefile)$">
   Deny From All
 </Files>
 
@@ -14,6 +14,8 @@ AddDefaultCharset utf-8
 # http://serverfault.com/a/383063/13201
 <IfModule mod_headers.c>
   Header set Strict-Transport-Security "max-age=16070400; includeSubDomains; preload"
+  Header set X-Xss-Protection "1; mode=block"
+  Header set X-Content-Type-Options "nosniff"
 </IfModule>
 
 ErrorDocument 404 /index.php
@@ -52,9 +54,8 @@ RewriteRule ^(\+|%2B|%20)[uU]?([A-Fa-f0-9]+)$   /U+$2 [R,L]
 # everything that doesn't match a real file
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !/static/.*
-RewriteCond %{REQUEST_FILENAME} !/src/.*
 RewriteRule .* index.php [L]
 
 # let assets be cache-busted with an "!"
-RewriteRule ^((src|static)/.+)![a-z0-9]+      $1 [L]
+RewriteRule ^(static/.+)![a-z0-9]+      $1 [L]
 

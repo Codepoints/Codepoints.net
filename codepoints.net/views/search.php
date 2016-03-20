@@ -11,5 +11,5 @@ include "nav.php";
   <?php include "search/form.php"?>
 </div>
 <?php
-$footer_scripts = array('/static/js/searchform.js');
+$footer_scripts = array(url('/static/js/searchform.js'));
 include "footer.php"?>

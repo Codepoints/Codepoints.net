@@ -121,7 +121,7 @@ include "nav.php";
     <section class="bk favorites">
         <h2><?php _e('The 20 most popular codepoints')?><br>
         <small><?php _e('(by visits)')?></small></h2>
-        <p class ="wait" style="text-align: center"><img src="/static/images/ajax.gif" alt="Loading..."></p>
+        <p class ="wait" style="text-align: center"><img src="<?php echo url('/static/images/ajax.gif')?>" alt="Loading..."></p>
     </section>
   </article>
 </div>
@@ -132,7 +132,7 @@ include "nav.php";
   "url":"https://codepoints.net/",
   "name":"Codepoints",
   "alternateName":"All Unicode characters from Hieroglyphs to Dingbats",
-  "image":"https://codepoints.net/static/images/icon.svg",
+  "image":"https://codepoints.net<?php echo url('/static/images/icon.svg')?>",
   "sameAs":["https://twitter.com/CodepointsNet"],
   "potentialAction":{
     "@type":"SearchAction",
@@ -142,5 +142,5 @@ include "nav.php";
 }
 </script>
 <?php
-$footer_scripts = array("/static/js/dailycp.js");
+$footer_scripts = array(url('/static/js/front.js'), url('/static/js/dailycp.js'));
 include "footer.php"?>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-15 20:55+0100\n"
+"POT-Creation-Date: 2016-03-20 14:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: codepoints.net/controllers/manifest.php:29
+msgid "All of Unicode at Codepoints.net"
+msgstr ""
 
 #: codepoints.net/views/codepoint/representations.php:1
 #: codepoints.net/views/pu_codepoint.html.php:243
@@ -258,7 +262,7 @@ msgid ""
 "        type %s for sentence and %s for word breaks. The %s is %s."
 msgstr ""
 
-#: codepoints.net/views/codepoint/info.php:203
+#: codepoints.net/views/codepoint/info.php:210
 #, php-format
 msgid "The %sWikipedia%s has the following information about this codepoint:"
 msgstr ""
@@ -432,7 +436,7 @@ msgstr ""
 msgid "Blog"
 msgstr ""
 
-#: codepoints.net/views/footer.php:20 codepoints.net/views/nav.php:41
+#: codepoints.net/views/footer.php:20 codepoints.net/views/nav.php:27
 msgid "About"
 msgstr ""
 
@@ -676,15 +680,11 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: codepoints.net/views/nav.php:34
-msgid "Back to search results"
-msgstr ""
-
-#: codepoints.net/views/nav.php:39 codepoints.net/views/scripts.php:2
+#: codepoints.net/views/nav.php:25 codepoints.net/views/scripts.php:2
 msgid "Scripts"
 msgstr ""
 
-#: codepoints.net/views/nav.php:40
+#: codepoints.net/views/nav.php:26
 msgid "Random"
 msgstr ""
 
@@ -1605,7 +1605,7 @@ msgstr ""
 msgid "This API method does not exist."
 msgstr ""
 
-#: codepoints.net/lib/api_v1.class.php:135
+#: codepoints.net/lib/api_v1.class.php:134
 msgid "An unknown error occured."
 msgstr ""
 

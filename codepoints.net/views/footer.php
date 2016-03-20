@@ -24,46 +24,11 @@
     <?php include "partials/tracker.php"; ?>
     <script>WebFontConfig={google:{families:['Droid Serif:n,i,b,ib','Droid Sans:n,b']}};</script>
     <?php if ($lang !== "en"):?>
-      <script src="/static/locale/<?php e($lang)?>.js!<?php e(CACHE_BUST)?>"></script>
+      <script src="<?php echo url('/static/locale/'.$lang.'.js')?>"></script>
     <?php endif?>
-<?php if(CP_DEBUG):?>
-    <script src="/src/vendor/requirejs/require.js"></script>
-    <script>
-require.config({
-  "baseUrl": "/src/js/",
-  "urlArgs": "bust=" +  (new Date()).getTime(),
-  "paths": {
-    "almond": "/src/vendor/almond/almond",
-    "jquery": "/src/vendor/jquery/jquery",
-    "jqueryui": "/src/vendor/jquery.ui/jqueryui",
-    "d3": "/src/vendor/d3/d3.v2",
-    "zeroclipboard": "/src/vendor/zeroclipboard/ZeroClipboard",
-    "webfont": "/src/vendor/webfontloader/target/webfont",
-    "piwik": "https://stats.codepoints.net/piwik.js"
-  },
-  "shim": {
-    "jquery": {
-      "exports": "jQuery"
-    },
-    "jquery.ui": {
-      "deps": ["jquery"]
-    },
-    "webfont": {
-      "exports": "WebFont"
-    },
-    "d3": {
-      "exports": "d3"
-    }
-  }
-});
-
-require(['codepoints']);
-    </script>
-<?php else:?>
-    <script src="/static/js/codepoints.js!<?php e(CACHE_BUST)?>"></script>
-<?php endif?>
-    <?php if (isset($footer_scripts)): foreach($footer_scripts as $sc):?>
-        <script src="<?php e($sc)?>!<?php e(CACHE_BUST)?>"></script>
-    <?php endforeach; endif?>
+    <script src="<?php echo url('/static/js/main.js')?>" async
+      <?php if (isset($footer_scripts)): ?>
+        id="additional-scripts" data-src='<?php e(json_encode($footer_scripts))?>'
+      <?php endif?>></script>
   </body>
 </html>

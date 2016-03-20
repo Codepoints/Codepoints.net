@@ -51,12 +51,6 @@ define('CP_DEBUG', 0);
 define('DB_PATH', realpath(__DIR__.'/../ucd.sqlite'));
 
 
-/**
- * cache busting string (the Makefile will manipulate this line)
- */
-define('CACHE_BUST', '217c26bbee7755f1e14dcd18c1413d9f04951670');
-
-
 /* enable gzip compression of HTML */
 ini_set('zlib.output_compression', true);
 
@@ -68,9 +62,28 @@ require_once 'lib/vendor/autoload.php';
 
 
 /**
- * set HSTS header
+ * set HSTS and other security headers
  */
 header('Strict-Transport-Security: max-age=16070400; includeSubDomains; preload');
+header('X-Xss-Protection: 1; mode=block');
+header('X-Content-Type-Options: nosniff');
+
+
+/**
+ * set a (very weak) CSP header
+ */
+header("Content-Security-Policy: ".
+    "default-src 'self'; ".
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://stats.codepoints.net; ".
+    "object-src 'none'; ".
+    "style-src 'self' 'unsafe-inline'; ".
+    "img-src 'self' data: https://stats.codepoints.net; ".
+    "media-src 'none'; ".
+    "frame-src 'self' https://stats.codepoints.net; ".
+    "child-src 'self' https://stats.codepoints.net; ".
+    "font-src 'self' data:; ".
+    "connect-src 'self' https://stats.codepoints.net; ".
+    "report-uri https://report-uri.io/report/codepoints");
 
 
 /**
@@ -171,7 +184,7 @@ $controllers = array(
     'index', 'about', 'api_login', 'codepoint_of_the_day',
     'planes', 'random', 'scripts', 'search', 'wizard', 'sitemap',
 
-    'api_font-face', 'api',
+    'manifest', 'api_font-face', 'api',
     'blog-preview', 'font',
     'single_character', 'plane', 'codepoint', 'block', 'possible_name',
     'range',

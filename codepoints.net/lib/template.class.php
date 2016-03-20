@@ -26,7 +26,6 @@ class Template {
                 'get_url' => function ($url) {
                     return Router::getRouter()->getUrl($url);
                 },
-                'CACHE_BUST' => CACHE_BUST,
             ),
             'strict_callables' => true,
         ));
