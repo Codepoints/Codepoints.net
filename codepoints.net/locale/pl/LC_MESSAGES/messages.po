@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: codepoints\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-02-15 20:55+0100\n"
-"PO-Revision-Date: 2016-02-17 21:52+0100\n"
+"PO-Revision-Date: 2016-03-20 21:53+0100\n"
 "Last-Translator: Manuel Strehl <translate@manuel-strehl.de>\n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
@@ -275,7 +275,7 @@ msgstr "Znajdź znak odpowiadając na zestaw pytań. Pytania będą zawężać m
 
 #: codepoints.net/views/wizard.php:13
 msgid "You search for a specific character? Answer the following questions and we try to figure out candidates."
-msgstr "Szukasz konkretnego znaku? Odpowiedz na następujace pytania i spróbujemy znaleźć odpowiednich kandydatów."
+msgstr "Szukasz konkretnego znaku? Odpowiedz na następujace pytania, to spróbujemy znaleźć odpowiednie kandydatury."
 
 #: codepoints.net/views/wizard.php:16
 msgid "We’re sorry, but for the wizard Javascript is needed."
@@ -351,7 +351,7 @@ msgstr "Blok od U +%04X do U + %04X."
 #: codepoints.net/views/block.html.php:41
 #, php-format
 msgid "This block was introduced in Unicode version %s (%s). It contains %s codepoints."
-msgstr "Blok ten został wprowadzony w Unicode wersja %s (%s). Zawiera %s współrzędnych kodowych."
+msgstr "Blok ten został wprowadzony w wersji %s (%s) standardu Unicode. Zawiera %s współrzędnych kodowych."
 
 #: codepoints.net/views/block.html.php:46
 #, php-format
@@ -378,7 +378,7 @@ msgstr "Blok na witrynie Decode Unicode"
 #: codepoints.net/views/footer.php:7
 #, php-format
 msgid "This is Codepoints.net, a site dedicated to all things characters, letters and Unicode. The site is run by %s. The content can be %s under the given terms. We’d like to thank %s for making Codepoints.net possible. %s are always welcome."
-msgstr "To jest Codepoints.net, witryna poświęcona znakom standardu Unicode. Strona jest prowadzona przez %s. Zawartość może być %s zgodnie z podanymi warunkami. Chcielibyśmy podziękować %s za umożliwienie stworzenia Codepoints.net. %s są zawsze mile widziane."
+msgstr "To jest Codepoints.net, witryna poświęcona znakom standardu Unicode. Stronę prowadzi %s. Zawartość może być %s zgodnie z podanymi warunkami. Chcielibyśmy podziękować %s za umożliwienie stworzenia Codepoints.net. %s są zawsze mile widziane."
 
 #: codepoints.net/views/footer.php:9
 msgid "freely reused"
@@ -386,7 +386,7 @@ msgstr "swobodnie używane ponownie"
 
 #: codepoints.net/views/footer.php:10
 msgid "these fine people"
-msgstr "tych wspaniałych ludzi"
+msgstr "tym wspaniałym ludziom"
 
 #: codepoints.net/views/footer.php:11
 msgid "Feedback and contributions"
@@ -429,7 +429,7 @@ msgstr "» Zobacz ten znak na Codepoints.net"
 
 #: codepoints.net/views/front.php:1
 msgid "Find all Unicode characters from Hieroglyphs to Dingbats"
-msgstr "Wszystkie znaki Unicode od hieroglifów do ornamentów"
+msgstr "Wyszukuj wszystkie znaki Unicode'u od hieroglifów do ornamentów"
 
 #: codepoints.net/views/front.php:2
 msgid "Codepoints is a site dedicated to Unicode and all things related to codepoints, characters, glyphs and internationalization."
@@ -496,11 +496,11 @@ msgid ""
 "          <em>%s codepoints</em> defined at the moment, mapping characters\n"
 "          from %s to %s."
 msgstr ""
-"Codepoints.net jest poświęcony wszystkim znakom, \n"
-" zdefiniowanych w %s. Teoretycznie powinne to być \n"
-" <em>wszystkie znaki kiedykolwiek używane</em>. W praktyce Unicode ma\n"
-" <em>%s literale</em> znaki zdefioniowane w pewnym konkretnym momencie, \n"
-" odwzorowując znaki z %s na %s."
+"Witryna Codepoints.net jest poświęcona wszystkim znakom, \n"
+" zdefiniowanym w %s. Teoretycznie powinne to być \n"
+" <em>wszystkie znaki kiedykolwiek używane</em>. W praktyce Unicode zawiera\n"
+" <em>%s współrzędnych kodowych</em>  aktualnie zdefiniowanych, \n"
+" odwzorowujących znaki od %s do %s."
 
 #: codepoints.net/views/front.php:38
 msgid "Unicode Standard"
@@ -508,11 +508,11 @@ msgstr "Standard Unicode"
 
 #: codepoints.net/views/front.php:40
 msgid "Egyptian Hieroglyphs"
-msgstr "Egipskie hieroglify"
+msgstr "egipskich hieroglifów"
 
 #: codepoints.net/views/front.php:41
 msgid "Dingbats and Symbols"
-msgstr "Ornamenty i symbole"
+msgstr "ornamentów i symboli"
 
 #: codepoints.net/views/front.php:44
 #, php-format
@@ -524,20 +524,20 @@ msgid ""
 "       not fully sure, try %s, to narrow down the candidates. Or maybe you\n"
 "       are more daring and want %s?"
 msgstr ""
-"Wszystkich wszpółrzędne kodowe są ułożone w 17 tak zwanych\n"
+"Wszystkie wszpółrzędne kodowe są ułożone w 17 tak zwanych\n"
 " %s. Te płaszczyzny są dalej podzielone na kilka bloków z\n"
-" %s jako pierwszym. Możesz przeglądaćje  pojedynczo zaczynając od\n"
-" pierwszej współrzędnej, %s lub %s dla konkretnego znaku. Jeśli \n"
-" nie jesteś całkowicie pewien, spróbuj %s, aby zawęzić wybór kandydatów. Lub może jesteś\n"
-" bardziej śmiały i chcesz %s?"
+" %s jako pierwszym. Przeglądać je  pojedynczo zaczynając od\n"
+" pierwszej współrzędnej, %s lub %s  konkretnego znaku. Jeśli \n"
+" nie masz całkowitej pewności, spróbuj %s, aby zawęzić wybór kandydatów. Lub może masz\n"
+" więcej odwagi i chcesz %s?"
 
 #: codepoints.net/views/front.php:50
 msgid "planes"
-msgstr "płaszczyzny"
+msgstr "płaszczyzn"
 
 #: codepoints.net/views/front.php:51
 msgid "Basic Latin"
-msgstr "Łaciński podstawowy"
+msgstr "blokiem \"Łaciński podstawowy\""
 
 #: codepoints.net/views/front.php:54
 msgid "“Find My Codepoint”"
@@ -545,7 +545,7 @@ msgstr "\"Znajdź moją współrzędną kodową\""
 
 #: codepoints.net/views/front.php:55
 msgid "a random codepoint"
-msgstr "współrzędna kodowa wybrana losowo"
+msgstr "współrzędną kodową wybraną losowo"
 
 #: codepoints.net/views/front.php:86
 msgid "Codepoint of the Day:"
@@ -1594,7 +1594,7 @@ msgstr ""
 
 #: codepoints.net/views/scripts.php:3
 msgid "Browse Codepoints by script. “Scripts” are the different writing systems. They are presented geographically, so that you can identify quickly interesting ones."
-msgstr "Przeglądanie współrzędnych kodowych według skryptów. \"Skrypty\" to różne systemyw pisma. Są one przedstawione geograficznie, dzięki czemu można zidentyfikować szybko te interesujące."
+msgstr "Przeglądanie współrzędnych kodowych według skryptów. \"Skrypty\" to różne systemy pisma. Są one przedstawione geograficznie, dzięki czemu można zidentyfikować szybko te interesujące."
 
 #: codepoints.net/views/scripts.php:65
 msgid "Browse Codepoints by Script"
