@@ -162,18 +162,21 @@ vendor: $(DOCROOT)lib/vendor/autoload.php jspm_packages/system.js
 $(DOCROOT)lib/vendor/autoload.php: composer.lock
 	@mkdir -p $(DOCROOT)lib/vendor
 	composer install $(COMPOSER_ARGS)
-	touch $@
+	@touch $@
 
 composer.lock: composer.json
-	touch $@
+	@touch $@
 
 jspm_packages/system.js: node_modules/jspm/README.md
 	$(JSPM) install
-	touch $@
+	@touch $@
 
 node_modules/jspm/README.md: package.json
 	npm install
-	touch $@
+	$(info * patch jsxgettext)
+	@-patch node_modules/jsxgettext/lib/jsxgettext.js 80_jsxgettext.diff \
+		--forward --quiet --reject-file=-
+	@touch $@
 
 test: test-php test-phpunit test-js test-casper
 
