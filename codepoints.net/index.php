@@ -184,7 +184,7 @@ $controllers = array(
     'index', 'about', 'api_login', 'codepoint_of_the_day',
     'planes', 'random', 'scripts', 'search', 'wizard', 'sitemap',
 
-    'api_font-face', 'api',
+    'manifest', 'api_font-face', 'api',
     'blog-preview', 'font',
     'single_character', 'plane', 'codepoint', 'block', 'possible_name',
     'range',
