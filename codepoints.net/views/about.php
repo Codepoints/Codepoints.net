@@ -131,7 +131,7 @@ include 'nav.php';
   <section id="this_site">
     <h1><?php e($title)?></h1>
     <p>
-      <?php printf(__('This website is a private project of %s.
+      <?php printf(__('This website is a private project coordinated by %s.
       It is <strong>not</strong> affiliated with or approved by the Unicode Consortium.
       You can contact me via:'), '<a href="http://www.manuel-strehl.de/contact">Manuel Strehl</a>')?>
     </p>
@@ -139,14 +139,14 @@ include 'nav.php';
       <p>
         <strong>Manuel Strehl</strong><br>
         <img class="protocol_s" alt="Adresse identisch mit dem Eintrag für den Admin-C, den man bei der DENiC herausfinden kann"
-        src="<?php echo url('/static/images/address.png')?>" width="220" height="40">
+        src="<?php echo url('/static/images/address.png')?>" width="144" height="69">
       </p>
       <p>
         <?php _e('E-Mail:')?> <img class="protocol_s" alt="website (Klammeraffe) diese Domain ohne www"
             src="<?php echo url('/static/images/email.png')?>" width="220" height="20"><br>
         <?php _e('WWW:')?> www.manuel-strehl.de/about/contact<br>
         <?php _e('Tel.:')?> <img class="protocol_s" alt="Siehe Adresse"
-            src="<?php echo url('/static/images/phone.png')?>" width="220" height="20">
+            src="<?php echo url('/static/images/phone.png')?>" width="126" height="23">
       </p>
     </address>
     <figure class="other">

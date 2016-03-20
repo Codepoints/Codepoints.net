@@ -30,5 +30,6 @@
       <?php if (isset($footer_scripts)): ?>
         id="additional-scripts" data-src='<?php e(json_encode($footer_scripts))?>'
       <?php endif?>></script>
+    <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js',{scope:'/'})}</script>
   </body>
 </html>
