@@ -1,6 +1,6 @@
 <?php $cachebust = [
-"static/css/ie.css"=>"c864e962696c0acc1cdc89a1b93e4598",
-"static/css/codepoints.css"=>"b47403750e154b683c134812007a2f31",
+"static/css/ie.css"=>"b70cfc036c6464629c203ad49422475e",
+"static/css/codepoints.css"=>"2ed30b1bda22bf182b8820a3208a2ec9",
 "static/css/embedded.css"=>"9014eb36597c9b70dc483cc7ac6f95c1",
 "static/.htaccess"=>"81b5562f34b0314fb7f74e5bbcb0280d",
 "static/js/dailycp.js"=>"ce5456cf2be9b4117b040952d09df7d3",
