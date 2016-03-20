@@ -1,10 +1,12 @@
 language:
-  - php
-  - node_js
+    - php
+    - node_js
 php:
-  - 5.6
+    - 5.6
+node_js:
+    - "5"
 install:
-  - make vendor
-  - npm install -g casperjs
+    - make vendor
+    - npm install -g casperjs
 script:
     - CASPER_HOME=http://localhost/ make test-phpunit test-php test-js test-casper CASPER_ARGS=
