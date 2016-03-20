@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-15 20:56+0100\n"
-"PO-Revision-Date: 2016-02-15 21:01+0100\n"
+"POT-Creation-Date: 2016-03-20 14:42+0100\n"
+"PO-Revision-Date: 2016-03-20 14:42+0100\n"
 "Last-Translator: Manuel Strehl <translate@manuel-strehl.de>\n"
 "Language-Team: Codepoints.net <info@codepoints.net>\n"
 "Language: de\n"
@@ -17,6 +17,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Generator: Poedit 1.8.4\n"
+
+#: codepoints.net/controllers/manifest.php:29
+msgid "All of Unicode at Codepoints.net"
+msgstr "Ganz Unicode auf Codepoints.net"
 
 #: codepoints.net/views/codepoint/representations.php:1
 #: codepoints.net/views/pu_codepoint.html.php:243
@@ -272,7 +276,7 @@ msgstr ""
 "In Text verhält sich U+%04X als %s bezüglich Zeilenumbrüchen. Es hat Typ %s "
 "für Satz- und %s für Wortumbrüche. Das %s ist %s."
 
-#: codepoints.net/views/codepoint/info.php:203
+#: codepoints.net/views/codepoint/info.php:210
 #, php-format
 msgid "The %sWikipedia%s has the following information about this codepoint:"
 msgstr "Die %sWikipedia%s hat die folgende Information zu diesem Codepunkt:"
@@ -462,7 +466,7 @@ msgstr "Twitter"
 msgid "Blog"
 msgstr "Blog"
 
-#: codepoints.net/views/footer.php:20 codepoints.net/views/nav.php:41
+#: codepoints.net/views/footer.php:20 codepoints.net/views/nav.php:27
 msgid "About"
 msgstr "Über"
 
@@ -740,15 +744,11 @@ msgstr "Sprache wählen"
 msgid "Search"
 msgstr "Suche"
 
-#: codepoints.net/views/nav.php:34
-msgid "Back to search results"
-msgstr "Zurück zu den Suchergebnissen"
-
-#: codepoints.net/views/nav.php:39 codepoints.net/views/scripts.php:2
+#: codepoints.net/views/nav.php:25 codepoints.net/views/scripts.php:2
 msgid "Scripts"
 msgstr "Schriften"
 
-#: codepoints.net/views/nav.php:40
+#: codepoints.net/views/nav.php:26
 msgid "Random"
 msgstr "Zufall"
 
@@ -1875,7 +1875,7 @@ msgstr ""
 msgid "This API method does not exist."
 msgstr "Diese API-Methode existiert nicht."
 
-#: codepoints.net/lib/api_v1.class.php:135
+#: codepoints.net/lib/api_v1.class.php:134
 msgid "An unknown error occured."
 msgstr "Ein unbekannter Fehler ist aufgetaucht."
 
@@ -2091,6 +2091,9 @@ msgstr "Fehler"
 #: codepoints.net/lib/api/problem.php:26
 msgid "An unspecific error occurred."
 msgstr "Ein unbekannter Fehler ist aufgetreten."
+
+#~ msgid "Back to search results"
+#~ msgstr "Zurück zu den Suchergebnissen"
 
 #~ msgid "(U+04X to U+04X)"
 #~ msgstr "(U+%04X bis U+%04X)"
