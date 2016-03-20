@@ -8,6 +8,13 @@
   margin-right: -160px;
 }
 
+/* harmonize button sizes in codepoint right column */
+.codepoint--tools .button {
+  width: 160px;
+  box-sizing: border-box;
+  text-align: left;
+}
+
 .block.data li:nth-of-type(16n+1) {
   clear: none;
 }

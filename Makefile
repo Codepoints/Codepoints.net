@@ -103,7 +103,7 @@ node_modules/html5shiv/dist/html5shiv.js: vendor
 cachebust: $(JS_ALL) $(CSS_TARGET) $(DOCROOT)lib/cachebust.php
 
 $(DOCROOT)lib/cachebust.php: $(STATICS_ALL)
-	$(info * pre-calculate hashes for statc files)
+	$(info * pre-calculate hashes for static files)
 	@( \
 		echo '<?php $$cachebust = ['; \
 		echo '$^' | \
