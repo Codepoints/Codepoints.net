@@ -22,6 +22,7 @@
     <link rel="author" href="/humans.txt">
     <link rel="author" href="https://plus.google.com/107008580830183396063?rel=author">
     <link rel="publisher" href="https://plus.google.com/115373008615574082246">
+    <link rel="manifest" href="/manifest.json">
     <?php if(isset($canonical) && $canonical):?>
       <link rel="canonical" href="https://codepoints.net<?php e($canonical)?>">
     <?php endif?>
