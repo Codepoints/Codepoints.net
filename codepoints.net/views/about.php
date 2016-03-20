@@ -244,6 +244,7 @@ include 'nav.php';
       of characters. The same holds for the authors of Wikipedia, who gather
       knowledge about many parts of the lettering universe. Their share is an
       important part of this site.')?></p>
+    <p><?php _e('The Polish translation is kindly provided by professor Janusz S. Bień.')?></p>
     <p><?php _e('The developers supporting this site with their knowledge, bug
       reports and input take a fair share in keeping it awesome. We want to
       thank specifically the people contributing code:')?></p>
