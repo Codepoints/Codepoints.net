@@ -19,6 +19,20 @@ $router->registerAction(function ($url, $o) {
         } else {
             list($action, $data) = explode('/', $request->data, 2);
         }
+
+        /* special case: When the action is a single character, redirect
+         * to the canonical /codepoint/HEX URL for convenience. */
+        $c = rawurldecode($action);
+        if (mb_strlen($c, 'UTF-8') === 1) {
+            $cp = unpack('N', mb_convert_encoding($c, 'UCS-4BE', 'UTF-8'));
+            $cp = $cp[1];
+            $router = Router::getRouter();
+            $get = '';
+            if (count($_GET)) {
+                $get = '?'.http_build_query($_GET);
+            }
+            $router->redirect(sprintf('/api/v1/codepoint/%04X%s', $cp, $get));
+        }
     }
     $api = new API_v1($action, $request, $o['db']);
     try {
