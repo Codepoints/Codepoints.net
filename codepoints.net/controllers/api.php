@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__.'/../lib/tools.php';
+
 $router->registerAction(array('api/', 'api'), function() {
     Router::getRouter()->redirect('/api/v1/', 302);
 });
@@ -22,16 +24,14 @@ $router->registerAction(function ($url, $o) {
 
         /* special case: When the action is a single character, redirect
          * to the canonical /codepoint/HEX URL for convenience. */
-        $c = rawurldecode($action);
-        if (mb_strlen($c, 'UTF-8') === 1) {
-            $cp = unpack('N', mb_convert_encoding($c, 'UCS-4BE', 'UTF-8'));
-            $cp = $cp[1];
+        $c = utf8_to_unicode(rawurldecode($action));
+        if (count($c) === 1) {
             $router = Router::getRouter();
             $get = '';
             if (count($_GET)) {
                 $get = '?'.http_build_query($_GET);
             }
-            $router->redirect(sprintf('/api/v1/codepoint/%04X%s', $cp, $get));
+            $router->redirect(sprintf('/api/v1/codepoint/%04X%s', $c[0], $get));
         }
     }
     $api = new API_v1($action, $request, $o['db']);
