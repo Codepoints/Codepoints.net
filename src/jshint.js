@@ -3,11 +3,10 @@
     "eqeqeq": true,
     "esnext": true,
     "globals": {
-        "define": false,
-        "require": false,
         "document": false,
         "window": false,
         "-console": false,
+        "_paq": false,
         "$": false
     },
     "latedef": true,

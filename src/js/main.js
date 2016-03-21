@@ -18,16 +18,21 @@ import better_pagination from './components/better_pagination';
 import glossary_links from './components/glossary_links';
 import back_to_search from './components/back_to_search';
 
+/* track, whether users install the site as web app. See
+ * https://developers.google.com/web/updates/2015/03/increasing-engagement-with-app-install-banners-in-chrome-for-android#action
+ * for details */
+$(window).on('beforeinstallprompt', function(e) {
+  e.userChoice.then(function(choiceResult) {
+    _paq.push(['trackEvent', 'App Installation', 'userChoice',
+               choiceResult.outcome]);
+  });
+});
 
-function load(dependency) {
-  return $.getScript(dependency);
-}
-
-load('https://stats.codepoints.net/piwik.js');
+$.getScript('https://stats.codepoints.net/piwik.js');
 
 var $additional_scripts = $('#additional-scripts');
 if ($additional_scripts.length) {
-  $.each($additional_scripts.data('src'), (i, dep) => load(dep));
+  $.each($additional_scripts.data('src'), (i, dep) => $.getScript(dep));
 }
 
 smooth_internal_links();
