@@ -4,8 +4,7 @@
  * leave out the '.json' extension, because the router strips it away
  * already */
 $router->registerAction('manifest', function ($request, $o) {
-    //header('Content-Type: application/manifest+json; charset=UTF-8');
-    header('Content-Type: application/json');
+    header('Content-Type: application/manifest+json; charset=UTF-8');
     require_once __DIR__.'/../lib/view.class.php';
     $images = array();
     foreach(array('16','32','57','64','70','72','114','128','144','150','310') as $size) {
