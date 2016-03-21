@@ -1,76 +1,50 @@
 <?php
 
-/**
- * convert string to array of codepoints
- * @author Scott Reynen
- * @see <http://randomchaos.com/documents/?source=php_and_unicode>
- */
-function utf8_to_unicode($str) {
-    $unicode = array();
-    $values = array();
-    $lookingFor = 1;
-    $lenstr = strlen($str);
-
-    for ($i = 0; $i < $lenstr; $i++) {
-
-        $thisValue = ord( $str[ $i ] );
-
-        if ($thisValue < 128) {
-            $unicode[] = $thisValue;
-        } else {
-
-            if (count($values) === 0) {
-                $lookingFor = ( $thisValue < 224 ) ? 2 : 3;
-            }
-            $values[] = $thisValue;
-
-            if (count($values) === $lookingFor) {
-                $number = ( $lookingFor === 3 ) ?
-                    ( ( $values[0] % 16 ) * 4096 ) + ( ( $values[1] % 64 ) * 64 ) + ( $values[2] % 64 ):
-                    ( ( $values[0] % 32 ) * 64 ) + ( $values[1] % 64 );
-
-                $unicode[] = $number;
-                $values = array();
-                $lookingFor = 1;
-            }
-
-        }
-
-    }
-
-    return $unicode;
-} // utf8_to_unicode
-
 
 /**
  * convert array of codepoints to UTF-8 string
- * @author Scott Reynen
- * @see <http://randomchaos.com/documents/?source=php_and_unicode>
+ * @see <http://php.net/manual/en/function.chr.php#88611>
  */
 function unicode_to_utf8($str) {
-    $utf8 = '';
-
-    foreach ($str as $unicode) {
-        if ($unicode < 128) {
-
-            $utf8.= chr($unicode);
-
-        } elseif ($unicode < 2048) {
-
-            $utf8.= chr( 192 +  ( ( $unicode - ( $unicode % 64 ) ) / 64 ) );
-            $utf8.= chr( 128 + ( $unicode % 64 ) );
-
-        } else {
-
-            $utf8.= chr( 224 + ( ( $unicode - ( $unicode % 4096 ) ) / 4096 ) );
-            $utf8.= chr( 128 + ( ( ( $unicode % 4096 ) - ( $unicode % 64 ) ) / 64 ) );
-            $utf8.= chr( 128 + ( $unicode % 64 ) );
-
-        }
-    }
-
-    return $utf8;
+    return array_reduce($str, function($utf8, $unicode) {
+        return $utf8 . mb_convert_encoding('&#' . intval($unicode) . ';', 'UTF-8', 'HTML-ENTITIES');
+    }, '');
 } // unicode_to_utf8
+
+
+/**
+ * convert string to array of codepoints
+ * @see http://php.net/manual/en/function.ord.php#109812
+ */
+function utf8_to_unicode($string) {
+    $unicode = array();
+    $offset = 0;
+    while ($offset >= 0) {
+        $code = ord(substr($string, $offset, 1));
+        if ($code >= 128) {        //otherwise 0xxxxxxx
+            if ($code < 224) {
+                $bytesnumber = 2;                //110xxxxx
+            } elseif ($code < 240) {
+                $bytesnumber = 3;        //1110xxxx
+            } elseif ($code < 248) {
+                $bytesnumber = 4;    //11110xxx
+            }
+            $codetemp = $code - 192 - ($bytesnumber > 2 ? 32 : 0) - ($bytesnumber > 3 ? 16 : 0);
+            for ($i = 2; $i <= $bytesnumber; $i++) {
+                $offset ++;
+                $code2 = ord(substr($string, $offset, 1)) - 128;        //10xxxxxx
+                $codetemp = $codetemp*64 + $code2;
+            }
+            $code = $codetemp;
+        }
+        $offset += 1;
+        if ($offset >= strlen($string)) {
+            $offset = -1;
+        }
+        $unicode[] = $code;
+    }
+    return $unicode;
+}
 
 
 /**
