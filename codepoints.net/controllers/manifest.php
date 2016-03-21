@@ -5,7 +5,6 @@
  * already */
 $router->registerAction('manifest', function ($request, $o) {
     header('Content-Type: application/manifest+json; charset=UTF-8');
-    require_once __DIR__.'/../lib/view.class.php';
     $images = array();
     foreach(array('16','32','57','64','70','72','114','128','144','150','310') as $size) {
         $images[] = array(
@@ -29,7 +28,7 @@ $router->registerAction('manifest', function ($request, $o) {
         'short_name' => 'Codepoints',
         'scope' => '/',
         'display' => 'standalone',
-        'start_url' => Router::getRouter()->getUrl(),
+        'start_url' => '/',
         'theme_color' => '#660000',
         'background_color' => '#F7F7F7',
         'icons' => $images,
