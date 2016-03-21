@@ -26,7 +26,8 @@ SASS := node_modules/.bin/node-sass
 SASS_ARGS := --quiet --include-path=src/sass
 
 POSTCSS := node_modules/.bin/postcss
-POSTCSS_ARGS := --use autoprefixer --use postcss-import --use cssnano
+POSTCSS_ARGS := --use autoprefixer --use postcss-import --use cssnano \
+    --cssnano.discardComments.removeAllButFirst
 
 PHPUNIT := $(DOCROOT)lib/vendor/bin/phpunit
 PHPUNIT_ARGS :=
