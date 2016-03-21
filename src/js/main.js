@@ -2,7 +2,12 @@
 
 
 import 'jquery';
-import 'jquery-ui';
+import 'jquery-ui/ui/position';
+import 'jquery-ui/ui/dialog';
+import 'jquery-ui/ui/datepicker';
+import 'jquery-ui/ui/tooltip';
+import 'jquery-ui/ui/accordion';
+import 'jquery-ui/ui/slider';
 import _ from './toolbox/gettext';
 import smooth_internal_links from './effects/smooth_internal_links';
 import add_to_top_link from './effects/add_to_top_link';
