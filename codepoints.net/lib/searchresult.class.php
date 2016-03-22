@@ -160,9 +160,9 @@ class SearchResult extends UnicodeRange {
                     $params[':q'.$i] = "${q[2]}";
                 } elseif ($q[0] === 'na' || $q[0] === 'na1') {
                     /* match names loosely, especially to make the search
-                     * case-insensiitve */
+                     * case-insensitive */
                     $search .= " term LIKE :q$i ";
-                    $params[':q'.$i] = "${q[2]}";
+                    $params[':q'.$i] = "na:%${q[2]}%";
                 } elseif ($q[0] === 'cp' || $q[0] === 'int') {
                     /* handle "cp" specially and search "cp" column directly */
                     $search .= " cp = :q$i ";
