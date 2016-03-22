@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-20 14:42+0100\n"
-"PO-Revision-Date: 2016-03-20 14:42+0100\n"
+"POT-Creation-Date: 2016-03-22 21:32+0100\n"
+"PO-Revision-Date: 2016-03-22 21:37+0100\n"
 "Last-Translator: Manuel Strehl <translate@manuel-strehl.de>\n"
 "Language-Team: Codepoints.net <info@codepoints.net>\n"
 "Language: de\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Generator: Poedit 1.8.4\n"
 
-#: codepoints.net/controllers/manifest.php:29
+#: codepoints.net/controllers/manifest.php:27
 msgid "All of Unicode at Codepoints.net"
 msgstr "Ganz Unicode auf Codepoints.net"
 
@@ -454,7 +454,7 @@ msgstr ""
 msgid "opt out explicitly"
 msgstr "explizit widersprechen"
 
-#: codepoints.net/views/footer.php:17 codepoints.net/views/nav.php:23
+#: codepoints.net/views/footer.php:17 codepoints.net/views/nav.php:24
 msgid "Start"
 msgstr "Start"
 
@@ -466,7 +466,7 @@ msgstr "Twitter"
 msgid "Blog"
 msgstr "Blog"
 
-#: codepoints.net/views/footer.php:20 codepoints.net/views/nav.php:27
+#: codepoints.net/views/footer.php:20 codepoints.net/views/nav.php:28
 msgid "About"
 msgstr "Über"
 
@@ -736,19 +736,19 @@ msgstr "unterstützende ideographische Ebene"
 msgid "Supplementary Special Purpose Plane"
 msgstr "unterstützende Sondereinsatz-Ebene"
 
-#: codepoints.net/views/nav.php:20
+#: codepoints.net/views/nav.php:21
 msgid "choose language"
 msgstr "Sprache wählen"
 
-#: codepoints.net/views/nav.php:24 codepoints.net/views/search.php:2
+#: codepoints.net/views/nav.php:25 codepoints.net/views/search.php:2
 msgid "Search"
 msgstr "Suche"
 
-#: codepoints.net/views/nav.php:25 codepoints.net/views/scripts.php:2
+#: codepoints.net/views/nav.php:26 codepoints.net/views/scripts.php:2
 msgid "Scripts"
 msgstr "Schriften"
 
-#: codepoints.net/views/nav.php:26
+#: codepoints.net/views/nav.php:27
 msgid "Random"
 msgstr "Zufall"
 
@@ -1393,14 +1393,14 @@ msgstr ""
 #: codepoints.net/views/about.php:134
 #, php-format
 msgid ""
-"This website is a private project of %s.\n"
+"This website is a private project coordinated by %s.\n"
 "      It is <strong>not</strong> affiliated with or approved by the Unicode "
 "Consortium.\n"
 "      You can contact me via:"
 msgstr ""
-"Diese Webseite ist ein privates Projekt von %s. Sie ist <strong>nicht</"
-"strong> mit dem Unicode-Konsortium verbunden oder von ihm freigegeben. Du "
-"kannst mich kontaktieren über:"
+"Diese Webseite ist ein privates Projekt koordiniert von %s. Sie ist "
+"<strong>nicht</strong> mit dem Unicode-Konsortium verbunden oder von ihm "
+"freigegeben. Du kannst mich kontaktieren über:"
 
 #: codepoints.net/views/about.php:145
 msgid "E-Mail:"
@@ -1610,6 +1610,14 @@ msgstr ""
 "gemacht."
 
 #: codepoints.net/views/about.php:247
+#, php-format
+msgid ""
+"The Polish translation is kindly provided by %sprofessor Janusz S. Bień%s."
+msgstr ""
+"Die polnische Übersetzung wurde freundlicherweise von %sProfessor Janusz S. "
+"Bień%s bereitgestellt."
+
+#: codepoints.net/views/about.php:249
 msgid ""
 "The developers supporting this site with their knowledge, bug\n"
 "      reports and input take a fair share in keeping it awesome. We want to\n"
@@ -1619,7 +1627,7 @@ msgstr ""
 "Eingaben unterstützen, haben wesentlichen Anteil daran, dass sie großartig "
 "bleibt. Wir möchten besonders den Leuten danken, die Code beigetragen haben:"
 
-#: codepoints.net/views/about.php:255
+#: codepoints.net/views/about.php:257
 #, php-format
 msgid ""
 "Many thanks go to two sites with a similar goal but other emphasis in\n"
@@ -1628,7 +1636,7 @@ msgstr ""
 "Vielen Dank sagen wir auch zwei Seiten mit einem ähnlichen Ziel aber anderen "
 "Schwerpunkten in der Präsentation des Unicode-Standards: %s und %s."
 
-#: codepoints.net/views/about.php:260
+#: codepoints.net/views/about.php:262
 #, php-format
 msgid ""
 "The WHATWG publishes an %sencoding standard%s, that is used\n"
@@ -1639,7 +1647,7 @@ msgstr ""
 "Kodierungs-Informationen für Codepunkte verwenden. Sein Haupt-Bearbeiter ist "
 "%s."
 
-#: codepoints.net/views/about.php:268
+#: codepoints.net/views/about.php:270
 msgid ""
 "The hosting is done on Uberspace, a phantastic provider with extremely\n"
 "    helpful and flexible support."
@@ -1647,7 +1655,7 @@ msgstr ""
 "Das Hosting geschieht auf Servern von Uberspace, einem fantastischen "
 "Provider mit extrem hilfreichem und flexiblem Support."
 
-#: codepoints.net/views/about.php:270
+#: codepoints.net/views/about.php:272
 #, php-format
 msgid ""
 "The %s names are derived from %s, which is curated by\n"
@@ -1658,11 +1666,11 @@ msgstr ""
 "Die %s-Bezeichner sind von %s abgeleitet, gepflegt von David Carlisle und "
 "mit der MathML-Spezifikation des W3C verteilt."
 
-#: codepoints.net/views/about.php:274
+#: codepoints.net/views/about.php:276
 msgid "Fonts"
 msgstr "Schriftarten"
 
-#: codepoints.net/views/about.php:275
+#: codepoints.net/views/about.php:277
 msgid ""
 "Many people base their work on Unicode. We want to thank the authors of\n"
 "    these fonts, that they made it possible to re-use them for this project:"
@@ -1671,7 +1679,7 @@ msgstr ""
 "Schriften danken, dass sie die Verwendung für dieses Projekt möglich gemacht "
 "haben:"
 
-#: codepoints.net/views/about.php:279
+#: codepoints.net/views/about.php:281
 #, php-format
 msgid ""
 "Roman Czyborra, David Starner, Qianqian Fang, Changwoo Ryu and Paul\n"
@@ -1680,20 +1688,20 @@ msgstr ""
 "Roman Czyborra, David Starner, Qianqian Fang, Changwoo Ryu und Paul Hardy "
 "für %sGNU Unifont%s"
 
-#: codepoints.net/views/about.php:284
+#: codepoints.net/views/about.php:286
 msgid "The Deja Vu Project"
 msgstr "Das Deja Vu-Projekt"
 
-#: codepoints.net/views/about.php:285
+#: codepoints.net/views/about.php:287
 #, php-format
 msgid "%sMichael Everson%s for the Last Resort font"
 msgstr "%sMichael Everson%s für die Last Resort-Schriftart"
 
-#: codepoints.net/views/about.php:287
+#: codepoints.net/views/about.php:289
 msgid "Image Attribution"
 msgstr "Bildzuschreibung"
 
-#: codepoints.net/views/about.php:288
+#: codepoints.net/views/about.php:290
 #, php-format
 msgid ""
 "The background image on the front page is released under the Creative\n"
@@ -1709,7 +1717,7 @@ msgstr ""
 "Reichs von Karl dem Großen%s, %sWünschelrutengänger aus dem 18. Jhd.%s und "
 "%sein NASA-Marsrover%s."
 
-#: codepoints.net/views/about.php:303
+#: codepoints.net/views/about.php:305
 #, php-format
 msgid ""
 "The “We’re Open Source” image is released under the Creative Commons\n"
@@ -1719,12 +1727,12 @@ msgstr ""
 "Das „We’re Open Source“-Bild ist unter der Creative Commons Attribution Non-"
 "Commercial No-Derivations-Lizenz von %sFlickr-Nutzer tima%s veröffentlicht."
 
-#: codepoints.net/views/about.php:307
+#: codepoints.net/views/about.php:309
 #, php-format
 msgid "The icons are part of the %sFont Awesome%s icon set."
 msgstr "Die Icons sind Teil des %sFont Awesome%s-Iconsets."
 
-#: codepoints.net/views/about.php:310
+#: codepoints.net/views/about.php:312
 #, php-format
 msgid ""
 "Finally I’d like to thank %sMathias Bynens%s\n"
@@ -1929,6 +1937,8 @@ msgstr "Ungültige URL"
 msgid ""
 "URL path must be single character (UTF-8 encoded) or match /U+[A-F0-9]{4,6}/."
 msgstr ""
+"Der URL-Pfad muss ein einzelnes (UTF-8-kodiertes) Zeichen sein oder auf /U"
+"+[A-F0-9]{4,6}/ passen."
 
 #: codepoints.net/lib/api/oembed.php:58
 msgid "Not a valid codepoint URL"
@@ -1947,6 +1957,9 @@ msgid ""
 "show detailed information about a single codepoint. You can specify fields "
 "of interest with the “property” parameter: codepoint/1234?property=age,uc,lc"
 msgstr ""
+"zeige Detailinformationen über einen einzelnen Codepunkt. Du kannst Dich "
+"interessierende Felder mit dem „property“-Parameter angeben: codepoint/1234?"
+"property=age,uc,lc"
 
 #: codepoints.net/lib/api/codepoint.php:15
 #: codepoints.net/lib/api/related.php:15
@@ -1983,6 +1996,8 @@ msgid ""
 "transform a string to another according to a mapping, e.g., making all "
 "characters upper-case."
 msgstr ""
+"transformiere eine Zeichenkette in eine andere entsprechend einer Abbildung, "
+"z.B., alle Zeichen in Großbuchstaben umwandeln."
 
 #: codepoints.net/lib/api/transform.php:27
 #, php-format
@@ -2018,6 +2033,8 @@ msgid ""
 "Specify one or more ISO short names separated by comma. The response is a "
 "list of detail informations about these scripts."
 msgstr ""
+"Gib einen oder mehrere ISO-Kurznamen komma-getrennt an. Die Antwort ist eine "
+"Liste von Detailinformationen über diese Schriftsysteme."
 
 #: codepoints.net/lib/api/property.php:29
 msgid "Unknown property"

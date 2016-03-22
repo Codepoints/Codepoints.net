@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Codepoints JS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-20 14:41+0100\n"
-"PO-Revision-Date: 2016-03-20 14:41+0100\n"
+"POT-Creation-Date: 2016-03-22 21:31+0100\n"
+"PO-Revision-Date: 2016-03-22 21:32+0100\n"
 "Last-Translator: Manuel Strehl <translate@manuel-strehl.de>\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -307,7 +307,7 @@ msgstr "Erweiterte Suche"
 msgid "Find My Codepoint"
 msgstr "Finde meinen Codepunkt"
 
-#: src/js/main.js:56
+#: src/js/main.js:66
 msgid "Hide this message."
 msgstr "Diese Nachricht verstecken."
 

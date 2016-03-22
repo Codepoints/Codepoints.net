@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-20 14:39+0100\n"
+"POT-Creation-Date: 2016-03-22 21:31+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: codepoints.net/controllers/manifest.php:29
+#: codepoints.net/controllers/manifest.php:27
 msgid "All of Unicode at Codepoints.net"
 msgstr ""
 
@@ -424,7 +424,7 @@ msgstr ""
 msgid "opt out explicitly"
 msgstr ""
 
-#: codepoints.net/views/footer.php:17 codepoints.net/views/nav.php:23
+#: codepoints.net/views/footer.php:17 codepoints.net/views/nav.php:24
 msgid "Start"
 msgstr ""
 
@@ -436,7 +436,7 @@ msgstr ""
 msgid "Blog"
 msgstr ""
 
-#: codepoints.net/views/footer.php:20 codepoints.net/views/nav.php:27
+#: codepoints.net/views/footer.php:20 codepoints.net/views/nav.php:28
 msgid "About"
 msgstr ""
 
@@ -672,19 +672,19 @@ msgstr ""
 msgid "Supplementary Special Purpose Plane"
 msgstr ""
 
-#: codepoints.net/views/nav.php:20
+#: codepoints.net/views/nav.php:21
 msgid "choose language"
 msgstr ""
 
-#: codepoints.net/views/nav.php:24 codepoints.net/views/search.php:2
+#: codepoints.net/views/nav.php:25 codepoints.net/views/search.php:2
 msgid "Search"
 msgstr ""
 
-#: codepoints.net/views/nav.php:25 codepoints.net/views/scripts.php:2
+#: codepoints.net/views/nav.php:26 codepoints.net/views/scripts.php:2
 msgid "Scripts"
 msgstr ""
 
-#: codepoints.net/views/nav.php:26
+#: codepoints.net/views/nav.php:27
 msgid "Random"
 msgstr ""
 
@@ -1218,7 +1218,7 @@ msgstr ""
 #: codepoints.net/views/about.php:134
 #, php-format
 msgid ""
-"This website is a private project of %s.\n"
+"This website is a private project coordinated by %s.\n"
 "      It is <strong>not</strong> affiliated with or approved by the Unicode "
 "Consortium.\n"
 "      You can contact me via:"
@@ -1385,20 +1385,26 @@ msgid ""
 msgstr ""
 
 #: codepoints.net/views/about.php:247
+#, php-format
+msgid ""
+"The Polish translation is kindly provided by %sprofessor Janusz S. Bień%s."
+msgstr ""
+
+#: codepoints.net/views/about.php:249
 msgid ""
 "The developers supporting this site with their knowledge, bug\n"
 "      reports and input take a fair share in keeping it awesome. We want to\n"
 "      thank specifically the people contributing code:"
 msgstr ""
 
-#: codepoints.net/views/about.php:255
+#: codepoints.net/views/about.php:257
 #, php-format
 msgid ""
 "Many thanks go to two sites with a similar goal but other emphasis in\n"
 "      the presentation of the Unicode standard: %s and %s."
 msgstr ""
 
-#: codepoints.net/views/about.php:260
+#: codepoints.net/views/about.php:262
 #, php-format
 msgid ""
 "The WHATWG publishes an %sencoding standard%s, that is used\n"
@@ -1406,13 +1412,13 @@ msgid ""
 "editor is %s."
 msgstr ""
 
-#: codepoints.net/views/about.php:268
+#: codepoints.net/views/about.php:270
 msgid ""
 "The hosting is done on Uberspace, a phantastic provider with extremely\n"
 "    helpful and flexible support."
 msgstr ""
 
-#: codepoints.net/views/about.php:270
+#: codepoints.net/views/about.php:272
 #, php-format
 msgid ""
 "The %s names are derived from %s, which is curated by\n"
@@ -1421,37 +1427,37 @@ msgid ""
 "    W3C."
 msgstr ""
 
-#: codepoints.net/views/about.php:274
+#: codepoints.net/views/about.php:276
 msgid "Fonts"
 msgstr ""
 
-#: codepoints.net/views/about.php:275
+#: codepoints.net/views/about.php:277
 msgid ""
 "Many people base their work on Unicode. We want to thank the authors of\n"
 "    these fonts, that they made it possible to re-use them for this project:"
 msgstr ""
 
-#: codepoints.net/views/about.php:279
+#: codepoints.net/views/about.php:281
 #, php-format
 msgid ""
 "Roman Czyborra, David Starner, Qianqian Fang, Changwoo Ryu and Paul\n"
 "    Hardy for %sGNU Unifont%s"
 msgstr ""
 
-#: codepoints.net/views/about.php:284
+#: codepoints.net/views/about.php:286
 msgid "The Deja Vu Project"
 msgstr ""
 
-#: codepoints.net/views/about.php:285
+#: codepoints.net/views/about.php:287
 #, php-format
 msgid "%sMichael Everson%s for the Last Resort font"
 msgstr ""
 
-#: codepoints.net/views/about.php:287
+#: codepoints.net/views/about.php:289
 msgid "Image Attribution"
 msgstr ""
 
-#: codepoints.net/views/about.php:288
+#: codepoints.net/views/about.php:290
 #, php-format
 msgid ""
 "The background image on the front page is released under the Creative\n"
@@ -1462,7 +1468,7 @@ msgid ""
 "       %sNASA Mars Rover%s."
 msgstr ""
 
-#: codepoints.net/views/about.php:303
+#: codepoints.net/views/about.php:305
 #, php-format
 msgid ""
 "The “We’re Open Source” image is released under the Creative Commons\n"
@@ -1470,12 +1476,12 @@ msgid ""
 "tima%s."
 msgstr ""
 
-#: codepoints.net/views/about.php:307
+#: codepoints.net/views/about.php:309
 #, php-format
 msgid "The icons are part of the %sFont Awesome%s icon set."
 msgstr ""
 
-#: codepoints.net/views/about.php:310
+#: codepoints.net/views/about.php:312
 #, php-format
 msgid ""
 "Finally I’d like to thank %sMathias Bynens%s\n"
