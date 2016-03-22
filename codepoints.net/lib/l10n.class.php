@@ -109,7 +109,7 @@ class L10n {
         } elseif (isset($_COOKIE['lang']) && ctype_alpha($_COOKIE['lang'])) {
             $lang = $_COOKIE['lang'];
         } elseif (function_exists('http_negotiate_language')) {
-            $lang = http_negotiate_language(array('en', 'de'));
+            $lang = http_negotiate_language(array('en', 'de', 'pl'));
         }
         return $lang;
     }

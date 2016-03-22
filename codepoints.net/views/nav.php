@@ -7,6 +7,7 @@
       <select name="lang" onchange="this.form.submit()">
         <option value="en"<?php if ($lang === 'en'):?> selected="selected"<?php endif?>>english</option>
         <option value="de"<?php if ($lang === 'de'):?> selected="selected"<?php endif?>>deutsch</option>
+        <option value="pl"<?php if ($lang === 'pl'):?> selected="selected"<?php endif?>>polski</option>
       </select>
       <?php foreach ($_GET as $k => $v): if ($k !== 'lang'):?>
         <?php if (is_array($v)): ?>

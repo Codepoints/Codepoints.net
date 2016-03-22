@@ -33,6 +33,9 @@
     <?php if (isset($canonical) && ($lang !== 'de' || ! isset($_GET['lang']))):?>
       <link rel="alternate" hreflang="de" href="https://codepoints.net<?php e($canonical.(strpos($canonical, '?') !== false? '&' : '?').'lang=de')?>">
     <?php endif?>
+    <?php if (isset($canonical) && ($lang !== 'pl' || ! isset($_GET['lang']))):?>
+      <link rel="alternate" hreflang="pl" href="https://codepoints.net<?php e($canonical.(strpos($canonical, '?') !== false? '&' : '?').'lang=pl')?>">
+    <?php endif?>
     <?php if (isset($canonical) && isset($_GET['lang'])):?>
       <link rel="alternate" hreflang="x-default" href="https://codepoints.net<?php e($canonical)?>">
     <?php endif?>

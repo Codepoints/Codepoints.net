@@ -21,7 +21,7 @@ class Request {
 
     public $lang = 'en';
 
-    public $availableLanguages = array('en');
+    public $availableLanguages = array('en','de','pl');
 
     public $url = '/';
 

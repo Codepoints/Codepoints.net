@@ -1,0 +1,348 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: codepoints\n"
+"Language-Team: Polish\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2016-03-20 21:53+0100\n"
+"Language: pl_PL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2016-02-19 22:22+0000\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 1.8.4\n"
+"X-Crowdin-Project: codepoints\n"
+"X-Crowdin-Language: pl\n"
+"X-Crowdin-File: js.pot\n"
+"Last-Translator: Manuel Strehl <translate@manuel-strehl.de>\n"
+
+#: src/js/components/scratchpad.js:91
+msgid "empty"
+msgstr "pusty"
+
+#: src/js/components/scratchpad.js:95
+msgid "copy"
+msgstr "kopiowanie"
+
+#: src/js/components/scratchpad.js:100
+msgid "show"
+msgstr "pokaż"
+
+#: src/js/components/scratchpad.js:113
+msgid "You have no codepoints here yet. Add one by clicking “Add to scratchpad” on the details page."
+msgstr "Nie masz jeszcze tutaj współrzędnej kodowej. Dodaj jakąś klikając na \"Dodaj do notatnika\" na stronie szczegółów."
+
+#: src/js/components/scratchpad.js:122
+msgid "Scratchpad"
+msgstr "Notatnik"
+
+#: src/js/components/scratchpad.js:132
+msgid "Add to scratchpad"
+msgstr "Dodać do notatnika"
+
+#: src/js/components/representations.js:27
+#: src/js/components/representations.js:30
+msgid "show more"
+msgstr "pokaż więcej"
+
+#: src/js/components/representations.js:30
+msgid "hide"
+msgstr "ukryj"
+
+#: src/js/components/representations.js:35
+msgid "RFC 5137"
+msgstr "RFC 5137"
+
+#: src/js/components/representations.js:39
+msgid "Python"
+msgstr "Python"
+
+#: src/js/components/representations.js:52
+msgid "Ruby"
+msgstr "Ruby"
+
+#: src/js/components/representations.js:56
+msgid "Perl"
+msgstr "Perl"
+
+#: src/js/components/representations.js:60
+msgid "JavaScript, JSON and Java"
+msgstr "JavaScript, JSON i Java"
+
+#: src/js/components/representations.js:66
+msgid "C"
+msgstr "C"
+
+#: src/js/components/representations.js:79
+msgid "CSS"
+msgstr "CSS"
+
+#: src/js/components/load_font.js:28
+msgid "Font used above"
+msgstr "Font użyty powyżej"
+
+#: src/js/wizard.js:115
+msgid "Finished!"
+msgstr "Gotowe!"
+
+#: src/js/wizard.js:128
+msgid "Please wait a second, we’re making those %s answers productive."
+msgstr "Proszę zaczekać, robimy te odpowiedzi %s produktywne."
+
+#: src/js/wizard.js:150
+msgid "Enough questions! Search now."
+msgstr "Wystarczy pytań! Teraz szukaj."
+
+#: src/js/wizard.js:176
+msgid "What’s the airspeed velocity of an unladen swallow?"
+msgstr "Jaka jest prękość w powietrzu nieobciążonej jaskółki?"
+
+#: src/js/wizard.js:177
+msgid "An African, or"
+msgstr "Afrykańska, czy"
+
+#: src/js/wizard.js:178
+msgid "A European Swallow?"
+msgstr "Jaskółka europejska?"
+
+#: src/js/wizard.js:182
+msgid "Where does the character appear usually?"
+msgstr "Gdzie ten znak zwykle występuje?"
+
+#: src/js/wizard.js:183
+msgid "Africa <small>(without Arabic)</small>"
+msgstr "Afryka <small>(bez Arabii)</small>"
+
+#: src/js/wizard.js:184
+msgid "America <small>(originally, <i>e. g.</i> Cherokee, not Latin)</small>"
+msgstr "America <small>(pierwotna, <i>n. p.</i> Czirokezi, nie Łacińska)</small>"
+
+#: src/js/wizard.js:185
+msgid "Europe <small>(Latin, Cyrillic, …)</small>"
+msgstr "Europa <small>(alfabet łaciński, cyrylica …)</small>"
+
+#: src/js/wizard.js:186
+msgid "Middle East"
+msgstr "Środkowy Wschód"
+
+#: src/js/wizard.js:187
+msgid "Central Asia"
+msgstr "Azja Centralna"
+
+#: src/js/wizard.js:188
+msgid "East Asia <small>(Chinese, Korean, Japanese, …)</small>"
+msgstr "Azja Wschodnia <small>(chiński, koreański, japoński, …)</small>"
+
+#: src/js/wizard.js:189
+msgid "South Asia <small>(Indian)</small>"
+msgstr "Azja Południowa <small>(indyjskie)</small>"
+
+#: src/js/wizard.js:190
+msgid "Southeast Asia <small>(Thai, Khmer, …)</small>"
+msgstr "Południowowschodnia Azja <small>(tajski, kmerski, …)</small>"
+
+#: src/js/wizard.js:191
+msgid "Philippines, Indonesia, Oceania"
+msgstr "Filipiny, Indonezja, Oceania"
+
+#: src/js/wizard.js:192
+msgid "Nowhere specific"
+msgstr "Nigdzie konkretnie"
+
+#: src/js/wizard.js:193 src/js/wizard.js:200 src/js/wizard.js:210
+#: src/js/wizard.js:218 src/js/wizard.js:225 src/js/wizard.js:232
+#: src/js/wizard.js:240 src/js/wizard.js:253
+msgid "I don’t know"
+msgstr "Nie wiem"
+
+#: src/js/wizard.js:197
+msgid "Is it a number of any kind?"
+msgstr "Czy to jest jakiegoś rodzaju cyfra?"
+
+#: src/js/wizard.js:198 src/js/wizard.js:223
+msgid "Yes"
+msgstr "Tak"
+
+#: src/js/wizard.js:199 src/js/wizard.js:224
+msgid "No"
+msgstr "Nie"
+
+#: src/js/wizard.js:204
+msgid "Has the character a case (upper, lower, title)?"
+msgstr "Czy znak ma kasztowość (dolna, górna, tytułowa kaszta)?"
+
+#: src/js/wizard.js:205
+msgid "Yes, it’s lowercase"
+msgstr "Tak, to jest dolna kaszta"
+
+#: src/js/wizard.js:206
+msgid "Yes, it’s uppercase"
+msgstr "Tak, to jest górna kaszta"
+
+#: src/js/wizard.js:207
+msgid "Yes, it’s titlecase"
+msgstr "Tak, to jest kaszta tytułowa"
+
+#: src/js/wizard.js:208
+msgid "Yes, but I don’t know the case"
+msgstr "Tak, ale nie wiem, jaka kaszta"
+
+#: src/js/wizard.js:209
+msgid "No, it’s uncased"
+msgstr "Nie, znak nie ma kaszty"
+
+#: src/js/wizard.js:214
+msgid "Is the character some kind of symbol or dingbat?"
+msgstr "Czy znak jest jakimś symbolem lub ornamentem?"
+
+#: src/js/wizard.js:215
+msgid "Yes <small>(It isn’t part of usually written text)</small>"
+msgstr "Tak <small>(Izwykle nie występuje w tekstach)</small>"
+
+#: src/js/wizard.js:216
+msgid "No <small>(But it is some kind of control character)</small>"
+msgstr "Nie <small>(ale to jest pewnego rodzaju znak sterujący)</small>"
+
+#: src/js/wizard.js:217
+msgid "No <small>(It may appear in text, like letters or punctuation)</small>"
+msgstr "Nie <small>( pojawić się w tekście, jak litery lub znaki interpunkcyjne)</small>"
+
+#: src/js/wizard.js:222
+msgid "Is the character some kind of punctuation?"
+msgstr "Czy znak jest jakimś znakiem interpunkcyjnym?"
+
+#: src/js/wizard.js:229
+msgid "Is the character incomplete on its own, like a diacritic sign?"
+msgstr "Czy znak jest niesamodzielny, np. jest znakiem diakrytycznym?"
+
+#: src/js/wizard.js:230
+msgid "Yes <small>(It’s usually found together with another character)</small>"
+msgstr "Tak <small>(zazwyczaj występuje razem z innym znakiem)</small>"
+
+#: src/js/wizard.js:231
+msgid "No <small>(It stands on its own)</small>"
+msgstr "Nie <small>(występuje samodzielnie)</small>"
+
+#: src/js/wizard.js:236
+msgid "Is the character composed of two others?"
+msgstr "Czy znak jest złożony z dwóch innych znaków?"
+
+#: src/js/wizard.js:237
+msgid "Yes <small>(It is based on two or more other characters)</small>"
+msgstr "Tak <small>(Jest utworzony z dwóch lub więcej innych znaków)</small>"
+
+#: src/js/wizard.js:238
+msgid "Sort of <small>(It’s got some quiggly lines or dots, like “Ä” or “ٷ”)</small>"
+msgstr "W pewnym sensie <small>(zawiera faliste linie lub lub kropki, jak \"Ä\" lub \"ٷ\")</small>"
+
+#: src/js/wizard.js:239
+msgid "No <small>(It is a genuine character)</small>"
+msgstr "Nie <small>(jest to prawdziwy znak)</small>"
+
+#: src/js/wizard.js:244
+msgid "Off the top of your head, can the character be confused with another one?"
+msgstr "Bez zastanowienia, czy znak może być mylony z innym?"
+
+#: src/js/wizard.js:245
+msgid "Yes <small>(Like latin “A” and greek “Α”, alpha)</small>"
+msgstr "Tak <small>(jak łacińskie \"A\" i greckie \"Α\", alfa)</small>"
+
+#: src/js/wizard.js:246
+msgid "No <small>(I have no such pair in mind)</small>"
+msgstr "Nie <small>(żadna taka para nie przychodzi mi do głowy)</small>"
+
+#: src/js/wizard.js:250
+msgid "Is it an archaic character or is it in use today?"
+msgstr "Jest to znak archaiczny czy nadal jest w użyciu?"
+
+#: src/js/wizard.js:251
+msgid "Yep, noone would use that anymore!"
+msgstr "Tak, nikt go już teraz nie używa!"
+
+#: src/js/wizard.js:252
+msgid "Nah, seen it yesterday in the newspaper"
+msgstr "Tak, widziałem go wczoraj w gazecie"
+
+#: src/js/wizard.js:257
+msgid "Do you know the number of strokes the character has?"
+msgstr "Czy wiesz, z ilu kresek składa się znak?"
+
+#: src/js/wizard.js:258
+msgid "This much"
+msgstr "Z tylu"
+
+#: src/js/wizard.js:259
+msgid "Nope, never counted them"
+msgstr "Nie,"
+
+#: src/js/wizard.js:263
+msgid "Do you happen to know the meaning of the character?"
+msgstr "Czy może znasz znaczenie znaku?"
+
+#: src/js/wizard.js:264
+msgid "This is (part of) what I’m looking for"
+msgstr "To jest (częściowo) to, czego szukam"
+
+#: src/js/wizard.js:265
+msgid "I don’t speak that language"
+msgstr "Nie mówię w tym języku"
+
+#: src/js/searchform.js:17
+msgid "+ add new query"
+msgstr "+ Dodaj nową kwerendę"
+
+#: src/js/searchform.js:168
+msgid "click to change"
+msgstr "kliknij, aby zmienić"
+
+#: src/js/searchform.js:169
+msgid "remove"
+msgstr "usuń"
+
+#: src/js/scripts.js:26
+msgid "(%s codepoints)"
+msgstr "(%s współrzędnych)"
+
+#: src/js/scripts.js:28 src/js/scripts.js:172
+msgid "Source: %s"
+msgstr "Źródło: %s"
+
+#: src/js/scripts.js:68
+msgid "Native, Rare and Historic Scripts"
+msgstr "Rdzenne, rzadkie i historyczne skrypty"
+
+#: src/js/scripts.js:72
+msgid "Scripts used in %s"
+msgstr "Skrypty używane w %s"
+
+#: src/js/scripts.js:82
+msgid "We don’t know about %s’s scripts, sorry!"
+msgstr "Nie wiemy o %s skryptów, przepraszamy!"
+
+#: src/js/scripts.js:84
+msgid "Nothing Found for %s"
+msgstr "Nic nie znaleziono dla %s"
+
+#: src/js/codepoints.js:80
+msgid "top"
+msgstr "do góry"
+
+#: src/js/codepoints.js:102
+msgid "Extended Search"
+msgstr "Zaawansowane szukanie"
+
+#: src/js/codepoints.js:104
+msgid "Find My Codepoint"
+msgstr "Znajdź moją współrzędną kodową"
+
+#: src/js/codepoints.js:183
+msgid "Read on:"
+msgstr "Czytaj dalej:"
+
+#: src/js/codepoints.js:240
+msgid "Hide this message."
+msgstr "Ukryj ten komunikat."
+
+#: src/js/codepoints.js:297
+msgid "Embed this codepoint"
+msgstr "Osadź tę współrzędną kodową"

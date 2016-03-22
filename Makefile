@@ -149,6 +149,7 @@ l10n: $(DOCROOT)locale/messages.pot $(DOCROOT)locale/js.pot
 
 l10n-finish:
 	node tools/my-po2json.js de
+	node tools/my-po2json.js pl
 
 $(DOCROOT)locale/messages.pot: $(PHP_ALL)
 	$(info * Compile PHP translation strings)
