@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-22 21:32+0100\n"
-"PO-Revision-Date: 2016-03-22 21:37+0100\n"
+"POT-Creation-Date: 2016-03-24 23:12+0100\n"
+"PO-Revision-Date: 2016-03-24 23:17+0100\n"
 "Last-Translator: Manuel Strehl <translate@manuel-strehl.de>\n"
 "Language-Team: Codepoints.net <info@codepoints.net>\n"
 "Language: de\n"
@@ -1612,12 +1612,19 @@ msgstr ""
 #: codepoints.net/views/about.php:247
 #, php-format
 msgid ""
-"The Polish translation is kindly provided by %sprofessor Janusz S. Bień%s."
+"The Polish translation is kindly provided by\n"
+"      professor Janusz S. Bień, utilizing the terminology introduced in his "
+"paper\n"
+"      %s“Standard Unicode 4.0. Wybrane pojęcia i terminy”%s and "
+"%ssubsequent\n"
+"      publications%s."
 msgstr ""
-"Die polnische Übersetzung wurde freundlicherweise von %sProfessor Janusz S. "
-"Bień%s bereitgestellt."
+"Die polnische Übersetzung wird freundlicher Weise von Prof. Janusz S. Bień "
+"erstellt, in der er die Terminologie verwendet, die in seinem Paper "
+"%s„Standard Unicode 4.0. Wybrane pojęcia i terminy“%s und %sden folgenden "
+"Veröffentlichungen%s eingeführt wurde. "
 
-#: codepoints.net/views/about.php:249
+#: codepoints.net/views/about.php:254
 msgid ""
 "The developers supporting this site with their knowledge, bug\n"
 "      reports and input take a fair share in keeping it awesome. We want to\n"
@@ -1627,7 +1634,7 @@ msgstr ""
 "Eingaben unterstützen, haben wesentlichen Anteil daran, dass sie großartig "
 "bleibt. Wir möchten besonders den Leuten danken, die Code beigetragen haben:"
 
-#: codepoints.net/views/about.php:257
+#: codepoints.net/views/about.php:262
 #, php-format
 msgid ""
 "Many thanks go to two sites with a similar goal but other emphasis in\n"
@@ -1636,7 +1643,7 @@ msgstr ""
 "Vielen Dank sagen wir auch zwei Seiten mit einem ähnlichen Ziel aber anderen "
 "Schwerpunkten in der Präsentation des Unicode-Standards: %s und %s."
 
-#: codepoints.net/views/about.php:262
+#: codepoints.net/views/about.php:267
 #, php-format
 msgid ""
 "The WHATWG publishes an %sencoding standard%s, that is used\n"
@@ -1647,7 +1654,7 @@ msgstr ""
 "Kodierungs-Informationen für Codepunkte verwenden. Sein Haupt-Bearbeiter ist "
 "%s."
 
-#: codepoints.net/views/about.php:270
+#: codepoints.net/views/about.php:275
 msgid ""
 "The hosting is done on Uberspace, a phantastic provider with extremely\n"
 "    helpful and flexible support."
@@ -1655,7 +1662,7 @@ msgstr ""
 "Das Hosting geschieht auf Servern von Uberspace, einem fantastischen "
 "Provider mit extrem hilfreichem und flexiblem Support."
 
-#: codepoints.net/views/about.php:272
+#: codepoints.net/views/about.php:277
 #, php-format
 msgid ""
 "The %s names are derived from %s, which is curated by\n"
@@ -1666,11 +1673,11 @@ msgstr ""
 "Die %s-Bezeichner sind von %s abgeleitet, gepflegt von David Carlisle und "
 "mit der MathML-Spezifikation des W3C verteilt."
 
-#: codepoints.net/views/about.php:276
+#: codepoints.net/views/about.php:281
 msgid "Fonts"
 msgstr "Schriftarten"
 
-#: codepoints.net/views/about.php:277
+#: codepoints.net/views/about.php:282
 msgid ""
 "Many people base their work on Unicode. We want to thank the authors of\n"
 "    these fonts, that they made it possible to re-use them for this project:"
@@ -1679,7 +1686,7 @@ msgstr ""
 "Schriften danken, dass sie die Verwendung für dieses Projekt möglich gemacht "
 "haben:"
 
-#: codepoints.net/views/about.php:281
+#: codepoints.net/views/about.php:286
 #, php-format
 msgid ""
 "Roman Czyborra, David Starner, Qianqian Fang, Changwoo Ryu and Paul\n"
@@ -1688,20 +1695,20 @@ msgstr ""
 "Roman Czyborra, David Starner, Qianqian Fang, Changwoo Ryu und Paul Hardy "
 "für %sGNU Unifont%s"
 
-#: codepoints.net/views/about.php:286
+#: codepoints.net/views/about.php:291
 msgid "The Deja Vu Project"
 msgstr "Das Deja Vu-Projekt"
 
-#: codepoints.net/views/about.php:287
+#: codepoints.net/views/about.php:292
 #, php-format
 msgid "%sMichael Everson%s for the Last Resort font"
 msgstr "%sMichael Everson%s für die Last Resort-Schriftart"
 
-#: codepoints.net/views/about.php:289
+#: codepoints.net/views/about.php:294
 msgid "Image Attribution"
 msgstr "Bildzuschreibung"
 
-#: codepoints.net/views/about.php:290
+#: codepoints.net/views/about.php:295
 #, php-format
 msgid ""
 "The background image on the front page is released under the Creative\n"
@@ -1717,7 +1724,7 @@ msgstr ""
 "Reichs von Karl dem Großen%s, %sWünschelrutengänger aus dem 18. Jhd.%s und "
 "%sein NASA-Marsrover%s."
 
-#: codepoints.net/views/about.php:305
+#: codepoints.net/views/about.php:310
 #, php-format
 msgid ""
 "The “We’re Open Source” image is released under the Creative Commons\n"
@@ -1727,12 +1734,12 @@ msgstr ""
 "Das „We’re Open Source“-Bild ist unter der Creative Commons Attribution Non-"
 "Commercial No-Derivations-Lizenz von %sFlickr-Nutzer tima%s veröffentlicht."
 
-#: codepoints.net/views/about.php:309
+#: codepoints.net/views/about.php:314
 #, php-format
 msgid "The icons are part of the %sFont Awesome%s icon set."
 msgstr "Die Icons sind Teil des %sFont Awesome%s-Iconsets."
 
-#: codepoints.net/views/about.php:312
+#: codepoints.net/views/about.php:317
 #, php-format
 msgid ""
 "Finally I’d like to thank %sMathias Bynens%s\n"
@@ -1901,6 +1908,9 @@ msgid ""
 "by appending a “!” to it: filter/string?age!=5.5 finds all characters in "
 "“string” that were *not* added in Unicode 5.5."
 msgstr ""
+"Eine Zeichenkette nach Unicode-Eigenschaft filtern. Du kannst Eigenschaften "
+"durch Voranstellen eines „!“ negieren: filter/string?age!=5.5 findet alle "
+"Zeichen in „string“, die *nicht* in Unicode 5.5 hinzugefügt wurden."
 
 #: codepoints.net/lib/api/filter.php:17
 #: codepoints.net/lib/api/transform.php:23
@@ -2108,6 +2118,12 @@ msgstr "Fehler"
 #: codepoints.net/lib/api/problem.php:26
 msgid "An unspecific error occurred."
 msgstr "Ein unbekannter Fehler ist aufgetreten."
+
+#~ msgid ""
+#~ "The Polish translation is kindly provided by %sprofessor Janusz S. Bień%s."
+#~ msgstr ""
+#~ "Die polnische Übersetzung wurde freundlicherweise von %sProfessor Janusz "
+#~ "S. Bień%s bereitgestellt."
 
 #~ msgid "Back to search results"
 #~ msgstr "Zurück zu den Suchergebnissen"
