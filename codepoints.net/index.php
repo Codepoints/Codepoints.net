@@ -83,7 +83,7 @@ header("Content-Security-Policy: ".
     "child-src 'self' https://stats.codepoints.net; ".
     "font-src 'self' data:; ".
     "connect-src 'self' https://stats.codepoints.net; ".
-    "report-uri https://report-uri.io/report/codepoints");
+    "report-uri https://codepoints.report-uri.io/r/default/csp/enforce");
 
 
 /**
