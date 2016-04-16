@@ -2,6 +2,7 @@
 /codepoints.net/cache/_cache_*
 /codepoints.net/cache/__Mustache_*.php
 /codepoints.net/lib/vendor
+/crowdin_settings.sh
 /.sass-cache
 /tools/charlist.dtd
 /tools/latex.xml

@@ -57,6 +57,9 @@ ifeq ($(DEPLOY), true)
 COMPOSER_ARGS := --no-dev
 endif
 
+CROWDIN_PULL_URL := https://api.crowdin.com/api/project/codepoints/export-file?
+CROWDIN_PUSH_URL := https://api.crowdin.com/api/project/codepoints/update-file?
+
 
 all: vendor test css js cachebust
 
@@ -148,8 +151,37 @@ tools/encoding:
 l10n: $(DOCROOT)locale/messages.pot $(DOCROOT)locale/js.pot
 
 l10n-finish:
-	node tools/my-po2json.js de
-	node tools/my-po2json.js pl
+	$(info * compile language files)
+	@for lang in de pl; do \
+		for base in js messages; do \
+			msgfmt \
+				-o "codepoints.net/locale/$$lang/LC_MESSAGES/$$base.mo" \
+				"codepoints.net/locale/$$lang/LC_MESSAGES/$$base.po" ; \
+		done ; \
+		node tools/my-po2json.js "$$lang" ; \
+	done;
+
+l10n-push: l10n
+	$(info * push .pot files to Crowdin)
+	@. ./crowdin_settings.sh && { \
+		curl \
+			-F "files[js.pot]=@codepoints.net/locale/js.pot" \
+			-F "files[messages.pot]=@codepoints.net/locale/messages.pot" \
+			"$(CROWDIN_PUSH_URL)key=$$CROWDIN_API_KEY" ; \
+	}
+
+l10n-pull:
+	$(info * fetch translations from Crowdin)
+	@. ./crowdin_settings.sh && { \
+		for lang in de pl; do \
+			for base in js messages; do \
+				curl -sS \
+				  "$(CROWDIN_PULL_URL)key=$$CROWDIN_API_KEY&language=$$lang&file=$$base.pot" \
+				  > "codepoints.net/locale/$$lang/LC_MESSAGES/$$base.po" ; \
+			done; \
+		done; \
+	}
+	@$(MAKE) l10n-finish
 
 $(DOCROOT)locale/messages.pot: $(PHP_ALL)
 	$(info * Compile PHP translation strings)
