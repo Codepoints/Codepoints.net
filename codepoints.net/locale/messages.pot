@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-24 23:12+0100\n"
+"POT-Creation-Date: 2016-04-16 21:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: codepoints.net/controllers/manifest.php:27
+#: codepoints.net/controllers/manifest.php:28
 msgid "All of Unicode at Codepoints.net"
 msgstr ""
 
@@ -1388,8 +1388,7 @@ msgstr ""
 #, php-format
 msgid ""
 "The Polish translation is kindly provided by\n"
-"      professor Janusz S. Bień, utilizing the terminology introduced in his "
-"paper\n"
+"      Janusz S. Bień, utilizing the terminology introduced in his paper\n"
 "      %s“Standard Unicode 4.0. Wybrane pojęcia i terminy”%s and "
 "%ssubsequent\n"
 "      publications%s."

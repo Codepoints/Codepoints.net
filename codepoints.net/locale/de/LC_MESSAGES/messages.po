@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: codepoints\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-24 23:12+0100\n"
-"PO-Revision-Date: 2016-04-16 15:10-0400\n"
+"POT-Creation-Date: 2016-04-16 21:16+0200\n"
+"PO-Revision-Date: 2016-04-16 15:19-0400\n"
 "Last-Translator: boldewyn <net.crowdin@manuel-strehl.de>\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
@@ -16,7 +16,7 @@ msgstr ""
 "X-Crowdin-Language: de\n"
 "X-Crowdin-File: messages.pot\n"
 
-#: codepoints.net/controllers/manifest.php:27
+#: codepoints.net/controllers/manifest.php:28
 msgid "All of Unicode at Codepoints.net"
 msgstr "Ganz Unicode auf Codepoints.net"
 
@@ -1254,10 +1254,10 @@ msgstr "Zu Allererst möchten wir den Beitragenden des Unicode-Konsortiums danke
 #: codepoints.net/views/about.php:247
 #, php-format
 msgid "The Polish translation is kindly provided by\n"
-"      professor Janusz S. Bień, utilizing the terminology introduced in his paper\n"
+"      Janusz S. Bień, utilizing the terminology introduced in his paper\n"
 "      %s“Standard Unicode 4.0. Wybrane pojęcia i terminy”%s and %ssubsequent\n"
 "      publications%s."
-msgstr "Die polnische Übersetzung wird freundlicher Weise von Prof. Janusz S. Bień erstellt, in der er die Terminologie verwendet, die in seinem Paper %s„Standard Unicode 4.0. Wybrane pojęcia i terminy“%s und %sden folgenden Veröffentlichungen%s eingeführt wurde. "
+msgstr "Die polnische Übersetzung wird freundlicher Weise von Janusz S. Bień erstellt, in der er die Terminologie verwendet, die in seinem Paper %s„Standard Unicode 4.0. Wybrane pojęcia i terminy“%s und %sden folgenden Veröffentlichungen%s eingeführt wurde."
 
 #: codepoints.net/views/about.php:254
 msgid "The developers supporting this site with their knowledge, bug\n"

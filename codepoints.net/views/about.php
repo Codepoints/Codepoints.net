@@ -245,7 +245,7 @@ include 'nav.php';
       knowledge about many parts of the lettering universe. Their share is an
       important part of this site.')?></p>
     <p><?php printf(__('The Polish translation is kindly provided by
-      professor Janusz S. Bień, utilizing the terminology introduced in his paper
+      Janusz S. Bień, utilizing the terminology introduced in his paper
       %s“Standard Unicode 4.0. Wybrane pojęcia i terminy”%s and %ssubsequent
       publications%s.'),
       '<a href="http://bc.klf.uw.edu.pl/114/">', '</a>',
