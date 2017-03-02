@@ -27,6 +27,10 @@ database. Then create in this folder (next to this `README.md`) a file
     user=mysql-user
     database=mysql-database
 
+Install the dependencies using Composer:
+
+    composer install
+
 Presto! Your local copy of codepoints.net is ready! To get the site running,
 you can use PHP’s built in development server:
 
