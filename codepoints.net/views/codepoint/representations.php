@@ -33,7 +33,7 @@
     </tr>
     <?php
     ini_set('mbstring.substitute_character', "none");
-    $moji = mb_convert_encoding($codepoint->getSafeChar(), 'UTF-8', 'ISO-8859-1');
+    $moji = mb_convert_encoding($codepoint->getSafeChar(), 'UTF-8', 'Windows-1252');
     if ($moji): ?>
       <tr>
         <th title="<?php _e('approx. ISO-8859-1, Latin 1, “us-ascii”, ...')?>"><?php _e('Wrong windows-1252 Mojibake')?></th>
