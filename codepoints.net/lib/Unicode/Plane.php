@@ -16,8 +16,8 @@ class Plane {
     private int $last;
     private Database $db;
     private ?Array $blocks = null;
-    private ?self $prev = null;
-    private ?self $next = null;
+    private /*?self|bool*/ $prev = null;
+    private /*?self|bool*/ $next = null;
 
     /**
      * create a new plane instance
@@ -59,7 +59,7 @@ class Plane {
     /**
      * get all blocks belonging to this plane
      */
-    public function getBlocks() : Array {
+    private function getBlocks() : Array {
         if ($this->blocks === null) {
             $sets = $this->db->getAll('
                 SELECT name, first, last FROM blocks
@@ -79,7 +79,7 @@ class Plane {
     /**
      * get previous plane or false
      */
-    public function getPrev() {
+    private function getPrev() /*: self|bool*/ {
         if ($this->prev === null) {
             $this->prev = false;
             $data = $this->db->getOne('SELECT name, first, last
@@ -97,7 +97,7 @@ class Plane {
     /**
      * get next plane or false
      */
-    public function getNext() {
+    private function getNext() /*: self|bool*/ {
         if ($this->next === null) {
             $this->next = false;
             $data = $this->db->getOne('SELECT name, first, last

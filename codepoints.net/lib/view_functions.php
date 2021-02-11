@@ -142,7 +142,11 @@ function url(/*mixed*/ $item) : string {
         return str_replace(' ', '_', strtolower($item->name));
     }
     if ($item instanceof Plane) {
-        return 'plane/' . str_replace(' ', '_', strtolower($item->name));
+        $base = str_replace(' ', '_', strtolower($item->name));
+        if (substr($base, 0, 6) !== 'plane_' && substr($base, -6) !== '_plane') {
+            $base .= '_plane';
+        }
+        return $base;
     }
     return urlencode($item);
 }

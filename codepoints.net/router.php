@@ -13,7 +13,8 @@ Router::add('', new Index());
 
 Router::add('planes', new Planes());
 
-Router::add(new URLMatcher('plane/([a-zA-Z0-9()_-]+)$'), new Plane());
+Router::add(new URLMatcher('plane_([a-zA-Z0-9()_-]+)$'), new Plane());
+Router::add(new URLMatcher('([a-zA-Z0-9()_-]+)_plane$'), new Plane());
 
 Router::add('random', new Random());
 
