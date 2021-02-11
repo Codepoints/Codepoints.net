@@ -24,6 +24,14 @@ class Codepoint {
      */
     private string $name;
 
+    /**
+     * the Unicode General Category
+     *
+     * Needed for rendering purposes ("is it a control char?", "is it a
+     * combining char?")
+     */
+    private string $gc;
+
     private Database $db;
 
     /**
@@ -44,6 +52,7 @@ class Codepoint {
     public function __construct(Array $data, Database $db) {
         $this->id = $data['cp'];
         $this->name = $data['name'];
+        $this->gc = $data['gc'];
         $this->db = $db;
     }
 
@@ -63,6 +72,8 @@ class Codepoint {
             return $this->id;
         case 'name':
             return $this->name;
+        case 'gc':
+            return $this->gc;
         case 'prev':
             return $this->getPrev();
         case 'next':
@@ -77,7 +88,8 @@ class Codepoint {
      *
      * Some control characters have dedicated representations. We use those,
      * e.g., U+0000 => U+2400.
-     * /
+     * Combining characters are accompanied by U+25CC Dotted Circle.
+     */
     public function chr() : string {
         if ($this->id < 0x21) {
             return mb_chr($this->id + 0x2400);
@@ -85,10 +97,15 @@ class Codepoint {
             return mb_chr(0x2421);
         } elseif (substr($this->gc, 0, 1) === 'C') {
             return mb_chr(0xFFFD);
+        } elseif ($this->gc === 'Zl') { // new line => symbol for newline
+            return mb_chr(0x2424);
+        } elseif ($this->gc === 'Zp') { // new paragraph => pilcrow
+            return mb_chr(0x00B6);
+        } elseif (in_array($this->gc, ['Mn', 'Me', 'Lm'])) {
+            return mb_chr(0x25CC) . mb_chr($this->id);
         }
         return mb_chr($this->id);
     }
-     */
 
     /**
      * get a bit of information about this code point from a registered
@@ -112,7 +129,7 @@ class Codepoint {
     private function getPrev() /*: self|false */ {
         if ($this->prev === null) {
             $this->prev = false;
-            $other = $this->db->getOne('SELECT cp, name FROM codepoints
+            $other = $this->db->getOne('SELECT cp, name, gc FROM codepoints
                 WHERE cp < ?
                 ORDER BY cp DESC
                 LIMIT 1', $this->id);
@@ -129,7 +146,7 @@ class Codepoint {
     private function getNext() /*: self|false */ {
         if ($this->next === null) {
             $this->next = false;
-            $other = $this->db->getOne('SELECT cp, name FROM codepoints
+            $other = $this->db->getOne('SELECT cp, name, gc FROM codepoints
                 WHERE cp > ?
                 ORDER BY cp ASC
                 LIMIT 1', $this->id);
