@@ -5,8 +5,7 @@
   <h1><?=q($title)?></h1>
   <ol>
     <?php foreach ($planes as $plane):?>
-      <li><a href="<?=url($plane)?>"><?=q($plane->name)?></a>
-          <small><?php printf(__('(U+%04X to U+%04X)'), $plane->first, $plane->last)?></small></li>
+      <li><?=pl($plane)?></li>
     <?php endforeach?>
   </ol>
   <p><?php printf(__('The Unicode standard arranges the characters in 17 so-called planes of

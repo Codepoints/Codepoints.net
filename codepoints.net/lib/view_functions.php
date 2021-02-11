@@ -68,7 +68,7 @@ function bl(Block $block, string $rel='', string $class='') : string {
     }
     return sprintf('<a class="bl%s"%s href="%s">'.
             '%s <span class="title">%s</span>'.
-            '<span class="meta">%s</span>'.
+            ' <span class="meta">%s</span>'.
         '</a>',
         $class, $rel, q(url($block)), blimg($block), q($block->name),
         sprintf(__('(U+%04X to U+%04X)'), $block->first, $block->last));
@@ -79,6 +79,53 @@ function bl(Block $block, string $rel='', string $class='') : string {
  */
 function blimg(Block $block, int $width=16) : string {
     $name = str_replace([' ', '_', '-'], '', strtolower($block->name));
+    $url = sprintf('/static/images/LastResort.svg#%s', $name);
+    return sprintf('<svg width="%s" height="%s"><svg viewBox="194 97 1960 1960" width="100%%" height="100%%">'.
+        '<use xlink:href="%s"/></svg></svg>', $width, $width, $url);
+}
+
+/**
+ * return the representation for a plane link
+ */
+function pl(Plane $plane, string $rel='', string $class='') : string {
+    if ($rel) {
+        $rel = ' rel="'.q($rel).'"';
+    }
+    if ($class) {
+        $class = ' '.q($class);
+    }
+    return sprintf('<a class="pl%s"%s href="%s">'.
+            '%s <span class="title">%s</span>'.
+            ' <span class="meta">%s</span>'.
+        '</a>',
+        $class, $rel, q(url($plane)), plimg($plane), q($plane->name),
+        sprintf(__('(U+%04X to U+%04X)'), $plane->first, $plane->last));
+}
+
+/**
+ * return the image element for a plane
+ */
+function plimg(Plane $plane, int $width=16) : string {
+    $map = [
+        'notdefplanezero',
+        'notdefplaneone',
+        'notdefplanetwo',
+        'notdefplanethree',
+        'notdefplanefour',
+        'notdefplanefive',
+        'notdefplanesix',
+        'notdefplaneseven',
+        'notdefplaneeight',
+        'notdefplanenine',
+        'notdefplaneten',
+        'notdefplaneeleven',
+        'notdefplanetwelve',
+        'notdefplanethirteen',
+        'notdefplanefourteen',
+        'privateplane15',
+        'privateplane16',
+    ];
+    $name = $map[$plane->first / 0x10000];
     $url = sprintf('/static/images/LastResort.svg#%s', $name);
     return sprintf('<svg width="%s" height="%s"><svg viewBox="194 97 1960 1960" width="100%%" height="100%%">'.
         '<use xlink:href="%s"/></svg></svg>', $width, $width, $url);

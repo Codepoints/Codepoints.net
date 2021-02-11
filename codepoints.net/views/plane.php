@@ -1,11 +1,15 @@
 <div class="payload plane">
+  <figure>
+    <?=plimg($plane, 128)?>
+  </figure>
   <h1><?=q($title)?></h1>
   <p><?php printf(__('Plane from U+%04X to U+%04X.'), $plane->first, $plane->last)?></p>
+  <p><a href="/planes"><?=_q('all planes')?></a></p>
   <?php if (count($plane->blocks)):?>
     <h2><?=_q('Blocks in this plane')?></h2>
     <ol>
       <?php foreach ($plane->blocks as $block):?>
-        <li><?=q($block)?> <small><?php printf(__('(U+%04X to U+%04X)'), $block->first, $block->last)?></small></li>
+        <li><?=bl($block)?></li>
       <?php endforeach?>
     </ol>
   <?php else:?>
