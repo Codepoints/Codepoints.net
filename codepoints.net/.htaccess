@@ -1,0 +1,59 @@
+AddDefaultCharset utf-8
+
+AddType application/manifest+json webmanifest
+
+<Files opensearch.xml>
+  ForceType application/opensearchdescription+xml
+</Files>
+
+<IfModule mod_headers.c>
+  Header always set Strict-Transport-Security "max-age=16070400; includeSubDomains; preload"
+  Header always set X-Xss-Protection "1; mode=block"
+  Header always set X-Content-Type-Options "nosniff"
+</IfModule>
+
+ErrorDocument 404 /index.php
+
+RewriteEngine On
+
+# remove www. from URLs
+RewriteCond %{HTTP_HOST} ^www\.(.*) [NC]
+RewriteRule (.*) https://%1/$1 [R=301,L]
+
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301,NE]
+
+# handle canonical favicon location
+RewriteRule ^favicon\.ico$ static/images/favicon.ico [L]
+RewriteRule ^apple-touch-icon\.png$ static/images/icon-180.png [L]
+
+# don't redirect index.php
+RewriteRule ^index.php - [L]
+
+# things that might go wrong with the "+" in the URL
+RewriteRule ^U(\ |%20|%2B)?([A-Fa-f0-9]+)$     /U+$2 [R,L]
+
+# lowercased u+1234
+RewriteRule ^u(\+|\ |%20|%2B)?([A-Fa-f0-9]+)$   /U+$2 [R,L]
+
+# U+1234. (<- that's a dot at the end. Happens in Github bug trackers.)
+# U+1234/char (<- sometimes people write URL/codepoint, but autodetection
+#                 adds the description to the URL. Meh.)
+# U+1234). (<- Bugzilla being too greedy when parsing URLs in text)
+# U+1234;... (<- someone linked to this according to Google)
+RewriteRule ^U\+([A-Fa-f0-9]+)(\.|/.*|\).*|;.*)$   /U+$1 [R,L]
+
+# +U1234 (<- typo in unicodehearts.com)
+# +1234 (<- missing the "U")
+RewriteRule ^(\+|%2B|%20)[uU]?([A-Fa-f0-9]+)$   /U+$2 [R,L]
+
+# everything that doesn't match a real file
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule .* index.php [L]
+
+# redirect all direct PHP file access tries to index.php
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteCond %{REQUEST_FILENAME} .*.php
+RewriteCond %{REQUEST_FILENAME} !^index.php$
+RewriteRule .* index.php [L]
