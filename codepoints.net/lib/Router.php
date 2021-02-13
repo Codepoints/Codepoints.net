@@ -34,7 +34,7 @@ class Router {
             if ($url instanceof URLMatcher) {
                 preg_match($url->pattern, $current_url, $match);
             } elseif (is_callable($url)) {
-                $match = $url($current_url);
+                $match = $url($current_url, static::$env);
             } elseif (is_array($url)) {
                 $match = in_array($current_url, $url);
             } else {

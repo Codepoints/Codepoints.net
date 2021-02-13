@@ -2,6 +2,7 @@
 
 use \Codepoints\Router;
 use \Codepoints\URLMatcher;
+use \Codepoints\Controller\Block;
 use \Codepoints\Controller\Index;
 use \Codepoints\Controller\Plane;
 use \Codepoints\Controller\Planes;
@@ -19,6 +20,17 @@ Router::add(new URLMatcher('([a-zA-Z0-9()_-]+)_plane$'), new Plane());
 Router::add('random', new Random());
 
 Router::add(new URLMatcher('U\\+([0-9A-F]{4,6})$'), new Codepoint());
+
+Router::add(function($url, $env) {
+    if (preg_match('/[^a-z0-9_-]/', $url)) {
+        return null;
+    }
+    $data = $env['db']->getOne("
+        SELECT name, first, last FROM blocks
+        WHERE replace(replace(lower(name), '_', ''), ' ', '') = ?
+        LIMIT 1", str_replace([' ', '_'], '', strtolower($url)));
+    return $data;
+}, new Block());
 
 
 Router::add(new URLMatcher('image/([0-9A-F]{2,4}00).svg$'), function(Array $match, Array $env) : string {
