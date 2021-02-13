@@ -23,10 +23,11 @@
     <p><a href="http://www.unicode.org/charts/PDF/U<?php printf('%04X', $block->first)?>.pdf"><?=_q('Chart at Unicode.org')?></a> <?=_q('(PDF)')?><br>
     <a href="http://decodeunicode.org/<?=q(str_replace(' ', '_', strtolower($block->name)))?>"><?=_q('Block at Decode Unicode')?></a></p>
     <ol>
-    <?php foreach ($block as $codepoint): ?>
+    <?php foreach ($pagination->slice() as $codepoint): ?>
       <li><?=cp($codepoint, 16)?></li>
       <?php endforeach ?>
     </ol>
+    <?=$pagination?>
   <?php endif?>
 </div>
 <?php include 'partials/footer.php'; ?>
