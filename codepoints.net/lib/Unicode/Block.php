@@ -13,17 +13,6 @@ use \Codepoints\Unicode\Range;
 class Block extends Range {
 
     /**
-     * the block's name
-     */
-    private $name;
-
-    /**
-     * the first and last code point of this block, may be
-     * non-existing
-     */
-    protected $block_limits;
-
-    /**
      * the previous block
      */
     private $prev = null;
@@ -33,22 +22,20 @@ class Block extends Range {
      */
     private $next = null;
 
+    /**
+     * cache of already fetched blocks
+     */
     private static Array $instance_cache = [];
 
     /**
      * create a new Block
      */
     public function __construct(Array $data, Database $db) {
+        parent::__construct($data, $db);
+        /* set the name to the canonical Unicode block name. Unicode themselves
+         * say, that the block name is nothing more than an alias for a fixed
+         * range. */
         $this->name = $data['name'];
-        $this->block_limits = [$data['first'], $data['last']];
-        parent::__construct(range($data['first'], $data['last']), $db);
-    }
-
-    /**
-     * get the block's official name
-     */
-    public function __toString() {
-        return $this->name;
     }
 
     /**
@@ -56,29 +43,15 @@ class Block extends Range {
      */
     public function __get($name) {
         switch ($name) {
-        case 'name':
-            return $this->name;
-        case 'first':
-            return $this->block_limits[0];
-        case 'last':
-            return $this->block_limits[1];
         case 'prev':
             return $this->getPrev();
         case 'next':
             return $this->getNext();
         case 'plane':
             return Plane::getByBlock($this, $this->db);
+        default:
+            return parent::__get($name);
         }
-    }
-
-    /**
-     * return the count of codepoints in this block
-     */
-    public function count() : int {
-        $data = $this->db->getOne('SELECT COUNT(*) c
-            FROM codepoints
-            WHERE cp >= ? AND cp <= ?', $this->first, $this->last);
-        return $data['c'];
     }
 
     /**

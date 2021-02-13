@@ -2,14 +2,15 @@
 
 namespace Codepoints\Unicode;
 
+use \Analog\Analog;
 use \Codepoints\Database;
 use \Codepoints\Unicode\Codepoint;
 
 
 /**
- * an arbitrary range of Unicode characters
+ * a range of contiguous Unicode code points
  *
- * The range may have gaps.
+ * The range can contain unassigned code points.
  */
 class Range implements \Iterator {
 
@@ -19,154 +20,115 @@ class Range implements \Iterator {
     protected Database $db;
 
     /**
-     * the set of codepoint instances
+     * a string representation
      */
-    private ?Array $set = null;
+    protected string $name;
 
     /**
-     * the provisional set of codepoints
+     * the limits of the range and current pointer
      */
-    private Array $_set = [];
+    protected int $first;
+    protected int $last;
+    private int $current;
 
     /**
      * construct a new Unicode range
      *
      * The set may be an empty range and can be filled later.
      */
-    public function __construct(Array $set, Database $db) {
+    public function __construct(Array $data, Database $db) {
         $this->db = $db;
-        $set = array_unique($set);
-        $this->_set = $set; # cache set for later lazy loading
+        $this->first = $data['first'];
+        $this->last = $data['last'];
+        $this->current = $data['first'];
+        $this->name = sprintf('U+%04X..U+%04X', $data['first'], $data['last']);
     }
 
     /**
-     * prepare the set by fetching codepoints
+     * get the range's official name
      */
-    private function _prepare() : void {
-        if ($this->set === null) {
-            $this->set = $this->fetchNames($this->_set);
+    public function __toString() {
+        return $this->name;
+    }
+
+    /**
+     * access info about this block
+     */
+    public function __get($name) {
+        switch ($name) {
+        case 'name':
+            return $this->name;
+        case 'first':
+            return $this->first;
+        case 'last':
+            return $this->last;
         }
     }
 
     /**
-     * get the current set of codepoints
+     * return the number of code points in this range
+     *
+     * This method will call the DB and look, how many real code points are
+     * there. If you want the size of the whole range, use
+     *
+     *     $range->last - $range->first + 1
      */
-    public function get() : Array {
-        $this->_prepare();
-        reset($this->set);
-        return $this->set;
+    public function count() : int {
+        $data = $this->db->getOne('SELECT COUNT(*) c
+            FROM codepoints
+            WHERE cp >= ? AND cp <= ?', $this->first, $this->last);
+        return $data['c'];
     }
 
     public function rewind() : void {
-        $this->_prepare();
-        reset($this->set);
+        $this->current = $this->first;
     }
 
-    public function current() {
-        $this->_prepare();
-        return current($this->set);
+    /**
+     * return a Codepoint object from the current position of the internal
+     * array
+     *
+     * Returns null, if there is no such code point. This should not happen
+     * due to the prior call to _prepare(), though.
+     */
+    public function current() : ?Codepoint {
+        $codepoint = $this->current;
+        $data = $this->db->getOne('SELECT cp, name, gc
+            FROM codepoints
+            WHERE cp = ?', $codepoint);
+        return $data? new Codepoint($data, $this->db) : null;
     }
 
-    public function key() {
-        $this->_prepare();
-        return key($this->set);
+    public function key() : int {
+        return $this->current;
     }
 
     public function next() : void {
-        $this->_prepare();
-        next($this->set);
+        $this->current += 1;
     }
 
     public function valid() : bool {
-        $this->_prepare();
-        return key($this->set) !== null;
+        return $this->current >= $this->first && $this->current <= $this->last;
     }
 
     /**
-     * get the IDs of the first and last valid codepoints
-     * in the set
+     * return a sub-range
      */
-    public function getBoundaries() : ?Array {
-        $this->_prepare();
-        $indices = array_keys($this->set);
-        if (! count($indices)) {
-            return null;
+    public function slice(int $offset, ?int $length = null) : self {
+        $new_first = $this->first + $offset;
+        if ($new_first > $this->last) {
+            Analog::warning(sprintf(
+                'slice beyond boundaries in Range: U+%04X + %d',
+                $this->first, $offset));
+            /* return a range, that is guaranteed to contain no valid code
+             * point */
+            return new self(['first' => 0x110000, 'last' => 0x110000], $this->db);
         }
-        return [$indices[0], end($indices)];
-    }
-
-    /**
-     * get the first codepoint ID from the set
-     */
-    public function getFirst() : ?int {
-        $this->_prepare();
-        $r = array_keys($this->set);
-        if (! count($r)) {
-            return null;
+        $new_last = $this->last;
+        if ($length && $new_first + $length <= $this->last) {
+            $new_last = $new_first + $length;
         }
-        return $r[0];
-    }
-
-    /**
-     * get the last codepoint ID from the set
-     */
-    public function getLast() : ?int {
-        $this->_prepare();
-        $r = array_keys($this->set);
-        return end($r);
-    }
-
-    /**
-     * add a single codepoint to the set
-     */
-    public function add(int $cp) : self {
-        $this->_prepare();
-        if (! array_key_exists($cp, $this->set)) {
-            $this->set += $this->fetchNames([$cp]);
-        }
-        return $this;
-    }
-
-    /**
-     * add several codepoints to the set
-     */
-    public function addSet(Array $set) : self {
-        $this->_prepare();
-        $this->set += $this->fetchNames(array_diff(array_unique($set), array_keys($this->set)));
-        return $this;
-    }
-
-    /**
-     * add another range to the set
-     */
-    public function addRange(Range $range) : self {
-        $this->_prepare();
-        $set = $range->get();
-        $this->set = array_unique(array_merge($this->set, $set));
-        return $this;
-    }
-
-    /**
-     * get the names of all characters in the set
-     */
-    protected function fetchNames(Array $set) : Array {
-        $names = [];
-        if (count($set) > 0) {
-            $query = $this->db->prepare("
-                SELECT cp, name, gc
-                FROM codepoints
-                WHERE cp IN (" . join(',', $set) . ")");
-            $query->execute();
-            $data = $query->fetchAll(\PDO::FETCH_ASSOC);
-            $query->closeCursor();
-            if ($data) {
-                foreach ($data as $cp) {
-                    $names[$cp['cp']] = Codepoint::getCached(
-                        $cp, $this->db);
-                }
-            }
-        }
-        return $names;
+        return new self(['first' => $new_first, 'last' => $new_last], $this->db);
     }
 
 }
