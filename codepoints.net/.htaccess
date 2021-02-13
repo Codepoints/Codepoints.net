@@ -6,6 +6,9 @@ AddType application/manifest+json webmanifest
   ForceType application/opensearchdescription+xml
 </Files>
 
+# zip some responses
+AddOutputFilterByType DEFLATE text/html text/css text/javascript application/json image/svg+xml
+
 <IfModule mod_headers.c>
   Header always set Strict-Transport-Security "max-age=16070400; includeSubDomains; preload"
   Header always set X-Xss-Protection "1; mode=block"
