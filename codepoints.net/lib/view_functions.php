@@ -52,8 +52,12 @@ function cp(Codepoint $codepoint, string $rel='', string $class='') : string {
 function cpimg(Codepoint $codepoint, int $width=16) : string {
     $hex = sprintf('%04X', $codepoint->id);
     $url = sprintf('image/%s.svg#U%s', preg_replace('/[0-9A-F]{2}$/', '00', $hex), $hex);
+    $circle = '';
+    if (in_array($codepoint->gc, ['Mn', 'Me', 'Lm', 'Sk'])) {
+        $circle = '<use xlink:href="image/2500.svg#U25CC" fill-opacity="0.5"/>';
+    }
     return sprintf('<svg width="%s" height="%s">'.
-        '<use xlink:href="%s"/></svg>', $width, $width, $url);
+        '%s<use xlink:href="%s"/></svg>', $width, $width, $circle, $url);
 }
 
 /**

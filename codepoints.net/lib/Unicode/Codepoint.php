@@ -101,7 +101,7 @@ class Codepoint {
             return mb_chr(0x2424);
         } elseif ($this->gc === 'Zp') { // new paragraph => pilcrow
             return mb_chr(0x00B6);
-        } elseif (in_array($this->gc, ['Mn', 'Me', 'Lm'])) {
+        } elseif (in_array($this->gc, ['Mn', 'Me', 'Lm', 'Sk'])) {
             return mb_chr(0x25CC) . mb_chr($this->id);
         }
         return mb_chr($this->id);
