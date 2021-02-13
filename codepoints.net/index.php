@@ -6,6 +6,7 @@ use \Analog\Handler\Stderr;
 use \Analog\Handler\Threshold;
 use \Codepoints\Database;
 use \Codepoints\Router;
+use \Codepoints\Router\NotFoundException;
 use \Codepoints\Translator;
 
 require 'vendor/autoload.php';
@@ -52,11 +53,15 @@ $translator = new Translator();
 
 require_once 'router.php';
 
+try {
 $content = Router::serve(
     preg_replace('/\?.*/', '',
         substr(
             $_SERVER['REQUEST_URI'],
             strlen(rtrim(dirname($_SERVER['PHP_SELF']), '/').'/'))));
+} catch (NotFoundException $e) {
+    $content = $e->getMessage();
+}
 
 if ($content) {
     echo $content;

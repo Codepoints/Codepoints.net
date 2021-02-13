@@ -3,6 +3,7 @@
 namespace Codepoints\Controller;
 
 use Codepoints\Controller;
+use Codepoints\Router\NotFoundException;
 use Codepoints\Unicode\Codepoint as UnicodeCodepoint;
 
 
@@ -11,6 +12,9 @@ class Codepoint extends Controller {
     public function __invoke($matches, array $env) : string {
         $cp = hexdec($matches[1]);
         $data = $env['db']->getOne('SELECT cp, name, gc FROM codepoints WHERE cp = ?', $cp);
+        if (! $data) {
+            throw new NotFoundException('no character found');
+        }
         $codepoint = new UnicodeCodepoint($data, $env['db']);
 
         $this->context += [
@@ -20,7 +24,7 @@ class Codepoint extends Controller {
                 $codepoint->chr(),
                 $codepoint->id,
                 $codepoint->name,
-                $block->name,
+                $codepoint->block->name,
                 '', ''),//$info->getLabel('sc', $props['sc']), $info->getLabel('gc', $props['gc']));
             'codepoint' => $codepoint,
             'prev' => $codepoint->prev,

@@ -21,7 +21,7 @@ class Range implements \Iterator {
     /**
      * the set of codepoint instances
      */
-    private ?Array $set;
+    private ?Array $set = null;
 
     /**
      * the provisional set of codepoints
@@ -153,7 +153,7 @@ class Range implements \Iterator {
         $names = [];
         if (count($set) > 0) {
             $query = $this->db->prepare("
-                SELECT cp, name
+                SELECT cp, name, gc
                 FROM codepoints
                 WHERE cp IN (" . join(',', $set) . ")");
             $query->execute();

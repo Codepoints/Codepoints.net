@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title><?=q($title)?> – Codepoints</title>
 <?php if(isset($page_description)): ?>
-    <meta name="description" content="<?=q($hDescription)?>">
+    <meta name="description" content="<?=q($page_description)?>">
 <?php endif ?>
     <link rel="icon" href="/favicon.ico">
     <link rel="icon" href="/static/images/icon.svg" type="image/svg+xml">
