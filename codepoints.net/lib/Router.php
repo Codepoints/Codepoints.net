@@ -3,6 +3,7 @@
 namespace Codepoints;
 
 use \Analog\Analog;
+use Codepoints\Router\URLMatcher;
 
 
 /**
@@ -48,9 +49,11 @@ class Router {
             } elseif (is_callable($url)) {
                 $match = $url($current_url, static::$env);
             } elseif (is_array($url)) {
-                $match = in_array($current_url, $url);
-            } else {
-                $match = ($current_url === $url);
+                if (in_array($current_url, $url)) {
+                    $match = $current_url;
+                }
+            } elseif ($current_url === $url) {
+                $match = $current_url;
             }
             if ($match) {
                 $current_handler = $handler;

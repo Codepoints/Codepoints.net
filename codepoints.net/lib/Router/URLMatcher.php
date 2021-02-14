@@ -1,6 +1,6 @@
 <?php
 
-namespace Codepoints;
+namespace Codepoints\Router;
 
 
 /**

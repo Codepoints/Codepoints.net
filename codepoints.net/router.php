@@ -1,13 +1,13 @@
 <?php
 
 use \Codepoints\Router;
-use \Codepoints\URLMatcher;
+use \Codepoints\Router\URLMatcher;
 use \Codepoints\Controller\Block;
+use \Codepoints\Controller\Codepoint;
 use \Codepoints\Controller\Index;
 use \Codepoints\Controller\Plane;
 use \Codepoints\Controller\Planes;
 use \Codepoints\Controller\Random;
-use \Codepoints\Controller\Codepoint;
 
 
 Router::add('', new Index());
