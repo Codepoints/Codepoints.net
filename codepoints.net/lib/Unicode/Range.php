@@ -37,6 +37,11 @@ class Range implements \Iterator {
     private ?int $count = null;
 
     /**
+     * a cache of code point data already fetched from the DB
+     */
+    private array $cp_cache = [];
+
+    /**
      * construct a new Unicode range
      *
      * The set may be an empty range and can be filled later.
@@ -101,12 +106,48 @@ class Range implements \Iterator {
      *
      * Returns null, if there is no such code point. This should not happen
      * due to the prior call to _prepare(), though.
+     *
+     * For performance reasons we fetch a set of up to 256 code points around
+     * this code point, too.
      */
     public function current() : ?Codepoint {
         $codepoint = $this->current;
-        $data = $this->db->getOne('SELECT cp, name, gc
-            FROM codepoints
-            WHERE cp = ?', $codepoint);
+        if (array_key_exists($codepoint, $this->cp_cache)) {
+            $data = $this->cp_cache[$codepoint];
+        } else {
+            $first = $this->first;
+            $last = $this->last;
+            if ($last - $first > 0x100) {
+                /* take a 256 chars window containing our code point. The
+                 * window is fixed to probable block boundaries. E.g., for
+                 * U+1A2B we fetch U+1A00..U+1AFF. If this range has less
+                 * than 256 characters, the window will be shorter, too. */
+                $first = max($first, $codepoint - ($codepoint % 0xFF));
+                $last = min($last, $codepoint - ($codepoint % 0xFF) + 0xFF);
+            }
+
+            $items = $this->db->getAll('SELECT cp, name, gc
+                FROM codepoints
+                WHERE cp >= ? AND cp <= ?', $first, $last);
+            if (! $items) {
+                /* something went wrong. We return early. */
+                return null;
+            }
+
+            /* set all cp candidates to null, so that we have cache hits for
+             * non-codepoints, too. */
+            $data = null;
+            for ($i = $first; $i <= $last; $i++) {
+                $this->cp_cache[$i] = null;
+            }
+
+            foreach ($items as $item) {
+                $this->cp_cache[$item['cp']] = $item;
+                if ($item['cp'] === $codepoint) {
+                    $data = $item;
+                }
+            }
+        }
         return $data? new Codepoint($data, $this->db) : null;
     }
 

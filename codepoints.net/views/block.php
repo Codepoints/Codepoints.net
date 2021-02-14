@@ -33,7 +33,7 @@
       <?php foreach ($pagination->slice() as $cp => $codepoint): ?>
         <li>
           <?php if ($codepoint): ?>
-            <?=cp($codepoint, 16)?>
+            <?=cp($codepoint)?>
           <?php else: ?>
             <span class="missing-cp">U+<?=sprintf('%04X', $cp)?></span>
           <?php endif ?>
