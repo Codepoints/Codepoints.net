@@ -11,6 +11,7 @@
         "gettext/translator": "^1.0"
     },
     "autoload": {
+        "files": ["codepoints.net/lib/view_functions.php"],
         "psr-4": {
             "Codepoints\\": "codepoints.net/lib/"
         }

@@ -2,8 +2,6 @@
 
 namespace Codepoints;
 
-require_once __DIR__.'/view_functions.php';
-
 
 class View {
 

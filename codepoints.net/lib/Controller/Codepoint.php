@@ -9,8 +9,8 @@ use Codepoints\Unicode\Codepoint as UnicodeCodepoint;
 
 class Codepoint extends Controller {
 
-    public function __invoke($matches, array $env) : string {
-        $cp = hexdec($matches[1]);
+    public function __invoke($match, array $env) : string {
+        $cp = hexdec($match[1]);
         $data = $env['db']->getOne('SELECT cp, name, gc FROM codepoints WHERE cp = ?', $cp);
         if (! $data) {
             throw new NotFoundException('no character found');
@@ -32,7 +32,7 @@ class Codepoint extends Controller {
             'block' => $codepoint->block,
             'plane' => $codepoint->block->plane,
         ];
-        return parent::__invoke($matches, $env);
+        return parent::__invoke($match, $env);
     }
 
 }

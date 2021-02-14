@@ -9,6 +9,9 @@ use Codepoints\Unicode\Plane as UnicodePlane;
 
 class Plane extends Controller {
 
+    /**
+     * @param array $match
+     */
     public function __invoke($match, array $env) : string {
         if (strpos($match[0], 'private_use') !== false) {
             $match[0] = substr($match[0], 0, -6);

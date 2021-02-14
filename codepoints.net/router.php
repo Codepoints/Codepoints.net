@@ -10,8 +10,6 @@ use \Codepoints\Controller\Planes;
 use \Codepoints\Controller\Random;
 use \Codepoints\Controller\StaticPage;
 
-require_once __DIR__.'/lib/view_functions.php';
-
 
 Router::add('', new Index());
 

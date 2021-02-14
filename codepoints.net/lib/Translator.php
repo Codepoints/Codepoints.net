@@ -24,6 +24,9 @@ class Translator {
         }
     }
 
+    /**
+     * @param array $args
+     */
     public function translate(string $original, ...$args) : string {
         if (! $this->translator) {
             return $original;
