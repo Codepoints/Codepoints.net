@@ -8,9 +8,14 @@ use \Codepoints\Controller\Index;
 use \Codepoints\Controller\Plane;
 use \Codepoints\Controller\Planes;
 use \Codepoints\Controller\Random;
+use \Codepoints\Controller\StaticPage;
+
+require_once __DIR__.'/lib/view_functions.php';
 
 
 Router::add('', new Index());
+
+Router::add(['about', 'glossary'], new StaticPage());
 
 Router::add('planes', new Planes());
 

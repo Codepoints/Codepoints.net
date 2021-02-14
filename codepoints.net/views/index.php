@@ -1,1 +1,54 @@
-<h1>Hello!</h1>
+<?php include 'partials/header.php'; ?>
+<main class="main main--index">
+  <h1><?=_q('Codepoints')?></h1>
+  <form method="get" action="/search" class="searchform">
+    <p><input type="text" name="q" placeholder="<?=_q('Search a Character')?>"
+       title="<?=_q('Enter a single character, like “丙” or “A”, or a term that describes the character, like “cyrillic” or “grass”')?>">
+       <button type="submit"><span><?=_q('search')?></span></button></p>
+  </form>
+  <blockquote class="central">
+    <p><?=__('<strong>Codepoint</strong>, <em>n.</em> the position of a character in
+    an encoding system.')?></p>
+  </blockquote>
+  <p class="action">
+    <span class="desc"><?=_q('Start here:')?> <small><?=_q('Browse one by one through blocks of characters')?></small></span>
+    <a class="button browse" href="<?=url('basic_latin')?>"><?=_q('Browse Codepoints')?></a>
+  </p>
+  <p class="action">
+    <span class="desc"><?=_q('Need help?')?> <small><?=_q('Answer questions to find matching characters')?></small></span>
+    <a class="button find" href="<?=url('wizard')?>"><?=_q('Find My Codepoint')?></a>
+  </p>
+  <p class="action">
+    <span class="desc"><?=_q('Expert Search!')?> <small><?=_q('Search for characters with particular properties')?></small></span>
+    <a class="button expert" href="<?=url('search')?>"><?=_q('Search Codepoint')?></a>
+  </p>
+  <section class="bk">
+    <h2><?=_q('About this Site')?></h2>
+    <p><?php printf(__('Codepoints.net is dedicated to all the characters,
+          that are defined in the %s. Theoretically, these should be
+          <em>all characters ever used</em>. In practice Unicode has
+          <em>%s codepoints</em> defined at the moment, mapping characters
+          from %s to %s.'),
+      '<a href="http://unicode.org">'.__('Unicode Standard').'</a>',
+      $cp_count,
+      '<a href="'.url('egyptian_hieroglyphs').'">'.__('Egyptian Hieroglyphs').'</a>',
+      '<a href="'.url('dingbats').'">'.__('Dingbats and Symbols').'</a>'
+  )?>
+    </p>
+    <p><?php printf(__('All codepoints are arranged in 17 so-called
+      %s. These planes are further divided into several blocks with
+      %s being the first one. You can browse one by one by starting with
+      the first codepoint, %s or %s for a specific character. If you’re
+      not fully sure, try %s, to narrow down the candidates. Or maybe you
+      are more daring and want %s?'),
+      '<a href="'.url('planes').'">'.__('planes').'</a>',
+      '<a href="'.url('basic_latin').'">'.__('Basic Latin').'</a>',
+      cp($cp0),
+      '<a href="'.url('search').'">'.__('search').'</a>',
+      '<a href="'.url('wizard').'">'.__('“Find My Codepoint”').'</a>',
+      '<a href="'.url('random').'">'.__('a random codepoint').'</a>'
+  )?>
+    </p>
+  </section>
+</main>
+<?php include 'partials/footer.php'; ?>

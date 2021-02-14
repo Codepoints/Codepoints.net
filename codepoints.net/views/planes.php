@@ -1,4 +1,5 @@
-<div class="payload planes">
+<?php include 'partials/header.php'; ?>
+<main class="main main--planes">
   <figure>
     <img src="/static/images/unicode-logo-framed.png" alt="<?=__('a representation of the Unicode logo')?>" width="128" height="128">
   </figure>
@@ -16,7 +17,7 @@
      the almost full %s.'),
     '<a href="'.q(url($planes[0])).'">'.__('Basic Multilingual Plane').'</a>')?>
   </p>
-  <p><?php $_sspp = array_slice($planes, -3, 1);
+  <p><?php
     printf(__('The %s contains mostly ancient characters, like Egyptian Hieroglyphs,
      and graphic symbols, for example Mahjongg tiles or emoticons. Thirdly the
      %s hosts lots of East Asian characters, that
@@ -29,7 +30,8 @@
      can be freely assigned by third-party programs to whatever seems useful.'),
   '<a href="'.q(url($planes[1])).'">'.__('second plane').'</a>',
   '<a href="'.q(url($planes[2])).'">'.__('Supplementary Ideographic Plane').'</a>',
-  '<a href="'.q(url($_sspp[0])).'">'.__('Supplementary Special Purpose Plane').'</a>'
+  '<a href="'.q(url($planes[14])).'">'.__('Supplementary Special Purpose Plane').'</a>'
 )?>
   </p>
-</div>
+</main>
+<?php include 'partials/footer.php'; ?>

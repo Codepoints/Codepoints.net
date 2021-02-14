@@ -1,3 +1,4 @@
+<?php include 'partials/header.php'; ?>
 <div class="payload plane">
   <figure>
     <?=plimg($plane, 128)?>
@@ -22,3 +23,4 @@
     <p class="info"><?_q('There are no blocks defined in this plane.')?></p>
   <?php endif?>
 </div>
+<?php include 'partials/footer.php'; ?>
