@@ -57,7 +57,8 @@ class Router {
             } elseif ($current_url === $url) {
                 $match = $current_url;
             }
-            if ($match) {
+            /* empty string: home page */
+            if ($match || $match === '') {
                 $current_handler = $handler;
                 break;
             }

@@ -121,7 +121,7 @@ class Block extends Range {
              LIMIT 1', $codepoint->id, $codepoint->id);
         if (! $data) {
             Analog::warning(sprintf('found no block for code point U+%04X', $codepoint->id));
-            throw new \Exception('no block found');
+            throw new \Exception('no block contains this code point: '.$codepoint->id);
         }
         return self::getCached($data, $db);
     }
