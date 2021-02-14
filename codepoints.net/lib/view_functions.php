@@ -8,7 +8,7 @@ use Codepoints\Unicode\Plane;
 /**
  * translate a string, the quick way
  */
-function __(string $original, ...$args): string {
+function __(string $original, Array ...$args): string {
     global $translator;
     return $translator->translate($original, ...$args);
 }
@@ -40,7 +40,7 @@ function cp(Codepoint $codepoint, string $rel='', string $class='') : string {
     return sprintf('<a class="cp%s"%s href="%s" data-cp="%s">'.
             '%s <span class="title">%s</span>'.
         '</a>',
-        $class, $rel, q(url($codepoint)), q($codepoint), cpimg($codepoint), q($codepoint->name));
+        $class, $rel, q(url($codepoint)), q((string)$codepoint), cpimg($codepoint), q($codepoint->name));
 }
 
 /**
@@ -137,6 +137,8 @@ function plimg(Plane $plane, int $width=16) : string {
 
 /**
  * generate an URL from any item (Codepoint, Block, ...)
+ *
+ * @param mixed $item
  */
 function url(/*mixed*/ $item) : string {
     if ($item instanceof Codepoint) {

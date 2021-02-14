@@ -16,7 +16,10 @@ class Plane {
     private int $last;
     private Database $db;
     private ?Array $blocks = null;
+
+    /** @var self|bool|null */
     private /*?self|bool*/ $prev = null;
+    /** @var self|bool|null */
     private /*?self|bool*/ $next = null;
 
     /**
@@ -78,6 +81,8 @@ class Plane {
 
     /**
      * get previous plane or false
+     *
+     * @return self|bool
      */
     private function getPrev() /*: self|bool*/ {
         if ($this->prev === null) {
@@ -96,6 +101,8 @@ class Plane {
 
     /**
      * get next plane or false
+     *
+     * @return self|bool
      */
     private function getNext() /*: self|bool*/ {
         if ($this->next === null) {
@@ -115,7 +122,7 @@ class Plane {
     /**
      * get plane of a specific codepoint
      */
-    public static function getByBlock(Block $block, Database $db) {
+    public static function getByBlock(Block $block, Database $db) : self {
         $data = $db->getOne('
             SELECT name, first, last FROM planes
              WHERE first <= ? AND last >= ?
@@ -132,8 +139,10 @@ class Plane {
     public static function getAll(Database $db) : Array {
         $sets = $db->getAll('SELECT name, first, last FROM planes');
         $planes = [];
-        foreach ($sets as $data) {
-            $planes[] = new self($data, $db);
+        if ($sets) {
+            foreach ($sets as $data) {
+                $planes[] = new self($data, $db);
+            }
         }
         return $planes;
     }

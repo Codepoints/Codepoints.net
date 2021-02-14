@@ -10,7 +10,7 @@ use \Analog\Analog;
 class Database extends \PDO {
 
     //public function prepare(string $query, Array $params=[]) : \PDOStatement {
-    public function prepare($query, $params=[]) {
+    public function prepare($query, $params=[]) : \PDOStatement {
         $this->__log($query);
         return parent::prepare($query, $params);
     }
@@ -22,6 +22,8 @@ class Database extends \PDO {
 
     /**
      * helper method: get one result set as associative array
+     *
+     * @return array|false
      */
     public function getOne(string $query_sql, ...$args) {
         $query = $this->prepare($query_sql);
@@ -33,6 +35,8 @@ class Database extends \PDO {
 
     /**
      * helper method: get all result sets as associative array
+     *
+     * @return array|false
      */
     public function getAll(string $query_sql, ...$args) {
         $query = $this->prepare($query_sql);

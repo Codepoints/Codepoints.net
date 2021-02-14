@@ -59,7 +59,7 @@ class Range implements \Iterator {
     /**
      * access info about this block
      */
-    public function __get($name) {
+    public function __get(string $name) /*: mixed*/ {
         switch ($name) {
         case 'name':
             return $this->name;
@@ -83,7 +83,10 @@ class Range implements \Iterator {
             $data = $this->db->getOne('SELECT COUNT(*) c
                 FROM codepoints
                 WHERE cp >= ? AND cp <= ?', $this->first, $this->last);
-            $this->count = $data['c'];
+            $this->count = 0;
+            if ($data) {
+                $this->count = $data['c'];
+            }
         }
         return $this->count;
     }

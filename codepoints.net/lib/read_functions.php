@@ -6,7 +6,7 @@ use Codepoints\Unicode\Range;
 #/**
 # * parse a string of form U+A..U+B,U+C into a Range
 # */
-#public static function parse_range(string $str, Database $db) : Range {
+#function parse_range(string $str, Database $db) : Range {
 #    $set = [];
 #    $junks = preg_split('/\s*(?:,\s*)+/', trim($str));
 #    foreach ($junks as $j) {
@@ -55,7 +55,7 @@ use Codepoints\Unicode\Range;
  *
  * @param bool $lenient if other values than U+hex should be recognized
  */
-public static function parse_codepoint(string $str, $lenient=false) : ?int {
+function parse_codepoint(string $str, $lenient=false) : ?int {
     $prefix = 'U\\+';
     if ($lenient) {
         $prefix = '(?:U\\+|\\\\U|0x|U-?)?';

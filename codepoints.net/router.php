@@ -26,7 +26,7 @@ Router::add('random', new Random());
 
 Router::add(new URLMatcher('U\\+([0-9A-F]{4,6})$'), new Codepoint());
 
-Router::add(function($url, $env) {
+Router::add(function(string $url, Array $env) {
     if (preg_match('/[^a-z0-9_-]/', $url)) {
         return null;
     }

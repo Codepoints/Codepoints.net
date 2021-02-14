@@ -14,6 +14,8 @@ class Controller {
 
     /**
      * if called, automatically show a view with the same name
+     *
+     * @param mixed $match
      */
     public function __invoke($match, Array $env) : string {
         $view = strtolower(preg_replace('/.*\\\\/', '', get_class($this)));

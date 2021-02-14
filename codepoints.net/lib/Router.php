@@ -33,6 +33,8 @@ class Router {
 
     /**
      * add a dependency, that will later be handed to the controller
+     *
+     * @param mixed $dependency
      */
     public static function addDependency( string $name, /*mixed*/ $dependency) : void {
         static::$env[$name] = $dependency;

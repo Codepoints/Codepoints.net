@@ -14,11 +14,15 @@ class Block extends Range {
 
     /**
      * the previous block
+     *
+     * @var self|bool|null
      */
     private $prev = null;
 
     /**
      * the next block
+     *
+     * @var self|bool|null
      */
     private $next = null;
 
@@ -40,8 +44,10 @@ class Block extends Range {
 
     /**
      * access info about this block
+     *
+     * @return mixed
      */
-    public function __get($name) {
+    public function __get(string $name) {
         switch ($name) {
         case 'prev':
             return $this->getPrev();
@@ -56,6 +62,8 @@ class Block extends Range {
 
     /**
      * get the previous block or false
+     *
+     * @return self|bool
      */
     private function getPrev() {
         if ($this->prev === null) {
@@ -66,7 +74,7 @@ class Block extends Range {
                 ORDER BY last DESC
                 LIMIT 1', $this->first);
             if ($data) {
-                $this->prev = new static($data, $this->db);
+                $this->prev = new self($data, $this->db);
             }
         }
         return $this->prev;
@@ -74,6 +82,8 @@ class Block extends Range {
 
     /**
      * get the next block or false
+     *
+     * @return self|bool
      */
     private function getNext() {
         if ($this->next === null) {
@@ -84,7 +94,7 @@ class Block extends Range {
                 ORDER BY first ASC
                 LIMIT 1', $this->last);
             if ($data) {
-                $this->next = new static($data, $this->db);
+                $this->next = new self($data, $this->db);
             }
         }
         return $this->next;

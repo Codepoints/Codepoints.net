@@ -30,7 +30,7 @@ class Plane extends Controller {
             'prev' => $plane->prev,
             'next' => $plane->next,
         ];
-        return parent::__invoke($matches, $env);
+        return parent::__invoke($match, $env);
     }
 
 }

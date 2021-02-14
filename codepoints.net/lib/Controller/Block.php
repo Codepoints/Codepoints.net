@@ -51,7 +51,7 @@ class Block extends Controller {
             'abstract' => $abstract,
             'age' => $age,
         ];
-        return parent::__invoke($matches, $env);
+        return parent::__invoke($data, $env);
     }
 
 }

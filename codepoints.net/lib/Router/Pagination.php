@@ -27,22 +27,22 @@ class Pagination {
             $urlTemplate = preg_replace('/([&?]page=)[0-9]+(&|$)/', '\\1%s\\2',
                 str_replace('%', '%%', $urlTemplate));
         } else {
-            $urlTemplate .= (strpos('?', $urlTemplate) === false? '?' : '&') .
+            $urlTemplate .= (strpos($urlTemplate, '?') === false? '?' : '&') .
                 'page=%s';
         }
         $this->urlTemplate = $urlTemplate;
     }
 
-    public function slice() {
+    public function slice() : Range {
         return $this->range->slice(($this->page - 1) * $this->pagesize,
                            $this->pagesize);
     }
 
-    public function getNumberOfPages() {
+    public function getNumberOfPages() : int {
         return intval(ceil(($this->range->last - $this->range->first + 1) / $this->pagesize));
     }
 
-    public function __toString() {
+    public function __toString() : string {
         $pages = $this->getNumberOfPages();
         if ($pages > 1) {
             $page = $this->page;

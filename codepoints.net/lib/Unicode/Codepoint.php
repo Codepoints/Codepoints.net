@@ -36,11 +36,15 @@ class Codepoint {
 
     /**
      * the previous code point or false for U+0000
+     *
+     * @var self|bool|null
      */
     private $prev = null;
 
     /**
      * the next code point or false for U+10FFFF
+     *
+     * @var self|bool|null
      */
     private $next = null;
 
@@ -112,8 +116,9 @@ class Codepoint {
      * info source
      *
      * @see self::addInfoProvider
+     * @return mixed
      */
-    public function getInfo(string $name, ...$args) {
+    public function getInfo(string $name, Array ...$args) {
         if (! array_key_exists($name, $this->info_cache)) {
             if (! array_key_exists($name, static::$info_providers)) {
                 return null;
@@ -125,6 +130,8 @@ class Codepoint {
 
     /**
      * get the previous codepoint
+     *
+     * @return self|bool
      */
     private function getPrev() /*: self|false */ {
         if ($this->prev === null) {
@@ -142,6 +149,8 @@ class Codepoint {
 
     /**
      * get the next codepoint
+     *
+     * @return self|bool
      */
     private function getNext() /*: self|false */ {
         if ($this->next === null) {
