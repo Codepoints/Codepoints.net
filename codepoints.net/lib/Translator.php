@@ -48,9 +48,10 @@ class Translator {
                 FILTER_SANITIZE_STRING,
                 FILTER_FLAG_STRIP_LOW & FILTER_FLAG_STRIP_HIGH & FILTER_FLAG_STRIP_BACKTICK
             );
+            $persist = false;
             if (isset($_GET['lang']) && ctype_alpha($_GET['lang'])) {
                 $lang = $_GET['lang'];
-                setcookie('language', (string)$this->language, time()+60*60*24*365, '/');
+                $persist = true;
             } elseif (isset($_COOKIE['lang']) && ctype_alpha($_COOKIE['lang'])) {
                 $lang = $_COOKIE['lang'];
             }
@@ -60,6 +61,9 @@ class Translator {
             $this->language = $this->supportedLanguages[0];
             if ($bestLanguage && in_array($bestLanguage->getType(), $this->supportedLanguages)) {
                 $this->language = $bestLanguage->getType();
+            }
+            if ($persist) {
+                setcookie('lang', (string)$this->language, time()+60*60*24*365, '/');
             }
         }
 
