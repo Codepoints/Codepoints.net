@@ -39,7 +39,7 @@ class Pagination {
     }
 
     public function getNumberOfPages() {
-        return intval(ceil($this->range->count(true) / $this->pagesize));
+        return intval(ceil(($this->range->last - $this->range->first + 1) / $this->pagesize));
     }
 
     public function __toString() {

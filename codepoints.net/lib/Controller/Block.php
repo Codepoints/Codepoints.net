@@ -16,6 +16,29 @@ class Block extends Controller {
         if (! $page) {
             $page = 1;
         }
+
+        /* put correct language first: https://stackoverflow.com/a/27694067/113195 */
+        $abstract = $env['db']->getOne('
+            SELECT lang, abstract, src
+                FROM block_abstract
+            WHERE first = ?
+                AND (lang = ? OR lang = "en")
+            ORDER BY lang = ? DESC
+            LIMIT 1', $block->first, $env['lang'], $env['lang']);
+
+        $age = $env['db']->getOne('
+            SELECT age
+                FROM codepoint_props
+            WHERE cp >= ?
+                AND cp <= ?
+            ORDER BY CAST(age AS FLOAT) DESC
+            LIMIT 1');
+        if ($age) {
+            $age = $age['age'];
+        } else {
+            $age = '1.0';
+        }
+
         $this->context += [
             'title' => $block->name,
             'page_description' => sprintf(
@@ -25,6 +48,8 @@ class Block extends Controller {
             'prev' => $block->prev,
             'next' => $block->next,
             'pagination' => new Pagination($block, $page),
+            'abstract' => $abstract,
+            'age' => $age,
         ];
         return parent::__invoke($matches, $env);
     }

@@ -32,6 +32,11 @@ class Range implements \Iterator {
     private int $current;
 
     /**
+     * the number of read code points in this range
+     */
+    private ?int $count = null;
+
+    /**
      * construct a new Unicode range
      *
      * The set may be an empty range and can be filled later.
@@ -74,10 +79,13 @@ class Range implements \Iterator {
      *     $range->last - $range->first + 1
      */
     public function count() : int {
-        $data = $this->db->getOne('SELECT COUNT(*) c
-            FROM codepoints
-            WHERE cp >= ? AND cp <= ?', $this->first, $this->last);
-        return $data['c'];
+        if (is_null($this->count)) {
+            $data = $this->db->getOne('SELECT COUNT(*) c
+                FROM codepoints
+                WHERE cp >= ? AND cp <= ?', $this->first, $this->last);
+            $this->count = $data['c'];
+        }
+        return $this->count;
     }
 
     public function rewind() : void {
@@ -125,8 +133,8 @@ class Range implements \Iterator {
             return new self(['first' => 0x110000, 'last' => 0x110000], $this->db);
         }
         $new_last = $this->last;
-        if ($length && $new_first + $length <= $this->last) {
-            $new_last = $new_first + $length;
+        if ($length && $new_first + $length - 1 <= $this->last) {
+            $new_last = $new_first + $length - 1;
         }
         return new self(['first' => $new_first, 'last' => $new_last], $this->db);
     }
