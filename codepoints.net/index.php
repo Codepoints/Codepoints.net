@@ -13,6 +13,9 @@ require 'vendor/autoload.php';
 
 define('DEBUG', 1);
 
+/**
+ * configure the logger
+ */
 Analog::$format = '[%2$s] [codepoints:%3$s] %4$s'."\n";
 Analog::$default_level = Analog::DEBUG;
 Analog::handler(Threshold::init(
@@ -35,6 +38,9 @@ header('Strict-Transport-Security: max-age=16070400; includeSubDomains; preload'
 header('X-Xss-Protection: 1; mode=block');
 header('X-Content-Type-Options: nosniff');
 
+/**
+ * get the database connection ready
+ */
 $dbconfig = parse_ini_file(dirname(__DIR__).'/db.conf', true);
 Router::addDependency('db', new Database(
     'mysql:host=localhost;dbname='.$dbconfig['client']['database'],
@@ -49,10 +55,20 @@ Router::addDependency('db', new Database(
     ]));
 unset($dbconfig);
 
+/**
+ * start the translation engine
+ */
 $translator = new Translator();
+Router::addDependency('lang', $translator->getLanguage());
 
+/**
+ * load the routes
+ */
 require_once 'router.php';
 
+/**
+ * run this thing!
+ */
 try {
 $content = Router::serve(
     preg_replace('/\?.*/', '',
