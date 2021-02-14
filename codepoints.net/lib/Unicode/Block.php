@@ -2,6 +2,7 @@
 
 namespace Codepoints\Unicode;
 
+use \Analog\Analog;
 use \Codepoints\Database;
 use \Codepoints\Unicode\Codepoint;
 use \Codepoints\Unicode\Range;
@@ -118,6 +119,10 @@ class Block extends Range {
             SELECT name, first, last FROM blocks
              WHERE first <= ? AND last >= ?
              LIMIT 1', $codepoint->id, $codepoint->id);
+        if (! $data) {
+            Analog::warning(sprintf('found no block for code point U+%04X', $codepoint->id));
+            throw new \Exception('no block found');
+        }
         return self::getCached($data, $db);
     }
 
