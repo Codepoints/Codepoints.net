@@ -152,5 +152,5 @@ function url(/*mixed*/ $item) : string {
         }
         return $base;
     }
-    return urlencode($item);
+    return str_replace('%2F', '/', urlencode($item));
 }
