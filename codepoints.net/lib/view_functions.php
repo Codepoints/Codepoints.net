@@ -50,6 +50,13 @@ function cp(Codepoint $codepoint, string $rel='', string $class='') : string {
  * can switch back to good ol' <img> again.
  */
 function cpimg(Codepoint $codepoint, int $width=16) : string {
+    $alt = sprintf(__('Glyph for %s'), $codepoint);
+    if ($codepoint->gc === 'Co') {
+        return sprintf(
+            '<img src="%s" width="%s" height="%s" alt="%s">',
+            q(url('/static/images/icon.svg')),
+            $width, $width, $alt);
+    }
     $hex = sprintf('%04X', $codepoint->id);
     $url = sprintf('image/%s.svg#U%s', preg_replace('/[0-9A-F]{2}$/', '00', $hex), $hex);
     $circle = '';
@@ -57,7 +64,8 @@ function cpimg(Codepoint $codepoint, int $width=16) : string {
         $circle = '<use xlink:href="image/2500.svg#U25CC" fill-opacity="0.5"/>';
     }
     return sprintf('<svg width="%s" height="%s">'.
-        '%s<use xlink:href="%s"/></svg>', $width, $width, $circle, $url);
+        '<title>%s</title>'.
+        '%s<use xlink:href="%s"/></svg>', $width, $width, $alt, $circle, $url);
 }
 
 /**

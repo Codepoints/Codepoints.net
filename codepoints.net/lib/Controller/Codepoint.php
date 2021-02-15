@@ -11,7 +11,15 @@ class Codepoint extends Controller {
 
     public function __invoke($match, array $env) : string {
         $cp = hexdec($match[1]);
-        $data = $env['db']->getOne('SELECT cp, name, gc FROM codepoints WHERE cp = ?', $cp);
+        if (is_pua($cp)) {
+            $data = [
+                'cp' => $cp,
+                'name' => 'PRIVATE USE CHARACTER',
+                'gc' => 'Co',
+            ];
+        } else {
+            $data = $env['db']->getOne('SELECT cp, name, gc FROM codepoints WHERE cp = ?', $cp);
+        }
         if (! $data) {
             throw new NotFoundException('no character found');
         }
