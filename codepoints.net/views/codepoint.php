@@ -4,7 +4,9 @@
     <?=cpimg($codepoint, 250)?>
   </figure>
   <h1><?=q($codepoint)?> <?=q($codepoint->name)?></h1>
-Block: <?=bl($block)?><br>
+<?php if ($block): ?>
+  Block: <?=bl($block)?><br>
+<?php endif ?>
 Plane: <?=pl($plane)?><br>
 <?php if ($prev): ?>
 Prev: <?=cp($prev)?><br>

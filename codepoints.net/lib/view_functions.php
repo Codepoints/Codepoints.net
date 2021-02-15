@@ -149,18 +149,19 @@ function plimg(Plane $plane, int $width=16) : string {
  * @param mixed $item
  */
 function url(/*mixed*/ $item) : string {
+    $path = '/';
     if ($item instanceof Codepoint) {
-        return sprintf('U+%04X', $item->id);
+        return $path.sprintf('U+%04X', $item->id);
     }
     if ($item instanceof Block) {
-        return str_replace(' ', '_', strtolower($item->name));
+        return $path.str_replace(' ', '_', strtolower($item->name));
     }
     if ($item instanceof Plane) {
         $base = str_replace(' ', '_', strtolower($item->name));
         if (substr($base, 0, 6) !== 'plane_' && substr($base, -6) !== '_plane') {
             $base .= '_plane';
         }
-        return $base;
+        return $path.$base;
     }
-    return str_replace('%2F', '/', urlencode($item));
+    return $path.ltrim(str_replace('%2F', '/', urlencode($item)), '/');
 }
