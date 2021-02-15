@@ -18,6 +18,9 @@ class View {
         }
     }
 
+    /**
+     * @psalm-suppress UnresolvableInclude
+     */
     public function __invoke(Array $params=[], Array $env=[]) : string {
         extract($params, EXTR_PREFIX_INVALID, 'v');
         $view = $this->view;
