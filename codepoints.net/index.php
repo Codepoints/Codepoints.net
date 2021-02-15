@@ -4,6 +4,7 @@ use \Analog\Analog;
 use \Analog\Handler\LevelName;
 use \Analog\Handler\Stderr;
 use \Analog\Handler\Threshold;
+use \Codepoints\Controller\NotFound;
 use \Codepoints\Database;
 use \Codepoints\Router;
 use \Codepoints\Router\NotFoundException;
@@ -69,19 +70,18 @@ require_once 'router.php';
 /**
  * run this thing!
  */
-try {
-$content = Router::serve(
-    preg_replace('/\?.*/', '',
-        substr(
+$url = preg_replace('/\?.*/', '', substr(
             $_SERVER['REQUEST_URI'],
-            strlen(rtrim(dirname($_SERVER['PHP_SELF']), '/').'/'))));
+            strlen(rtrim(dirname($_SERVER['PHP_SELF']), '/').'/')));
+try {
+    $content = Router::serve($url);
 } catch (NotFoundException $e) {
-    $content = $e->getMessage();
+    $content = null;
 }
 
 if ($content) {
     echo $content;
 } else {
     http_response_code(404);
-    echo "404";
+    echo (new NotFound())($url, Router::getDependencies());
 }

@@ -36,8 +36,17 @@ class Router {
      *
      * @param mixed $dependency
      */
-    public static function addDependency( string $name, /*mixed*/ $dependency) : void {
+    public static function addDependency(string $name, /*mixed*/ $dependency) : void {
         static::$env[$name] = $dependency;
+    }
+
+    /**
+     * access the dependencies
+     *
+     * Necessary for 404 error handling.
+     */
+    public static function getDependencies() : array {
+        return static::$env;
     }
 
     public static function serve(string $current_url) : ?string {
@@ -51,7 +60,7 @@ class Router {
             } elseif (is_callable($url)) {
                 $match = $url($current_url, static::$env);
             } elseif (is_array($url)) {
-                if (in_array($current_url, $url)) {
+                if (in_array($current_url, $url, true)) {
                     $match = $current_url;
                 }
             } elseif ($current_url === $url) {
