@@ -13,5 +13,14 @@
     <link rel="manifest" href="/manifest.webmanifest">
     <link rel="search" href="/opensearch.xml" type="application/opensearchdescription+xml" title="Search Codepoints">
     <link rel="author" href="/humans.txt">
+<?php switch($view):
+case ('codepoint'):
+    include 'codepoints-head.php';
+    break;
+endswitch ?>
   </head>
   <body>
+    <header class="page-header">
+      <nav class="page-nav">
+      </nav>
+    </header>
