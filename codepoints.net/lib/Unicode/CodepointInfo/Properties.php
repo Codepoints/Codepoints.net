@@ -52,17 +52,65 @@ class Properties extends CodepointInfo {
             ORDER BY `order`', $codepoint->id);
         if ($data) {
             foreach ($data as $v) {
+                $rel = $v['relation'];
                 if ($v['order'] == 0) {
-                    $properties[$v['relation']] = new Codepoint($v, $this->db);
+                    $properties[$rel] = new Codepoint($v, $this->db);
                 } else {
-                    if (! array_key_exists($v['relation'], $properties)) {
-                        $properties[$v['relation']] = [];
+                    if (array_key_exists($rel, $properties) && ! is_array($properties[$rel])) {
+                        throw new \Exception('double property '.$rel);
                     }
-                    $properties[$v['relation']][$v['order'] - 1] = new Codepoint($v, $this->db);
+                    if (! array_key_exists($rel, $properties)) {
+                        $properties[$rel] = [];
+                    }
+                    $properties[$rel][$v['order'] - 1] = new Codepoint($v, $this->db);
                 }
             }
         }
 
+        return $this->sortProperties($properties);
+    }
+
+    /**
+     * sort by "important first", then literal (except k*), then the k*
+     * properties.
+     */
+    private function sortProperties(Array $properties) : Array {
+        uksort($properties, function(string $a, string $b) : int {
+            $n = strcasecmp($a, $b);
+            if ($n === 0) {
+                return 0;
+            }
+            $r = ['age', 'na', 'na1', 'blk', 'gc', 'sc', 'bc', 'ccc',
+                'dt', 'dm', 'Lower', 'slc', 'lc', 'Upper', 'suc', 'uc',
+                'stc', 'tc', 'cf'];
+            $r2 = [];
+            for ($i = 0, $c = count($r); $i < $c; $i++) {
+                if ($a === $r[$i]) {
+                    if (in_array($b, $r2)) {
+                        return 1;
+                    } else {
+                        return -1;
+                    }
+                } elseif ($b === $r[$i]) {
+                    if (in_array($a, $r2)) {
+                        return -1;
+                    } else {
+                        return 1;
+                    }
+                } elseif ($a[0] === 'k' && $b[0] === 'k') {
+                    if ($a[1] === 'I' && $b[1] !== 'I') {
+                        return -1;
+                    } elseif ($a[1] !== 'I' && $b[1] === 'I') {
+                        return 1;
+                    } else {
+                        return strcasecmp($a, $b);
+                    }
+                } else {
+                    $r2[] = $r[$i];
+                }
+            }
+            return strcasecmp($a, $b);
+        });
         return $properties;
     }
 

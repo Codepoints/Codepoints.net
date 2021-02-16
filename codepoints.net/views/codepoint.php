@@ -29,5 +29,59 @@
 <?php if ($next): ?>
   Next: <?=cp($next)?><br>
 <?php endif ?>
+<table class="props">
+  <thead>
+    <tr>
+      <th><?=_q('Property')?></th>
+      <th><?=_q('Value')?></th>
+    </tr>
+  </thead>
+  <tbody>
+<?php
+
+    $bools = array( 'Bidi_M', 'Bidi_C', 'CE', 'Comp_Ex', 'XO_NFC',
+    'XO_NFD', 'XO_NFKC', 'XO_NFKD', 'Join_C', 'Upper', 'Lower', 'OUpper',
+    'OLower', 'CI', 'Cased', 'CWCF', 'CWCM', 'CWL', 'CWKCF', 'CWT', 'CWU',
+    'IDS', 'OIDS', 'XIDS', 'IDC', 'OIDC', 'XIDC', 'Pat_Syn', 'Pat_WS', 'Dash',
+    'Hyphen', 'QMark', 'Term', 'STerm', 'Dia', 'Ext', 'SD', 'Alpha', 'OAlpha',
+    'Math', 'OMath', 'Hex', 'AHex', 'DI', 'ODI', 'LOE', 'WSpace', 'Gr_Base',
+    'Gr_Ext', 'OGr_Ext', 'Gr_Link', 'Ideo', 'UIdeo', 'IDSB', 'IDST',
+    'Radical', 'Dep', 'VS', 'NChar');
+foreach ($codepoint->getInfo('properties') as $k => $v):
+        if (! in_array($k, array('cp', 'image', 'abstract')) && ! ($k[0] === 'k' && ! $v)):?>
+      <tr>
+        <th><?=q($k)?> <small>(<?=q($k)?>)</small></th>
+        <td>
+        <?php if ($v === '' || $v === null):?>
+          <span class="x">—</span>
+        <?php elseif (in_array($k, $bools)):?>
+          <span class="<?=($v)?'y':'n'?>"><?=($v)?'✔':'✘'?></span>
+        <?php elseif ($v instanceof \Codepoints\Unicode\Codepoint):?>
+          <?=cp($v)?>
+        <?php elseif (is_array($v)):?>
+            <?php foreach ($v as $_cp): ?>
+                <?=cp($_cp)?>
+            <?php endforeach ?>
+        <?php elseif ($k === 'scx'):
+        foreach(explode(' ', $v) as $sc):?>
+            <a rel="nofollow" href="<?=q(url('search?sc='.$v))?>"><?=q($sc)?></a>
+        <?php endforeach;
+        elseif (in_array($k, array('kCompatibilityVariant', 'kDefinition',
+            'kSemanticVariant', 'kSimplifiedVariant',
+            'kSpecializedSemanticVariant', 'kTraditionalVariant', 'kZVariant'))):
+          echo preg_replace_callback('/U\+([0-9A-F]{4,6})/', function(array $m) use ($codepoint) : string {
+            if (hexdec($m[1]) === $codepoint->id) {
+                return cp($codepoint);
+            }
+            return 'TODO'; #cp(Codepoint::getCP(hexdec($m[1]), $db), '', 'min');
+          }, $v);
+        else:
+          echo q($v);
+        endif?>
+        </td>
+      </tr>
+    <?php endif; endforeach?>
+  </tbody>
+</table>
 </main>
 <?php include 'partials/footer.php'; ?>
