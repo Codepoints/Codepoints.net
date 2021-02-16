@@ -12,8 +12,8 @@
     },
     "autoload": {
         "files": [
-          "codepoints.net/lib/unicode_functions.php",
-          "codepoints.net/lib/view_functions.php"
+            "codepoints.net/lib/unicode_functions.php",
+            "codepoints.net/lib/view_functions.php"
         ],
         "psr-4": {
             "Codepoints\\": "codepoints.net/lib/"
