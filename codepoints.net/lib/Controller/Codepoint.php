@@ -55,6 +55,7 @@ class Codepoint extends Controller {
             'next' => $codepoint->next,
             'block' => $block,
             'plane' => $plane,
+            'abstract' => $codepoint->getInfo('wikipedia'),
         ];
         return parent::__invoke($match, $env);
     }

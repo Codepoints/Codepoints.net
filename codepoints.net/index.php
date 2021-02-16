@@ -65,6 +65,10 @@ Router::addDependency('lang', $lang = $translator->getLanguage());
 
 use \Codepoints\Unicode\CodepointInfo\Image;
 new Image($db, $lang);
+use \Codepoints\Unicode\CodepointInfo\Wikipedia;
+new Wikipedia($db, $lang);
+use \Codepoints\Unicode\CodepointInfo\Properties;
+new Properties($db, $lang);
 
 
 /**
