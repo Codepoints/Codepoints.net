@@ -4,7 +4,7 @@ namespace Codepoints;
 
 use \Analog\Analog;
 use \Gettext\Loader\MoLoader;
-use \Gettext\GettextTranslator;
+use \Gettext\Translations;
 use \Negotiation\LanguageNegotiator;
 
 class Translator {
@@ -13,14 +13,16 @@ class Translator {
 
     private array $supportedLanguages = ['en', 'de', 'pl'];
 
-    private ?\Gettext\GettextTranslator $translator = null;
+    private ?Translations $translations = null;
 
     public function __construct() {
         $this->getLanguage();
         if ($this->language) {
-            $this->translator = new GettextTranslator();
-            $this->translator->setLanguage($this->language);
-            $this->translator->loadDomain('messages', dirname(__DIR__).'/locale');
+            $mofile = dirname(__DIR__).'/locale/'.$this->language.'/LC_MESSAGES/messages.mo';
+            if (is_file($mofile)) {
+                $loader = new MoLoader();
+                $this->translations = $loader->loadFile($mofile);
+            }
         }
     }
 
@@ -28,11 +30,15 @@ class Translator {
      * @param array $args
      */
     public function translate(string $original, ...$args) : string {
-        if (! $this->translator) {
+        if (! $this->translations) {
             return $original;
         }
 
-        $text = $this->translator->gettext($original);
+        $text = $this->translations->find(null, $original);
+        if (! $text) {
+            return $original;
+        }
+        $text = $text->getTranslation();
 
         if (empty($args)) {
             return $text;

@@ -8,7 +8,7 @@
         "michelf/php-markdown": "~1.5",
         "analog/analog": "^1.0",
         "willdurand/negotiation": "^3.0",
-        "gettext/translator": "^1.0"
+        "gettext/gettext": "^5.5"
     },
     "autoload": {
         "files": [
