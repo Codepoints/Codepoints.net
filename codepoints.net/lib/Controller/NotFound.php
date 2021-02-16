@@ -16,6 +16,7 @@ class NotFound extends Controller {
         $codepoint = null;
         $block = null;
         $plane = null;
+        $cps = [];
 
         if (preg_match('/^U\+([0-9A-Fa-f]+)$/', $match, $match2)) {
             $cp = hexdec($match2[1]);
@@ -32,6 +33,16 @@ class NotFound extends Controller {
             try {
                 $plane = $codepoint->plane;
             } catch (Exception $e) {}
+        } elseif (strlen($match) < 128) {
+            $data = $env['db']->getAll('SELECT cp, name, gc FROM codepoints
+                WHERE cp IN ( '.
+                join(',', array_map(function($c) { return mb_ord($c); },
+                    preg_split('//u', rawurldecode($match), -1, PREG_SPLIT_NO_EMPTY))).')');
+            if ($data) {
+                foreach ($data as $set) {
+                    $cps[] = new Codepoint($set, $env['db']);
+                }
+            }
         }
 
         $this->context += [
@@ -42,6 +53,7 @@ class NotFound extends Controller {
             'next' => $codepoint? $codepoint->next : null,
             'block' => $block,
             'plane' => $plane,
+            'cps' => $cps,
         ];
         $view = $codepoint? 'codepoint' : '404';
         return (new View($view))($this->context, $env);
