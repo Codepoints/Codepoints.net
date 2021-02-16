@@ -43,7 +43,7 @@ header('X-Content-Type-Options: nosniff');
  * get the database connection ready
  */
 $dbconfig = parse_ini_file(dirname(__DIR__).'/db.conf', true);
-Router::addDependency('db', new Database(
+Router::addDependency('db', $db = new Database(
     'mysql:host=localhost;dbname='.$dbconfig['client']['database'],
     $dbconfig['client']['user'],
     $dbconfig['client']['password'],
@@ -61,6 +61,11 @@ unset($dbconfig);
  */
 $translator = new Translator();
 Router::addDependency('lang', $translator->getLanguage());
+
+
+use \Codepoints\Unicode\CodepointInfo\Image;
+new Image($db);
+
 
 /**
  * load the routes
