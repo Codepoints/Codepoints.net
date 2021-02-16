@@ -18,7 +18,10 @@ class Database extends \PDO {
         return parent::prepare($query, $params);
     }
 
-    public function query(string $query) : \PDOStatement {
+    /**
+     * @param mixed $fetchModeArgs
+     */
+    public function query(string $query, ?int $fetchMode = null, ...$fetchModeArgs) : \PDOStatement {
         $this->__log($query);
         return parent::query(...func_get_args());
     }

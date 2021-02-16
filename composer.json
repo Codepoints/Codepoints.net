@@ -1,6 +1,7 @@
 {
     "name": "codepoints/codepoints.net",
     "description": "A visual guide to the wonders of Unicode",
+    "license": "proprietary",
     "config": {
         "vendor-dir": "codepoints.net/vendor"
     },
