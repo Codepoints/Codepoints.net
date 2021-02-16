@@ -55,7 +55,7 @@ class Block extends Range {
         case 'next':
             return $this->getNext();
         case 'plane':
-            return Plane::getByBlock($this, $this->db);
+            return Plane::getByCodePoint($this->first, $this->db);
         default:
             return parent::__get($name);
         }
@@ -114,14 +114,13 @@ class Block extends Range {
     /**
      * static function: get the Block for a given code point
      */
-    public static function getByCodepoint(Codepoint $codepoint, Database $db) : self {
+    public static function getByCodePoint(int $id, Database $db) : self {
         $data = $db->getOne('
             SELECT name, first, last FROM blocks
              WHERE first <= ? AND last >= ?
-             LIMIT 1', $codepoint->id, $codepoint->id);
+             LIMIT 1', $id, $id);
         if (! $data) {
-            Analog::warning(sprintf('found no block for code point U+%04X', $codepoint->id));
-            throw new \Exception('no block contains this code point: '.$codepoint->id);
+            throw new \Exception('no block contains this code point: '.$id);
         }
         return self::getCached($data, $db);
     }

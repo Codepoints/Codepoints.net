@@ -120,15 +120,15 @@ class Plane {
     }
 
     /**
-     * get plane of a specific codepoint
+     * get plane of a specific code point
      */
-    public static function getByBlock(Block $block, Database $db) : self {
+    public static function getByCodePoint(int $cp, Database $db) : self {
         $data = $db->getOne('
             SELECT name, first, last FROM planes
              WHERE first <= ? AND last >= ?
-             LIMIT 1', $block->first, $block->last);
+             LIMIT 1', $cp, $cp);
         if (! $data) {
-            throw new \Exception('No plane contains this block: ' . $block);
+            throw new \Exception('No plane contains this code point: ' . $cp);
         }
         return new self($data, $db);
     }

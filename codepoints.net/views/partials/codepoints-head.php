@@ -1,4 +1,6 @@
-<link rel="up" href="<?=q(url($block))?>">
+<?php if ($block): ?>
+  <link rel="up" href="<?=q(url($block))?>">
+<?php endif ?>
 <?php if ($prev): ?>
   <link rel="prev" href="<?=q(url($prev))?>">
 <?php endif ?>
@@ -28,16 +30,20 @@
     "@type": "BreadcrumbList",
     "itemListElement": [
         {
-            "@type": "ListItem", "position":1,"item":{"@id":"https://codepoints.net/planes","name":"Unicode"}
+            "@type": "ListItem", "position": 1, "item": {"@id":"https://codepoints.net/planes","name":"Unicode"}
         },
+<?php if ($plane): ?>
         {
-            "@type":"ListItem","position":2,"item":{"@id":"<?=q(url($plane))?>","name":"<?=q($plane->name)?>"}
+            "@type": "ListItem", "position": 2, "item": {"@id":"<?=q(url($plane))?>","name":"<?=q($plane->name)?>"}
         },
+<?php endif ?>
+<?php if ($block): ?>
         {
-            "@type":"ListItem","position":3,"item":{"@id":"<?=q(url($block))?>","name":"<?=q($block->name)?>"}
+            "@type": "ListItem", "position": 3, "item": {"@id":"<?=q(url($block))?>","name":"<?=q($block->name)?>"}
         },
+<?php endif ?>
         {
-            "@type":"ListItem","position":4,"item":{"@id":"<?=q(url($codepoint))?>","name":"<?=q($title)?>"}
+            "@type": "ListItem", "position": 4, "item": {"@id":"<?=q(url($codepoint))?>","name":"<?=q($title)?>"}
         }
     ]
 }</script>

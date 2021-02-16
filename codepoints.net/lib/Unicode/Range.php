@@ -122,8 +122,8 @@ class Range implements \Iterator {
                  * window is fixed to probable block boundaries. E.g., for
                  * U+1A2B we fetch U+1A00..U+1AFF. If this range has less
                  * than 256 characters, the window will be shorter, too. */
-                $first = max($first, $codepoint - ($codepoint % 0xFF));
-                $last = min($last, $codepoint - ($codepoint % 0xFF) + 0xFF);
+                $first = max($first, $codepoint - ($codepoint % 0x100));
+                $last = min($last, $codepoint - ($codepoint % 0x100) + 0xFF);
             }
 
             $items = $this->db->getAll('SELECT cp, name, gc

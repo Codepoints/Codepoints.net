@@ -23,14 +23,14 @@ class NotFound extends Controller {
             $page_description = sprintf(__('The point U+%04X is no valid Unicode codepoint.'), $cp);
             $codepoint = new Codepoint([
                 'cp' => $cp,
-                'name' => $cp <= 0x10FFFF? '<reserved>' : '',
+                'name' => $cp <= 0x10FFFF? '<reserved>' : 'CECI N’EST PAS UNICODE',
                 'gc' => $cp <= 0x10FFFF? 'Cn' : 'Xx'],
                 $env['db']);
             try {
                 $block = $codepoint->block;
-                try {
-                    $plane = $codepoint->block->plane;
-                } catch (Exception $e) {}
+            } catch (Exception $e) {}
+            try {
+                $plane = $codepoint->plane;
             } catch (Exception $e) {}
         }
 
@@ -43,7 +43,8 @@ class NotFound extends Controller {
             'block' => $block,
             'plane' => $plane,
         ];
-        return (new View('404'))($this->context, $env);
+        $view = $codepoint? 'codepoint' : '404';
+        return (new View($view))($this->context, $env);
     }
 
 }

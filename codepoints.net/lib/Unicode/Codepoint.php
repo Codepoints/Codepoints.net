@@ -83,7 +83,9 @@ class Codepoint {
         case 'next':
             return $this->getNext();
         case 'block':
-            return Block::getByCodepoint($this, $this->db);
+            return Block::getByCodePoint($this->id, $this->db);
+        case 'plane':
+            return Plane::getByCodePoint($this->id, $this->db);
         }
     }
 
@@ -116,9 +118,10 @@ class Codepoint {
      * info source
      *
      * @see self::addInfoProvider
+     * @param mixed $args
      * @return mixed
      */
-    public function getInfo(string $name, Array ...$args) {
+    public function getInfo(string $name, ...$args) {
         if (! array_key_exists($name, $this->info_cache)) {
             if (! array_key_exists($name, static::$info_providers)) {
                 return null;
