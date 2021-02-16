@@ -60,11 +60,11 @@ unset($dbconfig);
  * start the translation engine
  */
 $translator = new Translator();
-Router::addDependency('lang', $translator->getLanguage());
+Router::addDependency('lang', $lang = $translator->getLanguage());
 
 
 use \Codepoints\Unicode\CodepointInfo\Image;
-new Image($db);
+new Image($db, $lang);
 
 
 /**
