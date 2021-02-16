@@ -3,7 +3,7 @@
   <figure>
     <?=cpimg($codepoint, 250)?>
   </figure>
-  <h1><?=q($codepoint)?> <?=q($codepoint->name)?></h1>
+  <h1><?=q($title)?></h1>
 <?php if ($codepoint->gc === 'Xx'): ?>
   <p><?=_q('This codepoint doesn’t exist.')?>
   If it would, it’d be located in the

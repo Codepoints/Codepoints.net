@@ -6,11 +6,19 @@
     xmlns="https://getpsalm.org/schema/config"
     xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
 >
-    <projectFiles>
-        <directory name="codepoints.net" />
-        <ignoreFiles>
-            <directory name="codepoints.net/vendor" />
-            <directory name="codepoints.net/views" />
-        </ignoreFiles>
-    </projectFiles>
+  <projectFiles>
+    <directory name="codepoints.net" />
+    <ignoreFiles>
+      <directory name="codepoints.net/vendor" />
+    </ignoreFiles>
+  </projectFiles>
+
+  <issueHandlers>
+    <MoreSpecificImplementedParamType errorLevel="suppress" />
+    <UndefinedGlobalVariable>
+      <errorLevel type="suppress">
+        <directory name="codepoints.net/views" />
+      </errorLevel>
+    </UndefinedGlobalVariable>
+  </issueHandlers>
 </psalm>

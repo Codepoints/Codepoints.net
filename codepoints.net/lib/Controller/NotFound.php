@@ -36,7 +36,7 @@ class NotFound extends Controller {
         } elseif (strlen($match) < 128) {
             $data = $env['db']->getAll('SELECT cp, name, gc FROM codepoints
                 WHERE cp IN ( '.
-                join(',', array_map(function($c) { return mb_ord($c); },
+                join(',', array_map(function(string $c) : int { return mb_ord($c); },
                     preg_split('//u', rawurldecode($match), -1, PREG_SPLIT_NO_EMPTY))).')');
             if ($data) {
                 foreach ($data as $set) {

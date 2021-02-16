@@ -8,9 +8,9 @@ use Codepoints\Unicode\Plane;
 /**
  * translate a string, the quick way
  */
-function __(string $original, Array ...$args): string {
+function __(string $original): string {
     global $translator;
-    return $translator->translate($original, ...$args);
+    return $translator->translate($original);
 }
 
 /**

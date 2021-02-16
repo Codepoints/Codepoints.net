@@ -26,10 +26,7 @@ class Translator {
         }
     }
 
-    /**
-     * @param array $args
-     */
-    public function translate(string $original, ...$args) : string {
+    public function translate(string $original) : string {
         if (! $this->translations) {
             return $original;
         }
@@ -39,11 +36,10 @@ class Translator {
             return $original;
         }
         $text = $text->getTranslation();
-
-        if (empty($args)) {
-            return $text;
+        if (! $text) {
+            return $original;
         }
-        return is_array($args[0]) ? strtr($text, $args[0]) : vsprintf($text, $args);
+        return $text;
     }
 
     public function getLanguage() : string {
@@ -65,7 +61,13 @@ class Translator {
             $bestLanguage = $negotiator->getBest($lang, $this->supportedLanguages);
 
             $this->language = $this->supportedLanguages[0];
+            /**
+             * @psalm-suppress UndefinedInterfaceMethod
+             */
             if ($bestLanguage && in_array($bestLanguage->getType(), $this->supportedLanguages)) {
+                /**
+                 * @psalm-suppress UndefinedInterfaceMethod
+                 */
                 $this->language = $bestLanguage->getType();
             }
             if ($persist) {
