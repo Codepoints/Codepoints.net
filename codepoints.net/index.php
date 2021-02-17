@@ -8,7 +8,9 @@ use \Codepoints\Controller\NotFound;
 use \Codepoints\Database;
 use \Codepoints\Router;
 use \Codepoints\Router\NotFoundException;
+use \Codepoints\Router\Redirect;
 use \Codepoints\Translator;
+use Codepoints\Unicode\CodepointInfo\Image;
 
 require 'vendor/autoload.php';
 
@@ -62,6 +64,10 @@ unset($dbconfig);
 $translator = new Translator();
 Router::addDependency('lang', $lang = $translator->getLanguage());
 
+/**
+ * make sure, we can access codepoint images
+ */
+new Image($db, $lang);
 
 /**
  * load the routes
@@ -78,6 +84,18 @@ try {
     $content = Router::serve($url);
 } catch (NotFoundException $e) {
     $content = null;
+} catch (Redirect $redirect) {
+    $code = 303;
+    if (is_int($redirect->getCode()) && $redirect->getCode() >= 300 && $redirect->getCode() <= 399) {
+        $code = $redirect->getCode();
+    }
+    $location = '/';
+    if ($redirect->getMessage()) {
+        $location = $redirect->getMessage();
+    }
+    http_response_code($code);
+    header(sprintf('Location: %s', $location));
+    exit();
 }
 
 if ($content) {

@@ -10,6 +10,7 @@
        $age,
        ''/*$info->getYearForAge($block->getVersion())*/,
       '<strong>'.$block->count().'</strong>')?></p>
+
 <?php if ($abstract): ?>
   <p><?php printf(__('The %sWikipedia%s provides the following information on block %s:'), '<a href="'.$abstract['src'].'">', '</a>', $block->name)?></p>
   <blockquote cite="<?=q($abstract['src'])?>">

@@ -16,7 +16,6 @@ use Exception;
 class Codepoint extends Controller {
 
     public function __invoke($match, Array $env) : string {
-        new Image($env['db'], $env['lang']);
         new Wikipedia($env['db'], $env['lang']);
         new Properties($env['db'], $env['lang']);
         new Extra($env['db'], $env['lang']);
@@ -66,8 +65,9 @@ class Codepoint extends Controller {
             'next' => $codepoint->next,
             'block' => $block,
             'plane' => $plane,
-            'abstract' => $codepoint->getInfo('wikipedia'),
+            'wikipedia' => $codepoint->getInfo('wikipedia'),
             'extra' => $codepoint->getInfo('extra'),
+            'othersites' => $codepoint->getInfo('othersites'),
         ];
         return parent::__invoke($match, $env);
     }

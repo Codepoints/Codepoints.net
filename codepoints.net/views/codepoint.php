@@ -13,29 +13,31 @@
 <?php endif ?>
 
 <?php if ($extra): ?>
-  <?=$extra?>
+  <section class="cpdesc cpdesc--extra">
+    <?=$extra?>
+  </section>
 <?php endif ?>
 
-<?php if ($abstract): ?>
-  <p><?php printf(__('The %sWikipedia%s has the following information about this codepoint:'), '<a href="'.q($abstract['src']).'">', '</a>')?></p>
-  <blockquote>
-    <?php echo strip_tags($abstract['abstract'], '<p><b><strong class="selflink"><strong><em><i><var><sup><sub><tt><ul><ol><li><samp><small><hr><h2><h3><h4><h5><dfn><dl><dd><dt><u><abbr><big><blockquote><br><center><del><ins><kbd>')?>
-  </blockquote>
+<?php if ($wikipedia): ?>
+  <section class="cpdesc cpdesc--wikipedia">
+    <p><?php printf(__('The %sWikipedia%s has the following information about this codepoint:'), '<a href="'.q($wikipedia['src']).'">', '</a>')?></p>
+    <blockquote>
+      <?php echo strip_tags($wikipedia['abstract'], '<p><b><strong class="selflink"><strong><em><i><var><sup><sub><tt><ul><ol><li><samp><small><hr><h2><h3><h4><h5><dfn><dl><dd><dt><u><abbr><big><blockquote><br><center><del><ins><kbd>')?>
+    </blockquote>
+  </section>
 <?php endif ?>
 
-<?php if ($block): ?>
-  Block: <?=bl($block)?><br>
+<?php if ($othersites): ?>
+  <section class="cpdesc cpdesc--othersites">
+    <h2><?=_q('Elsewhere')?></h2>
+    <ul>
+      <?php foreach ($othersites as $label => $url): ?>
+        <li><a href="<?=q($url)?>"><?=q($label)?></a></li>
+      <?php endforeach ?>
+    </ul>
+  </section>
 <?php endif ?>
-<?php if ($plane): ?>
-  Plane: <?=pl($plane)?><br>
-<?php else: ?>
-<?php endif ?>
-<?php if ($prev): ?>
-  Prev: <?=cp($prev)?><br>
-<?php endif ?>
-<?php if ($next): ?>
-  Next: <?=cp($next)?><br>
-<?php endif ?>
+
 <table class="props">
   <thead>
     <tr>
@@ -54,8 +56,7 @@
     'Math', 'OMath', 'Hex', 'AHex', 'DI', 'ODI', 'LOE', 'WSpace', 'Gr_Base',
     'Gr_Ext', 'OGr_Ext', 'Gr_Link', 'Ideo', 'UIdeo', 'IDSB', 'IDST',
     'Radical', 'Dep', 'VS', 'NChar'];
-foreach ($codepoint->getInfo('properties') as $k => $v):
-        if (! in_array($k, ['cp', 'image', 'abstract']) && ! ($k[0] === 'k' && ! $v)):?>
+foreach ($codepoint->getInfo('properties') as $k => $v): ?>
       <tr>
         <th><?=q($k)?> <small>(<?=q($k)?>)</small></th>
         <td>
@@ -87,7 +88,7 @@ foreach ($codepoint->getInfo('properties') as $k => $v):
         endif?>
         </td>
       </tr>
-    <?php endif; endforeach?>
+    <?php endforeach?>
   </tbody>
 </table>
 </main>

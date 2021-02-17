@@ -3,6 +3,7 @@
 namespace Codepoints\Controller;
 
 use Codepoints\Controller;
+use Codepoints\Router\Redirect;
 
 
 /**
@@ -10,7 +11,7 @@ use Codepoints\Controller;
  *
  * We add some weight to codepoints so that CJK and Hangul ones are more
  * seldom, because otherwise they would be selected over 90% of time. That's a
- * bit unfair for all non- CJK languages...
+ * bit unfair for all non-CJK languages...
  */
 class Random extends Controller {
 
@@ -47,9 +48,7 @@ class Random extends Controller {
                     )
                 ) ASC
                 LIMIT 1');
-        header('HTTP/1.0 303 See Other');
-        header(sprintf('Location: /U+%04X', $data['cp']));
-        exit();
+        throw new Redirect(sprintf('U+%04X', $data['cp']), 303);
         return '';
     }
 
