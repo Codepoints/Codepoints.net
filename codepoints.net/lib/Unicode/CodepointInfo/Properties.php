@@ -21,6 +21,7 @@ class Properties extends CodepointInfo {
         'nt' =>      'None',
         'nv' =>      '',
         'bc' =>      'L',
+        'bpt' =>     'n',
         'Bidi_M' =>  0,
         'bmg' =>     '',
         'jt' =>      'U',
@@ -28,6 +29,7 @@ class Properties extends CodepointInfo {
         'ea' =>      'A',
         'lb' =>      'XX',
         'sc' =>      'Zzzz',
+        'scx' =>     'Zzzz',
         'Dash' =>    0,
         'WSpace' =>  0,
         'Hyphen' =>  0,
@@ -95,8 +97,27 @@ class Properties extends CodepointInfo {
         'CWL' =>     0,
         'CWT' =>     0,
         'CWU' =>     0,
+        'InSC' =>    'Other',
+        'InPC' =>    'NA',
+        'PCM' =>     0,
+        'vo' =>      'R',
+        'RI' =>      0,
         'isc' =>     '',
         'na1' =>     '',
+        'Emoji' =>   0,
+        'EPres' =>   0,
+        'EMod' =>    0,
+        'EBase' =>   0,
+        'EComp' =>   0,
+        'ExtPict' => 0,
+    ];
+
+    private Array $noncharacter_property_patch = [
+        'gc' =>      'Cn',
+        'nv' =>      'NaN',
+        'bc' =>      'BN',
+        'ea' =>      'N',
+        'NChar' =>   1,
     ];
 
     private Array $private_use_self_references = [
@@ -108,8 +129,11 @@ class Properties extends CodepointInfo {
     public function __invoke(Codepoint $codepoint, Array $args) : array {
         $properties = [];
 
-        if (is_pua($codepoint->id)) {
-            $properties = $this->private_use_properties;
+        /* shortcut for PUA codepoints and non-characters: fetch precomposed
+         * set. */
+        if (is_pua($codepoint->id) || in_array($codepoint->gc, ['Cn', 'Xx'])) {
+            $patch = $codepoint->gc === 'CN' $this->noncharacter_property_patch : [];
+            $properties = $patch + $this->private_use_properties;
             $properties['age'] = ($codepoint->id <= 0xF8FF? '1.1' : '2.0');
             foreach ($this->private_use_self_references as $prop) {
                 $properties[$prop] = $codepoint;
