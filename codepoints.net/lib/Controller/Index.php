@@ -8,7 +8,7 @@ use Codepoints\Unicode\Codepoint;
 
 class Index extends Controller {
 
-    public function __invoke($match, array $env) : string {
+    public function __invoke($match, Array $env) : string {
         $data = $env['db']->getOne('SELECT cp, name, gc
             FROM codepoints
             WHERE cp = 0');

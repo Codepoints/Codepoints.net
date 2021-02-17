@@ -11,14 +11,14 @@ use Codepoints\Router\URLMatcher;
  */
 class Router {
 
-    private static array $routes = [];
+    private static Array $routes = [];
 
-    private static array $env = [];
+    private static Array $env = [];
 
     /**
      * add a route
      *
-     * @param mixed $url the URL to register the handler to. This can be a
+     * @param string|Array|callable $url the URL to register the handler to. This can be a
      *        plain string to match against, an URLMatcher object to check
      *        a regular expression, an array to check against a list of URLs
      *        or a function for more complicated matches.
@@ -27,7 +27,7 @@ class Router {
      *        first argument. In the case of an URLMatcher, it's a regexp
      *        match array. In all other cases, it's the matched URL.
      */
-    public static function add(/*string|array|callable*/ $url, callable $handler) : void {
+    public static function add($url, callable $handler) : void {
         static::$routes[] = [$url, $handler];
     }
 
@@ -36,7 +36,7 @@ class Router {
      *
      * @param mixed $dependency
      */
-    public static function addDependency(string $name, /*mixed*/ $dependency) : void {
+    public static function addDependency(string $name, $dependency) : void {
         static::$env[$name] = $dependency;
     }
 
@@ -45,7 +45,7 @@ class Router {
      *
      * Necessary for 404 error handling.
      */
-    public static function getDependencies() : array {
+    public static function getDependencies() : Array {
         return static::$env;
     }
 

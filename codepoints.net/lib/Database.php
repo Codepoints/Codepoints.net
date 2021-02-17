@@ -11,7 +11,7 @@ class Database extends \PDO {
 
     /**
      * @param string $query
-     * @param array $params
+     * @param Array $params
      */
     public function prepare($query, $params=[]) : \PDOStatement {
         $this->__log($query);
@@ -29,8 +29,8 @@ class Database extends \PDO {
     /**
      * helper method: get one result set as associative array
      *
-     * @param array $args
-     * @return array|false
+     * @param Array $args
+     * @return Array|false
      */
     public function getOne(string $query_sql, ...$args) {
         $query = $this->prepare($query_sql);
@@ -43,8 +43,8 @@ class Database extends \PDO {
     /**
      * helper method: get all result sets as associative array
      *
-     * @param array $args
-     * @return array|false
+     * @param Array $args
+     * @return Array|false
      */
     public function getAll(string $query_sql, ...$args) {
         $query = $this->prepare($query_sql);

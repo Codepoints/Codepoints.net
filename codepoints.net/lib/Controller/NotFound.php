@@ -10,7 +10,7 @@ use Exception;
 
 class NotFound extends Controller {
 
-    public function __invoke($match, array $env) : string {
+    public function __invoke($match, Array $env) : string {
         $title = __('Page not Found');
         $page_description = __('There is no content on this page.');
         $codepoint = null;

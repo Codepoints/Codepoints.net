@@ -46,16 +46,16 @@
   <tbody>
 <?php
 
-    $bools = array( 'Bidi_M', 'Bidi_C', 'CE', 'Comp_Ex', 'XO_NFC',
+    $bools = ['Bidi_M', 'Bidi_C', 'CE', 'Comp_Ex', 'XO_NFC',
     'XO_NFD', 'XO_NFKC', 'XO_NFKD', 'Join_C', 'Upper', 'Lower', 'OUpper',
     'OLower', 'CI', 'Cased', 'CWCF', 'CWCM', 'CWL', 'CWKCF', 'CWT', 'CWU',
     'IDS', 'OIDS', 'XIDS', 'IDC', 'OIDC', 'XIDC', 'Pat_Syn', 'Pat_WS', 'Dash',
     'Hyphen', 'QMark', 'Term', 'STerm', 'Dia', 'Ext', 'SD', 'Alpha', 'OAlpha',
     'Math', 'OMath', 'Hex', 'AHex', 'DI', 'ODI', 'LOE', 'WSpace', 'Gr_Base',
     'Gr_Ext', 'OGr_Ext', 'Gr_Link', 'Ideo', 'UIdeo', 'IDSB', 'IDST',
-    'Radical', 'Dep', 'VS', 'NChar');
+    'Radical', 'Dep', 'VS', 'NChar'];
 foreach ($codepoint->getInfo('properties') as $k => $v):
-        if (! in_array($k, array('cp', 'image', 'abstract')) && ! ($k[0] === 'k' && ! $v)):?>
+        if (! in_array($k, ['cp', 'image', 'abstract']) && ! ($k[0] === 'k' && ! $v)):?>
       <tr>
         <th><?=q($k)?> <small>(<?=q($k)?>)</small></th>
         <td>
@@ -73,10 +73,10 @@ foreach ($codepoint->getInfo('properties') as $k => $v):
         foreach(explode(' ', $v) as $sc):?>
             <a rel="nofollow" href="<?=q(url('search?sc='.$v))?>"><?=q($sc)?></a>
         <?php endforeach;
-        elseif (in_array($k, array('kCompatibilityVariant', 'kDefinition',
+        elseif (in_array($k, ['kCompatibilityVariant', 'kDefinition',
             'kSemanticVariant', 'kSimplifiedVariant',
-            'kSpecializedSemanticVariant', 'kTraditionalVariant', 'kZVariant'))):
-          echo preg_replace_callback('/U\+([0-9A-F]{4,6})/', function(array $m) use ($codepoint) : string {
+            'kSpecializedSemanticVariant', 'kTraditionalVariant', 'kZVariant'])):
+          echo preg_replace_callback('/U\+([0-9A-F]{4,6})/', function(Array $m) use ($codepoint) : string {
             if (hexdec($m[1]) === $codepoint->id) {
                 return cp($codepoint);
             }

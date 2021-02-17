@@ -126,13 +126,13 @@ class Properties extends CodepointInfo {
     /**
      * return the official Unicode properties for a code point
      */
-    public function __invoke(Codepoint $codepoint, Array $args) : array {
+    public function __invoke(Codepoint $codepoint, Array $args) : Array {
         $properties = [];
 
         /* shortcut for PUA codepoints and non-characters: fetch precomposed
          * set. */
         if (is_pua($codepoint->id) || in_array($codepoint->gc, ['Cn', 'Xx'])) {
-            $patch = $codepoint->gc === 'CN' $this->noncharacter_property_patch : [];
+            $patch = $codepoint->gc === 'CN'? $this->noncharacter_property_patch : [];
             $properties = $patch + $this->private_use_properties;
             $properties['age'] = ($codepoint->id <= 0xF8FF? '1.1' : '2.0');
             foreach ($this->private_use_self_references as $prop) {

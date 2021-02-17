@@ -27,7 +27,7 @@ class StaticPage extends Controller {
     /**
      * @param string $view
      */
-    public function __invoke($view, array $env) : string {
+    public function __invoke($view, Array $env) : string {
         if (! array_key_exists($view, $this->views)) {
             throw new NotFoundException('This page is unknown');
         }

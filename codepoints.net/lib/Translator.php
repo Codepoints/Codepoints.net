@@ -11,7 +11,7 @@ class Translator {
 
     private ?string $language = null;
 
-    private array $supportedLanguages = ['en', 'de', 'pl'];
+    private Array $supportedLanguages = ['en', 'de', 'pl'];
 
     private ?Translations $translations = null;
 

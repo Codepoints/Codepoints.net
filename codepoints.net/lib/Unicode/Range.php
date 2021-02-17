@@ -39,7 +39,7 @@ class Range implements \Iterator {
     /**
      * a cache of code point data already fetched from the DB
      */
-    private array $cp_cache = [];
+    private Array $cp_cache = [];
 
     /**
      * construct a new Unicode range
