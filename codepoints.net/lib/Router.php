@@ -18,10 +18,11 @@ class Router {
     /**
      * add a route
      *
-     * @param string|Array|callable $url the URL to register the handler to. This can be a
-     *        plain string to match against, an URLMatcher object to check
-     *        a regular expression, an array to check against a list of URLs
-     *        or a function for more complicated matches.
+     * @param string|Array|callable|URLMatcher $url the URL to register the
+     *        handler to. This can be a plain string to match against, an
+     *        URLMatcher object to check a regular expression, an array to
+     *        check against a list of URLs or a function for more complicated
+     *        matches.
      * @param callable $handler the handler to call with the matched URL. If
      *        $url is a function, the handler receives the return value as
      *        first argument. In the case of an URLMatcher, it's a regexp
