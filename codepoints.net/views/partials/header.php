@@ -21,6 +21,6 @@ endswitch ?>
   </head>
   <body>
     <header class="page-header">
-      <nav class="page-nav">
-      </nav>
+<?php include 'form-choose-language.php' ?>
+<?php include 'main-navigation.php' ?>
     </header>

@@ -1,4 +1,16 @@
-<?php include 'partials/header.php'; ?>
+<?php
+$nav = [];
+if ($prev) {
+  $nav['prev'] = cp($prev);
+}
+if ($block) {
+  $nav['up'] = bl($block);
+}
+if ($next) {
+  $nav['next'] = cp($next);
+}
+
+include 'partials/header.php'; ?>
 <main class="main main--codepoint">
   <figure>
     <?=cpimg($codepoint, 250)?>

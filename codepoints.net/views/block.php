@@ -1,4 +1,14 @@
-<?php include 'partials/header.php'; ?>
+<?php
+$nav = [];
+if ($prev) {
+  $nav['prev'] = bl($prev);
+}
+$nav['up'] = pl($block->plane);
+if ($next) {
+  $nav['next'] = bl($next);
+}
+
+include 'partials/header.php'; ?>
 <main class="main main--block">
   <figure>
     <?=blimg($block, 128)?>
@@ -18,13 +28,7 @@
     '<p><b><strong class="selflink"><strong><em><i><var><sup><sub><tt><ul><ol><li><samp><small><hr><h2><h3><h4><h5><dfn><dl><dd><dt><u><abbr><big><blockquote><br><center><del><ins><kbd>')?>
   </blockquote>
 <?php endif ?>
-<?php if ($prev): ?>
-  <p>Prev: <?=bl($prev)?></p>
-<?php endif ?>
-<?php if ($next): ?>
-  <p>Next: <?=bl($next)?></p>
-<?php endif ?>
-  <p>Plane: <?=pl($block->plane)?></p>
+
   <?php if (! $block->count()):?>
     <p><?php printf(__('This block has not defined any codepoints between U+%04X and U+%04X.'), $block->first, $block->last)?></p>
   <?php else:?>
