@@ -69,6 +69,8 @@ use \Codepoints\Unicode\CodepointInfo\Wikipedia;
 new Wikipedia($db, $lang);
 use \Codepoints\Unicode\CodepointInfo\Properties;
 new Properties($db, $lang);
+use \Codepoints\Unicode\CodepointInfo\Extra;
+new Extra($db, $lang);
 
 
 /**
