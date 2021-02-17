@@ -24,6 +24,6 @@ abstract class CodepointInfo {
     /**
      * @return mixed
      */
-    abstract public function __invoke(Codepoint $codepoint, Array $args);
+    abstract public function __invoke(Codepoint $codepoint);
 
 }

@@ -17,7 +17,7 @@ class Wikipedia extends CodepointInfo {
      *
      * If there is no abstract in the current language, try the english one.
      */
-    public function __invoke(Codepoint $codepoint, Array $args) : ?Array {
+    public function __invoke(Codepoint $codepoint) : ?Array {
         $data = $this->db->getOne('SELECT abstract, lang, src
                 FROM codepoint_abstract
             WHERE cp = ?

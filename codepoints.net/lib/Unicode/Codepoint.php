@@ -118,15 +118,14 @@ class Codepoint {
      * info source
      *
      * @see self::addInfoProvider
-     * @param mixed $args
      * @return mixed
      */
-    public function getInfo(string $name, ...$args) {
+    public function getInfo(string $name) {
         if (! array_key_exists($name, $this->info_cache)) {
             if (! array_key_exists($name, static::$info_providers)) {
                 return null;
             }
-            $this->info_cache[$name] = static::$info_providers[$name]($this, $args);
+            $this->info_cache[$name] = static::$info_providers[$name]($this);
         }
         return $this->info_cache[$name];
     }

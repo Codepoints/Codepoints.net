@@ -15,7 +15,7 @@ class OtherSites extends CodepointInfo {
     /**
      * return a list of links to other sites for a code point
      */
-    public function __invoke(Codepoint $codepoint, Array $args) : Array {
+    public function __invoke(Codepoint $codepoint) : Array {
         $other_sites = [];
         $hex = sprintf('%04X', $codepoint->id);
         $other_sites[__('Unicode website')] = 'https://unicode.org/cldr/utility/character.jsp?a='.$hex.'';

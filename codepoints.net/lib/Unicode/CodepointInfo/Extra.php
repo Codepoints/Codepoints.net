@@ -16,7 +16,7 @@ class Extra extends CodepointInfo {
     /**
      * return extra information for a code point from the /data/* files
      */
-    public function __invoke(Codepoint $codepoint, Array $args) : string {
+    public function __invoke(Codepoint $codepoint) : string {
         $root = dirname(dirname(dirname(__DIR__))) . sprintf('/data/U+%04X.%%s.md', $codepoint->id);
         $ext_file = sprintf($root, $this->lang);
         if (! is_file($ext_file)) {

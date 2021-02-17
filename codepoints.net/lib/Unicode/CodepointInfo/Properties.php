@@ -126,7 +126,7 @@ class Properties extends CodepointInfo {
     /**
      * return the official Unicode properties for a code point
      */
-    public function __invoke(Codepoint $codepoint, Array $args) : Array {
+    public function __invoke(Codepoint $codepoint) : Array {
         $properties = [];
 
         /* shortcut for PUA codepoints and non-characters: fetch precomposed

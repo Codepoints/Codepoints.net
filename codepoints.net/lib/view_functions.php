@@ -50,7 +50,7 @@ function cp(Codepoint $codepoint, string $rel='', string $class='') : string {
  * can switch back to good ol' <img> again.
  */
 function cpimg(Codepoint $codepoint, int $width=16) : string {
-    return $codepoint->getInfo('image', $width);
+    return $codepoint->getInfo('image')($width);
 }
 
 /**
