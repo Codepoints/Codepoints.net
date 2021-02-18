@@ -18,7 +18,7 @@ include 'partials/header.php'; ?>
      <?php printf(__('Block from U+%04X to U+%04X.'), $block->first, $block->last)?>
      <?php printf(__('This block was introduced in Unicode version %s (%s). It contains %s codepoints.'),
        $age,
-       $info->get('age_to_year')[$age],
+       $info->age_to_year[$age],
       '<strong>'.$block->count().'</strong>')?></p>
 
 <?php if ($abstract): ?>

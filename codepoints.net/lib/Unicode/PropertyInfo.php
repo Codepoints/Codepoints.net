@@ -58,24 +58,15 @@ class PropertyInfo {
     }
 
     /**
-     * @param list<string> $args
+     * @param string $name
      * @return mixed
      */
-    public function get(...$args) {
-        $source = null;
-        while (count($args)) {
-            $prop = array_shift($args);
-            if ($source) {
-                if (array_key_exists($prop, $source)) {
-                    $source = $source[$prop];
-                }
-            } elseif (property_exists($this, $prop)) {
-                $source = $this->$prop;
-            } else {
-                return null;
-            }
+    public function __get($name) {
+        if (property_exists($this, $name)) {
+            return $this->$name;
+        } else {
+            return null;
         }
-        return $source;
     }
 
 }
