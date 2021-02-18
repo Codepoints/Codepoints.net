@@ -3,6 +3,9 @@
 namespace Codepoints;
 
 
+/**
+ * render a view file with appropriate context
+ */
 class View {
 
     private string $view;

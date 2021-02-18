@@ -35,7 +35,7 @@ class Block extends Controller {
             WHERE cp >= ?
                 AND cp <= ?
             ORDER BY CAST(age AS FLOAT) DESC
-            LIMIT 1');
+            LIMIT 1', $block->first, $block->last);
         if ($age) {
             $age = $age['age'];
         } else {

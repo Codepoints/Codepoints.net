@@ -13,7 +13,8 @@ class Controller {
     protected Array $context = [];
 
     /**
-     * if called, automatically show a view with the same name
+     * if called, automatically show a view with the same name as the
+     * class
      *
      * @param mixed $match
      */
