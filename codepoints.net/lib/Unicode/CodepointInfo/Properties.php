@@ -203,34 +203,19 @@ class Properties extends CodepointInfo {
             if ($n === 0) {
                 return 0;
             }
-            $r = ['age', 'na', 'na1', 'blk', 'gc', 'sc', 'bc', 'ccc',
-                'dt', 'dm', 'Lower', 'slc', 'lc', 'Upper', 'suc', 'uc',
-                'stc', 'tc', 'cf'];
-            $r2 = [];
-            for ($i = 0, $c = count($r); $i < $c; $i++) {
-                if ($a === $r[$i]) {
-                    if (in_array($b, $r2)) {
-                        return 1;
-                    } else {
-                        return -1;
-                    }
-                } elseif ($b === $r[$i]) {
-                    if (in_array($a, $r2)) {
-                        return -1;
-                    } else {
-                        return 1;
-                    }
-                } elseif ($a[0] === 'k' && $b[0] === 'k') {
-                    if ($a[1] === 'I' && $b[1] !== 'I') {
-                        return -1;
-                    } elseif ($a[1] !== 'I' && $b[1] === 'I') {
-                        return 1;
-                    } else {
-                        return strcasecmp($a, $b);
-                    }
-                } else {
-                    $r2[] = $r[$i];
-                }
+            $priority = ['age', 'na', 'na1', 'blk', 'gc', 'sc', 'bc', 'ccc',
+                'dt', 'dm', 'Lower', 'slc', 'lc', 'Upper', 'suc', 'uc', 'stc',
+                'tc', 'cf'];
+            if (in_array($a, $priority) && in_array($b, $priority)) {
+                return array_search($a, $priority) <=> array_search($b, $priority);
+            } elseif (in_array($a, $priority)) {
+                return -1;
+            } elseif (in_array($b, $priority)) {
+                return 1;
+            } elseif ($a[0] === 'k' && $b[0] !== 'k') {
+                return 1;
+            } elseif ($a[0] !== 'k' && $b[0] === 'k') {
+                return -1;
             }
             return strcasecmp($a, $b);
         });
