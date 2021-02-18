@@ -32,7 +32,7 @@ class Image extends CodepointInfo {
             $modifier = '';
             if (in_array($codepoint->gc, ['Mn', 'Me', 'Lm', 'Sk'])) {
                 /* for combining characters, add the U+25CC circle */
-                $modifier = '<use xlink:href="image/2500.svg#U25CC" fill-opacity="0.5"/>';
+                $modifier = '<use xlink:href="image/2500.svg#U25CC" fill-opacity="0.25"/>';
             }
             return sprintf('<svg width="%s" height="%s">'.
                 '<title>%s</title>'.
