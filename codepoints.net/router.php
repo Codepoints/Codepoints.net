@@ -29,6 +29,11 @@ Router::add(new URLMatcher('image/([0-9A-F]{2,4}00).svg$'), new Image());
 
 Router::add(new URLMatcher('U\\+([0-9A-F]{4,6})$'), new Codepoint());
 
+/* redirect to canonical 0-padded URL */
+Router::add(new URLMatcher('U\\+([0-9A-F]{1,3})$'), function(Array $match, Array $env) : ?string {
+    throw new Redirect(sprintf('U+%04X', hexdec($match[1])));
+});
+
 /**
  * Block names
  *
