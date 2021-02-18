@@ -10,36 +10,31 @@ class PropertyInfo {
     private Array $age_to_year;
     private Array $booleans;
     private Array $gc_shortcuts;
-
-    private Array $legend = [
-        'NFC_QC' => [
-            'M' => 'Maybe',
-            'N' => 'No',
-            'Y' => 'Yes',
-        ],
-
-        'NFD_QC' => [
-            'N' => 'No',
-            'Y' => 'Yes',
-        ],
-
-        'NFKC_QC' => [
-            'M' => 'Maybe',
-            'N' => 'No',
-            'Y' => 'Yes',
-        ],
-
-        'NFKD_QC' => [
-            'N' => 'No',
-            'Y' => 'Yes',
-        ],
-    ];
-
+    private Array $legend = [];
     private Array $properties;
     private Array $region_to_block;
+    private Array $script;
     private Array $script_age;
 
     public function __construct() {
+        $this->legend['NFC_QC'] = [
+            'M' => __('Maybe'),
+            'N' => __('No'),
+            'Y' => __('Yes'),
+        ];
+        $this->legend['NFD_QC'] = [
+            'N' => __('No'),
+            'Y' => __('Yes'),
+        ];
+        $this->legend['NFKC_QC'] = [
+            'M' => __('Maybe'),
+            'N' => __('No'),
+            'Y' => __('Yes'),
+        ];
+        $this->legend['NFKD_QC'] = [
+            'N' => __('No'),
+            'Y' => __('Yes'),
+        ];
         $this->age_to_year = include(__DIR__.'/PropertyInfo/age_to_year.php');
         $this->booleans = include(__DIR__.'/PropertyInfo/booleans.php');
         $this->gc_shortcuts = include(__DIR__.'/PropertyInfo/gc_shortcuts.php');
@@ -58,6 +53,7 @@ class PropertyInfo {
         $this->legend['WB'] = include(__DIR__.'/PropertyInfo/legend_WB.php');
         $this->properties = include(__DIR__.'/PropertyInfo/properties.php');
         $this->region_to_block = include(__DIR__.'/PropertyInfo/region_to_block.php');
+        $this->script = include(__DIR__.'/PropertyInfo/script.php');
         $this->script_age = include(__DIR__.'/PropertyInfo/script_age.php');
     }
 

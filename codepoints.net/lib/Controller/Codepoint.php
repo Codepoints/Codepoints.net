@@ -51,7 +51,7 @@ class Codepoint extends Controller {
                 $codepoint->id,
                 $codepoint->name,
                 $block->name,
-                array_get(array_get($env['info']->get('legend'), 'sc', []), $codepoint->getInfo('properties')['sc']), # TODO need to read DB here, not PropertyInfo
+                array_get($env['info']->get('script'), $codepoint->getInfo('properties')['sc']),
                 array_get(array_get($env['info']->get('legend'), 'gc', []), $codepoint->gc, $codepoint->gc));
         } catch (Exception $e) {}
         try {
