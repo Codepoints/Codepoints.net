@@ -1,0 +1,31 @@
+<?php
+
+# TODO add gettext
+return [
+    '0' =>   ['Not Reordered',        'Spacing and enclosing marks; also many vowel and consonant signs, even if nonspacing'],
+    '1' =>   ['Overlay',              'Marks which overlay a base letter or symbol'],
+    '7' =>   ['Nukta',                'Diacritic nukta marks in Brahmi-derived scripts'],
+    '8' =>   ['Kana Voicing',         'Hiragana/Katakana voicing marks'],
+    '9' =>   ['Virama',               'Viramas'],
+    '10' =>  ['',                     'Start of fixed position classes'],
+    '199' => ['',                     'End of fixed position classes'],
+    '200' => ['Attached Below Left',  'Marks attached at the bottom left'],
+    '202' => ['Attached Below',       'Marks attached directly below'],
+    '204' => ['',                     'Marks attached at the top right'],
+    '208' => ['',                     'Marks attached to the left'],
+    '210' => ['',                     'Marks attached to the right'],
+    '212' => ['',                     'Marks attached at the top left'],
+    '214' => ['Attached Above',       'Marks attached directly above'],
+    '216' => ['Attached Above Right', 'Marks attached at the top right'],
+    '218' => ['Below Left',           'Distinct marks at the bottom left'],
+    '220' => ['Below',                'Distinct marks directly below'],
+    '222' => ['Below Right',          'Distinct marks at the bottom right'],
+    '224' => ['Left',                 'Distinct marks to the left'],
+    '226' => ['Right',                'Distinct marks to the right'],
+    '228' => ['Above Left',           'Distinct marks at the top left'],
+    '230' => ['Above',                'Distinct marks directly above'],
+    '232' => ['Above Right',          'Distinct marks at the top right'],
+    '233' => ['Double Below',         'Distinct marks subtending two bases'],
+    '234' => ['Double Above',         'Distinct marks extending above two bases'],
+    '240' => ['Iota Subscript',       'Greek iota subscript only'],
+];

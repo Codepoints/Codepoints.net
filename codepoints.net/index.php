@@ -11,6 +11,7 @@ use \Codepoints\Router\NotFoundException;
 use \Codepoints\Router\Redirect;
 use \Codepoints\Translator;
 use Codepoints\Unicode\CodepointInfo\Image;
+use Codepoints\Unicode\PropertyInfo;
 
 require 'vendor/autoload.php';
 
@@ -63,6 +64,11 @@ unset($dbconfig);
  */
 $translator = new Translator();
 Router::addDependency('lang', $lang = $translator->getLanguage());
+
+/**
+ * get the general info class
+ */
+Router::addDependency('info', new PropertyInfo());
 
 /**
  * make sure, we can access codepoint images

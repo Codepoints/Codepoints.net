@@ -60,21 +60,13 @@ include 'partials/header.php'; ?>
   <tbody>
 <?php
 
-    $bools = ['Bidi_M', 'Bidi_C', 'CE', 'Comp_Ex', 'XO_NFC',
-    'XO_NFD', 'XO_NFKC', 'XO_NFKD', 'Join_C', 'Upper', 'Lower', 'OUpper',
-    'OLower', 'CI', 'Cased', 'CWCF', 'CWCM', 'CWL', 'CWKCF', 'CWT', 'CWU',
-    'IDS', 'OIDS', 'XIDS', 'IDC', 'OIDC', 'XIDC', 'Pat_Syn', 'Pat_WS', 'Dash',
-    'Hyphen', 'QMark', 'Term', 'STerm', 'Dia', 'Ext', 'SD', 'Alpha', 'OAlpha',
-    'Math', 'OMath', 'Hex', 'AHex', 'DI', 'ODI', 'LOE', 'WSpace', 'Gr_Base',
-    'Gr_Ext', 'OGr_Ext', 'Gr_Link', 'Ideo', 'UIdeo', 'IDSB', 'IDST',
-    'Radical', 'Dep', 'VS', 'NChar'];
 foreach ($codepoint->getInfo('properties') as $k => $v): ?>
       <tr>
-        <th><?=q($k)?> <small>(<?=q($k)?>)</small></th>
+        <th><?=q($info->get('properties')[$k])?> <small>(<?=q($k)?>)</small></th>
         <td>
         <?php if ($v === '' || $v === null):?>
           <span class="x">—</span>
-        <?php elseif (in_array($k, $bools)):?>
+        <?php elseif (in_array($k, $info->get('booleans'))):?>
           <span class="<?=($v)?'y':'n'?>"><?=($v)?'✔':'✘'?></span>
         <?php elseif ($v instanceof \Codepoints\Unicode\Codepoint):?>
           <?=cp($v)?>
