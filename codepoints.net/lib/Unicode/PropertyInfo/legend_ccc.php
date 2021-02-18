@@ -1,31 +1,35 @@
 <?php
 
-# TODO add gettext
-return [
-    '0' =>   ['Not Reordered',        'Spacing and enclosing marks; also many vowel and consonant signs, even if nonspacing'],
-    '1' =>   ['Overlay',              'Marks which overlay a base letter or symbol'],
-    '7' =>   ['Nukta',                'Diacritic nukta marks in Brahmi-derived scripts'],
-    '8' =>   ['Kana Voicing',         'Hiragana/Katakana voicing marks'],
-    '9' =>   ['Virama',               'Viramas'],
-    '10' =>  ['',                     'Start of fixed position classes'],
-    '199' => ['',                     'End of fixed position classes'],
-    '200' => ['Attached Below Left',  'Marks attached at the bottom left'],
-    '202' => ['Attached Below',       'Marks attached directly below'],
-    '204' => ['',                     'Marks attached at the top right'],
-    '208' => ['',                     'Marks attached to the left'],
-    '210' => ['',                     'Marks attached to the right'],
-    '212' => ['',                     'Marks attached at the top left'],
-    '214' => ['Attached Above',       'Marks attached directly above'],
-    '216' => ['Attached Above Right', 'Marks attached at the top right'],
-    '218' => ['Below Left',           'Distinct marks at the bottom left'],
-    '220' => ['Below',                'Distinct marks directly below'],
-    '222' => ['Below Right',          'Distinct marks at the bottom right'],
-    '224' => ['Left',                 'Distinct marks to the left'],
-    '226' => ['Right',                'Distinct marks to the right'],
-    '228' => ['Above Left',           'Distinct marks at the top left'],
-    '230' => ['Above',                'Distinct marks directly above'],
-    '232' => ['Above Right',          'Distinct marks at the top right'],
-    '233' => ['Double Below',         'Distinct marks subtending two bases'],
-    '234' => ['Double Above',         'Distinct marks extending above two bases'],
-    '240' => ['Iota Subscript',       'Greek iota subscript only'],
+$ccc = [
+    '0' =>   [__('Not Reordered'),        __('Spacing and enclosing marks; also many vowel and consonant signs, even if nonspacing')],
+    '1' =>   [__('Overlay'),              __('Marks which overlay a base letter or symbol')],
+    '6' =>   [__('Han Reading'),          __('Diacritic reading marks for CJK unified ideographs')],
+    '7' =>   [__('Nukta'),                __('Diacritic nukta marks in Brahmi-derived scripts')],
+    '8' =>   [__('Kana Voicing'),         __('Hiragana/Katakana voicing marks')],
+    '9' =>   [__('Virama'),               __('Viramas')],
+    '200' => [__('Attached Below Left'),  __('Marks attached at the bottom left')],
+    '202' => [__('Attached Below'),       __('Marks attached directly below')],
+    '204' => [   '' ,                     __('Marks attached at the top right')],
+    '208' => [   '' ,                     __('Marks attached to the left')],
+    '210' => [   '' ,                     __('Marks attached to the right')],
+    '212' => [   '' ,                     __('Marks attached at the top left')],
+    '214' => [__('Attached Above'),       __('Marks attached directly above')],
+    '216' => [__('Attached Above Right'), __('Marks attached at the top right')],
+    '218' => [__('Below Left'),           __('Distinct marks at the bottom left')],
+    '220' => [__('Below'),                __('Distinct marks directly below')],
+    '222' => [__('Below Right'),          __('Distinct marks at the bottom right')],
+    '224' => [__('Left'),                 __('Distinct marks to the left')],
+    '226' => [__('Right'),                __('Distinct marks to the right')],
+    '228' => [__('Above Left'),           __('Distinct marks at the top left')],
+    '230' => [__('Above'),                __('Distinct marks directly above')],
+    '232' => [__('Above Right'),          __('Distinct marks at the top right')],
+    '233' => [__('Double Below'),         __('Distinct marks subtending two bases')],
+    '234' => [__('Double Above'),         __('Distinct marks extending above two bases')],
+    '240' => [__('Iota Subscript'),       __('Greek iota subscript only')],
 ];
+
+for ($i = 10; $i <= 199; $i++) {
+    $ccc[(string)$i] = ['Ccc'.$i, sprintf(__('Fixed Position Class %d'), $i)];
+}
+
+return $ccc;

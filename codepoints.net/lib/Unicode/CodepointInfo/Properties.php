@@ -142,7 +142,7 @@ class Properties extends CodepointInfo {
         }
 
         $data = $this->db->getOne('
-            SELECT props.*, script.sc AS script
+            SELECT props.*, script.sc AS sc
                 FROM codepoint_props props
             LEFT JOIN codepoint_script script
                 ON (script.cp = props.cp

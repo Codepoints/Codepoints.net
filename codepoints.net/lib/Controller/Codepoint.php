@@ -42,7 +42,7 @@ class Codepoint extends Controller {
             $codepoint->chr(),
             $codepoint->id,
             $codepoint->name,
-            '');// $info->getLabel('gc', $props['gc']));
+            $env['info']->get('legend')['gc'][$codepoint->gc]);
         try {
             $block = $codepoint->block;
             $page_description = sprintf(
@@ -51,7 +51,8 @@ class Codepoint extends Controller {
                 $codepoint->id,
                 $codepoint->name,
                 $block->name,
-                '', '');//$info->getLabel('sc', $props['sc']), $info->getLabel('gc', $props['gc']));
+                array_get(array_get($env['info']->get('legend'), 'sc', []), $codepoint->getInfo('properties')['sc']), # TODO need to read DB here, not PropertyInfo
+                array_get(array_get($env['info']->get('legend'), 'gc', []), $codepoint->gc, $codepoint->gc));
         } catch (Exception $e) {}
         try {
             $plane = $codepoint->plane;
