@@ -150,19 +150,19 @@ class Properties extends CodepointInfo {
             WHERE props.cp = ?
             LIMIT 1', $codepoint->id);
         if ($data) {
-            $properties = $data;
+            $properties += $data;
         }
 
         /* select all other scripts, where this code point might appear in
          * (the scx property). */
-        $data = $this->db->getAll('SELECT GROUP_CONCAT(sc SEPARATOR \' \') AS scx
-                         FROM codepoint_script
-                        WHERE cp = ?
-                          AND `primary` = 0
-                     GROUP BY cp', $codepoint->id);
+        $data = $this->db->getAll('
+            SELECT sc AS scx
+                FROM codepoint_script
+            WHERE cp = ?
+                AND `primary` = 0', $codepoint->id);
         $properties['scx'] = null;
         if ($data) {
-            $properties['scx'] = $data;
+            $properties['scx'] = array_map(function(Array $item) : string { return $item['scx']; }, $data);
         }
 
         /* fetch all related code points (e.g., uppercase) */

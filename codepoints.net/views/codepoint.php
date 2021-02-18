@@ -58,11 +58,9 @@ include 'partials/header.php'; ?>
     </tr>
   </thead>
   <tbody>
-<?php
-
-foreach ($codepoint->properties as $k => $v): ?>
+    <?php foreach ($codepoint->properties as $k => $v): ?>
       <tr>
-        <th><?=q($info->get('properties')[$k])?> <small>(<?=q($k)?>)</small></th>
+        <th><?=q(array_get($info->get('properties'), $k, $k))?> <small>(<?=q($k)?>)</small></th>
         <td>
         <?php if ($v === '' || $v === null):?>
           <span class="x">—</span>
@@ -71,21 +69,23 @@ foreach ($codepoint->properties as $k => $v): ?>
         <?php elseif ($v instanceof \Codepoints\Unicode\Codepoint):?>
           <?=cp($v)?>
         <?php elseif (is_array($v)):?>
-            <?php foreach ($v as $_cp): ?>
-                <?=cp($_cp)?>
-            <?php endforeach ?>
-        <?php elseif ($k === 'scx'):
-        foreach(explode(' ', $v) as $sc):?>
-            <a rel="nofollow" href="<?=q(url('search?sc='.$v))?>"><?=q($sc)?></a>
-        <?php endforeach;
-        elseif (in_array($k, ['kCompatibilityVariant', 'kDefinition',
+          <?php foreach ($v as $_v): ?>
+            <?php if ($_v instanceof \Codepoints\Unicode\Codepoint): ?>
+              <?=cp($_v)?>
+            <?php elseif ($k === 'scx'): ?>
+              <a href="<?=q(url('search?sc='.$_v))?>"><?=array_get($info->get('script'), $_v, $_v)?></a>
+            <?php else: ?>
+              <?=q($_v)?>
+            <?php endif ?>
+          <?php endforeach ?>
+        <?php elseif (in_array($k, ['kCompatibilityVariant', 'kDefinition',
             'kSemanticVariant', 'kSimplifiedVariant',
             'kSpecializedSemanticVariant', 'kTraditionalVariant', 'kZVariant'])):
           echo preg_replace_callback('/U\+([0-9A-F]{4,6})/', function(Array $m) use ($codepoint) : string {
             if (hexdec($m[1]) === $codepoint->id) {
                 return cp($codepoint);
             }
-            return 'TODO'; #cp(Codepoint::getCP(hexdec($m[1]), $db), '', 'min');
+            return $m[0]; #cp(Codepoint::getCP(hexdec($m[1]), $db), '', 'min');
           }, $v);
         else:
           echo q($v);
