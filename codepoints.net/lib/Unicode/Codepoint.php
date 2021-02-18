@@ -69,6 +69,8 @@ class Codepoint {
 
     /**
      * allow read access to our data
+     *
+     * @return mixed
      */
     public function __get(string $name) {
         switch ($name) {
@@ -86,6 +88,8 @@ class Codepoint {
             return Block::getByCodePoint($this->id, $this->db);
         case 'plane':
             return Plane::getByCodePoint($this->id, $this->db);
+        default:
+            return $this->getInfo($name);
         }
     }
 
@@ -120,12 +124,12 @@ class Codepoint {
      * @see self::addInfoProvider
      * @return mixed
      */
-    public function getInfo(string $name) {
+    private function getInfo(string $name) {
         if (! array_key_exists($name, $this->info_cache)) {
-            if (! array_key_exists($name, static::$info_providers)) {
-                return null;
+            $this->info_cache[$name] = null;
+            if (array_key_exists($name, static::$info_providers)) {
+                $this->info_cache[$name] = static::$info_providers[$name]($this);
             }
-            $this->info_cache[$name] = static::$info_providers[$name]($this);
         }
         return $this->info_cache[$name];
     }

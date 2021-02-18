@@ -51,7 +51,7 @@ class Codepoint extends Controller {
                 $codepoint->id,
                 $codepoint->name,
                 $block->name,
-                array_get($env['info']->get('script'), $codepoint->getInfo('properties')['sc']),
+                array_get($env['info']->get('script'), $codepoint->properties['sc']),
                 array_get(array_get($env['info']->get('legend'), 'gc', []), $codepoint->gc, $codepoint->gc));
         } catch (Exception $e) {}
         try {
@@ -66,9 +66,9 @@ class Codepoint extends Controller {
             'next' => $codepoint->next,
             'block' => $block,
             'plane' => $plane,
-            'wikipedia' => $codepoint->getInfo('wikipedia'),
-            'extra' => $codepoint->getInfo('extra'),
-            'othersites' => $codepoint->getInfo('othersites'),
+            'wikipedia' => $codepoint->wikipedia,
+            'extra' => $codepoint->extra,
+            'othersites' => $codepoint->othersites,
         ];
         return parent::__invoke($match, $env);
     }

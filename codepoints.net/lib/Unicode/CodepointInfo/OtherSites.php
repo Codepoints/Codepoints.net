@@ -25,11 +25,11 @@ class OtherSites extends CodepointInfo {
             $other_sites['Graphemica'] = 'https://graphemica.com/'.rawurlencode($codepoint->chr());
             $other_sites['The UniSearcher'] = 'https://www.isthisthingon.org/unicode/index.phtml?glyph='.$hex;
         }
-        $wikipedia = $codepoint->getInfo('wikipedia');
+        $wikipedia = $codepoint->wikipedia;
         if ($wikipedia) {
             $other_sites[__('Wikipedia')] = $wikipedia['src'];
         }
-        if ($codepoint->getInfo('properties')['kDefinition']) {
+        if ($codepoint->properties['kDefinition']) {
             $other_sites[__('Unihan Database')] = 'https://www.unicode.org/cgi-bin/GetUnihanData.pl?codepoint='.rawurlencode($codepoint->chr());
             $other_sites[__('Chinese Text Project')] = 'https://ctext.org/dictionary.pl?if=en&amp;char='.rawurlencode($codepoint->chr());
         }

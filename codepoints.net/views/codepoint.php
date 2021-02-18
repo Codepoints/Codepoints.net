@@ -60,7 +60,7 @@ include 'partials/header.php'; ?>
   <tbody>
 <?php
 
-foreach ($codepoint->getInfo('properties') as $k => $v): ?>
+foreach ($codepoint->properties as $k => $v): ?>
       <tr>
         <th><?=q($info->get('properties')[$k])?> <small>(<?=q($k)?>)</small></th>
         <td>
