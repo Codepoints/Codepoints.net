@@ -11,6 +11,7 @@ use \Codepoints\Controller\Plane;
 use \Codepoints\Controller\Planes;
 use \Codepoints\Controller\PossibleName;
 use \Codepoints\Controller\Random;
+use \Codepoints\Controller\Sitemap;
 use \Codepoints\Controller\StaticPage;
 
 
@@ -26,6 +27,8 @@ Router::add(new URLMatcher('plane_([a-zA-Z0-9()_-]+)$'), new Plane());
 Router::add(new URLMatcher('([a-zA-Z0-9()_-]+)_plane$'), new Plane());
 
 Router::add(new URLMatcher('image/([0-9A-F]{2,4}00).svg$'), new Image());
+
+Router::add(new URLMatcher('sitemap(|/(static|u[0-9A-F]+)).xml$'), new Sitemap());
 
 Router::add(new URLMatcher('U\\+([0-9A-F]{4,6})$'), new Codepoint());
 
