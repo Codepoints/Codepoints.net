@@ -12,8 +12,9 @@ class Database extends \PDO {
     /**
      * @param string $query
      * @param Array $params
+     * @return \PDOStatement|false
      */
-    public function prepare($query, $params=[]) : \PDOStatement {
+    public function prepare($query, $params=[]) {
         $this->__log($query);
         return parent::prepare($query, $params);
     }
@@ -34,6 +35,9 @@ class Database extends \PDO {
      */
     public function getOne(string $query_sql, ...$args) {
         $query = $this->prepare($query_sql);
+        if (! $query) {
+            return false;
+        }
         $query->execute($args);
         $result = $query->fetch(\PDO::FETCH_ASSOC);
         $query->closeCursor();
@@ -48,6 +52,9 @@ class Database extends \PDO {
      */
     public function getAll(string $query_sql, ...$args) {
         $query = $this->prepare($query_sql);
+        if (! $query) {
+            return false;
+        }
         $query->execute($args);
         $result = $query->fetchAll(\PDO::FETCH_ASSOC);
         $query->closeCursor();
