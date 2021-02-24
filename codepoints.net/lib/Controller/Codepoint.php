@@ -42,7 +42,7 @@ class Codepoint extends Controller {
             $codepoint->chr(),
             $codepoint->id,
             $codepoint->name,
-            $env['info']->legend['gc'][$codepoint->gc]);
+            $env['info']->legend_gc[$codepoint->gc]);
         try {
             $block = $codepoint->block;
             $page_description = sprintf(
@@ -52,7 +52,7 @@ class Codepoint extends Controller {
                 $codepoint->name,
                 $block->name,
                 array_get($env['info']->script, $codepoint->properties['sc']),
-                array_get(array_get($env['info']->legend, 'gc', []), $codepoint->gc, $codepoint->gc));
+                array_get($env['info']->legend_gc, $codepoint->gc, $codepoint->gc));
         } catch (Exception $e) {}
         try {
             $plane = $codepoint->plane;
