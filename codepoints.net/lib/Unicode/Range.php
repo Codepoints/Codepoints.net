@@ -29,17 +29,17 @@ class Range implements \Iterator {
      */
     protected int $first;
     protected int $last;
-    private int $current;
+    protected int $current;
 
     /**
      * the number of read code points in this range
      */
-    private ?int $count = null;
+    protected ?int $count = null;
 
     /**
      * a cache of code point data already fetched from the DB
      */
-    private Array $cp_cache = [];
+    protected Array $cp_cache = [];
 
     /**
      * construct a new Unicode range
@@ -104,8 +104,7 @@ class Range implements \Iterator {
      * return a Codepoint object from the current position of the internal
      * array
      *
-     * Returns null, if there is no such code point. This should not happen
-     * due to the prior call to _prepare(), though.
+     * Returns null, if there is no such code point.
      *
      * For performance reasons we fetch a set of up to 256 code points around
      * this code point, too.
