@@ -56,6 +56,8 @@ class Translator {
                 $persist = true;
             } elseif (isset($_COOKIE['lang']) && ctype_alpha($_COOKIE['lang'])) {
                 $lang = $_COOKIE['lang'];
+            } elseif (! $lang) {
+                $lang = 'en';
             }
             $negotiator = new LanguageNegotiator();
             $bestLanguage = $negotiator->getBest($lang, $this->supportedLanguages);
