@@ -15,7 +15,7 @@ class Database extends \PDO {
      * @return \PDOStatement|false
      */
     public function prepare($query, $params=[]) {
-        $this->__log($query);
+        $this->_log($query);
         return parent::prepare($query, $params);
     }
 
@@ -23,7 +23,7 @@ class Database extends \PDO {
      * @param mixed $fetchModeArgs
      */
     public function query(string $query, ?int $fetchMode = null, ...$fetchModeArgs) : \PDOStatement {
-        $this->__log($query);
+        $this->_log($query);
         return parent::query(...func_get_args());
     }
 
@@ -61,7 +61,7 @@ class Database extends \PDO {
         return $result;
     }
 
-    protected function __log(string $query) : void {
+    protected function _log(string $query) : void {
         Analog::log(preg_replace('/\s{2,}/', ' ', $query));
     }
 
