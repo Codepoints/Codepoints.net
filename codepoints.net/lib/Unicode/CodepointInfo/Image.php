@@ -12,6 +12,14 @@ use \Codepoints\Unicode\CodepointInfo;
  */
 class Image extends CodepointInfo {
 
+    private string $altText;
+
+    public function __construct(Database $db, string $lang) {
+        /* this is a performance optimation to call __() less */
+        $this->altText = __('Glyph for %s');
+        parent::__construct($db, $lang);
+    }
+
     /**
      * return the image element for a code point
      *
@@ -19,8 +27,9 @@ class Image extends CodepointInfo {
      * can switch back to good ol' <img> again.
      */
     public function __invoke(Codepoint $codepoint) : callable {
-        return function(int $width=16) use ($codepoint) : string {
-            $alt = sprintf(__('Glyph for %s'), (string)$codepoint);
+        $altText = $this->altText;
+        return function(int $width=16) use ($codepoint, $altText) : string {
+            $alt = sprintf($altText, (string)$codepoint);
             if (in_array($codepoint->gc, ['Co', 'Xx'])) {
                 return sprintf(
                     '<img src="%s" width="%s" height="%s" alt="%s">',
