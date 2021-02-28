@@ -14,6 +14,7 @@
     "autoload": {
         "files": [
             "codepoints.net/lib/array_functions.php",
+            "codepoints.net/lib/read_functions.php",
             "codepoints.net/lib/request_functions.php",
             "codepoints.net/lib/unicode_functions.php",
             "codepoints.net/lib/view_functions.php"

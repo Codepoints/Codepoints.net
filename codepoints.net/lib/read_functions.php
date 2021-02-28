@@ -66,3 +66,24 @@ function parse_codepoint(string $str, $lenient=false) : ?int {
     }
     return null;
 }
+
+
+/**
+ * get a Codepoint object by the integer code point
+ */
+function get_codepoint(int $cp, Database $db) : ?Codepoint {
+    if (is_pua($cp)) {
+        $data = [
+            'cp' => $cp,
+            'name' => 'PRIVATE USE CHARACTER',
+            'gc' => 'Co',
+        ];
+    } else {
+        $data = $db->getOne('SELECT cp, name, gc FROM codepoints WHERE cp = ?',
+            $cp);
+    }
+    if ($data) {
+        return Codepoint::getCached($data, $db);
+    }
+    return null;
+}

@@ -21,20 +21,10 @@ class Codepoint extends Controller {
         new Extra($env['db'], $env['lang']);
         new OtherSites($env['db'], $env['lang']);
 
-        $cp = hexdec($match[1]);
-        if (is_pua($cp)) {
-            $data = [
-                'cp' => $cp,
-                'name' => 'PRIVATE USE CHARACTER',
-                'gc' => 'Co',
-            ];
-        } else {
-            $data = $env['db']->getOne('SELECT cp, name, gc FROM codepoints WHERE cp = ?', $cp);
-        }
-        if (! $data) {
+        $codepoint = get_codepoint(hexdec($match[1]), $env['db']);
+        if (! $codepoint) {
             throw new NotFoundException('no character found');
         }
-        $codepoint = new UnicodeCodepoint($data, $env['db']);
         $block = null;
         $plane = null;
         $page_description = sprintf(
