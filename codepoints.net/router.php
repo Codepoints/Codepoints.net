@@ -11,6 +11,7 @@ use \Codepoints\Controller\Plane;
 use \Codepoints\Controller\Planes;
 use \Codepoints\Controller\PossibleName;
 use \Codepoints\Controller\Random;
+use \Codepoints\Controller\Range;
 use \Codepoints\Controller\Search;
 use \Codepoints\Controller\Sitemap;
 use \Codepoints\Controller\StaticPage;
@@ -70,6 +71,9 @@ Router::add(new URLMatcher('(.|(%[A-Fa-f0-9]{2}){1,4})$'), function(Array $match
     }
     throw new Redirect(sprintf('U+%04X', $cp));
 });
+
+/* support Unicode ranges like U+0123..U+3456 */
+Router::add(new URLMatcher('(?:U\\+[0-9a-fA-F]{4,6}(?:\\.\\.|-|,))+U\\+[0-9a-fA-F]{4,6}$'), new Range());
 
 /** check for possible code point name */
 Router::add(function(string $url, Array $env) : ?Array {

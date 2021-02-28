@@ -1,57 +1,66 @@
 <?php
 
+use Codepoints\Database;
+use Codepoints\Unicode\Codepoint;
 use Codepoints\Unicode\Range;
 
-# TODO adapt to new lazy range, i.e., return Array<Range|Codepoint>
-#/**
-# * parse a string of form U+A..U+B,U+C into a Range
-# */
-#function parse_range(string $str, Database $db) : Range {
-#    $set = [];
-#    $junks = preg_split('/\s*(?:,\s*)+/', trim($str));
-#    foreach ($junks as $j) {
-#        $ranges = preg_split('/\s*(?:-|\.\.|:)\s*/', $j);
-#        switch (count($ranges)) {
-#            case 0:
-#                break;
-#            case 1:
-#                $tmp = parse_codepoint($ranges[0], true);
-#                if (is_int($tmp)) {
-#                    $set[] = $tmp;
-#                }
-#                break;
-#            case 2:
-#                $low = parse_codepoint($ranges[0], true);
-#                $high = parse_codepoint($ranges[1], true);
-#                if (is_int($low) && is_int($high)) {
-#                    $set = array_merge($set, range(min($low, $high),
-#                                                   max($high, $low)));
-#                }
-#                break;
-#            default:
-#                $max = -1;
-#                $min = 0x110000;
-#                foreach ($ranges as $r) {
-#                    $tmp = parse_codepoint($r, true);
-#                    if (is_int($tmp) && $tmp > $max) {
-#                        $max = $tmp;
-#                    }
-#                    if (is_int($tmp) && $tmp < $min) {
-#                        $min = $tmp;
-#                    }
-#                }
-#                if ($min < 0x110000 && $max > -1) {
-#                    $set = array_merge($set, range(min($min, $max),
-#                                                   max($max, $min)));
-#                }
-#        }
-#    }
-#    return new Range($set, $db);
-#}
+/**
+ * parse a string of form U+A..U+B,U+C into a list of Ranges and code points
+ *
+ * @return list<Range|Codepoint|null>
+ */
+function parse_range(string $str, Database $db) {
+    $set = [];
+    $junks = preg_split('/\s*(?:,\s*)+/', trim($str));
+    foreach ($junks as $j) {
+        $ranges = preg_split('/\s*(?:-|\.\.|:)\s*/', $j);
+        switch (count($ranges)) {
+            case 0:
+                break;
+            case 1:
+                $tmp = parse_codepoint($ranges[0], true);
+                if (is_int($tmp)) {
+                    $set[] = get_codepoint($tmp, $db);
+                }
+                break;
+            case 2:
+                $low = parse_codepoint($ranges[0], true);
+                $high = parse_codepoint($ranges[1], true);
+                if (is_int($low) && is_int($high)) {
+                    $set[] = new Range([
+                        'first' => min($low, $high),
+                        'last' => max($high, $low)], $db);
+                }
+                break;
+            default:
+                /* the strange case of U+1234..U+4567..U+7890. We try to handle
+                 * it gracefully. */
+                $max = -1;
+                $min = 0x110000;
+                foreach ($ranges as $r) {
+                    $tmp = parse_codepoint($r, true);
+                    if (is_int($tmp) && $tmp > $max) {
+                        $max = $tmp;
+                    }
+                    if (is_int($tmp) && $tmp < $min) {
+                        $min = $tmp;
+                    }
+                }
+                if ($min < 0x110000 && $max > -1) {
+                    $set[] = new Range([
+                        'first' => min($min, $max),
+                        'last' => max($max, $min)], $db);
+                }
+        }
+    }
+    return $set;
+}
 
 
 /**
- * return the codepoint for a single representation
+ * return the codepoint for a single "U+" representation
+ *
+ * The code point is not checked for existence.
  *
  * @param bool $lenient if other values than U+hex should be recognized
  */
