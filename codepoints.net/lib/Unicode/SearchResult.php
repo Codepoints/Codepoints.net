@@ -13,38 +13,17 @@ use \Codepoints\Unicode\Range;
  */
 class SearchResult extends Range {
 
-    private int $currentPage;
-
-    private \PDOStatement $query;
-
-    private Array $params;
-
     /**
      * construct a new search result
      */
     public function __construct(Array $data, Database $db) {
         $this->db = $db;
+        $this->name = array_get($data, 'name', __('Search'));
         $this->first = 0;
         $this->current = 0;
-        $this->last = 0;
-        $this->count = 0;
-        $this->currentPage = $data['page'];
-        $data['count_statement']->execute($data['params']);
-        $counter = $data['count_statement']->fetch(\PDO::FETCH_ASSOC);
-        if ($counter) {
-            $this->last = min($counter['count'], 0x100) - 1;
-            $this->count = $counter['count'];
-        }
-        $data['query_statement']->execute($data['params']);
-        $fetcher = $data['query_statement']->fetchAll(\PDO::FETCH_ASSOC);
-        if ($fetcher) {
-            foreach ($fetcher as $i => $item) {
-                $this->cp_cache[$i] = $item;
-            }
-        }
-        $this->query = $data['query_statement'];
-        $this->params = $data['params'];
-        $this->name = __('Search');
+        $this->last = $data['last'];
+        $this->count = $data['count'];
+        $this->cp_cache = $data['items'];
     }
 
     /**

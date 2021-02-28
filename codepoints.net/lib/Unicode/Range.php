@@ -45,6 +45,8 @@ class Range implements \Iterator {
      * construct a new Unicode range
      *
      * The set may be an empty range and can be filled later.
+     *
+     * @param Array<"first"|"last", int> $data
      */
     public function __construct(Array $data, Database $db) {
         $this->db = $db;

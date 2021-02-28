@@ -32,12 +32,26 @@ class Search extends Controller {
         $pagination = null;
         if ($query) {
             list($query_statement, $count_statement, $params) = $this->composeSearchQuery($query, $page, $env);
+
+            $count_statement->execute($params);
+            $last = 0;
+            $count = 0;
+            $counter = $count_statement->fetch(\PDO::FETCH_ASSOC);
+            if ($counter) {
+                $last = min($counter['count'], $this->pagesize) - 1;
+                $count = $counter['count'];
+            }
+
+            $query_statement->execute($params);
+            $items = $query_statement->fetchAll(\PDO::FETCH_ASSOC);
+
             $search_result = new SearchResult([
                 'page' => $page,
-                'query_statement' => $query_statement,
-                'count_statement' => $count_statement,
-                'params' => $params,
+                'last' => $last,
+                'count' => $count,
+                'items' => $items,
             ], $env['db']);
+
             $pagination = new Pagination($search_result, $page);
         }
 
