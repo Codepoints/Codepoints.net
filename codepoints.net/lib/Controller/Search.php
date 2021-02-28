@@ -20,10 +20,8 @@ class Search extends Controller {
             'title' => __('Search'),
             'page_description' => __('Search Codepoints.net by specifying many different possible parameters.'),
         ];
-        $page = (int)filter_input(INPUT_GET, 'page', FILTER_SANITIZE_NUMBER_INT);
-        if (! $page) {
-            $page = 1;
-        }
+        $page = get_page();
+
         $query = filter_input(INPUT_SERVER, 'QUERY_STRING');
         $q = filter_input(INPUT_GET, 'q');
         if (! $q) {

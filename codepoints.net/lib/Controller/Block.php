@@ -15,10 +15,7 @@ class Block extends Controller {
      */
     public function __invoke($data, Array $env) : string {
         $block = new UnicodeBlock($data, $env['db']);
-        $page = (int)filter_input(INPUT_GET, 'page', FILTER_SANITIZE_NUMBER_INT);
-        if (! $page) {
-            $page = 1;
-        }
+        $page = get_page();
 
         /* put correct language first: https://stackoverflow.com/a/27694067/113195 */
         $abstract = $env['db']->getOne('
