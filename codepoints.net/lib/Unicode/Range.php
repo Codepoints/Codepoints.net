@@ -44,8 +44,6 @@ class Range implements \Iterator {
     /**
      * construct a new Unicode range
      *
-     * The set may be an empty range and can be filled later.
-     *
      * @param Array<"first"|"last", int> $data
      */
     public function __construct(Array $data, Database $db) {
@@ -81,7 +79,7 @@ class Range implements \Iterator {
      * return the number of code points in this range
      *
      * This method will call the DB and look, how many real code points are
-     * there. If you want the size of the whole range, use
+     * there. If you only want the size of the whole range, use
      *
      *     $range->last - $range->first + 1
      */

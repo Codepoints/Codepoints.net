@@ -10,8 +10,6 @@ use Codepoints\Router\Pagination;
 
 class Search extends Controller {
 
-    private int $pagesize = 0x100;
-
     /**
      * @param string $match
      */
@@ -38,7 +36,7 @@ class Search extends Controller {
             $count = 0;
             $counter = $count_statement->fetch(\PDO::FETCH_ASSOC);
             if ($counter) {
-                $last = min($counter['count'], $this->pagesize) - 1;
+                $last = min($counter['count'], Pagination::PAGE_SIZE) - 1;
                 $count = $counter['count'];
             }
 
@@ -46,7 +44,6 @@ class Search extends Controller {
             $items = $query_statement->fetchAll(\PDO::FETCH_ASSOC);
 
             $search_result = new SearchResult([
-                'page' => $page,
                 'last' => $last,
                 'count' => $count,
                 'items' => $items,
@@ -108,7 +105,7 @@ class Search extends Controller {
             GROUP BY cp
             ORDER BY SUM(weight) DESC, cp ASC
             LIMIT %s, %s', $search,
-                ($page - 1) * $this->pagesize, $this->pagesize));
+                ($page - 1) * Pagination::PAGE_SIZE, Pagination::PAGE_SIZE));
         $count_statement = $env['db']->prepare(sprintf('
             SELECT COUNT(*) AS count
             FROM search_index

@@ -13,7 +13,7 @@ class Pagination {
 
     private int $page = 1;
 
-    private int $pagesize = 0x100;
+    public const PAGE_SIZE = 0x100;
 
     private string $urlTemplate;
 
@@ -34,12 +34,12 @@ class Pagination {
     }
 
     public function slice() : Range {
-        return $this->range->slice(($this->page - 1) * $this->pagesize,
-                           $this->pagesize);
+        return $this->range->slice(($this->page - 1) * self::PAGE_SIZE,
+                           self::PAGE_SIZE);
     }
 
     public function getNumberOfPages() : int {
-        return intval(ceil(($this->range->last - $this->range->first + 1) / $this->pagesize));
+        return intval(ceil(($this->range->last - $this->range->first + 1) / self::PAGE_SIZE));
     }
 
     public function __toString() : string {
