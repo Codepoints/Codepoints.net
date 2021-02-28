@@ -32,7 +32,7 @@ class Range implements \Iterator {
     protected int $current;
 
     /**
-     * the number of read code points in this range
+     * the number of real code points in this range
      */
     protected ?int $count = null;
 
@@ -149,7 +149,7 @@ class Range implements \Iterator {
                 }
             }
         }
-        return $data? new Codepoint($data, $this->db) : null;
+        return $data? Codepoint::getCached($data, $this->db) : null;
     }
 
     public function key() : int {

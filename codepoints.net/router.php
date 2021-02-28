@@ -84,5 +84,5 @@ Router::add(function(string $url, Array $env) : ?Array {
             USING (cp)
         WHERE replace(replace(lower(na), '_', ''), ' ', '') = ?
         LIMIT 1", str_replace([' ', '_'], '', strtolower($url)));
-    return $data;
+    return $data?: null;
 }, new PossibleName());

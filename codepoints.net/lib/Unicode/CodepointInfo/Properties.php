@@ -177,7 +177,7 @@ class Properties extends CodepointInfo {
             foreach ($data as $v) {
                 $rel = $v['relation'];
                 if ($v['order'] == 0) {
-                    $properties[$rel] = new Codepoint($v, $this->db);
+                    $properties[$rel] = Codepoint::getCached($v, $this->db);
                 } else {
                     if (array_key_exists($rel, $properties) && ! is_array($properties[$rel])) {
                         throw new \Exception('double property '.$rel);
@@ -185,7 +185,7 @@ class Properties extends CodepointInfo {
                     if (! array_key_exists($rel, $properties)) {
                         $properties[$rel] = [];
                     }
-                    $properties[$rel][$v['order'] - 1] = new Codepoint($v, $this->db);
+                    $properties[$rel][$v['order'] - 1] = Codepoint::getCached($v, $this->db);
                 }
             }
         }

@@ -36,7 +36,7 @@ class SearchResult extends Range {
         if (array_key_exists($codepoint, $this->cp_cache)) {
             $data = $this->cp_cache[$codepoint];
         }
-        return $data? new Codepoint($data, $this->db) : null;
+        return $data? Codepoint::getCached($data, $this->db) : null;
     }
 
     /**

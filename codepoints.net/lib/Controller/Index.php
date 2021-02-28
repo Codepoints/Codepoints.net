@@ -12,7 +12,7 @@ class Index extends Controller {
         $data = $env['db']->getOne('SELECT cp, name, gc
             FROM codepoints
             WHERE cp = 0');
-        $cp0 = new Codepoint($data, $env['db']);
+        $cp0 = Codepoint::getCached($data, $env['db']);
         $data = $env['db']->getOne('SELECT COUNT(*) AS c FROM codepoints USE INDEX (PRIMARY)');
         $cp_count = $data['c'];
 

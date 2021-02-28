@@ -22,7 +22,7 @@ class NotFound extends Controller {
             $cp = hexdec($match2[1]);
             $title = sprintf(__('Codepoint U+%04X not Found'), $cp);
             $page_description = sprintf(__('The point U+%04X is no valid Unicode codepoint.'), $cp);
-            $codepoint = new Codepoint([
+            $codepoint = Codepoint::getCached([
                 'cp' => $cp,
                 'name' => $cp <= 0x10FFFF? '<reserved>' : 'CECI N’EST PAS UNICODE',
                 'gc' => $cp <= 0x10FFFF? 'Cn' : 'Xx'],
@@ -40,7 +40,7 @@ class NotFound extends Controller {
                     preg_split('//u', rawurldecode($match), -1, PREG_SPLIT_NO_EMPTY))).')');
             if ($data) {
                 foreach ($data as $set) {
-                    $cps[] = new Codepoint($set, $env['db']);
+                    $cps[] = Codepoint::getCached($set, $env['db']);
                 }
             }
         }
