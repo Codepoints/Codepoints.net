@@ -34,6 +34,8 @@ class Block extends Range {
 
     /**
      * create a new Block
+     *
+     * @param Array{name: string, first: int, last: int} $data
      */
     public function __construct(Array $data, Database $db) {
         parent::__construct($data, $db);

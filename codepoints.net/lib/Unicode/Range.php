@@ -38,13 +38,15 @@ class Range implements \Iterator {
 
     /**
      * a cache of code point data already fetched from the DB
+     *
+     * @var Array<int, ?Array>
      */
     protected Array $cp_cache = [];
 
     /**
      * construct a new Unicode range
      *
-     * @param Array<"first"|"last", int> $data
+     * @param Array{first: int, last: int} $data
      */
     public function __construct(Array $data, Database $db) {
         $this->db = $db;

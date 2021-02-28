@@ -24,6 +24,8 @@ class Plane {
 
     /**
      * create a new plane instance
+     *
+     * @param Array{name: string, first: int, last: int} $data
      */
     public function __construct(Array $data, Database $db) {
         $this->name = $data['name'];

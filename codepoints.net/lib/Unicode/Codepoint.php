@@ -50,9 +50,25 @@ class Codepoint {
 
     private static Array $instance_cache = [];
 
+    /**
+     * registered info providers. Callables, but mostly instances of CodepointInfo
+     *
+     * @var Array<string, callable>
+     */
     private static Array $info_providers = [];
+
+    /**
+     * cached responses of info providers
+     *
+     * @var Array<string, mixed>
+     */
     private Array $info_cache = [];
 
+    /**
+     * lazily create a new code point instance
+     *
+     * @param Array{cp: int, name: string, gc: string} $data
+     */
     public function __construct(Array $data, Database $db) {
         $this->id = $data['cp'];
         $this->name = $data['name'];
