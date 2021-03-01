@@ -4,6 +4,7 @@ namespace Codepoints\Unicode;
 
 use \Analog\Analog;
 use \Codepoints\Database;
+use \Codepoints\Router\Pagination;
 use \Codepoints\Unicode\Codepoint;
 use \Codepoints\Unicode\Range;
 
@@ -21,7 +22,7 @@ class SearchResult extends Range {
         $this->name = array_get($data, 'name', __('Search'));
         $this->first = 0;
         $this->current = 0;
-        $this->last = $data['last'];
+        $this->last = $data['count'] - 1;
         $this->count = $data['count'];
         $this->cp_cache = $data['items'];
     }
@@ -40,12 +41,28 @@ class SearchResult extends Range {
     }
 
     /**
-     * disable slicing
+     * check with actual cache
      *
-     * We implement the correct pagination window in the controller.
+     * $this->last is unreliable, since we need to spoof it for pagination.
+     * Check against the real cache for validity.
+     */
+    public function valid() : bool {
+        return array_key_exists($this->current, $this->cp_cache);
+    }
+
+    /**
+     * fake slicing
+     *
+     * We implement the correct pagination window in the controller. But to
+     * keep the pagination class happy, we need to play with the "last"
+     * parameter.
      */
     public function slice(int $offset, ?int $length = null) : self {
-        return $this;
+        return new self([
+            'name' => $this->name,
+            'count' => $length?: Pagination::PAGE_SIZE,
+            'items' => $this->cp_cache,
+        ], $this->db);
     }
 
 }

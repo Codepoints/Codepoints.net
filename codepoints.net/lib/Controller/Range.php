@@ -40,10 +40,19 @@ class Range extends Controller {
                 if ($item instanceof Codepoint) {
                     /* we know, that $add === 1, so we cannot overfill the
                      * $items list with just a single code point */
-                    $items[] = $item;
+                    $items[] = ['cp' => $item->id, 'name' => $item->name, 'gc' => $item->gc];
                 } else {
+                    $tmp_count = $count;
                     foreach ($item as $codepoint) {
-                        $items[] = $codepoint;
+                        if (! $codepoint) {
+                            continue;
+                        }
+                        $tmp_count += 1;
+                        if ($tmp_count < ($page - 1) * Pagination::PAGE_SIZE + 1) {
+                            /* skip until we reach our destination window */
+                            continue;
+                        }
+                        $items[] = ['cp' => $codepoint->id, 'name' => $codepoint->name, 'gc' => $codepoint->gc];
                         if (count($items) >= Pagination::PAGE_SIZE) {
                             break;
                         }
@@ -53,7 +62,6 @@ class Range extends Controller {
             $count += $add;
         }
         $range = new SearchResult([
-            'last' => min($count, Pagination::PAGE_SIZE) - 1,
             'count' => $count,
             'items' => $items,
         ], $env['db']);

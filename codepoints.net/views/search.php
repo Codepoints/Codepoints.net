@@ -9,11 +9,11 @@
 </form>
 
   <?php if ($search_result): ?>
-    <ul>
+    <ol>
       <?php foreach ($search_result as $cp => $codepoint): ?>
         <li><?=cp($codepoint)?></li>
       <?php endforeach ?>
-    </ul>
+    </ol>
     <?=$pagination?>
   <?php endif ?>
 </main>
