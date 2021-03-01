@@ -26,9 +26,9 @@ class Sitemap extends Controller {
                 SELECT HEX(ANY_VALUE(cp - cp % 0x100)) first, COUNT(*) count
                     FROM codepoints
                 GROUP BY (cp - cp % 0x100)');
-            $this->context['data'][] = '/sitemap/static.xml';
+            $this->context['data'][] = 'sitemap/static.xml';
             foreach ($data as $row) {
-                $this->context['data'][] = sprintf('/sitemap/u%04s.xml', $row['first']);
+                $this->context['data'][] = sprintf('sitemap/u%04s.xml', $row['first']);
             }
 
         } elseif ($match[1] === '/static') {
