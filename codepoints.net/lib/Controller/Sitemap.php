@@ -13,7 +13,7 @@ class Sitemap extends Controller {
      * @param Array $match
      */
     public function __invoke($match, Array $env) : string {
-        header('Content-Type: application/xml');
+        header('Content-Type: application/xml; charset=utf-8');
 
         $is_index = false;
         $this->context['data'] = [];
