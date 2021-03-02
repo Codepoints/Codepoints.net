@@ -63,34 +63,39 @@ class Search extends Controller {
      */
     private function composeSearchQuery(string $query_string, int $page, Array $env) : Array {
         $query_list = $this->parseQuery($query_string, $env);
-        $params = array();
+        $params = [];
         $search = '';
-        foreach ($query_list as $i => $q) {
+        foreach ($query_list as $i => list($connector, $key, $comp, $value)) {
             if ($search !== '') {
                 /* join the query with the last one using the $q0 parameter
                  * ("AND" or "OR"). */
-                $search .= " ${q[0]} ";
+                $search .= " $connector ";
             }
-            if ($q[1] === 'term') {
-                $search .= " term ${q[2]} :q$i ";
-                $params[':q'.$i] = "${q[3]}";
-            } elseif ($q[1] === 'na' || $q[1] === 'na1') {
+            if ($key === 'na' || $key === 'na1') {
                 /* match names loosely, especially to make the search
                  * case-insensitive */
                 $search .= " term LIKE :q$i ";
-                $params[':q'.$i] = "na:%${q[3]}%";
-            } elseif ($q[1] === 'cp' || $q[1] === 'int') {
+                $params[':q'.$i] = "na:%$value%";
+            } elseif ($key === 'cp' || $key === 'int') {
                 /* handle "cp" specially and search "cp" column directly */
-                $search .= " cp = :q$i ";
-                $params[':q'.$i] = $q[3];
-            } elseif ($q[1] === 'block' || $q[1] === 'blk') {
+                $search .= " cp $comp :q$i ";
+                $params[':q'.$i] = $value;
+            } elseif ($key === 'block' || $key === 'blk') {
                 $search .= " term = :q$i ";
-                $params[':q'.$i] = 'blk:'.$q[3];
+                $params[':q'.$i] = 'blk:'.$value;
             } else {
-                /* the default is to query the column $q0 with the
-                 * comparison $q1 for a value $q2 */
-                $search .= " term ${q[2]} :q$i ";
-                $params[':q'.$i] = $q[1].':'.$q[3];
+                if (is_array($value)) {
+                    $search .= " term $comp ( ";
+                    $search .= join(', ', array_map(function (string $item) use ($key, $env) : string {
+                        return $env['db']->quote($key === 'term'? $item : $key.':'.$item);
+                    }, $value));
+                    $search .= " ) ";
+                } else {
+                    /* the default is to query the column "term" with the
+                     * comparison $q2 for a combined value "$q1:$q3" */
+                    $search .= " term $comp :q$i ";
+                    $params[':q'.$i] = $key === 'term'? $value : $key.':'.$value;
+                }
             }
         }
 
@@ -111,7 +116,7 @@ class Search extends Controller {
     }
 
     /**
-     * @return Array<string, Array>
+     * @return list<Array{"AND" | "OR", string, "=" | "!=" | ">" | "<" | "LIKE" | "NOT LIKE" | "IN" | "NOT IN", string | mixed}>
      */
     private function parseQuery(string $query_string, Array $env) : Array {
         $query = [];
@@ -132,9 +137,11 @@ class Search extends Controller {
     }
 
     /**
+     * translate URL parameters to SQL query chips
      *
+     * @return list<Array{"AND" | "OR", string, "=" | "!=" | ">" | "<" | "LIKE" | "NOT LIKE" | "IN" | "NOT IN", string | mixed}>
      */
-    private function getTransformedQuery(string $key, string $value, Array $env) : Array {
+    protected function getTransformedQuery(string $key, string $value, Array $env) : Array {
         $result = [];
         if ($key === 'q') {
             /* "q" is a special case: We parse the query and try to
@@ -191,10 +198,9 @@ class Search extends Controller {
                 $next_term = $terms[$i];
             }
 
-            if (mb_strlen($v, 'UTF-8') === 1) {
+            if (mb_strlen($v) === 1) {
                 /* seems to be one single character */
-                $r['cp'][] = unpack('N', mb_convert_encoding($v, 'UCS-4BE',
-                                    'UTF-8'));
+                $r['cp'][] = mb_ord($v);
             }
 
             if (preg_match('/^&#?[0-9a-z]+;$/i', $v)) {
@@ -216,8 +222,7 @@ class Search extends Controller {
 
             if (preg_match('/^(%[a-f0-9]{2})+$/i', $v)) {
                 /* an URL-encoded UTF-8 character */
-                $r['cp'][] = unpack('N', mb_convert_encoding(rawurldecode($v),
-                                    'UCS-4BE', 'UTF-8'));
+                $r['cp'][] = mb_ord(rawurldecode($v));
                 /* continue, b/c this is a very specific search */
                 continue;
             }
