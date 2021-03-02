@@ -18,6 +18,11 @@ require 'vendor/autoload.php';
 define('DEBUG', 1);
 
 /**
+ * set mb encoding globally
+ */
+mb_internal_encoding('UTF-8');
+
+/**
  * configure the logger
  */
 Analog::$format = '[%2$s] [codepoints:%3$s] %4$s'."\n";
