@@ -15,6 +15,7 @@ use \Codepoints\Controller\Range;
 use \Codepoints\Controller\Search;
 use \Codepoints\Controller\Sitemap;
 use \Codepoints\Controller\StaticPage;
+use \Codepoints\Controller\Wizard;
 
 
 Router::add('', new Index());
@@ -26,6 +27,7 @@ Router::add('planes', new Planes());
 Router::add('random', new Random());
 
 Router::add('search', new Search());
+Router::add('wizard', new Wizard());
 
 Router::add(new URLMatcher('plane_([a-zA-Z0-9()_-]+)$'), new Plane());
 Router::add(new URLMatcher('([a-zA-Z0-9()_-]+)_plane$'), new Plane());

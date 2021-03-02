@@ -53,6 +53,7 @@ class Search extends Controller {
             'search_result' => $search_result,
             'pagination' => $pagination,
             'q' => $q,
+            'wizard' => false,
         ];
 
         return parent::__invoke($match, $env);
@@ -61,7 +62,7 @@ class Search extends Controller {
     /**
      * compose the search query
      */
-    private function composeSearchQuery(string $query_string, int $page, Array $env) : Array {
+    protected function composeSearchQuery(string $query_string, int $page, Array $env) : Array {
         $query_list = $this->parseQuery($query_string, $env);
         $params = [];
         $search = '';
@@ -71,19 +72,21 @@ class Search extends Controller {
                  * ("AND" or "OR"). */
                 $search .= " $connector ";
             }
-            if ($key === 'na' || $key === 'na1') {
-                /* match names loosely, especially to make the search
-                 * case-insensitive */
-                $search .= " term LIKE :q$i ";
-                $params[':q'.$i] = "na:%$value%";
-            } elseif ($key === 'cp' || $key === 'int') {
+            if ($key === 'cp' || $key === 'int') {
                 /* handle "cp" specially and search "cp" column directly */
                 $search .= " cp $comp :q$i ";
                 $params[':q'.$i] = $value;
-            } elseif ($key === 'block' || $key === 'blk') {
-                $search .= " term = :q$i ";
-                $params[':q'.$i] = 'blk:'.$value;
             } else {
+                if ($key === 'block') {
+                    $key = 'blk';
+                }
+                if ($key === 'na' || $key === 'na1') {
+                    /* match names loosely, especially to make the search
+                     * case-insensitive */
+                    $key = 'na';
+                    $comp = 'LIKE';
+                    $value = "%$value%";
+                }
                 if (is_array($value)) {
                     $search .= " term $comp ( ";
                     $search .= join(', ', array_map(function (string $item) use ($key, $env) : string {
