@@ -34,10 +34,10 @@ class NotFound extends Controller {
                 $plane = $codepoint->plane;
             } catch (Exception $e) {}
         } elseif (strlen($match) < 128) {
+            $list = join(',', array_map(function(string $c) : int { return mb_ord($c); },
+                    array_unique(preg_split('//u', rawurldecode($match), -1, PREG_SPLIT_NO_EMPTY))));
             $data = $env['db']->getAll('SELECT cp, name, gc FROM codepoints
-                WHERE cp IN ( '.
-                join(',', array_map(function(string $c) : int { return mb_ord($c); },
-                    preg_split('//u', rawurldecode($match), -1, PREG_SPLIT_NO_EMPTY))).')');
+                WHERE cp IN ( '.$list.' ) ORDER BY FIELD( cp, '.$list.' )');
             if ($data) {
                 foreach ($data as $set) {
                     $cps[] = Codepoint::getCached($set, $env['db']);
