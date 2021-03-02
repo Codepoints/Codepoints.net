@@ -27,8 +27,10 @@ class View {
     public function __invoke(Array $params=[], Array $env=[]) : string {
         extract($params, EXTR_PREFIX_INVALID, 'v');
         $view = $this->view;
-        $lang = $env['lang'];
-        $info = $env['info'];
+        if ($env) {
+            $lang = $env['lang'];
+            $info = $env['info'];
+        }
         ob_start();
         include($this->file);
         $out = ob_get_contents();
