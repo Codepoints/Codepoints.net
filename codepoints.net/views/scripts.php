@@ -28,7 +28,7 @@
   <section class="bk">
     <dl id="sclist">
       <?php foreach ($scripts as $sc): ?>
-        <dt data-sc="<?=q($sc['iso'])?>" class="sc_<?=q($sc['iso'])?>"><a href="#"><?=q(str_replace('_', ' ', $sc['name']))?></a></dt>
+        <dt id="<?=q($sc['iso'])?>" class="sc_<?=q($sc['iso'])?>"><a href="#<?=q($sc['iso'])?>"><?=q(str_replace('_', ' ', $sc['name']))?></a></dt>
         <dd>
           <p><?php printf(__('%s%s%d%s characters%s are encoded in this script.'),
             '<a rel="nofollow" href="/search?sc='.q($sc['iso']).'">',

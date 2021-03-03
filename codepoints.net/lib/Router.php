@@ -75,6 +75,7 @@ class Router {
         }
 
         if ($current_handler) {
+            static::$env['current_url'] = $current_url;
             return $current_handler($match, static::$env);
         }
 
