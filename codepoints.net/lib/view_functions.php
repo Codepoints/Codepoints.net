@@ -149,5 +149,5 @@ function url(/*mixed*/ $item) : string {
         }
         return $path.$base;
     }
-    return $path.ltrim(str_replace('%2F', '/', urlencode($item)), '/');
+    return $path.ltrim(str_replace('%2F', '/', rawurlencode($item)), '/');
 }
