@@ -11,7 +11,7 @@ class Translator {
 
     private ?string $language = null;
 
-    private Array $supportedLanguages = ['de', 'en', 'es', 'pl'];
+    public const SUPPORTED_LANGUAGES = ['de', 'en', 'es', 'pl'];
 
     private ?Translations $translations = null;
 
@@ -60,13 +60,13 @@ class Translator {
                 $lang = 'en';
             }
             $negotiator = new LanguageNegotiator();
-            $bestLanguage = $negotiator->getBest($lang, $this->supportedLanguages);
+            $bestLanguage = $negotiator->getBest($lang, self::SUPPORTED_LANGUAGES);
 
-            $this->language = $this->supportedLanguages[0];
+            $this->language = self::SUPPORTED_LANGUAGES[0];
             /**
              * @psalm-suppress UndefinedInterfaceMethod
              */
-            if ($bestLanguage && in_array($bestLanguage->getType(), $this->supportedLanguages)) {
+            if ($bestLanguage && in_array($bestLanguage->getType(), self::SUPPORTED_LANGUAGES)) {
                 /**
                  * @psalm-suppress UndefinedInterfaceMethod
                  */
