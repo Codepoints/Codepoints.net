@@ -125,13 +125,12 @@
     <address>
       <p>
         <strong>Manuel Strehl</strong><br>
-        <img
-        src="<?=url('/static/images/address.png')?>" width="144" height="69">
+        c/o Kinetiqa GmbH<br>
+        Franz-Mayer-Straße 1<br>
+        93053 Regensburg, Germany
       </p>
       <p>
-        <?=_q('E-Mail:')?> <img
-            src="<?=url('/static/images/email.png')?>" width="220" height="20"><br>
-        <?=_q('WWW:')?> manuel-strehl.de/contact
+        <?=_q('WWW:')?> <a href="https://manuel-strehl.de/contact">manuel-strehl.de/contact</a>
       </p>
     </address>
     <figure class="other">
