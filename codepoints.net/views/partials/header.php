@@ -16,7 +16,7 @@
     <?php include 'head-multilang.php' ?>
 <?php switch($view):
 case ('codepoint'):
-    include 'codepoints-head.php';
+    include 'head-codepoint.php';
     break;
 endswitch ?>
   </head>
