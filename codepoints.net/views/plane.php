@@ -1,4 +1,14 @@
-<?php include 'partials/header.php'; ?>
+<?php
+$nav = [];
+if ($prev) {
+  $nav['prev'] = pl($prev, 'prev');
+}
+$nav['up'] = sprintf('<a rel="up" href="%s"><img src="/static/images/unicode-logo-framed.png" alt="" width="16" height="16"> %s</a>', url('planes'), __('Unicode'));
+if ($next) {
+  $nav['next'] = pl($next, 'next');
+}
+
+include 'partials/header.php'; ?>
 <div class="payload plane">
   <figure>
     <?=plimg($plane, 128)?>

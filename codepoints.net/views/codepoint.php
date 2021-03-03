@@ -1,13 +1,13 @@
 <?php
 $nav = [];
 if ($prev) {
-  $nav['prev'] = cp($prev);
+  $nav['prev'] = cp($prev, 'prev');
 }
 if ($block) {
-  $nav['up'] = bl($block);
+  $nav['up'] = bl($block, 'up');
 }
 if ($next) {
-  $nav['next'] = cp($next);
+  $nav['next'] = cp($next, 'next');
 }
 
 include 'partials/header.php'; ?>

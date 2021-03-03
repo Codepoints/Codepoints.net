@@ -1,11 +1,11 @@
 <?php
 $nav = [];
 if ($prev) {
-  $nav['prev'] = bl($prev);
+  $nav['prev'] = bl($prev, 'prev');
 }
-$nav['up'] = pl($block->plane);
+$nav['up'] = pl($block->plane, 'up');
 if ($next) {
-  $nav['next'] = bl($next);
+  $nav['next'] = bl($next, 'next');
 }
 
 include 'partials/header.php'; ?>
