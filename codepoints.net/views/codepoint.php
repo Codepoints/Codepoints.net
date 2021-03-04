@@ -17,12 +17,16 @@ include 'partials/header.php'; ?>
   </figure>
   <h1><?=q($title)?></h1>
 
+  <section class="cpdesc cpdesc--desc">
 <?php if ($codepoint->gc === 'Xx'): ?>
   <p><?=_q('This codepoint doesn’t exist.')?>
   If it would, it’d be located in the
   Nirvana of Undefined Behaviour beyond the 17<sup>th</sup> plane, a land <a href="http://www.unicode.org/mail-arch/unicode-ml/y2003-m10/0234.html">no member of the Unicode mailing list has ever seen</a>.
   </p>
+<?php else: ?>
+    <?=$codepoint->description?>
 <?php endif ?>
+  </section>
 
 <?php if ($extra): ?>
   <section class="cpdesc cpdesc--extra">
