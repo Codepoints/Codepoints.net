@@ -1,6 +1,6 @@
 <form method="get" class="langchooser">
   <label>
-    <span class="visually-hidden"><?=_q('language:')?></span>
+    <span class="visually-hidden"><?=_q('Language:')?></span>
     <select name="lang" onchange="this.form.submit()">
       <option value="en"<?php if ($lang === 'en'):?> selected<?php endif?>>english</option>
       <option value="de"<?php if ($lang === 'de'):?> selected<?php endif?>>deutsch</option>
