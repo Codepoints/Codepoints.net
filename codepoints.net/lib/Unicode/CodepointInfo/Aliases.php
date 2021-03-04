@@ -19,7 +19,7 @@ class Aliases extends CodepointInfo {
         return $this->db->getAll('
             SELECT cp, alias, `type`
             FROM codepoint_alias
-            WHERE cp = ?', $codepoint->id);
+            WHERE cp = ?', $codepoint->id)?: [];
     }
 
 }

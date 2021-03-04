@@ -58,7 +58,7 @@
     if ($defn) {
         echo ' ';
         printf(__('The Unihan Database defines it as <em>%s</em>.'),
-            preg_replace_callback('/U\+([0-9A-F]{4,6})/', function($m) {
+            preg_replace_callback('/U\+([0-9A-F]{4,6})/', function(Array $m) : string {
                 # TODO
                 return $m[0];
                 #$router = Router::getRouter();
@@ -95,7 +95,7 @@
         );
     }
 
-    $info_alias = array_values(array_filter($aliases, function($v) {
+    $info_alias = array_values(array_filter($aliases, function(Array $v) : bool {
         return $v['type'] === 'alias';
     }));
     if (count($info_alias)) {
