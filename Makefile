@@ -9,9 +9,13 @@ ifeq ($(DEBUG), 1)
 	COMPOSER_ARGS :=
 endif
 
-all:
-	@echo "HELLO!"
+all: css
 .PHONY: all
+
+css:
+	@mkdir -p "$(DOCROOT)/static/css/"
+	@cp -u src/css/* "$(DOCROOT)/static/css/"
+.PHONY: css
 
 test: test-php
 .PHONY: test

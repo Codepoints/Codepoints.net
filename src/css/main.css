@@ -1,0 +1,46 @@
+:root {
+  --font-mod: 1.25;
+  --font-family: Noto Serif, Droid Serif, Georgia, Times New Roman, Times, serif;
+  --color-text: #2a2825;
+  --color-back: #fefdfa;
+  --color-link: #941521;
+  --color-link-hover: #d00016;
+  font: normal 16px/1.333 var(--font-family);
+  font-feature-settings: "kern" on;
+  text-rendering: optimizeLegibility;
+}
+
+:root.force-dark {
+  --color-text: #e8edf2;
+  --color-back: #121212;
+  --color-link: #66D9EF;
+  --color-link-hover: #8AE0F0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.force-light) {
+    --color-text: #e8edf2;
+    --color-back: #121212;
+    --color-link: #66D9EF;
+    --color-link-hover: #8AE0F0;
+  }
+}
+
+body {
+  background: var(--color-back);
+  color: var(--color-text);
+}
+
+a {
+  color: var(--color-link);
+  transition: color .3s;
+}
+
+a:focus, a:hover {
+  color: var(--color-link-hover);
+}
+
+svg {
+  fill: currentColor;
+  overflow: visible; /* TODO quick fix for glyphs getting cut off */
+}

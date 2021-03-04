@@ -13,6 +13,7 @@
     <link rel="manifest" href="/manifest.webmanifest">
     <link rel="search" href="/opensearch.xml" type="application/opensearchdescription+xml" title="Search Codepoints">
     <link rel="author" href="/humans.txt">
+    <link rel="stylesheet" href="/static/css/main.css">
     <?php include 'head-multilang.php' ?>
 <?php switch($view):
 case ('codepoint'):
