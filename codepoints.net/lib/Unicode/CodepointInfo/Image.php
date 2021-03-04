@@ -14,10 +14,10 @@ class Image extends CodepointInfo {
 
     private string $altText;
 
-    public function __construct(Database $db, string $lang) {
+    public function __construct(Array $env) {
         /* this is a performance optimation to call __() less */
         $this->altText = __('Glyph for %s');
-        parent::__construct($db, $lang);
+        parent::__construct($env);
     }
 
     /**

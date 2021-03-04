@@ -3,6 +3,7 @@
 namespace Codepoints\Unicode;
 
 use \Codepoints\Unicode\Codepoint;
+use \Codepoints\Unicode\PropertyInfo;
 use \Codepoints\Database;
 
 
@@ -13,12 +14,17 @@ abstract class CodepointInfo {
 
     protected Database $db;
     protected string $lang;
+    protected PropertyInfo $info;
 
-    public function __construct(Database $db, string $lang) {
+    /**
+     * @param Array{db: Database, lang: string, info: PropertyInfo} $env
+     */
+    public function __construct(Array $env) {
         $name = strtolower(preg_replace('/.*\\\\/', '', get_class($this)));
         Codepoint::addInfoProvider($name, $this);
-        $this->db = $db;
-        $this->lang = $lang;
+        $this->db = $env['db'];
+        $this->lang = $env['lang'];
+        $this->info = $env['info'];
     }
 
     /**

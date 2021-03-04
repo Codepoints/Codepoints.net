@@ -78,7 +78,7 @@ Router::addDependency('info', new PropertyInfo());
 /**
  * make sure, we can access codepoint images
  */
-new Image($db, $lang);
+new Image(Router::getDependencies());
 
 /**
  * load the routes

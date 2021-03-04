@@ -5,21 +5,26 @@ namespace Codepoints\Controller;
 use Codepoints\Controller;
 use Codepoints\Router\NotFoundException;
 use Codepoints\Unicode\Codepoint as UnicodeCodepoint;
-use Codepoints\Unicode\CodepointInfo\Image;
-use Codepoints\Unicode\CodepointInfo\Wikipedia;
-use Codepoints\Unicode\CodepointInfo\Properties;
+use Codepoints\Unicode\CodepointInfo\Aliases;
+use Codepoints\Unicode\CodepointInfo\Description;
 use Codepoints\Unicode\CodepointInfo\Extra;
 use Codepoints\Unicode\CodepointInfo\OtherSites;
+use Codepoints\Unicode\CodepointInfo\Pronunciation;
+use Codepoints\Unicode\CodepointInfo\Properties;
+use Codepoints\Unicode\CodepointInfo\Wikipedia;
 use Exception;
 
 
 class Codepoint extends Controller {
 
     public function __invoke($match, Array $env) : string {
-        new Wikipedia($env['db'], $env['lang']);
-        new Properties($env['db'], $env['lang']);
-        new Extra($env['db'], $env['lang']);
-        new OtherSites($env['db'], $env['lang']);
+        new Aliases($env);
+        new Description($env);
+        new Extra($env);
+        new OtherSites($env);
+        new Pronunciation($env);
+        new Properties($env);
+        new Wikipedia($env);
 
         $codepoint = get_codepoint(hexdec($match[1]), $env['db']);
         if (! $codepoint) {
