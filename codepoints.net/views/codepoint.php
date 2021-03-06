@@ -43,6 +43,11 @@ include 'partials/header.php'; ?>
   </section>
 <?php endif ?>
 
+  <section class="cpdesc cpdesc--repr">
+    <h2><?=_q('Representations')?></h2>
+    <?php include 'partials/codepoint-representations.php' ?>
+  </section>
+
 <?php if ($othersites): ?>
   <section class="cpdesc cpdesc--othersites">
     <h2><?=_q('Elsewhere')?></h2>

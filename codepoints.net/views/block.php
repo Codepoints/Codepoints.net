@@ -34,7 +34,7 @@ include 'partials/header.php'; ?>
   <?php else:?>
     <p><a href="http://www.unicode.org/charts/PDF/U<?php printf('%04X', $block->first)?>.pdf"><?=_q('Chart at Unicode.org')?></a> <?=_q('(PDF)')?><br>
     <a href="https://decodeunicode.org/en/blocks/<?=q(str_replace(' ', '_', strtolower($block->name)))?>"><?=_q('Block at Decode Unicode')?></a></p>
-    <ol>
+    <ol class="cp-tiles">
       <?php foreach ($pagination->slice() as $cp => $codepoint): ?>
         <li>
           <?php if ($codepoint): ?>

@@ -11,6 +11,7 @@ use Codepoints\Unicode\CodepointInfo\Extra;
 use Codepoints\Unicode\CodepointInfo\OtherSites;
 use Codepoints\Unicode\CodepointInfo\Pronunciation;
 use Codepoints\Unicode\CodepointInfo\Properties;
+use Codepoints\Unicode\CodepointInfo\Representation;
 use Codepoints\Unicode\CodepointInfo\Wikipedia;
 use Exception;
 
@@ -24,6 +25,7 @@ class Codepoint extends Controller {
         new OtherSites($env);
         new Pronunciation($env);
         new Properties($env);
+        new Representation($env);
         new Wikipedia($env);
 
         $codepoint = get_codepoint(hexdec($match[1]), $env['db']);
