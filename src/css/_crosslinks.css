@@ -1,0 +1,30 @@
+.cp-tiles {
+  list-style: none;
+  padding-left: 0;
+  margin: 0 -.5em;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cp-tiles > li {
+  margin: .5em;
+  flex-basis: 4em;
+}
+
+.cp-tiles > li > * {
+  display: block;
+}
+
+.cp-tiles .cp > svg {
+  width: 85%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: .5em;
+  transition: transform .3s;
+}
+.cp-tiles .cp:hover > svg,
+.cp-tiles .cp:focus > svg {
+  transform: scale(1.15);
+}

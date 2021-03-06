@@ -1,3 +1,5 @@
+@import "_crosslinks.css";
+
 :root {
   --font-mod: 1.25;
   --font-family: Noto Serif, Droid Serif, Georgia, Times New Roman, Times, serif;
