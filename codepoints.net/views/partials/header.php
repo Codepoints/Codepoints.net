@@ -1,5 +1,13 @@
 <!DOCTYPE html>
-<html lang="<?=q($lang)?>">
+<html lang="<?=q($lang)?>" class="<?php
+if (isset($_COOKIE['force_mode'])) {
+    if ($_COOKIE['force_mode'] === 'dark') {
+        echo 'force-dark';
+    } elseif ($_COOKIE['force_mode'] === 'light') {
+        echo 'force-light';
+    }
+}
+?>">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -24,5 +32,6 @@ endswitch ?>
   <body>
     <header class="page-header">
 <?php include 'form-choose-language.php' ?>
+<?php include 'form-darkmode.php' ?>
 <?php include 'main-navigation.php' ?>
     </header>
