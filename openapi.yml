@@ -1,0 +1,898 @@
+openapi: 3.0.0
+
+info:
+  title: Codepoints.net Unicode API
+  description: |
+    Welcome to codepoint.net’s Unicode API. Most requests are JSON-based. The
+    `glyph` and `property` methods return PNG images. When problems appear, the
+    API response conforms to RFC 7807 <https://tools.ietf.org/html/rfc7807>.
+    Documentation is published at
+    <https://github.com/Codepoints/codepoints.net/wiki/API>.
+  version: 1.0.0
+
+externalDocs:
+  description: API documentation on Github
+  url: https://github.com/Codepoints/codepoints.net/wiki/API
+
+servers:
+  - url: https://codepoints.net/api/v1
+    description: live instance
+  - url: https://beta.codepoints.net/api/v1
+    description: testing instance
+
+components:
+  schemas:
+    codepoint:
+      description: a hexadecimal, potentially 0-padded number
+      type: string
+      pattern: '^(10|[1-9A-Fa-f])?([0-9A-Fa-f]{4})$'
+    u_codepoint:
+      description: a hexadecimal, potentially 0-padded number with leading “U+”
+      type: string
+      pattern: '^U\+(10|[1-9A-Fa-f])?([0-9A-Fa-f]{4})$'
+  parameters:
+    codepoint:
+      name: codepoint
+      description: |
+        A hexadecimal code point between 0 and 10FFFF inclusively.
+      in: path
+      required: true
+      schema:
+        $ref: '#/components/schemas/codepoint'
+        examples:
+          firstCP:
+            value: '0000'
+          bmp:
+            value: 'A2D4'
+          emoji:
+            value: '1F456'
+          noncharacter:
+            value: 'EFFFD'
+          lastCP:
+            value: '10FFFF'
+
+paths:
+  "/codepoint/{codepoint}":
+    parameters:
+      - $ref: '#/components/parameters/codepoint'
+      - name: property
+        description: a comma-separated allow-list of properties to include
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+    get:
+      operationId: getCodepoint
+      summary: show detailed information about a single code point
+      description: |
+        You can specify fields of interest with the “property” parameter:
+        codepoint/1234?property=age,uc,lc.
+      responses:
+        "200":
+          description: properties of the given code point
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  cp:
+                    type: integer
+                  age:
+                    type: string
+                  na:
+                    type: string
+                  na1:
+                    type: string
+                  gc:
+                    type: string
+                  ccc:
+                    type: string
+                  bc:
+                    type: string
+                  Bidi_M:
+                    type: boolean
+                  Bidi_C:
+                    type: boolean
+                  dt:
+                    type: string
+                  CE:
+                    type: boolean
+                  Comp_Ex:
+                    type: boolean
+                  NFC_QC:
+                    type: string
+                  NFD_QC:
+                    type: string
+                  NFKC_QC:
+                    type: string
+                  NFKD_QC:
+                    type: string
+                  XO_NFC:
+                    type: boolean
+                  XO_NFD:
+                    type: boolean
+                  XO_NFKC:
+                    type: boolean
+                  XO_NFKD:
+                    type: boolean
+                  nt:
+                    type: string
+                  nv:
+                    anyOf:
+                      - type: number
+                      - type: string
+                  jt:
+                    type: string
+                  jg:
+                    type: string
+                  Join_C:
+                    type: boolean
+                  lb:
+                    type: string
+                  ea:
+                    type: string
+                  Upper:
+                    type: boolean
+                  Lower:
+                    type: boolean
+                  OUpper:
+                    type: boolean
+                  OLower:
+                    type: boolean
+                  CI:
+                    type: boolean
+                  Cased:
+                    type: boolean
+                  CWCF:
+                    type: boolean
+                  CWCM:
+                    type: boolean
+                  CWL:
+                    type: boolean
+                  CWKCF:
+                    type: boolean
+                  CWT:
+                    type: boolean
+                  CWU:
+                    type: boolean
+                  isc:
+                    type: string
+                  hst:
+                    type: string
+                  JSN:
+                    type: string
+                  InSC:
+                    type: string
+                  InMC:
+                    type: string
+                    nullable: true
+                  InPC:
+                    type: string
+                  IDS:
+                    type: boolean
+                  OIDS:
+                    type: boolean
+                  XIDS:
+                    type: boolean
+                  IDC:
+                    type: boolean
+                  OIDC:
+                    type: boolean
+                  XIDC:
+                    type: boolean
+                  Pat_Syn:
+                    type: boolean
+                  Pat_WS:
+                    type: boolean
+                  Dash:
+                    type: boolean
+                  Hyphen:
+                    type: boolean
+                  QMark:
+                    type: boolean
+                  Term:
+                    type: boolean
+                  STerm:
+                    type: boolean
+                  Dia:
+                    type: boolean
+                  Ext:
+                    type: boolean
+                  SD:
+                    type: boolean
+                  Alpha:
+                    type: boolean
+                  OAlpha:
+                    type: boolean
+                  Math:
+                    type: boolean
+                  OMath:
+                    type: boolean
+                  Hex:
+                    type: boolean
+                  AHex:
+                    type: boolean
+                  DI:
+                    type: boolean
+                  ODI:
+                    type: boolean
+                  LOE:
+                    type: boolean
+                  WSpace:
+                    type: boolean
+                  Gr_Base:
+                    type: boolean
+                  Gr_Ext:
+                    type: boolean
+                  OGr_Ext:
+                    type: boolean
+                  Gr_Link:
+                    type: boolean
+                  GCB:
+                    type: string
+                  WB:
+                    type: string
+                  SB:
+                    type: string
+                  Ideo:
+                    type: boolean
+                  UIdeo:
+                    type: boolean
+                  IDSB:
+                    type: boolean
+                  IDST:
+                    type: boolean
+                  Radical:
+                    type: boolean
+                  Dep:
+                    type: boolean
+                  VS:
+                    type: boolean
+                  NChar:
+                    type: boolean
+                  kAccountingNumeric:
+                    type: string
+                    nullable: true
+                  kAlternateHanYu:
+                    type: string
+                    nullable: true
+                  kAlternateJEF:
+                    type: string
+                    nullable: true
+                  kAlternateKangXi:
+                    type: string
+                    nullable: true
+                  kAlternateMorohashi:
+                    type: string
+                    nullable: true
+                  kBigFive:
+                    type: string
+                    nullable: true
+                  kCCCII:
+                    type: string
+                    nullable: true
+                  kCNS1986:
+                    type: string
+                    nullable: true
+                  kCNS1992:
+                    type: string
+                    nullable: true
+                  kCangjie:
+                    type: string
+                    nullable: true
+                  kCantonese:
+                    type: string
+                    nullable: true
+                  kCheungBauer:
+                    type: string
+                    nullable: true
+                  kCheungBauerIndex:
+                    type: string
+                    nullable: true
+                  kCihaiT:
+                    type: string
+                    nullable: true
+                  kCompatibilityVariant:
+                    type: string
+                    nullable: true
+                  kCowles:
+                    type: string
+                    nullable: true
+                  kDaeJaweon:
+                    type: string
+                    nullable: true
+                  kDefinition:
+                    type: string
+                    nullable: true
+                  kEACC:
+                    type: string
+                    nullable: true
+                  kFenn:
+                    type: string
+                    nullable: true
+                  kFennIndex:
+                    type: string
+                    nullable: true
+                  kFourCornerCode:
+                    type: string
+                    nullable: true
+                  kFrequency:
+                    type: string
+                    nullable: true
+                  kGB0:
+                    type: string
+                    nullable: true
+                  kGB1:
+                    type: string
+                    nullable: true
+                  kGB3:
+                    type: string
+                    nullable: true
+                  kGB5:
+                    type: string
+                    nullable: true
+                  kGB7:
+                    type: string
+                    nullable: true
+                  kGB8:
+                    type: string
+                    nullable: true
+                  kGradeLevel:
+                    type: string
+                    nullable: true
+                  kGSR:
+                    type: string
+                    nullable: true
+                  kHangul:
+                    type: string
+                    nullable: true
+                  kHanYu:
+                    type: string
+                    nullable: true
+                  kHanyuPinlu:
+                    type: string
+                    nullable: true
+                  kHanyuPinyin:
+                    type: string
+                    nullable: true
+                  kHDZRadBreak:
+                    type: string
+                    nullable: true
+                  kHKGlyph:
+                    type: string
+                    nullable: true
+                  kHKSCS:
+                    type: string
+                    nullable: true
+                  kIBMJapan:
+                    type: string
+                    nullable: true
+                  kIICore:
+                    type: string
+                    nullable: true
+                  kIRGDaeJaweon:
+                    type: string
+                    nullable: true
+                  kIRGDaiKanwaZiten:
+                    type: string
+                    nullable: true
+                  kIRGHanyuDaZidian:
+                    type: string
+                    nullable: true
+                  kIRGKangXi:
+                    type: string
+                    nullable: true
+                  kIRG_GSource:
+                    type: string
+                    nullable: true
+                  kIRG_HSource:
+                    type: string
+                    nullable: true
+                  kIRG_JSource:
+                    type: string
+                    nullable: true
+                  kIRG_KPSource:
+                    type: string
+                    nullable: true
+                  kIRG_KSource:
+                    type: string
+                    nullable: true
+                  kIRG_MSource:
+                    type: string
+                    nullable: true
+                  kIRG_TSource:
+                    type: string
+                    nullable: true
+                  kIRG_USource:
+                    type: string
+                    nullable: true
+                  kIRG_VSource:
+                    type: string
+                    nullable: true
+                  kJHJ:
+                    type: string
+                    nullable: true
+                  kJIS0213:
+                    type: string
+                    nullable: true
+                  kJa:
+                    type: string
+                    nullable: true
+                  kJapaneseKun:
+                    type: string
+                    nullable: true
+                  kJapaneseOn:
+                    type: string
+                    nullable: true
+                  kJis0:
+                    type: string
+                    nullable: true
+                  kJis1:
+                    type: string
+                    nullable: true
+                  kKPS0:
+                    type: string
+                    nullable: true
+                  kKPS1:
+                    type: string
+                    nullable: true
+                  kKSC0:
+                    type: string
+                    nullable: true
+                  kKSC1:
+                    type: string
+                    nullable: true
+                  kKangXi:
+                    type: string
+                    nullable: true
+                  kKarlgren:
+                    type: string
+                    nullable: true
+                  kKorean:
+                    type: string
+                    nullable: true
+                  kLau:
+                    type: string
+                    nullable: true
+                  kMainlandTelegraph:
+                    type: string
+                    nullable: true
+                  kMandarin:
+                    type: string
+                    nullable: true
+                  kMatthews:
+                    type: string
+                    nullable: true
+                  kMeyerWempe:
+                    type: string
+                    nullable: true
+                  kMorohashi:
+                    type: string
+                    nullable: true
+                  kNelson:
+                    type: string
+                    nullable: true
+                  kOtherNumeric:
+                    type: string
+                    nullable: true
+                  kPhonetic:
+                    type: string
+                    nullable: true
+                  kPrimaryNumeric:
+                    type: string
+                    nullable: true
+                  kPseudoGB1:
+                    type: string
+                    nullable: true
+                  kRSAdobe_Japan1_6:
+                    type: string
+                    nullable: true
+                  kRSJapanese:
+                    type: string
+                    nullable: true
+                  kRSKanWa:
+                    type: string
+                    nullable: true
+                  kRSKangXi:
+                    type: string
+                    nullable: true
+                  kRSKorean:
+                    type: string
+                    nullable: true
+                  kRSMerged:
+                    type: string
+                    nullable: true
+                  kRSUnicode:
+                    type: string
+                    nullable: true
+                  kSBGY:
+                    type: string
+                    nullable: true
+                  kSemanticVariant:
+                    type: string
+                    nullable: true
+                  kSimplifiedVariant:
+                    type: string
+                    nullable: true
+                  kSpecializedSemanticVariant:
+                    type: string
+                    nullable: true
+                  kTaiwanTelegraph:
+                    type: string
+                    nullable: true
+                  kTang:
+                    type: string
+                    nullable: true
+                  kTotalStrokes:
+                    type: string
+                    nullable: true
+                  kTraditionalVariant:
+                    type: string
+                    nullable: true
+                  kVietnamese:
+                    type: string
+                    nullable: true
+                  kXHC1983:
+                    type: string
+                    nullable: true
+                  kWubi:
+                    type: string
+                    nullable: true
+                  kXerox:
+                    type: string
+                    nullable: true
+                  kZVariant:
+                    type: string
+                    nullable: true
+                  blk:
+                    type: string
+                  scx:
+                    type: string
+                    nullable: true
+                  bpt:
+                    type: string
+                  image:
+                    type: string
+                    nullable: true
+                  sc:
+                    type: string
+                  abstract:
+                    type: string
+                    nullable: true
+                  cf:
+                    type: array
+                    items:
+                      type: integer
+                  NFKC_CF:
+                    type: array
+                    items:
+                      type: integer
+                  lc:
+                    type: array
+                    items:
+                      type: integer
+                  FC_NFKC:
+                    type: array
+                    items:
+                      type: integer
+                  slc:
+                    type: array
+                    items:
+                      type: integer
+                  bpb:
+                    type: array
+                    items:
+                      type: integer
+                  uc:
+                    type: array
+                    items:
+                      type: integer
+                  tc:
+                    type: array
+                    items:
+                      type: integer
+                  suc:
+                    type: array
+                    items:
+                      type: integer
+                  stc:
+                    type: array
+                    items:
+                      type: integer
+                  scf:
+                    type: array
+                    items:
+                      type: integer
+                  dm:
+                    type: array
+                    items:
+                      type: integer
+  "/block/{block}":
+    parameters:
+      - name: block
+        description: the name of the block in abbreviated Unicode notation
+        required: true
+        in: path
+        schema:
+          type: string
+    get:
+      operationId: getBlock
+      summary: show detailed information about a Unicode block
+      responses:
+        "200":
+          description: properties of the given block
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - name
+                  - first
+                  - last
+                properties:
+                  name:
+                    type: string
+                  first:
+                    $ref: '#/components/schemas/u_codepoint'
+                  last:
+                    $ref: '#/components/schemas/u_codepoint'
+                  next_block:
+                    type: string
+                  prev_block:
+                    type: string
+  "/plane/{plane}":
+    parameters:
+      - name: plane
+        required: true
+        in: path
+        schema:
+          type: string
+    get:
+      operationId: getPlane
+      summary: show information about a Unicode plane
+      responses:
+        "200":
+          description: properties of the given plane
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  first:
+                    $ref: '#/components/schemas/u_codepoint'
+                  last:
+                    $ref: '#/components/schemas/u_codepoint'
+                  blocks:
+                    type: array
+                    items:
+                      type: string
+                  next_plane:
+                    type: string
+                  prev_plane:
+                    type: string
+  "/glyph/{codepoint}":
+    parameters:
+      - $ref: '#/components/parameters/codepoint'
+    get:
+      summary: get an example glyph for a code point as PNG
+      responses:
+        "200":
+          description: the glyph as PNG
+          content:
+            image/png:
+              schema:
+                type: string
+  "/name/{codepoint}":
+    parameters:
+      - $ref: '#/components/parameters/codepoint'
+    get:
+      summary: get the canonical Unicode name for a code point
+      responses:
+        "200":
+          description: the name
+          content:
+            application/json:
+              schema:
+                type: string
+            text/plain:
+              schema:
+                type: string
+  "/transform/{action}/{data}":
+    parameters:
+      - name: action
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+            - lower
+            - upper
+            - title
+            - mirror
+            - nfc
+            - nfd
+            - nfkc
+            - nfkd
+      - name: data
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      summary: transform a string to another according to a mapping, e.g., making all characters upper-case.
+      responses:
+        "200":
+          description: the transformed string
+          content:
+            application/json:
+              schema:
+                type: string
+            text/plain:
+              schema:
+                type: string
+  "/filter/{data}":
+    parameters:
+      - name: data
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: property
+        in: query
+        schema:
+          type: string
+    get:
+      summary: Filter a string of characters by Unicode property
+      description: |
+        You can negate properties by appending a “!” to it:
+          filter/string?age!=5.5 finds all characters in “string” that were
+          *not* added in Unicode 5.5.
+      responses:
+        "200":
+          description: the filtered string
+          content:
+            application/json:
+              schema:
+                type: string
+            text/plain:
+              schema:
+                type: string
+  "/property/{property}":
+    parameters:
+      - name: property
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      summary: show a PNG image where every code point is represented by one pixel
+      description: |
+        The pixel color determines the value.
+      responses:
+        "200":
+          description: the property values as PNG with one pixel per code point
+          content:
+            image/png:
+              schema:
+                type: string
+  "/script/{iso}":
+    parameters:
+      - name: iso
+        required: true
+        in: path
+        schema:
+          type: string
+          pattern: '^[A-Z][a-z]{3}$'
+    get:
+      summary: Specify one or more ISO short names separated by comma
+      responses:
+        "200":
+          description: a list of detail informations about these scripts
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+  "/search":
+    parameters:
+      - name: property
+        in: query
+        schema:
+          type: string
+      - name: page
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+      - name: per_page
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+    get:
+      summary: search for code points by their properties
+      responses:
+        "200":
+          description: the list of code points and additional information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      type: integer
+                  page:
+                    type: integer
+                  last_page:
+                    type: integer
+                  per_page:
+                    type: integer
+                  count:
+                    type: integer
+  "/oembed":
+    parameters:
+      - name: url
+        schema:
+          type: string
+          format: uri
+        in: query
+      - name: format
+        schema:
+          type: string
+          enum:
+            - xml
+            - json
+        in: query
+      - name: maxwidth
+        schema:
+          type: integer
+        in: query
+      - name: maxheight
+        schema:
+          type: integer
+        in: query
+    get:
+      summary: oEmbed API endpoint for URLs matching “codepoints.net”
+      responses:
+        "200":
+          description: oEmbed-compatible response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    enum:
+                      - rich
+                  version:
+                    type: string
+                    enum:
+                      - '1.0'
+                  title:
+                    type: string
+                  author_url:
+                    type: string
+                  provider_name:
+                    type: string
+                    enum:
+                      - 'Codepoints.net'
+                  provider_url:
+                    type: string
+                  cache_age:
+                    type: integer
+                  thumbnail_url:
+                    type: string
+                  html:
+                    type: string
+                  width:
+                    type: integer
+                  height:
+                    type: integer
