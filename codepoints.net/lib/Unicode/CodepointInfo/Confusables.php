@@ -23,7 +23,13 @@ class Confusables extends CodepointInfo {
                 FROM codepoint_confusables
             LEFT JOIN codepoints
                 ON (codepoints.cp = codepoint_confusables.other)
-            WHERE codepoint_confusables.cp = ?', $codepoint->id);
+            WHERE codepoint_confusables.cp = ?
+            UNION
+            SELECT codepoints.cp, `order`, name, gc
+                FROM codepoint_confusables
+            LEFT JOIN codepoints
+                ON (codepoints.cp = codepoint_confusables.cp)
+            WHERE other = ?', $codepoint->id, $codepoint->id);
         if ($data) {
             foreach ($data as $v) {
                 /* TODO this is partially useless. Some confusables are

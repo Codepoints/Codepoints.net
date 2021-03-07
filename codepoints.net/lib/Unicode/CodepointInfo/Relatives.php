@@ -19,11 +19,11 @@ class Relatives extends CodepointInfo {
         $relatives = [];
 
         $data = $this->db->getAll('
-            SELECT cp, name, gc
+            SELECT codepoints.cp, name, gc
                 FROM codepoint_relation
             LEFT JOIN codepoints
                 ON (codepoints.cp = codepoint_relation.cp)
-            WHERE other = ? AND cp != ? GROUP BY cp',
+            WHERE other = ? AND codepoints.cp != ? GROUP BY cp',
             $codepoint->id, $codepoint->id);
         if ($data) {
             foreach ($data as $v) {
