@@ -41,3 +41,7 @@ $(DOCROOT)vendor/autoload.php: composer.lock
 
 composer.lock: composer.json
 	@touch $@
+
+shell:
+	-@cd codepoints.net && php -d auto_prepend_file=vendor/autoload.php -a
+.PHONY: shell
