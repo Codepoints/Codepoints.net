@@ -5,6 +5,7 @@ namespace Codepoints\Controller;
 use Codepoints\Database;
 use Codepoints\Controller;
 use Codepoints\Unicode\SearchResult;
+use Codepoints\Router\NotFoundException;
 use Codepoints\Router\Pagination;
 
 
@@ -30,6 +31,9 @@ class Search extends Controller {
         $pagination = null;
         if ($query) {
             list($query_statement, $count_statement, $params) = $this->composeSearchQuery($query, $page, $env);
+            if (! $query_statement || ! $count_statement) {
+                throw new NotFoundException('no search query');
+            }
 
             $count_statement->execute($params);
             $count = 0;
