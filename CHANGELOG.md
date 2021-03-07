@@ -4,7 +4,7 @@
 
 * SVG glyphs with additional features (like dotted circles for combining marks)
 * dark mode
-* PHP 8 ready
+* PHP 8 ready, type-annotated code
 * fully localized Wikipedia abstracts, also abstracts for blocks and scripts
 * developer shell
 * more infos about emojis
@@ -16,6 +16,7 @@
 * HTTPS ready
 * cookie-less analytics
 * developer server
+* Pīnyīn
 
 ## v1.0
 
@@ -27,3 +28,6 @@
 * show Wikipedia abstracts, where existing
 * random emojis
 * “Find my Codepoint” wizard
+* OpenSearch support
+* XML sitemap
+* support for ranges in the URL: https://codepoints.net/U+1234..U+1267
