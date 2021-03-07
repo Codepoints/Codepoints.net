@@ -6,11 +6,13 @@ use Codepoints\Controller;
 use Codepoints\Router\NotFoundException;
 use Codepoints\Unicode\Codepoint as UnicodeCodepoint;
 use Codepoints\Unicode\CodepointInfo\Aliases;
+use Codepoints\Unicode\CodepointInfo\Confusables;
 use Codepoints\Unicode\CodepointInfo\Description;
 use Codepoints\Unicode\CodepointInfo\Extra;
 use Codepoints\Unicode\CodepointInfo\OtherSites;
 use Codepoints\Unicode\CodepointInfo\Pronunciation;
 use Codepoints\Unicode\CodepointInfo\Properties;
+use Codepoints\Unicode\CodepointInfo\Relatives;
 use Codepoints\Unicode\CodepointInfo\Representation;
 use Codepoints\Unicode\CodepointInfo\Wikipedia;
 use Exception;
@@ -20,11 +22,13 @@ class Codepoint extends Controller {
 
     public function __invoke($match, Array $env) : string {
         new Aliases($env);
+        new Confusables($env);
         new Description($env);
         new Extra($env);
         new OtherSites($env);
         new Pronunciation($env);
         new Properties($env);
+        new Relatives($env);
         new Representation($env);
         new Wikipedia($env);
 
@@ -66,6 +70,8 @@ class Codepoint extends Controller {
             'wikipedia' => $codepoint->wikipedia,
             'extra' => $codepoint->extra,
             'othersites' => $codepoint->othersites,
+            'relatives' => $codepoint->relatives,
+            'confusables' => $codepoint->confusables,
         ];
         return parent::__invoke($match, $env);
     }

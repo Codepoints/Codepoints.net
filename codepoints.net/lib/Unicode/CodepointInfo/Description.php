@@ -29,6 +29,8 @@ class Description extends CodepointInfo {
             'info' => $this->info,
             'pronunciation' => $codepoint->pronunciation,
             'aliases' => $codepoint->aliases,
+            'relatives' => $codepoint->relatives,
+            'confusables' => $codepoint->confusables,
         ]);
     }
 

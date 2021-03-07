@@ -48,6 +48,27 @@ include 'partials/header.php'; ?>
     <?php include 'partials/codepoint-representations.php' ?>
   </section>
 
+<?php if (count($relatives) + count($confusables)):?>
+  <section>
+    <h2><?=_q('Related Characters')?></h2>
+    <?php if (count($relatives)):?>
+      <ul class="data">
+        <?php foreach ($relatives as $rel):?>
+          <li><?=cp($rel)?></li>
+        <?php endforeach?>
+      </ul>
+    <?php endif?>
+    <?php if (count($confusables)):?>
+      <h3 id="confusables"><?=_q('Confusables')?></h3>
+      <ul class="data">
+        <?php foreach ($confusables as $rel): ?>
+          <li><?=cp($rel)?></li>
+        <?php endforeach?>
+      </ul>
+    <?php endif?>
+  </section>
+<?php endif?>
+
 <?php if ($othersites): ?>
   <section class="cpdesc cpdesc--othersites">
     <h2><?=_q('Elsewhere')?></h2>
