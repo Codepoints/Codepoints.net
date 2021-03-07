@@ -1,3 +1,4 @@
+<?php use Codepoints\Unicode\Codepoint; ?>
 <!-- codepoint -->
 <p><?php
     printf(__('U+%04X was added to Unicode in version %s (%s). It belongs to the block %s in the %s.'),
@@ -126,7 +127,7 @@
         printf(__('The glyph is a %s composition of the glyphs %s.'),
             '<a rel="nofollow" href="'.q(url('search?dt='.$props['dt'])).'">'.
             q(array_get($info->legend_dt, $props['dt'], $props['dt'])).'</a>',
-            cp($props['dm'], ''));
+            join(', ', array_map(function(Codepoint $item) : string { return cp($item); }, $props['dm'])));
     }
 
     echo ' ';
