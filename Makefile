@@ -43,5 +43,5 @@ composer.lock: composer.json
 	@touch $@
 
 shell:
-	-@cd codepoints.net && php -d auto_prepend_file=vendor/autoload.php -a
+	-@cd codepoints.net && php -d auto_prepend_file=init.php -a
 .PHONY: shell
