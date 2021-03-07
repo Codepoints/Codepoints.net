@@ -14,8 +14,6 @@ class NotFound extends Controller {
         $title = __('Page not Found');
         $page_description = __('There is no content on this page.');
         $codepoint = null;
-        $block = null;
-        $plane = null;
         $cps = [];
 
         if (preg_match('/^U\+([0-9A-Fa-f]+)$/', $match, $match2)) {
@@ -27,12 +25,24 @@ class NotFound extends Controller {
                 'name' => $cp <= 0x10FFFF? '<reserved>' : 'CECI N’EST PAS UNICODE',
                 'gc' => $cp <= 0x10FFFF? 'Cn' : 'Xx'],
                 $env['db']);
+            $block = null;
+            $plane = null;
             try {
                 $block = $codepoint->block;
             } catch (Exception $e) {}
             try {
                 $plane = $codepoint->plane;
             } catch (Exception $e) {}
+            $this->context += [
+                'codepoint' => $codepoint,
+                'prev' => $codepoint->prev,
+                'next' => $codepoint->next,
+                'block' => $block,
+                'plane' => $plane,
+                'wikipedia' => null,
+                'extra' => null,
+                'othersites' => null,
+            ];
         } elseif (strlen($match) < 128) {
             $list = join(',', array_map(function(string $c) : int { return mb_ord($c); },
                     array_unique(preg_split('//u', rawurldecode($match), -1, PREG_SPLIT_NO_EMPTY))));
@@ -48,11 +58,6 @@ class NotFound extends Controller {
         $this->context += [
             'title' => $title,
             'page_description' => $page_description,
-            'codepoint' => $codepoint,
-            'prev' => $codepoint? $codepoint->prev : null,
-            'next' => $codepoint? $codepoint->next : null,
-            'block' => $block,
-            'plane' => $plane,
             'cps' => $cps,
         ];
         $view = $codepoint? 'codepoint' : '404';

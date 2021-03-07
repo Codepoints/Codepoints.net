@@ -156,6 +156,7 @@
     }
 
     if (array_key_exists('bmg', $props) &&
+        $props['bmg'] &&
         $props['bmg']->id != $codepoint->id) {
         echo ' ';
         printf(__('Its corresponding mirrored glyph is %s.'), cp($props['bmg'], '', 'min'));
