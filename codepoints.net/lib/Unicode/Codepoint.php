@@ -67,9 +67,12 @@ class Codepoint {
     /**
      * lazily create a new code point instance
      *
+     * The constructor should never be called directly. Use
+     * Codepoint::getCached() instead.
+     *
      * @param Array{cp: int, name: string, gc: string} $data
      */
-    public function __construct(Array $data, Database $db) {
+    private function __construct(Array $data, Database $db) {
         $this->id = $data['cp'];
         $this->name = $data['name'];
         $this->gc = $data['gc'];
