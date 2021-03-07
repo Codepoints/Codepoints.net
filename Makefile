@@ -45,3 +45,7 @@ composer.lock: composer.json
 shell:
 	-@cd codepoints.net && php -d auto_prepend_file=init.php -a
 .PHONY: shell
+
+serve:
+	-@php -S localhost:8000 -t codepoints.net bin/devrouter.php
+.PHONY: serve
