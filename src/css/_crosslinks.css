@@ -8,11 +8,24 @@
 
 .cp-tiles > li {
   margin: .5em;
-  flex-basis: 4em;
+  width: 4em;
 }
 
 .cp-tiles > li > * {
   display: block;
+}
+
+.cp-tiles .missing-cp {
+  font-size: 80%;
+  text-align: center;
+}
+
+.cp-tiles .cp:before {
+  content: attr(data-cp);
+  text-decoration: none;
+  font-size: 80%;
+  display: block;
+  text-align: center;
 }
 
 .cp-tiles .cp > svg {
@@ -27,4 +40,8 @@
 .cp-tiles .cp:hover > svg,
 .cp-tiles .cp:focus > svg {
   transform: scale(1.15);
+}
+.cp-tiles .cp .title {
+  hyphens: auto;
+  font-size: 90%;
 }
