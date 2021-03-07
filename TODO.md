@@ -13,3 +13,4 @@
 * bring latest blog post preview back
 * bring 20 most popular code points back
 * bring UCotD back
+* emoji glyphs render badly

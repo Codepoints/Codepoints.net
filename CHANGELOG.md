@@ -7,7 +7,7 @@
 * PHP 8 ready, type-annotated code
 * fully localized Wikipedia abstracts, also abstracts for blocks and scripts
 * developer shell
-* more infos about emojis
+* infos about emojis
 * Unicode v13
 * OpenAPI documentation of the API
 
