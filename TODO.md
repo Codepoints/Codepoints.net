@@ -1,4 +1,3 @@
-* codepoint description: `url('search?...')` quotes the `?`.
 * write codeception tests
 * glyph ascenders being cut off
 * API
