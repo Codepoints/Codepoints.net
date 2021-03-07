@@ -31,6 +31,16 @@ class Description extends CodepointInfo {
             'aliases' => $codepoint->aliases,
             'relatives' => $codepoint->relatives,
             'confusables' => $codepoint->confusables,
+            'vs15' => Codepoint::getCached([
+                'cp' => 0xFE0E,
+                'name' => 'VARIATION SELECTOR-15',
+                'gc' => 'Mn',
+            ], $this->db),
+            'vs16' => Codepoint::getCached([
+                'cp' => 0xFE0F,
+                'name' => 'VARIATION SELECTOR-16',
+                'gc' => 'Mn',
+            ], $this->db),
         ]);
     }
 

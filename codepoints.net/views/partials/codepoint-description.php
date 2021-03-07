@@ -194,3 +194,20 @@
   <?php endif ?>
 </p>
 <?php endif ?>
+
+<?php if ($props['Emoji']): ?>
+<p>
+  <?=_q('This character is designated as an emoji.')?>
+  <?php if ($props['EPres']): ?>
+    <?=_q('It will be rendered as colorful emoji on conforming platforms.')?>
+    <?=sprintf(_q('To reduce it to a monochrome character, you can combine it with %s: %s'), cp($vs15), $codepoint->chr()."\u{FE0E}")?>
+  <?php else: ?>
+    <?=_q('It will be rendered as monochrome character on conforming platforms.')?>
+    <?=sprintf(_q('To enable colorful emoji display, you can combine it with %s: %s'), cp($vs16), $codepoint->chr()."\u{FE0F}")?>
+  <?php endif ?>
+  <?php if ($props['EBase']): ?>
+    <?=sprintf(_q('The character can be changed in appearance, if it is followed by %san emoji modifier%s.'), '<a href="'.url('search?EMod=1').'">', '</a>')?>
+  <?php endif ?>
+  <?=sprintf(_q('See %sthe Emojipedia%s for more details on this character’s emoji properties.'), '<a href="https://emojipedia.org/'.rawurlencode($codepoint->chr()).'">', '</a>')?>
+</p>
+<?php endif ?>
