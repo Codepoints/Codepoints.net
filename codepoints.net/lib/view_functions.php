@@ -132,24 +132,28 @@ function plimg(Plane $plane, int $width=16) : string {
 /**
  * generate an URL from any item (Codepoint, Block, ...)
  *
- * @param mixed $item
+ * @param Codepoint|Block|Plane|string $item
  */
-function url(/*mixed*/ $item) : string {
+function url($item) : string {
     $path = '/';
     if ($item instanceof Codepoint) {
         return $path.sprintf('U+%04X', $item->id);
     }
     if ($item instanceof Block) {
-        return $path.str_replace(' ', '_', strtolower($item->name));
+        return $path.rawurlencode(str_replace(' ', '_', strtolower($item->name)));
     }
     if ($item instanceof Plane) {
         $base = str_replace(' ', '_', strtolower($item->name));
         if (substr($base, 0, 6) !== 'plane_' && substr($base, -6) !== '_plane') {
             $base .= '_plane';
         }
-        return $path.$base;
+        return $path.rawurlencode($base);
     }
-    return $path.ltrim(str_replace('%2F', '/', rawurlencode($item)), '/');
+    return $path.ltrim(str_replace([
+        '%26', '%2B', '%2F', '%3D', '%3F',
+    ], [
+        '&', '+', '/', '=', '?',
+    ], rawurlencode($item)), '/');
 }
 
 /**
