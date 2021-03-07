@@ -50,6 +50,9 @@ class Router {
         return static::$env;
     }
 
+    /**
+     * search a matching controller and call it for a response
+     */
     public static function serve(string $current_url) : ?string {
         Analog::log('current url: '.$current_url);
 

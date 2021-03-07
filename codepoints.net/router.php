@@ -51,7 +51,7 @@ Router::add(new URLMatcher('U\\+([0-9a-fA-F]{1,3})$'), function(Array $match, Ar
  *
  * Current shortes block name: NKo. Current longest, UCAS-Ext, has 48 chars.
  */
-Router::add(function(string $url, Array $env) {
+Router::add(function(string $url, Array $env) : ?Array {
     if (strlen($url) < 3 || strlen($url) > 64 || preg_match('/[^a-z0-9_-]/', $url)) {
         return null;
     }
