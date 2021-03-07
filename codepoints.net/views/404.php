@@ -2,7 +2,7 @@
 <main class="main main--404">
   <h1><?=q($title)?></h1>
   <?php if (count($cps)):?>
-    <ul>
+    <ul class="cp-tiles">
       <?php foreach($cps as $cp):?>
       <li><?=cp($cp)?></li>
       <?php endforeach?>

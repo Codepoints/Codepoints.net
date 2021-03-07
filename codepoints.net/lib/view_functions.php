@@ -40,7 +40,7 @@ function cp(Codepoint $codepoint, string $rel='', string $class='') : string {
     return sprintf('<a class="cp%s"%s href="%s" data-cp="%s">'.
             '%s <span class="title">%s</span>'.
         '</a>',
-        $class, $rel, q(url($codepoint)), q((string)$codepoint), cpimg($codepoint), q($codepoint->name));
+        $class, $rel, q(url($codepoint)), q((string)$codepoint), cpimg($codepoint), q(case_cp_name($codepoint->name)));
 }
 
 /**
@@ -150,4 +150,20 @@ function url(/*mixed*/ $item) : string {
         return $path.$base;
     }
     return $path.ltrim(str_replace('%2F', '/', rawurlencode($item)), '/');
+}
+
+/**
+ * convert all-uppercase names to a more readable case
+ */
+function case_cp_name(string $name) : string {
+    $name = ucwords(strtolower($name), ' ()-');
+    $name = preg_replace_callback('/(Dvd\\b|Nk(?=o)|Ipa\\b|Cjk|Dna\\b|Lf\\b|Ff\\b|Cr\\b|Nel\\b)/', function(Array $match) : string {
+        return strtoupper($match[0]);
+    }, $name);
+    $name = str_replace([
+        'Oclock', 'Of ', 'With ', 'And ', 'Ok ',
+    ], [
+        'O’Clock', 'of ', 'with ', 'and ', 'OK '
+    ], $name);
+    return $name;
 }
