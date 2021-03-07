@@ -6,6 +6,7 @@ use Codepoints\Controller;
 use Codepoints\Router\NotFoundException;
 use Codepoints\Unicode\Codepoint as UnicodeCodepoint;
 use Codepoints\Unicode\CodepointInfo\Aliases;
+use Codepoints\Unicode\CodepointInfo\CLDR;
 use Codepoints\Unicode\CodepointInfo\Confusables;
 use Codepoints\Unicode\CodepointInfo\Description;
 use Codepoints\Unicode\CodepointInfo\Extra;
@@ -22,6 +23,7 @@ class Codepoint extends Controller {
 
     public function __invoke($match, Array $env) : string {
         new Aliases($env);
+        new CLDR($env);
         new Confusables($env);
         new Description($env);
         new Extra($env);

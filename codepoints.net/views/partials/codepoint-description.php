@@ -183,3 +183,14 @@
         '<a rel="nofollow" href="'.q(url('search?GCB='.$props['GCB'])).'">'.
         q(array_get($info->legend_GCB, $props['GCB'], $props['GCB'])).'</a>');
 ?></p>
+
+<?php if ($codepoint->cldr['tts']): ?>
+<p>
+  <?=sprintf(_q('The %sCLDR project%s labels this character with the name “%s” when reading it.'),
+      '<a href="http://cldr.unicode.org/">', '</a>', $codepoint->cldr['tts'])?>
+  <?php if ($codepoint->cldr['tags']): ?>
+  <?=' '.sprintf(_q('It assigns additional tags, e.g. for search in emoji pickers: %s.'),
+     q(join(', ', $codepoint->cldr['tags'])))?>
+  <?php endif ?>
+</p>
+<?php endif ?>
