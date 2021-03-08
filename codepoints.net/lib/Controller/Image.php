@@ -19,7 +19,7 @@ class Image extends Controller {
             WHERE cp >= ? AND cp < ? + 256', $root, $root);
         return sprintf(
         '<svg xmlns="http://www.w3.org/2000/svg">'.
-            '<style>:root svg{display:none;height:100%%;width:auto}:root svg:target{display:inline}</style>'.
+            '<style>:root svg{opacity:0;height:100%%;width:auto}:root svg:target{opacity:1}</style>'.
             '%s'.
         '</svg>', join('', array_map(function(Array $item) : string { return $item['image']; }, $images)));
     }
