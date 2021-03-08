@@ -29,7 +29,7 @@ class Properties extends CodepointInfo {
         'ea' =>      'A',
         'lb' =>      'XX',
         'sc' =>      'Zzzz',
-        'scx' =>     'Zzzz',
+        'scx' =>     ['Zzzz'],
         'Dash' =>    0,
         'WSpace' =>  0,
         'Hyphen' =>  0,
@@ -160,7 +160,7 @@ class Properties extends CodepointInfo {
                 FROM codepoint_script
             WHERE cp = ?
                 AND `primary` = 0', $codepoint->id);
-        $properties['scx'] = null;
+        $properties['scx'] = [];
         if ($data) {
             $properties['scx'] = array_map(function(Array $item) : string { return $item['scx']; }, $data);
         }

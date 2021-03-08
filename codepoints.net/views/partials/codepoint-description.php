@@ -41,7 +41,7 @@
     }
 
     $buf = [];
-    foreach(explode(' ', $props['scx']) as $sc) {
+    foreach($props['scx'] as $sc) {
         if ($sc !== $props['sc']) {
             $buf[] = '<a rel="nofollow" href="'.q(url('search?scx='.$props['scx'])).'">'.
                     q(array_get($info->script, $sc, $sc)).'</a>';
@@ -79,7 +79,7 @@
         '<a rel="nofollow" href="'.q(url('search?nt='.$props['nt'])).'">'.
         q(array_get($info->legend_nt, $props['nt'], $props['nt'])).'</a>',
         '<a rel="nofollow" href="'.q(url('search?nv='.$props['nv'])).'">'.
-        q(array_get($info->legend_nv, $props['nv'], $props['nv'])).'</a>');
+        q($props['nv']).'</a>');
     }
 
     $hasUC = ($props['uc'] && (is_array($props['uc']) || $props['uc']->id != $codepoint->id));

@@ -44,7 +44,7 @@ class CLDR extends CodepointInfo {
                 return $item['type'] === 'tts';
             });
             if ($tts) {
-                $cldr_data['tts'] = reset($tts)['annotation'];
+                $cldr_data['tts'] = (string)(reset($tts)['annotation']);
             }
         }
         return $cldr_data;
