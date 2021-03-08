@@ -20,13 +20,11 @@ css:
 test: test-php
 .PHONY: test
 
-test-php: test-php-syntax test-php-psalm
+test-php: test-phpcs test-php-psalm
 .PHONY: test-php
 
-test-php-syntax:
-	@! find ./codepoints.net -path ./codepoints.net/vendor -prune -o \
-		-name \*.php -exec php -l '{}' \; | \
-		grep -v '^No syntax errors detected in '
+test-phpcs:
+	@./codepoints.net/vendor/bin/phpcs
 .PHONY: test-php-syntax
 
 test-php-psalm:

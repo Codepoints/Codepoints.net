@@ -1,0 +1,109 @@
+<ruleset name="CodepointsNet">
+
+  <description>The Codepoints.net coding standard</description>
+
+  <arg name="encoding" value="utf-8" />
+  <arg name="extensions" value="php" />
+  <arg name="report" value="emacs" />
+  <arg value="s" />
+
+  <file>./codepoints.net</file>
+
+  <exclude-pattern>./codepoints.net/vendor/*</exclude-pattern>
+
+  <rule ref="Internal.NoCodeFound">
+    <exclude-pattern>./codepoints.net/views/*</exclude-pattern>
+  </rule>
+
+  <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
+
+  <rule ref="Generic.Classes.DuplicateClassName"/>
+
+  <rule ref="Generic.CodeAnalysis.EmptyStatement"/>
+
+  <!--rule ref="Generic.Commenting.Todo"/-->
+
+  <rule ref="Generic.CodeAnalysis.EmptyStatement.DetectedCatch">
+    <!-- We allow empty catch statements -->
+    <severity>0</severity>
+  </rule>
+  <rule ref="Generic.ControlStructures.InlineControlStructure"/>
+
+  <rule ref="Generic.Files.ByteOrderMark"/>
+  <rule ref="Generic.Files.EndFileNewline"/>
+  <rule ref="Generic.Files.LineEndings">
+    <properties>
+      <property name="eolChar" value="\n"/>
+    </properties>
+  </rule>
+  <rule ref="Generic.Files.OneClassPerFile"/>
+
+  <rule ref="Generic.Formatting.SpaceAfterCast">
+    <properties>
+      <property name="spacing" value="0" />
+    </properties>
+  </rule>
+
+  <rule ref="Generic.Functions.FunctionCallArgumentSpacing"/>
+  <rule ref="Generic.Functions.OpeningFunctionBraceKernighanRitchie"/>
+
+  <rule ref="Generic.Metrics">
+    <!-- TODO re-enable -->
+    <exclude name="Generic.Metrics.CyclomaticComplexity" />
+  </rule>
+
+  <rule ref="Generic.NamingConventions.ConstructorName"/>
+  <rule ref="Generic.NamingConventions.UpperCaseConstantName"/>
+
+  <rule ref="Generic.PHP.CharacterBeforePHPOpeningTag">
+    <exclude-pattern>./codepoints.net/views/partials/*</exclude-pattern>
+  </rule>
+  <rule ref="Generic.PHP.DeprecatedFunctions"/>
+  <!-- Ban some functions -->
+  <rule ref="Generic.PHP.ForbiddenFunctions">
+    <properties>
+      <property name="forbiddenFunctions" type="array">
+        <element key="sizeof" value="count"/>
+        <element key="delete" value="unset"/>
+        <element key="print" value="echo"/>
+        <element key="is_null" value="null"/>
+        <element key="create_function" value="null"/>
+      </property>
+    </properties>
+  </rule>
+  <rule ref="Generic.PHP.LowerCaseKeyword"/>
+  <rule ref="Generic.PHP.LowerCaseConstant"/>
+  <rule ref="Generic.PHP.NoSilencedErrors"/>
+  <rule ref="Generic.PHP.SAPIUsage"/>
+  <rule ref="Generic.PHP.Syntax"/>
+
+  <rule ref="Generic.Strings.UnnecessaryStringConcat">
+    <properties>
+      <property name="allowMultiline" value="true" />
+    </properties>
+  </rule>
+
+  <rule ref="Generic.WhiteSpace.DisallowTabIndent"/>
+  <rule ref="Generic.WhiteSpace.LanguageConstructSpacing"/>
+  <rule ref="Generic.WhiteSpace.IncrementDecrementSpacing"/>
+
+  <rule ref="PEAR.Functions.ValidDefaultValue"/>
+
+  <rule ref="Zend.Files.ClosingTag">
+    <exclude-pattern>./codepoints.net/views/*</exclude-pattern>
+  </rule>
+
+  <rule ref="Zend.Debug.CodeAnalyzer"/>
+
+  <rule ref="Squiz.ControlStructures.ForEachLoopDeclaration"/>
+  <rule ref="Squiz.ControlStructures.ForLoopDeclaration"/>
+  <rule ref="Squiz.ControlStructures.LowercaseDeclaration"/>
+
+  <rule ref="Squiz.Functions.FunctionDeclaration"/>
+  <rule ref="Squiz.Functions.LowercaseFunctionKeywords"/>
+
+  <rule ref="Squiz.Scope.MethodScope"/>
+
+  <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace"/>
+  <rule ref="Squiz.WhiteSpace.ScopeKeywordSpacing"/>
+</ruleset>
