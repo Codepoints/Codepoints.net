@@ -68,7 +68,7 @@ class PropertyInfo {
      */
     public function __get($name) {
         if (property_exists($this, $name)) {
-            if (is_null($this->$name)) {
+            if ($this->$name === null) {
                 $this->$name = include(__DIR__.'/PropertyInfo/'.$name.'.php');
             }
             return $this->$name;

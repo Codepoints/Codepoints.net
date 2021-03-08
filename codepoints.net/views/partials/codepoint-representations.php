@@ -52,7 +52,7 @@ $typeMap = [
     'latex' => '<span class="latex">L<sup>a</sup>T<sub>e</sub>X</span>',
 ];
     foreach ($alias as $a):?>
-      <tr<?php if (in_array($a['type'], array('html', 'abbreviation', 'alias'))):?>
+      <tr<?php if (in_array($a['type'], ['html', 'abbreviation', 'alias'])):?>
          class="primary"
         <?php endif?>>
         <th><?php if (array_key_exists($a['type'], $typeMap)) {

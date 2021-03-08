@@ -58,6 +58,8 @@ class Wizard extends Search {
 
     /**
      * overwrite the query parser to map the wizard query to search query
+     *
+     * phpcs:disable Generic.Metrics.CyclomaticComplexity.MaxExceeded
      */
     protected function getTransformedQuery(string $key, string $value, Array $env) : Array {
         $result = [];

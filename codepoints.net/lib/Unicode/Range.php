@@ -86,7 +86,7 @@ class Range implements \Iterator {
      *     $range->last - $range->first + 1
      */
     public function count() : int {
-        if (is_null($this->count)) {
+        if ($this->count === null) {
             $data = $this->db->getOne('SELECT COUNT(*) c
                 FROM codepoints
                 WHERE cp >= ? AND cp <= ?', $this->first, $this->last);

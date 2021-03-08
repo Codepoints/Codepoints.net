@@ -23,7 +23,13 @@ class Range extends Controller {
         $page = get_page();
         $set = parse_range($match[0], $env['db']);
         $count = 0;
+        /* @var Array<Array{cp: int, name: string, gc: string}> */
         $items = [];
+        /* we need to get the right pagination window out of a list of single
+         * code points and ranges. We do that by counting and putting code
+         * points in a list $items, when the count is in the range of our
+         * current pagination window.
+         */
         foreach ($set as $item) {
             if ($item instanceof Codepoint) {
                 $add = 1;

@@ -32,7 +32,7 @@ class Representation extends CodepointInfo {
     /**
      * get a function to fetch representations of the current code point
      */
-    public function __invoke(Codepoint $codepoint) : Callable {
+    public function __invoke(Codepoint $codepoint) : callable {
         $formats = $this->formats;
         return function (string $in) use ($codepoint, $formats) : string {
             switch ($in) {
