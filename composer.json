@@ -9,7 +9,8 @@
         "michelf/php-markdown": "~1.5",
         "analog/analog": "^1.0",
         "willdurand/negotiation": "^3.0",
-        "gettext/gettext": "^5.5"
+        "gettext/gettext": "^5.5",
+        "matomo/matomo-php-tracker": "^3.0"
     },
     "autoload": {
         "files": [
