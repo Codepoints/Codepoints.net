@@ -7,6 +7,8 @@ use \Codepoints\Router\Redirect;
 
 define('DEBUG', 1);
 
+define('UNICODE_VERSION', '13.0');
+
 require 'init.php';
 
 /**

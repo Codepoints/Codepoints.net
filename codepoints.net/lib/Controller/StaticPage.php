@@ -31,14 +31,6 @@ class StaticPage extends Controller {
         if (! array_key_exists($view, $this->views)) {
             throw new NotFoundException('This page is unknown');
         }
-        if ($view === 'about') {
-            $data = $env['db']->getOne('
-                SELECT age
-                    FROM codepoint_props
-                ORDER BY CAST(age AS FLOAT) DESC
-                LIMIT 1');
-            $this->views[$view]['unicode_version'] = $data? $data['age'] : '?';
-        }
         return (new View($view))($this->views[$view], $env);
     }
 

@@ -71,7 +71,7 @@
       in over 100 different scripts. It’s encoding form UTF-8, a superset of
       ASCII, is the most popular encoding worldwide and the consortium counts
       Apple, Oracle, Microsoft, Google, IBM, Nokia and many others to its
-      members.'), q($unicode_version))?>
+      members.'), q(UNICODE_VERSION))?>
     </p>
     <p>
 <?php printf(__('Unicode is a mechanism for universally identifying characters. All
