@@ -15,6 +15,7 @@ if (isset($_COOKIE['force_mode'])) {
 <?php if(isset($page_description)): ?>
     <meta name="description" content="<?=q($page_description)?>">
 <?php endif ?>
+    <meta name="theme-color" content="#660000">
     <link rel="icon" href="/favicon.ico">
     <link rel="icon" href="/static/images/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">

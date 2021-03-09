@@ -19,6 +19,12 @@
       "type": "image/png"
     },
     {
+      "src": "/static/images/icon-maskable.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
       "src": "/static/images/icon.svg",
       "type": "image/svg+xml"
     }
