@@ -13,5 +13,6 @@
       </nav>
     </footer>
     <?php include 'tracker.php' ?>
+    <?php include 'service_worker.php' ?>
   </body>
 </html>
