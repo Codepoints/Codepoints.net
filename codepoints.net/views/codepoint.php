@@ -89,6 +89,8 @@ include 'partials/header.php'; ?>
   </thead>
   <tbody>
     <?php foreach ($codepoint->properties as $k => $v): ?>
+      <?php /* empty Unihan properties: skip, b/c unnecessary for most cps */
+          if (substr($k, 0, 1) === 'k' && ! $value) { continue; } ?>
       <tr>
         <th><?=q(array_get($info->properties, $k, $k))?> <small>(<?=q($k)?>)</small></th>
         <td>
