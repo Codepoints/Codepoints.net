@@ -15,13 +15,6 @@ require 'init.php';
 require_once 'router.php';
 
 /**
- * set HSTS and other security headers
- */
-header('Strict-Transport-Security: max-age=16070400; includeSubDomains; preload');
-header('X-Xss-Protection: 1; mode=block');
-header('X-Content-Type-Options: nosniff');
-
-/**
  * run this thing!
  */
 $url = preg_replace('/\?.*/', '', substr(
