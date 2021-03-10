@@ -10,7 +10,7 @@ use Codepoints\Unicode\Plane;
  */
 function __(string $original): string {
     global $translator;
-    return $translator->translate($original);
+    return $translator? $translator->translate($original) : $original;
 }
 
 /**
