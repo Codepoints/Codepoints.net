@@ -5,7 +5,7 @@
 
   <?php if ($search_result): ?>
     <ol>
-      <?php foreach ($search_result as $cp => $codepoint): ?>
+      <?php foreach ($search_result as $codepoint): ?>
         <li><?=cp($codepoint)?></li>
       <?php endforeach ?>
     </ol>
