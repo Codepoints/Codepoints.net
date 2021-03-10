@@ -3,6 +3,7 @@
 use \Codepoints\Router;
 use \Codepoints\Router\URLMatcher;
 use \Codepoints\Router\Redirect;
+use \Codepoints\Controller\Api;
 use \Codepoints\Controller\Block;
 use \Codepoints\Controller\Codepoint;
 use \Codepoints\Controller\Image;
@@ -31,6 +32,14 @@ Router::add('search', new Search());
 Router::add('wizard', new Wizard());
 
 Router::add('scripts', new Scripts());
+
+Router::add(new URLMatcher('api(/(v1)?)?$'), function(Array $match, Array $env) : ?string {
+    throw new Redirect('/api/v1/');
+});
+Router::add('api/v1/', function(string $match, Array $env) : string {
+    return 'TODO: render openapi.yml';
+});
+Router::add(new URLMatcher('api/v1/(?P<action>[a-z][a-z]+)(?:/(?P<data>.*))?$'), new Api());
 
 Router::add(new URLMatcher('plane_([a-zA-Z0-9()_-]+)$'), new Plane());
 Router::add(new URLMatcher('([a-zA-Z0-9()_-]+)_plane$'), new Plane());
@@ -64,9 +73,11 @@ Router::add(function(string $url, Array $env) : ?Array {
 
 /**
  * single character: redirect
+ *
+ * special case: API call to /api/v1/<cp> is redirected to canonical API URL.
  */
-Router::add(new URLMatcher('(.|(%[A-Fa-f0-9]{2}){1,4})$'), function(Array $match, Array $env) : ?string {
-    $txt = rawurldecode($match[0]);
+Router::add(new URLMatcher('(api/v1/)?(.|(%[A-Fa-f0-9]{2}){1,4})$'), function(Array $match, Array $env) : ?string {
+    $txt = rawurldecode($match[2]);
     if (mb_strlen($txt) !== 1) {
         return null;
     }
@@ -74,7 +85,7 @@ Router::add(new URLMatcher('(.|(%[A-Fa-f0-9]{2}){1,4})$'), function(Array $match
     if (! $cp) {
         return null;
     }
-    throw new Redirect(sprintf('U+%04X', $cp));
+    throw new Redirect(sprintf($match[1]? '/api/v1/codepoint/%04X' : 'U+%04X', $cp));
 });
 
 /* support Unicode ranges like U+0123..U+3456 */
