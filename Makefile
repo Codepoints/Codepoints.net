@@ -40,6 +40,11 @@ $(DOCROOT)vendor/autoload.php: composer.lock
 composer.lock: composer.json
 	@touch $@
 
+clear-cache:
+	@./codepoints.net/vendor/bin/psalm --clear-cache
+	@# TODO if we implement response caching, clear that here, too
+.PHONY: clear-cache
+
 shell:
 	-@cd codepoints.net && php -d auto_prepend_file=init.php -a
 .PHONY: shell
