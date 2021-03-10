@@ -13,6 +13,11 @@
     </ignoreFiles>
   </projectFiles>
 
+  <stubs>
+    <!-- we need this for psalm to see the UNICODE_VERSION constant -->
+    <file name="codepoints.net/init.php" />
+  </stubs>
+
   <issueHandlers>
     <MoreSpecificImplementedParamType errorLevel="suppress" />
     <UndefinedGlobalVariable>
