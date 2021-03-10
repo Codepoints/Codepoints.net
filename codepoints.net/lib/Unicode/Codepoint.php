@@ -2,6 +2,7 @@
 
 namespace Codepoints\Unicode;
 
+use \JsonSerializable;
 use \Codepoints\Unicode\Block;
 use \Codepoints\Database;
 
@@ -9,7 +10,7 @@ use \Codepoints\Database;
 /**
  * a single Unicode code point
  */
-class Codepoint {
+class Codepoint implements JsonSerializable {
 
     /**
      * the Unicode code point as integer
@@ -134,6 +135,13 @@ class Codepoint {
             return mb_chr(0x25CC) . mb_chr($this->id);
         }
         return mb_chr($this->id);
+    }
+
+    /**
+     * simplest possible JSON serialization: get the code point
+     */
+    public function jsonSerialize() {
+        return $this->id;
     }
 
     /**
