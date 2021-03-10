@@ -31,7 +31,7 @@ class Codepoint extends JsonRunner {
         header(sprintf('Link: <https://codepoints.net/U+%04X>; rel=alternate', $codepoint->id), false);
         $block = $codepoint->block;
         if ($block) {
-            header(sprintf('Link: <https://codepoints.net/api/v1/block/%s>; rel=up', url($block)), false);
+            header(sprintf('Link: <https://codepoints.net/api/v1/block%s>; rel=up', url($block)), false);
         }
         $next = $codepoint->next;
         if ($next) {
