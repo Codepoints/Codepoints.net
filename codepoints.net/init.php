@@ -12,6 +12,8 @@ use Codepoints\Unicode\PropertyInfo;
 
 require 'vendor/autoload.php';
 
+define('UNICODE_VERSION', '13.0');
+
 /**
  * set mb encoding globally
  */
