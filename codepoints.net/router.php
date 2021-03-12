@@ -37,7 +37,7 @@ Router::add(new URLMatcher('api(/(v1)?)?$'), function(Array $match, Array $env) 
     throw new Redirect('/api/v1/');
 });
 Router::add('api/v1/', function(string $match, Array $env) : string {
-    return 'TODO: render openapi.yml';
+    return (new Api())(['action' => 'usage'], $env);
 });
 Router::add(new URLMatcher('api/v1/(?P<action>[a-z][a-z]+)(?:/(?P<data>.*))?$'), new Api());
 
