@@ -14,7 +14,7 @@ class Related extends JsonRunner {
                 'description' => __('get related codepoints'),
                 'related_url' => 'https://codepoints.net/api/v1/codepoint/{codepoint}{?type*}',
                 'codepoint' => '(10)?[A-Fa-f0-9]{4}|0[A-Fa-f0-9]{5}',
-                'types' => array(),
+                'types' => [],
             ];
         }
 

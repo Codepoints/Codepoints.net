@@ -19,17 +19,39 @@ class Search extends Controller {
             'title' => __('Search'),
             'page_description' => __('Search Codepoints.net by specifying many different possible parameters.'),
         ];
-        $page = get_page();
 
         $query = filter_input(INPUT_SERVER, 'QUERY_STRING');
+        list($search_result, $pagination) = $this->getSearchResult($query, $env);
+
+        /* needed in view to fill the <input> again */
         $q = filter_input(INPUT_GET, 'q');
         if (! $q) {
             $q = '';
         }
 
+        $this->context += [
+            'search_result' => $search_result,
+            'pagination' => $pagination,
+            'q' => $q,
+            'wizard' => false,
+        ];
+
+        return parent::__invoke($match, $env);
+    }
+
+    /**
+     * This method is public, because it is re-used in the API.
+     *
+     * @see \Codepoints\Api\Runner\Search
+     *
+     * @return Array{0: ?SearchResult, 1: ?Pagination}
+     */
+    public function getSearchResult(string $query, Array $env) : Array {
         $search_result = null;
         $pagination = null;
+
         if ($query) {
+            $page = get_page();
             list($query_statement, $count_statement, $params) = $this->composeSearchQuery($query, $page, $env);
             if (! $query_statement || ! $count_statement) {
                 throw new NotFoundException('no search query');
@@ -52,15 +74,7 @@ class Search extends Controller {
 
             $pagination = new Pagination($search_result, $page);
         }
-
-        $this->context += [
-            'search_result' => $search_result,
-            'pagination' => $pagination,
-            'q' => $q,
-            'wizard' => false,
-        ];
-
-        return parent::__invoke($match, $env);
+        return [$search_result, $pagination];
     }
 
     /**

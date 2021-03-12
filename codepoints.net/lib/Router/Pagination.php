@@ -42,6 +42,17 @@ class Pagination {
         return intval(ceil(($this->range->last - $this->range->first + 1) / self::PAGE_SIZE));
     }
 
+    /**
+     * @return ?int
+     */
+    public function __get(string $name) {
+        switch ($name) {
+        case 'page':
+            return $this->page;
+        }
+        return null;
+    }
+
     public function __toString() : string {
         $pages = $this->getNumberOfPages();
         if ($pages > 1) {

@@ -76,9 +76,9 @@ class Property extends Runner {
             'frequency1' => 1.666,
             'frequency2' => 2.666,
             'frequency3' => 3.666,
-            'phase1' => 0,
-            'phase2' => 2,
-            'phase3' => 4,
+            'phase1' => 0.0,
+            'phase2' => 2.0,
+            'phase3' => 4.0,
         ];
         if ($data === 'age') {
             $coloroptions = [
@@ -121,8 +121,8 @@ class Property extends Runner {
      *
      * @see http://krazydad.com/tutorials/makecolors.php for the maths
      */
-    private function getNextColor($frequency1, $frequency2, $frequency3,
-        $phase1, $phase2, $phase3) : Array {
+    private function getNextColor(float $frequency1, float $frequency2, float $frequency3,
+        float $phase1, float $phase2, float $phase3) : Array {
         $center = 128;
         $width = 127;
 
