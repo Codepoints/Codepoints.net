@@ -17,6 +17,7 @@
   <stubs>
     <!-- we need this for psalm to see the UNICODE_VERSION constant -->
     <file name="codepoints.net/init.php" />
+    <file name="codepoints.net/index.php" />
   </stubs>
 
   <issueHandlers>
