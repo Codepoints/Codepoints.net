@@ -17,7 +17,7 @@ css:
 	@cp -u src/css/* "$(DOCROOT)/static/css/"
 .PHONY: css
 
-test: test-php
+test: test-php test-codeception
 .PHONY: test
 
 test-php: test-phpcs test-php-psalm
@@ -31,6 +31,10 @@ test-php-psalm:
 	@./codepoints.net/vendor/bin/psalm --show-info=true
 .PHONY: test-php-psalm
 
+test-codeception:
+	@./codepoints.net/vendor/bin/codeception run
+.PHONY: test-codeception
+
 vendor: $(DOCROOT)vendor/autoload.php
 
 $(DOCROOT)vendor/autoload.php: composer.lock
@@ -42,6 +46,7 @@ composer.lock: composer.json
 
 clear-cache:
 	@./codepoints.net/vendor/bin/psalm --clear-cache
+	@-rm -fr tests/_output/*
 	@# TODO if we implement response caching, clear that here, too
 .PHONY: clear-cache
 
