@@ -88,29 +88,29 @@ include 'partials/header.php'; ?>
     </tr>
   </thead>
   <tbody>
-    <?php foreach ($codepoint->properties as $k => $v): ?>
+    <?php foreach ($codepoint->properties as $key => $value): ?>
       <?php /* empty Unihan properties: skip, b/c unnecessary for most cps */
-          if (substr($k, 0, 1) === 'k' && ! $value) { continue; } ?>
+          if (substr($key, 0, 1) === 'k' && ! $value) { continue; } ?>
       <tr>
-        <th><?=q(array_get($info->properties, $k, $k))?> <small>(<?=q($k)?>)</small></th>
+        <th><?=q(array_get($info->properties, $key, $key))?> <small>(<?=q($key)?>)</small></th>
         <td>
-        <?php if ($v === '' || $v === null):?>
+        <?php if ($value === '' || $value === null):?>
           <span class="x">—</span>
-        <?php elseif (in_array($k, $info->booleans)):?>
-          <span class="<?=($v)?'y':'n'?>"><?=($v)?'✔':'✘'?></span>
-        <?php elseif ($v instanceof \Codepoints\Unicode\Codepoint):?>
-          <?=cp($v)?>
-        <?php elseif (is_array($v)):?>
-          <?php foreach ($v as $_v): ?>
+        <?php elseif (in_array($key, $info->booleans)):?>
+          <span class="<?=($value)?'y':'n'?>"><?=($value)?'✔':'✘'?></span>
+        <?php elseif ($value instanceof \Codepoints\Unicode\Codepoint):?>
+          <?=cp($value)?>
+        <?php elseif (is_array($value)):?>
+          <?php foreach ($value as $_v): ?>
             <?php if ($_v instanceof \Codepoints\Unicode\Codepoint): ?>
               <?=cp($_v)?>
-            <?php elseif ($k === 'scx'): ?>
+            <?php elseif ($key === 'scx'): ?>
               <a href="<?=q(url('search?sc='.$_v))?>"><?=array_get($info->script, $_v, $_v)?></a>
             <?php else: ?>
               <?=q($_v)?>
             <?php endif ?>
           <?php endforeach ?>
-        <?php elseif (in_array($k, ['kCompatibilityVariant', 'kDefinition',
+        <?php elseif (in_array($key, ['kCompatibilityVariant', 'kDefinition',
             'kSemanticVariant', 'kSimplifiedVariant',
             'kSpecializedSemanticVariant', 'kTraditionalVariant', 'kZVariant'])):
           echo preg_replace_callback('/U\+([0-9A-F]{4,6})/', function(Array $m) use ($codepoint) : string {
@@ -119,9 +119,9 @@ include 'partials/header.php'; ?>
             }
             # TODO
             return $m[0]; #cp(Codepoint::getCP(hexdec($m[1]), $db), '', 'min');
-          }, $v);
+          }, $value);
         else:
-          echo q($v);
+          echo q($value);
         endif?>
         </td>
       </tr>

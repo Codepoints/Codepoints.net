@@ -42,6 +42,8 @@ class NotFound extends Controller {
                 'wikipedia' => null,
                 'extra' => null,
                 'othersites' => null,
+                'relatives' => $codepoint->relatives,
+                'confusables' => $codepoint->confusables,
             ];
         } elseif (strlen($match) < 128) {
             $list = join(',', array_map(function(string $c) : int { return mb_ord($c); },

@@ -29,7 +29,7 @@ class OtherSites extends CodepointInfo {
         if ($wikipedia) {
             $other_sites[__('Wikipedia')] = $wikipedia['src'];
         }
-        if ($codepoint->properties['kDefinition']) {
+        if (isset($props['kDefinition']) && $codepoint->properties['kDefinition']) {
             $other_sites[__('Unihan Database')] = 'https://www.unicode.org/cgi-bin/GetUnihanData.pl?codepoint='.rawurlencode($codepoint->chr());
             $other_sites[__('Chinese Text Project')] = 'https://ctext.org/dictionary.pl?if=en&amp;char='.rawurlencode($codepoint->chr());
         }

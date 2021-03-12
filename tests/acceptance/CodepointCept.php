@@ -23,6 +23,7 @@ foreach ($categories as $category => list($codepoint, $response_code)) {
     $I->expectTo('see code point info for a '.$category);
     $I->amOnPage('/'.$codepoint);
     $I->seeResponseCodeIs($response_code);
-    $I->see('Blog');
+    /* make sure we see the footer */
+    $I->seeElement('.page-footer');
     $I->see($codepoint, 'h1');
 }

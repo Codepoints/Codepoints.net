@@ -1,6 +1,6 @@
 * write codeception tests
 * glyph ascenders being cut off
-* API
+* API: show rendered openapi.yml view
 * API tests (possibly based on openapi.yml)
 * search: test and fix problems
 * JavaScript and UI

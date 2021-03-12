@@ -17,6 +17,10 @@ class Pronunciation extends CodepointInfo {
     public function __invoke(Codepoint $codepoint) : ?string {
         $props = $codepoint->properties;
         $pr = null;
+        if (! isset($props['kDefinition'])) {
+            /* this code point is some non CJK code point, e.g. a PUA one */
+            return $pr;
+        }
         if ($props['kHanyuPinlu']) {
             $pr = preg_replace('/^([\p{L}\p{N}]+).*/u', '$1',
                                $props['kHanyuPinlu']);

@@ -43,7 +43,7 @@
     $buf = [];
     foreach($props['scx'] as $sc) {
         if ($sc !== $props['sc']) {
-            $buf[] = '<a rel="nofollow" href="'.q(url('search?scx='.$props['scx'])).'">'.
+            $buf[] = '<a rel="nofollow" href="'.q(url('search?sc='.$sc)).'">'.
                     q(array_get($info->script, $sc, $sc)).'</a>';
         }
     }
@@ -55,7 +55,7 @@
             join(', ', $buf));
     }
 
-    $defn = $codepoint->properties['kDefinition'];
+    $defn = isset($codepoint->properties['kDefinition'])? $codepoint->properties['kDefinition'] : null;
     if ($defn) {
         echo ' ';
         printf(__('The Unihan Database defines it as <em>%s</em>.'),

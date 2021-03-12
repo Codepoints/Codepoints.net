@@ -150,7 +150,7 @@ class Properties extends CodepointInfo {
             foreach ($this->private_use_self_references as $prop) {
                 $properties[$prop] = $codepoint;
             }
-            return $properties;
+            return $this->sortProperties($properties);
         }
 
         $data = $this->db->getOne('
