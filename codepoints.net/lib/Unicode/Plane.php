@@ -11,16 +11,37 @@ use \Codepoints\Unicode\Block;
  */
 class Plane {
 
+    /**
+     * the plane's name
+     *
+     * @readonly
+     */
     private string $name;
+
     private int $first;
     private int $last;
+
+    /**
+     * the database from which CP info is fetched
+     *
+     * @readonly
+     */
     private Database $db;
     private ?Array $blocks = null;
 
-    /** @var self|bool|null */
-    private /*?self|bool*/ $prev = null;
-    /** @var self|bool|null */
-    private /*?self|bool*/ $next = null;
+    /**
+     * The previous plane (if any)
+     *
+     * @var self|false|null
+     */
+    private $prev = null;
+
+    /**
+     * The next plane (if any)
+     *
+     * @var self|false|null
+     */
+    private $next = null;
 
     /**
      * create a new plane instance
@@ -36,6 +57,8 @@ class Plane {
 
     /**
      * get the plane name
+     *
+     * @psalm-mutation-free
      */
     public function __toString() : string {
         return $this->name;
@@ -84,9 +107,9 @@ class Plane {
     /**
      * get previous plane or false
      *
-     * @return self|bool
+     * @return self|false
      */
-    private function getPrev() /*: self|bool*/ {
+    private function getPrev() {
         if ($this->prev === null) {
             $this->prev = false;
             $data = $this->db->getOne('SELECT name, first, last
@@ -104,9 +127,9 @@ class Plane {
     /**
      * get next plane or false
      *
-     * @return self|bool
+     * @return self|false
      */
-    private function getNext() /*: self|bool*/ {
+    private function getNext() {
         if ($this->next === null) {
             $this->next = false;
             $data = $this->db->getOne('SELECT name, first, last
@@ -137,6 +160,8 @@ class Plane {
 
     /**
      * get all defined Unicode planes
+     *
+     * @return list<self>
      */
     public static function getAll(Database $db) : Array {
         $sets = $db->getAll('SELECT name, first, last FROM planes');

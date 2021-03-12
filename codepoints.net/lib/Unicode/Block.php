@@ -16,14 +16,14 @@ class Block extends Range {
     /**
      * the previous block
      *
-     * @var self|bool|null
+     * @var self|false|null
      */
     private $prev = null;
 
     /**
      * the next block
      *
-     * @var self|bool|null
+     * @var self|false|null
      */
     private $next = null;
 
@@ -66,7 +66,7 @@ class Block extends Range {
     /**
      * get the previous block or false
      *
-     * @return self|bool
+     * @return self|false
      */
     private function getPrev() {
         if ($this->prev === null) {
@@ -86,7 +86,7 @@ class Block extends Range {
     /**
      * get the next block or false
      *
-     * @return self|bool
+     * @return self|false
      */
     private function getNext() {
         if ($this->next === null) {

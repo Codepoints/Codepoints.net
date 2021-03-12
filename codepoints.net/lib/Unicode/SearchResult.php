@@ -45,6 +45,8 @@ class SearchResult extends Range {
      *
      * $this->last is unreliable, since we need to spoof it for pagination.
      * Check against the real cache for validity.
+     *
+     * @psalm-mutation-free
      */
     public function valid() : bool {
         return array_key_exists($this->current, $this->cp_cache);

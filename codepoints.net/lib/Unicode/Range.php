@@ -16,11 +16,15 @@ class Range implements \Iterator {
 
     /**
      * the database from which CP info is fetched
+     *
+     * @readonly
      */
     protected Database $db;
 
     /**
      * a string representation
+     *
+     * @readonly
      */
     protected string $name;
 
@@ -58,6 +62,8 @@ class Range implements \Iterator {
 
     /**
      * get the range's official name
+     *
+     * @psalm-mutation-free
      */
     public function __toString() {
         return $this->name;
@@ -152,6 +158,9 @@ class Range implements \Iterator {
         return $data? Codepoint::getCached($data, $this->db) : null;
     }
 
+    /**
+     * @psalm-mutation-free
+     */
     public function key() : int {
         return $this->current;
     }
@@ -160,6 +169,9 @@ class Range implements \Iterator {
         $this->current += 1;
     }
 
+    /**
+     * @psalm-mutation-free
+     */
     public function valid() : bool {
         return $this->current >= $this->first && $this->current <= $this->last;
     }

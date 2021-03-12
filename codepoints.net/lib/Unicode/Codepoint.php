@@ -14,6 +14,7 @@ class Codepoint implements JsonSerializable {
 
     /**
      * the Unicode code point as integer
+     * @readonly
      */
     private int $id;
 
@@ -22,6 +23,7 @@ class Codepoint implements JsonSerializable {
      *
      * Possibly some other value, like na1 field or a correction from the
      * aliases list.
+     * @readonly
      */
     private string $name;
 
@@ -30,25 +32,32 @@ class Codepoint implements JsonSerializable {
      *
      * Needed for rendering purposes ("is it a control char?", "is it a
      * combining char?")
+     * @readonly
      */
     private string $gc;
 
+    /**
+     * @readonly
+     */
     private Database $db;
 
     /**
      * the previous code point or false for U+0000
      *
-     * @var self|bool|null
+     * @var self|false|null
      */
     private $prev = null;
 
     /**
      * the next code point or false for U+10FFFF
      *
-     * @var self|bool|null
+     * @var self|false|null
      */
     private $next = null;
 
+    /**
+     * @var Array<int, self>
+     */
     private static Array $instance_cache = [];
 
     /**
@@ -82,6 +91,8 @@ class Codepoint implements JsonSerializable {
 
     /**
      * get the official Unicode ID in the form U+[hex]{4,6}
+     *
+     * @psalm-mutation-free
      */
     public function __toString() : string {
         return sprintf('U+%04X', $this->id);
@@ -119,6 +130,8 @@ class Codepoint implements JsonSerializable {
      * Some control characters have dedicated representations. We use those,
      * e.g., U+0000 => U+2400.
      * Combining characters are accompanied by U+25CC Dotted Circle.
+     *
+     * @psalm-mutation-free
      */
     public function chr() : string {
         if ($this->id < 0x21) {
@@ -139,6 +152,8 @@ class Codepoint implements JsonSerializable {
 
     /**
      * simplest possible JSON serialization: get the code point
+     *
+     * @psalm-mutation-free
      */
     public function jsonSerialize() {
         return $this->id;
@@ -164,9 +179,9 @@ class Codepoint implements JsonSerializable {
     /**
      * get the previous codepoint
      *
-     * @return self|bool
+     * @return self|false
      */
-    private function getPrev() /*: self|false */ {
+    private function getPrev() {
         if ($this->prev === null) {
             $this->prev = false;
             $other = $this->db->getOne('SELECT cp, name, gc FROM codepoints
@@ -183,9 +198,9 @@ class Codepoint implements JsonSerializable {
     /**
      * get the next codepoint
      *
-     * @return self|bool
+     * @return self|false
      */
-    private function getNext() /*: self|false */ {
+    private function getNext() {
         if ($this->next === null) {
             $this->next = false;
             $other = $this->db->getOne('SELECT cp, name, gc FROM codepoints
