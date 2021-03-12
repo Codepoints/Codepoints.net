@@ -88,6 +88,12 @@ function get_codepoint(int $cp, Database $db) : ?Codepoint {
             'name' => 'PRIVATE USE CHARACTER',
             'gc' => 'Co',
         ];
+    } elseif (is_surrogate($cp)) {
+        $data = [
+            'cp' => $cp,
+            'name' => 'SURROGATE CODE POINT',
+            'gc' => 'Cs',
+        ];
     } else {
         $data = $db->getOne('SELECT cp, name, gc FROM codepoints WHERE cp = ?',
             $cp);
@@ -106,4 +112,12 @@ function is_pua(int $cp) : bool {
     return ((0xE000 <= $cp && $cp <= 0xF8FF) ||
             (0xF0000 <= $cp && $cp <= 0xFFFFD) ||
             (0x100000 <= $cp && $cp <= 0x10FFFD));
+}
+
+
+/**
+ * check, if a code point is a surrogate code point
+ */
+function is_surrogate(int $cp) : bool {
+    return (0xD800 <= $cp && $cp <= 0xDFFF);
 }

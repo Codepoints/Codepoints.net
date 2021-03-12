@@ -19,7 +19,7 @@ class Properties extends CodepointInfo {
         'ccc' =>     '0',
         'dt' =>      'none',
         'nt' =>      'None',
-        'nv' =>      '',
+        'nv' =>      'NaN',
         'bc' =>      'L',
         'bpt' =>     'n',
         'Bidi_M' =>  0,
@@ -112,12 +112,17 @@ class Properties extends CodepointInfo {
         'ExtPict' => 0,
     ];
 
-    private Array $noncharacter_property_patch = [
+    private Array $Cn_property_patch = [
         'gc' =>      'Cn',
-        'nv' =>      'NaN',
         'bc' =>      'BN',
         'ea' =>      'N',
         'NChar' =>   1,
+    ];
+
+    private Array $Cs_property_patch = [
+        'gc' =>      'Cs',
+        'lb' =>      'SG',
+        'ea' =>      'N',
     ];
 
     private Array $private_use_self_references = [
@@ -131,8 +136,15 @@ class Properties extends CodepointInfo {
 
         /* shortcut for PUA codepoints and non-characters: fetch precomposed
          * set. */
-        if (is_pua($codepoint->id) || in_array($codepoint->gc, ['Cn', 'Xx'])) {
-            $patch = $codepoint->gc === 'CN'? $this->noncharacter_property_patch : [];
+        if (is_pua($codepoint->id) || is_surrogate($codepoint->id) ||
+            in_array($codepoint->gc, ['Cn', 'Xx'])) {
+
+            $patch = [];
+            if ($codepoint->gc === 'Cn') {
+               $patch = $this->Cn_property_patch;
+            } elseif ($codepoint->gc === 'Cs') {
+               $patch = $this->Cs_property_patch;
+            }
             $properties = $patch + $this->private_use_properties;
             $properties['age'] = ($codepoint->id <= 0xF8FF? '1.1' : '2.0');
             foreach ($this->private_use_self_references as $prop) {
