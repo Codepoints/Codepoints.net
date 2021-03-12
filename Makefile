@@ -32,7 +32,7 @@ test-php-psalm:
 .PHONY: test-php-psalm
 
 test-codeception:
-	@./codepoints.net/vendor/bin/codeception run
+	@./codepoints.net/vendor/bin/codecept run
 .PHONY: test-codeception
 
 vendor: $(DOCROOT)vendor/autoload.php
