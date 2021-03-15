@@ -59,6 +59,8 @@ class Api extends Controller {
             return;
         }
         $matomoTracker = new MatomoTracker(4, 'https://stats.codepoints.net/');
+        /* make sure this blocks the API as little as possible */
+        $matomoTracker->setRequestTimeout(1);
         $matomoTracker->disableCookieSupport();
         $matomoTracker->doTrackPageView('API v1: '.$action);
     }
