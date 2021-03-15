@@ -15,6 +15,8 @@ all: css
 css:
 	@mkdir -p "$(DOCROOT)/static/css/"
 	@cp -u src/css/* "$(DOCROOT)/static/css/"
+	@mkdir -p "$(DOCROOT)/static/fonts/"
+	@cp -u src/fonts/* "$(DOCROOT)/static/fonts/"
 .PHONY: css
 
 test: test-php test-codeception

@@ -1,12 +1,16 @@
+@import "_font.css";
 @import "_crosslinks.css";
 
 :root {
   --font-mod: 1.25;
-  --font-family: Noto Serif, Droid Serif, Georgia, Times New Roman, Times, serif;
+  --font-family: Bitter, Noto Serif, Droid Serif, Georgia, Times New Roman, Times, serif;
   --color-text: #2a2825;
   --color-back: #fefdfa;
   --color-link: #941521;
   --color-link-hover: #d00016;
+  --color-danger: #901;
+  --color-success: #190;
+  --color-neutral: #0007;
   font: normal 16px/1.333 var(--font-family);
   font-feature-settings: "kern" on;
   text-rendering: optimizeLegibility;
@@ -17,6 +21,9 @@
   --color-back: #121212;
   --color-link: #66D9EF;
   --color-link-hover: #8AE0F0;
+  --color-danger: #b02;
+  --color-success: #2b0;
+  --color-neutral: #fffa;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -25,6 +32,9 @@
     --color-back: #121212;
     --color-link: #66D9EF;
     --color-link-hover: #8AE0F0;
+    --color-danger: #b02;
+    --color-success: #2b0;
+    --color-neutral: #fffa;
   }
 }
 
@@ -45,4 +55,28 @@ a:focus, a:hover {
 svg {
   fill: currentColor;
   overflow: visible; /* TODO quick fix for glyphs getting cut off */
+}
+
+th, td {
+  padding: .2em .5em;
+}
+
+th {
+  font-weight: 600;
+}
+
+th[scope="row"] {
+  text-align: right;
+}
+
+.props .x {
+  color: var(--color-neutral);
+}
+
+.props .y {
+  color: var(--color-success);
+}
+
+.props .n {
+  color: var(--color-danger);
 }
