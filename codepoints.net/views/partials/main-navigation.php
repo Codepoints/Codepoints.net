@@ -1,6 +1,6 @@
 <nav class="main-nav">
   <ul class="main-nav__primary">
-    <li class="start"><a href="<?=q(url(''))?>" rel="start"><?=_q('Start')?></a></li>
+    <li class="start"><a href="<?=q(url(''))?>" rel="start"><?=_q('Codepoints')?></a></li>
     <li class="search"><a href="<?=q(url('search'))?>" rel="search"><?=_q('Search')?></a></li>
     <li class="scripts"><a href="<?=q(url('scripts'))?>"><?=_q('Scripts')?></a></li>
     <li class="random"><a rel="nofollow" href="<?=q(url('random'))?>"><?=_q('Random')?></a></li>

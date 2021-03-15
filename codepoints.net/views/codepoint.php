@@ -83,8 +83,8 @@ include 'partials/header.php'; ?>
 <table class="props">
   <thead>
     <tr>
-      <th><?=_q('Property')?></th>
-      <th><?=_q('Value')?></th>
+      <th scope="col"><?=_q('Property')?></th>
+      <th scope="col"><?=_q('Value')?></th>
     </tr>
   </thead>
   <tbody>
@@ -92,7 +92,7 @@ include 'partials/header.php'; ?>
       <?php /* empty Unihan properties: skip, b/c unnecessary for most cps */
           if (substr($key, 0, 1) === 'k' && ! $value) { continue; } ?>
       <tr>
-        <th><?=q(array_get($info->properties, $key, $key))?> <small>(<?=q($key)?>)</small></th>
+        <th scope="row"><?=q(array_get($info->properties, $key, $key))?> <small>(<?=q($key)?>)</small></th>
         <td>
         <?php if ($value === '' || $value === null):?>
           <span class="x">—</span>

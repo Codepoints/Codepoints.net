@@ -2,32 +2,32 @@
 <table class="props representations">
   <thead>
     <tr>
-      <th><?=_q('System')?></th>
-      <th><?=_q('Representation')?></th>
+      <th scope="col"><?=_q('System')?></th>
+      <th scope="col"><?=_q('Representation')?></th>
     </tr>
   </thead>
   <tbody>
     <tr class="primary">
-      <th><?=_q('Nº')?></th>
+      <th scope="row"><?=_q('Nº')?></th>
       <td class="repr-number"><?=$codepoint->id?></td>
     </tr>
     <tr class="primary">
-      <th><?=_q('UTF-8')?></th>
+      <th scope="row"><?=_q('UTF-8')?></th>
       <td><?=q($repr('UTF-8'))?></td>
     </tr>
     <tr class="primary">
-      <th><?=_q('UTF-16')?></th>
+      <th scope="row"><?=_q('UTF-16')?></th>
       <td><?=q($repr('UTF-16'))?></td>
     </tr>
     <tr>
-      <th><?=_q('UTF-32')?></th>
+      <th scope="row"><?=_q('UTF-32')?></th>
       <td><?=q($repr('UTF-32'))?></td>
     </tr>
     <tr>
-      <th><?=_q('URL-Quoted')?></th>
+      <th scope="row"><?=_q('URL-Quoted')?></th>
       <td><?=q($repr('URL'))?></td>
     <tr>
-      <th><?=_q('HTML-Escape')?></th>
+      <th scope="row"><?=_q('HTML-Escape')?></th>
       <td><?=q($repr('HTML'))?></td>
     </tr>
     <?php
@@ -35,11 +35,11 @@
     $moji = mb_convert_encoding($codepoint->chr(), 'UTF-8', 'ISO-8859-1');
     if ($moji): ?>
       <tr>
-        <th title="<?=_q('approx. ISO-8859-1, Latin 1, “us-ascii”, ...')?>"><?=_q('Wrong windows-1252 Mojibake')?></th>
+        <th scope="row" title="<?=_q('approx. ISO-8859-1, Latin 1, “us-ascii”, ...')?>"><?=_q('Wrong windows-1252 Mojibake')?></th>
         <td><?php echo $moji; ?></td>
       </tr>
     <?php endif ?>
-<?php $alias = $codepoint->aliases;
+<?php $aliases = $codepoint->aliases;
 $typeMap = [
     'abbreviation' => __('abbreviation'),
     'alias' => __('alias'),
@@ -49,33 +49,27 @@ $typeMap = [
     'digraph' => __('digraph'),
     'figment' => __('figment'),
     'html' => __('HTML-Escape'),
-    'latex' => '<span class="latex">L<sup>a</sup>T<sub>e</sub>X</span>',
+    'latex' => '<span class="latex">L<sup>A</sup>T<sub>E</sub>X</span>',
 ];
-    foreach ($alias as $a):?>
-      <tr<?php if (in_array($a['type'], ['html', 'abbreviation', 'alias'])):?>
+    foreach ($aliases as $alias):?>
+      <tr<?php if (in_array($alias['type'], ['html', 'abbreviation', 'alias'])):?>
          class="primary"
         <?php endif?>>
-        <th><?php if (array_key_exists($a['type'], $typeMap)) {
-            echo $typeMap[$a['type']];
-        } elseif (substr($a['type'], 0, 4) === 'enc:') {
+        <th scope="row"><?php if (array_key_exists($alias['type'], $typeMap)) {
+            echo $typeMap[$alias['type']];
+        } elseif (substr($alias['type'], 0, 4) === 'enc:') {
             echo q(sprintf(__('Encoding: %s (hex bytes)'),
-                strtoupper(substr($a['type'], 4))));
+                strtoupper(substr($alias['type'], 4))));
         } else {
-            echo q($a['type']);
+            echo q($alias['type']);
         }?></th>
-        <td><?php if ($a['type'] === 'html') {
-            echo '&amp;';
-        }
-        echo q($a['alias']);
-        if ($a['type'] === 'html') {
-            echo ';';
-        }?></td>
+        <td><?=q($alias['alias'])?></td>
       </tr>
     <?php endforeach?>
     <?php $pronunciation = $codepoint->pronunciation;
     if ($pronunciation):?>
       <tr>
-        <th>Pīnyīn</th>
+        <th scope="row">Pīnyīn</th>
         <td><?=q($pronunciation)?></td>
       </tr>
     <?php endif?>
@@ -88,7 +82,7 @@ $typeMap = [
     'kTaiwanTelegraph', 'kXerox'] as $v):
         if (isset($props[$v]) && $props[$v]):?>
       <tr>
-        <th><?=q(array_get($info->properties, $v, $v))?></th>
+        <th scope="row"><?=q(array_get($info->properties, $v, $v))?></th>
         <td><?=q($props[$v])?></td>
       </tr>
     <?php endif; endforeach?>
