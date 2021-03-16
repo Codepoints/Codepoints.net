@@ -1,4 +1,10 @@
 <?php
+/**
+ * @var \Codepoints\Unicode\Plane $plane
+ * @var ?\Codepoints\Unicode\Plane $prev
+ * @var ?\Codepoints\Unicode\Plane $next
+ */
+
 $nav = [];
 if ($prev) {
   $nav['prev'] = pl($prev, 'prev');

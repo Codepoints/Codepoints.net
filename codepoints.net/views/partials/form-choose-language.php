@@ -1,3 +1,8 @@
+<?php
+/**
+ * @var string $lang
+ */
+?>
 <form method="get" class="langchooser">
   <label>
     <span class="visually-hidden"><?=_q('Language:')?></span>

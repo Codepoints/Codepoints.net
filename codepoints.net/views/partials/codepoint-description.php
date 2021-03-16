@@ -1,4 +1,19 @@
-<?php use Codepoints\Unicode\Codepoint; ?>
+<?php
+use Codepoints\Unicode\Codepoint;
+/**
+ * @var Array $props
+ * @var Codepoint $codepoint
+ * @var Codepoint $vs15
+ * @var Codepoint $vs16
+ * @var \Codepoints\Unicode\Plane $plane
+ * @var ?\Codepoints\Unicode\Block $block
+ * @var \Codepoints\Unicode\PropertyInfo $info
+ * @var list<Codepoint> $confusables
+ * @var Array $aliases
+ * @var ?string $pronunciation
+ */
+
+?>
 <!-- codepoint -->
 <p><?php
     printf(__('U+%04X was added to Unicode in version %s (%s). It belongs to the block %s in the %s.'),

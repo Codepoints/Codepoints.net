@@ -24,8 +24,16 @@
     <MoreSpecificImplementedParamType errorLevel="suppress" />
     <UndefinedGlobalVariable>
       <errorLevel type="suppress">
-        <directory name="codepoints.net/views" />
+        <!-- We cannot define them with @var here, because psalm will confuse
+        them with other definitions, e.g., in ../plane.php. -->
+        <file name="codepoints.net/views/partials/head-codepoint.php" />
       </errorLevel>
     </UndefinedGlobalVariable>
+    <RedundantConditionGivenDocblockType>
+      <errorLevel type="suppress">
+        <!-- same -->
+        <file name="codepoints.net/views/partials/head-codepoint.php" />
+      </errorLevel>
+    </RedundantConditionGivenDocblockType>
   </issueHandlers>
 </psalm>

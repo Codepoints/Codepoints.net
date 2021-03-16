@@ -1,4 +1,10 @@
-<?php if ($is_index): ?>
+<?php
+/**
+ * @var bool $is_index
+ * @var Array $data
+ */
+
+if ($is_index): ?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <?php foreach($data as $item):?>
   <sitemap>

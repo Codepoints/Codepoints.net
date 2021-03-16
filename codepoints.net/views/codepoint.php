@@ -1,4 +1,20 @@
 <?php
+use Codepoints\Unicode\Codepoint;
+
+/**
+ * @var Codepoint $codepoint
+ * @var ?Codepoint $prev
+ * @var ?Codepoint $next
+ * @var ?\Codepoints\Unicode\Plane $plane
+ * @var ?\Codepoints\Unicode\Block $block
+ * @var list<Codepoint> $confusables
+ * @var Array $aliases
+ * @var string $extra
+ * @var ?Array $wikipedia
+ * @var Array $othersites
+ * @var Array $relatives
+ */
+
 $nav = [];
 if ($prev) {
   $nav['prev'] = cp($prev, 'prev');

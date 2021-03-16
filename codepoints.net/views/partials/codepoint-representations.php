@@ -1,4 +1,10 @@
-<?php $repr = $codepoint->representation; ?>
+<?php
+/**
+ * @var \Codepoints\Unicode\Codepoint $codepoint
+ * @var \Codepoints\Unicode\PropertyInfo $info
+ */
+
+$repr = $codepoint->representation; ?>
 <table class="props representations">
   <thead>
     <tr>

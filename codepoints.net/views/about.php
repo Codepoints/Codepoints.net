@@ -1,4 +1,9 @@
-<?php include 'partials/header.php'; ?>
+<?php
+/**
+ * @var string $unicode_version
+ */
+
+include 'partials/header.php'; ?>
 <main class="main main--about">
   <section id="finding_characters">
   <h1><?=_q('Finding Characters')?></h1>

@@ -1,3 +1,11 @@
+<?php
+/**
+ * @var int $page
+ * @var string $url
+ * @var int $pages
+ * @var int $pages_shown
+ */
+?>
 <nav class="pagination">
   <ol>
     <?php if ($page > 1): ?>

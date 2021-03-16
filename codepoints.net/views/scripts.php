@@ -1,4 +1,9 @@
-<?php include 'partials/header.php'; ?>
+<?php
+/**
+ * @var list<Array{"iso": string, "name": string, "abstract": string, "src": string, "count": int}> $scripts
+ */
+
+include 'partials/header.php'; ?>
 <main class="main main--scripts">
 
   <h1><?=_q('Browse Codepoints by Script')?></h1>

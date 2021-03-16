@@ -1,4 +1,10 @@
-<?php include 'partials/header.php'; ?>
+<?php
+/**
+ * @var int $cp_count
+ * @var \Codepoints\Unicode\Codepoint $cp0
+ */
+
+include 'partials/header.php'; ?>
 <main class="main main--index">
   <h1><?=_q('Codepoints')?></h1>
   <form method="get" action="/search" class="searchform">

@@ -1,3 +1,10 @@
+<?php
+/**
+ * @var string $lang
+ * @var string $title
+ * @var string $view
+ */
+?>
 <!DOCTYPE html>
 <html lang="<?=q($lang)?>" class="<?php
 if (isset($_COOKIE['force_mode'])) {

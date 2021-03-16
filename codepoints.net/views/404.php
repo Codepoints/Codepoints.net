@@ -1,4 +1,9 @@
-<?php include 'partials/header.php'; ?>
+<?php
+/**
+ * @var list<\Codepoints\Unicode\Codepoint> $cps
+ */
+
+include 'partials/header.php'; ?>
 <main class="main main--404">
   <h1><?=q($title)?></h1>
   <?php if (count($cps)):?>
