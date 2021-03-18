@@ -1,9 +1,11 @@
 @import "_font.css";
 @import "_crosslinks.css";
+@import "_forms.css";
 
 :root {
   --font-mod: 1.25;
-  --font-family: Bitter, Noto Serif, Droid Serif, Georgia, Times New Roman, Times, serif;
+  --font-family: Literata, Noto Serif, Droid Serif, Georgia, Times New Roman, Times, serif;
+  --font-family-alternate: Noto Sans, Droid Sans, Verdana, sans-serif;
   --color-text: #2a2825;
   --color-back: #fefdfa;
   --color-link: #941521;
@@ -11,6 +13,11 @@
   --color-danger: #901;
   --color-success: #190;
   --color-neutral: #0007;
+
+  --color-input-text: #403c37;
+  --color-input-back: #ffffff;
+  --color-input-bord: #555;
+
   font: normal 16px/1.333 var(--font-family);
   font-feature-settings: "kern" on;
   text-rendering: optimizeLegibility;
@@ -24,6 +31,10 @@
   --color-danger: #b02;
   --color-success: #2b0;
   --color-neutral: #fffa;
+
+  --color-input-text: #e8edf2;
+  --color-input-back: #242424;
+  --color-input-bord: #ccc;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -35,6 +46,10 @@
     --color-danger: #b02;
     --color-success: #2b0;
     --color-neutral: #fffa;
+
+    --color-input-text: #e8edf2;
+    --color-input-back: #242424;
+    --color-input-bord: #ccc;
   }
 }
 

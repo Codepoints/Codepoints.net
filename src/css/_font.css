@@ -12,3 +12,18 @@
   font-weight: 1 999;
   font-display: optional;
 }
+
+@font-face {
+  font-family: Literata;
+  src: url('../fonts/Literata.woff2') format('woff2-variations');
+  font-weight: 1 999;
+  font-display: optional;
+}
+
+@font-face {
+  font-family: Literata;
+  font-style: italic;
+  src: url('../fonts/Literata-Italic.woff2') format('woff2-variations');
+  font-weight: 1 999;
+  font-display: optional;
+}
