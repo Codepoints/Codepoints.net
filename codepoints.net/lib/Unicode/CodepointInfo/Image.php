@@ -37,6 +37,17 @@ class Image extends CodepointInfo {
                     $width, $width, $alt);
             }
             $id = $codepoint->id;
+            if ($id < 0x21) {
+                $id = $id + 0x2400;
+            } elseif ($id === 0x7F) { // U+007F DELETE
+                $id = 0x2421;
+            } elseif (substr($codepoint->gc, 0, 1) === 'C') {
+                $id = 0xFFFD;
+            } elseif ($codepoint->gc === 'Zl') { // new line => symbol for newline
+                $id = 0x2424;
+            } elseif ($codepoint->gc === 'Zp') { // new paragraph => pilcrow
+                $id = 0x00B6;
+            }
             $url = sprintf('image/%04X.svg#U%04X', $id - $id % 0x100, $id);
             $modifier = '';
             if (in_array($codepoint->gc, ['Mn', 'Me', 'Lm', 'Sk'])) {
