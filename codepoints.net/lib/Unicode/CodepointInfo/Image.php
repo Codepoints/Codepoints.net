@@ -30,7 +30,7 @@ class Image extends CodepointInfo {
         $altText = $this->altText;
         return function(int $width=16) use ($codepoint, $altText) : string {
             $alt = sprintf($altText, (string)$codepoint);
-            if (in_array($codepoint->gc, ['Co', 'Xx'])) {
+            if (in_array($codepoint->gc, ['Cn', 'Co', 'Cs', 'Xx'])) {
                 return sprintf(
                     '<img src="%s" width="%s" height="%s" alt="%s">',
                     q(url('/static/images/icon.svg')),

@@ -134,8 +134,8 @@ class Properties extends CodepointInfo {
     public function __invoke(Codepoint $codepoint) : Array {
         $properties = [];
 
-        /* shortcut for PUA codepoints and non-characters: fetch precomposed
-         * set. */
+        /* shortcut for PUA codepoints, surrogates and non-characters: fetch
+         * precomposed set. */
         if (is_pua($codepoint->id) || is_surrogate($codepoint->id) ||
             in_array($codepoint->gc, ['Cn', 'Xx'])) {
 
