@@ -12,4 +12,5 @@
 * bring latest blog post preview back
 * bring 20 most popular code points back
 * bring UCotD back
-* k* properties linking to other code points in views: create propert cp() calls
+* k* properties linking to other code points in views: create proper cp() calls
+* update localization (typo on "de" front page: Dingabts)
