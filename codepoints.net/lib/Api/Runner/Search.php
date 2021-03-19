@@ -25,6 +25,7 @@ class Search extends JsonRunner {
         $controller = new SearchController();
         list($search_result, $pagination) = $controller->getSearchResult($query, $this->env);
 
+        # TODO $limit is currently not yet respected by pagination
         $limit = isset($_GET['per_page'])? min(1000, intval($_GET['per_page'])) : 1000;
 
         $page = $pagination? (int)$pagination->page : 1;

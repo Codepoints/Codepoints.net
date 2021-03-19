@@ -21,6 +21,16 @@ include 'partials/header.php' ?>
     <?=$pagination?>
   <?php endif ?>
 
+  <?php if (isset($blocks) && $blocks): ?>
+    <p><?php printf(count($blocks) === 1? __('%s block matches %s:') : __('%s blocks match %s:'), '<strong>'.count($blocks).'</strong>', '<strong>'.q($q).'</strong>')?><p>
+    <ol class="tiles">
+      <?php foreach ($blocks as $block): ?>
+        <li><?=bl($block)?></li>
+      <?php endforeach ?>
+    </ol>
+    <?=$pagination?>
+  <?php endif ?>
+
 <?php if ($wizard): ?>
   <?php if ($search_result): ?>
     <p><a href="?"><?=_q('Try “Find My Codepoint” again.')?></a></p>
