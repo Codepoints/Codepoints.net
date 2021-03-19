@@ -7,7 +7,7 @@
 include 'partials/header.php'; ?>
 <main class="main main--index">
   <h1 aria-label="<?=_q('Codepoints')?>">
-    <svg width="100%" viewBox="0 0 100 15" aria-hidden="true">
+    <svg width="100%" viewBox="0 0 100 15" aria-hidden="true" style="overflow:hidden">
       <text x="50" y="12.5" text-anchor="middle" font-size="14.5" style="
         font-family: Literata;
         font-weight: 550;
