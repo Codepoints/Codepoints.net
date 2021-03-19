@@ -1,0 +1,11 @@
+.props .x {
+  color: var(--color-neutral);
+}
+
+.props .y {
+  color: var(--color-success);
+}
+
+.props .n {
+  color: var(--color-danger);
+}

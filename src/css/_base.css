@@ -1,0 +1,45 @@
+:root {
+  font: normal 16px/1.333 var(--font-family);
+  font-feature-settings: "kern" on;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: var(--color-back);
+  color: var(--color-text);
+}
+
+a {
+  color: var(--color-link);
+  transition: color .3s;
+}
+
+a:focus, a:hover {
+  color: var(--color-link-hover);
+}
+
+svg {
+  fill: currentColor;
+  overflow: visible; /* TODO quick fix for glyphs getting cut off */
+}
+
+th, td {
+  padding: .2em .5em;
+}
+
+th {
+  font-weight: 600;
+}
+
+th[scope="row"] {
+  text-align: right;
+}
+
+blockquote {
+  font-style: italic;
+}
+
+blockquote em,
+blockquote i {
+  font-style: normal;
+}

@@ -1,4 +1,4 @@
-.cp-tiles {
+.tiles {
   list-style: none;
   padding-left: 0;
   margin: 0 -.5em;
@@ -6,21 +6,21 @@
   flex-wrap: wrap;
 }
 
-.cp-tiles > li {
+.tiles > li {
   margin: .5em;
   width: 4em;
 }
 
-.cp-tiles > li > * {
+.tiles > li > * {
   display: block;
 }
 
-.cp-tiles .missing-cp {
+.tiles .missing-cp {
   font-size: 80%;
   text-align: center;
 }
 
-.cp-tiles .cp:before {
+.tiles .cp:before {
   content: attr(data-cp);
   text-decoration: none;
   font-size: 80%;
@@ -28,7 +28,8 @@
   text-align: center;
 }
 
-.cp-tiles .cp > svg {
+.tiles .bl > svg,
+.tiles .cp > svg {
   width: 85%;
   height: auto;
   display: block;
@@ -37,11 +38,14 @@
   margin-bottom: .5em;
   transition: transform .3s;
 }
-.cp-tiles .cp:hover > svg,
-.cp-tiles .cp:focus > svg {
+.tiles .bl:hover > svg,
+.tiles .bl:focus > svg,
+.tiles .cp:hover > svg,
+.tiles .cp:focus > svg {
   transform: scale(1.15);
 }
-.cp-tiles .cp .title {
+.tiles .bl .title,
+.tiles .cp .title {
   hyphens: auto;
   font-size: 90%;
 }

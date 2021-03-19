@@ -1,6 +1,8 @@
 @import "_font.css";
+@import "_base.css";
 @import "_crosslinks.css";
 @import "_forms.css";
+@import "_codepoints.css";
 
 :root {
   --font-mod: 1.25;
@@ -17,10 +19,6 @@
   --color-input-text: #403c37;
   --color-input-back: #ffffff;
   --color-input-bord: #555;
-
-  font: normal 16px/1.333 var(--font-family);
-  font-feature-settings: "kern" on;
-  text-rendering: optimizeLegibility;
 }
 
 :root.force-dark {
@@ -53,45 +51,10 @@
   }
 }
 
-body {
-  background: var(--color-back);
-  color: var(--color-text);
+.main--index {
+  background: url(../images/front.jpg) no-repeat center top;
+  background-size: contain;
 }
-
-a {
-  color: var(--color-link);
-  transition: color .3s;
-}
-
-a:focus, a:hover {
-  color: var(--color-link-hover);
-}
-
-svg {
-  fill: currentColor;
-  overflow: visible; /* TODO quick fix for glyphs getting cut off */
-}
-
-th, td {
-  padding: .2em .5em;
-}
-
-th {
-  font-weight: 600;
-}
-
-th[scope="row"] {
-  text-align: right;
-}
-
-.props .x {
-  color: var(--color-neutral);
-}
-
-.props .y {
-  color: var(--color-success);
-}
-
-.props .n {
-  color: var(--color-danger);
+.main--index blockquote {
+  text-align: center;
 }

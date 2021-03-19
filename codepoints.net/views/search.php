@@ -12,7 +12,7 @@ include 'partials/header.php' ?>
   <p><?php printf(__('Please add search limits with the form below. Click “add new query”, select a category and choose one of the values. You can change the value afterwards, if you click on it again. The %s button on the right removes the value from the search again.'), __('remove'))?></p>
 
   <?php if ($search_result): ?>
-    <ol>
+    <ol class="tiles">
       <?php foreach ($search_result as $codepoint): ?>
         <?php if (! $codepoint) { continue; } ?>
         <li><?=cp($codepoint)?></li>
