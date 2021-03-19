@@ -6,11 +6,22 @@
 
 include 'partials/header.php'; ?>
 <main class="main main--index">
-  <h1><?=_q('Codepoints')?></h1>
+  <h1 aria-label="<?=_q('Codepoints')?>">
+    <svg width="100%" viewBox="0 0 100 15" aria-hidden="true">
+      <text x="50" y="12.5" text-anchor="middle" font-size="14.5" style="
+        font-family: Literata;
+        font-weight: 550;
+        fill: white;
+        font-variation-settings: &quot;opsz&quot; 50;
+        text-transform: uppercase;
+        text-shadow: 0 3px 3px #0006;
+      ">Codepoints</text>
+    </svg>
+  </h1>
   <form method="get" action="/search" class="searchform">
     <p><input type="text" name="q" placeholder="<?=_q('Search a Character')?>"
        title="<?=_q('Enter a single character, like “丙” or “A”, or a term that describes the character, like “cyrillic” or “grass”')?>">
-       <button type="submit"><span><?=_q('search')?></span></button></p>
+       <button type="submit"><?=_q('search')?></button></p>
   </form>
   <blockquote class="central">
     <p><?=__('<strong>Codepoint</strong>, <em>n.</em> the position of a character in
