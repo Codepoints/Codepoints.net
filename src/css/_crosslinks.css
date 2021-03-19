@@ -7,12 +7,20 @@
 }
 
 .tiles > li {
-  margin: .5em;
+  margin: .25em;
   width: 4em;
+  display: flex;
+  max-height: 10em;
 }
 
 .tiles > li > * {
   display: block;
+  padding: .25em;
+  border: 1px solid var(--color-input-bord);
+}
+
+.tiles a {
+  text-decoration: none;
 }
 
 .tiles .missing-cp {
@@ -42,8 +50,9 @@
 .tiles .bl:focus > svg,
 .tiles .cp:hover > svg,
 .tiles .cp:focus > svg {
-  transform: scale(1.15);
+  transform: scale(1.33);
 }
+
 .tiles .bl .title,
 .tiles .cp .title {
   hyphens: auto;
