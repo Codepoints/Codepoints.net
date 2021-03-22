@@ -1,5 +1,5 @@
 DOCROOT := codepoints.net/
-DEBUG :=
+DEBUG := 1
 
 PHP := php
 
@@ -13,6 +13,7 @@ all: css
 .PHONY: all
 
 css:
+	@if [ "$(DEBUG)" ]; then echo "in debug mode, symlink src/css to codepoints.net/static/css"; false; fi
 	@mkdir -p "$(DOCROOT)/static/css/"
 	@cp -u src/css/* "$(DOCROOT)/static/css/"
 	@mkdir -p "$(DOCROOT)/static/fonts/"
