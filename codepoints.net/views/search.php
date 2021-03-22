@@ -28,7 +28,6 @@ include 'partials/header.php' ?>
         <li><?=bl($block)?></li>
       <?php endforeach ?>
     </ol>
-    <?=$pagination?>
   <?php endif ?>
 
 <?php if ($wizard): ?>
