@@ -17,6 +17,7 @@ AddOutputFilterByType DEFLATE text/html text/css text/javascript application/jso
 ErrorDocument 404 /index.php
 
 RewriteEngine On
+RewriteBase /
 
 # remove www. from URLs
 RewriteCond %{HTTP_HOST} ^www\.(.*) [NC]
