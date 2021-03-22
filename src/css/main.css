@@ -3,6 +3,7 @@
 @import "_crosslinks.css";
 @import "_forms.css";
 @import "_codepoints.css";
+@import "_pagination.css";
 
 :root {
   --font-mod: 1.25;

@@ -30,7 +30,7 @@ include 'partials/header.php'; ?>
 <?php endif ?>
   <?php if (count($plane->blocks)):?>
     <h2><?=_q('Blocks in this plane')?></h2>
-    <ol>
+    <ol class="tiles">
       <?php foreach ($plane->blocks as $block):?>
         <li><?=bl($block)?></li>
       <?php endforeach?>
