@@ -149,8 +149,8 @@ include 'partials/header.php'; ?>
       %s,<br>
       which happens to be the most relevant version of the Unicode Standard
       as of August, 2012.'),
-      q($unicode_version),
-      '<a href="http://www.unicode.org/versions/Unicode'.q($unicode_version).'/">http://www.unicode.org/versions/Unicode'.q($unicode_version).'/</a>'
+      q(UNICODE_VERSION),
+      '<a href="http://www.unicode.org/versions/Unicode'.q(UNICODE_VERSION).'/">http://www.unicode.org/versions/Unicode'.q(UNICODE_VERSION).'/</a>'
     )?>
     </p>
     <p>

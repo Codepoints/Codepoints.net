@@ -69,7 +69,7 @@ function bl(Block $block, string $rel='', string $class='') : string {
             ' <span class="meta">%s</span>'.
         '</a>',
         $class, $rel, q(url($block)), blimg($block), q($block->name),
-        sprintf(__('(U+%04X to U+%04X)'), $block->first, $block->last));
+        sprintf(__('U+%04X to U+%04X'), $block->first, $block->last));
 }
 
 /**
