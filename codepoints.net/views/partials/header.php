@@ -29,8 +29,8 @@ if (isset($_COOKIE['force_mode'])) {
     <link rel="manifest" href="/manifest.webmanifest">
     <link rel="search" href="/opensearch.xml" type="application/opensearchdescription+xml" title="Search Codepoints">
     <link rel="author" href="/humans.txt">
-    <link rel="preload" href="/static/fonts/Literata.woff2" as="font">
-    <link rel="preload" href="/static/fonts/Literata-Italic.woff2" as="font">
+    <link rel="preload" href="/static/fonts/Literata.woff2" as="font" crossOrigin="anonymous">
+    <link rel="preload" href="/static/fonts/Literata-Italic.woff2" as="font" crossOrigin="anonymous">
     <link rel="stylesheet" href="/static/css/main.css">
     <?php include 'head-multilang.php' ?>
 <?php switch($view):
