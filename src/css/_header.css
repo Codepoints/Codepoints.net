@@ -1,0 +1,26 @@
+.page-header {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0 1em -1em;
+}
+
+.page-header > * {
+  margin: 0 0 0 1em;
+}
+
+.page-header > * p {
+  margin: 0;
+}
+
+.main-nav ul {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+}
+
+.main-nav a {
+  display: block;
+  padding: .5em 1em;
+}

@@ -8,15 +8,16 @@
 
 .tiles > li {
   margin: .25em;
-  width: 4em;
+  width: 8em;
   display: flex;
-  max-height: 10em;
+  max-height: 12em;
 }
 
 .tiles > li > * {
   display: block;
   width: 100%;
   padding: .25em;
+  box-sizing: border-box;
   border: 1px solid var(--color-input-bord);
 }
 
@@ -68,4 +69,5 @@
 .tiles .bl .meta {
   text-decoration: none;
   font-size: 80%;
+  white-space: nowrap;
 }

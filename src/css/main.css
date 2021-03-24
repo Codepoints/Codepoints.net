@@ -4,6 +4,8 @@
 @import "_forms.css";
 @import "_codepoints.css";
 @import "_pagination.css";
+@import "_header.css";
+@import "_footer.css";
 
 :root {
   --font-mod: 1.25;

@@ -1,19 +1,4 @@
 @font-face {
-  font-family: Bitter;
-  src: url('../fonts/Bitter-VariableFont_wght.woff2') format('woff2-variations');
-  font-weight: 1 999;
-  font-display: optional;
-}
-
-@font-face {
-  font-family: Bitter;
-  font-style: italic;
-  src: url('../fonts/Bitter-Italic-VariableFont_wght.woff2') format('woff2-variations');
-  font-weight: 1 999;
-  font-display: optional;
-}
-
-@font-face {
   font-family: Literata;
   src: url('../fonts/Literata.woff2') format('woff2-variations');
   font-weight: 1 999;

@@ -1,0 +1,11 @@
+.page-footer ul {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  margin: 0;
+}
+
+.page-footer ul a {
+  display: block;
+  padding: .5em 1em;
+}
