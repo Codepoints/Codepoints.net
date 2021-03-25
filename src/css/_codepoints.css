@@ -10,6 +10,11 @@
   padding-top: .25em;
 }
 
+p .bl .meta,
+p .pl .meta {
+  display: none;
+}
+
 .props .x {
   color: var(--color-neutral);
 }

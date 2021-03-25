@@ -1,6 +1,20 @@
 .cp, .bl, .pl {
-  color: inherit;
   text-decoration: none;
+}
+
+.cp > svg,
+.bl > svg,
+.pl > svg {
+  transition: transform .3s, color .3s;
+}
+
+.cp:focus > svg,
+.cp:hover > svg,
+.bl:focus > svg,
+.bl:hover > svg,
+.pl:focus > svg,
+.pl:hover > svg {
+  transform: scale(1.33);
 }
 
 .tiles {
@@ -34,6 +48,10 @@
   opacity: .667;
 }
 
+.tiles .cp, .tiles .bl, .tiles .pl {
+  color: inherit;
+}
+
 .tiles .cp:before {
   content: attr(data-cp);
   text-decoration: none;
@@ -50,7 +68,6 @@
   margin-left: auto;
   margin-right: auto;
   margin-bottom: .5em;
-  transition: transform .3s;
 }
 .tiles .pl:hover > svg,
 .tiles .pl:focus > svg,
@@ -58,7 +75,7 @@
 .tiles .bl:focus > svg,
 .tiles .cp:hover > svg,
 .tiles .cp:focus > svg {
-  transform: scale(1.33);
+  color: var(--color-link-hover);
 }
 
 .tiles .pl .title,
