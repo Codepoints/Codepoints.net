@@ -4,8 +4,10 @@
 }
 
 .tiles {
+  clear: left; /* prevent possible collision with figures */
+  clear: inline-start;
   list-style: none;
-  padding-left: 0;
+  padding-inline-start: 0;
   margin: 0 -.5em;
   display: grid;
   grid-template-columns: repeat(auto-fill, 8em);
@@ -28,7 +30,6 @@
 }
 
 .tiles .missing-cp {
-  font-size: 80%;
   text-align: center;
   opacity: .667;
 }
@@ -36,7 +37,6 @@
 .tiles .cp:before {
   content: attr(data-cp);
   text-decoration: none;
-  font-size: 80%;
   display: block;
   text-align: center;
 }
@@ -71,10 +71,8 @@
   display: block;
 }
 
-
 .tiles .pl .meta,
 .tiles .bl .meta {
   text-decoration: none;
-  font-size: 80%;
   white-space: nowrap;
 }

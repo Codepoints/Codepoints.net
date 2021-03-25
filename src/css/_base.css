@@ -44,3 +44,40 @@ blockquote em,
 blockquote i {
   font-style: normal;
 }
+
+/* font sizes and typographic adaptions */
+
+.h1,
+h1 {
+  font-size: calc(1rem * var(--font-mod) * var(--font-mod) * var(--font-mod) * var(--font-mod) * var(--font-mod));
+}
+
+.h2,
+h2 {
+  font-size: calc(1rem * var(--font-mod) * var(--font-mod) * var(--font-mod) * var(--font-mod));
+}
+
+.h3,
+h3 {
+  font-size: calc(1rem * var(--font-mod) * var(--font-mod) * var(--font-mod));
+}
+
+.h4,
+h4 {
+  font-size: calc(1rem * var(--font-mod) * var(--font-mod));
+}
+
+.text_big,
+.h5,
+h5 {
+  font-size: calc(1rem * var(--font-mod));
+}
+
+.tiles .missing-cp,
+.tiles .cp:before,
+.tiles .pl .meta,
+.tiles .bl .meta,
+small, .text_small, figcaption {
+  font-size: calc(1rem / var(--font-mod));
+  font-family: var(--font-family-alternate);
+}

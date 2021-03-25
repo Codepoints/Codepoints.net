@@ -68,7 +68,7 @@ include 'partials/header.php'; ?>
   </section>
 
 <?php if (count($relatives) + count($confusables)):?>
-  <section>
+  <section class="cpdesc cpdesc--relatives">
     <h2><?=_q('Related Characters')?></h2>
     <?php if (count($relatives)):?>
       <ul class="tiles">

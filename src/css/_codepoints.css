@@ -1,3 +1,15 @@
+.sqfig {
+  float: left;
+  float: inline-start;
+  margin: 0 1em 1em 0;
+  border: 1px solid var(--color-neutral);
+  padding: .25em;
+}
+
+.sqfig figcaption {
+  padding-top: .25em;
+}
+
 .props .x {
   color: var(--color-neutral);
 }
