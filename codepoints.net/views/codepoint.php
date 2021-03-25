@@ -68,7 +68,7 @@ include 'partials/header.php'; ?>
   <section>
     <h2><?=_q('Related Characters')?></h2>
     <?php if (count($relatives)):?>
-      <ul class="data">
+      <ul class="tiles">
         <?php foreach ($relatives as $rel):?>
           <li><?=cp($rel)?></li>
         <?php endforeach?>
@@ -76,7 +76,7 @@ include 'partials/header.php'; ?>
     <?php endif?>
     <?php if (count($confusables)):?>
       <h3 id="confusables"><?=_q('Confusables')?></h3>
-      <ul class="data">
+      <ul class="tiles">
         <?php foreach ($confusables as $rel): ?>
           <li><?=cp($rel)?></li>
         <?php endforeach?>

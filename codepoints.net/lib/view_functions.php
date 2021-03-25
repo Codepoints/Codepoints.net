@@ -97,7 +97,7 @@ function pl(Plane $plane, string $rel='', string $class='') : string {
             ' <span class="meta">%s</span>'.
         '</a>',
         $class, $rel, q(url($plane)), plimg($plane), q($plane->name),
-        sprintf(__('(U+%04X to U+%04X)'), $plane->first, $plane->last));
+        sprintf(__('U+%04X to U+%04X'), $plane->first, $plane->last));
 }
 
 /**

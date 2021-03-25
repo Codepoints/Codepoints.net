@@ -9,7 +9,7 @@ include 'partials/header.php'; ?>
     <img src="/static/images/unicode-logo-framed.png" alt="<?=__('a representation of the Unicode logo')?>" width="128" height="128">
   </figure>
   <h1><?=q($title)?></h1>
-  <ol>
+  <ol class="tiles">
     <?php foreach ($planes as $plane):?>
       <li><?=pl($plane)?></li>
     <?php endforeach?>

@@ -9,6 +9,7 @@
   margin: 0 -.5em;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .tiles > li {
@@ -40,6 +41,7 @@
   text-align: center;
 }
 
+.tiles .pl > svg,
 .tiles .bl > svg,
 .tiles .cp > svg {
   width: 85%;
@@ -50,6 +52,8 @@
   margin-bottom: .5em;
   transition: transform .3s;
 }
+.tiles .pl:hover > svg,
+.tiles .pl:focus > svg,
 .tiles .bl:hover > svg,
 .tiles .bl:focus > svg,
 .tiles .cp:hover > svg,
@@ -57,6 +61,7 @@
   transform: scale(1.33);
 }
 
+.tiles .pl .title,
 .tiles .bl .title,
 .tiles .cp .title {
   hyphens: auto;
@@ -67,6 +72,7 @@
 }
 
 
+.tiles .pl .meta,
 .tiles .bl .meta {
   text-decoration: none;
   font-size: 80%;
