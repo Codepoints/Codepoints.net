@@ -20,6 +20,16 @@ css:
 	@cp -u src/fonts/* "$(DOCROOT)/static/fonts/"
 .PHONY: css
 
+fonts: src/fonts/Literata.woff2 src/fonts/Literata-Italic.woff2
+.PHONY: fonts
+
+src/fonts/Literata.woff2 src/fonts/Literata-Italic.woff2: src/fonts/%.woff2: src/fonts/%.ttf
+	pyftsubset "$<" \
+		--layout-features='*' \
+		--flavor=woff2 \
+		--unicodes='U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD, U+2714, U+2718' \
+		--output-file="$@"
+
 test: test-php test-codeception
 .PHONY: test
 
