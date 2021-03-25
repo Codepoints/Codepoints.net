@@ -5,8 +5,8 @@
 
 include 'partials/header.php'; ?>
 <main class="main main--planes">
-  <figure>
-    <img src="/static/images/unicode-logo-framed.png" alt="<?=__('a representation of the Unicode logo')?>" width="128" height="128">
+  <figure class="sqfig plfig">
+    <img src="/static/images/unicode-logo-framed.png" alt="<?=__('a representation of the Unicode logo')?>" width="250" height="250">
   </figure>
   <h1><?=q($title)?></h1>
   <ol class="tiles">

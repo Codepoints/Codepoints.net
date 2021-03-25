@@ -10,6 +10,7 @@ use Codepoints\Unicode\CodepointInfo\CLDR;
 use Codepoints\Unicode\CodepointInfo\Confusables;
 use Codepoints\Unicode\CodepointInfo\Description;
 use Codepoints\Unicode\CodepointInfo\Extra;
+use Codepoints\Unicode\CodepointInfo\ImageSource;
 use Codepoints\Unicode\CodepointInfo\OtherSites;
 use Codepoints\Unicode\CodepointInfo\Pronunciation;
 use Codepoints\Unicode\CodepointInfo\Properties;
@@ -27,6 +28,7 @@ class Codepoint extends Controller {
         new Confusables($env);
         new Description($env);
         new Extra($env);
+        new ImageSource($env);
         new OtherSites($env);
         new Pronunciation($env);
         new Properties($env);

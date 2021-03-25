@@ -16,8 +16,9 @@ if ($next) {
 
 include 'partials/header.php'; ?>
 <div class="payload plane">
-  <figure>
-    <?=plimg($plane, 128)?>
+  <figure class="sqfig plfig">
+    <?=plimg($plane, 250)?>
+    <figcaption><?=_q('Source: Font Last Resort')?></figcaption>
   </figure>
   <h1><?=q($title)?></h1>
   <p><?php printf(__('Plane from U+%04X to U+%04X.'), $plane->first, $plane->last)?></p>

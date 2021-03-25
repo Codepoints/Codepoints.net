@@ -28,8 +28,11 @@ if ($next) {
 
 include 'partials/header.php'; ?>
 <main class="main main--codepoint">
-  <figure>
+  <figure class="sqfig cpfig">
     <?=cpimg($codepoint, 250)?>
+    <?php if ($codepoint->imagesource): ?>
+      <figcaption><?=q(sprintf(__('Source: Font %s'), $codepoint->imagesource))?></figcaption>
+    <?php endif ?>
   </figure>
   <h1><?=q($title)?></h1>
 
