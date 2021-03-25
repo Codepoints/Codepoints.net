@@ -63,7 +63,7 @@ paths:
           items:
             type: string
     get:
-      operationId: getCodepoint
+      operationId: codepoint
       summary: show detailed information about a single code point
       description: |
         You can specify fields of interest with the “property” parameter:
@@ -617,7 +617,7 @@ paths:
         schema:
           type: string
     get:
-      operationId: getBlock
+      operationId: block
       summary: show detailed information about a Unicode block
       responses:
         "200":
@@ -649,7 +649,7 @@ paths:
         schema:
           type: string
     get:
-      operationId: getPlane
+      operationId: plane
       summary: show information about a Unicode plane
       responses:
         "200":
@@ -677,6 +677,7 @@ paths:
     parameters:
       - $ref: '#/components/parameters/codepoint'
     get:
+      operationId: glyph
       summary: get an example glyph for a code point as PNG
       responses:
         "200":
@@ -689,6 +690,7 @@ paths:
     parameters:
       - $ref: '#/components/parameters/codepoint'
     get:
+      operationId: name
       summary: get the canonical Unicode name for a code point
       responses:
         "200":
@@ -722,6 +724,7 @@ paths:
         schema:
           type: string
     get:
+      operationId: transform
       summary: transform a string to another according to a mapping, e.g., making all characters upper-case.
       responses:
         "200":
@@ -745,6 +748,7 @@ paths:
         schema:
           type: string
     get:
+      operationId: filter
       summary: Filter a string of characters by Unicode property
       description: |
         You can negate properties by appending a “!” to it:
@@ -768,6 +772,7 @@ paths:
         schema:
           type: string
     get:
+      operationId: property
       summary: show a PNG image where every code point is represented by one pixel
       description: |
         The pixel color determines the value.
@@ -787,6 +792,7 @@ paths:
           type: string
           pattern: '^[A-Z][a-z]{3}$'
     get:
+      operationId: script
       summary: Specify one or more ISO short names separated by comma
       responses:
         "200":
@@ -815,6 +821,7 @@ paths:
           type: integer
           minimum: 1
     get:
+      operationId: search
       summary: search for code points by their properties
       responses:
         "200":
@@ -859,6 +866,7 @@ paths:
           type: integer
         in: query
     get:
+      operationId: oembed
       summary: oEmbed API endpoint for URLs matching “codepoints.net”
       responses:
         "200":
