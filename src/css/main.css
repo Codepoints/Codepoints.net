@@ -58,6 +58,12 @@
   padding: 0 1em;
 }
 
+.main > :not(.tiles) {
+  max-width: 65rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .main--index {
   background: url(../images/front_light.webp) no-repeat center top;
   background-size: contain;
