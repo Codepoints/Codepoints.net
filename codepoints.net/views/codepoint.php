@@ -34,13 +34,14 @@ include 'partials/header.php'; ?>
       <figcaption><?=q(sprintf(__('Source: Font %s'), $codepoint->imagesource))?></figcaption>
     <?php endif ?>
   </figure>
-  <h1><?=q($title)?></h1>
+
+  <h1><?=str_replace('*', ' <span title="'.q('different from the Unicode “na” property').'" class="no-na">*</span>', q($title))?></h1>
 
   <section class="cpdesc cpdesc--desc">
 <?php if ($codepoint->gc === 'Xx'): ?>
   <p><?=_q('This codepoint doesn’t exist.')?>
-  If it would, it’d be located in the
-  Nirvana of Undefined Behaviour beyond the 17<sup>th</sup> plane, a land <a href="http://www.unicode.org/mail-arch/unicode-ml/y2003-m10/0234.html">no member of the Unicode mailing list has ever seen</a>.
+  <?=sprintf(__('If it would, it’d be located in the Nirvana of Undefined Behaviour beyond the 17<sup>th</sup> plane, a land %sno member of the Unicode mailing list has ever seen%s.'),
+    '<a href="http://www.unicode.org/mail-arch/unicode-ml/y2003-m10/0234.html">', '</a>')?>
   </p>
 <?php else: ?>
     <?=$codepoint->description?>
