@@ -10,7 +10,8 @@
         "analog/analog": "^1.0",
         "willdurand/negotiation": "^3.0",
         "gettext/gettext": "^5.5",
-        "matomo/matomo-php-tracker": "^3.0"
+        "matomo/matomo-php-tracker": "^3.0",
+        "doctrine/cache": "^1.10"
     },
     "autoload": {
         "files": [
