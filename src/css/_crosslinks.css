@@ -32,7 +32,6 @@
 .tiles > li {
   width: 8em;
   display: flex;
-  max-height: 12em;
 }
 
 .tiles > li > * {
