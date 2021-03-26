@@ -1,0 +1,27 @@
+.main {
+  padding: 0 1em;
+  flex-grow: 1;
+}
+
+.main > :not(.tiles) {
+  max-width: 65rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.main--index {
+  background: url(../images/front_light.webp) no-repeat center top;
+  background-size: contain;
+}
+:root.force-dark .main--index {
+  background-image: url(../images/front_dark.webp);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not(.force-light) {
+    background-image: url(../images/front_dark.webp);
+  }
+}
+
+.main--index blockquote {
+  text-align: center;
+}

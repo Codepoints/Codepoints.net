@@ -6,11 +6,13 @@
 @import "_pagination.css";
 @import "_header.css";
 @import "_footer.css";
+@import "_main-content.css";
 
 :root {
   --font-mod: 1.25;
   --font-family: Literata, Noto Serif, Droid Serif, Georgia, Times New Roman, Times, serif;
   --font-family-alternate: Noto Sans, Droid Sans, Verdana, sans-serif;
+
   --color-text: #2a2825;
   --color-back: #fefdfa;
   --color-link: #941521;
@@ -63,31 +65,4 @@
     --color-input-back: #242424;
     --color-input-bord: #ccc;
   }
-}
-
-.main {
-  padding: 0 1em;
-}
-
-.main > :not(.tiles) {
-  max-width: 65rem;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.main--index {
-  background: url(../images/front_light.webp) no-repeat center top;
-  background-size: contain;
-}
-:root.force-dark .main--index {
-  background-image: url(../images/front_dark.webp);
-}
-@media (prefers-color-scheme: dark) {
-  :root:not(.force-light) {
-    background-image: url(../images/front_dark.webp);
-  }
-}
-
-.main--index blockquote {
-  text-align: center;
 }
