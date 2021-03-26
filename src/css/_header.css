@@ -24,3 +24,7 @@
   display: block;
   padding: .5em 1em;
 }
+
+.main-nav a svg {
+  vertical-align: middle;
+}

@@ -9,3 +9,7 @@
   display: block;
   padding: .5em 1em;
 }
+
+.page-footer a svg {
+  vertical-align: middle;
+}
