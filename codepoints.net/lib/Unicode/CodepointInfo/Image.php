@@ -33,6 +33,8 @@ class Image extends CodepointInfo {
         return function(int $width=16) use ($codepoint, $altText) : string {
             $alt = sprintf($altText, (string)$codepoint);
             if (in_array($codepoint->gc, ['Cn', 'Co', 'Cs', 'Xx'])) {
+                /* special control characters and non-existing code points: Use
+                 * our icon */
                 $url = url('/static/images/icon.svg');
                 return sprintf('<svg width="%s" height="%s">'.
                     '<title>%s</title>'.
@@ -40,20 +42,26 @@ class Image extends CodepointInfo {
             }
             $id = $codepoint->id;
             if ($id < 0x21) {
+                /* low ASCII controls: there’s a dedicated symbol */
                 $id = $id + 0x2400;
-            } elseif ($id === 0x7F) { // U+007F DELETE
+            } elseif ($id === 0x7F) {
+                /* U+007F DELETE: special symbol, too */
                 $id = 0x2421;
             } elseif (substr($codepoint->gc, 0, 1) === 'C' && $codepoint->gc !== 'Cf') {
+                /* any other control apart from formatting controls (Cf), that
+                 * actually have a rendering */
                 $id = 0xFFFD;
-            } elseif ($codepoint->gc === 'Zl') { // new line => symbol for newline
+            } elseif ($codepoint->gc === 'Zl') {
+                /* new line => symbol for newline */
                 $id = 0x2424;
-            } elseif ($codepoint->gc === 'Zp') { // new paragraph => pilcrow
+            } elseif ($codepoint->gc === 'Zp') {
+                /* new paragraph => pilcrow */
                 $id = 0x00B6;
             }
             $url = sprintf('/image/%04X.svg#U%04X', $id - $id % 0x100, $id);
             $modifier = '';
             if (in_array($codepoint->gc, ['Mn', 'Me', 'Lm', 'Sk'])) {
-                /* for combining characters, add the U+25CC circle */
+                /* for combining characters, add the appropriate U+25CC circle */
                 $modifier = '<use xlink:href="image/2500.svg#U25CC" fill-opacity="0.25"/>';
             }
             return sprintf('<svg width="%s" height="%s">'.
