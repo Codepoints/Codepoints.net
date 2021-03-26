@@ -1,0 +1,6 @@
+[db]
+password=codepoints
+user=codepoints
+database=codepoints
+[stats]
+token=read_access_token

@@ -41,11 +41,11 @@ ini_set('zlib.output_compression', '1');
 /**
  * get the database connection ready
  */
-$dbconfig = parse_ini_file(dirname(__DIR__).'/db.conf', true);
+$config = parse_ini_file(dirname(__DIR__).'/config.ini', true);
 Router::addDependency('db', $db = new Database(
-    'mysql:host=localhost;dbname='.$dbconfig['client']['database'],
-    $dbconfig['client']['user'],
-    $dbconfig['client']['password'],
+    'mysql:host=localhost;dbname='.$config['db']['database'],
+    $config['db']['user'],
+    $config['db']['password'],
     [
         # make sure, we communicate with the real UTF-8 everywhere
         PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8mb4 COLLATE utf8mb4_unicode_ci',
@@ -53,7 +53,8 @@ Router::addDependency('db', $db = new Database(
         # https://stackoverflow.com/a/58830039/113195
         PDO::ATTR_EMULATE_PREPARES => false,
     ]));
-unset($dbconfig);
+unset($config['db']);
+Router::addDependency('config', $config);
 
 /**
  * start the translation engine
