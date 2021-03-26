@@ -22,6 +22,17 @@
   --color-input-text: #403c37;
   --color-input-back: #ffffff;
   --color-input-bord: #555;
+
+  --color-hilite: #bbddff;
+
+  --color-back-bright: #ffffff;
+  --color-back-dim: #eeeeee;
+  --color-back-dark: #aaaaaa;
+
+  --color-border: #dddddd;
+  --color-border-light: #eeeeee;
+  --color-border-medium: #bbbbbb;
+  --color-border-dark: #333333;
 }
 
 :root.force-dark {

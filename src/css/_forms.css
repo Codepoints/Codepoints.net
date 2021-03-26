@@ -8,3 +8,55 @@ input, select, textarea {
   background: var(--color-input-back);
   color: var(--color-input-text);
 }
+
+button, .btn {
+  padding: .25em .5em;
+  text-align: center;
+  transition-property: background, color, box-shadow, border-color;
+  transition-duration: .3s;
+  border: 1px solid var(--color-border);
+  border-radius: 1px;
+  background: linear-gradient(to bottom, var(--color-back-bright), var(--color-back-dim));
+  box-shadow: inset 0 1px rgba(255,255,255,.67),
+              0 1px rgba(255,255,255,.67),
+              inset 1px 0 rgba(255,255,255,.33),
+              inset -1px 0 rgba(255,255,255,.33),
+              0 -1px 1px rgba(0,0,0,.05);
+  text-shadow: 0 1px white;
+}
+
+button[disabled], .btn-disabled {
+  border-color: var(--color-input-bord);
+  background: var(--color-back-dim);
+  box-shadow: inset 0 1px rgba(255,255,255,.67),
+              0 1px rgba(255,255,255,.67),
+              inset 1px 0 rgba(255,255,255,.33),
+              inset -1px 0 rgba(255,255,255,.33),
+              0 -1px 1px rgba(0,0,0,.05);
+  text-shadow: 0 1px white;
+  color: var(--color-input-text);
+  cursor: default;
+}
+
+button:hover,
+button:focus,
+.btn:hover,
+.btn:focus,
+.btn-focus {
+  border-color: var(--color-border-medium);
+  background: var(--color-back-bright);
+  background: linear-gradient(to bottom, var(--color-back-bright), var(--color-back));
+  box-shadow: inset 0 1px rgba(255,255,255,.67),
+              0 0 3px 0px var(--color-hilite);
+}
+
+button:active,
+.btn:active,
+.btn-active {
+  text-shadow: 0 1px white;
+  color: var(--color-text);
+  box-shadow: inset 0 4px 4px -4px rgba(0,0,0,.2),
+              inset 4px 0 4px -4px rgba(0,0,0,.1),
+              inset -4px 0 4px -4px rgba(0,0,0,.1);
+  border: 1px solid var(--color-border-light);
+}
