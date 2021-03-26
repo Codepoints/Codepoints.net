@@ -138,7 +138,7 @@ class Codepoint implements JsonSerializable {
             return mb_chr($this->id + 0x2400);
         } elseif ($this->id === 0x7F) { // U+007F DELETE
             return mb_chr(0x2421);
-        } elseif (substr($this->gc, 0, 1) === 'C') {
+        } elseif (substr($this->gc, 0, 1) === 'C' && $this->gc !== 'Cf') {
             return mb_chr(0xFFFD);
         } elseif ($this->gc === 'Zl') { // new line => symbol for newline
             return mb_chr(0x2424);
