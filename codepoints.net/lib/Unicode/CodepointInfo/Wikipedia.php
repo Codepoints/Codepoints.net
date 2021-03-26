@@ -18,12 +18,17 @@ class Wikipedia extends CodepointInfo {
      * If there is no abstract in the current language, try the english one.
      */
     public function __invoke(Codepoint $codepoint) : ?Array {
+        $uc = $codepoint->id;
+        if ($codepoint->gc === 'Ll' &&
+            $codepoint->properties['uc'] instanceof Codepoint) {
+            $uc = $codepoint->properties['uc']->id;
+        }
         $data = $this->db->getOne('SELECT abstract, lang, src
                 FROM codepoint_abstract
-            WHERE cp = ?
+            WHERE (cp = ? OR cp = ?)
                 AND (lang = ? OR lang = "en")
-            ORDER BY lang = ? DESC
-            LIMIT 1', $codepoint->id, $this->lang, $this->lang);
+            ORDER BY lang = ? DESC, cp = ? DESC
+            LIMIT 1', $codepoint->id, $uc, $this->lang, $this->lang, $codepoint->id);
         if (! $data) {
             return null;
         }
