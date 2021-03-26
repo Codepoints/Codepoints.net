@@ -39,13 +39,12 @@ Hosting: Uberspace.de
 
                                  /* SOFTWARE */
 
-Online: https://github.com/Boldewyn/Codepoints.net
-Bugs: https://github.com/Boldewyn/Codepoints.net/issues
-Technology: PHP (sorry!), MySQL, HTML5, CSS 3, JavaScript, Sass
-Libs: jQuery, jQuery UI
+Online: https://github.com/Codepoints/Codepoints.net
+Bugs: https://github.com/Codepoints/Codepoints.net/issues
+Technology: PHP, MySQL, HTML5, CSS 3, JavaScript
 Data: The Unicode Standard
 Database: MySQL version of the Unicode standard via
-    <https://github.com/Boldewyn/unicodeinfo>
+    <https://github.com/Codepoints/unicode2mysql>
 
 
                                /* ATTRIBUTION */
@@ -83,4 +82,3 @@ Inspiration: Thanks to:
     - Mathias Byrens for pushing me to publish it finally
     - Uberspace for their phantastic hosting environment
     - The Unicode Consortium for their awesome work
-
