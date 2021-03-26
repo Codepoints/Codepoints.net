@@ -18,10 +18,20 @@ AddType application/manifest+json webmanifest
 # zip some responses
 AddOutputFilterByType DEFLATE text/html text/css text/javascript application/json image/svg+xml
 
+# set security headers
 <IfModule mod_headers.c>
   Header always set Strict-Transport-Security "max-age=16070400; includeSubDomains; preload"
   Header always set X-Content-Type-Options "nosniff"
 </IfModule>
+
+# make sure the service worker is not cached
+<Files sw.js>
+  FileETag None
+  Header unset ETag
+  Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate, proxy-revalidate"
+  Header set Pragma "no-cache"
+  Header set Expires "Wed, 11 Jan 1984 05:00:00 GMT"
+</Files>
 
 ErrorDocument 404 /index.php
 ServerSignature Off
