@@ -68,7 +68,7 @@ Router::add(function(string $url, Array $env) : ?Array {
         SELECT name, first, last FROM blocks
         WHERE replace(replace(lower(name), '_', ''), ' ', '') = ?
         LIMIT 1", str_replace([' ', '_'], '', strtolower($url)));
-    return $data;
+    return $data ?: null;
 }, new Block());
 
 /**
