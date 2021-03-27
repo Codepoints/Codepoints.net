@@ -16,14 +16,4 @@
       <svg width="16" height="16"><use xlink:href="/api/v1/glyph/1F6C8#U1F6C8"/></svg>
       <?=_q('About')?></a></li>
   </ul>
-  <?php
-
-  /** @psalm-suppress RedundantCondition */
-  if (isset($nav) && count($nav)):?>
-    <ul class="secondary">
-      <?php foreach($nav as $rel => $link):?>
-        <li class="<?=q($rel)?>"><?=$link?></li>
-      <?php endforeach?>
-    </ul>
-  <?php endif?>
 </nav>
