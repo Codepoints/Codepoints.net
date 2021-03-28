@@ -10,4 +10,4 @@ modules:
         - PhpBrowser:
             url: https://codepoints.next
         - \Helper\Acceptance
-step_decorators: ~        
+        - Asserts
