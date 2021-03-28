@@ -150,7 +150,7 @@ include 'partials/header.php'; ?>
       which happens to be the most relevant version of the Unicode Standard
       as of August, 2012.'),
       q(UNICODE_VERSION),
-      '<a href="http://www.unicode.org/versions/Unicode'.q(UNICODE_VERSION).'/">http://www.unicode.org/versions/Unicode'.q(UNICODE_VERSION).'/</a>'
+      '<a href="https://www.unicode.org/versions/latest/">https://www.unicode.org/versions/latest/</a>'
     )?>
     </p>
     <p>

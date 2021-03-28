@@ -2,6 +2,7 @@
 
 namespace Codepoints\Controller;
 
+use \Analog\Analog;
 use Codepoints\Database;
 use Codepoints\Controller;
 use Codepoints\Unicode\Block;
@@ -96,6 +97,9 @@ class Search extends Controller {
             }
 
             $count_statement->execute($params);
+            if (defined('DEBUG') && DEBUG) {
+                Analog::log(print_r($params, true));
+            }
             $count = 0;
             $counter = $count_statement->fetch(\PDO::FETCH_ASSOC);
             if ($counter) {
@@ -247,6 +251,10 @@ class Search extends Controller {
     private function _parseFreeText(string $q, Array $env) : Array {
         $r = ['cp' => [], 'term' => []];
         $sc = array_map('strtolower', $env['info']->script);
+        $booleans = [];
+        foreach ($env['info']->booleans as $key) {
+            $booleans[strtolower($key)] = $key;
+        }
 
         $terms = preg_split('/\s+/', $q);
         $i = 0;
@@ -337,6 +345,10 @@ class Search extends Controller {
             $v_sc = array_search($low_v, $sc);
             if ($v_sc) {
                 $r['term'][] = 'sc:'.$v_sc;
+            }
+
+            if (array_key_exists($low_v, $booleans)) {
+                $r['term'][] = $booleans[$low_v].':1';
             }
 
             if ($next_term) {
