@@ -21,6 +21,10 @@ class StaticPage extends Controller {
                 'title' => __('Glossary of Terms'),
                 'page_description' => __('This glossary explains central terms of the Unicode standard and character encodings in general.'),
             ],
+            'offline' => [
+                'title' => __('You are off-line'),
+                'page_description' => __('You are currently off-line. Pages, that you visited recently, should still be available, though.'),
+            ],
         ];
     }
 

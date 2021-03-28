@@ -9,15 +9,18 @@ ifeq ($(DEBUG), 1)
 	COMPOSER_ARGS :=
 endif
 
-all: css
+all: css sw fonts
 .PHONY: all
 
 css:
-	@if [ "$(DEBUG)" ]; then echo "in debug mode, symlink src/css to codepoints.net/static/css"; false; fi
-	@mkdir -p "$(DOCROOT)/static/css/"
-	@cp -u src/css/* "$(DOCROOT)/static/css/"
-	@mkdir -p "$(DOCROOT)/static/fonts/"
-	@cp -u src/fonts/* "$(DOCROOT)/static/fonts/"
+	@if [ "$(DEBUG)" ]; then \
+		echo "in debug mode, symlink src/css to codepoints.net/static/css"; \
+	else \
+		mkdir -p "$(DOCROOT)/static/css/" ; \
+		cp -u src/css/* "$(DOCROOT)/static/css/" ; \
+		mkdir -p "$(DOCROOT)/static/fonts/" ; \
+		cp -u src/fonts/* "$(DOCROOT)/static/fonts/" ; \
+	fi
 .PHONY: css
 
 fonts: src/fonts/Literata.woff2 src/fonts/Literata-Italic.woff2
@@ -29,6 +32,12 @@ src/fonts/Literata.woff2 src/fonts/Literata-Italic.woff2: src/fonts/%.woff2: src
 		--flavor=woff2 \
 		--unicodes='U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD, U+2714, U+2718' \
 		--output-file="$@"
+
+sw: codepoints.net/sw.js
+.PHONY: sw
+
+codepoints.net/sw.js: workbox-config.js codepoints.net/static/*/*
+	./node_modules/.bin/workbox generateSW workbox-config.js
 
 test: test-php test-codeception
 .PHONY: test
