@@ -1,6 +1,6 @@
 <?php
 /**
- * @var string $unicode_version
+ * @var int $cp_count
  */
 
 include 'partials/header.php'; ?>
@@ -8,8 +8,8 @@ include 'partials/header.php'; ?>
   <section id="finding_characters">
   <h1><?=_q('Finding Characters')?></h1>
     <p>
-      <?=_q('It’s hard to find one certain character in over 110,000 codepoints. This
-      site aims to make it as easy as possible with the following search options:')?>
+      <?php printf(__('It’s hard to find one certain character in over %d codepoints. This
+      site aims to make it as easy as possible with the following search options:'), q((string)$cp_count))?>
     </p>
     <ul>
       <li><?=_q('Free search: Just press the “Search” tab above or use the form on the
@@ -76,7 +76,7 @@ include 'partials/header.php'; ?>
       in over 100 different scripts. It’s encoding form UTF-8, a superset of
       ASCII, is the most popular encoding worldwide and the consortium counts
       Apple, Oracle, Microsoft, Google, IBM, Nokia and many others to its
-      members.'), q(UNICODE_VERSION), q($cp_count))?>
+      members.'), q(UNICODE_VERSION), q((string)$cp_count))?>
     </p>
     <p>
 <?php printf(__('Unicode is a mechanism for universally identifying characters. All
