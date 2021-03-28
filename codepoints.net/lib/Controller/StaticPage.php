@@ -31,6 +31,10 @@ class StaticPage extends Controller {
         if (! array_key_exists($view, $this->views)) {
             throw new NotFoundException('This page is unknown');
         }
+        if ($view === 'about') {
+            $data = $env['db']->getOne('SELECT COUNT(*) AS c FROM codepoints USE INDEX (PRIMARY)');
+            $this->views['about']['cp_count'] = $data['c'];
+        }
         return (new View($view))($this->views[$view], $env);
     }
 

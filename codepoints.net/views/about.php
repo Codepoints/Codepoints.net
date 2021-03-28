@@ -72,11 +72,11 @@ include 'partials/header.php'; ?>
     </p>
     <p>
       <?php printf(__('The most recent version of Unicode is %s,
-      containing over 110,000 characters
+      containing %d characters
       in over 100 different scripts. It’s encoding form UTF-8, a superset of
       ASCII, is the most popular encoding worldwide and the consortium counts
       Apple, Oracle, Microsoft, Google, IBM, Nokia and many others to its
-      members.'), q(UNICODE_VERSION))?>
+      members.'), q(UNICODE_VERSION), q($cp_count))?>
     </p>
     <p>
 <?php printf(__('Unicode is a mechanism for universally identifying characters. All
