@@ -9,7 +9,7 @@ ifeq ($(DEBUG), 1)
 	COMPOSER_ARGS :=
 endif
 
-all: css sw fonts
+all: css sw fonts views
 .PHONY: all
 
 css:
@@ -38,6 +38,13 @@ sw: codepoints.net/sw.js
 
 codepoints.net/sw.js: workbox-config.js codepoints.net/static/*/*
 	./node_modules/.bin/workbox generateSW workbox-config.js
+
+views: codepoints.net/views/api.html
+.PHONY: views
+
+codepoints.net/views/api.html: openapi.yml
+	./node_modules/.bin/redoc-cli bundle "$<"
+	mv redoc-static.html "$@"
 
 test: test-php test-codeception
 .PHONY: test

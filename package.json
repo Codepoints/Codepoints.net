@@ -1,0 +1,32 @@
+{
+  "name": "codepoints.net",
+  "version": "2.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Codepoints/Codepoints.net.git"
+  },
+  "keywords": [
+    "Unicode",
+    "codepoint",
+    "character",
+    "website"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Codepoints/Codepoints.net/issues"
+  },
+  "homepage": "https://github.com/Codepoints/Codepoints.net#readme",
+  "devDependencies": {
+    "redoc-cli": "^0.10.4",
+    "workbox-cli": "^6.1.2"
+  }
+}
