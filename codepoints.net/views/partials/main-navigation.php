@@ -1,7 +1,7 @@
 <nav class="main-nav">
   <ul class="main-nav__primary">
     <li class="start"><a href="<?=q(url(''))?>" rel="start">
-      <img src="/static/images/icon.svg" width="16" height="16">
+      <img src="/static/images/icon.svg" width="16" height="16" alt="">
       <?=_q('Codepoints')?></a></li>
     <li class="search"><a href="<?=q(url('search'))?>" rel="search">
       <svg width="16" height="16"><use xlink:href="/api/v1/glyph/1F50E#U1F50E"/></svg>
