@@ -37,6 +37,7 @@ sw: codepoints.net/sw.js
 .PHONY: sw
 
 codepoints.net/sw.js: workbox-config.js codepoints.net/static/*/*
+	rm -f codepoints.net/workbox-*.js
 	./node_modules/.bin/workbox generateSW workbox-config.js
 
 views: codepoints.net/views/api.html
