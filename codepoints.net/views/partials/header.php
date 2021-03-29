@@ -27,6 +27,7 @@ if (isset($_COOKIE['force_mode'])) {
     <link rel="icon" href="/static/images/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="mask-icon" href="/static/images/safari-pinned-tab.svg" color="#990000">
     <link rel="search" href="/opensearch.xml" type="application/opensearchdescription+xml" title="Search Codepoints">
     <link rel="author" href="/humans.txt">
     <link rel="preload" href="/static/fonts/Literata.woff2" as="font" crossOrigin="anonymous">
