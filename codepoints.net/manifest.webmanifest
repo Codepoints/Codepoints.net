@@ -2,6 +2,7 @@
   "lang": "en",
   "name": "All of Unicode at Codepoints.net",
   "short_name": "Codepoints",
+  "description": "Codepoints.net is dedicated to all the characters, that are defined in the Unicode Standard.",
   "scope": "/",
   "display": "standalone",
   "start_url": "/",
@@ -28,5 +29,32 @@
       "src": "/static/images/icon.svg",
       "type": "image/svg+xml"
     }
+  ],
+  "screenshots": [
+    {
+      "src": "/static/images/screenshot1.png",
+      "sizes": "650x400",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/images/screenshot2.png",
+      "sizes": "650x400",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/images/screenshot3.png",
+      "sizes": "650x400",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/images/screenshot4.png",
+      "sizes": "650x400",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/images/screenshot5.png",
+      "sizes": "650x400",
+      "type": "image/png"
+    },
   ]
 }
