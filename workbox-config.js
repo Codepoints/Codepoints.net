@@ -10,6 +10,7 @@ module.exports = {
   ],
   globIgnores: [
     "**/vendor/**",
+    "**/views/**",
   ],
   swDest: "codepoints.net/sw.js",
   sourcemap: env !== 'production',
@@ -19,4 +20,5 @@ module.exports = {
       revision: global_revision,
     },
   ],
+  //navigateFallback: '/offline',
 };
