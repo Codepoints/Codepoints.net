@@ -21,4 +21,6 @@ module.exports = {
     },
   ],
   //navigateFallback: '/offline',
+  skipWaiting: true,
+  clientsClaim: true,
 };
