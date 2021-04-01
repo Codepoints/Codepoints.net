@@ -13,3 +13,4 @@
 * bring UCotD back
 * k* properties linking to other code points in views: create proper cp() calls
 * update localization (typo on "de" front page: Dingabts)
+* check WP extract on /U+0D9E, there’s a redirect showing

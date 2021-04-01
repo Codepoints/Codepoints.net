@@ -16,7 +16,7 @@ module.exports = {
   sourcemap: env !== 'production',
   additionalManifestEntries: [
     {
-      url: '/offline',
+      url: '/offline.html',
       revision: global_revision,
     },
   ],

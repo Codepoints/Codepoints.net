@@ -22,7 +22,7 @@ use \Codepoints\Controller\Wizard;
 
 Router::add('', new Index());
 
-Router::add(['about', 'glossary', 'offline'], new StaticPage());
+Router::add(['about', 'glossary', 'offline.html'], new StaticPage());
 
 Router::add('planes', new Planes());
 

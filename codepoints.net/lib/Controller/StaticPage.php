@@ -21,7 +21,7 @@ class StaticPage extends Controller {
                 'title' => __('Glossary of Terms'),
                 'page_description' => __('This glossary explains central terms of the Unicode standard and character encodings in general.'),
             ],
-            'offline' => [
+            'offline.html' => [
                 'title' => __('You are off-line'),
                 'page_description' => __('You are currently off-line. Pages, that you visited recently, should still be available, though.'),
             ],
@@ -39,7 +39,7 @@ class StaticPage extends Controller {
             $data = $env['db']->getOne('SELECT COUNT(*) AS c FROM codepoints USE INDEX (PRIMARY)');
             $this->views['about']['cp_count'] = $data['c'];
         }
-        return (new View($view))($this->views[$view], $env);
+        return (new View(basename($view, '.html')))($this->views[$view], $env);
     }
 
 }
