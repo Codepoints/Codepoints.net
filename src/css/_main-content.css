@@ -17,7 +17,7 @@
   background-image: url(../images/front_dark.webp);
 }
 @media (prefers-color-scheme: dark) {
-  :root:not(.force-light) {
+  :root:not(.force-light) .main--index {
     background-image: url(../images/front_dark.webp);
   }
 }
