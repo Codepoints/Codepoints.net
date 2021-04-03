@@ -56,6 +56,12 @@ RewriteRule ^apple-touch-icon\.png$ static/images/icon-180.png [L]
 # don't redirect index.php
 RewriteRule ^index.php - [L]
 
+# remove cachebuster from static files
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} "(.+)\.[a-f0-9]{8}(\.[A-Za-z0-9]+)$"
+RewriteCond "%1%2" -f
+RewriteRule ".*" "%1%2"
+
 # things that might go wrong with the "+" in the URL
 RewriteRule ^[uU](\ |%20|%2B)?([A-Fa-f0-9]+)$     /U+$2 [R,L]
 
