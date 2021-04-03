@@ -1,12 +1,12 @@
 <?php
 
-use \Analog\Analog;
-use \Analog\Handler\LevelName;
-use \Analog\Handler\Stderr;
-use \Analog\Handler\Threshold;
-use \Codepoints\Database;
-use \Codepoints\Router;
-use \Codepoints\Translator;
+use Analog\Analog;
+use Analog\Handler\LevelName;
+use Analog\Handler\Stderr;
+use Analog\Handler\Threshold;
+use Codepoints\Database;
+use Codepoints\Router;
+use Codepoints\Translator;
 use Codepoints\Unicode\CodepointInfo\Image;
 use Codepoints\Unicode\PropertyInfo;
 
@@ -45,6 +45,9 @@ $config = parse_ini_file(dirname(__DIR__).'/config.ini', true);
 if (basename(__DIR__) === 'beta.codepoints.net' && array_key_exists('beta', $config)) {
     $config = $config['beta'];
 }
+if (! is_array($config)) {
+    return false;
+}
 Router::addDependency('db', $db = new Database(
     'mysql:host=localhost;dbname='.$config['db']['database'],
     $config['db']['user'],
@@ -74,3 +77,5 @@ Router::addDependency('info', new PropertyInfo());
  * make sure, we can access codepoint images
  */
 new Image(Router::getDependencies());
+
+return true;

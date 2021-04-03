@@ -11,6 +11,8 @@ use Exception;
 class NotFound extends Controller {
 
     public function __invoke($match, Array $env) : string {
+        http_response_code(404);
+
         $title = __('Page not Found');
         $page_description = __('There is no content on this page.');
         $codepoint = null;

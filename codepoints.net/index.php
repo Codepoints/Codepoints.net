@@ -1,13 +1,18 @@
 <?php
 
-use \Codepoints\Controller\NotFound;
-use \Codepoints\Router;
-use \Codepoints\Router\NotFoundException;
-use \Codepoints\Router\Redirect;
+use Codepoints\Controller\NotFound;
+use Codepoints\Controller\Error as ErrorController;
+use Codepoints\Router;
+use Codepoints\Router\NotFoundException;
+use Codepoints\Router\Redirect;
 
 define('DEBUG', 1);
 
-require 'init.php';
+try {
+    $init_successful = require 'init.php';
+} catch (Throwable $e) {
+    $init_successful = false;
+}
 
 /**
  * load the routes
@@ -21,6 +26,9 @@ $url = preg_replace('/\?.*/', '', substr(
             $_SERVER['REQUEST_URI'],
             strlen(rtrim(dirname($_SERVER['PHP_SELF']), '/').'/')));
 try {
+    if (! $init_successful) {
+        throw new RuntimeException();
+    }
     $content = Router::serve($url);
 } catch (NotFoundException $e) {
     $content = null;
@@ -36,11 +44,13 @@ try {
     http_response_code($code);
     header(sprintf('Location: %s', $location));
     exit();
+} catch (Exception $exc) {
+    echo (new ErrorController())($url, Router::getDependencies());
+    exit(1);
 }
 
 if ($content) {
     echo $content;
 } else {
-    http_response_code(404);
     echo (new NotFound())($url, Router::getDependencies());
 }
