@@ -50,7 +50,9 @@ Router::add(new URLMatcher('sitemap(|/(static|u[0-9A-F]+)).xml$'), new Sitemap()
 
 Router::add(new URLMatcher('U\\+([0-9a-fA-F]{4,6})$'), new Codepoint());
 
-/* redirect to canonical 0-padded URL */
+/**
+ * redirect to canonical 0-padded URL
+ */
 Router::add(new URLMatcher('U\\+([0-9a-fA-F]{1,3})$'), function(Array $match, Array $env) : ?string {
     throw new Redirect(sprintf('U+%04X', hexdec($match[1])));
 });
@@ -58,7 +60,7 @@ Router::add(new URLMatcher('U\\+([0-9a-fA-F]{1,3})$'), function(Array $match, Ar
 /**
  * Block names
  *
- * Current shortes block name: NKo. Current longest, UCAS-Ext, has 48 chars.
+ * Currently shortest block name: NKo. Currently longest, UCAS-Ext, has 48 chars.
  */
 Router::add(function(string $url, Array $env) : ?Array {
     if (strlen($url) < 3 || strlen($url) > 64 || preg_match('/[^a-z0-9_-]/', $url)) {
@@ -88,10 +90,14 @@ Router::add(new URLMatcher('(api/v1/)?(.|(%[A-Fa-f0-9]{2}){1,4})$'), function(Ar
     throw new Redirect(sprintf($match[1]? '/api/v1/codepoint/%04X' : 'U+%04X', $cp));
 });
 
-/* support Unicode ranges like U+0123..U+3456 */
+/**
+ * support Unicode ranges like U+0123..U+3456
+ */
 Router::add(new URLMatcher('(?:U\\+[0-9a-fA-F]{4,6}(?:\\.\\.|-|,))+U\\+[0-9a-fA-F]{4,6}$'), new Range());
 
-/** check for possible code point name */
+/**
+ * check for possible code point name as last resort
+ */
 Router::add(function(string $url, Array $env) : ?Array {
     if (strlen($url) > 127 || ! ctype_alpha(substr($url, 0, 1)) ||
         preg_match('/[^a-za-z0-9_ -]/i', $url)) {
