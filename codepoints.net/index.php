@@ -15,6 +15,12 @@ try {
 }
 
 /**
+ * disable FLoC for enhanced privacy
+ * @see https://spreadprivacy.com/block-floc-with-duckduckgo/
+ */
+header('Permissions-Policy: interest-cohort=()');
+
+/**
  * load the routes
  */
 require_once 'router.php';
