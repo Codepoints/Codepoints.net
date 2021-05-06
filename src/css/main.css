@@ -35,13 +35,27 @@
   --color-border-light: #eeeeee;
   --color-border-medium: #bbbbbb;
   --color-border-dark: #333333;
+
+  /* https://coolors.co/1b171c-ebf1e9-7f0a1e-670415-480410-17181c-f1f0e9-0a7f6c-046757-04483c */
+  --raisin-black: hsl(290, 10%, 10%);
+  --mint-cream: hsl(40, 57%, 98%);
+  --burgundy: hsl(350, 85%, 52%);
+  --rosewood: hsl(350, 93%, 36%);
+  --dark-sienna: hsl(350, 89%, 15%);
+  --eerie-black: hsl(230, 10%, 10%);
+  --alabaster: hsl(50, 22%, 93%);
+  --generic-viridian: hsl(170, 85%, 47%);
+  --bottle-green: hsl(170, 93%, 31%);
+  --blue-green-color-wheel: hsl(170, 89%, 15%);
+
+  --color-text: var(--raisin-black);
+  --color-back: var(--mint-cream);
+  --color-link: var(--rosewood);
+  --color-link-hover: var(--burgundy);
+  --color-hilite: var(--generic-viridian);
 }
 
 :root.force-dark {
-  --color-text: #e8edf2;
-  --color-back: #121212;
-  --color-link: #66D9EF;
-  --color-link-hover: #8AE0F0;
   --color-danger: #b02;
   --color-success: #2b0;
   --color-neutral: #fffa;
@@ -49,14 +63,16 @@
   --color-input-text: #e8edf2;
   --color-input-back: #242424;
   --color-input-bord: #ccc;
+
+  --color-text: var(--alabaster);
+  --color-back: var(--eerie-black);
+  --color-link: var(--bottle-green);
+  --color-link-hover: var(--generic-viridian);
+  --color-hilite: var(--burgundy);
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not(.force-light) {
-    --color-text: #e8edf2;
-    --color-back: #121212;
-    --color-link: #66D9EF;
-    --color-link-hover: #8AE0F0;
     --color-danger: #b02;
     --color-success: #2b0;
     --color-neutral: #fffa;
@@ -64,5 +80,11 @@
     --color-input-text: #e8edf2;
     --color-input-back: #242424;
     --color-input-bord: #ccc;
+
+    --color-text: var(--alabaster);
+    --color-back: var(--eerie-black);
+    --color-link: var(--bottle-green);
+    --color-link-hover: var(--generic-viridian);
+    --color-hilite: var(--burgundy);
   }
 }
