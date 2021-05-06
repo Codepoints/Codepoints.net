@@ -10,6 +10,12 @@
   padding-top: .25em;
 }
 
+.cpfig__img--So {
+  /* prevent emoji images from showing overflown content. That's because noto
+   * emoji contains off-canvas stuff. */
+  overflow: hidden;
+}
+
 p .bl .meta,
 p .pl .meta {
   display: none;

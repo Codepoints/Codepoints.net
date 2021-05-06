@@ -30,15 +30,16 @@ class Image extends CodepointInfo {
      */
     public function __invoke(Codepoint $codepoint) : callable {
         $altText = $this->altText;
-        return function(int $width=16) use ($codepoint, $altText) : string {
+        $template = '<svg width="%s" height="%s" class="cpfig__img cpfig__img--%s">'.
+                    '<title>%s</title>'.
+                    '%s<use xlink:href="%s"/></svg>';
+        return function(int $width=16) use ($codepoint, $altText, $template) : string {
             $alt = sprintf($altText, (string)$codepoint);
             if (in_array($codepoint->gc, ['Cn', 'Co', 'Cs', 'Xx'])) {
                 /* special control characters and non-existing code points: Use
                  * our icon */
-                $url = url('/static/images/icon.svg');
-                return sprintf('<svg width="%s" height="%s">'.
-                    '<title>%s</title>'.
-                    '<use xlink:href="%s#icon"/></svg>', $width, $width, $alt, $url);
+                $url = url('/static/images/icon.svg#icon');
+                return sprintf($template, $width, $width, $codepoint->gc, $alt, '', $url);
             }
             $id = $codepoint->id;
             if ($id < 0x21) {
@@ -64,9 +65,7 @@ class Image extends CodepointInfo {
                 /* for combining characters, add the appropriate U+25CC circle */
                 $modifier = '<use xlink:href="image/2500.svg#U25CC" fill-opacity="0.25"/>';
             }
-            return sprintf('<svg width="%s" height="%s">'.
-                '<title>%s</title>'.
-                '%s<use xlink:href="%s"/></svg>', $width, $width, $alt, $modifier, $url);
+            return sprintf($template, $width, $width, $codepoint->gc, $alt, $modifier, $url);
         };
     }
 
