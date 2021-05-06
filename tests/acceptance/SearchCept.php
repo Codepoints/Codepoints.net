@@ -7,8 +7,24 @@ $I->seeResponseCodeIs(200);
 $I->seeElement('.page-footer');
 $I->dontSeeElement('.tiles');
 
+$I->amOnPage('/search?q=aiw7To0ee4doo9ei');
+$count = $I->grabAttributeFrom('main', 'data-count');
+$I->expect('search to handle missing results gracefully');
+$I->assertTrue(ctype_digit($count));
+$I->seeResponseCodeIs(200);
+$I->assertEquals(0, (int)$count);
+$I->see('No Codepoints Found', 'h1');
+
 $I->amOnPage('/search?q=epres');
 $count = $I->grabAttributeFrom('main', 'data-count');
 $I->assertTrue(ctype_digit($count));
 $I->expect('search to be reasonably confined');
 $I->assertLessThan(100000, (int)$count);
+$I->assertMoreThan(1, (int)$count);
+
+$I->amOnPage('/search?q=small%20capital');
+$count = $I->grabAttributeFrom('main', 'data-count');
+$I->assertTrue(ctype_digit($count));
+$I->expect('search to find multi-word names');
+$I->assertLessThan(100000, (int)$count);
+$I->assertMoreThan(1, (int)$count);
