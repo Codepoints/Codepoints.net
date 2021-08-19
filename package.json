@@ -26,7 +26,10 @@
   },
   "homepage": "https://github.com/Codepoints/Codepoints.net#readme",
   "devDependencies": {
-    "redoc-cli": "^0.10.4",
+    "redoc-cli": "^0.12.3",
     "workbox-cli": "^6.1.2"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.4"
   }
 }
