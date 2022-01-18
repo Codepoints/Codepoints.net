@@ -20,11 +20,11 @@ $count = $I->grabAttributeFrom('main', 'data-count');
 $I->assertTrue(ctype_digit($count));
 $I->expect('search to be reasonably confined');
 $I->assertLessThan(100000, (int)$count);
-$I->assertMoreThan(1, (int)$count);
+$I->assertLessThan((int)$count, 1);
 
 $I->amOnPage('/search?q=small%20capital');
 $count = $I->grabAttributeFrom('main', 'data-count');
 $I->assertTrue(ctype_digit($count));
 $I->expect('search to find multi-word names');
 $I->assertLessThan(100000, (int)$count);
-$I->assertMoreThan(1, (int)$count);
+$I->assertLessThan((int)$count, 1);

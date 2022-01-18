@@ -33,7 +33,7 @@ Router::add('wizard', new Wizard());
 
 Router::add('scripts', new Scripts());
 
-Router::add(new URLMatcher('api(/(v1)?)?$'), function(Array $match, Array $env) : ?string {
+Router::add(new URLMatcher('api(/(v1)?)?$'), function(Array $match, Array $env) : void {
     throw new Redirect('/api/v1/');
 });
 Router::add('api/v1/', function(string $match, Array $env) : string {
@@ -53,7 +53,7 @@ Router::add(new URLMatcher('U\\+([0-9a-fA-F]{4,6})$'), new Codepoint());
 /**
  * redirect to canonical 0-padded URL
  */
-Router::add(new URLMatcher('U\\+([0-9a-fA-F]{1,3})$'), function(Array $match, Array $env) : ?string {
+Router::add(new URLMatcher('U\\+([0-9a-fA-F]{1,3})$'), function(Array $match, Array $env) : void {
     throw new Redirect(sprintf('U+%04X', hexdec($match[1])));
 });
 

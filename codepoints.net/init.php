@@ -24,6 +24,9 @@ mb_internal_encoding('UTF-8');
  */
 Analog::$format = '[%2$s] [codepoints:%3$s] %4$s'."\n";
 Analog::$default_level = Analog::DEBUG;
+/**
+ * @psalm-suppress RedundantCondition
+ */
 Analog::handler(Threshold::init(
     LevelName::init(Stderr::init()),
     ((defined('DEBUG') && DEBUG) || PHP_SAPI === 'cli')?
