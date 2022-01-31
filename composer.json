@@ -11,7 +11,7 @@
         "willdurand/negotiation": "^3.0",
         "gettext/gettext": "^5.5",
         "matomo/matomo-php-tracker": "^3.0",
-        "doctrine/cache": "^1.10"
+        "symfony/cache": "^6.0"
     },
     "autoload": {
         "files": [

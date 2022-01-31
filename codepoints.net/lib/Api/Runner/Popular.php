@@ -4,7 +4,8 @@ namespace Codepoints\Api\Runner;
 
 use DateTimeImmutable;
 use DateInterval;
-use Doctrine\Common\Cache\FilesystemCache;
+use Symfony\Component\Cache\Adapter\FilesystemAdapter;
+use Symfony\Contracts\Cache\ItemInterface;
 use Codepoints\Api\JsonRunner;
 use Codepoints\Api\Exception as ApiException;
 
@@ -14,14 +15,11 @@ class Popular extends JsonRunner {
     private int $count = 20;
 
     protected function handle_request(string $data) : Array {
-        $cache = new FilesystemCache(dirname(dirname(dirname(__DIR__))).'/cache');
-        if ($cache->contains('api_popular_list')) {
-            $most_popular = $cache->fetch('api_popular_list');
-        } else {
-            $most_popular = $this->fetch_fresh();
-            $cache->save('api_popular_list', $most_popular, 60*60);
-        }
-        return $most_popular;
+        $cache = new FilesystemAdapter('codepts');
+        return $cache->get('api_popular_list', function (ItemInterface $item) {
+            $item->expiresAfter(3600);
+            return $this->fetch_fresh();
+        });
     }
 
     private function fetch_fresh() : Array {
