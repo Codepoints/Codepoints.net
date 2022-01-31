@@ -155,7 +155,7 @@ class Codepoint implements JsonSerializable {
      *
      * @psalm-mutation-free
      */
-    public function jsonSerialize() {
+    public function jsonSerialize(): int {
         return $this->id;
     }
 

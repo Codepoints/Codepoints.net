@@ -14,7 +14,7 @@ class Database extends \PDO {
      * @param Array $params
      * @return \PDOStatement|false
      */
-    public function prepare($query, $params=[]) {
+    public function prepare($query, $params=[]): \PDOStatement|false {
         $this->_log($query);
         return parent::prepare($query, $params);
     }

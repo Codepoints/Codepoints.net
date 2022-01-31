@@ -65,7 +65,7 @@ class Range implements \Iterator {
      *
      * @psalm-mutation-free
      */
-    public function __toString() {
+    public function __toString(): string {
         return $this->name;
     }
 
