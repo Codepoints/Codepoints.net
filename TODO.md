@@ -1,7 +1,6 @@
 * write more codeception tests
-* glyph ascenders being cut off. Emojis need to be overflow-hidden, though.
 * API tests (possibly based on openapi.yml)
-* search: test and fix problems
+* search: test and fix problems, complete UI
 * JavaScript and UI
 * styling
 * offline support and service worker: make offline page a true fallback, preload some pages
