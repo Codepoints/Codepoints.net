@@ -295,14 +295,14 @@ class Search extends Controller {
                 } else {
                     $r['term'][] = 'alias:' . substr($v, 1, -1);
                 }
-                /* continue, b/c this is a very specific search */
+                /* continue with next term, b/c this is a very specific search */
                 continue;
             }
 
             if (preg_match('/^(%[a-f0-9]{2})+$/i', $v)) {
                 /* an URL-encoded UTF-8 character */
                 $r['cp'][] = mb_ord(rawurldecode($v));
-                /* continue, b/c this is a very specific search */
+                /* continue with next term, b/c this is a very specific search */
                 continue;
             }
 
