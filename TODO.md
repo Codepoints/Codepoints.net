@@ -14,3 +14,4 @@
 * update localization (typo on "de" front page: Dingabts)
 * check WP extract on /U+0D9E, there’s a redirect showing
 * Tooltips: JS setting of ne/nw/se classes.
+* latin characters use Noto CJK font
