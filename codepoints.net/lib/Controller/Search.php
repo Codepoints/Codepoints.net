@@ -225,9 +225,11 @@ class Search extends Controller {
             }
             foreach ($q['term'] as $term) {
                 $result[] = ['OR', 'term', 'LIKE', $term.'%'];
-                /* prevent searches for "ccc" or "uc" to drain the whole
-                 * search table due to "uc:1234" entries. */
-                $result[] = ['AND', 'term', 'NOT LIKE', $term.':%'];
+                if (array_key_exists($term, $env['info']->properties)) {
+                    /* prevent searches for "ccc" or "uc" to drain the whole
+                     * search table due to "uc:1234" entries. */
+                    $result[] = ['AND', 'term', 'NOT LIKE', $term.':%'];
+                }
             }
         } elseif ($key === 'scx') {
             /* scx is a space-separated list of sc's */
@@ -327,7 +329,9 @@ class Search extends Controller {
             }
 
             $r['term'][] = $v;
-            $r['term'][] = $low_v;
+            if ($v !== $low_v) {
+                $r['term'][] = $low_v;
+            }
             $singular = $this->_getSingular($low_v);
             if ($singular !== $low_v) {
                 $r['term'][] = $singular;
