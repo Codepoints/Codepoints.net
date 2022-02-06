@@ -199,6 +199,9 @@ class Search extends Controller {
             if (preg_match('/[^a-zA-Z0-9_]/', $key)) {
                 continue;
             }
+            if (! $value) {
+                continue;
+            }
             $query = array_merge($query,
                 $this->getTransformedQuery($key, rawurldecode($value), $env));
         }
