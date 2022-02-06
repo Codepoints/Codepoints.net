@@ -121,6 +121,12 @@ class Search extends Controller {
 
     /**
      * compose the search query
+     *
+     * We create two SQL queries (one for the paginated results, a second for
+     * the total number), because this is in our situation way more performant
+     * than SQL_CALC_FOUND_ROWS. Cf.
+     * https://stackoverflow.com/q/186588/113195
+     * for details.
      */
     protected function composeSearchQuery(string $query_string, int $page, Array $env) : Array {
         $query_list = $this->parseQuery($query_string, $env);
