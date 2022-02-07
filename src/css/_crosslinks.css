@@ -56,6 +56,8 @@
   text-decoration: none;
   display: block;
   text-align: center;
+  position: relative; /* place in front of the SVG, while the tile is not focused */
+  text-shadow: 1px 1px var(--color-back);
 }
 
 .tiles .pl > svg,
