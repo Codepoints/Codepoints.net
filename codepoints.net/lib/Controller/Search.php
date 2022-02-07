@@ -6,6 +6,7 @@ use \Analog\Analog;
 use Codepoints\Database;
 use Codepoints\Controller;
 use Codepoints\Unicode\Block;
+use Codepoints\Unicode\Codepoint;
 use Codepoints\Unicode\SearchResult;
 use Codepoints\Router\NotFoundException;
 use Codepoints\Router\Pagination;
@@ -36,8 +37,24 @@ class Search extends Controller {
             }
         }
 
+        $alt_result = null;
+        if ($q && (! $search_result || ! $search_result->count)) {
+            $alt_q = array_map('\\mb_ord', mb_str_split(substr($q, 0, 256)));
+            $alt_result = $env['db']->getAll('
+                SELECT cp, name, gc
+                FROM codepoints
+                WHERE cp IN ('.str_repeat('?, ', count($alt_q) - 1).' ?)',
+                ...$alt_q);
+            if ($alt_result) {
+                $alt_result = array_map(function (Array $item) use ($env) {
+                    return Codepoint::getCached($item, $env['db']);
+                }, $alt_result);
+            }
+        }
+
         $this->context += [
             'search_result' => $search_result,
+            'alt_result' => $alt_result,
             'pagination' => $pagination,
             'blocks' => $blocks,
             'q' => $q,
@@ -216,6 +233,7 @@ class Search extends Controller {
      */
     protected function getTransformedQuery(string $key, string $value, Array $env) : Array {
         $result = [];
+        $lower_case_properties = array_map('\\strtolower', array_keys($env['info']->properties));
         if ($key === 'q') {
             /* "q" is a special case: We parse the query and try to
              * figure, what's searched */
@@ -225,11 +243,13 @@ class Search extends Controller {
             }
             foreach ($q['term'] as $term) {
                 $result[] = ['OR', 'term', 'LIKE', $term.'%'];
-                /* TODO the following check must be made case insensitive */
-                if (array_key_exists($term, $env['info']->properties)) {
-                    /* prevent searches for "ccc" or "uc" to drain the whole
-                     * search table due to "uc:1234" entries. */
-                    $result[] = ['AND', 'term', 'NOT LIKE', $term.':%'];
+                foreach ($lower_case_properties as $lower_case_property) {
+                    if (strpos($lower_case_property, strtolower($term)) === 0) {
+                        /* prevent searches for "ccc" or "uc" to drain the whole
+                        * search table due to "uc:1234" entries. */
+                        $result[] = ['AND', 'term', 'NOT LIKE', $lower_case_property.':%'];
+                        break;
+                    }
                 }
             }
         } elseif ($key === 'scx') {
@@ -263,10 +283,6 @@ class Search extends Controller {
     private function _parseFreeText(string $q, Array $env) : Array {
         $r = ['cp' => [], 'term' => []];
         $sc = array_map('strtolower', $env['info']->script);
-        $booleans = [];
-        foreach ($env['info']->booleans as $key) {
-            $booleans[strtolower($key)] = $key;
-        }
 
         $terms = preg_split('/\s+/', $q);
         $i = 0;
@@ -359,12 +375,6 @@ class Search extends Controller {
             $v_sc = array_search($low_v, $sc);
             if ($v_sc) {
                 $r['term'][] = 'sc:'.$v_sc;
-            }
-
-            /* TODO should we remove this? Search for "epres" shows too many
-             * results */
-            if (array_key_exists($low_v, $booleans)) {
-                $r['term'][] = $booleans[$low_v].':1';
             }
 
             if ($next_term) {
