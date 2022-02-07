@@ -8,7 +8,7 @@ use \Codepoints\Unicode\CodepointInfo;
 
 
 /**
- * fetch Unicode properties for a given code point
+ * determine the font name used to render a given code point
  */
 class ImageSource extends CodepointInfo {
 

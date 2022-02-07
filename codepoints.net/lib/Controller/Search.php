@@ -225,6 +225,7 @@ class Search extends Controller {
             }
             foreach ($q['term'] as $term) {
                 $result[] = ['OR', 'term', 'LIKE', $term.'%'];
+                /* TODO the following check must be made case insensitive */
                 if (array_key_exists($term, $env['info']->properties)) {
                     /* prevent searches for "ccc" or "uc" to drain the whole
                      * search table due to "uc:1234" entries. */
@@ -360,6 +361,8 @@ class Search extends Controller {
                 $r['term'][] = 'sc:'.$v_sc;
             }
 
+            /* TODO should we remove this? Search for "epres" shows too many
+             * results */
             if (array_key_exists($low_v, $booleans)) {
                 $r['term'][] = $booleans[$low_v].':1';
             }
