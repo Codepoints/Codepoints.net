@@ -12,7 +12,7 @@ include 'partials/header.php' ?>
   <h1><?=_q($title)?></h1>
   <p><?php printf(__('Please add search limits with the form below. Click “add new query”, select a category and choose one of the values. You can change the value afterwards, if you click on it again. The %s button on the right removes the value from the search again.'), __('remove'))?></p>
 
-  <?php if ($search_result && $search_result->count): ?>
+  <?php if ($search_result && $search_result->count()): ?>
     <ol class="tiles">
       <?php foreach ($search_result as $codepoint): ?>
         <?php if (! $codepoint) { continue; } ?>
@@ -20,7 +20,7 @@ include 'partials/header.php' ?>
       <?php endforeach ?>
     </ol>
     <?=$pagination?>
-  <?php elseif ($alt_result): ?>
+  <?php elseif ($alt_result && count($alt_result)): ?>
     <p><?=_q('The following codepoints match:')?></p>
     <ol class="tiles">
       <?php foreach ($alt_result as $codepoint): ?>

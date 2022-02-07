@@ -38,7 +38,7 @@ class Search extends Controller {
         }
 
         $alt_result = null;
-        if ($q && (! $search_result || ! $search_result->count)) {
+        if ($q && (! $search_result || ! $search_result->count())) {
             $alt_q = array_map('\\mb_ord', mb_str_split(substr($q, 0, 256)));
             $alt_result = $env['db']->getAll('
                 SELECT cp, name, gc
