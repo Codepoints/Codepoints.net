@@ -39,7 +39,7 @@
   width: 100%;
   padding: .25em;
   box-sizing: border-box;
-  border: 1px solid var(--color-input-bord);
+  box-shadow: 0 3px 6px var(--color-shadow);
 }
 
 .tiles .missing-cp {

@@ -13,10 +13,6 @@
   --font-family: Literata, Noto Serif, Droid Serif, Georgia, Times New Roman, Times, serif;
   --font-family-alternate: Noto Sans, Droid Sans, Verdana, sans-serif;
 
-  --color-text: #2a2825;
-  --color-back: #fefdfa;
-  --color-link: #941521;
-  --color-link-hover: #d00016;
   --color-danger: #901;
   --color-success: #190;
   --color-neutral: #0007;
@@ -24,8 +20,6 @@
   --color-input-text: #403c37;
   --color-input-back: #ffffff;
   --color-input-bord: #555;
-
-  --color-hilite: #bbddff;
 
   --color-back-bright: #ffffff;
   --color-back-dim: #eeeeee;
@@ -38,7 +32,7 @@
 
   /* https://coolors.co/1b171c-ebf1e9-7f0a1e-670415-480410-17181c-f1f0e9-0a7f6c-046757-04483c */
   --raisin-black: hsl(290, 10%, 10%);
-  --mint-cream: hsl(40, 57%, 98%);
+  --mint-cream: hsl(40, 37%, 99%);
   --burgundy: hsl(350, 85%, 52%);
   --rosewood: hsl(350, 93%, 36%);
   --dark-sienna: hsl(350, 89%, 15%);
@@ -53,6 +47,8 @@
   --color-link: var(--rosewood);
   --color-link-hover: var(--burgundy);
   --color-hilite: var(--generic-viridian);
+
+  --color-shadow: #0003;
 }
 
 :root.force-dark {
@@ -69,6 +65,8 @@
   --color-link: var(--bottle-green);
   --color-link-hover: var(--generic-viridian);
   --color-hilite: var(--burgundy);
+
+  --color-shadow: #fff3;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -86,6 +84,8 @@
     --color-link: var(--bottle-green);
     --color-link-hover: var(--generic-viridian);
     --color-hilite: var(--burgundy);
+
+    --color-shadow: #fff3;
   }
 }
 
