@@ -33,15 +33,8 @@ class Glyph extends Runner {
                 header('Cache-Control: public, mag-age=604800');
                 header('Expires: ' . gmdate('D, d M Y H:i:s', time() + 604800) . ' GMT');
             }
-
             header('Content-Type: image/svg+xml');
-            if (isset($_SERVER['HTTP_ACCEPT_ENCODING']) &&
-                strpos($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip') !== false) {
-                header('Content-Encoding: gzip');
-                return gzencode($img['image']);
-            } else {
-                return $img['image'];
-            }
+            return $img['image'];
         } else {
             throw new ApiException(__('No image found'), ApiException::NOT_FOUND);
         }
