@@ -53,16 +53,20 @@ blockquote i {
 .h1,
 h1 {
   font-size: calc(1rem * var(--font-mod) * var(--font-mod) * var(--font-mod) * var(--font-mod) * var(--font-mod));
+  font-weight: normal;
+  font-variation-settings: "opsz" 35;
 }
 
 .h2,
 h2 {
   font-size: calc(1rem * var(--font-mod) * var(--font-mod) * var(--font-mod) * var(--font-mod));
+  font-weight: normal;
 }
 
 .h3,
 h3 {
   font-size: calc(1rem * var(--font-mod) * var(--font-mod) * var(--font-mod));
+  font-weight: normal;
 }
 
 .h4,
