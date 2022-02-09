@@ -39,7 +39,10 @@
   width: 100%;
   padding: .25em;
   box-sizing: border-box;
-  box-shadow: 0 3px 6px var(--color-shadow);
+  box-shadow:
+    0.3px 1px 1px -0.7px hsla(var(--hsl-shadow), .20),
+    0.7px 2px 2px -1.3px hsla(var(--hsl-shadow), .15),
+    1.3px 4px 4px -2.7px hsla(var(--hsl-shadow), .10);
 }
 
 .tiles .missing-cp {
