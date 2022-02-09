@@ -54,7 +54,7 @@ class Search extends Controller {
 
         $this->context += [
             'search_result' => $search_result,
-            'alt_result' => $alt_result,
+            'alt_result' => $alt_result ?: [],
             'pagination' => $pagination,
             'blocks' => $blocks,
             'q' => $q,
