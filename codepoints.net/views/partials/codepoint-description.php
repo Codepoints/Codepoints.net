@@ -138,6 +138,11 @@ use Codepoints\Unicode\Codepoint;
         printf(__('The glyph is %snot a composition%s.'),
             '<a rel="nofollow" href="'.q(url('search?dt=none')).'">',
             '</a>');
+    } elseif (! is_array($props['dm'])) {
+        printf(__('The glyph is a %s composition of the glyph %s.'),
+            '<a rel="nofollow" href="'.q(url('search?dt='.$props['dt'])).'">'.
+            q(array_get($info->legend_dt, $props['dt'], $props['dt'])).'</a>',
+            cp($props['dm']));
     } else {
         printf(__('The glyph is a %s composition of the glyphs %s.'),
             '<a rel="nofollow" href="'.q(url('search?dt='.$props['dt'])).'">'.
