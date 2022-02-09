@@ -15,7 +15,7 @@ $I->seeResponseCodeIs(200);
 $I->assertEquals(0, (int)$count);
 $I->see('No Codepoints Found', 'h1');
 
-$I->amOnPage('/search?q=epres');
+$I->amOnPage('/search?q=latin');
 $count = $I->grabAttributeFrom('main', 'data-count');
 $I->assertTrue(ctype_digit($count));
 $I->expect('search to be reasonably confined');
@@ -28,3 +28,9 @@ $I->assertTrue(ctype_digit($count));
 $I->expect('search to find multi-word names');
 $I->assertLessThan(100000, (int)$count);
 $I->assertLessThan((int)$count, 1);
+
+$I->amOnPage('/search?q=ccc');
+$count = $I->grabAttributeFrom('main', 'data-count');
+$I->assertTrue(ctype_digit($count));
+$I->expect('search to ignore empty property names');
+$I->assertEquals(0, (int)$count);
