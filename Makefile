@@ -55,7 +55,7 @@ test-php: test-phpcs test-php-psalm
 
 test-phpcs:
 	@./codepoints.net/vendor/bin/phpcs
-.PHONY: test-php-syntax
+.PHONY: test-phpcs
 
 test-php-psalm:
 	@./codepoints.net/vendor/bin/psalm --show-info=true
