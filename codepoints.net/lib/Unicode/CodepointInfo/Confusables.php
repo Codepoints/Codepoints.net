@@ -19,22 +19,21 @@ class Confusables extends CodepointInfo {
         $confusables = [];
 
         $data = $this->db->getAll('
-            SELECT other AS cp, `order`, name, gc
+            SELECT id, `other` AS cp, name, gc
                 FROM codepoint_confusables
             LEFT JOIN codepoints
-                ON (codepoints.cp = codepoint_confusables.other)
+                ON (codepoints.cp = codepoint_confusables.`other`)
             WHERE codepoint_confusables.cp = ?
-            UNION
-            SELECT codepoints.cp, `order`, name, gc
-                FROM codepoint_confusables
-            LEFT JOIN codepoints
-                ON (codepoints.cp = codepoint_confusables.cp)
-            WHERE other = ?', $codepoint->id, $codepoint->id);
+            ORDER BY id, `order`
+            ', $codepoint->id);
         if ($data) {
             foreach ($data as $v) {
-                /* TODO this is partially useless. Some confusables are
-                 * compounds and we simply dump all of them in a list */
-                $confusables[] = Codepoint::getCached($v, $this->db);
+                $id = $v['id'];
+                unset($v['id']);
+                if (! isset($confusables[$id])) {
+                    $confusables[$id] = [];
+                }
+                $confusables[$id][] = Codepoint::getCached($v, $this->db);
             }
         }
 

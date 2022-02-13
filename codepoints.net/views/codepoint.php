@@ -7,7 +7,7 @@ use Codepoints\Unicode\Codepoint;
  * @var ?Codepoint $next
  * @var ?\Codepoints\Unicode\Plane $plane
  * @var ?\Codepoints\Unicode\Block $block
- * @var list<Codepoint> $confusables
+ * @var list<list<Codepoint>> $confusables
  * @var Array $aliases
  * @var string $extra
  * @var ?Array $wikipedia
@@ -80,11 +80,15 @@ include 'partials/header.php'; ?>
     <?php endif?>
     <?php if (count($confusables)):?>
       <h3 id="confusables"><?=_q('Confusables')?></h3>
-      <ul class="tiles">
-        <?php foreach ($confusables as $rel): ?>
-          <li><?=cp($rel)?></li>
-        <?php endforeach?>
+      <div class="container--confusables">
+        <?php foreach ($confusables as $set): $first = true; ?>
+      <ul class="tiles tiles--confusables">
+          <?php foreach ($set as $rel): ?>
+            <li<?php echo $first? ' class="first"' : ''?>><?=cp($rel)?></li>
+          <?php $first = false; endforeach?>
       </ul>
+        <?php endforeach?>
+      </div>
     <?php endif?>
   </section>
 <?php endif?>
