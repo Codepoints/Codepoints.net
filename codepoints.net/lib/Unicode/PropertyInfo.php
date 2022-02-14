@@ -77,4 +77,27 @@ class PropertyInfo {
         }
     }
 
+    /**
+     * get the legend array for a certain unicode property, if it exists
+     *
+     * The properties age and sc are special-cased. This method cannot be used
+     * with the blk property.
+     *
+     * @param string $prop
+     * @return array
+     */
+    public function getLegend(string $prop) {
+        $name = $prop === 'sc'? 'script' : 'legend_'.$prop;
+        if ($name === 'legend_age') {
+            $age_to_year = $this->__get('age_to_year');
+            return array_map(function ($version, $year) {
+                return sprintf('%s (%s)', $version, $year);
+            }, array_keys($age_to_year), array_values($age_to_year));
+        } elseif (property_exists($this, $name)) {
+            return $this->__get($name) ?? [];
+        } else {
+            return [];
+        }
+    }
+
 }
