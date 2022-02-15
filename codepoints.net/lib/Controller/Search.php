@@ -20,7 +20,7 @@ class Search extends Controller {
      * @param string $match
      */
     public function __invoke($match, Array $env) : string {
-        $query = filter_input(INPUT_SERVER, 'QUERY_STRING');
+        $query = rawurldecode(filter_input(INPUT_SERVER, 'QUERY_STRING'));
         list($search_result, $pagination) = $this->getSearchResult($query, $env);
 
         /* needed in view to fill the <input> again */
@@ -183,6 +183,10 @@ class Search extends Controller {
                     $params[':q'.$i] = $key === 'term'? $value : $key.':'.$value;
                 }
             }
+        }
+
+        if (! $search) {
+            return [null, null, null];
         }
 
         $query_statement = $env['db']->prepare(sprintf('
