@@ -28,9 +28,9 @@ require_once 'router.php';
 /**
  * run this thing!
  */
-$url = preg_replace('/\?.*/', '', substr(
+$url = rawurldecode(preg_replace('/\?.*/', '', substr(
             $_SERVER['REQUEST_URI'],
-            strlen(rtrim(dirname($_SERVER['PHP_SELF']), '/').'/')));
+            strlen(rtrim(dirname($_SERVER['PHP_SELF']), '/').'/'))));
 try {
     if (! $init_successful) {
         throw new RuntimeException();
