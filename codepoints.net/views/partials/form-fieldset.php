@@ -3,6 +3,7 @@
  * @var \Codepoints\Unicode\PropertyInfo $info
  * @var string $cat
  * @var array<string> $all_block_names
+ * @var array<array> $query
  */
 ?>
 <fieldset class="search__widget search__widget--prop">
