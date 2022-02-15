@@ -22,10 +22,9 @@ class Pagination {
     public function __construct(Range $range, int $current_page) {
         $this->range = $range;
         $this->page = $current_page;
-        $urlTemplate = filter_input(INPUT_SERVER, 'REQUEST_URI');
+        $urlTemplate = str_replace('%', '%%', filter_input(INPUT_SERVER, 'REQUEST_URI'));
         if (preg_match('/[&?]page=[0-9]+(&|$)/', $urlTemplate)) {
-            $urlTemplate = preg_replace('/([&?]page=)[0-9]+(&|$)/', '\\1%s\\2',
-                str_replace('%', '%%', $urlTemplate));
+            $urlTemplate = preg_replace('/([&?]page=)[0-9]+(&|$)/', '\\1%s\\2', $urlTemplate);
         } else {
             $urlTemplate .= (strpos($urlTemplate, '?') === false? '?' : '&') .
                 'page=%s';
