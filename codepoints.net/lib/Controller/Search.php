@@ -21,7 +21,12 @@ class Search extends Controller {
      */
     public function __invoke($match, Array $env) : string {
         $query = rawurldecode(filter_input(INPUT_SERVER, 'QUERY_STRING'));
-        list($search_result, $pagination) = $this->getSearchResult($query, $env);
+        try {
+            list($search_result, $pagination) = $this->getSearchResult($query, $env);
+        } catch (NotFoundException $err) {
+            $search_result = null;
+            $pagination = null;
+        }
 
         /* needed in view to fill the <input> again */
         $q = (string)filter_input(INPUT_GET, 'q');
