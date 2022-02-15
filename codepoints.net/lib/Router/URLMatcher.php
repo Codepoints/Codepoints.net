@@ -17,7 +17,7 @@ class URLMatcher {
      * URL pattern.
      */
     public function __construct(string $pattern) {
-        $this->pattern = "#^$pattern#";
+        $this->pattern = "#^$pattern#u";
     }
 
 }
