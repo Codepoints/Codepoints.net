@@ -44,12 +44,12 @@ class Translator {
 
     public function getLanguage() : string {
         if (! $this->language) {
-            $lang = filter_input(
+            $lang = preg_replace('/\s*([A-Za-z0-9_-]{2,32})?.*$/', '$1', filter_input(
                 INPUT_SERVER,
                 'HTTP_ACCEPT_LANGUAGE',
-                FILTER_SANITIZE_STRING,
+                FILTER_UNSAFE_RAW,
                 FILTER_FLAG_STRIP_LOW & FILTER_FLAG_STRIP_HIGH & FILTER_FLAG_STRIP_BACKTICK
-            );
+            ));
             $persist = false;
             if (isset($_GET['lang']) && ctype_alpha($_GET['lang'])) {
                 $lang = $_GET['lang'];
