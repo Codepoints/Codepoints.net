@@ -16,6 +16,8 @@ class Search extends Controller {
 
     private int $query_count = 0;
 
+    private Array $query = [];
+
     /**
      * @param string $match
      */
@@ -57,13 +59,23 @@ class Search extends Controller {
             }
         }
 
+        $all_block_names = [];
+        $data = $env['db']->getAll('
+        SELECT name FROM blocks
+        ORDER BY first ASC');
+        foreach ((array)$data as $item) {
+            $all_block_names[$item['name']] = $item['name'];
+        }
+
         $this->context += [
             'search_result' => $search_result,
             'alt_result' => $alt_result ?: [],
             'pagination' => $pagination,
             'blocks' => $blocks,
+            'all_block_names' => $all_block_names,
             'q' => $q,
             'wizard' => false,
+            'query' => $this->query,
         ];
 
         $title = __('Search');
@@ -215,6 +227,7 @@ class Search extends Controller {
      */
     private function parseQuery(string $query_string, Array $env) : Array {
         $query = [];
+        $template_query = [];
         $parts = explode('&', $query_string);
         foreach ($parts as $part) {
             if (strpos($part, '=') === false) {
@@ -225,12 +238,17 @@ class Search extends Controller {
             if (preg_match('/[^a-zA-Z0-9_]/', $key)) {
                 continue;
             }
-            if (! $value) {
+            if (! $value && $value !== '0') {
                 continue;
             }
+            if (! array_key_exists($key, $template_query)) {
+                $template_query[$key] = [];
+            }
+            $template_query[$key][] = $value;
             $query = array_merge($query,
                 $this->getTransformedQuery($key, rawurldecode($value), $env));
         }
+        $this->query = $template_query;
         $this->query_count = count($query);
         return $query;
     }
