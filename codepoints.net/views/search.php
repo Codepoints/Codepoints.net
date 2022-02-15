@@ -45,10 +45,7 @@ include 'partials/header.php' ?>
     <p><?=_q('You search for a specific character? Answer the following questions and we try to figure out candidates.')?></p>
   <?php endif ?>
 <?php else: ?>
-  <form method="get">
-    <input type="search" name="q" value="<?=q($q)?>" required><br>
-    <button>search</button>
-  </form>
+  <?php include 'partials/form-fullsearch.php' ?>
 <?php endif ?>
 
 </main>

@@ -1,5 +1,4 @@
-<?php if (! isset($searchprefix)) { $searchprefix = 'qs_'; }?>
-<form method="get" action="<?=q(url('search'))?>" class="searchform">
+<form method="get" action="<?=q(url('search'))?>" class="searchform searchform--min">
   <p>
     <label><?=_q('Search codepoints.net:')?>
       <input type="text" name="q" value="<?=q(filter_input(INPUT_GET, 'q')?: '')?>">
