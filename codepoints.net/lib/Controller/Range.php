@@ -72,12 +72,24 @@ class Range extends Controller {
             'items' => $items,
         ], $env['db']);
 
+        $all_block_names = [];
+        $data = $env['db']->getAll('
+        SELECT name FROM blocks
+        ORDER BY first ASC');
+        foreach ((array)$data as $item) {
+            $all_block_names[$item['name']] = $item['name'];
+        }
+
         $this->context += [
             'title' => $match[0],
             'page_description' => '',
             'search_result' => $range,
+            'alt_result' => [],
             'pagination' => new Pagination($range, $page),
+            'all_block_names' => $all_block_names,
             'q' => $match[0],
+            'wizard' => false,
+            'query' => [],
         ];
         return (new View('search'))($this->context + [
             'match' => $match,

@@ -45,11 +45,22 @@ class Wizard extends Search {
             $pagination = new Pagination($search_result, $page);
         }
 
+        $all_block_names = [];
+        $data = $env['db']->getAll('
+        SELECT name FROM blocks
+        ORDER BY first ASC');
+        foreach ((array)$data as $item) {
+            $all_block_names[$item['name']] = $item['name'];
+        }
+
         $this->context += [
             'search_result' => $search_result,
+            'alt_result' => [],
             'pagination' => $pagination,
+            'all_block_names' => $all_block_names,
             'q' => '',
             'wizard' => true,
+            'query' => [],
         ];
         return (new View('search'))($this->context + [
             'match' => $match,
