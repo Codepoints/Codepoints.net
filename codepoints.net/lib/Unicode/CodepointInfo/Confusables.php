@@ -19,17 +19,27 @@ class Confusables extends CodepointInfo {
         $confusables = [];
 
         $data = $this->db->getAll('
-            SELECT id, `other` AS cp, name, gc
+            SELECT id, `other` AS cp, name, gc, `order`
                 FROM codepoint_confusables
             LEFT JOIN codepoints
                 ON (codepoints.cp = codepoint_confusables.`other`)
             WHERE codepoint_confusables.cp = ?
+
+            UNION
+
+            SELECT id, codepoints.cp AS cp, name, gc, `order`
+                FROM codepoint_confusables
+            LEFT JOIN codepoints
+                ON (codepoints.cp = codepoint_confusables.`cp`)
+            WHERE codepoint_confusables.`other` = ?
+
             ORDER BY id, `order`
-            ', $codepoint->id);
+            ', $codepoint->id, $codepoint->id);
         if ($data) {
             foreach ($data as $v) {
                 $id = $v['id'];
                 unset($v['id']);
+                unset($v['order']);
                 if (! isset($confusables[$id])) {
                     $confusables[$id] = [];
                 }
