@@ -18,6 +18,16 @@ class Confusables extends CodepointInfo {
     public function __invoke(Codepoint $codepoint) : Array {
         $confusables = [];
 
+        /**
+         * about that UNION: confusables are only defined in one direction
+         * by Unicode, and usually from the more exotic one to the more
+         * basic one. In order to have the ASCII characters show any
+         * confusable at all, we need to fetch the inverse, too. By doing
+         * that, we will catch some multi-char confusables, too, though. E.g.,
+         * the letter "R" will show "(R)" U+1F121 as confusable, although
+         * that's only part of the truth. We live with it, since it's still
+         * a useful information to have.
+         */
         $data = $this->db->getAll('
             SELECT id, `other` AS cp, name, gc, `order`
                 FROM codepoint_confusables
