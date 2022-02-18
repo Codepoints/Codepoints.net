@@ -15,7 +15,8 @@ if ($next) {
 }
 
 include 'partials/header.php'; ?>
-<div class="payload plane">
+<main class="main main--plane">
+  <?php include 'partials/sub-navigation.php' ?>
   <figure class="sqfig plfig">
     <?=plimg($plane, 250)?>
     <figcaption><?=_q('Source: Font Last Resort')?></figcaption>
@@ -39,5 +40,5 @@ include 'partials/header.php'; ?>
   <?php else:?>
     <p class="info"><?_q('There are no blocks defined in this plane.')?></p>
   <?php endif?>
-</div>
+</main>
 <?php include 'partials/footer.php'; ?>

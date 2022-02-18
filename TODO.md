@@ -12,4 +12,4 @@
 * k* properties linking to other code points in views: create proper cp() calls
 * update localization (typo on "de" front page: Dingabts)
 * Tooltips: JS setting of ne/nw/se classes.
-* confusables: revise styling of brackets
+* switch i18n from PO to PHP arrays for performance

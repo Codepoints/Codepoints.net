@@ -11,6 +11,7 @@ use Codepoints\Unicode\Codepoint;
  * @var list<Codepoint> $confusables
  * @var Array $aliases
  * @var ?string $pronunciation
+ * @var \Codepoints\Database $db
  */
 
 ?>
@@ -74,12 +75,8 @@ use Codepoints\Unicode\Codepoint;
     if ($defn) {
         echo ' ';
         printf(__('The Unihan Database defines it as <em>%s</em>.'),
-            preg_replace_callback('/U\+([0-9A-F]{4,6})/', function(Array $m) : string {
-                # TODO
-                return $m[0];
-                #$router = Router::getRouter();
-                #$db = $router->getSetting('db');
-                #return cp(Codepoint::getCP(hexdec($m[1]), $db), '', 'min');
+            preg_replace_callback('/U\+([0-9A-F]{4,6})/', function(Array $m) use ($db) : string {
+                return cp(Codepoint::getCached(['cp' => hexdec($m[1]), 'name' => $m[0], 'gc' => 'Lo'], $db));
             }, $defn));
     }
 

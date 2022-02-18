@@ -12,7 +12,8 @@
   margin: 0;
 }
 
-.page-header nav ul {
+.page-header nav ul,
+.sub-nav ul {
   list-style: none;
   padding-left: 0;
   display: flex;
@@ -20,7 +21,8 @@
   margin: 0;
 }
 
-.page-header nav a {
+.page-header nav a,
+.sub-nav a {
   display: block;
   padding: .5em 1em;
 }
@@ -31,11 +33,6 @@
 
 .sub-nav {
   margin: 0 auto;
-  flex-grow: 1;
-}
-
-.sub-nav .sub-nav__list {
-  margin-left: 1em;
 }
 
 .sub-nav__listitem {

@@ -41,6 +41,7 @@ class Description extends CodepointInfo {
                 'name' => 'VARIATION SELECTOR-16',
                 'gc' => 'Mn',
             ], $this->db),
+            'db' => $this->db,
         ]);
     }
 

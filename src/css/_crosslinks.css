@@ -101,23 +101,26 @@
 .container--confusables {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 24px;
+}
+
+.tiles--confusables {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .tiles--confusables:before {
   content: "";
-  border: 3px solid;
+  border: 3px solid var(--color-input-bord);
   border-right-width: 0;
   width: 6px;
   display: block;
-  margin-right: 6px;
 }
 
 .tiles--confusables:after {
   content: "";
-  border: 3px solid;
+  border: 3px solid var(--color-input-bord);
   border-left-width: 0;
   width: 6px;
   display: block;
-  margin-left: 6px;
 }

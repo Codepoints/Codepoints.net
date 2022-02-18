@@ -13,6 +13,7 @@ use Codepoints\Unicode\Codepoint;
  * @var ?Array $wikipedia
  * @var Array $othersites
  * @var Array $relatives
+ * @var \Codepoints\Database $db
  */
 
 $nav = [];
@@ -28,6 +29,7 @@ if ($next) {
 
 include 'partials/header.php'; ?>
 <main class="main main--codepoint">
+  <?php include 'partials/sub-navigation.php' ?>
   <figure class="sqfig cpfig">
     <?=cpimg($codepoint, 250)?>
     <?php if ($codepoint->imagesource): ?>
@@ -113,8 +115,11 @@ include 'partials/header.php'; ?>
   </thead>
   <tbody>
     <?php foreach ($codepoint->properties as $key => $value): ?>
-      <?php /* empty Unihan properties: skip, b/c unnecessary for most cps */
-          if (substr($key, 0, 1) === 'k' && ! $value) { continue; } ?>
+      <?php
+        if (
+          $key === 'cp' ||
+          /* empty Unihan properties: skip, b/c unnecessary for most cps */
+          (substr($key, 0, 1) === 'k' && ! $value)) { continue; } ?>
       <tr>
         <th scope="row"><?=q(array_get($info->properties, $key, $key))?> <small>(<?=q($key)?>)</small></th>
         <td>
@@ -137,15 +142,18 @@ include 'partials/header.php'; ?>
         <?php elseif (in_array($key, ['kCompatibilityVariant', 'kDefinition',
             'kSemanticVariant', 'kSimplifiedVariant',
             'kSpecializedSemanticVariant', 'kTraditionalVariant', 'kZVariant'])):
-          echo preg_replace_callback('/U\+([0-9A-F]{4,6})/', function(Array $m) use ($codepoint) : string {
+          echo preg_replace_callback('/U\+([0-9A-F]{4,6})/', function(Array $m) use ($codepoint, $db) : string {
             if (hexdec($m[1]) === $codepoint->id) {
                 return cp($codepoint);
             }
-            # TODO
-            return $m[0]; #cp(Codepoint::getCP(hexdec($m[1]), $db), '', 'min');
+            return cp(Codepoint::getCached(['cp' => hexdec($m[1]), 'name' => $m[0], 'gc' => 'Lo'], $db));
           }, $value);
         else:
+          echo '<a rel="nofollow" href="';
+          echo q(url('search?'.$key.'='.rawurlencode($value)));
+          echo '">';
           echo q($value);
+          echo '</a>';
         endif?>
         </td>
       </tr>

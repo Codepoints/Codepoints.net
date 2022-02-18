@@ -1,7 +1,7 @@
 .sqfig {
   float: left;
   float: inline-start;
-  margin: 0 1em 1em 0;
+  margin: 1em 1em 1em 0;
   border: 1px solid var(--color-neutral);
   padding: .25em;
 }

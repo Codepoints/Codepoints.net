@@ -76,6 +76,9 @@ class Codepoint extends Controller {
             'othersites' => $codepoint->othersites,
             'relatives' => $codepoint->relatives,
             'confusables' => $codepoint->confusables,
+            /* we need the DB, because for Unihan characters we want to render
+             * related codepoint instances */
+            'db' => $env['db'],
         ];
         return parent::__invoke($match, $env);
     }
