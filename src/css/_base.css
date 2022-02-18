@@ -2,6 +2,7 @@
   font: normal 16px/1.333 var(--font-family);
   font-feature-settings: "kern" on;
   text-rendering: optimizeLegibility;
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -11,6 +12,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  scrollbar-gutter: stable;
 }
 
 a {
