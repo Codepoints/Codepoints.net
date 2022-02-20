@@ -6,6 +6,7 @@
 .bl > svg,
 .pl > svg {
   transition: transform .3s, color .3s;
+  vertical-align: middle;
 }
 
 .cp:focus > svg,

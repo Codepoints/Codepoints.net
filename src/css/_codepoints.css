@@ -21,6 +21,11 @@ p .pl .meta {
   display: none;
 }
 
+.props {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .props .x {
   color: var(--color-neutral);
 }

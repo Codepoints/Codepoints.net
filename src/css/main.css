@@ -19,7 +19,7 @@
 
   --color-input-text: #403c37;
   --color-input-back: #ffffff;
-  --color-input-bord: #555;
+  --color-input-bord: #bbbbbb;
 
   --color-back-bright: #ffffff;
   --color-back-dim: #eeeeee;
@@ -54,11 +54,11 @@
 :root.force-dark {
   --color-danger: #b02;
   --color-success: #2b0;
-  --color-neutral: #fffa;
+  --color-neutral: #fff8;
 
   --color-input-text: #e8edf2;
   --color-input-back: #242424;
-  --color-input-bord: #ccc;
+  --color-input-bord: #777777;
 
   --color-text: var(--alabaster);
   --color-back: var(--eerie-black);
@@ -73,11 +73,11 @@
   :root:not(.force-light) {
     --color-danger: #b02;
     --color-success: #2b0;
-    --color-neutral: #fffa;
+    --color-neutral: #fff8;
 
     --color-input-text: #e8edf2;
     --color-input-back: #242424;
-    --color-input-bord: #ccc;
+    --color-input-bord: #777777;
 
     --color-text: var(--alabaster);
     --color-back: var(--eerie-black);

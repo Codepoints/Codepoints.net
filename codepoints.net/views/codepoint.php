@@ -106,59 +106,62 @@ include 'partials/header.php'; ?>
   </section>
 <?php endif ?>
 
-<table class="props">
-  <thead>
-    <tr>
-      <th scope="col"><?=_q('Property')?></th>
-      <th scope="col"><?=_q('Value')?></th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php foreach ($codepoint->properties as $key => $value): ?>
-      <?php
-        if (
-          $key === 'cp' ||
-          /* empty Unihan properties: skip, b/c unnecessary for most cps */
-          (substr($key, 0, 1) === 'k' && ! $value)) { continue; } ?>
+<section class="cpdesc cpdesc--record">
+  <h2><?=_q('Complete Record')?></h2>
+  <table class="props">
+    <thead>
       <tr>
-        <th scope="row"><?=q(array_get($info->properties, $key, $key))?> <small>(<?=q($key)?>)</small></th>
-        <td>
-        <?php if ($value === '' || $value === null):?>
-          <span class="x">—</span>
-        <?php elseif (in_array($key, $info->booleans)):?>
-          <span class="<?=($value)?'y':'n'?>"><?=($value)?'✔':'✘'?></span>
-        <?php elseif ($value instanceof \Codepoints\Unicode\Codepoint):?>
-          <?=cp($value)?>
-        <?php elseif (is_array($value)):?>
-          <?php foreach ($value as $_v): ?>
-            <?php if ($_v instanceof \Codepoints\Unicode\Codepoint): ?>
-              <?=cp($_v)?>
-            <?php elseif ($key === 'scx'): ?>
-              <a href="<?=q(url('search?sc='.$_v))?>"><?=array_get($info->script, $_v, $_v)?></a>
-            <?php else: ?>
-              <?=q($_v)?>
-            <?php endif ?>
-          <?php endforeach ?>
-        <?php elseif (in_array($key, ['kCompatibilityVariant', 'kDefinition',
-            'kSemanticVariant', 'kSimplifiedVariant',
-            'kSpecializedSemanticVariant', 'kTraditionalVariant', 'kZVariant'])):
-          echo preg_replace_callback('/U\+([0-9A-F]{4,6})/', function(Array $m) use ($codepoint, $db) : string {
-            if (hexdec($m[1]) === $codepoint->id) {
-                return cp($codepoint);
-            }
-            return cp(Codepoint::getCached(['cp' => hexdec($m[1]), 'name' => $m[0], 'gc' => 'Lo'], $db));
-          }, $value);
-        else:
-          echo '<a rel="nofollow" href="';
-          echo q(url('search?'.$key.'='.rawurlencode($value)));
-          echo '">';
-          echo q($value);
-          echo '</a>';
-        endif?>
-        </td>
+        <th scope="col"><?=_q('Property')?></th>
+        <th scope="col"><?=_q('Value')?></th>
       </tr>
-    <?php endforeach?>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <?php foreach ($codepoint->properties as $key => $value): ?>
+        <?php
+          if (
+            $key === 'cp' ||
+            /* empty Unihan properties: skip, b/c unnecessary for most cps */
+            (substr($key, 0, 1) === 'k' && ! $value)) { continue; } ?>
+        <tr>
+          <th scope="row"><?=q(array_get($info->properties, $key, $key))?> <small>(<?=q($key)?>)</small></th>
+          <td>
+          <?php if ($value === '' || $value === null):?>
+            <span class="x">—</span>
+          <?php elseif (in_array($key, $info->booleans)):?>
+            <span class="<?=($value)?'y':'n'?>"><?=($value)?'✔':'✘'?></span>
+          <?php elseif ($value instanceof \Codepoints\Unicode\Codepoint):?>
+            <?=cp($value)?>
+          <?php elseif (is_array($value)):?>
+            <?php foreach ($value as $_v): ?>
+              <?php if ($_v instanceof \Codepoints\Unicode\Codepoint): ?>
+                <?=cp($_v)?>
+              <?php elseif ($key === 'scx'): ?>
+                <a href="<?=q(url('search?sc='.$_v))?>"><?=array_get($info->script, $_v, $_v)?></a>
+              <?php else: ?>
+                <?=q($_v)?>
+              <?php endif ?>
+            <?php endforeach ?>
+          <?php elseif (in_array($key, ['kCompatibilityVariant', 'kDefinition',
+              'kSemanticVariant', 'kSimplifiedVariant',
+              'kSpecializedSemanticVariant', 'kTraditionalVariant', 'kZVariant'])):
+            echo preg_replace_callback('/U\+([0-9A-F]{4,6})/', function(Array $m) use ($codepoint, $db) : string {
+              if (hexdec($m[1]) === $codepoint->id) {
+                  return cp($codepoint);
+              }
+              return cp(Codepoint::getCached(['cp' => hexdec($m[1]), 'name' => $m[0], 'gc' => 'Lo'], $db));
+            }, $value);
+          else:
+            echo '<a rel="nofollow" href="';
+            echo q(url('search?'.$key.'='.rawurlencode($value)));
+            echo '">';
+            echo q($value);
+            echo '</a>';
+          endif?>
+          </td>
+        </tr>
+      <?php endforeach?>
+    </tbody>
+  </table>
+</section>
 </main>
 <?php include 'partials/footer.php'; ?>

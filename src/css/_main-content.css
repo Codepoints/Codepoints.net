@@ -3,7 +3,7 @@
   flex-grow: 1;
 }
 
-.main > :not(.tiles, .sqfig) {
+.main > :not(.tiles, .sqfig, .full-width) {
   max-width: 65rem;
   margin-left: auto;
   margin-right: auto;
