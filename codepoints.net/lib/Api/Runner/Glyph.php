@@ -35,7 +35,7 @@ class Glyph extends Runner {
             }
             header('Content-Type: image/svg+xml');
             if (strpos($img['image'], 'xmlns="http://www.w3.org/2000/svg"') === false) {
-                $img['image'] = str_replace('<svg ', '<svg xmlns="http://www.w3.org/2000/svg" ', $img['image']);
+                $img['image'] = preg_replace('/^<svg /', '<svg xmlns="http://www.w3.org/2000/svg" ', $img['image']);
             }
             return $img['image'];
         } else {
