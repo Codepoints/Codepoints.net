@@ -34,6 +34,9 @@ class Glyph extends Runner {
                 header('Expires: ' . gmdate('D, d M Y H:i:s', time() + 604800) . ' GMT');
             }
             header('Content-Type: image/svg+xml');
+            if (strpos($img['image'], 'xmlns="http://www.w3.org/2000/svg"') === false) {
+                $img['image'] = str_replace('<svg ', '<svg xmlns="http://www.w3.org/2000/svg" ', $img['image']);
+            }
             return $img['image'];
         } else {
             throw new ApiException(__('No image found'), ApiException::NOT_FOUND);
