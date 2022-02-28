@@ -6,7 +6,7 @@
 include 'partials/header.php'; ?>
 <main class="main main--planes">
   <figure class="sqfig plfig">
-    <img src="/static/images/unicode-logo-framed.svg" alt="<?=__('a representation of the Unicode logo')?>" width="250" height="250">
+    <svg width="250" height="250"><svg viewBox="194 97 1960 1960" width="100%" height="100%"><use xlink:href="/static/images/unicode-logo-framed.svg#unicode"/></svg></svg>
   </figure>
   <h1><?=q($title)?></h1>
   <ol class="tiles">

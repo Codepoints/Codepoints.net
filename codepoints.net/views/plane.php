@@ -9,7 +9,7 @@ $nav = [];
 if ($prev) {
   $nav['prev'] = pl($prev, 'prev');
 }
-$nav['up'] = sprintf('<a class="pl" rel="up" href="%s"><img src="/static/images/unicode-logo-framed.svg" alt="" width="16" height="16"> %s</a>', url('planes'), __('Unicode'));
+$nav['up'] = sprintf('<a class="pl" rel="up" href="%s"><svg width="16" height="16"><svg viewBox="194 97 1960 1960" width="100%%" height="100%%"><use xlink:href="/static/images/unicode-logo-framed.svg#unicode" width="16" height="16"/></svg></svg> %s</a>', url('planes'), __('Unicode'));
 if ($next) {
   $nav['next'] = pl($next, 'next');
 }
