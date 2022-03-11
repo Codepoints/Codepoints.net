@@ -154,7 +154,11 @@ include 'partials/header.php'; ?>
             echo '<a rel="nofollow" href="';
             echo q(url('search?'.$key.'='.rawurlencode($value)));
             echo '">';
-            echo q($value);
+            if ($key === 'nv' && $value === 'NaN') {
+                echo __('not a number');
+            } else {
+                echo q($info->getLegend($key, $value, $value));
+            }
             echo '</a>';
           endif?>
           </td>

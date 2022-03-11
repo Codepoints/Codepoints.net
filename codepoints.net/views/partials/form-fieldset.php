@@ -12,7 +12,7 @@
     if ($cat === 'blk') {
         $values = $all_block_names;
     } else {
-        $values = $info->getLegend($cat);
+        $values = $info->getLegends($cat);
     }
     $query_values = [];
     if (array_key_exists($cat, $query)) {

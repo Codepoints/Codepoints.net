@@ -78,6 +78,25 @@ class PropertyInfo {
     }
 
     /**
+     * get the legend for a single property value
+     *
+     * @param string $prop
+     * @param string $key
+     * @param ?string $default
+     * @return ?string
+     */
+    public function getLegend(string $prop, string $key, $default=null) {
+        $legend = $this->getLegends($prop);
+        if (array_key_exists($key, $legend)) {
+            if (is_array($legend[$key])) {
+                return $legend[$key][0];
+            }
+            return $legend[$key];
+        }
+        return $default;
+    }
+
+    /**
      * get the legend array for a certain unicode property, if it exists
      *
      * The properties age and sc are special-cased. This method cannot be used
@@ -86,7 +105,7 @@ class PropertyInfo {
      * @param string $prop
      * @return array
      */
-    public function getLegend(string $prop) {
+    public function getLegends(string $prop) {
         $name = $prop === 'sc'? 'script' : 'legend_'.$prop;
         if ($name === 'legend_age') {
             $age_to_year = $this->__get('age_to_year');
