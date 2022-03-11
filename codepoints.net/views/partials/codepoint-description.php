@@ -187,23 +187,26 @@ use Codepoints\Unicode\Codepoint;
     }
 
     echo ' ';
-    printf(__('In text U+%04X behaves as %s regarding line breaks. It has
-        type %s for sentence and %s for word breaks. The %s is %s.'),
+    printf(__('In text U+%04X behaves as %s regarding line breaks.'),
         $codepoint->id,
         '<a rel="nofollow" href="'.q(url('search?lb='.$props['lb'])).'">'.
-        q(array_get($info->legend_lb, $props['lb'], [$props['lb']])[0]).'</a>',
+        q(array_get($info->legend_lb, $props['lb'], [$props['lb']])[0]).'</a>');
+    echo ' ';
+    printf(__('It has type %s for sentence and %s for word breaks.'),
         '<a rel="nofollow" href="'.q(url('search?SB='.$props['SB'])).'">'.
         q(array_get($info->legend_SB, $props['SB'], $props['SB'])).'</a>',
         '<a rel="nofollow" href="'.q(url('search?WB='.$props['WB'])).'">'.
-        q(array_get($info->legend_WB, $props['WB'], $props['WB'])).'</a>',
-            q($info->properties['GCB']),
+        q(array_get($info->legend_WB, $props['WB'], $props['WB'])).'</a>');
+    echo ' ';
+    printf(__('The %s is %s.'),
+        q($info->properties['GCB']),
         '<a rel="nofollow" href="'.q(url('search?GCB='.$props['GCB'])).'">'.
         q(array_get($info->legend_GCB, $props['GCB'], $props['GCB'])).'</a>');
 ?></p>
 
 <?php if ($codepoint->cldr['tts']): ?>
 <p>
-  <?=sprintf(_q('The %sCLDR project%s labels this character with the name “%s” when reading it.'),
+  <?=sprintf(_q('The %sCLDR project%s labels this character “%s” for use in screen reading software.'),
       '<a href="http://cldr.unicode.org/">', '</a>', $codepoint->cldr['tts'])?>
   <?php if ($codepoint->cldr['tags']): ?>
   <?=' '.sprintf(_q('It assigns additional tags, e.g. for search in emoji pickers: %s.'),
