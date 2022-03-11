@@ -43,7 +43,4 @@ endswitch ?>
   <body>
     <header class="page-header">
 <?php include 'main-navigation.php' ?>
-<?php include 'form-choose-language.php' ?>
-<?php include 'form-darkmode.php' ?>
-<?php include 'form-quicksearch.php' ?>
     </header>
