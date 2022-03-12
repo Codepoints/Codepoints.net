@@ -14,4 +14,5 @@
 * Tooltips: JS setting of ne/nw/se classes.
 * switch i18n from PO to PHP arrays for performance
 * search "double exclamation" doesn't find U+203C
-* decision: use Noto Emoji for codepints &lt;= U+FFFF ?
+* decision: use Noto Emoji for codepoints &lt;= U+FFFF ?
+* glossary is not linked to anymore
