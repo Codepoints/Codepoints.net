@@ -157,7 +157,7 @@ include 'partials/header.php'; ?>
             if ($key === 'nv' && $value === 'NaN') {
                 echo __('not a number');
             } else {
-                echo q($info->getLegend($key, $value, $value));
+                echo q($info->getLegend($key, $value));
             }
             echo '</a>';
           endif?>

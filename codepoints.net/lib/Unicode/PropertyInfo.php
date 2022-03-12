@@ -82,10 +82,9 @@ class PropertyInfo {
      *
      * @param string $prop
      * @param string $key
-     * @param ?string $default
-     * @return ?string
+     * @return string
      */
-    public function getLegend(string $prop, string $key, $default=null) {
+    public function getLegend(string $prop, string $key) {
         $legend = $this->getLegends($prop);
         if (array_key_exists($key, $legend)) {
             if (is_array($legend[$key])) {
@@ -93,7 +92,7 @@ class PropertyInfo {
             }
             return $legend[$key];
         }
-        return $default;
+        return $key;
     }
 
     /**

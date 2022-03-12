@@ -37,13 +37,13 @@ use Codepoints\Unicode\Codepoint;
     if ($props['sc'] === 'Zyyy') {
         printf(__('This character is a %s and is %scommonly%s used, that is, in no specific script.'),
             '<a rel="nofollow" href="'.q(url('search?gc='.$props['gc'])).'">'.
-            q(array_get($info->legend_gc, $props['gc'], $props['gc'])).'</a>',
+            q($info->getLegend('gc', $props['gc'])).'</a>',
             '<a rel="nofollow" href="'.q(url('search?sc='.$props['sc'])).'">',
             '</a>');
     } elseif ($props['sc'] === 'Zinh') {
         printf(__('This character is a %s and %sinherits%s its %sscript property%s from the preceding character.'),
             '<a rel="nofollow" href="'.q(url('search?gc='.$props['gc'])).'">'.
-            q(array_get($info->legend_gc, $props['gc'], $props['gc'])).'</a>',
+            q($info->getLegend('gc', $props['gc'])).'</a>',
             '<a rel="nofollow" href="'.q(url('search?sc='.$props['sc'])).'">',
             '</a>',
             '<span class="gl" data-term="sc">',
@@ -51,7 +51,7 @@ use Codepoints\Unicode\Codepoint;
     } else {
         printf(__('This character is a %s and is mainly used in the %s script.'),
             '<a rel="nofollow" href="'.q(url('search?gc='.$props['gc'])).'">'.
-            q(array_get($info->legend_gc, $props['gc'], $props['gc'])).'</a>',
+            q($info->getLegend('gc', $props['gc'])).'</a>',
             '<a rel="nofollow" href="'.q(url('search?sc='.$props['sc'])).'">'.
             q(array_get($info->script, $props['sc'], $props['sc'])).'</a>');
     }
@@ -89,7 +89,7 @@ use Codepoints\Unicode\Codepoint;
         echo ' ';
         printf(__('The codepoint has the %s value %s.'),
         '<a rel="nofollow" href="'.q(url('search?nt='.$props['nt'])).'">'.
-        q(array_get($info->legend_nt, $props['nt'], $props['nt'])).'</a>',
+        q($info->getLegend('nt', $props['nt'])).'</a>',
         '<a rel="nofollow" href="'.q(url('search?nv='.$props['nv'])).'">'.
         q($props['nv']).'</a>');
     }
@@ -138,26 +138,26 @@ use Codepoints\Unicode\Codepoint;
     } elseif (! is_array($props['dm'])) {
         printf(__('The glyph is a %s composition of the glyph %s.'),
             '<a rel="nofollow" href="'.q(url('search?dt='.$props['dt'])).'">'.
-            q(array_get($info->legend_dt, $props['dt'], $props['dt'])).'</a>',
+            q($info->getLegend('dt', $props['dt'])).'</a>',
             cp($props['dm']));
     } else {
         printf(__('The glyph is a %s composition of the glyphs %s.'),
             '<a rel="nofollow" href="'.q(url('search?dt='.$props['dt'])).'">'.
-            q(array_get($info->legend_dt, $props['dt'], $props['dt'])).'</a>',
+            q($info->getLegend('dt', $props['dt'])).'</a>',
             join(', ', array_map(function(Codepoint $item) : string { return cp($item); }, $props['dm'])));
     }
 
     echo ' ';
     printf(__('It has a %s %s.'),
         '<a rel="nofollow" href="'.q(url('search?ea='.$props['ea'])).'">'.
-        q(array_get($info->legend_ea, $props['ea'], $props['ea'])).'</a>',
+        q($info->getLegend('ea', $props['ea'])).'</a>',
         q($info->properties['ea']));
 
     if ($props['Bidi_M']) {
         echo ' ';
         printf(__('In bidirectional context it acts as %s and is %smirrored%s.'),
             '<a rel="nofollow" href="'.q(url('search?bc='.$props['bc'])).'">'.
-            q(array_get($info->legend_bc, $props['bc'], $props['bc'])).'</a>',
+            q($info->getLegend('bc', $props['bc'])).'</a>',
             '<a rel="nofollow" href="'.q(url('search?bc='.$props['bc'].'&bm='.
             (int)$props['Bidi_M'])).'">',
             '</a>'
@@ -166,7 +166,7 @@ use Codepoints\Unicode\Codepoint;
         echo ' ';
         printf(__('In bidirectional context it acts as %s and is %snot mirrored%s.'),
             '<a rel="nofollow" href="'.q(url('search?bc='.$props['bc'])).'">'.
-            q(array_get($info->legend_bc, $props['bc'], $props['bc'])).'</a>',
+            q($info->getLegend('bc', $props['bc'])).'</a>',
             '<a rel="nofollow" href="'.q(url('search?bc='.$props['bc'].'&bm='.
             (int)$props['Bidi_M'])).'">',
             '</a>'
@@ -190,18 +190,18 @@ use Codepoints\Unicode\Codepoint;
     printf(__('In text U+%04X behaves as %s regarding line breaks.'),
         $codepoint->id,
         '<a rel="nofollow" href="'.q(url('search?lb='.$props['lb'])).'">'.
-        q(array_get($info->legend_lb, $props['lb'], [$props['lb']])[0]).'</a>');
+        q($info->getLegend('lb', $props['lb'])).'</a>');
     echo ' ';
     printf(__('It has type %s for sentence and %s for word breaks.'),
         '<a rel="nofollow" href="'.q(url('search?SB='.$props['SB'])).'">'.
-        q(array_get($info->legend_SB, $props['SB'], $props['SB'])).'</a>',
+        q($info->getLegend('SB', $props['SB'])).'</a>',
         '<a rel="nofollow" href="'.q(url('search?WB='.$props['WB'])).'">'.
-        q(array_get($info->legend_WB, $props['WB'], $props['WB'])).'</a>');
+        q($info->getLegend('WB', $props['WB'])).'</a>');
     echo ' ';
     printf(__('The %s is %s.'),
         q($info->properties['GCB']),
         '<a rel="nofollow" href="'.q(url('search?GCB='.$props['GCB'])).'">'.
-        q(array_get($info->legend_GCB, $props['GCB'], $props['GCB'])).'</a>');
+        q($info->getLegend('GCB', $props['GCB'])).'</a>');
 ?></p>
 
 <?php if ($codepoint->cldr['tts']): ?>
