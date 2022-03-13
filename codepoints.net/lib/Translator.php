@@ -49,7 +49,7 @@ class Translator {
                 'HTTP_ACCEPT_LANGUAGE',
                 FILTER_UNSAFE_RAW,
                 FILTER_FLAG_STRIP_LOW & FILTER_FLAG_STRIP_HIGH & FILTER_FLAG_STRIP_BACKTICK
-            ));
+            ) ?? 'en');
             $persist = false;
             if (isset($_GET['lang']) && ctype_alpha($_GET['lang'])) {
                 $lang = $_GET['lang'];
