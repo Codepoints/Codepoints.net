@@ -43,7 +43,7 @@ class Codepoint extends JsonRunner {
         }
 
         new Properties($this->env);
-        $response = $codepoint->properties;
+        $response = [ 'cp' => $codepoint->id ] + $codepoint->properties;
 
         if (isset($_GET['property'])) {
             $mask = array_filter(explode(',', $_GET['property']));
