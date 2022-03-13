@@ -121,3 +121,32 @@ function is_pua(int $cp) : bool {
 function is_surrogate(int $cp) : bool {
     return (0xD800 <= $cp && $cp <= 0xDFFF);
 }
+
+
+/**
+ * map a code point ID to a printable code point, if such a mapping exists
+ *
+ * @param int $id
+ * @param string $gc
+ * @return int
+ */
+function get_printable_codepoint(int $id, string $gc) {
+    if ($id < 0x21) {
+        /* low ASCII controls: there’s a dedicated symbol */
+        $id = $id + 0x2400;
+    } elseif ($id === 0x7F) {
+        /* U+007F DELETE: special symbol, too */
+        $id = 0x2421;
+    } elseif (substr($gc, 0, 1) === 'C' && $gc !== 'Cf') {
+        /* any other control apart from formatting controls (Cf), that
+         * actually have a rendering */
+        $id = 0xFFFD;
+    } elseif ($gc === 'Zl') {
+        /* new line => symbol for newline */
+        $id = 0x2424;
+    } elseif ($gc === 'Zp') {
+        /* new paragraph => pilcrow */
+        $id = 0x00B6;
+    }
+    return $id;
+}

@@ -134,20 +134,10 @@ class Codepoint implements JsonSerializable {
      * @psalm-mutation-free
      */
     public function chr() : string {
-        if ($this->id < 0x21) {
-            return mb_chr($this->id + 0x2400);
-        } elseif ($this->id === 0x7F) { // U+007F DELETE
-            return mb_chr(0x2421);
-        } elseif (substr($this->gc, 0, 1) === 'C' && $this->gc !== 'Cf') {
-            return mb_chr(0xFFFD);
-        } elseif ($this->gc === 'Zl') { // new line => symbol for newline
-            return mb_chr(0x2424);
-        } elseif ($this->gc === 'Zp') { // new paragraph => pilcrow
-            return mb_chr(0x00B6);
-        } elseif (in_array($this->gc, ['Mn', 'Me', 'Lm', 'Sk'])) {
+        if (in_array($this->gc, ['Mn', 'Me', 'Lm', 'Sk'])) {
             return mb_chr(0x25CC) . mb_chr($this->id);
         }
-        return mb_chr($this->id);
+        return mb_chr(get_printable_codepoint($this->id, $this->gc));
     }
 
     /**
