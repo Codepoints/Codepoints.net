@@ -4,7 +4,18 @@ namespace Codepoints\Api\Runner;
 
 use Codepoints\Api\JsonRunner;
 use Codepoints\Api\Exception as ApiException;
+use Codepoints\Unicode\CodepointInfo\Aliases;
+use Codepoints\Unicode\CodepointInfo\CLDR;
+use Codepoints\Unicode\CodepointInfo\Confusables;
+use Codepoints\Unicode\CodepointInfo\Description;
+use Codepoints\Unicode\CodepointInfo\Extra;
+use Codepoints\Unicode\CodepointInfo\ImageSource;
+use Codepoints\Unicode\CodepointInfo\OtherSites;
+use Codepoints\Unicode\CodepointInfo\Pronunciation;
 use Codepoints\Unicode\CodepointInfo\Properties;
+use Codepoints\Unicode\CodepointInfo\Relatives;
+use Codepoints\Unicode\CodepointInfo\Representation;
+use Codepoints\Unicode\CodepointInfo\Wikipedia;
 
 
 class Codepoint extends JsonRunner {
@@ -42,14 +53,31 @@ class Codepoint extends JsonRunner {
             header(sprintf('Link: <https://codepoints.net/api/v1/codepoint/%04X>; rel=prev', $prev->id), false);
         }
 
+        new Aliases($this->env);
+        new CLDR($this->env);
+        new Confusables($this->env);
+        new Description($this->env);
+        new Extra($this->env);
+        new ImageSource($this->env);
+        new OtherSites($this->env);
+        new Pronunciation($this->env);
         new Properties($this->env);
-        $response = [ 'cp' => $codepoint->id ] + $codepoint->properties;
+        new Relatives($this->env);
+        new Representation($this->env);
+        new Wikipedia($this->env);
+        $response = [ 'cp' => $codepoint->id ] + $codepoint->properties + [ '_' => [] ];
 
         if (isset($_GET['property'])) {
             $mask = array_filter(explode(',', $_GET['property']));
             if (count($mask)) {
                 $response = array_intersect_key($response, array_flip($mask));
             }
+        }
+        if (array_key_exists('_', $response)) {
+            $response['_']['description'] = $codepoint->description;
+            $response['_']['image'] = ($codepoint->image)();
+            $response['_']['imagesource'] = $codepoint->imagesource;
+            $response['_']['wikipedia'] = $codepoint->wikipedia;
         }
         return $response;
     }
