@@ -35,6 +35,7 @@
   margin: 0 auto;
   position: sticky;
   top: 0;
+  z-index: 1;
 }
 
 .sub-nav__listitem {
