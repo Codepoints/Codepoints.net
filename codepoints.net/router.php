@@ -54,7 +54,7 @@ Router::add(new URLMatcher('U\\+([0-9a-fA-F]{4,6})$'), new Codepoint());
  * redirect to canonical 0-padded URL
  */
 Router::add(new URLMatcher('U\\+([0-9a-fA-F]{1,3})$'), function(Array $match, Array $env) : void {
-    throw new Redirect(sprintf('U+%04X', hexdec($match[1])));
+    throw new Redirect(sprintf('/U+%04X', hexdec($match[1])));
 });
 
 /**
@@ -87,7 +87,7 @@ Router::add(new URLMatcher('(api/v1/)?(.|(%[A-Fa-f0-9]{2}){1,4})$'), function(Ar
     if (! $cp) {
         return null;
     }
-    throw new Redirect(sprintf($match[1]? '/api/v1/codepoint/%04X' : 'U+%04X', $cp));
+    throw new Redirect(sprintf($match[1]? '/api/v1/codepoint/%04X' : '/U+%04X', $cp));
 });
 
 /**
