@@ -34,7 +34,7 @@ if (isset($_COOKIE['force_mode'])) {
     <link rel="preload" href="/static/fonts/Literata.woff2" as="font" crossOrigin="anonymous">
     <link rel="preload" href="/static/fonts/Literata-Italic.woff2" as="font" crossOrigin="anonymous">
 -->
-    <link rel="stylesheet" href="/static/main.css">
+    <link rel="stylesheet" href="/static/<?=DEBUG? 'src/css/' : ''?>main.css">
     <?php include 'head-multilang.php' ?>
 <?php switch($view):
 case ('codepoint'):

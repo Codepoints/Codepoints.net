@@ -32,5 +32,6 @@
     </footer>
     <?php include 'tracker.php' ?>
     <?php include 'service_worker.php' ?>
+    <script type="module" src="/static/<?=DEBUG? 'src/js/' : ''?>main.js"></script>
   </body>
 </html>
