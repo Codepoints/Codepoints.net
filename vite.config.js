@@ -8,7 +8,7 @@ export default defineConfig({
     //manifest: true,
     outDir: 'codepoints.net/static/',
     rollupOptions: {
-      input: ['/src/js/main.js', 'src/css/main.css'],
+      input: ['src/js/main.js', 'src/css/main.css'],
       output: {
         chunkFileNames: '[name]-[hash][extname]',
         entryFileNames: '[name].js',
