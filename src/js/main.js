@@ -1,3 +1,14 @@
 import 'vite/modulepreload-polyfill';
 
-console.log('working!');
+import barba from '@barba/core';
+import anime from 'animejs/lib/anime.es.js';
+
+document.documentElement.classList.add('js');
+
+barba.init({
+  prefetchIgnore: '/search',
+});
+
+barba.hooks.enter(() => {
+  window.scrollTo(0, 0);
+});

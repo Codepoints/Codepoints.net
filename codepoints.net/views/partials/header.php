@@ -46,3 +46,5 @@ endswitch ?>
     <header class="page-header">
 <?php include 'main-navigation.php' ?>
     </header>
+    <div data-barba="wrapper">
+      <div data-barba="container">
