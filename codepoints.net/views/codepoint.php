@@ -37,7 +37,7 @@ include 'partials/header.php'; ?>
     <?php endif ?>
   </figure>
 
-  <h1><?=str_replace('*', ' <span tabindex="0" aria-description="'.q('This codepoint has no canonical name. The shown name is an alias defined by Unicode.').'" class="no-na tooltip">*</span>', q($title))?></h1>
+  <h1><?=str_replace('*', ' <span tabindex="0" aria-description="'.q('This codepoint has no canonical name. The shown name is an alias defined by Unicode.').'" class="no-na tooltip">*</span>', q($header))?></h1>
 
   <section class="cpdesc cpdesc--desc">
 <?php if ($codepoint->gc === 'Xx'): ?>
