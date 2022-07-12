@@ -18,12 +18,13 @@ class OtherSites extends CodepointInfo {
     public function __invoke(Codepoint $codepoint) : Array {
         $other_sites = [];
         $hex = sprintf('%04X', $codepoint->id);
-        $other_sites[__('Unicode website')] = 'https://unicode.org/cldr/utility/character.jsp?a='.$hex.'';
+        $other_sites[__('Unicode website')] = 'https://util.unicode.org/UnicodeJsps/character.jsp?a='.$hex.'';
         if (! in_array($codepoint->gc, ['Cn', 'Xx'])) {
             $other_sites[__('Reference rendering on Unicode.org')] = 'https://www.unicode.org/cgi-bin/refglyph?24-'.$hex.'';
             $other_sites['Fileformat.info'] = 'https://fileformat.info/info/unicode/char/'.$hex.'/index.htm';
             $other_sites['Graphemica'] = 'https://graphemica.com/'.rawurlencode($codepoint->chr());
             $other_sites['The UniSearcher'] = 'https://www.isthisthingon.org/unicode/index.phtml?glyph='.$hex;
+            $other_sites['Compart'] = 'https://compart.com/en/unicode/U+'.$hex;
         }
         $wikipedia = $codepoint->wikipedia;
         if ($wikipedia) {

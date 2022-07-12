@@ -64,7 +64,7 @@ class Codepoint extends Controller {
         } catch (Exception $e) {}
 
         $this->context += [
-            'title' => sprintf('%s %s', (string)$codepoint, $codepoint->name),
+            'title' => sprintf('%s %s: %s – Unicode', (string)$codepoint, $codepoint->name, $codepoint->chr()),
             'page_description' => $page_description,
             'codepoint' => $codepoint,
             'prev' => $codepoint->prev,
