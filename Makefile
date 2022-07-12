@@ -3,6 +3,8 @@ DEBUG := 1
 
 PHP := php
 
+PHP_ALL := $(shell find $(DOCROOT) -type f -not -path \*/vendor/\* -name \*.php)
+
 COMPOSER := composer
 COMPOSER_ARGS := --no-dev
 ifeq ($(DEBUG), 1)
@@ -87,3 +89,7 @@ shell:
 serve:
 	-@php -S localhost:8000 -t codepoints.net bin/devrouter.php
 .PHONY: serve
+
+$(DOCROOT)locale/messages.pot: $(PHP_ALL)
+	$(info * Compile PHP translation strings)
+	@xgettext -LPHP --from-code UTF-8 -k__ -k_e -k_n -kgettext -o $@ $(PHP_ALL)
