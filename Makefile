@@ -14,16 +14,12 @@ endif
 all: css sw fonts views
 .PHONY: all
 
-css:
-	@if [ "$(DEBUG)" ]; then \
-		echo "in debug mode, symlink src/css to codepoints.net/static/css"; \
-	else \
-		mkdir -p "$(DOCROOT)/static/css/" ; \
-		cp -u src/css/* "$(DOCROOT)/static/css/" ; \
-		mkdir -p "$(DOCROOT)/static/fonts/" ; \
-		cp -u src/fonts/* "$(DOCROOT)/static/fonts/" ; \
-	fi
+css: vite-build
 .PHONY: css
+
+vite-build:
+	@npm run build
+.PHONY: vite-build
 
 fonts: src/fonts/Literata.woff2 src/fonts/Literata-Italic.woff2
 .PHONY: fonts
