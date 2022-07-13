@@ -37,9 +37,10 @@
 }
 
 .tiles > li > * {
-  display: block;
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  padding: .25em;
+  padding: .25em .25em .5em;
   box-sizing: border-box;
   box-shadow:
     0.3px 1px 1px -0.7px hsla(var(--hsl-shadow), .20),
@@ -68,13 +69,13 @@
 .tiles .pl > svg,
 .tiles .bl > svg,
 .tiles .cp > svg {
-  width: 85%;
+  width: 65%;
   height: auto;
   display: block;
   margin-top: 0;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: .5em;
+  margin-bottom: 1.2em;
 }
 .tiles .pl:hover > svg,
 .tiles .pl:focus > svg,
@@ -90,15 +91,15 @@
 .tiles .cp .title {
   hyphens: auto;
   font-size: 90%;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  display: block;
+  flex-grow: 1;
 }
 
 .tiles .pl .meta,
 .tiles .bl .meta {
+  text-align: center;
   text-decoration: none;
   white-space: nowrap;
+  opacity: .75;
 }
 
 .container--confusables {
