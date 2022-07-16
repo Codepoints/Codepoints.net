@@ -27,7 +27,7 @@
   margin: 0 -.5em;
   display: grid;
   grid-template-columns: repeat(auto-fill, 8em);
-  grid-gap: .25em;
+  grid-gap: 1.5em;
   justify-content: center;
 }
 
@@ -39,13 +39,15 @@
 .tiles > li > * {
   display: flex;
   flex-direction: column;
+  gap: .75em;
   width: 100%;
-  padding: .25em .25em .5em;
+  padding: .75em .25em .75em;
+  text-align: center;
   box-sizing: border-box;
-  box-shadow:
-    0.3px 1px 1px -0.7px hsla(var(--hsl-shadow), .20),
-    0.7px 2px 2px -1.3px hsla(var(--hsl-shadow), .15),
-    1.3px 4px 4px -2.7px hsla(var(--hsl-shadow), .10);
+  border-radius: 3px;
+  background: #0000000a;
+  box-shadow: 10px 10px 20px hsla(var(--hsl-shadow), .20),
+              -10px -10px 20px var(--color-input-back);
 }
 
 .tiles .missing-cp {
@@ -75,7 +77,7 @@
   margin-top: 0;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 1.2em;
+  margin-bottom: 0;
 }
 .tiles .pl:hover > svg,
 .tiles .pl:focus > svg,
@@ -96,7 +98,6 @@
 
 .tiles .pl .meta,
 .tiles .bl .meta {
-  text-align: center;
   text-decoration: none;
   white-space: nowrap;
   opacity: .75;

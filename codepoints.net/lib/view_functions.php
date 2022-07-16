@@ -64,12 +64,14 @@ function bl(Block $block, string $rel='', string $class='') : string {
     if ($class) {
         $class = ' '.q($class);
     }
-    return sprintf('<a class="bl%s"%s href="%s">'.
+    return sprintf(
+        '<a class="bl%s"%s href="%s">'.
+            '<span class="meta">%s</span> '.
             '%s <span class="title">%s</span>'.
-            ' <span class="meta">%s</span>'.
         '</a>',
-        $class, $rel, q(url($block)), blimg($block), q($block->name),
-        sprintf(__('U+%04X to U+%04X'), $block->first, $block->last));
+        $class, $rel, q(url($block)),
+        sprintf(__('U+%04X to U+%04X'), $block->first, $block->last),
+        blimg($block), q($block->name));
 }
 
 /**
@@ -92,12 +94,14 @@ function pl(Plane $plane, string $rel='', string $class='') : string {
     if ($class) {
         $class = ' '.q($class);
     }
-    return sprintf('<a class="pl%s"%s href="%s">'.
+    return sprintf(
+        '<a class="pl%s"%s href="%s">'.
+            '<span class="meta">%s</span> '.
             '%s <span class="title">%s</span>'.
-            ' <span class="meta">%s</span>'.
         '</a>',
-        $class, $rel, q(url($plane)), plimg($plane), q($plane->name),
-        sprintf(__('U+%04X to U+%04X'), $plane->first, $plane->last));
+        $class, $rel, q(url($plane)),
+        sprintf(__('U+%04X to U+%04X'), $plane->first, $plane->last),
+        plimg($plane), q($plane->name));
 }
 
 /**

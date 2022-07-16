@@ -2,12 +2,20 @@
   float: left;
   float: inline-start;
   margin: 1em 1em 1em 0;
-  border: 1px solid var(--color-neutral);
-  padding: .25em;
+  padding: 0;
+  border-radius: 21px;
+  background: #0000000a;
+  box-shadow: 10px 10px 20px hsla(var(--hsl-shadow), .20),
+              -10px -10px 20px var(--color-input-back);
+}
+
+.sqfig > svg {
+  display: block;
 }
 
 .sqfig figcaption {
-  padding-top: .25em;
+  padding: .25em;
+  text-align: center;
 }
 
 .cpfig__img--So {
