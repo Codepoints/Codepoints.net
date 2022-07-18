@@ -35,6 +35,11 @@ updateIcon();
 function updateIcon(to) {
     if (! to) {
         to = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)? 'dark' : 'light';
+        if (root.classList.contains('force-dark')) {
+            to = 'dark';
+        } else if (root.classList.contains('force-light')) {
+            to = 'light';
+        }
     }
     var old_url = to === 'light'? '/static/images/icon.dark.svg' : '/static/images/icon.svg';
     var new_url = to === 'light'? '/static/images/icon.svg' : '/static/images/icon.dark.svg';
