@@ -23,7 +23,6 @@
 
   --color-back-bright: #ffffff;
   --color-back-dim: #eeeeee;
-  --color-back-dark: #aaaaaa;
 
   --color-border: #dddddd;
   --color-border-light: #eeeeee;
@@ -49,6 +48,8 @@
   --color-hilite: var(--generic-viridian);
 
   --hsl-shadow: 40, 20%, 10%;
+
+  color-scheme: light;
 }
 
 :root.force-dark {
@@ -60,6 +61,9 @@
   --color-input-back: #242424;
   --color-input-bord: #777777;
 
+  --color-back-bright: #000000;
+  --color-back-dim: #111111;
+
   --color-text: var(--alabaster);
   --color-back: var(--eerie-black);
   --color-link: var(--bottle-green);
@@ -67,6 +71,8 @@
   --color-hilite: var(--burgundy);
 
   --color-shadow: #fff3;
+
+  color-scheme: dark;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -79,6 +85,9 @@
     --color-input-back: #242424;
     --color-input-bord: #777777;
 
+    --color-back-bright: #000000;
+    --color-back-dim: #272529;
+
     --color-text: var(--alabaster);
     --color-back: var(--eerie-black);
     --color-link: var(--bottle-green);
@@ -86,6 +95,8 @@
     --color-hilite: var(--burgundy);
 
     --color-shadow: #fff3;
+
+    color-scheme: dark;
   }
 }
 
