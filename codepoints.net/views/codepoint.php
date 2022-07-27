@@ -56,6 +56,12 @@ include 'partials/header.php'; ?>
   </section>
 <?php endif ?>
 
+<?php if ($csur['name']): ?>
+  <section class="cpdesc cpdesc--csur">
+    <p><?=sprintf(_q('The %sUnder-ConScript Unicode Registry%s contains this private-use character with the name %s.'), '<a href="https://www.kreativekorp.com/ucsur/">', '</a>', $csur['name'])?></p>
+  </section>
+<?php endif ?>
+
 <?php if ($wikipedia): ?>
   <section class="cpdesc cpdesc--wikipedia">
     <p><?php printf(__('The %sWikipedia%s has the following information about this codepoint:'), '<a href="'.q($wikipedia['src']).'">', '</a>')?></p>
