@@ -1,0 +1,33 @@
+.tooltip {
+  position: relative;
+}
+
+.tooltip:before {
+  content: attr(aria-description);
+  position: absolute;
+  font-weight: normal;
+  padding: .25rem;
+  background: #000a;
+  color: white;
+  top: 3rem;
+  display: none;
+  left: 0;
+  min-width: 200px;
+}
+
+.tooltip--se:before,
+.tooltip--ne:before {
+  left: auto;
+  right: 0;
+}
+
+.tooltip--nw:before,
+.tooltip--ne:before {
+  top: auto;
+  bottom: 3.4rem;
+}
+
+.tooltip:hover:before,
+.tooltip:focus:before {
+  display: block;
+}

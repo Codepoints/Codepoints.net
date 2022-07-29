@@ -32,13 +32,13 @@ class Image extends CodepointInfo {
         $altText = $this->altText;
         $template = '<svg width="%s" height="%s" class="cpfig__img cpfig__img--%s">'.
                     '<title>%s</title>'.
-                    '%s<use xlink:href="%s"/></svg>';
+                    '%s<use href="%s"/></svg>';
         return function(int $width=16) use ($codepoint, $altText, $template) : string {
             $alt = sprintf($altText, (string)$codepoint);
             if (in_array($codepoint->gc, ['Cn', 'Co', 'Cs', 'Xx'])) {
                 /* special control characters and non-existing code points: Use
                  * our icon */
-                $url = url('/static/images/icon.svg#icon');
+                $url = url('/static/images/icon.svg').'#icon';
                 return sprintf($template, $width, $width, $codepoint->gc, $alt, '', $url);
             }
             $id = get_printable_codepoint($codepoint->id, $codepoint->gc);
