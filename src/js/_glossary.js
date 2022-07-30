@@ -12,7 +12,7 @@ export function initGlossary(context) {
   nav.className = 'glossary__quicknav';
   nav.innerHTML = '<li><a href="#glossary">top</a></li>';
   let lastLetter = ' ';
-  glossary.querySelectorAll('.glossary__special-item ~ dt[id]').forEach(dt => {
+  glossary.querySelectorAll('dt[id]').forEach(dt => {
     if (! dt.previousElementSibling || dt.previousElementSibling.nodeName !== 'DD') {
       return;
     }

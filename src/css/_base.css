@@ -91,3 +91,7 @@ small, .text_small, figcaption {
   font-size: calc(1rem / var(--font-mod));
   font-family: var(--font-family-alternate);
 }
+
+dd + dt {
+  margin-top: 1em;
+}

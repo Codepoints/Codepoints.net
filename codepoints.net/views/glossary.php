@@ -9,17 +9,6 @@ printf(
     '<a href="http://unicode.org/reports/">', '</a>',
     '<span data-term="unicode"></span>')?></p>
   <dl id="glossary">
-    <dt id="unicode">Unicode</dt>
-    <dd>A standard to map characters to <a href="#codepoint">codepoints</a>, numeric representations. The Unicode standard is curated by the <a href="http://unicode.org">Unicode Consortium</a>. It is internationally standardized as ISO 10464.</dd>
-    <dt id="codepoint">Codepoint</dt>
-    <dd>A number in the <a href="#unicode">Unicode standard</a> denoting one single character. A codepoint is different from a <a href="#glyph">Glyph</a>.</dd>
-    <dt id="glyph">Glyph</dt>
-    <dd>The representation of a codepoint under certain circumstances. For example, the letter “A” looks quite differently in latin and blackletter fonts. Both are different glyphs for the underlying character.</dd>
-    <dt id="plane">Plane</dt>
-    <dd>A Unicode plane is one of 17 sets of 65536 <a href="#codepoint">codepoints</a> each. Currently only the first three planes contain character definitions. The last two planes are reserved for <a href="#private_use">private use</a>.</dd>
-    <dt id="private_use" class="glossary__special-item">Private Use</dt>
-    <dd>So-called “private use” areas are <a href="#unicode">Unicode</a> codepoints, that are deliberately not assigned to characters. These codepoints can be used by application developers to add their own extensions to Unicode.</dd>
-
     <dt id="age">Age</dt>
     <dd>This property shows when various code points were designated/assigned in successive versions of the Unicode Standard.
       <p>The Age property is normative in the sense that it is completely specified based on when a character is encoded in the standard. However, DerivedAge.txt is provided for information. The value of the Age property for a code point can be derived by analysis of successive versions of the UCD, and Age is not used normatively in the specification of any Unicode algorithm.</p> <small><?=sprintf(__('(Source: %s)'), '<a href="http://unicode.org/reports/tr44/">UAX44</a>')?></small></dd>
@@ -70,6 +59,8 @@ printf(
     <dt id="CWU">Changes When Uppercased</dt>
     <dd>Characters whose normalized forms are not stable under a toUppercase mapping. For more information, see D140 in <i>Section 3.13, Default Case Algorithms</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>].
       <p><i>Generated from: toUppercase(toNFD(X)) != toNFD(X)</i></p> <small><?=sprintf(__('(Source: %s)'), '<a href="http://unicode.org/reports/tr44/">UAX44</a>')?></small></dd>
+    <dt id="codepoint">Code Point</dt>
+    <dd>A number in the <a href="#unicode">Unicode standard</a> denoting one single character. A code point is different from a <a href="#glyph">Glyph</a>.</dd>
     <dt id="CE">Composition Exclusion</dt>
     <dd>A property used in normalization. See Unicode Standard Annex #15: "Unicode Normalization Forms" [<a href="http://unicode.org/reports/tr41/tr41-9.html#UAX15">UAX15</a>]. Unlike other files, CompositionExclusions.txt simply lists the relevant code points. <small><?=sprintf(__('(Source: %s)'), '<a href="http://unicode.org/reports/tr44/">UAX44</a>')?></small></dd>
     <dt id="Dash">Dash</dt>
@@ -105,6 +96,8 @@ printf(
     <dd>Characters that are excluded from composition: those listed explicitly in CompositionExclusions.txt, plus the derivable sets of <i>Singleton Decompositions</i> and <i>Non-Starter Decompositions</i>, as documented in that data file. <small><?=sprintf(__('(Source: %s)'), '<a href="http://unicode.org/reports/tr44/">UAX44</a>')?></small></dd>
     <dt id="gc">General Category</dt>
     <dd>This is a useful breakdown into various character types which can be used as a default categorization in implementations. For the property values, see <a href="http://unicode.org/reports/tr44/#General_Category_Values">General Category Values</a>. <small><?=sprintf(__('(Source: %s)'), '<a href="http://unicode.org/reports/tr44/">UAX44</a>')?></small></dd>
+    <dt id="glyph">Glyph</dt>
+    <dd>The representation of a codepoint under certain circumstances. For example, the letter “A” looks quite differently in latin and blackletter fonts. Both are different glyphs for the underlying character.</dd>
     <dt id="Gr_Base">Grapheme Base</dt>
     <dd>Property used together with the definition of Standard Korean Syllable Block to define "Grapheme base". See D58 in <i>Chapter 3, Conformance</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>]. 
       <p><i>Generated from: [0..10FFFF] - Cc - Cf - Cs - Co - Cn - Zl - Zp - <a href="#Gr_Ext">Grapheme Extend</a></i></p>
@@ -508,6 +501,10 @@ printf(
     <dt id="Pat_Syn">Pattern Syntax</dt>
     <dt id="Pat_WS">Pattern White Space</dt>
     <dd>Used for pattern syntax as described in Unicode Standard Annex #31, "Unicode Identifier and Pattern Syntax" [<a href="http://unicode.org/reports/tr41/tr41-9.html#UAX31">UAX31</a>]. <small><?=sprintf(__('(Source: %s)'), '<a href="http://unicode.org/reports/tr44/">UAX44</a>')?></small></dd>
+    <dt id="plane">Plane</dt>
+    <dd>A Unicode plane is one of 17 sets of 65536 <a href="#codepoint">codepoints</a> each. Currently only the first three planes contain character definitions. The last two planes are reserved for <a href="#private_use">private use</a>.</dd>
+    <dt id="private_use">Private Use</dt>
+    <dd>So-called “private use” areas are <a href="#unicode">Unicode</a> codepoints, that are deliberately not assigned to characters. These codepoints can be used by application developers to add their own extensions to Unicode.</dd>
     <dt id="QMark">Quotation Mark</dt>
     <dd>Punctuation characters that function as quotation marks. <small><?=sprintf(__('(Source: %s)'), '<a href="http://unicode.org/reports/tr44/">UAX44</a>')?></small></dd>
     <dt id="Radical">Radical</dt>
@@ -532,6 +529,8 @@ printf(
     <dd>Sentence Terminal. Used in Unicode Standard Annex #29, "Unicode Text Segmentation" [<a href="http://unicode.org/reports/tr41/tr41-9.html#UAX29">UAX29</a>]. <small><?=sprintf(__('(Source: %s)'), '<a href="http://unicode.org/reports/tr44/">UAX44</a>')?></small></dd>
     <dt id="Term">Terminal Punctuation</dt>
     <dd>Punctuation characters that generally mark the end of textual units. <small><?=sprintf(__('(Source: %s)'), '<a href="http://unicode.org/reports/tr44/">UAX44</a>')?></small></dd>
+    <dt id="unicode">Unicode</dt>
+    <dd>A standard to map characters to <a href="#codepoint">codepoints</a>, numeric representations. The Unicode standard is curated by the <a href="http://unicode.org">Unicode Consortium</a>. It is internationally standardized as ISO 10464.</dd>
     <dt id="na1">Unicode 1 Name</dt>
     <dd>Old name as published in Unicode 1.0. This name is only provided when it is significantly different from the current name for the character. The value of field 10 for control characters does not always match the Unicode 1.0 names. Instead, field 10 contains ISO 6429 names for control functions, for printing in the code charts. <small><?=sprintf(__('(Source: %s)'), '<a href="http://unicode.org/reports/tr44/">UAX44</a>')?></small></dd>
     <dt id="kRSUnicode">Unicode Radical Stroke</dt>
