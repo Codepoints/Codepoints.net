@@ -25,3 +25,28 @@
 .main--index blockquote {
   text-align: center;
 }
+
+.glossary__quicknav {
+  list-style: none;
+  padding: .5em;
+  margin: 1em 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  background-color: var(--color-back);
+}
+
+#glossary,
+#glossary dt {
+  scroll-margin-top: 2.333em;
+}
+
+@media (max-width: 65rem) {
+  #glossary,
+  #glossary dt {
+    scroll-margin-top: 4.667em;
+  }
+}

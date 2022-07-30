@@ -1,13 +1,13 @@
 <?php include 'partials/header.php'; ?>
 <main class="main main--glossary">
   <h1><?=q($title)?></h1>
-  <p><?php printf(__('This page gives an overview of the terms and concepts
-    presented on this site. Unfortunately many definitions are taken directly
-    from the respective specification at the %sUnicode website%s and may
-    remain a bit technical. If you see this sign %s on a page, it means you can
-    access the definition from here by hovering over it.'),
+  <p><?php
+printf(
+    __('This page gives an overview of the terms and concepts presented on this site.').' '.
+    __('Many definitions are taken directly from the respective specification at the %sUnicode website%s and may remain a bit technical.').' '.
+    __('If you see this sign %s on a page, it means you can access the definition from here by hovering over it.'),
     '<a href="http://unicode.org/reports/">', '</a>',
-    '<span class="gl" data-term="unicode"></span>')?></p>
+    '<span data-term="unicode"></span>')?></p>
   <dl id="glossary">
     <dt id="unicode">Unicode</dt>
     <dd>A standard to map characters to <a href="#codepoint">codepoints</a>, numeric representations. The Unicode standard is curated by the <a href="http://unicode.org">Unicode Consortium</a>. It is internationally standardized as ISO 10464.</dd>
@@ -17,7 +17,7 @@
     <dd>The representation of a codepoint under certain circumstances. For example, the letter “A” looks quite differently in latin and blackletter fonts. Both are different glyphs for the underlying character.</dd>
     <dt id="plane">Plane</dt>
     <dd>A Unicode plane is one of 17 sets of 65536 <a href="#codepoint">codepoints</a> each. Currently only the first three planes contain character definitions. The last two planes are reserved for <a href="#private_use">private use</a>.</dd>
-    <dt id="private_use" class="last-special">Private Use</dt>
+    <dt id="private_use" class="glossary__special-item">Private Use</dt>
     <dd>So-called “private use” areas are <a href="#unicode">Unicode</a> codepoints, that are deliberately not assigned to characters. These codepoints can be used by application developers to add their own extensions to Unicode.</dd>
 
     <dt id="age">Age</dt>

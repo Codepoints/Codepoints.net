@@ -129,7 +129,7 @@ include 'partials/header.php'; ?>
             /* empty Unihan properties: skip, b/c unnecessary for most cps */
             (substr($key, 0, 1) === 'k' && ! $value)) { continue; } ?>
         <tr>
-          <th scope="row"><?=q(array_get($info->properties, $key, $key))?> <small>(<?=q($key)?>)</small></th>
+          <th scope="row" data-term="<?=q($key)?>"><?=q(array_get($info->properties, $key, $key))?></th>
           <td>
           <?php if ($value === '' || $value === null):?>
             <span class="x">—</span>
