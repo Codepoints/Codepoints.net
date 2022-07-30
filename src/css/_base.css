@@ -29,14 +29,6 @@ svg {
   overflow: visible; /* TODO quick fix for glyphs getting cut off */
 }
 
-.icon-bg {
-  fill: currentColor;
-}
-
-.icon-fg {
-  fill: var(--color-back);
-}
-
 th, td {
   padding: .2em .5em;
 }

@@ -25,7 +25,6 @@ if (isset($_COOKIE['force_mode'])) {
     <meta name="theme-color" content="#660000">
     <link rel="icon" href="/favicon.ico">
     <link rel="icon" href="/static/images/icon.svg" type="image/svg+xml">
-    <link rel="icon" href="/static/images/icon.dark.svg" media="(prefers-color-scheme: dark)" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <link rel="manifest" href="/manifest.webmanifest">
     <link rel="mask-icon" href="/static/images/safari-pinned-tab.svg" color="#990000">
