@@ -50,3 +50,13 @@
     scroll-margin-top: 4.667em;
   }
 }
+
+.transition-active {
+  position: relative;
+}
+
+.transition-active > * {
+  position: absolute;
+  width: 100%;
+  top: 0;
+}
