@@ -1,9 +1,13 @@
 import { defineConfig } from 'vite';
 import { generateAssetFileName } from 'vite';
+import vue from '@vitejs/plugin-vue';
 
 export default defineConfig({
   base: '/static/',
   publicDir: 'src/public',
+  plugins: [
+    vue(),
+  ],
   build: {
     //manifest: true,
     outDir: 'codepoints.net/static/',
