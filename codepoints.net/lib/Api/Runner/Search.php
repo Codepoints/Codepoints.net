@@ -28,7 +28,7 @@ class Search extends JsonRunner {
         # TODO $limit is currently not yet respected by pagination
         $limit = isset($_GET['per_page'])? min(1000, intval($_GET['per_page'])) : 1000;
 
-        $page = $pagination? (int)$pagination->page : 1;
+        $page = $pagination? $pagination->page : 1;
         $return = [
             'page' => $page,
             'last_page' => 1,

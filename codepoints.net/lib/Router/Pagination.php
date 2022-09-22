@@ -8,6 +8,9 @@ use Codepoints\View;
 
 /**
  * handle pagination
+ *
+ * @property int $page
+ * @psalm-seal-properties
  */
 class Pagination {
 

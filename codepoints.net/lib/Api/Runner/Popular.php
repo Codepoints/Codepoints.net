@@ -28,6 +28,9 @@ class Popular extends JsonRunner {
         $date2 = new DateTimeImmutable();
         $interval = new DateInterval('P2D');
         $date1 = $date2->sub($interval);
+        if (! $date1) {
+            return $most_popular;
+        }
         $params = [
             'module' => 'API',
             'format' => 'json',

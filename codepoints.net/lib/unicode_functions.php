@@ -129,6 +129,7 @@ function is_surrogate(int $cp) : bool {
  * @param int $id
  * @param string $gc
  * @return int
+ * @psalm-pure
  */
 function get_printable_codepoint(int $id, string $gc) {
     if ($id < 0x21) {

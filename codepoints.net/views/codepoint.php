@@ -5,8 +5,10 @@ use Codepoints\Unicode\Codepoint;
  * @var Codepoint $codepoint
  * @var ?Codepoint $prev
  * @var ?Codepoint $next
+ * @var string $header
  * @var ?\Codepoints\Unicode\Plane $plane
  * @var ?\Codepoints\Unicode\Block $block
+ * @var Array{ name: ?string } $csur
  * @var list<list<Codepoint>> $confusables
  * @var Array $aliases
  * @var string $extra
