@@ -8,7 +8,7 @@ use Codepoints\Unicode\Codepoint;
  * @var string $header
  * @var ?\Codepoints\Unicode\Plane $plane
  * @var ?\Codepoints\Unicode\Block $block
- * @var Array{ name: ?string } $csur
+ * @var ?Array{ name: ?string } $csur
  * @var list<list<Codepoint>> $confusables
  * @var Array $aliases
  * @var string $extra
@@ -58,7 +58,7 @@ include 'partials/header.php'; ?>
   </section>
 <?php endif ?>
 
-<?php if ($csur['name']): ?>
+<?php if (isset($csur) && $csur['name']): ?>
   <section class="cpdesc cpdesc--csur">
     <p><?=sprintf(_q('The %sUnder-ConScript Unicode Registry%s contains this private-use character with the name %s.'), '<a href="https://www.kreativekorp.com/ucsur/">', '</a>', $csur['name'])?></p>
   </section>

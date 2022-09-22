@@ -61,6 +61,7 @@ class NotFound extends Controller {
 
         $this->context += [
             'title' => $title,
+            'header' => sprintf('%s %s', (string)$codepoint, $title),
             'page_description' => $page_description,
             'cps' => $cps,
         ];
