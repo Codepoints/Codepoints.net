@@ -9,7 +9,7 @@ export default defineConfig({
     vue(),
   ],
   build: {
-    //manifest: true,
+    manifest: true,
     outDir: 'codepoints.net/static/',
     rollupOptions: {
       input: ['src/js/main.js', 'src/css/main.css'],

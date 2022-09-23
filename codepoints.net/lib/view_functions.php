@@ -3,6 +3,7 @@
 use Codepoints\Unicode\Codepoint;
 use Codepoints\Unicode\Block;
 use Codepoints\Unicode\Plane;
+use Codepoints\Router\AssetHandler;
 
 
 /**
@@ -174,4 +175,15 @@ function case_cp_name(string $name) : string {
         'O’Clock', 'of ', 'with ', 'and ', 'OK '
     ], $name);
     return $name;
+}
+
+/**
+ * get an asset URL
+ */
+function static_url(string $path): string {
+    static $assethandler;
+    if (! $assethandler) {
+        $assethandler = new AssetHandler();
+    }
+    return $assethandler->getUrl($path);
 }
