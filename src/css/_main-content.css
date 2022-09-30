@@ -8,6 +8,25 @@
   }
 }
 
+cp-navigation {
+  position: sticky;
+  z-index: 1;
+  display: block;
+  background: var(--color-back);
+  font-family: var(--font-family-alternate);
+  font-size: calc( 1em / var(--font-mod) );
+}
+@media (--lte-mobile) {
+  cp-navigation {
+    bottom: 0;
+  }
+}
+@media (--gt-mobile) {
+  cp-navigation {
+    top: 0;
+  }
+}
+
 cp-navigation .title {
   display: none;
 }

@@ -6,25 +6,6 @@ import { customMedia } from '../media_queries.ts';
 @customElement('cp-navigation')
 export class CpNavigation extends LitElement {
   static styles = css`
-    :host {
-      position: sticky;
-      z-index: 1;
-      display: block;
-      background: var(--color-back);
-      font-family: var(--font-family-alternate);
-      font-size: calc( 1em / var(--font-mod) );
-    }
-    /* parentheses necessary, otherwise declaration block vanishes */
-    @media (${unsafeCSS(customMedia['--lte-mobile'])}) {
-      :host {
-        bottom: 0;
-      }
-    }
-    @media (${unsafeCSS(customMedia['--gt-mobile'])}) {
-      :host {
-        top: 0;
-      }
-    }
     ul {
       list-style: none;
       margin: 0;
