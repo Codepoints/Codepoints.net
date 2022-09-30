@@ -41,6 +41,9 @@ if (array_key_exists('embed', $_GET)) {
 case 'codepoint':
     include 'head-codepoint.php';
     break;
+case 'index': ?>
+    <link rel="preload" href="<?= static_url('src/images/front_light.webp') ?>" as="image" fetchPriority="high" crossOrigin="anonymous">
+    <?php break;
 endswitch ?>
   </head>
   <body>
