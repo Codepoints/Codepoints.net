@@ -3,6 +3,8 @@
 namespace Codepoints\Controller;
 
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
+use Symfony\Component\Cache\Marshaller\DefaultMarshaller;
+use Symfony\Component\Cache\Marshaller\DeflateMarshaller;
 use Symfony\Contracts\Cache\ItemInterface;
 use Codepoints\Controller;
 
@@ -20,7 +22,8 @@ class Image extends Controller {
         header('Content-Type: image/svg+xml');
         header('Cache-Control: public, max-age='.$cache_duration);
         header('Expires: '.gmdate('D, d M Y H:i:s \G\M\T', time() + $cache_duration));
-        $cache = new FilesystemAdapter('codepts');
+        $marshaller = new DeflateMarshaller(new DefaultMarshaller());
+        $cache = new FilesystemAdapter('codepts', 0, null, $marshaller);
         return $cache->get('controller_image_'.dechex($root), function (ItemInterface $item) use($env, $root, $cache_duration) {
             $item->expiresAfter($cache_duration);
             $images = $env['db']->getAll('SELECT width, height, image
