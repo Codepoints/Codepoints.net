@@ -5,7 +5,6 @@ use Codepoints\Unicode\Codepoint;
  * @var Codepoint $codepoint
  * @var ?Codepoint $prev
  * @var ?Codepoint $next
- * @var string $header
  * @var ?\Codepoints\Unicode\Plane $plane
  * @var ?\Codepoints\Unicode\Block $block
  * @var ?Array{ name: ?string } $csur
@@ -38,7 +37,7 @@ include 'partials/header.php'; ?>
     <?php endif ?>
   </figure>
 
-  <h1><?=str_replace('*', ' <span tabindex="0" aria-description="'.q('This codepoint has no canonical name. The shown name is an alias defined by Unicode.').'" class="no-na tooltip">*</span>', q($header))?></h1>
+  <h1><?=sprintf('%s %s', (string)$codepoint, format_codepoint_name($codepoint->name))?></h1>
 
   <section class="cpdesc cpdesc--desc">
     <cp-copy content="<?= q(mb_chr($codepoint->id)) ?>"><button type="button"><?=_q('copy code point')?></button></cp-copy>

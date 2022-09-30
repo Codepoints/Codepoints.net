@@ -190,3 +190,13 @@ function static_url(string $path): string {
     }
     return $assethandler->getUrl($path);
 }
+
+/**
+ * format a code point name for display
+ */
+function format_codepoint_name(string $name): string {
+  return str_replace(
+      ['IDEOGRAPH-', '*'],
+      ["IDEO\u{00AD}GRAPH-\u{200B}", ' <span tabindex="0" aria-description="'.q('This codepoint has no canonical name. The shown name is an alias defined by Unicode.').'" class="no-na tooltip">*</span>'],
+      q($name));
+}
