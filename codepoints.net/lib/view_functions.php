@@ -18,7 +18,10 @@ function __(string $original): string {
  * HTML-quote a string
  */
 function q(string $s) : string {
-    return htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
+    return str_replace(
+        ["\0"],
+        ['&#x0;'],
+        htmlspecialchars($s, ENT_QUOTES, 'UTF-8'));
 }
 
 /**
