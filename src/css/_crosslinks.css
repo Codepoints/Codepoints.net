@@ -1,21 +1,15 @@
-.cp, .bl, .pl {
+.ln {
   text-decoration: none;
 }
 
-.cp > svg,
-.bl > svg,
-.pl > svg {
+.ln > svg {
   transition: transform .3s, color .3s;
   vertical-align: top;
   margin-top: 2px;
 }
 
-.cp:focus > svg,
-.cp:hover > svg,
-.bl:focus > svg,
-.bl:hover > svg,
-.pl:focus > svg,
-.pl:hover > svg {
+.ln:focus > svg,
+.ln:hover > svg {
   transform: scale(1.33);
 }
 
@@ -55,7 +49,7 @@
   opacity: .667;
 }
 
-.tiles .cp, .tiles .bl, .tiles .pl {
+.tiles .ln {
   color: inherit;
 }
 
@@ -68,9 +62,7 @@
   text-shadow: 1px 1px var(--color-back);
 }
 
-.tiles .pl > svg,
-.tiles .bl > svg,
-.tiles .cp > svg {
+.tiles .ln > svg {
   width: 65%;
   height: auto;
   display: block;
@@ -79,18 +71,12 @@
   margin-right: auto;
   margin-bottom: 0;
 }
-.tiles .pl:hover > svg,
-.tiles .pl:focus > svg,
-.tiles .bl:hover > svg,
-.tiles .bl:focus > svg,
-.tiles .cp:hover > svg,
-.tiles .cp:focus > svg {
+.tiles .ln:hover > svg,
+.tiles .ln:focus > svg {
   color: var(--color-link-hover);
 }
 
-.tiles .pl .title,
-.tiles .bl .title,
-.tiles .cp .title {
+.tiles .ln .title {
   hyphens: auto;
   font-size: 90%;
   flex-grow: 1;

@@ -41,7 +41,7 @@ function cp(Codepoint $codepoint, string $rel='', string $class='') : string {
     if ($class) {
         $class = ' '.q($class);
     }
-    return sprintf('<a class="cp%s"%s href="%s" data-cp="%s">'.
+    return sprintf('<a class="ln cp%s"%s href="%s" data-cp="%s">'.
             '%s <span class="title">%s</span>'.
         '</a>',
         $class, $rel, q(url($codepoint)), q((string)$codepoint), cpimg($codepoint), q(case_cp_name($codepoint->name)));
@@ -69,7 +69,7 @@ function bl(Block $block, string $rel='', string $class='') : string {
         $class = ' '.q($class);
     }
     return sprintf(
-        '<a class="bl%s"%s href="%s">'.
+        '<a class="ln bl%s"%s href="%s">'.
             '<span class="meta">%s</span> '.
             '%s <span class="title">%s</span>'.
         '</a>',
@@ -99,7 +99,7 @@ function pl(Plane $plane, string $rel='', string $class='') : string {
         $class = ' '.q($class);
     }
     return sprintf(
-        '<a class="pl%s"%s href="%s">'.
+        '<a class="ln pl%s"%s href="%s">'.
             '<span class="meta">%s</span> '.
             '%s <span class="title">%s</span>'.
         '</a>',
