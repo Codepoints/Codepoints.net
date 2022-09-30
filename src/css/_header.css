@@ -1,15 +1,5 @@
 .page-header {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 0 1em -1em;
-}
-
-.page-header > * {
-  margin: 0 0 0 1em;
-}
-
-.page-header > * p {
-  margin: 0;
+  margin-bottom: 1em;
 }
 
 .page-header nav ul,

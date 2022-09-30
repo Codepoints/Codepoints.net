@@ -3,6 +3,9 @@
  * @var list<\Codepoints\Unicode\Plane> $planes
  */
 
+$nav = [];
+$nav['next'] = pl($planes[0], 'next');
+
 include 'partials/header.php'; ?>
 <main class="main main--planes">
   <figure class="sqfig plfig">

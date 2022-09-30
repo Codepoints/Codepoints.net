@@ -1,3 +1,36 @@
+[data-barba="container"] {
+  display: flex;
+  flex-direction: column;
+}
+@media (--lte-mobile) {
+  [data-barba="container"] > cp-navigation {
+    order: 3;
+  }
+}
+
+cp-navigation .title {
+  display: none;
+}
+
+cp-navigation a {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+cp-navigation .meta {
+  order: 3;
+}
+
+cp-navigation .ln svg {
+  display: block;
+  width: 80%;
+  height: 80%;
+  max-width: 64px;
+  max-height: 64px;
+  margin: 1em auto 0;
+}
+
 .main {
   padding: 0 1em;
   flex-grow: 1;

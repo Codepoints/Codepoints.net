@@ -21,7 +21,6 @@ if ($next) {
 
 include 'partials/header.php'; ?>
 <main class="main main--block">
-  <?php include 'partials/sub-navigation.php' ?>
   <figure class="sqfig blfig">
     <?=blimg($block, 250)?>
     <figcaption><?=_q('Source: Font Last Resort')?></figcaption>

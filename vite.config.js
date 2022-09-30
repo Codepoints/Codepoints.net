@@ -1,12 +1,14 @@
 import { defineConfig } from 'vite';
-import { generateAssetFileName } from 'vite';
-import vue from '@vitejs/plugin-vue';
+import minifyLitTemplates from 'rollup-plugin-minify-html-literals';
+import postcssCustomMedia from 'postcss-custom-media';
+import { customMedia } from './src/js/media_queries.ts';
+
 
 export default defineConfig({
   base: '/static/',
   publicDir: 'src/public',
   plugins: [
-    vue(),
+    minifyLitTemplates(),
   ],
   build: {
     manifest: true,
@@ -24,5 +26,16 @@ export default defineConfig({
         },
       },
     }
-  }
+  },
+  css: {
+    postcss: {
+      plugins: [
+        postcssCustomMedia({
+          importFrom: [
+            { customMedia },
+          ],
+        }),
+      ],
+    },
+  },
 })

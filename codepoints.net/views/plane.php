@@ -9,14 +9,13 @@ $nav = [];
 if ($prev) {
   $nav['prev'] = pl($prev, 'prev');
 }
-$nav['up'] = sprintf('<a class="pl" rel="up" href="%s"><svg width="16" height="16"><svg viewBox="194 97 1960 1960" width="100%%" height="100%%"><use xlink:href="/static/images/unicode-logo-framed.svg#unicode" width="16" height="16"/></svg></svg> %s</a>', url('planes'), __('Unicode'));
+$nav['up'] = sprintf('<a class="ln pl" rel="up" href="%s"><svg width="16" height="16"><svg viewBox="194 97 1960 1960" width="100%%" height="100%%"><use xlink:href="/static/images/unicode-logo-framed.svg#unicode" width="16" height="16"/></svg></svg> %s</a>', url('planes'), __('Unicode'));
 if ($next) {
   $nav['next'] = pl($next, 'next');
 }
 
 include 'partials/header.php'; ?>
 <main class="main main--plane">
-  <?php include 'partials/sub-navigation.php' ?>
   <figure class="sqfig plfig">
     <?=plimg($plane, 250)?>
     <figcaption><?=_q('Source: Font Last Resort')?></figcaption>

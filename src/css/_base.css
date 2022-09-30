@@ -4,6 +4,11 @@
   text-rendering: optimizeLegibility;
   scrollbar-gutter: stable;
 }
+@media (--gt-mobile) {
+  :root {
+    scroll-padding-top: 100px;
+  }
+}
 
 body {
   background: var(--color-back);

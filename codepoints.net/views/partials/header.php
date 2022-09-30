@@ -14,10 +14,13 @@ if (isset($_COOKIE['force_mode'])) {
         echo 'force-light';
     }
 }
+if (array_key_exists('embed', $_GET)) {
+    echo ' embed';
+}
 ?>">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width">
     <title><?=q($title)?> – Codepoints</title>
 <?php if(isset($page_description)): ?>
     <meta name="description" content="<?=q($page_description)?>">
@@ -35,14 +38,12 @@ if (isset($_COOKIE['force_mode'])) {
     <link rel="stylesheet" href="<?= static_url('src/css/main.css') ?>">
     <?php include 'head-multilang.php' ?>
 <?php switch($view):
-case ('codepoint'):
+case 'codepoint':
     include 'head-codepoint.php';
     break;
 endswitch ?>
   </head>
   <body>
-    <header class="page-header">
-<?php include 'main-navigation.php' ?>
-    </header>
     <div data-barba="wrapper">
       <div data-barba="container">
+        <?php include 'main-navigation.php' ?>

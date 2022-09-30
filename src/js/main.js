@@ -4,6 +4,9 @@ import barba from '@barba/core';
 import anime from 'animejs/lib/anime.es.js';
 import './_darkmode.js';
 import { initGlossary } from './_glossary.js';
+import { CpCopy } from './components/cp-copy.ts';
+import { CpNavigation } from './components/cp-navigation.ts';
+import { CpSuccess } from './components/cp-success.ts';
 
 document.documentElement.classList.add('js');
 

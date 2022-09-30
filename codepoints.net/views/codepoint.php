@@ -31,9 +31,8 @@ if ($next) {
 
 include 'partials/header.php'; ?>
 <main class="main main--codepoint">
-  <?php include 'partials/sub-navigation.php' ?>
   <figure class="sqfig cpfig">
-    <?=cpimg($codepoint, 250)?>
+    <cp-copy content="<?= q(mb_chr($codepoint->id)) ?>"><?=cpimg($codepoint, 250)?></cp-copy>
     <?php if ($codepoint->imagesource): ?>
       <figcaption><?=q(sprintf(__('Source: %s'), $codepoint->imagesource))?></figcaption>
     <?php endif ?>
@@ -42,6 +41,7 @@ include 'partials/header.php'; ?>
   <h1><?=str_replace('*', ' <span tabindex="0" aria-description="'.q('This codepoint has no canonical name. The shown name is an alias defined by Unicode.').'" class="no-na tooltip">*</span>', q($header))?></h1>
 
   <section class="cpdesc cpdesc--desc">
+    <cp-copy content="<?= q(mb_chr($codepoint->id)) ?>"><button type="button"><?=_q('copy code point')?></button></cp-copy>
 <?php if ($codepoint->gc === 'Xx'): ?>
   <p><?=_q('This codepoint doesn’t exist.')?>
   <?=sprintf(__('If it would, it’d be located in the Nirvana of Undefined Behaviour beyond the 17<sup>th</sup> plane, a land %sno member of the Unicode mailing list has ever seen%s.'),
