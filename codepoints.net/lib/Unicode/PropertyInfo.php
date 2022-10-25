@@ -108,9 +108,11 @@ class PropertyInfo {
         $name = $prop === 'sc'? 'script' : 'legend_'.$prop;
         if ($name === 'legend_age') {
             $age_to_year = $this->__get('age_to_year');
-            return array_map(function ($version, $year) {
-                return sprintf('%s (%s)', $version, $year);
-            }, array_keys($age_to_year), array_values($age_to_year));
+            $ret = [];
+            foreach ($age_to_year as $version => $year) {
+                $ret[$version] = sprintf('%s (%s)', $version, $year);
+            }
+            return $ret;
         } elseif (property_exists($this, $name)) {
             return $this->__get($name) ?? [];
         } else {
