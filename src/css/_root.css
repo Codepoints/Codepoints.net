@@ -46,7 +46,9 @@
 
 :root.force-dark {
   --color-danger: #b02;
+  --color-danger-muted: #3c1a20;
   --color-success: #2b0;
+  --color-success-muted: #203c1a;
   --color-neutral: #fff8;
 
   --color-input-text: #e8edf2;
@@ -70,7 +72,9 @@
 @media (prefers-color-scheme: dark) {
   :root:not(.force-light) {
     --color-danger: #b02;
+    --color-danger-muted: #3c1a20;
     --color-success: #2b0;
+    --color-success-muted: #203c1a;
     --color-neutral: #fff8;
 
     --color-input-text: #e8edf2;
