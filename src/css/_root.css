@@ -4,7 +4,9 @@
   --font-family-alternate: Noto Sans, Droid Sans, Verdana, sans-serif;
 
   --color-danger: #901;
+  --color-danger-muted: #eec0c5;
   --color-success: #190;
+  --color-success-muted: #c5eec0;
   --color-neutral: #0007;
 
   --color-input-text: #403c37;

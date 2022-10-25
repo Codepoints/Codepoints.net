@@ -1,0 +1,9 @@
+cp-searchform form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .3em;
+}
+cp-searchform form p {
+  flex-grow: 1;
+  width: 100%;
+}

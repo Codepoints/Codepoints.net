@@ -8,6 +8,7 @@ function _get(string $name) : string {
     return q($_GET[$name] ?? '');
 }
 ?>
+<cp-searchform>
 <form method="get" action="<?=q(url('search'))?>"
       class="searchform searchform--ext">
   <p class="search__widget search__widget--string">
@@ -34,17 +35,16 @@ function _get(string $name) : string {
     if (array_key_exists($cat, $query)) {
         $tmp_v = $query[$cat][0];
     }
-    ?>
-    <p class="search__widget search__widget--bool">
-      <label>
-        <select name="<?=q($cat)?>" size="3">
-          <option value=""<?php if ($tmp_v === ''):?> selected<?php endif?>><?=__('any')?></option>
-          <option value="1"<?php if ($tmp_v === '1'):?> selected<?php endif?>><?=__('yes')?></option>
-          <option value="0"<?php if ($tmp_v === '0'):?> selected<?php endif?>><?=__('no')?></option>
-        </select>
-        <?= q(array_get($info->properties, $cat, $cat))?>
-      </label>
-    </p>
+?>
+  <cp-search-boolean>
+    <select name="<?=q($cat)?>" size="3">
+      <option value=""<?php if ($tmp_v === ''):?> selected<?php endif?>><?=__('any')?></option>
+      <option value="1"<?php if ($tmp_v === '1'):?> selected<?php endif?>><?=__('yes')?></option>
+      <option value="0"<?php if ($tmp_v === '0'):?> selected<?php endif?>><?=__('no')?></option>
+    </select>
+    <label slot="desc"><?= q(array_get($info->properties, $cat, $cat))?></label>
+  </cp-search-boolean>
   <?php endforeach?>
   <p class="submitset"><button type="submit"><span><?=__('search')?></span></button></p>
 </form>
+</cp-searchform>
