@@ -6,8 +6,8 @@
  * @var array<array> $query
  */
 ?>
-<fieldset class="search__widget search__widget--prop">
-    <legend><?= q(array_get($info->properties, $cat, $cat)) ?>:</legend>
+<cp-search-property>
+    <span slot="desc"><?= q(array_get($info->properties, $cat, $cat)) ?></span>
     <?php
     if ($cat === 'blk') {
         $values = $all_block_names;
@@ -29,4 +29,4 @@
         </label>
       </p>
     <?php endforeach?>
-</fieldset>
+</cp-search-property>
