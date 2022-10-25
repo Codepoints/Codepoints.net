@@ -90,6 +90,11 @@ cp-navigation .ln svg {
   top: 0;
   background-color: var(--color-back);
 }
+@media (--gt-mobile) {
+  .glossary__quicknav {
+    top: 93px;
+  }
+}
 
 #glossary,
 #glossary dt {

@@ -1,6 +1,4 @@
-export function initGlossaryTerms(context) {
-  const glossaryTerms = context.querySelectorAll('[data-term]');
-}
+import {gettext as _} from './_i18n.ts';
 
 export function initGlossary(context) {
   const glossary = context.querySelector('#glossary');
@@ -10,7 +8,7 @@ export function initGlossary(context) {
   glossary.dataset.upgraded = true;
   const nav = document.createElement('ul');
   nav.className = 'glossary__quicknav';
-  nav.innerHTML = '<li><a href="#glossary">top</a></li>';
+  nav.innerHTML = `<li><a href="#top">${_('top')}</a></li>`;
   let lastLetter = ' ';
   glossary.querySelectorAll('dt[id]').forEach(dt => {
     if (! dt.previousElementSibling || dt.previousElementSibling.nodeName !== 'DD') {
