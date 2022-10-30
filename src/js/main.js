@@ -52,6 +52,13 @@ barba.init({
   }]
 });
 
-barba.hooks.enter(() => {
+barba.hooks.afterEnter((data) => {
+  if (data.next.url.hash) {
+    const el = document.getElementById(data.next.url.hash);
+    if (el) {
+      el.scrollIntoView(true);
+      return;
+    }
+  }
   window.scrollTo(0, 0);
 });
