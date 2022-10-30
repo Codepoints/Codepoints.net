@@ -100,7 +100,7 @@ include 'partials/header.php'; ?>
         encoded. In a nutshell, glyphs are the actual graphical representations,
         while characters are the more abstract concepts behind. Glyphs change
         between typefaces, characters don’t.')?></li>
-      <li><em><?=_q('Semantics:')?></em> <?=_q('Included characters must be well defined and 
+      <li><em><?=_q('Semantics:')?></em> <?=_q('Included characters must be well defined and
         distinguished from others.')?></li>
       <li><em><?=_q('Plain Text:')?></em> <?=__('Characters in the standard are <em>text</em> and
         never mark-up or metacharacters.')?></li>
@@ -125,14 +125,14 @@ include 'partials/header.php'; ?>
     <p>
       <?php printf(__('This website is a private project coordinated by %s.
       It is <strong>not</strong> affiliated with or approved by the Unicode Consortium.
-      You can contact me via:'), '<a href="http://www.manuel-strehl.de/contact">Manuel Strehl</a>')?>
+      You can contact me via:'), '<a href="https://manuel-strehl.de/contact">Manuel Strehl</a>')?>
     </p>
     <address>
       <p>
         <strong>Manuel Strehl</strong><br>
-        c/o Kinetiqa GmbH<br>
-        Franz-Mayer-Straße 1<br>
-        93053 Regensburg, Germany
+        ℅ Kinetiqa GmbH<br>
+        Bischof-von-Henle-Str. 2a<br>
+        93051 Regensburg, Germany
       </p>
       <p>
         <?=_q('WWW:')?> <a href="https://manuel-strehl.de/contact">manuel-strehl.de/contact</a>
@@ -145,12 +145,12 @@ include 'partials/header.php'; ?>
     <p>
       <?php printf(__('The content on this website reflects the information found in<br>
       <em>The Unicode Consortium.</em> The Unicode Standard, Version %s,
-      (Mountain View, CA: The Unicode Consortium, 2012. ISBN 978-1-936213-02-3)<br>
+      (Mountain View, CA: The Unicode Consortium, 2022. ISBN 978-1-936213-32-0)<br>
       %s,<br>
       which happens to be the most relevant version of the Unicode Standard
-      as of August, 2012.'),
+      as of November, 2022.'),
       q(UNICODE_VERSION),
-      '<a href="https://www.unicode.org/versions/latest/">https://www.unicode.org/versions/latest/</a>'
+      '<a href="https://www.unicode.org/versions/latest/">www.unicode.org/versions/latest/</a>'
     )?>
     </p>
     <p>

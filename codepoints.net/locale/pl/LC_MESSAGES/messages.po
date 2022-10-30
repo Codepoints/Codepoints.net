@@ -1537,7 +1537,7 @@ msgid ""
 msgstr ""
 "%sGNU Unifont%s, udostępniony\n"
 " głównie na publicznej licencji GNU, częściowo na liberalne  licencji re-"
-"use\n"
+"use"
 
 #: codepoints.net/views/about.php:197
 #, php-format

@@ -1136,11 +1136,15 @@ msgstr "Der Inhalt auf dieser Seite"
 #, php-format
 msgid "The content on this website reflects the information found in<br>\n"
 "      <em>The Unicode Consortium.</em> The Unicode Standard, Version %s,\n"
-"      (Mountain View, CA: The Unicode Consortium, 2012. ISBN 978-1-936213-02-3)<br>\n"
+"      (Mountain View, CA: The Unicode Consortium, 2022. ISBN 978-1-936213-32-3)<br>\n"
 "      %s,<br>\n"
 "      which happens to be the most relevant version of the Unicode Standard\n"
-"      as of August, 2012."
-msgstr "Der Inhalt dieser Webseite bildet die Information ab, die in <br/><em>The Unicode Consortium.</em> The Unicode Standard, Version %s,      (Mountain View, CA: The Unicode Consortium, 2012. ISBN 978-1-936213-02-3)<br/>      %s,<br/>gefunden werden kann. Dies ist die neueste Version des Unicode-Standards im August 2012."
+"      as of November, 2022."
+msgstr "Der Inhalt dieser Webseite bildet die Information ab, die in <br>"
+"<em>The Unicode Consortium.</em> The Unicode Standard, Version %s, "
+"(Mountain View, CA: The Unicode Consortium, 2022. ISBN 978-1-936213-32-3)<br>"
+"%s,<br>"
+"gefunden werden kann. Dies ist die neueste Version des Unicode-Standards im November 2022."
 
 #: codepoints.net/views/about.php:168
 #, php-format
@@ -1163,7 +1167,7 @@ msgstr "live auf Github"
 msgid "<strong>There is no warranty,</strong> that the content on this site is\n"
 "      accurate, complete or error-free! For normative references please refer\n"
 "      to the Unicode website itself."
-msgstr "<strong>Es gibt keine Garantie,</strong> dass der Inhalt auf dieser Seite akkuratm komplett und fehlerfrei ist! Für normative Referenzen beziehe dich bitte auf die Unicode-Webseite selbst."
+msgstr "<strong>Es gibt keine Garantie,</strong> dass der Inhalt auf dieser Seite akkurat, komplett und fehlerfrei ist! Für normative Referenzen beziehe dich bitte auf die Unicode-Webseite selbst."
 
 #: codepoints.net/views/about.php:182
 msgid "Re-use License"
