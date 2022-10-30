@@ -12,7 +12,7 @@ export class CpSearchBoolean extends LitElement {
     :host {
       display: flex;
     }
-    .value {
+    button {
       user-select: none;
       font-family: var(--font-family-alternate);
       padding: .25em .5em;
@@ -29,7 +29,7 @@ export class CpSearchBoolean extends LitElement {
                   0 -1px 1px rgba(0,0,0,.05);
       text-shadow: 0 1px var(--color-back-bright);
     }
-    .value svg {
+    button svg {
       width: 12px;
       height: 12px;
       margin-right: .3em;

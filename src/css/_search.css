@@ -7,3 +7,15 @@ cp-searchform form p {
   flex-grow: 1;
   width: 100%;
 }
+cp-search-freeform {
+  flex-grow: 1;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: .6em;
+  margin: 0 0 .6em;
+  align-items: center;
+}
+cp-search-freeform > label {
+  flex-basis: 120px;
+}
