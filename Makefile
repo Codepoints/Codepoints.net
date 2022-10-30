@@ -1,3 +1,4 @@
+SHELL := /bin/bash
 DOCROOT := codepoints.net/
 DEBUG := 1
 
@@ -89,3 +90,11 @@ serve:
 $(DOCROOT)locale/messages.pot: $(PHP_ALL)
 	$(info * Compile PHP translation strings)
 	@xgettext -LPHP --from-code UTF-8 -k__ -k_e -k_n -kgettext -o $@ $(PHP_ALL)
+
+mo:
+	$(info * Compile po to mo)
+	@find codepoints.net/locale -type f -name '*.po' -print0 | \
+		while IFS= read -r -d '' po; do \
+			msgfmt "$$po" -o "$${po/.po/.mo}"; \
+		done
+.PHONY: mo
