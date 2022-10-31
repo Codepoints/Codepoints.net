@@ -20,7 +20,7 @@ class AssetHandler {
             Analog::warning('AssetHandler: no manifest found');
             return;
         }
-        $this->manifest = json_decode($manifest_path, true, 512, JSON_THROW_ON_ERROR);
+        $this->manifest = json_decode(file_get_contents($manifest_path), true, 512, JSON_THROW_ON_ERROR);
     }
 
     public function getUrl(string $path): string {
