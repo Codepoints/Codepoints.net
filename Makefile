@@ -5,6 +5,9 @@ DEBUG := 1
 PHP := php
 
 PHP_ALL := $(shell find $(DOCROOT) -type f -not -path \*/vendor/\* -name \*.php)
+JS_ALL := $(shell find src/js -type f -name \*.\?s)
+
+XGETTEXT := bin/xgettext
 
 COMPOSER := composer
 COMPOSER_ARGS := --no-dev
@@ -89,7 +92,13 @@ serve:
 
 $(DOCROOT)locale/messages.pot: $(PHP_ALL)
 	$(info * Compile PHP translation strings)
-	@xgettext -LPHP --from-code UTF-8 -k__ -k_e -k_n -kgettext -o $@ $(PHP_ALL)
+	@$(XGETTEXT) -LPHP --from-code UTF-8 -k__ -k_e -k_n -kgettext -o $@ $(PHP_ALL)
+
+$(DOCROOT)locale/js.pot: $(JS_ALL)
+	$(info * Compile JS translation strings)
+	@$(XGETTEXT) --version | sed -n 1p | grep -qE ' 0\.([3-9][0-9]|2[1-9])' || { \
+		echo 'xgettext v0.21 or higher needed!'; false; }
+	@$(XGETTEXT) -LJavaScript --from-code UTF-8 -k__ -k_e -k_n -kgettext -o $@ $^
 
 mo:
 	$(info * Compile po to mo)

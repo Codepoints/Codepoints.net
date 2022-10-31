@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-12 21:46+0200\n"
+"POT-Creation-Date: 2022-10-31 17:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,29 +21,29 @@ msgstr ""
 msgid "Unicode"
 msgstr ""
 
-#: codepoints.net/views/plane.php:25
+#: codepoints.net/views/plane.php:24
 #, php-format
 msgid "Plane from U+%04X to U+%04X."
 msgstr ""
 
-#: codepoints.net/views/block.php:31
+#: codepoints.net/views/block.php:30
 #, php-format
 msgid "Block from U+%04X to U+%04X."
 msgstr ""
 
-#: codepoints.net/views/block.php:32
+#: codepoints.net/views/block.php:31
 #, php-format
 msgid ""
 "This block was introduced in Unicode version %s (%s). It contains %s "
 "codepoints."
 msgstr ""
 
-#: codepoints.net/views/block.php:38
+#: codepoints.net/views/block.php:37
 #, php-format
 msgid "The %sWikipedia%s provides the following information on block %s:"
 msgstr ""
 
-#: codepoints.net/views/block.php:46
+#: codepoints.net/views/block.php:45
 #, php-format
 msgid "This block has not defined any codepoints between U+%04X and U+%04X."
 msgstr ""
@@ -53,7 +53,7 @@ msgstr ""
 msgid "Source: %s"
 msgstr ""
 
-#: codepoints.net/views/codepoint.php:45
+#: codepoints.net/views/codepoint.php:46
 #, php-format
 msgid ""
 "If it would, it’d be located in the Nirvana of Undefined Behaviour beyond "
@@ -61,53 +61,53 @@ msgid ""
 "has ever seen%s."
 msgstr ""
 
-#: codepoints.net/views/codepoint.php:61
+#: codepoints.net/views/codepoint.php:68
 #, php-format
 msgid "The %sWikipedia%s has the following information about this codepoint:"
 msgstr ""
 
-#: codepoints.net/views/codepoint.php:158
+#: codepoints.net/views/codepoint.php:165
 msgid "not a number"
 msgstr ""
 
-#: codepoints.net/views/planes.php:14
+#: codepoints.net/views/planes.php:17
 msgid ""
 "The Unicode standard arranges the characters in 17 so-called planes of a bit "
 "more than 65,000 codepoints (2<sup>16</sup> to be precise) each."
 msgstr ""
 
-#: codepoints.net/views/planes.php:15
+#: codepoints.net/views/planes.php:18
 msgid "It has thus theoretically place for <em>1,114,112 characters</em>."
 msgstr ""
 
-#: codepoints.net/views/planes.php:16
+#: codepoints.net/views/planes.php:19
 msgid "Some planes are still undefined and will be filled at a later date."
 msgstr ""
 
-#: codepoints.net/views/planes.php:17
+#: codepoints.net/views/planes.php:20
 #, php-format
 msgid "The most common characters live in the almost full %s."
 msgstr ""
 
-#: codepoints.net/views/planes.php:18
+#: codepoints.net/views/planes.php:21
 msgid "Basic Multilingual Plane"
 msgstr ""
 
-#: codepoints.net/views/planes.php:21
+#: codepoints.net/views/planes.php:24
 #, php-format
 msgid ""
 "The %s contains mostly ancient characters, like Egyptian Hieroglyphs, and "
 "graphic symbols, for example Mahjongg tiles or emoticons."
 msgstr ""
 
-#: codepoints.net/views/planes.php:22
+#: codepoints.net/views/planes.php:25
 #, php-format
 msgid ""
 " Thirdly the %s hosts lots of East Asian characters, that didn’t find a "
 "place in the Basic Multilingual Plane."
 msgstr ""
 
-#: codepoints.net/views/planes.php:23
+#: codepoints.net/views/planes.php:26
 #, php-format
 msgid ""
 "The third-to-last %s is almost completely empty and planned to contain non-"
@@ -115,26 +115,26 @@ msgid ""
 "text."
 msgstr ""
 
-#: codepoints.net/views/planes.php:24
+#: codepoints.net/views/planes.php:27
 msgid "The last two planes are special purpose planes."
 msgstr ""
 
-#: codepoints.net/views/planes.php:25
+#: codepoints.net/views/planes.php:28
 msgid ""
 "Codepoints defined there are <em>private</em>, that is, they will never be "
 "specified by Unicode and can be freely assigned by third-party programs to "
 "whatever seems useful."
 msgstr ""
 
-#: codepoints.net/views/planes.php:26
+#: codepoints.net/views/planes.php:29
 msgid "second plane"
 msgstr ""
 
-#: codepoints.net/views/planes.php:27
+#: codepoints.net/views/planes.php:30
 msgid "Supplementary Ideographic Plane"
 msgstr ""
 
-#: codepoints.net/views/planes.php:28
+#: codepoints.net/views/planes.php:31
 msgid "Supplementary Special Purpose Plane"
 msgstr ""
 
@@ -187,7 +187,7 @@ msgid "Basic Latin"
 msgstr ""
 
 #: codepoints.net/views/index.php:64
-#: codepoints.net/views/partials/form-fullsearch.php:49
+#: codepoints.net/views/partials/form-fullsearch.php:43
 msgid "search"
 msgstr ""
 
@@ -199,107 +199,114 @@ msgstr ""
 msgid "a random codepoint"
 msgstr ""
 
-#: codepoints.net/views/glossary.php:4
-#, php-format
+#: codepoints.net/views/glossary.php:6
 msgid ""
-"This page gives an overview of the terms and concepts\n"
-"    presented on this site. Unfortunately many definitions are taken "
-"directly\n"
-"    from the respective specification at the %sUnicode website%s and may\n"
-"    remain a bit technical. If you see this sign %s on a page, it means you "
-"can\n"
-"    access the definition from here by hovering over it."
+"This page gives an overview of the terms and concepts presented on this site."
 msgstr ""
 
-#: codepoints.net/views/glossary.php:25 codepoints.net/views/glossary.php:28
-#: codepoints.net/views/glossary.php:30 codepoints.net/views/glossary.php:33
-#: codepoints.net/views/glossary.php:35 codepoints.net/views/glossary.php:37
-#: codepoints.net/views/glossary.php:39 codepoints.net/views/glossary.php:41
-#: codepoints.net/views/glossary.php:43 codepoints.net/views/glossary.php:48
-#: codepoints.net/views/glossary.php:51 codepoints.net/views/glossary.php:54
-#: codepoints.net/views/glossary.php:57 codepoints.net/views/glossary.php:60
-#: codepoints.net/views/glossary.php:63 codepoints.net/views/glossary.php:66
-#: codepoints.net/views/glossary.php:69 codepoints.net/views/glossary.php:72
-#: codepoints.net/views/glossary.php:74 codepoints.net/views/glossary.php:76
-#: codepoints.net/views/glossary.php:79 codepoints.net/views/glossary.php:87
-#: codepoints.net/views/glossary.php:89 codepoints.net/views/glossary.php:91
-#: codepoints.net/views/glossary.php:93 codepoints.net/views/glossary.php:98
-#: codepoints.net/views/glossary.php:100 codepoints.net/views/glossary.php:103
-#: codepoints.net/views/glossary.php:105 codepoints.net/views/glossary.php:107
-#: codepoints.net/views/glossary.php:111 codepoints.net/views/glossary.php:113
-#: codepoints.net/views/glossary.php:117 codepoints.net/views/glossary.php:120
-#: codepoints.net/views/glossary.php:122 codepoints.net/views/glossary.php:124
-#: codepoints.net/views/glossary.php:126 codepoints.net/views/glossary.php:131
-#: codepoints.net/views/glossary.php:133 codepoints.net/views/glossary.php:135
-#: codepoints.net/views/glossary.php:137 codepoints.net/views/glossary.php:139
-#: codepoints.net/views/glossary.php:141 codepoints.net/views/glossary.php:144
-#: codepoints.net/views/glossary.php:146 codepoints.net/views/glossary.php:149
-#: codepoints.net/views/glossary.php:151 codepoints.net/views/glossary.php:155
-#: codepoints.net/views/glossary.php:157 codepoints.net/views/glossary.php:159
-#: codepoints.net/views/glossary.php:168 codepoints.net/views/glossary.php:170
-#: codepoints.net/views/glossary.php:172 codepoints.net/views/glossary.php:174
-#: codepoints.net/views/glossary.php:177 codepoints.net/views/glossary.php:179
-#: codepoints.net/views/glossary.php:181 codepoints.net/views/glossary.php:183
-#: codepoints.net/views/glossary.php:186 codepoints.net/views/glossary.php:190
-#: codepoints.net/views/glossary.php:194 codepoints.net/views/glossary.php:196
+#: codepoints.net/views/glossary.php:7
+#, php-format
+msgid ""
+"Many definitions are taken directly from the respective specification at the "
+"%sUnicode website%s and may remain a bit technical."
+msgstr ""
+
+#: codepoints.net/views/glossary.php:8
+#, php-format
+msgid ""
+"If you see this sign %s on a page, it means you can access the definition "
+"from here by hovering over it."
+msgstr ""
+
+#: codepoints.net/views/glossary.php:14 codepoints.net/views/glossary.php:17
+#: codepoints.net/views/glossary.php:19 codepoints.net/views/glossary.php:22
+#: codepoints.net/views/glossary.php:24 codepoints.net/views/glossary.php:26
+#: codepoints.net/views/glossary.php:28 codepoints.net/views/glossary.php:30
+#: codepoints.net/views/glossary.php:32 codepoints.net/views/glossary.php:37
+#: codepoints.net/views/glossary.php:40 codepoints.net/views/glossary.php:43
+#: codepoints.net/views/glossary.php:46 codepoints.net/views/glossary.php:49
+#: codepoints.net/views/glossary.php:52 codepoints.net/views/glossary.php:55
+#: codepoints.net/views/glossary.php:58 codepoints.net/views/glossary.php:61
+#: codepoints.net/views/glossary.php:65 codepoints.net/views/glossary.php:67
+#: codepoints.net/views/glossary.php:70 codepoints.net/views/glossary.php:78
+#: codepoints.net/views/glossary.php:80 codepoints.net/views/glossary.php:82
+#: codepoints.net/views/glossary.php:84 codepoints.net/views/glossary.php:89
+#: codepoints.net/views/glossary.php:91 codepoints.net/views/glossary.php:94
+#: codepoints.net/views/glossary.php:96 codepoints.net/views/glossary.php:98
+#: codepoints.net/views/glossary.php:104 codepoints.net/views/glossary.php:106
+#: codepoints.net/views/glossary.php:110 codepoints.net/views/glossary.php:113
+#: codepoints.net/views/glossary.php:115 codepoints.net/views/glossary.php:117
+#: codepoints.net/views/glossary.php:119 codepoints.net/views/glossary.php:124
+#: codepoints.net/views/glossary.php:126 codepoints.net/views/glossary.php:128
+#: codepoints.net/views/glossary.php:130 codepoints.net/views/glossary.php:132
+#: codepoints.net/views/glossary.php:134 codepoints.net/views/glossary.php:137
+#: codepoints.net/views/glossary.php:139 codepoints.net/views/glossary.php:142
+#: codepoints.net/views/glossary.php:144 codepoints.net/views/glossary.php:148
+#: codepoints.net/views/glossary.php:150 codepoints.net/views/glossary.php:152
+#: codepoints.net/views/glossary.php:161 codepoints.net/views/glossary.php:163
+#: codepoints.net/views/glossary.php:165 codepoints.net/views/glossary.php:167
+#: codepoints.net/views/glossary.php:170 codepoints.net/views/glossary.php:172
+#: codepoints.net/views/glossary.php:174 codepoints.net/views/glossary.php:176
+#: codepoints.net/views/glossary.php:179 codepoints.net/views/glossary.php:183
+#: codepoints.net/views/glossary.php:187 codepoints.net/views/glossary.php:189
+#: codepoints.net/views/glossary.php:195 codepoints.net/views/glossary.php:197
 #: codepoints.net/views/glossary.php:202 codepoints.net/views/glossary.php:204
-#: codepoints.net/views/glossary.php:209 codepoints.net/views/glossary.php:211
-#: codepoints.net/views/glossary.php:213 codepoints.net/views/glossary.php:215
-#: codepoints.net/views/glossary.php:217 codepoints.net/views/glossary.php:219
-#: codepoints.net/views/glossary.php:221 codepoints.net/views/glossary.php:223
-#: codepoints.net/views/glossary.php:225 codepoints.net/views/glossary.php:228
-#: codepoints.net/views/glossary.php:230 codepoints.net/views/glossary.php:233
-#: codepoints.net/views/glossary.php:235 codepoints.net/views/glossary.php:244
-#: codepoints.net/views/glossary.php:246 codepoints.net/views/glossary.php:248
-#: codepoints.net/views/glossary.php:250 codepoints.net/views/glossary.php:252
-#: codepoints.net/views/glossary.php:255 codepoints.net/views/glossary.php:260
-#: codepoints.net/views/glossary.php:263 codepoints.net/views/glossary.php:267
-#: codepoints.net/views/glossary.php:271 codepoints.net/views/glossary.php:296
-#: codepoints.net/views/glossary.php:298 codepoints.net/views/glossary.php:306
-#: codepoints.net/views/glossary.php:310 codepoints.net/views/glossary.php:319
-#: codepoints.net/views/glossary.php:321 codepoints.net/views/glossary.php:335
-#: codepoints.net/views/glossary.php:337 codepoints.net/views/glossary.php:344
-#: codepoints.net/views/glossary.php:346 codepoints.net/views/glossary.php:348
-#: codepoints.net/views/glossary.php:350 codepoints.net/views/glossary.php:352
-#: codepoints.net/views/glossary.php:354 codepoints.net/views/glossary.php:358
-#: codepoints.net/views/glossary.php:361 codepoints.net/views/glossary.php:363
-#: codepoints.net/views/glossary.php:365 codepoints.net/views/glossary.php:367
-#: codepoints.net/views/glossary.php:369 codepoints.net/views/glossary.php:371
-#: codepoints.net/views/glossary.php:374 codepoints.net/views/glossary.php:376
-#: codepoints.net/views/glossary.php:379 codepoints.net/views/glossary.php:382
-#: codepoints.net/views/glossary.php:384 codepoints.net/views/glossary.php:387
-#: codepoints.net/views/glossary.php:389 codepoints.net/views/glossary.php:392
-#: codepoints.net/views/glossary.php:394 codepoints.net/views/glossary.php:397
-#: codepoints.net/views/glossary.php:399 codepoints.net/views/glossary.php:404
-#: codepoints.net/views/glossary.php:406 codepoints.net/views/glossary.php:408
-#: codepoints.net/views/glossary.php:410 codepoints.net/views/glossary.php:412
-#: codepoints.net/views/glossary.php:416 codepoints.net/views/glossary.php:419
-#: codepoints.net/views/glossary.php:428 codepoints.net/views/glossary.php:431
-#: codepoints.net/views/glossary.php:434 codepoints.net/views/glossary.php:436
-#: codepoints.net/views/glossary.php:438 codepoints.net/views/glossary.php:441
-#: codepoints.net/views/glossary.php:444 codepoints.net/views/glossary.php:446
-#: codepoints.net/views/glossary.php:448 codepoints.net/views/glossary.php:451
-#: codepoints.net/views/glossary.php:454 codepoints.net/views/glossary.php:456
-#: codepoints.net/views/glossary.php:458 codepoints.net/views/glossary.php:460
-#: codepoints.net/views/glossary.php:464 codepoints.net/views/glossary.php:466
-#: codepoints.net/views/glossary.php:468 codepoints.net/views/glossary.php:470
-#: codepoints.net/views/glossary.php:474 codepoints.net/views/glossary.php:479
-#: codepoints.net/views/glossary.php:481 codepoints.net/views/glossary.php:484
-#: codepoints.net/views/glossary.php:485 codepoints.net/views/glossary.php:487
-#: codepoints.net/views/glossary.php:491 codepoints.net/views/glossary.php:493
-#: codepoints.net/views/glossary.php:495 codepoints.net/views/glossary.php:497
-#: codepoints.net/views/glossary.php:499 codepoints.net/views/glossary.php:501
-#: codepoints.net/views/glossary.php:503 codepoints.net/views/glossary.php:505
-#: codepoints.net/views/glossary.php:507 codepoints.net/views/glossary.php:510
-#: codepoints.net/views/glossary.php:512 codepoints.net/views/glossary.php:514
-#: codepoints.net/views/glossary.php:516 codepoints.net/views/glossary.php:518
-#: codepoints.net/views/glossary.php:520 codepoints.net/views/glossary.php:522
-#: codepoints.net/views/glossary.php:525 codepoints.net/views/glossary.php:528
-#: codepoints.net/views/glossary.php:530 codepoints.net/views/glossary.php:532
-#: codepoints.net/views/glossary.php:534 codepoints.net/views/glossary.php:536
-#: codepoints.net/views/glossary.php:538 codepoints.net/views/glossary.php:540
-#: codepoints.net/views/glossary.php:542 codepoints.net/views/glossary.php:544
-#: codepoints.net/views/glossary.php:546 codepoints.net/views/glossary.php:548
+#: codepoints.net/views/glossary.php:206 codepoints.net/views/glossary.php:208
+#: codepoints.net/views/glossary.php:210 codepoints.net/views/glossary.php:212
+#: codepoints.net/views/glossary.php:214 codepoints.net/views/glossary.php:216
+#: codepoints.net/views/glossary.php:218 codepoints.net/views/glossary.php:221
+#: codepoints.net/views/glossary.php:223 codepoints.net/views/glossary.php:226
+#: codepoints.net/views/glossary.php:228 codepoints.net/views/glossary.php:237
+#: codepoints.net/views/glossary.php:239 codepoints.net/views/glossary.php:241
+#: codepoints.net/views/glossary.php:243 codepoints.net/views/glossary.php:245
+#: codepoints.net/views/glossary.php:248 codepoints.net/views/glossary.php:253
+#: codepoints.net/views/glossary.php:256 codepoints.net/views/glossary.php:260
+#: codepoints.net/views/glossary.php:264 codepoints.net/views/glossary.php:289
+#: codepoints.net/views/glossary.php:291 codepoints.net/views/glossary.php:299
+#: codepoints.net/views/glossary.php:303 codepoints.net/views/glossary.php:312
+#: codepoints.net/views/glossary.php:314 codepoints.net/views/glossary.php:328
+#: codepoints.net/views/glossary.php:330 codepoints.net/views/glossary.php:337
+#: codepoints.net/views/glossary.php:339 codepoints.net/views/glossary.php:341
+#: codepoints.net/views/glossary.php:343 codepoints.net/views/glossary.php:345
+#: codepoints.net/views/glossary.php:347 codepoints.net/views/glossary.php:351
+#: codepoints.net/views/glossary.php:354 codepoints.net/views/glossary.php:356
+#: codepoints.net/views/glossary.php:358 codepoints.net/views/glossary.php:360
+#: codepoints.net/views/glossary.php:362 codepoints.net/views/glossary.php:364
+#: codepoints.net/views/glossary.php:367 codepoints.net/views/glossary.php:369
+#: codepoints.net/views/glossary.php:372 codepoints.net/views/glossary.php:375
+#: codepoints.net/views/glossary.php:377 codepoints.net/views/glossary.php:380
+#: codepoints.net/views/glossary.php:382 codepoints.net/views/glossary.php:385
+#: codepoints.net/views/glossary.php:387 codepoints.net/views/glossary.php:390
+#: codepoints.net/views/glossary.php:392 codepoints.net/views/glossary.php:397
+#: codepoints.net/views/glossary.php:399 codepoints.net/views/glossary.php:401
+#: codepoints.net/views/glossary.php:403 codepoints.net/views/glossary.php:405
+#: codepoints.net/views/glossary.php:409 codepoints.net/views/glossary.php:412
+#: codepoints.net/views/glossary.php:421 codepoints.net/views/glossary.php:424
+#: codepoints.net/views/glossary.php:427 codepoints.net/views/glossary.php:429
+#: codepoints.net/views/glossary.php:431 codepoints.net/views/glossary.php:434
+#: codepoints.net/views/glossary.php:437 codepoints.net/views/glossary.php:439
+#: codepoints.net/views/glossary.php:441 codepoints.net/views/glossary.php:444
+#: codepoints.net/views/glossary.php:447 codepoints.net/views/glossary.php:449
+#: codepoints.net/views/glossary.php:451 codepoints.net/views/glossary.php:453
+#: codepoints.net/views/glossary.php:457 codepoints.net/views/glossary.php:459
+#: codepoints.net/views/glossary.php:461 codepoints.net/views/glossary.php:463
+#: codepoints.net/views/glossary.php:467 codepoints.net/views/glossary.php:472
+#: codepoints.net/views/glossary.php:474 codepoints.net/views/glossary.php:477
+#: codepoints.net/views/glossary.php:478 codepoints.net/views/glossary.php:480
+#: codepoints.net/views/glossary.php:484 codepoints.net/views/glossary.php:486
+#: codepoints.net/views/glossary.php:488 codepoints.net/views/glossary.php:490
+#: codepoints.net/views/glossary.php:492 codepoints.net/views/glossary.php:494
+#: codepoints.net/views/glossary.php:496 codepoints.net/views/glossary.php:498
+#: codepoints.net/views/glossary.php:500 codepoints.net/views/glossary.php:503
+#: codepoints.net/views/glossary.php:509 codepoints.net/views/glossary.php:511
+#: codepoints.net/views/glossary.php:513 codepoints.net/views/glossary.php:515
+#: codepoints.net/views/glossary.php:517 codepoints.net/views/glossary.php:519
+#: codepoints.net/views/glossary.php:522 codepoints.net/views/glossary.php:525
+#: codepoints.net/views/glossary.php:527 codepoints.net/views/glossary.php:529
+#: codepoints.net/views/glossary.php:531 codepoints.net/views/glossary.php:535
+#: codepoints.net/views/glossary.php:537 codepoints.net/views/glossary.php:539
+#: codepoints.net/views/glossary.php:541 codepoints.net/views/glossary.php:543
+#: codepoints.net/views/glossary.php:545 codepoints.net/views/glossary.php:547
 #, php-format
 msgid "(Source: %s)"
 msgstr ""
@@ -327,40 +334,32 @@ msgstr ""
 msgid "%s blocks match %s:"
 msgstr ""
 
-#: codepoints.net/views/partials/form-fullsearch.php:14
+#: codepoints.net/views/partials/form-fullsearch.php:15
 msgid "Free search:"
 msgstr ""
 
-#: codepoints.net/views/partials/form-fullsearch.php:16
+#: codepoints.net/views/partials/form-fullsearch.php:17
 msgid ""
 "Any information about the character, that doesn’t fit the categories below"
 msgstr ""
 
-#: codepoints.net/views/partials/form-fullsearch.php:19
+#: codepoints.net/views/partials/form-fullsearch.php:20
 msgid "Name:"
 msgstr ""
 
-#: codepoints.net/views/partials/form-fullsearch.php:21
+#: codepoints.net/views/partials/form-fullsearch.php:22
 msgid "The Unicode name (or parts) of the character"
 msgstr ""
 
-#: codepoints.net/views/partials/form-fullsearch.php:24
-msgid "Decimal:"
-msgstr ""
-
-#: codepoints.net/views/partials/form-fullsearch.php:26
-msgid "The decimal position of the codepoint"
-msgstr ""
-
-#: codepoints.net/views/partials/form-fullsearch.php:41
+#: codepoints.net/views/partials/form-fullsearch.php:36
 msgid "any"
 msgstr ""
 
-#: codepoints.net/views/partials/form-fullsearch.php:42
+#: codepoints.net/views/partials/form-fullsearch.php:37
 msgid "yes"
 msgstr ""
 
-#: codepoints.net/views/partials/form-fullsearch.php:43
+#: codepoints.net/views/partials/form-fullsearch.php:38
 msgid "no"
 msgstr ""
 
@@ -707,11 +706,11 @@ msgstr ""
 msgid ""
 "The content on this website reflects the information found in<br>\n"
 "      <em>The Unicode Consortium.</em> The Unicode Standard, Version %s,\n"
-"      (Mountain View, CA: The Unicode Consortium, 2012. ISBN "
-"978-1-936213-02-3)<br>\n"
+"      (Mountain View, CA: The Unicode Consortium, 2022. ISBN "
+"978-1-936213-32-0)<br>\n"
 "      %s,<br>\n"
 "      which happens to be the most relevant version of the Unicode Standard\n"
-"      as of August, 2012."
+"      as of November, 2022."
 msgstr ""
 
 #: codepoints.net/views/about.php:157
@@ -960,13 +959,13 @@ msgid ""
 "be available, though."
 msgstr ""
 
-#: codepoints.net/lib/Controller/Codepoint.php:46
+#: codepoints.net/lib/Controller/Codepoint.php:48
 #, php-format
 msgid ""
 "%s, codepoint U+%04X %s in Unicode, is not located in any block. It is a %s."
 msgstr ""
 
-#: codepoints.net/lib/Controller/Codepoint.php:54
+#: codepoints.net/lib/Controller/Codepoint.php:56
 #, php-format
 msgid ""
 "%s, codepoint U+%04X %s in Unicode, is located in the block “%s”. It belongs "
@@ -1073,8 +1072,8 @@ msgstr ""
 #: codepoints.net/lib/Controller/Plane.php:30
 #, php-format
 msgid ""
-"The Unicode plane %s contains %s blocks and spans codepoints from U+%04X to U"
-"+%04X."
+"The Unicode plane %s contains %s blocks and spans codepoints from U+%04X to "
+"U+%04X."
 msgstr ""
 
 #: codepoints.net/lib/Controller/Index.php:20
@@ -1559,459 +1558,463 @@ msgid "kAlternateMorohashi"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:115
-msgid "Big Five Mapping"
+msgid "kAlternateTotalStrokes"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:116
-msgid "CCCII Mapping"
+msgid "Big Five Mapping"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:117
-msgid "CNS 11643-1986 Mapping"
+msgid "CCCII Mapping"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:118
-msgid "CNS 11643-1992 Mapping"
+msgid "CNS 11643-1986 Mapping"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:119
-msgid "Cangjie Input Code"
+msgid "CNS 11643-1992 Mapping"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:120
-msgid "kCantonese"
+msgid "Cangjie Input Code"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:121
-msgid "kCheungBauer"
+msgid "kCantonese"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:122
-msgid "kCheungBauerIndex"
+msgid "kCheungBauer"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:123
-msgid "kCihaiT"
+msgid "kCheungBauerIndex"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:124
-msgid "Compatibility Variant"
+msgid "kCihaiT"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:125
-msgid "kCowles"
+msgid "Compatibility Variant"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:126
-msgid "kDaeJaweon"
+msgid "kCowles"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:127
-msgid "Unihan Definition"
+msgid "kDaeJaweon"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:128
-msgid "kEACC"
+msgid "Unihan Definition"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:129
-msgid "kFenn"
+msgid "kEACC"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:130
-msgid "kFennIndex"
+msgid "kFenn"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:131
-msgid "kFourCornerCode"
+msgid "kFennIndex"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:132
-msgid "kFrequency"
+msgid "kFourCornerCode"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:133
-msgid "kGB0"
+msgid "kFrequency"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:134
-msgid "kGB1"
+msgid "kGB0"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:135
-msgid "kGB3"
+msgid "kGB1"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:136
-msgid "kGB5"
+msgid "kGB3"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:137
-msgid "kGB7"
+msgid "kGB5"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:138
-msgid "kGB8"
+msgid "kGB7"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:139
-msgid "kGradeLevel"
+msgid "kGB8"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:140
-msgid "kGSR"
+msgid "kGradeLevel"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:141
-msgid "kHangul"
+msgid "kGSR"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:142
-msgid "kHanYu"
+msgid "kHangul"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:143
-msgid "kHanyuPinlu"
+msgid "kHanYu"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:144
-msgid "kHanyuPinyin"
+msgid "kHanyuPinlu"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:145
-msgid "kHDZRadBreak"
+msgid "kHanyuPinyin"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:146
-msgid "kHKGlyph"
+msgid "kHDZRadBreak"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:147
-msgid "kHKSCS"
+msgid "kHKGlyph"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:148
-msgid "kIBMJapan"
+msgid "kHKSCS"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:149
-msgid "kIICore"
+msgid "kIBMJapan"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:150
-msgid "kIRGDaeJaweon"
+msgid "kIICore"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:151
-msgid "kIRGDaiKanwaZiten"
+msgid "kIRGDaeJaweon"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:152
-msgid "kIRGHanyuDaZidian"
+msgid "kIRGDaiKanwaZiten"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:153
-msgid "kIRGKangXi"
+msgid "kIRGHanyuDaZidian"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:154
-msgid "kIRG_GSource"
+msgid "kIRGKangXi"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:155
-msgid "kIRG_HSource"
+msgid "kIRG_GSource"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:156
-msgid "kIRG_JSource"
+msgid "kIRG_HSource"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:157
-msgid "kIRG_KPSource"
+msgid "kIRG_JSource"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:158
-msgid "kIRG_KSource"
+msgid "kIRG_KPSource"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:159
-msgid "kIRG_MSource"
+msgid "kIRG_KSource"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:160
-msgid "kIRG_SSource"
+msgid "kIRG_MSource"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:161
-msgid "kIRG_TSource"
+msgid "kIRG_SSource"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:162
-msgid "kIRG_USource"
+msgid "kIRG_TSource"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:163
-msgid "kIRG_UKSource"
+msgid "kIRG_USource"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:164
-msgid "kIRG_VSource"
+msgid "kIRG_UKSource"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:165
-msgid "kJa"
+msgid "kIRG_VSource"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:166
-msgid "kJHJ"
+msgid "kJa"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:167
-msgid "kJinmeiyoKanji"
+msgid "kJHJ"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:168
-msgid "kJoyoKanji"
+msgid "kJinmeiyoKanji"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:169
-msgid "kKoreanEducationHanja"
+msgid "kJoyoKanji"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:170
-msgid "kKoreanName"
+msgid "kKoreanEducationHanja"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:171
-msgid "kTGH"
+msgid "kKoreanName"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:172
-msgid "kJIS0213"
+msgid "kTGH"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:173
-msgid "kJapaneseKun"
+msgid "kJIS0213"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:174
-msgid "kJapaneseOn"
+msgid "kJapaneseKun"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:175
-msgid "kJis0"
+msgid "kJapaneseOn"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:176
-msgid "kJis1"
+msgid "kJis0"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:177
-msgid "kKPS0"
+msgid "kJis1"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:178
-msgid "kKPS1"
+msgid "kKPS0"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:179
-msgid "kKSC0"
+msgid "kKPS1"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:180
-msgid "kKSC1"
+msgid "kKSC0"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:181
-msgid "kKangXi"
+msgid "kKSC1"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:182
-msgid "kKarlgren"
+msgid "kKangXi"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:183
-msgid "kKorean"
+msgid "kKarlgren"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:184
-msgid "kLau"
+msgid "kKorean"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:185
-msgid "kMainlandTelegraph"
+msgid "kLau"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:186
-msgid "kMandarin"
+msgid "kMainlandTelegraph"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:187
-msgid "kMatthews"
+msgid "kMandarin"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:188
-msgid "kMeyerWempe"
+msgid "kMatthews"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:189
-msgid "kMorohashi"
+msgid "kMeyerWempe"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:190
-msgid "kNelson"
+msgid "kMorohashi"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:191
-msgid "Other Numeric Value"
+msgid "kNelson"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:192
-msgid "kPhonetic"
+msgid "Other Numeric Value"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:193
-msgid "Primary Numeric Value"
+msgid "kPhonetic"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:194
-msgid "kPseudoGB1"
+msgid "Primary Numeric Value"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:195
-msgid "Radical Stroke Count (Adobe Japan 1-6)"
+msgid "kPseudoGB1"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:196
-msgid "Radical Stroke Count (Japanese)"
+msgid "Radical Stroke Count (Adobe Japan 1-6)"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:197
-msgid "Radical Stroke Count (Morohashi)"
+msgid "Radical Stroke Count (Japanese)"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:198
-msgid "Radical Stroke Count (KangXi)"
+msgid "Radical Stroke Count (Morohashi)"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:199
-msgid "Radical Stroke Count (Korean)"
+msgid "Radical Stroke Count (KangXi)"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:200
-msgid "kRSMerged"
+msgid "Radical Stroke Count (Korean)"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:201
-msgid "Radical Stroke Count (Unicode)"
+msgid "kRSMerged"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:202
-msgid "kSBGY"
+msgid "Radical Stroke Count (Unicode)"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:203
-msgid "Semantic Variant"
+msgid "kSBGY"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:204
-msgid "Simplified Variant"
+msgid "Semantic Variant"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:205
-msgid "Specialized Semantic Variant"
+msgid "Simplified Variant"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:206
-msgid "Spoofing Variant"
+msgid "Specialized Semantic Variant"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:207
-msgid "Taiwanese Telegraph Code"
+msgid "Spoofing Variant"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:208
-msgid "kTang"
+msgid "kStrange"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:209
-msgid "kTGHZ2013"
+msgid "Taiwanese Telegraph Code"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:210
-msgid "Stroke Number"
+msgid "kTang"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:211
-msgid "Traditional Variant"
+msgid "kTGHZ2013"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:212
-msgid "UnihanCore2020 Set"
+msgid "Stroke Number"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:213
-msgid "Quốc ngữ Pronunciation"
+msgid "Traditional Variant"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:214
-msgid "kXHC1983"
+msgid "UnihanCore2020 Set"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:215
-msgid "kWubi"
+msgid "Quốc ngữ Pronunciation"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:216
-msgid "Xerox Code"
+msgid "kXHC1983"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:217
-msgid "z Variant"
+msgid "Xerox Code"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:218
-msgid "kRSTUnicode"
+msgid "z Variant"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:219
-msgid "kTGT_MergedSrc"
+msgid "kRSTUnicode"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:220
-msgid "kSrc_NushuDuben"
+msgid "kTGT_MergedSrc"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:221
-msgid "kReading"
+msgid "kSrc_NushuDuben"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:222
-msgid "Emoji"
+msgid "kReading"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:223
-msgid "Emoji Presentation"
+msgid "Emoji"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/properties.php:224
+msgid "Emoji Presentation"
+msgstr ""
+
+#: codepoints.net/lib/Unicode/PropertyInfo/properties.php:225
 #: codepoints.net/lib/Unicode/PropertyInfo/legend_lb.php:17
 msgid "Emoji Modifier"
 msgstr ""
 
-#: codepoints.net/lib/Unicode/PropertyInfo/properties.php:225
+#: codepoints.net/lib/Unicode/PropertyInfo/properties.php:226
 msgid "Emoji Modifier Base"
 msgstr ""
 
-#: codepoints.net/lib/Unicode/PropertyInfo/properties.php:226
+#: codepoints.net/lib/Unicode/PropertyInfo/properties.php:227
 msgid "Emoji Component"
 msgstr ""
 
-#: codepoints.net/lib/Unicode/PropertyInfo/properties.php:227
+#: codepoints.net/lib/Unicode/PropertyInfo/properties.php:228
 msgid "Extended Pictographic"
 msgstr ""
 
-#: codepoints.net/lib/Unicode/PropertyInfo/properties.php:228
+#: codepoints.net/lib/Unicode/PropertyInfo/properties.php:229
 msgid "Block"
 msgstr ""
 
@@ -2526,7 +2529,7 @@ msgid "Word Joiner"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/legend_lb.php:44
-#: codepoints.net/lib/Unicode/PropertyInfo/script.php:203
+#: codepoints.net/lib/Unicode/PropertyInfo/script.php:205
 msgid "Unknown"
 msgstr ""
 
@@ -2951,498 +2954,506 @@ msgid "Kayah Li"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:79
-msgid "Kharoshthi"
+msgid "Kawi"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:80
-msgid "Khmer"
+msgid "Kharoshthi"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:81
-msgid "Khojki"
+msgid "Khmer"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:82
-msgid "Khitan large script"
+msgid "Khojki"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:83
-msgid "Khitan small script"
+msgid "Khitan large script"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:84
-msgid "Kannada"
+msgid "Khitan small script"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:85
-msgid "Korean"
+msgid "Kannada"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:86
-msgid "Kpelle"
+msgid "Korean"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:87
-msgid "Kaithi"
+msgid "Kpelle"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:88
-msgid "Tai Tham"
+msgid "Kaithi"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:89
-msgid "Lao"
+msgid "Tai Tham"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:90
-msgid "Latin"
+msgid "Lao"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:91
-msgid "Leke"
+msgid "Latin"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:92
-msgid "Lepcha"
+msgid "Leke"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:93
-msgid "Limbu"
+msgid "Lepcha"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:94
-msgid "Linear A"
+msgid "Limbu"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:95
-msgid "Linear B"
+msgid "Linear A"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:96
-msgid "Lisu"
+msgid "Linear B"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:97
-msgid "Loma"
+msgid "Lisu"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:98
-msgid "Lycian"
+msgid "Loma"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:99
-msgid "Lydian"
+msgid "Lycian"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:100
-msgid "Mahajani"
+msgid "Lydian"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:101
-msgid "Makasar"
+msgid "Mahajani"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:102
-msgid "Mandaic"
+msgid "Makasar"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:103
-msgid "Manichaean"
+msgid "Mandaic"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:104
-msgid "Marchen"
+msgid "Manichaean"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:105
-msgid "Medefaidrin"
+msgid "Marchen"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:106
-msgid "Mende"
+msgid "Medefaidrin"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:107
-msgid "Meroitic Cursive"
+msgid "Mende"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:108
-msgid "Meroitic Hieroglyphs"
+msgid "Meroitic Cursive"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:109
-msgid "Malayalam"
+msgid "Meroitic Hieroglyphs"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:110
-msgid "Modi"
+msgid "Malayalam"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:111
-msgid "Mongolian"
+msgid "Modi"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:112
-msgid "Moon"
+msgid "Mongolian"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:113
-msgid "Mro, Mru"
+msgid "Moon"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:114
-msgid "Meitei Mayek"
+msgid "Mro, Mru"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:115
-msgid "Multani"
+msgid "Meitei Mayek"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:116
-msgid "Myanmar"
+msgid "Multani"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:117
-msgid "Nandinagari"
+msgid "Myanmar"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:118
-msgid "Old North Arabian"
+msgid "Nag Mundari"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:119
-msgid "Nabataean"
+msgid "Nandinagari"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:120
-msgid "Newa"
+msgid "Old North Arabian"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:121
-msgid "Naxi Dongba"
+msgid "Nabataean"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:122
-msgid "Naxi Geba"
+msgid "Newa"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:123
-msgid "N’Ko"
+msgid "Naxi Dongba"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:124
-msgid "Nüshu"
+msgid "Naxi Geba"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:125
-msgid "Ogham"
+msgid "N’Ko"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:126
-msgid "Ol Chiki"
+msgid "Nüshu"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:127
-msgid "Old Turkic"
+msgid "Ogham"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:128
-msgid "Oriya"
+msgid "Ol Chiki"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:129
-msgid "Osage"
+msgid "Old Turkic"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:130
-msgid "Osmanya"
+msgid "Oriya"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:131
-msgid "Old Uyghur"
+msgid "Osage"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:132
-msgid "Palmyrene"
+msgid "Osmanya"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:133
-msgid "Pau Cin Hau"
+msgid "Old Uyghur"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:134
-msgid "Proto-Cuneiform"
+msgid "Palmyrene"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:135
-msgid "Proto-Elamite"
+msgid "Pau Cin Hau"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:136
-msgid "Old Permic"
+msgid "Proto-Cuneiform"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:137
-msgid "Phags Pa"
+msgid "Proto-Elamite"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:138
-msgid "Inscriptional Pahlavi"
+msgid "Old Permic"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:139
-msgid "Psalter Pahlavi"
+msgid "Phags Pa"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:140
-msgid "Book Pahlavi"
+msgid "Inscriptional Pahlavi"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:141
-msgid "Phoenician"
+msgid "Psalter Pahlavi"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:142
-msgid "Klingon"
+msgid "Book Pahlavi"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:143
-msgid "Miao"
+msgid "Phoenician"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:144
-msgid "Inscriptional Parthian"
+msgid "Klingon"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:145
-msgid "Proto-Sinaitic"
+msgid "Miao"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:146
-msgid "Reserved for private use (start)"
+msgid "Inscriptional Parthian"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:147
-msgid "Reserved for private use (end)"
+msgid "Proto-Sinaitic"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:148
-msgid "Ranjana"
+msgid "Reserved for private use (start)"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:149
-msgid "Rejang"
+msgid "Reserved for private use (end)"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:150
-msgid "Hanifi Rohingya"
+msgid "Ranjana"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:151
-msgid "Runic"
+msgid "Rejang"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:152
-msgid "Samaritan"
+msgid "Hanifi Rohingya"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:153
-msgid "Sarati"
+msgid "Runic"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:154
-msgid "Old South Arabian"
+msgid "Samaritan"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:155
-msgid "Saurashtra"
+msgid "Sarati"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:156
-msgid "Sutton SignWriting"
+msgid "Old South Arabian"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:157
-msgid "Shavian"
+msgid "Saurashtra"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:158
-msgid "Sharada"
+msgid "Sutton SignWriting"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:159
-msgid "Shuishu"
+msgid "Shavian"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:160
-msgid "Siddham"
+msgid "Sharada"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:161
-msgid "Sindhi"
+msgid "Shuishu"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:162
-msgid "Sinhala"
+msgid "Siddham"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:163
-msgid "Sogdian"
+msgid "Sindhi"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:164
-msgid "Old Sogdian"
+msgid "Sinhala"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:165
-msgid "Sora Sompeng"
+msgid "Sogdian"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:166
-msgid "Soyombo"
+msgid "Old Sogdian"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:167
-msgid "Sundanese"
+msgid "Sora Sompeng"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:168
-msgid "Syloti Nagri"
+msgid "Soyombo"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:169
-msgid "Syriac"
+msgid "Sundanese"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:170
-msgid "Tagbanwa"
+msgid "Syloti Nagri"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:171
-msgid "Takri"
+msgid "Syriac"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:172
-msgid "Tai Le"
+msgid "Tagbanwa"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:173
-msgid "New Tai Lue"
+msgid "Takri"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:174
-msgid "Tangut"
+msgid "Tai Le"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:175
-msgid "Tamil"
+msgid "New Tai Lue"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:176
-msgid "Tai Viet"
+msgid "Tangut"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:177
-msgid "Telugu"
+msgid "Tamil"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:178
-msgid "Tifinagh"
+msgid "Tai Viet"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:179
-msgid "Tagalog"
+msgid "Telugu"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:180
-msgid "Thaana"
+msgid "Tifinagh"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:181
-msgid "Thai"
+msgid "Tagalog"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:182
-msgid "Tibetan"
+msgid "Thaana"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:183
-msgid "Tirhuta"
+msgid "Thai"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:184
-msgid "Tangsa"
+msgid "Tibetan"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:185
-msgid "Toto"
+msgid "Tirhuta"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:186
-msgid "Ugaritic"
+msgid "Tangsa"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:187
-msgid "Vai"
+msgid "Toto"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:188
-msgid "Vithkuqi"
+msgid "Ugaritic"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:189
-msgid "Warang Citi"
+msgid "Vai"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:190
-msgid "Wancho"
+msgid "Vithkuqi"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:191
-msgid "Woleai"
+msgid "Warang Citi"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:192
-msgid "Old Persian"
+msgid "Wancho"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:193
-msgid "Cuneiform"
+msgid "Woleai"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:194
-msgid "Yezidi"
+msgid "Old Persian"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:195
-msgid "Yi"
+msgid "Cuneiform"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:196
-msgid "Zanabazar Square"
+msgid "Yezidi"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:197
-msgid "Inherited"
+msgid "Yi"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:198
-msgid "Mathematical notation"
+msgid "Zanabazar Square"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:199
-msgid "Symbols (Emoji variant)"
+msgid "Inherited"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:200
-msgid "Symbols"
+msgid "Mathematical notation"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:201
-msgid "Unwritten"
+msgid "Symbols (Emoji variant)"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:202
+msgid "Symbols"
+msgstr ""
+
+#: codepoints.net/lib/Unicode/PropertyInfo/script.php:203
+msgid "Unwritten"
+msgstr ""
+
+#: codepoints.net/lib/Unicode/PropertyInfo/script.php:204
 msgid "Common"
 msgstr ""
 
@@ -3750,19 +3761,19 @@ msgstr ""
 msgid "Reference rendering on Unicode.org"
 msgstr ""
 
-#: codepoints.net/lib/Unicode/CodepointInfo/OtherSites.php:30
+#: codepoints.net/lib/Unicode/CodepointInfo/OtherSites.php:31
 msgid "Wikipedia"
 msgstr ""
 
-#: codepoints.net/lib/Unicode/CodepointInfo/OtherSites.php:33
+#: codepoints.net/lib/Unicode/CodepointInfo/OtherSites.php:34
 msgid "Unihan Database"
 msgstr ""
 
-#: codepoints.net/lib/Unicode/CodepointInfo/OtherSites.php:34
+#: codepoints.net/lib/Unicode/CodepointInfo/OtherSites.php:35
 msgid "Chinese Text Project"
 msgstr ""
 
-#: codepoints.net/lib/Unicode/CodepointInfo/OtherSites.php:37
+#: codepoints.net/lib/Unicode/CodepointInfo/OtherSites.php:38
 msgid "Emojipedia"
 msgstr ""
 
@@ -3979,8 +3990,8 @@ msgstr ""
 msgid "Not a plane name"
 msgstr ""
 
-#: codepoints.net/lib/view_functions.php:72
-#: codepoints.net/lib/view_functions.php:100
+#: codepoints.net/lib/view_functions.php:77
+#: codepoints.net/lib/view_functions.php:107
 #, php-format
 msgid "U+%04X to U+%04X"
 msgstr ""

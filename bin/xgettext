@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# this is a super-wasteful way to get a simple executable runnable by
+# installing a whole OS. Can be removed as soon as xgettext 0.21.1 is
+# available more broadly.
+
+IMAGE=codepoints_xgettext
+
+docker image ls --all | grep -q "$IMAGE" || {
+    (
+    cd "$(dirname "$0")"
+    cat <<DOCKERFILE > Dockerfile.xgettext
+FROM alpine:edge
+RUN apk add --no-cache gettext
+WORKDIR /app
+ENTRYPOINT ["xgettext"]
+DOCKERFILE
+    docker build --quiet --tag "$IMAGE:latest" --file Dockerfile.xgettext .
+    rm -f Dockerfile.xgettext
+    )
+}
+
+docker run --rm -it -v "$PWD:/app" "$IMAGE" "$@"
