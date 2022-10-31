@@ -16,12 +16,11 @@ class AssetHandler {
 
     public function __construct() {
         $manifest_path = dirname(dirname(__DIR__)).'/static/manifest.json';
-        if (! DEBUG && ! is_file($manifest_path)) {
+        if (! is_file($manifest_path)) {
             Analog::warning('AssetHandler: no manifest found');
+            return;
         }
-        if (! DEBUG) {
-            $this->manifest = json_decode($manifest_path, true);
-        }
+        $this->manifest = json_decode($manifest_path, true, 512, JSON_THROW_ON_ERROR);
     }
 
     public function getUrl(string $path): string {
