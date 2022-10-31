@@ -9,14 +9,7 @@ import IconShuffle from '@fortawesome/fontawesome-free/svgs/solid/shuffle.svg?ra
 @customElement('cp-navigation')
 export class CpNavigation extends LitElement {
   static styles = css`
-    ul {
-      list-style: none;
-      margin: 0;
-      padding-left: 0;
-      display: flex;
-      gap: .5em;
-    }
-    li {
+    :host > slot > * {
       width: 25%;
       flex-grow: 1;
     }
@@ -59,13 +52,10 @@ export class CpNavigation extends LitElement {
       ${unsafeSVG(IconShuffle)}
       <span class="meta">${_('Random')}</span></a>`;
     return html`
-    <nav>
-      <ul>
-        <li><slot name="home">${home}</slot></li>
-        <li><slot name="prev">${prev}</slot></li>
-        <li><slot name="up">${up}</slot></li>
-        <li><slot name="next">${next}</slot></li>
-      </ul>
-    </nav>`;
+      <slot name="home">${home}</slot>
+      <slot name="prev">${prev}</slot>
+      <slot name="up">${up}</slot>
+      <slot name="next">${next}</slot>
+    `;
   }
 }

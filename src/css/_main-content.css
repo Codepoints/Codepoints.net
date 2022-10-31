@@ -2,6 +2,10 @@
   display: flex;
   flex-direction: column;
 }
+
+/**
+ * on mobile devices move navigation to bottom
+ */
 @media (--lte-mobile) {
   [data-barba="container"] > cp-navigation {
     order: 3;
@@ -11,10 +15,15 @@
 cp-navigation {
   position: sticky;
   z-index: 1;
-  display: block;
   background: var(--color-back);
   font-family: var(--font-family-alternate);
   font-size: calc( 1em / var(--font-mod) );
+  display: flex;
+  gap: .5em;
+}
+cp-navigation > * {
+  width: 25%;
+  flex-grow: 1;
 }
 @media (--lte-mobile) {
   cp-navigation {
