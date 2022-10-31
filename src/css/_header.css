@@ -2,8 +2,7 @@
   margin-bottom: 1em;
 }
 
-.page-header nav ul,
-.sub-nav ul {
+.page-header nav ul {
   list-style: none;
   padding-left: 0;
   display: flex;
@@ -11,71 +10,11 @@
   margin: 0;
 }
 
-.page-header nav a,
-.sub-nav a {
+.page-header nav a {
   display: block;
   padding: .5em 1em;
 }
 
 .main-nav a svg {
   vertical-align: middle;
-}
-
-.sub-nav {
-  margin: 0 auto;
-  position: sticky;
-  top: 0;
-  z-index: 1;
-}
-
-.sub-nav__listitem {
-  flex-grow: 0;
-  flex-basis: 33.33%;
-  display: flex;
-}
-
-.sub-nav__listitem + .sub-nav__listitem {
-  margin-left: -1px;
-}
-
-.sub-nav .sub-nav__listitem a {
-  border: 1px solid var(--color-input-bord);
-  padding: .25em .5em .25em .5em;
-  background-color: var(--color-back);
-  display: block;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.sub-nav__listitem a:before {
-  content: "";
-  display: inline-block;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-color: transparent;
-  vertical-align: bottom;
-}
-
-.sub-nav__listitem.prev a:before {
-  border-width: 10px 20px 10px 0;
-  border-right-color: var(--color-input-bord);
-  margin-right: .5em;
-}
-
-.sub-nav__listitem.up a:before {
-  border-width: 0 10px 20px 10px;
-  border-bottom-color: var(--color-input-bord);
-  margin-right: .5em;
-}
-
-.sub-nav__listitem.next a:before {
-  border-width: 10px 0 10px 20px;
-  border-left-color: var(--color-input-bord);
-  margin-right: .5em;
-}
-
-.sub-nav .bl .meta,
-.sub-nav .pl .meta {
-  display: none;
 }
