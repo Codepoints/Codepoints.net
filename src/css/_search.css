@@ -19,3 +19,7 @@ cp-search-freeform {
 cp-search-freeform > label {
   flex-basis: 120px;
 }
+
+cp-searchform button[type="submit"] {
+  font-size: 2em;
+}
