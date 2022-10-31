@@ -31,6 +31,15 @@ cp-navigation .title {
   display: none;
 }
 
+cp-navigation .cp .title {
+  display: block;
+  max-height: 1.5em;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  direction: rtl; /* cf. https://davidwalsh.name/css-ellipsis-left a hack to show the ellipsis on the beginning of the string. We do this to prevent unhelpful runs of "LATIN CAPITAL LETT...". */
+}
+
 cp-navigation a {
   display: flex;
   flex-direction: column;
