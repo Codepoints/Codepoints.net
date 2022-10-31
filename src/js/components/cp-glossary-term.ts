@@ -96,7 +96,7 @@ export class CpGlossaryTerm extends LitElement {
   _showInfo(info) {
     fillGlossaryCache()
       .then(() => {
-        info.innerHTML = glossaryCache[this.term] || `nothing found`;
+        info.innerHTML = glossaryCache[this.term] || _('no information found for this term');
         info.hidden = false;
       });
   }

@@ -14,7 +14,7 @@ export class CpNavigation extends LitElement {
       margin: 0;
       padding-left: 0;
       display: flex;
-      gap: 1px;
+      gap: .5em;
     }
     li {
       width: 25%;
