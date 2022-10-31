@@ -20,4 +20,4 @@ DOCKERFILE
     )
 }
 
-docker run --rm -it -v "$PWD:/app" "$IMAGE" "$@"
+docker run --rm -it -v "$PWD:/app" --user "$(id -u):$(id -g)" "$IMAGE" "$@"
