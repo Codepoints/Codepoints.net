@@ -24,6 +24,7 @@ init(document.querySelector('[data-barba="container"]'));
 
 barba.init({
   prefetchIgnore: '/search',
+  prevent: ({ event }) => event.defaultPrevented,
   transitions: [{
     name: 'baseline',
     sync: true,

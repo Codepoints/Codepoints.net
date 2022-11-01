@@ -18,7 +18,6 @@ export class CpLanguage extends LitElement {
       label: el.title,
       url: el.href,
     }));
-    console.log(this.languages);
   }
 
   render() {
