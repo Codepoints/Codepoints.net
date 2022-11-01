@@ -24,7 +24,7 @@ export class CpLanguage extends LitElement {
   render() {
     return html`
     <label>
-      choose language:
+      ${_('choose language:')}
       <select @change="${this.choose}">
         ${this.languages.map(lang =>
           html`<option .selected="${lang.iso === this.currentLanguage}" value="${lang.url}">${lang.label}</option>`)}
