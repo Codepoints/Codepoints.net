@@ -1,12 +1,9 @@
-import { LitElement, css, html } from 'lit';
+import { LitElement, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { gettext as _ } from '../_i18n.ts';
 
 @customElement('cp-darkmode')
 export class CpDarkmode extends LitElement {
-  static styles = css`
-  `;
-
   @property()
   isDark = null;
 
@@ -46,6 +43,5 @@ export class CpDarkmode extends LitElement {
       root.classList.add('force-dark');
       document.cookie = 'force_mode=dark;SameSite=Lax';
     }
-    console.log(this.isDark);
   }
 }
