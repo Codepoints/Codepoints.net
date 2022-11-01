@@ -11,6 +11,7 @@ import { CpSearchform } from './components/cp-searchform.ts';
 import { CpSearchBoolean } from './components/cp-search-boolean.ts';
 import { CpSearchProperty } from './components/cp-search-property.ts';
 import { CpSuccess } from './components/cp-success.ts';
+import { CpWizard } from './components/cp-wizard.ts';
 
 document.documentElement.classList.add('js');
 

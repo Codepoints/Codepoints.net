@@ -44,6 +44,7 @@ include 'partials/header.php' ?>
   <?php else: ?>
     <p><?=_q('You search for a specific character? Answer the following questions and we try to figure out candidates.')?></p>
   <?php endif ?>
+  <cp-wizard></cp-wizard>
 <?php else: ?>
   <?php include 'partials/form-fullsearch.php' ?>
 <?php endif ?>
