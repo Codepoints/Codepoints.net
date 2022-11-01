@@ -36,6 +36,9 @@ export class CpGlossaryTerm extends LitElement {
     }
     .icon {
       margin-left: .5em;
+      background: none;
+      border: none;
+      padding: 0;
     }
     .icon svg {
       width: 1.2em;
@@ -73,7 +76,7 @@ export class CpGlossaryTerm extends LitElement {
   render() {
     return html`
     <slot></slot>
-    <span @click=${this._toggleInfo} class="icon" tabindex="0" aria-label="${_('show definition')}">${unsafeSVG(IconCircleQuestion)}</span>
+    <button type="button" @click=${this._toggleInfo} class="icon" tabindex="0" aria-label="${_('show definition')}">${unsafeSVG(IconCircleQuestion)}</button>
     <div hidden class="info"></div>`;
   }
 
