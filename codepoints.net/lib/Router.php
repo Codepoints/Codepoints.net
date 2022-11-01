@@ -79,6 +79,10 @@ class Router {
 
         if ($current_handler) {
             static::$env['current_url'] = $current_url;
+            $query = http_build_query($_GET);
+            if ($query) {
+                static::$env['current_url'] .= '?' . $query;
+            }
             return $current_handler($match, static::$env);
         }
 

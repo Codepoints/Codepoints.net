@@ -6,6 +6,7 @@ import { initGlossary } from './_glossary.js';
 import { CpCopy } from './components/cp-copy.ts';
 import { CpDarkmode } from './components/cp-darkmode.ts';
 import { CpGlossaryTerm } from './components/cp-glossary-term.ts';
+import { CpLanguage } from './components/cp-language.ts';
 import { CpNavigation } from './components/cp-navigation.ts';
 import { CpSearchform } from './components/cp-searchform.ts';
 import { CpSearchBoolean } from './components/cp-search-boolean.ts';

@@ -11,7 +11,7 @@ class Translator {
 
     private ?string $language = null;
 
-    public const SUPPORTED_LANGUAGES = ['de', 'en', 'es', 'pl'];
+    public const SUPPORTED_LANGUAGES = ['en', 'de', 'es', 'pl'];
 
     private ?Translations $translations = null;
 
@@ -78,6 +78,17 @@ class Translator {
         }
 
         return $this->language;
+    }
+
+    public static function getLanguageName(string $lang) : string {
+        switch($lang) {
+            case 'en': return 'english';
+            case 'de': return 'deutsch';
+            case 'es': return 'español';
+            case 'pl': return 'polski';
+            default:
+                return $lang;
+        }
     }
 
 }

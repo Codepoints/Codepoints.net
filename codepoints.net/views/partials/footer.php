@@ -28,7 +28,6 @@
             <?=_q('About')?></a></li>
         </ul>
       </nav>
-      <?php include 'form-choose-language.php' ?>
       <?php include 'form-quicksearch.php' ?>
     </footer>
     <?php include 'tracker.php' ?>
