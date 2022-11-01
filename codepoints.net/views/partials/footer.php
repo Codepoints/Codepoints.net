@@ -29,7 +29,6 @@
         </ul>
       </nav>
       <?php include 'form-choose-language.php' ?>
-      <?php include 'form-darkmode.php' ?>
       <?php include 'form-quicksearch.php' ?>
     </footer>
     <?php include 'tracker.php' ?>
