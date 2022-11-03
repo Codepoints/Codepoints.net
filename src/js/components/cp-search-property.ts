@@ -51,16 +51,16 @@ export class CpSearchProperty extends LitElement {
   `;
 
   @property()
-  checked: number = 0;
+  declare checked = 0;
 
   @property()
-  all: number = 0;
+  declare all = 0;
 
   @property()
-  elements;
+  declare elements: Array;
 
-  constructor() {
-    super();
+  connectedCallback() {
+    super.connectedCallback();
     this.all = this.querySelectorAll('input').length;
     this.checked = this.querySelectorAll('input:checked').length;
     this.elements = Array.prototype.map.call(this.querySelectorAll('p'), p => {

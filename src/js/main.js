@@ -3,6 +3,8 @@ import 'vite/modulepreload-polyfill';
 import barba from '@barba/core';
 import anime from 'animejs/lib/anime.es.js';
 import { initGlossary } from './_glossary.js';
+
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { CpCopy } from './components/cp-copy.ts';
 import { CpDarkmode } from './components/cp-darkmode.ts';
 import { CpGlossaryTerm } from './components/cp-glossary-term.ts';
@@ -13,6 +15,7 @@ import { CpSearchBoolean } from './components/cp-search-boolean.ts';
 import { CpSearchProperty } from './components/cp-search-property.ts';
 import { CpSuccess } from './components/cp-success.ts';
 import { CpWizard } from './components/cp-wizard.ts';
+/* eslint-enable @typescript-eslint/no-unused-vars */
 
 document.documentElement.classList.add('js');
 

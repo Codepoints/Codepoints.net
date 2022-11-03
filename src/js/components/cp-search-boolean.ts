@@ -52,13 +52,13 @@ export class CpSearchBoolean extends LitElement {
   `;
 
   @property()
-  select: HTMLSelectElement;
+  declare select: HTMLSelectElement;
 
   @property()
-  value: string = '';
+  declare value = '';
 
-  constructor() {
-    super();
+  connectedCallback() {
+    super.connectedCallback();
     this.select = this.querySelector('select');
     this.value = this.select.value;
     this.select.disabled = ! this.value;

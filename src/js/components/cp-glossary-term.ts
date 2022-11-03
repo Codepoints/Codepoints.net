@@ -4,7 +4,7 @@ import {unsafeSVG} from 'lit/directives/unsafe-svg.js';
 import {gettext as _} from '../_i18n.ts';
 import IconCircleQuestion from '@fortawesome/fontawesome-free/svgs/regular/circle-question.svg?raw';
 
-var glossaryCache;
+let glossaryCache;
 
 
 function fillGlossaryCache() {
@@ -60,10 +60,11 @@ export class CpGlossaryTerm extends LitElement {
   `;
 
   @property()
-  term: string = '';
+  term = '';
 
   connectedCallback() {
     super.connectedCallback();
+    this.term = this.getAttribute('term') || this.innerText;
     this._handleDocClick = this._handleDocClick.bind(this);
     document.addEventListener('click', this._handleDocClick);
   }
@@ -87,7 +88,7 @@ export class CpGlossaryTerm extends LitElement {
     }
   }
 
-  _toggleInfo(event) {
+  _toggleInfo() {
     const info = this.renderRoot.querySelector('.info');
     if (info.hidden) {
       this._showInfo(info);
@@ -106,10 +107,5 @@ export class CpGlossaryTerm extends LitElement {
 
   _hideInfo(info) {
     info.hidden = true;
-  }
-
-  constructor() {
-    super();
-    this.term = this.getAttribute('term') || this.innerText;
   }
 }

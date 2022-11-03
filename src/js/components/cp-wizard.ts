@@ -20,7 +20,9 @@ export class CpQuestion extends LitElement {
 
   constructor(id, text, answers) {
     super();
+    /* eslint-disable wc/no-constructor-attributes */
     this.id = id;
+    /* eslint-enable wc/no-constructor-attributes */
     this.text = text;
     this.prev = null;
     this.next = {};
@@ -92,14 +94,16 @@ export class CpQuestion extends LitElement {
       });
     }
   }
-};
+}
 
 
+/* eslint-disable @typescript-eslint/no-unused-vars */
 const q_swallow = new CpQuestion('swallow',
   _('What’s the airspeed velocity of an unladen swallow?'), {
     1: _('An African, or'),
     2: _('A European Swallow?')
 });
+/* eslint-enable @typescript-eslint/no-unused-vars */
 
 const q_region = new CpQuestion('region',
   _('Where does the character appear usually?'), {
@@ -283,12 +287,13 @@ export class CpWizard extends LitElement {
       </p>`;
   }
 
-  finish(event) {
+  finish() {
     const payload = { _wizard: 1, };
     let q = this.lastAnsweredQuestion;
     do {
       payload[q.id] = q.selected;
-    } while (q = q.prev);
+      q = q.prev;
+    } while (q);
     this.loadResults = true;
     window.location.href = `/search?${(new URLSearchParams(payload)).toString()}`;
   }
