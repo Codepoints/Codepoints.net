@@ -49,7 +49,7 @@ codepoints.net/views/api.html: openapi.yml
 	./node_modules/.bin/redoc-cli bundle "$<"
 	mv redoc-static.html "$@"
 
-test: test-php test-codeception
+test: test-php test-js test-codeception
 .PHONY: test
 
 test-php: test-phpcs test-php-psalm
@@ -62,6 +62,10 @@ test-phpcs:
 test-php-psalm:
 	@./codepoints.net/vendor/bin/psalm --show-info=true
 .PHONY: test-php-psalm
+
+test-js:
+	@npx eslint src/js/
+.PHONY: test-js
 
 test-codeception:
 	@./codepoints.net/vendor/bin/codecept run
