@@ -5,7 +5,7 @@ import {gettext as _} from '../_i18n.ts';
 @customElement('cp-copy')
 export class CpCopy extends LitElement {
   @property()
-  content = '';
+  declare content = '';
 
   render() {
     return html`<slot @click="${this._copy_content}">copy</slot>`;

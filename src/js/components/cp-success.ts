@@ -34,7 +34,7 @@ export class CpSuccess extends LitElement {
   `;
 
   @property()
-  duration: int = 1000;
+  declare duration: int;
 
   render() {
     return html`<slot></slot>`;
@@ -42,6 +42,9 @@ export class CpSuccess extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
+    if (! this.duration) {
+      this.duration = 1000;
+    }
     this.style.animationDuration = this.duration + 'ms';
     window.setTimeout(() => this.remove(), this.duration);
   }

@@ -5,7 +5,7 @@ import { gettext as _ } from '../_i18n.ts';
 @customElement('cp-darkmode')
 export class CpDarkmode extends LitElement {
   @property()
-  isDark = null;
+  declare isDark = null;
 
   constructor() {
     super();

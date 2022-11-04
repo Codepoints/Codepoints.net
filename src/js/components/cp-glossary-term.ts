@@ -60,7 +60,7 @@ export class CpGlossaryTerm extends LitElement {
   `;
 
   @property()
-  term = '';
+  declare term = '';
 
   connectedCallback() {
     super.connectedCallback();

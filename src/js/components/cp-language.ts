@@ -5,10 +5,10 @@ import { gettext as _ } from '../_i18n.ts';
 @customElement('cp-language')
 export class CpLanguage extends LitElement {
   @property()
-  currentLanguage : string;
+  declare currentLanguage : string;
 
   @property()
-  languages : Array = [];
+  declare languages : Array = [];
 
   constructor() {
     super();

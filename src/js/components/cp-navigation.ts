@@ -1,6 +1,6 @@
 import { LitElement, css, html } from 'lit';
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
-import { customElement } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 import { gettext as _ } from '../_i18n.ts';
 import IconMagnifyingGlass from '@fortawesome/fontawesome-free/svgs/solid/magnifying-glass.svg?raw';
 import IconShuffle from '@fortawesome/fontawesome-free/svgs/solid/shuffle.svg?raw';
