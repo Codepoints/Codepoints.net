@@ -4,6 +4,7 @@ import { customElement, property } from 'lit/decorators.js';
 import { gettext as _ } from '../_i18n.ts';
 import IconMagnifyingGlass from '@fortawesome/fontawesome-free/svgs/solid/magnifying-glass.svg?raw';
 import IconShuffle from '@fortawesome/fontawesome-free/svgs/solid/shuffle.svg?raw';
+import { CpMenu } from './cp-menu.ts';
 
 @customElement('cp-navigation')
 export class CpNavigation extends LitElement {
@@ -38,6 +39,9 @@ export class CpNavigation extends LitElement {
     }
   `;
 
+  @property()
+  declare menu: CpMenu;
+
   render() {
     const home = html`<a href="/">
       <span class="meta">${_('Home')}</span></a>`;
@@ -51,10 +55,19 @@ export class CpNavigation extends LitElement {
       ${unsafeSVG(IconShuffle)}
       <span class="meta">${_('Random')}</span></a>`;
     return html`
-      <slot name="home">${home}</slot>
+      <slot name="home" @click="${this.showMenu}">${home}</slot>
       <slot name="prev">${prev}</slot>
       <slot name="up">${up}</slot>
       <slot name="next">${next}</slot>
     `;
+  }
+
+  showMenu(event) {
+    event.preventDefault();
+    if (! this.menu) {
+      this.menu = new CpMenu();
+      document.body.appendChild(this.menu);
+    }
+    window.requestAnimationFrame(this.menu.show.bind(this.menu));
   }
 }
