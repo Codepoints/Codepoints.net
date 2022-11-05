@@ -45,12 +45,12 @@ export class CpNavigation extends LitElement {
   render() {
     const home = html`<a href="/">
       <span class="meta">${_('Home')}</span></a>`;
-    const prev = html`<a href="/planes">
-      <svg width="16" height="16"><svg viewBox="194 97 1960 1960" width="100%" height="100%"><use xlink:href="/static/images/unicode-logo-framed.svg#unicode" width="16" height="16"/></svg></svg>
-      <span class="meta">${_('Code Points')}</span></a>`;
-    const up = html`<a href="/search">
+    const prev = html`<a href="/search">
       ${unsafeSVG(IconMagnifyingGlass)}
       <span class="meta">${_('Search')}</span></a>`;
+    const up = html`<a href="/planes">
+      <svg width="16" height="16"><svg viewBox="194 97 1960 1960" width="100%" height="100%"><use xlink:href="/static/images/unicode-logo-framed.svg#unicode" width="16" height="16"/></svg></svg>
+      <span class="meta">${_('All Planes')}</span></a>`;
     const next = html`<a href="/random">
       ${unsafeSVG(IconShuffle)}
       <span class="meta">${_('Random')}</span></a>`;
