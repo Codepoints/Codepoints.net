@@ -21,9 +21,6 @@ include 'partials/header.php'; ?>
             <stop stop-color="white" stop-opacity="0.0" offset=".8" />
             <stop stop-color="black" stop-opacity="0.2" offset="1" />
           </radialGradient>
-          <desc><?=_q('This is an interactive graphic of the world. You need an
-                SVG-enabled browser to use it. (SVG-enabled browsers are
-                Firefox, Opera, Google Chrome, Safari, and IE 9 or higher.)')?></desc>
         </defs>
         <circle cx="50%" cy="50%" r="50%" style="cursor: move" />
         <circle id="athmo" cx="50%" cy="50%" r="50%" style="pointer-events: none; fill: url(#reflect)" />
