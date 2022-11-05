@@ -39,6 +39,7 @@
   --color-link-hover: var(--burgundy);
   --color-hilite: var(--generic-viridian);
 
+  --hsl-highlight: 0, 0%, 100%;
   --hsl-shadow: 40, 20%, 10%;
 
   color-scheme: light;
@@ -56,7 +57,11 @@
   --color-input-bord: #777777;
 
   --color-back-bright: #000000;
-  --color-back-dim: #111111;
+  --color-back-dim: #272529;
+
+  --color-border: #444444;
+  --color-border-medium: #555555;
+  --color-border-light: var(--color-back-dim);
 
   --color-text: var(--alabaster);
   --color-back: var(--eerie-black);
@@ -65,6 +70,8 @@
   --color-hilite: var(--burgundy);
 
   --color-shadow: #fff3;
+
+  --hsl-highlight: 0, 0%, 0%;
 
   color-scheme: dark;
 }
@@ -84,6 +91,10 @@
     --color-back-bright: #000000;
     --color-back-dim: #272529;
 
+    --color-border: #444444;
+    --color-border-medium: #555555;
+    --color-border-light: var(--color-back-dim);
+
     --color-text: var(--alabaster);
     --color-back: var(--eerie-black);
     --color-link: var(--bottle-green);
@@ -91,6 +102,8 @@
     --color-hilite: var(--burgundy);
 
     --color-shadow: #fff3;
+
+    --hsl-highlight: 0, 0%, 0%;
 
     color-scheme: dark;
   }

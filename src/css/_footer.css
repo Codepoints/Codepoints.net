@@ -1,6 +1,16 @@
 .page-footer {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-top: 1px solid var(--color-border-light);
+}
+
+.page-footer > * {
   max-width: 65rem;
-  margin: 1em auto;
+  margin: 0 auto;
+}
+
+.page-footer > * + * {
+  margin-top: 1rem;
 }
 
 .page-footer ul {
@@ -9,11 +19,13 @@
   display: flex;
   flex-wrap: wrap;
   margin: 0;
+  gap: 2rem;
 }
 
 .page-footer ul a {
   display: block;
-  padding: .5em 1em;
+  padding: .5em;
+  margin: -.5rem;
 }
 
 .page-footer a svg {

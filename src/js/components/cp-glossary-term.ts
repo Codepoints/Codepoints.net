@@ -45,6 +45,9 @@ export class CpGlossaryTerm extends LitElement {
       height: 1.2em;
       vertical-align: top;
     }
+    .icon path {
+      fill: currentColor;
+    }
     .info {
       position: absolute;
       z-index: 1;
