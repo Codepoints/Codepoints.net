@@ -3,6 +3,7 @@ import {customElement, property} from 'lit/decorators.js';
 import {unsafeSVG} from 'lit/directives/unsafe-svg.js';
 import IconBars from '@fortawesome/fontawesome-free/svgs/solid/bars.svg?raw';
 import { gettext as _ } from '../_i18n.ts';
+import { mixinBackdropClose } from '../_mixins.ts';
 
 @customElement('cp-search-property')
 export class CpSearchProperty extends LitElement {
@@ -102,7 +103,7 @@ export class CpSearchProperty extends LitElement {
         <slot name="desc"></slot>
         &nbsp;(${this.checked}/${this.all})
       </button>
-      <dialog @close="${this._onclose}" @cancel="${this._onclose}">
+      <dialog @close="${this._onclose}" @cancel="${this._onclose}" @click="${mixinBackdropClose(this._close.bind(this))}">
         <button @click="${this._close}">${_('close')}</button>
         <button @click="${this._selectAll}">${_('select all')}</button>
         <button @click="${this._deselectAll}">${_('deselect all')}</button>

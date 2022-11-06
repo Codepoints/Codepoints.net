@@ -40,6 +40,6 @@ function _get(string $name) : string {
     <label slot="desc"><?= q(array_get($info->properties, $cat, $cat))?></label>
   </cp-search-boolean>
   <?php endforeach?>
-  <p class="submitset"><button type="submit"><span><?=__('search')?></span></button></p>
+  <p class="submitset"><button type="submit"><?=__('search')?></button></p>
 </form>
 </cp-searchform>

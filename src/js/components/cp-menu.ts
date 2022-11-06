@@ -3,6 +3,7 @@ import { customElement } from 'lit/decorators.js';
 import {unsafeSVG} from 'lit/directives/unsafe-svg.js';
 import IconXMark from '@fortawesome/fontawesome-free/svgs/solid/xmark.svg?raw';
 import { gettext as _ } from '../_i18n.ts';
+import { mixinBackdropClose } from '../_mixins.ts';
 
 @customElement('cp-menu')
 export class CpMenu extends LitElement {
@@ -57,7 +58,7 @@ export class CpMenu extends LitElement {
   render() {
     const query = (new URLSearchParams(location.search)).get('q') || '';
     return html`
-    <dialog>
+    <dialog @click="${mixinBackdropClose(this.close.bind(this))}">
       <button type="button" class="close" @click="${this.close}">
         ${unsafeSVG(IconXMark.replace('<svg ', '<svg width="42px" height="42px" ').replace('<path ', '<path fill="currentColor" '))}
         <span>${_('close')}</span>
