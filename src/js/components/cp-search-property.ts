@@ -55,11 +55,17 @@ export class CpSearchProperty extends LitElement {
     .selected svg {
       fill: var(--color-success);
     }
+    dialog[open] {
+      width: max-content;
+    }
     dialog[open] > div {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       flex-wrap: wrap;
-      max-height: 400px;
+      gap: 1rem;
+    }
+    dialog[open] > div > * {
+      margin: 0;
     }
     dialog[open]::backdrop {
       backdrop-filter: blur(1px) grayscale(100%);
