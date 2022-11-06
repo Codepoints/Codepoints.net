@@ -93,8 +93,8 @@ cp-navigation .ln svg {
 }
 
 .main--index > * {
-  background: hsla(var(--hsl-highlight), .3);
-  box-shadow: 0 0 10px 10px hsla(var(--hsl-highlight), .3);
+  background: hsla(var(--hsl-backlight), .3);
+  box-shadow: 0 0 10px 10px hsla(var(--hsl-backlight), .3);
 }
 
 .main--index blockquote {

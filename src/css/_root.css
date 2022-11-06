@@ -39,6 +39,7 @@
   --color-link-hover: var(--burgundy);
   --color-hilite: var(--generic-viridian);
 
+  --hsl-backlight: 0, 0%, 100%;
   --hsl-highlight: 0, 0%, 100%;
   --hsl-shadow: 40, 20%, 10%;
 
@@ -71,7 +72,8 @@
 
   --color-shadow: #fff3;
 
-  --hsl-highlight: 0, 0%, 0%;
+  --hsl-backlight: 0, 0%, 0%;
+  --hsl-highlight: 40,20%, 10%;
 
   color-scheme: dark;
 }
@@ -103,7 +105,8 @@
 
     --color-shadow: #fff3;
 
-    --hsl-highlight: 0, 0%, 0%;
+    --hsl-backlight: 0, 0%, 0%;
+    --hsl-highlight: 40,20%, 10%;
 
     color-scheme: dark;
   }
