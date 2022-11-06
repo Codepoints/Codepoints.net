@@ -55,6 +55,7 @@ export class CpMenu extends LitElement {
   `;
 
   render() {
+    const query = (new URLSearchParams(location.search)).get('q') || '';
     return html`
     <dialog>
       <button type="button" class="close" @click="${this.close}">
@@ -69,7 +70,7 @@ export class CpMenu extends LitElement {
         <p>
           <label>
             ${_('Search codepoints.net:')}
-            <input type="text" name="q" value="">
+            <input type="text" name="q" value="${query}">
           </label>
           <button type="submit">${_('search')}</button>
         </p>
