@@ -1,5 +1,5 @@
 /**
- * close a <dialog by clicking on the backdrop.
+ * close a <dialog> by clicking on the backdrop.
  *
  * @see https://stackoverflow.com/a/26984690/113195
  */
