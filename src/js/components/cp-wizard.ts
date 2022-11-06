@@ -1,4 +1,3 @@
-import anime from 'animejs/lib/anime.es.js';
 import {LitElement, css, html} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
 import {ref, createRef} from 'lit/directives/ref.js';
@@ -11,6 +10,25 @@ import {gettext as _} from '../_i18n.ts';
  */
 @customElement('cp-question')
 export class CpQuestion extends LitElement {
+
+  static styles = css`
+    :host {
+      display: block;
+      animation-name: cp-question;
+      animation-duration: .3s;
+      animation-iteration-count: 1;
+      animation-timing-function: cubic-bezier(0.455, 0.030, 0.015, 0.955);
+    }
+
+    @keyframes cp-question {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  `;
 
   static current: null;
 
@@ -28,6 +46,11 @@ export class CpQuestion extends LitElement {
     this.next = {};
     this.answers = answers || {};
     this.selected = null;
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.animation = (this.getAnimations() || [])[0];
   }
 
   setNextForAnswer(id, next) {
@@ -78,19 +101,13 @@ export class CpQuestion extends LitElement {
       this.dispatchEvent(event);
     } else {
       next.prev = this;
-      return anime({
-        targets: this,
-        opacity: [1, 0],
-        duration: 300,
-        easing: 'cubicBezier(0.455, 0.030, 0.015, 0.955)',
-      }).finished.then(() => {
+      let finished = Promise.resolve();
+      if (this.animation) {
+        this.animation.reverse();
+        finished = this.animation.finished;
+      }
+      finished.then(() => {
         this.replaceWith(next);
-        anime({
-          targets: next,
-          opacity: [0, 1],
-          duration: 300,
-          easing: 'cubicBezier(0.455, 0.030, 0.015, 0.955)',
-        });
       });
     }
   }
@@ -251,10 +268,10 @@ export class CpWizard extends LitElement {
   `;
 
   @property()
-  lastAnsweredQuestion = null;
+  declare lastAnsweredQuestion = null;
 
   @property()
-  loadResults = false;
+  declare loadResults = false;
 
   constructor() {
     super();

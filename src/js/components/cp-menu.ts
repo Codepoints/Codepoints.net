@@ -18,12 +18,12 @@ export class CpMenu extends LitElement {
     font-family: var(--font-family-alternate);
   }
   dialog[open] {
-    animation-name: menu;
+    animation-name: cp-menu;
     animation-duration: .5s;
     animation-iteration-count: 1;
     animation-timing-function: ease-out;
   }
-  @keyframes menu {
+  @keyframes cp-menu {
     from {
       top: -20vh;
       opacity: .333;
@@ -34,7 +34,7 @@ export class CpMenu extends LitElement {
     }
   }
   @media (prefers-reduced-motion: reduce) {
-    @keyframes menu {
+    @keyframes cp-menu {
       from {
         opacity: .5;
       }
