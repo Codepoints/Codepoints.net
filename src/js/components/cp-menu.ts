@@ -1,5 +1,7 @@
 import { LitElement, css, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
+import {unsafeSVG} from 'lit/directives/unsafe-svg.js';
+import IconXMark from '@fortawesome/fontawesome-free/svgs/solid/xmark.svg?raw';
 import { gettext as _ } from '../_i18n.ts';
 
 @customElement('cp-menu')
@@ -11,6 +13,8 @@ export class CpMenu extends LitElement {
     min-height: 50vh;
     border: none;
     padding: 2rem;
+    font-size: calc(1rem / var(--font-mod));
+    font-family: var(--font-family-alternate);
   }
   dialog[open] {
     animation-name: menu;
@@ -38,12 +42,25 @@ export class CpMenu extends LitElement {
       }
     }
   }
+  .close {
+    border: none;
+    background: none;
+    display: block;
+    width: 42px;
+    padding: 0;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
   `;
 
   render() {
     return html`
     <dialog>
-      <button type="button" @click="${this.close}">${_('close')}</button>
+      <button type="button" class="close" @click="${this.close}">
+        ${unsafeSVG(IconXMark.replace('<svg ', '<svg width="42px" height="42px" ').replace('<path ', '<path fill="currentColor" '))}
+        <span>${_('close')}</span>
+      </button>
       <a href="/">${_('go to the start page')}</a>
       <cp-darkmode></cp-darkmode>
       <cp-language></cp-language>
