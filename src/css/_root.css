@@ -68,7 +68,6 @@
   --color-back: var(--eerie-black);
   --color-link: var(--bottle-green);
   --color-link-hover: var(--generic-viridian);
-  --color-hilite: var(--burgundy);
 
   --color-shadow: #fff3;
 
@@ -101,7 +100,6 @@
     --color-back: var(--eerie-black);
     --color-link: var(--bottle-green);
     --color-link-hover: var(--generic-viridian);
-    --color-hilite: var(--burgundy);
 
     --color-shadow: #fff3;
 

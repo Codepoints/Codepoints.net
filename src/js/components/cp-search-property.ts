@@ -20,12 +20,28 @@ export class CpSearchProperty extends LitElement {
       border: 1px solid var(--color-border);
       background: linear-gradient(to bottom, var(--color-back-bright), var(--color-back-dim));
       color: var(--color-text);
-      box-shadow: inset 0 1px rgba(255,255,255,.67),
-                  0 1px rgba(255,255,255,.67),
-                  inset 1px 0 rgba(255,255,255,.33),
-                  inset -1px 0 rgba(255,255,255,.33),
-                  0 -1px 1px rgba(0,0,0,.05);
+      box-shadow: inset 0 1px hsla(var(--hsl-highlight), .67),
+                  0 1px hsla(var(--hsl-highlight), .67),
+                  inset 1px 0 hsla(var(--hsl-highlight), .33),
+                  inset -1px 0 hsla(var(--hsl-highlight), .33),
+                  0 -1px 1px hsla(var(--hsl-backlight), .05);
       text-shadow: 0 1px var(--color-back-bright);
+    }
+    button:hover,
+    button:focus {
+      border-color: var(--color-border-medium);
+      background: var(--color-back-bright);
+      background: linear-gradient(to bottom, var(--color-back-bright), var(--color-back));
+      box-shadow: inset 0 1px hsla(var(--hsl-highlight), .67),
+                  0 0 3px 0px var(--color-hilite);
+    }
+    button:active {
+      text-shadow: 0 1px hsl(var(--hsl-highlight));
+      color: var(--color-text);
+      box-shadow: inset 0 4px 4px -4px hsla(var(--hsl-backlight), .2),
+                  inset 4px 0 4px -4px hsla(var(--hsl-backlight), .1),
+                  inset -4px 0 4px -4px hsla(var(--hsl-backlight), .1);
+      border: 1px solid var(--color-border-light);
     }
     .selected {
       background: linear-gradient(to bottom, var(--color-back-bright), var(--color-success-muted));
