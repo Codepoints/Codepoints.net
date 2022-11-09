@@ -172,7 +172,7 @@ class Search extends Controller {
     /**
      * @return list<string>
      */
-    private function parseQuery(string $query_string, Array $env) : Array {
+    protected function parseQuery(string $query_string, Array $env) : Array {
         $query = [];
         $template_query = [];
         $parts = explode('&', $query_string);
