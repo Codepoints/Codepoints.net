@@ -124,15 +124,23 @@ class Search extends Controller {
         $pagination = null;
 
         if ($query) {
-            $page = get_page();
-            list($query_statement, $count_statement, $params) = $this->composeSearchQuery($query, $page, $env);
-            if (! $query_statement || ! $count_statement) {
-                throw new NotFoundException('no search query');
-            }
+            $transformed_query = join(' ', $this->parseQuery($query, $env));
 
-            $count_statement->execute($params);
+            /**
+             * We create two SQL queries (one for the paginated results, a second for
+             * the total number), because this is in our situation way more performant
+             * than SQL_CALC_FOUND_ROWS. Cf.
+             * https://stackoverflow.com/q/186588/113195
+             * for details.
+             */
+            $count_statement = $env['db']->prepare('
+                SELECT COUNT(*) AS count
+                FROM search_index
+                WHERE MATCH(text) AGAINST (? IN BOOLEAN MODE)');
+
+            $count_statement->execute([$transformed_query]);
             if (defined('DEBUG') && DEBUG) {
-                Analog::log(print_r($params, true));
+                Analog::log(sprintf('search for: %s', $transformed_query));
             }
             $count = 0;
             $counter = $count_statement->fetch(\PDO::FETCH_ASSOC);
@@ -140,7 +148,15 @@ class Search extends Controller {
                 $count = $counter['count'];
             }
 
-            $query_statement->execute($params);
+            $page = get_page();
+            $query_statement = $env['db']->prepare(sprintf('
+                SELECT c.cp, c.name, c.gc
+                FROM search_index
+                LEFT JOIN codepoints c USING (cp)
+                WHERE MATCH(text) AGAINST (? IN BOOLEAN MODE)
+                LIMIT %s, %s',
+                ($page - 1) * Pagination::PAGE_SIZE, Pagination::PAGE_SIZE));
+            $query_statement->execute([$transformed_query]);
             $items = $query_statement->fetchAll(\PDO::FETCH_ASSOC);
 
             $search_result = new SearchResult([
@@ -154,76 +170,7 @@ class Search extends Controller {
     }
 
     /**
-     * compose the search query
-     *
-     * We create two SQL queries (one for the paginated results, a second for
-     * the total number), because this is in our situation way more performant
-     * than SQL_CALC_FOUND_ROWS. Cf.
-     * https://stackoverflow.com/q/186588/113195
-     * for details.
-     */
-    protected function composeSearchQuery(string $query_string, int $page, Array $env) : Array {
-        $query_list = $this->parseQuery($query_string, $env);
-        $params = [];
-        $search = '';
-        foreach ($query_list as $i => list($connector, $key, $comp, $value)) {
-            if ($search !== '') {
-                /* join the query with the last one using the $q0 parameter
-                 * ("AND" or "OR"). */
-                $search .= " $connector ";
-            }
-            if ($key === 'cp' || $key === 'int') {
-                /* handle "cp" specially and search "cp" column directly */
-                $search .= " cp $comp :q$i ";
-                $params[':q'.$i] = $value;
-            } else {
-                if ($key === 'block') {
-                    $key = 'blk';
-                }
-                if ($key === 'na' || $key === 'na1') {
-                    /* match names loosely, especially to make the search
-                     * case-insensitive */
-                    $key = 'na';
-                    $comp = 'LIKE';
-                    $value = "%$value%";
-                }
-                if (is_array($value)) {
-                    $search .= " term $comp ( ";
-                    $search .= join(', ', array_map(function (string $item) use ($key, $env) : string {
-                        return $env['db']->quote($key === 'term'? $item : $key.':'.$item);
-                    }, $value));
-                    $search .= " ) ";
-                } else {
-                    /* the default is to query the column "term" with the
-                     * comparison $q2 for a combined value "$q1:$q3" */
-                    $search .= " term $comp :q$i ";
-                    $params[':q'.$i] = $key === 'term'? $value : $key.':'.$value;
-                }
-            }
-        }
-
-        if (! $search) {
-            return [null, null, null];
-        }
-
-        $query_statement = $env['db']->prepare(sprintf('
-            SELECT c.cp, c.name, c.gc
-            FROM search_index
-            LEFT JOIN codepoints c USING (cp)
-            WHERE %s
-            GROUP BY cp
-            ORDER BY SUM(weight) DESC, cp ASC
-            LIMIT %s, %s', $search,
-                ($page - 1) * Pagination::PAGE_SIZE, Pagination::PAGE_SIZE));
-        $count_statement = $env['db']->prepare(sprintf('
-            SELECT COUNT(*) AS count
-            FROM search_index
-            WHERE %s', $search));
-        return [$query_statement, $count_statement, $params];
-    }
-
-    /**
-     * @return list<Array{"AND" | "OR", string, "=" | "!=" | ">" | "<" | "LIKE" | "NOT LIKE" | "IN" | "NOT IN", string | mixed}>
+     * @return list<string>
      */
     private function parseQuery(string $query_string, Array $env) : Array {
         $query = [];
@@ -256,59 +203,57 @@ class Search extends Controller {
     /**
      * translate URL parameters to SQL query chips
      *
-     * @return list<Array{"AND" | "OR", string, "=" | "!=" | ">" | "<" | "LIKE" | "NOT LIKE" | "IN" | "NOT IN", string | mixed}>
+     * @return list<string>
      */
     protected function getTransformedQuery(string $key, string $value, Array $env) : Array {
         $result = [];
         $lower_case_properties = array_map('\\strtolower', array_keys($env['info']->properties));
+
         if ($key === 'q') {
             /* "q" is a special case: We parse the query and try to
-             * figure, what's searched */
-            $q = $this->_parseFreeText($value, $env);
-            foreach ($q['cp'] as $cp) {
-                $result[] = ['OR', 'cp', '=', $cp];
+             * figure, what's searched, but we also add the original query. */
+            $result[] = $value;
+            foreach ($this->_parseFreeText($value, $env) as $term) {
+                $result[] = $term;
             }
-            foreach ($q['term'] as $term) {
-                $result[] = ['OR', 'term', 'LIKE', $term.'%'];
-                foreach ($lower_case_properties as $lower_case_property) {
-                    if (strpos($lower_case_property, strtolower($term)) === 0) {
-                        /* prevent searches for "ccc" or "uc" to drain the whole
-                        * search table due to "uc:1234" entries. */
-                        $result[] = ['AND', 'term', 'NOT LIKE', $lower_case_property.':%'];
-                        break;
-                    }
-                }
-            }
+
+        } elseif ($key === 'sc') {
+            $result[] = sprintf('"sc_%s"', $value);
+
         } elseif ($key === 'scx') {
             /* scx is a space-separated list of sc's */
-            $result = array_map(function(string $sc) : Array {
-                return ['OR', 'sc', '=', $sc];
-            }, explode(' ', $value));
+            $result[] = join(' ', array_map(function(string $sc) : string {
+                return sprintf('"sc_%s"', $sc);
+            }, explode(' ', $value)));
+
         } elseif ($key === 'int') {
             $value = preg_split('/\s+/', $value);
             foreach($value as $v2) {
                 if (ctype_digit($v2)) {
-                    $result[] = ['OR', $key, '=', $v2];
+                    $result[] = sprintf('"int_%s"', $v2);
                 }
             }
+
         } elseif ($key === 'gc') {
             if (array_key_exists($value, $env['info']->gc_shortcuts)) {
                 foreach ($env['info']->gc_shortcuts[$value] as $gc) {
-                    $result[] = ['OR', 'gc', '=', $gc];
+                    $result[] = sprintf('"prop_gc_%s"', $gc);
                 }
             } else {
-                $result[] = ['OR', $key, '=', $value];
+                $result[] = sprintf('"prop_gc_%s"', $value);
             }
+
         } elseif (in_array($key, array_keys($env['info']->properties))) {
-            $result[] = ['OR', $key, '=', $value];
-        } elseif ($key === 'block') {
-            $result[] = ['OR', 'blk', '=', $value];
+            $result[] = sprintf('"prop_%s_%s"', $key, $value);
+
+        } elseif (in_array($key, ['blk', 'block'])) {
+            $result[] = sprintf('"blk_%s"', $value);
         }
         return $result;
     }
 
     private function _parseFreeText(string $q, Array $env) : Array {
-        $r = ['cp' => [], 'term' => []];
+        $r = [];
         $sc = array_map('strtolower', $env['info']->script);
 
         $terms = preg_split('/\s+/', $q);
@@ -323,7 +268,7 @@ class Search extends Controller {
 
             if (mb_strlen($v) === 1) {
                 /* seems to be one single character */
-                $r['cp'][] = mb_ord($v);
+                $r[] = mb_ord($v);
             }
 
             if (preg_match('/^&#?[0-9a-z]+;$/i', $v)) {
@@ -335,9 +280,9 @@ class Search extends Controller {
                     } else {
                         $n = intval($v, 10);
                     }
-                    $r['cp'][] = $n;
+                    $r[] = $n;
                 } else {
-                    $r['term'][] = 'alias:' . substr($v, 1, -1);
+                    $r[] = substr($v, 1, -1);
                 }
                 /* continue with next term, b/c this is a very specific search */
                 continue;
@@ -345,98 +290,65 @@ class Search extends Controller {
 
             if (preg_match('/^(%[a-f0-9]{2})+$/i', $v)) {
                 /* an URL-encoded UTF-8 character */
-                $r['cp'][] = mb_ord(rawurldecode($v));
+                $r[] = mb_ord(rawurldecode($v));
                 /* continue with next term, b/c this is a very specific search */
                 continue;
             }
 
             if (ctype_xdigit($v) && in_array(strlen($v), [4,5,6])) {
-                $r['cp'][] = hexdec($v);
+                $r[] = hexdec($v);
             }
 
             if (substr($low_v, 0, 2) === 'u+' &&
                 ctype_xdigit(substr($v, 2)) &&
                 in_array(strlen($v), [6,7,8])) {
                 // U+1F456 escapes
-                $r['cp'][] = hexdec(substr($v, 2));
+                $r[] = hexdec(substr($v, 2));
             }
 
             if (substr($low_v, 0, 1) === 'u' &&
                 ctype_xdigit(substr($v, 1)) &&
                 in_array(strlen($v), [5,6,7,8,9])) {
                 // U0001F456 escapes
-                $r['cp'][] = hexdec(substr($v, 1));
+                $r[] = hexdec(substr($v, 1));
             }
 
             if (ctype_digit($v) && strlen($v) < 8) {
-                $r['cp'][] = intval($v);
-            }
-
-            $r['term'][] = $v;
-            if ($v !== $low_v) {
-                $r['term'][] = $low_v;
-            }
-            $singular = $this->_getSingular($low_v);
-            if ($singular !== $low_v) {
-                $r['term'][] = $singular;
+                $r[] = intval($v);
             }
 
             if (preg_match('/\blowercase\b/', $low_v)) {
-                $r['term'][] = 'gc:Ll';
+                $r[] = 'prop_gc_Ll';
             }
             if (preg_match('/\buppercase\b/', $low_v)) {
-                $r['term'][] = 'gc:Lu';
+                $r[] = 'prop_gc_Lu';
             }
             if (preg_match('/\btitlecase\b/', $low_v)) {
-                $r['term'][] = 'gc:Lt';
+                $r[] = 'prop_gc_Lt';
             }
             if (preg_match('/\bnon-?char(acter)?\b/', $low_v)) {
-                $r['term'][] = 'NChar:1';
+                $r[] = 'prop_NChar_1';
             }
             if ($low_v === 'number') {
-                $r['term'][] = 'nt:De';
-                $r['term'][] = 'nt:Di';
-                $r['term'][] = 'nt:Nu';
+                $r[] = 'prop_nt_De';
+                $r[] = 'prop_nt_Di';
+                $r[] = 'prop_nt_Nu';
             }
 
             $v_sc = array_search($low_v, $sc);
             if ($v_sc) {
-                $r['term'][] = 'sc:'.$v_sc;
+                $r[] = 'sc_'.$v_sc;
             }
 
             if ($next_term) {
                 $v_sc = array_search($low_v.' '.strtolower($next_term), $sc);
                 if ($v_sc) {
-                    $r['term'][] = 'sc:'.$v_sc;
+                    $r[] = 'sc_'.$v_sc;
                 }
             }
-
-            /* TODO do the same as above for sc: with blk: */
         }
 
         return $r;
-    }
-
-    private function _getSingular(string $term) : string {
-        if ($term === 'children') {
-            return 'child';
-        }
-        if ($term === 'men') {
-            return 'man';
-        }
-        if ($term === 'women') {
-            return 'woman';
-        }
-        if (preg_match('/^[a-rt-z]+(s|sh|ch|o)es$/', $term)) {
-            return substr($term, 0, -1);
-        }
-        if (preg_match('/^[a-rt-z]{2,}s$/', $term)) {
-            return substr($term, 0, -1);
-        }
-        if (preg_match('/^[a-z]+[bcdfghj-np-tv-z]ies$/', $term)) {
-            return substr($term, 0, -3).'y';
-        }
-        return $term;
     }
 
 }

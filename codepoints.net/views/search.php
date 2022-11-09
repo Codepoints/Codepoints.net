@@ -10,7 +10,6 @@
 include 'partials/header.php' ?>
 <main class="main main--search"<?php if ($search_result):?> data-count="<?=q((string)$search_result->count())?>"<?php endif ?>>
   <h1><?=_q($title)?></h1>
-  <p><?php printf(__('Please add search limits with the form below. Click “add new query”, select a category and choose one of the values. You can change the value afterwards, if you click on it again. The %s button on the right removes the value from the search again.'), __('remove'))?></p>
 
   <?php if ($search_result && $search_result->count()): ?>
     <ol class="tiles">
@@ -38,6 +37,7 @@ include 'partials/header.php' ?>
     </ol>
   <?php endif ?>
 
+  <p><?php printf(__('Please add search limits with the form below. Click “add new query”, select a category and choose one of the values. You can change the value afterwards, if you click on it again. The %s button on the right removes the value from the search again.'), __('remove'))?></p>
 <?php if ($wizard): ?>
   <?php if ($search_result): ?>
     <p><a href="?"><?=_q('Try “Find My Codepoint” again.')?></a></p>
