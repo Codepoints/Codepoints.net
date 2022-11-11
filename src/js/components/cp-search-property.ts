@@ -139,4 +139,9 @@ export class CpSearchProperty extends LitElement {
     });
     this.checked = checked;
   }
+
+  reset() {
+    this._deselectAll();
+    this._onclose();
+  }
 }

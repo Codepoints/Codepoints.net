@@ -23,4 +23,8 @@ export class CpSearchform extends LitElement {
       <p>On code point detail pages you can click the values in the property description to be guided to a search page that shows code points with the same property.</p>
     `;
   }
+
+  reset() {
+    this.querySelectorAll('cp-search-boolean, cp-search-property').forEach(field => field.reset());
+  }
 }

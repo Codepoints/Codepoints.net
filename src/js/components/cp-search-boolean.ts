@@ -107,4 +107,10 @@ export class CpSearchBoolean extends LitElement {
     this.select.value = this.value;
     this.select.disabled = this.value === '';
   }
+
+  reset() {
+    this.value = '';
+    this.select.value = this.value;
+    this.select.disabled = this.value === '';
+  }
 }
