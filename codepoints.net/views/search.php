@@ -12,6 +12,9 @@ include 'partials/header.php' ?>
   <h1><?=_q($title)?></h1>
 
   <?php if ($search_result && $search_result->count()): ?>
+    <?php if ($search_result->count() > 16): ?>
+        <p><a href="#searchform"><?=_q('Jump to the search form')?></a></p>
+    <?php endif ?>
     <ol class="tiles">
       <?php foreach ($search_result as $codepoint): ?>
         <?php if (! $codepoint) { continue; } ?>
@@ -37,7 +40,9 @@ include 'partials/header.php' ?>
     </ol>
   <?php endif ?>
 
-  <p><?php printf(__('Please add search limits with the form below. Click “add new query”, select a category and choose one of the values. You can change the value afterwards, if you click on it again. The %s button on the right removes the value from the search again.'), __('remove'))?></p>
+  <p id="searchform">
+    <?=_q('Search for code points:')?>
+  </p>
 <?php if ($wizard): ?>
   <?php if ($search_result): ?>
     <p><a href="?"><?=_q('Try “Find My Codepoint” again.')?></a></p>
@@ -48,6 +53,26 @@ include 'partials/header.php' ?>
 <?php else: ?>
   <?php include 'partials/form-fullsearch.php' ?>
 <?php endif ?>
+  <ol>
+    <li>
+      <?=_q('Choose properties of code points to search for.')?>
+      <?=_q('The easiest is the “free search” field where you can place any information that you have.')?>
+      <?=_q('We will then try our best to match code points with it.')?>
+    </li>
+    <li><?=_q('If you know a part of the actual Unicode name enter it in the “name” field.')?></li>
+    <li>
+      <?=_q('Click a button with a ≡ icon to restrict the search to certain properties only.')?>
+      <?=_q('A dialog opens with possible options.')?>
+    </li>
+    <li>
+      <?=_q('Click a button with a * icon to enforce a specific yes/no property.')?>
+      <?=_q('Click again to search for code points <em>without</em> this property and a third time to reset the search again.')?>
+    </li>
+    <li><?=_q('Click “search” to start the search.')?></li>
+  </ol>
+  <p>
+    <?=_q('On code point detail pages you can click the values in the property description to be guided to a search page that shows code points with the same property.')?>
+  </p>
 
 </main>
 <?php include 'partials/footer.php' ?>
