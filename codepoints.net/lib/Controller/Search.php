@@ -217,6 +217,9 @@ class Search extends Controller {
                 $result[] = $term;
             }
 
+        } elseif ($key === 'na') {
+            $result[] = sprintf('"na_%s" %s', $value, $value);
+
         } elseif ($key === 'sc') {
             $result[] = sprintf('"sc_%s"', $value);
 
