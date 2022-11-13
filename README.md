@@ -8,7 +8,8 @@ on how the code flows.
 
 Feel free to open issues at the [bug
 tracker](https://github.com/Boldewyn/Codepoints.net/issues) or contact us via
-Twitter: [@CodepointsNet](https://twitter.com/CodepointsNet).
+Twitter: [@CodepointsNet](https://twitter.com/CodepointsNet) or
+Mastodon: <a href="https://typo.social/@codepoints" rel="me">@codepoints@typo.social</a>.
 
 See [the re-use statement on
 codepoints.net](https://codepoints.net/about#this_site) for licensing and
