@@ -48,13 +48,21 @@ class NotFound extends Controller {
                 'confusables' => $codepoint->confusables,
             ];
         } elseif (strlen($match) < 128) {
-            $list = join(',', array_map(function(string $c) : int { return mb_ord($c); },
-                    array_unique(preg_split('//u', rawurldecode($match), -1, PREG_SPLIT_NO_EMPTY))));
+            $intlist = array_map(
+                function(string $c) : int { return mb_ord($c); },
+                preg_split('//u', rawurldecode($match), -1, PREG_SPLIT_NO_EMPTY));
+            $list = join(',', array_unique($intlist));
             $data = $env['db']->getAll('SELECT cp, name, gc FROM codepoints
                 WHERE cp IN ( '.$list.' ) ORDER BY FIELD( cp, '.$list.' )');
             if ($data) {
+                $tmpcps = [];
                 foreach ($data as $set) {
-                    $cps[] = Codepoint::getCached($set, $env['db']);
+                    $tmpcps[$set['cp']] = Codepoint::getCached($set, $env['db']);
+                }
+                foreach ($intlist as $int) {
+                    if (array_key_exists($int, $tmpcps)) {
+                        $cps[] = $tmpcps[$int];
+                    }
                 }
             }
         }
