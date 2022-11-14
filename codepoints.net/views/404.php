@@ -14,6 +14,6 @@ include 'partials/header.php'; ?>
     </ul>
   <?php endif?>
   <p><?=_q('Search other codepoints:')?></p>
-  <?php include 'partials/form-quicksearch.php'; ?>
+  <?php $quicksearch_value = $match; include 'partials/form-quicksearch.php'; ?>
 </main>
 <?php include 'partials/footer.php'; ?>

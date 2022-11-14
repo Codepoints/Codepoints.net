@@ -72,6 +72,7 @@ class NotFound extends Controller {
             'header' => sprintf('%s %s', (string)$codepoint, $title),
             'page_description' => $page_description,
             'cps' => $cps,
+            'match' => $match,
         ];
         $view = $codepoint? 'codepoint' : '404';
         return (new View($view))($this->context, $env);
