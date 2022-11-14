@@ -94,6 +94,9 @@ serve:
 	-@php -S localhost:8000 -t codepoints.net bin/devrouter.php
 .PHONY: serve
 
+po: $(DOCROOT)locale/messages.pot $(DOCROOT)locale/js.pot
+.PHONY: po
+
 $(DOCROOT)locale/messages.pot: $(PHP_ALL)
 	$(info * Compile PHP translation strings)
 	@$(XGETTEXT) -LPHP --from-code UTF-8 -k__ -k_e -k_n -kgettext -o $@ $(PHP_ALL)

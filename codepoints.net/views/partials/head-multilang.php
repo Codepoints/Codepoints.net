@@ -10,6 +10,6 @@ use Codepoints\Translator;
     foreach (Translator::SUPPORTED_LANGUAGES as $other_lang):
         /* Google says, that it wants a link element to the same language, too:
          * https://developers.google.com/search/docs/advanced/crawling/localized-versions */
-        ?><link rel="alternate" hreflang="<?=q($other_lang)?>" title="<?=q(Translator::getLanguageName($other_lang))?>" href="https://codepoints.net/<?=$url.(strpos($url, '?') !== false? '&' : '?').'lang='.q($other_lang)?>">
+        ?><link rel="alternate" hreflang="<?=q($other_lang)?>" title="<?=q(Translator::getLanguageName($other_lang))?>" href="<?=get_origin()?><?=$url.(strpos($url, '?') !== false? '&' : '?').'lang='.q($other_lang)?>">
   <?php endforeach;
 endif ?>

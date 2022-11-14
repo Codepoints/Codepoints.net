@@ -200,3 +200,15 @@ function format_codepoint_name(string $name): string {
       ["IDEO\u{00AD}GRAPH-\u{200B}", ' <span tabindex="0" aria-description="'.q('This codepoint has no canonical name. The shown name is an alias defined by Unicode.').'" class="no-na tooltip">*</span>'],
       q($name));
 }
+
+/**
+ * get the site origin
+ */
+function get_origin(): string {
+    $scheme = 'http';
+    if (filter_input(INPUT_SERVER, 'HTTPS') === 'on') {
+        $scheme .= 's';
+    }
+    $host = filter_input(INPUT_SERVER, 'HTTP_HOST') ?? 'codepoints.net';
+    return sprintf('%s://%s/', $scheme, $host);
+}
