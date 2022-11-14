@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-31 17:38+0000\n"
+"POT-Creation-Date: 2022-11-14 20:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: codepoints.net/views/plane.php:12
-msgid "Unicode"
+msgid "All Planes"
 msgstr ""
 
 #: codepoints.net/views/plane.php:24
@@ -187,7 +187,6 @@ msgid "Basic Latin"
 msgstr ""
 
 #: codepoints.net/views/index.php:64
-#: codepoints.net/views/partials/form-fullsearch.php:43
 msgid "search"
 msgstr ""
 
@@ -311,44 +310,18 @@ msgstr ""
 msgid "(Source: %s)"
 msgstr ""
 
-#: codepoints.net/views/search.php:13
-#, php-format
-msgid ""
-"Please add search limits with the form below. Click “add new query”, select "
-"a category and choose one of the values. You can change the value "
-"afterwards, if you click on it again. The %s button on the right removes the "
-"value from the search again."
-msgstr ""
-
-#: codepoints.net/views/search.php:13
-msgid "remove"
-msgstr ""
-
-#: codepoints.net/views/search.php:33
+#: codepoints.net/views/search.php:34
 #, php-format
 msgid "%s block matches %s:"
 msgstr ""
 
-#: codepoints.net/views/search.php:33
+#: codepoints.net/views/search.php:34
 #, php-format
 msgid "%s blocks match %s:"
 msgstr ""
 
-#: codepoints.net/views/partials/form-fullsearch.php:15
-msgid "Free search:"
-msgstr ""
-
-#: codepoints.net/views/partials/form-fullsearch.php:17
-msgid ""
-"Any information about the character, that doesn’t fit the categories below"
-msgstr ""
-
 #: codepoints.net/views/partials/form-fullsearch.php:20
 msgid "Name:"
-msgstr ""
-
-#: codepoints.net/views/partials/form-fullsearch.php:22
-msgid "The Unicode name (or parts) of the character"
 msgstr ""
 
 #: codepoints.net/views/partials/form-fullsearch.php:36
@@ -363,25 +336,9 @@ msgstr ""
 msgid "no"
 msgstr ""
 
-#: codepoints.net/views/partials/footer.php:4
+#: codepoints.net/views/partials/footer.php:5
 #, php-format
-msgid ""
-"This is Codepoints.net, a site dedicated to all things characters, letters "
-"and Unicode. The site is run by %s. The content can be %s under the given "
-"terms. We’d like to thank %s for making Codepoints.net possible. %s are "
-"always welcome."
-msgstr ""
-
-#: codepoints.net/views/partials/footer.php:6
-msgid "freely reused"
-msgstr ""
-
-#: codepoints.net/views/partials/footer.php:7
-msgid "these fine people"
-msgstr ""
-
-#: codepoints.net/views/partials/footer.php:8
-msgid "Feedback and contributions"
+msgid "Currently displaying Unicode version %s."
 msgstr ""
 
 #: codepoints.net/views/partials/codepoint-description.php:20
@@ -906,7 +863,7 @@ msgid ""
 "    for pushing me to publish this site at last."
 msgstr ""
 
-#: codepoints.net/views/scripts.php:40
+#: codepoints.net/views/scripts.php:37
 #, php-format
 msgid "%s%s%d%s characters%s are encoded in this script."
 msgstr ""
