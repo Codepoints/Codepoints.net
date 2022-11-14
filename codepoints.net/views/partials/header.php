@@ -41,6 +41,12 @@ if (array_key_exists('embed', $_GET)) {
 case 'codepoint':
     include 'head-codepoint.php';
     break;
+case 'search': ?>
+    <script>
+    var script_age = <?=json_encode($env['info']->script_age)?>;
+    var region_to_block = <?=json_encode($env['info']->region_to_block)?>;
+    </script>
+    <?php break;
 case 'index': ?>
     <link rel="preload" href="<?= static_url('src/images/front_light.webp') ?>" as="image" fetchPriority="high" crossOrigin="anonymous">
     <?php break;

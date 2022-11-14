@@ -36,7 +36,7 @@ export class CpQuestion extends LitElement {
 
   txtRef: Ref<HTMLInputElement> = createRef();
 
-  constructor(id, text, answers) {
+  constructor(id, text, answers, action) {
     super();
     /* eslint-disable wc/no-constructor-attributes */
     this.id = id;
@@ -46,6 +46,7 @@ export class CpQuestion extends LitElement {
     this.next = {};
     this.answers = answers || {};
     this.selected = null;
+    this.action = action;
   }
 
   connectedCallback() {
@@ -119,7 +120,8 @@ const q_swallow = new CpQuestion('swallow',
   _('What’s the airspeed velocity of an unladen swallow?'), {
     1: _('An African, or'),
     2: _('A European Swallow?')
-});
+  },
+  value => 'coconut');
 /* eslint-enable @typescript-eslint/no-unused-vars */
 
 const q_region = new CpQuestion('region',
@@ -135,14 +137,26 @@ const q_region = new CpQuestion('region',
     'Philippines': _('Philippines, Indonesia, Oceania'),
     'n': _('Nowhere specific'),
     '': _('I don’t know')
-});
+  },
+  value => {
+    if (value in region_to_block) {
+      return region_to_block[value].map(blk => `blk_${blk}`).join(' ');
+    }
+  });
 
 const q_number = new CpQuestion('number',
   _('Is it a number of any kind?'), {
     1: _('Yes'),
     0: _('No'),
     '': _('I don’t know')
-});
+  },
+  value => {
+    if (value === '1') {
+        return 'prop_gc_Nd prop_gc_Nl prop_gc_No';
+    } else if (value === '0') {
+        return '-"prop_gc_Nd" -"prop_gc_Nl" -"prop_gc_No"';
+    }
+  });
 
 const q_case = new CpQuestion('case',
   _('Has the character a case (upper, lower, title)?'), {
@@ -152,7 +166,20 @@ const q_case = new CpQuestion('case',
     y: _('Yes, but I don’t know the case'),
     n: _('No, it’s uncased'),
     '': _('I don’t know')
-});
+  },
+  value => {
+    if (value === 'l') {
+      return 'prop_gc_Ll';
+    } else if (value === 'u') {
+      return 'prop_gc_Lu';
+    } else if (value === 't') {
+      return 'prop_gc_Lt';
+    } else if (value === 'y') {
+      return 'prop_gc_Ll prop_gc_Lu prop_gc_Lt';
+    } else if (value === 'n') {
+      return '-"prop_gc_Ll" -"prop_gc_Lu" -"prop_gc_Lt"';
+    }
+  });
 
 const q_symbol = new CpQuestion('symbol',
   _('Is the character some kind of symbol or dingbat?'), {
@@ -160,21 +187,44 @@ const q_symbol = new CpQuestion('symbol',
     c: _('No <small>(But it is some kind of control character)</small>'),
     t: _('No <small>(It may appear in text, like letters or punctuation)</small>'),
     '': _('I don’t know')
-});
+  },
+  value => {
+    if (value === 's') {
+      return 'prop_gc_Sm prop_gc_Sc prop_gc_Sk prop_gc_So';
+    } else if (value === 'c') {
+      return 'prop_gc_Cc prop_gc_Cf prop_gc_Cs prop_gc_Co prop_gc_Cn';
+    } else if (value === 't') {
+      return '-"prop_gc_Sm" -"prop_gc_Sc" -"prop_gc_Sk" -"prop_gc_So" -"prop_gc_Cc" -"prop_gc_Cf" -"prop_gc_Cs" -"prop_gc_Co" -"prop_gc_Cn"';
+    }
+  });
 
 const q_punc = new CpQuestion('punctuation',
   _('Is the character some kind of punctuation?'), {
     1: _('Yes'),
     0: _('No'),
     '': _('I don’t know')
-});
+  },
+  value => {
+    if (value === '1') {
+      return '"prop_gc_Pc" "prop_gc_Pd" "prop_gc_Ps" "prop_gc_Pe" "prop_gc_Pi" "prop_gc_Pf" "prop_gc_Po"';
+    } else if (value === '0') {
+      return '-"prop_gc_Pc" -"prop_gc_Pd" -"prop_gc_Ps" -"prop_gc_Pe" -"prop_gc_Pi" -"prop_gc_Pf" -"prop_gc_Po"';
+    }
+  });
 
 const q_incomplete = new CpQuestion('incomplete',
   _('Is the character incomplete on its own, like a diacritic sign?'), {
     1: _('Yes <small>(It’s usually found together with another character)</small>'),
     0: _('No <small>(It stands on its own)</small>'),
     '': _('I don’t know')
-});
+  },
+  value => {
+    if (value === '1') {
+      return '-"prop_ccc_0"';
+    } else if (value === '0') {
+      return 'prop_ccc_0';
+    }
+  });
 
 const q_composed = new CpQuestion('composed',
   _('Is the character composed of two others?'), {
@@ -182,32 +232,62 @@ const q_composed = new CpQuestion('composed',
     2: _('Sort of <small>(It’s got some quiggly lines or dots, like “Ä” or “ٷ”)</small>'),
     0: _('No <small>(It is a genuine character)</small>'),
     '': _('I don’t know')
-});
+  },
+  value => {
+    if (value >= 1) {
+      return 'prop_NFKD_QC_N';
+    } else if (value === '0') {
+      return 'prop_NFKD_QC_Y';
+    }
+  });
 
 const q_confuse = new CpQuestion('confuse',
   _('Off the top of your head, can the character be confused with another one?'), {
     1: _('Yes <small>(Like latin “A” and greek “Α”, alpha)</small>'),
     '': _('No <small>(I have no such pair in mind)</small>')
-});
+  },
+  value => {
+    if (value === '1') {
+      return 'confusables_1';
+    }
+  });
 
 const q_archaic = new CpQuestion('archaic',
   _('Is it an archaic character or is it in use today?'), {
     1: _('Yep, noone would use that anymore!'),
     0: _('Nah, seen it yesterday in the newspaper'),
     '': _('I don’t know')
-});
+  },
+  value => {
+    if (value === '1') {
+      return script_age['archaic'].map(sc => `"sc_${sc}"`).join(' ');
+    } else if (value === '0') {
+      return script_age['recent'].map(sc => `"sc_${sc}"`).join(' ');
+    }
+  });
 
 const q_strokes = new CpQuestion('strokes',
   _('Do you know the number of strokes the character has?'), {
     _number: [_('This much'), 1, 64],
     '': _('Nope, never counted them')
-});
+  },
+  value => {
+    const intval = parseInt(value);
+    if (intval && intval > 0) {
+      return `"prop_kTotalStrokes_${intval}"`;
+    }
+  });
 
 const q_def = new CpQuestion('def',
   _('Do you happen to know the meaning of the character?'), {
     _text: _('This is (part of) what I’m looking for'),
     '': _('I don’t speak that language')
-});
+  },
+  value => {
+    if (value) {
+      return 'kDefinition_' + value;
+    }
+  });
 
 
 q_region.setNextForAnswer('Africa', q_number);
@@ -265,6 +345,9 @@ export class CpWizard extends LitElement {
     :host {
       display: block;
     }
+    :host([hidden]) {
+      display: none;
+    }
   `;
 
   @property()
@@ -288,6 +371,9 @@ export class CpWizard extends LitElement {
       `;
     }
     return html`
+      <p>
+        ${_('You search for a specific character?')}
+        ${_('Answer the following questions and we try to figure out candidates.')}</p>
       ${q_region}
       ${this.renderShortcut()}
     `;
@@ -307,10 +393,13 @@ export class CpWizard extends LitElement {
   finish() {
     const payload = { _wizard: 1, };
     let q = this.lastAnsweredQuestion;
+    let query = [];
     do {
-      payload[q.id] = q.selected;
+      //payload[q.id] = q.selected;
+      query.push(q.action(q.selected));
       q = q.prev;
     } while (q);
+    payload.q = query.join(' ');
     this.loadResults = true;
     window.location.href = `/search?${(new URLSearchParams(payload)).toString()}`;
   }

@@ -3,7 +3,6 @@
  * @var ?\Codepoints\Unicode\SearchResult $search_result
  * @var list<\Codepoints\Unicode\Codepoint> $alt_result
  * @var ?\Codepoints\Router\Pagination $pagination
- * @var bool $wizard
  * @var string $q
  */
 
@@ -43,16 +42,7 @@ include 'partials/header.php' ?>
   <p id="searchform">
     <?=_q('Search for code points:')?>
   </p>
-<?php if ($wizard): ?>
-  <?php if ($search_result): ?>
-    <p><a href="?"><?=_q('Try “Find My Codepoint” again.')?></a></p>
-  <?php else: ?>
-    <p><?=_q('You search for a specific character? Answer the following questions and we try to figure out candidates.')?></p>
-  <?php endif ?>
-  <cp-wizard></cp-wizard>
-<?php else: ?>
   <?php include 'partials/form-fullsearch.php' ?>
-<?php endif ?>
   <ol>
     <li>
       <?=_q('Choose properties of code points to search for.')?>
