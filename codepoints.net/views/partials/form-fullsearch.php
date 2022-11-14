@@ -12,14 +12,14 @@ function _get(string $name) : string {
 <form method="get" action="<?=q(url('search'))?>"
       class="searchform searchform--ext">
   <cp-search-freeform>
-    <label for="s_q"><?=__('Free search:')?></label>
+    <label for="s_q"><?=_q('Free search:')?></label>
     <input type="text" name="q" id="s_q" value="<?php echo _get('q')?>">
-    <small class="nt"><?=__('Any information about the character, that doesn’t fit the categories below')?></small>
+    <small class="nt"><?=_q('Any information about the character, that doesn’t fit the categories below')?></small>
   </cp-search-freeform>
   <cp-search-freeform>
     <label for="s_na"><?=__('Name:')?></label>
     <input type="text" name="na" id="s_na" value="<?php echo _get('na')?>">
-    <small class="nt"><?=__('The Unicode name (or parts) of the character')?></small>
+    <small class="nt"><?=_q('The Unicode name (or parts) of the character')?></small>
   </cp-search-freeform>
   <?php
   foreach ([ 'age', 'blk', 'gc', 'bc', 'ccc', 'dt', 'nt', 'lb', 'ea', 'sc', 'SB', 'WB' ] as $cat) {
