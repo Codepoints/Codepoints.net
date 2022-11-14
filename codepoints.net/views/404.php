@@ -1,6 +1,7 @@
 <?php
 /**
  * @var list<\Codepoints\Unicode\Codepoint> $cps
+ * @var string $match
  */
 
 include 'partials/header.php'; ?>
