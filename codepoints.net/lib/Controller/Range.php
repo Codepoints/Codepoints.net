@@ -88,7 +88,6 @@ class Range extends Controller {
             'pagination' => new Pagination($range, $page),
             'all_block_names' => $all_block_names,
             'q' => $match[0],
-            'wizard' => false,
             'query' => [],
         ];
         return (new View('search'))($this->context + [

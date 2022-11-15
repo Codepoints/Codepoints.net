@@ -55,10 +55,6 @@ class Sitemap extends Controller {
                     'priority' => '0.6',
                 ],
                 [
-                    'loc' => 'wizard',
-                    'priority' => '0.6',
-                ],
-                [
                     'loc' => 'search',
                     'priority' => '0.1',
                 ],

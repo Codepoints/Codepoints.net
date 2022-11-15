@@ -20,7 +20,7 @@ include 'partials/header.php'; ?>
         in question.'), '<a href="'.url('search').'">', '</a>')?></li>
       <li><?php printf(__('The %s“Find My Codepoint” wizard%s:
         Answer a series of questions to get to your character.'),
-        '<a href="'.url('wizard').'">', '</a>')?></li>
+        '<a href="'.url('search').'#wizard">', '</a>')?></li>
     </ul>
     <p><?=_q('If you happen to already have the character in question just paste it
     in the search box. It will bring you directly to its description page.')?></p>

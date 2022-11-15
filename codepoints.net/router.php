@@ -17,7 +17,6 @@ use \Codepoints\Controller\Scripts;
 use \Codepoints\Controller\Search;
 use \Codepoints\Controller\Sitemap;
 use \Codepoints\Controller\StaticPage;
-use \Codepoints\Controller\Wizard;
 
 
 Router::add('', new Index());
@@ -29,7 +28,9 @@ Router::add('planes', new Planes());
 Router::add('random', new Random());
 
 Router::add('search', new Search());
-Router::add('wizard', new Wizard());
+Router::add('wizard', function(Array $match, Array $env) : void {
+    throw new Redirect('/search');
+});
 
 Router::add('scripts', new Scripts());
 

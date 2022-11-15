@@ -33,7 +33,7 @@ include 'partials/header.php'; ?>
   </p>
   <p class="action">
     <span class="desc"><?=_q('Need help?')?> <small><?=_q('Answer questions to find matching characters')?></small></span>
-    <a class="button find" href="<?=url('wizard')?>"><?=_q('Find My Codepoint')?></a>
+    <a class="button find" href="<?=url('search')?>#wizard"><?=_q('Find My Codepoint')?></a>
   </p>
   <p class="action">
     <span class="desc"><?=_q('Expert Search!')?> <small><?=_q('Search for characters with particular properties')?></small></span>
@@ -62,7 +62,7 @@ include 'partials/header.php'; ?>
       '<a href="'.url('basic_latin').'">'.__('Basic Latin').'</a>',
       cp($cp0),
       '<a href="'.url('search').'">'.__('search').'</a>',
-      '<a href="'.url('wizard').'">'.__('“Find My Codepoint”').'</a>',
+      '<a href="'.url('search').'#wizard">'.__('“Find My Codepoint”').'</a>',
       '<a href="'.url('random').'">'.__('a random codepoint').'</a>'
   )?>
     </p>

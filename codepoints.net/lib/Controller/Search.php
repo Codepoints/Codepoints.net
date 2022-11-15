@@ -74,7 +74,6 @@ class Search extends Controller {
             'blocks' => $blocks,
             'all_block_names' => $all_block_names,
             'q' => $q,
-            'wizard' => false,
             'query' => $this->query,
         ];
 
