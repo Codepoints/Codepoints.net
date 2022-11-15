@@ -250,7 +250,7 @@ class Search extends Controller {
             $result[] = sprintf('"prop_%s_%s"', $key, $value);
 
         } elseif (in_array($key, ['blk', 'block'])) {
-            $result[] = sprintf('"blk_%s"', $value);
+            $result[] = sprintf('"prop_blk_%s"', $value);
         }
         return $result;
     }

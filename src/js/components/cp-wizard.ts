@@ -140,7 +140,7 @@ const q_region = new CpQuestion('region',
   },
   value => {
     if (value in region_to_block) {
-      return region_to_block[value].map(blk => `blk_${blk}`).join(' ');
+      return region_to_block[value].map(blk => `"prop_blk_${blk}"`).join(' ');
     }
   });
 
