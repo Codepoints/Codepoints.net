@@ -181,6 +181,7 @@ class Search extends Controller {
                 continue;
             }
             list($key, $value) = explode('=', $part, 2);
+            $value = urldecode($value);
             $key = rtrim($key, '[]');
             if (preg_match('/[^a-zA-Z0-9_]/', $key)) {
                 continue;
