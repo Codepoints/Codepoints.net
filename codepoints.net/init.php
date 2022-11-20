@@ -52,7 +52,7 @@ if (! is_array($config)) {
     return false;
 }
 Router::addDependency('db', $db = new Database(
-    'mysql:host=localhost;dbname='.$config['db']['database'],
+    'mysql:host='.($config['db']['host'] ?? 'localhost').';dbname='.$config['db']['database'],
     $config['db']['user'],
     $config['db']['password'],
     [
