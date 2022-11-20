@@ -1,7 +1,7 @@
 <cp-navigation>
   <a slot="home" href="<?=q(url(''))?>" rel="start" class="ln">
     <svg width="16" height="16"><use href="/static/images/icon.svg#icon"/></svg>
-    <span class="meta"><?=_q('Home')?></span>
+    <span class="title"><?=_q('Home')?></span>
   </a>
 <?php
 /** @psalm-suppress RedundantCondition */
