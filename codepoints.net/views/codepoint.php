@@ -30,12 +30,16 @@ if ($next) {
 
 include 'partials/header.php'; ?>
 <main class="main main--codepoint">
-  <figure class="sqfig cpfig">
-    <cp-copy content="<?= q(mb_chr($codepoint->id)) ?>"><?=cpimg($codepoint, 250)?></cp-copy>
-    <?php if ($codepoint->imagesource): ?>
-      <figcaption><?=q(sprintf(__('Source: %s'), $codepoint->imagesource))?></figcaption>
-    <?php endif ?>
-  </figure>
+  <?php /* we need the wrapper div to have the figure not float to the absolute
+         * left but remain close to the text */ ?>
+  <div>
+    <figure class="sqfig cpfig">
+      <cp-copy content="<?= q(mb_chr($codepoint->id)) ?>"><?=cpimg($codepoint, 250)?></cp-copy>
+      <?php if ($codepoint->imagesource): ?>
+        <figcaption><?=q(sprintf(__('Source: %s'), $codepoint->imagesource))?></figcaption>
+      <?php endif ?>
+    </figure>
+  </div>
 
   <h1><?=sprintf('%s %s', (string)$codepoint, format_codepoint_name($codepoint->name))?></h1>
 

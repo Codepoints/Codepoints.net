@@ -9,8 +9,15 @@
               -10px -10px 20px var(--color-input-back);
 }
 
-.sqfig > svg {
+@media (--gt-content-and-figure) {
+  .sqfig {
+    margin-left: -17.625rem;
+  }
+}
+
+.sqfig svg {
   display: block;
+  width: 15.625rem;
 }
 
 .sqfig figcaption {

@@ -21,10 +21,12 @@ if ($next) {
 
 include 'partials/header.php'; ?>
 <main class="main main--block">
-  <figure class="sqfig blfig">
-    <?=blimg($block, 250)?>
-    <figcaption><?=_q('Source: Font Last Resort')?></figcaption>
-  </figure>
+  <div>
+    <figure class="sqfig blfig">
+      <?=blimg($block, 250)?>
+      <figcaption><?=_q('Source: Font Last Resort')?></figcaption>
+    </figure>
+  </div>
   <h1><?=q($title);?></h1>
   <p>
      <?php printf(__('Block from U+%04X to U+%04X.'), $block->first, $block->last)?>

@@ -16,10 +16,12 @@ if ($next) {
 
 include 'partials/header.php'; ?>
 <main class="main main--plane">
-  <figure class="sqfig plfig">
-    <?=plimg($plane, 250)?>
-    <figcaption><?=_q('Source: Font Last Resort')?></figcaption>
-  </figure>
+  <div>
+    <figure class="sqfig plfig">
+      <?=plimg($plane, 250)?>
+      <figcaption><?=_q('Source: Font Last Resort')?></figcaption>
+    </figure>
+  </div>
   <h1><?=q($title)?></h1>
   <p><?php printf(__('Plane from U+%04X to U+%04X.'), $plane->first, $plane->last)?></p>
   <p><a href="/planes"><?=_q('all planes')?></a></p>
