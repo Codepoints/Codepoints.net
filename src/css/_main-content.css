@@ -36,11 +36,11 @@ cp-navigation > * {
   }
 }
 
-cp-navigation .title {
+cp-navigation .meta {
   display: none;
 }
 
-cp-navigation .cp .title {
+cp-navigation .title {
   display: block;
   max-height: 1.5em;
   text-overflow: ellipsis;
@@ -53,10 +53,6 @@ cp-navigation a {
   display: flex;
   flex-direction: column;
   text-align: center;
-}
-
-cp-navigation .meta {
-  order: 3;
 }
 
 cp-navigation .ln svg {
