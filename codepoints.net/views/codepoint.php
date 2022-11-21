@@ -43,8 +43,27 @@ include 'partials/header.php'; ?>
 
   <h1><?=sprintf('%s %s', (string)$codepoint, format_codepoint_name($codepoint->name))?></h1>
 
+  <aside>
+    <div class="cp-toolbox cp-toolbox--profile">
+      <dl>
+        <dt><?=_q('Nº')?></dt>
+        <dd><?=q($codepoint->id)?></dd>
+        <?php foreach(['gc', 'sc', 'bc', 'dt'] as $cat):?>
+          <dt><?=q($info->properties[$cat])?></dt>
+          <dd><a rel="nofollow" href="<?=q('search?'.$cat.'='.$props[$cat])?>"><?=q($info->getLegend($cat, $codepoint->properties[$cat]))?></a></dd>
+        <?php endforeach?>
+        <?php if($codepoint->properties['nt'] !== 'None'):?>
+          <dt><?=_q('Numeric Value')?></dt>
+          <dd><a rel="nofollow" href="<?=q('search?nt='.$codepoint->properties['nt'])?>"><?=q($info->getLegend('nt', $codepoint->properties['nt']).' '.$codepoint->properties['nv'])?></a></dd>
+        <?php endif?>
+      </dl>
+    </div>
+    <div class="cp-toolbox cp-toolbox--tools">
+      <cp-copy content="<?= q(mb_chr($codepoint->id)) ?>"><button type="button"><?=_q('copy code point')?></button></cp-copy>
+    </div>
+  </aside>
+
   <section class="cpdesc cpdesc--desc">
-    <cp-copy content="<?= q(mb_chr($codepoint->id)) ?>"><button type="button"><?=_q('copy code point')?></button></cp-copy>
 <?php if ($codepoint->gc === 'Xx'): ?>
   <p><?=_q('This codepoint doesn’t exist.')?>
   <?=sprintf(__('If it would, it’d be located in the Nirvana of Undefined Behaviour beyond the 17<sup>th</sup> plane, a land %sno member of the Unicode mailing list has ever seen%s.'),

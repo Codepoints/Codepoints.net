@@ -1,7 +1,6 @@
 .sqfig {
-  float: left;
   float: inline-start;
-  margin: 1em 1em 1em 0;
+  margin: 2em 1em 1em 0;
   padding: 0;
   border-radius: 21px;
   background: #0000000a;
@@ -11,7 +10,7 @@
 
 @media (--gt-content-and-figure) {
   .sqfig {
-    margin-left: -17.625rem;
+    margin-inline-start: -17.625rem;
   }
 }
 
@@ -29,6 +28,37 @@
   /* prevent emoji images from showing overflown content. That's because noto
    * emoji contains off-canvas stuff. */
   overflow: hidden;
+}
+
+.cp-toolbox {
+  max-width: 15.625rem;
+}
+
+@media (--lte-mobile) {
+  .main aside {
+    display: flex;
+    gap: 2rem;
+  }
+}
+
+@media (--gt-mobile) {
+  .cp-toolbox {
+    float: inline-start;
+    clear: inline-start;
+    margin: 1em;
+  }
+  .cp-toolbox--tools {
+    float: inline-end;
+    clear: inline-end;
+  }
+}
+@media (--gt-content-and-figure) {
+  .cp-toolbox--profile {
+    margin-inline-start: -17.625rem;
+  }
+  .cp-toolbox--tools {
+    margin-inline-end: -17.625rem;
+  }
 }
 
 p .bl .meta,

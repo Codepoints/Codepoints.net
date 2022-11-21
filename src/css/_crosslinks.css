@@ -14,8 +14,7 @@
 }
 
 .tiles {
-  clear: left; /* prevent possible collision with figures */
-  clear: inline-start;
+  clear: inline-start; /* prevent possible collision with figures */
   list-style: none;
   padding-inline-start: 0;
   margin: 0 -.5em;
