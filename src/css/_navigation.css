@@ -1,0 +1,61 @@
+/**
+ * on mobile devices move navigation to bottom
+ */
+@media (--lte-mobile) {
+  [data-barba="container"] > cp-navigation {
+    order: 3;
+  }
+}
+
+cp-navigation {
+  position: sticky;
+  z-index: 1;
+  background: var(--color-back);
+  font-family: var(--font-family-alternate);
+  font-size: calc( 1em / var(--font-mod) );
+  display: flex;
+  gap: .5em;
+}
+cp-navigation > * {
+  width: 25%;
+  flex-grow: 1;
+}
+@media (--lte-mobile) {
+  cp-navigation {
+    bottom: 0;
+  }
+}
+@media (--gt-mobile) {
+  cp-navigation {
+    top: 0;
+  }
+}
+
+cp-navigation .meta {
+  display: none;
+}
+
+cp-navigation .title {
+  display: block;
+  max-height: 1.5em;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  direction: rtl; /* cf. https://davidwalsh.name/css-ellipsis-left a hack to show the ellipsis on the beginning of the string. We do this to prevent unhelpful runs of "LATIN CAPITAL LETT...". */
+}
+
+cp-navigation a {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+cp-navigation .ln svg {
+  display: block;
+  width: 80%;
+  height: 80%;
+  max-width: 64px;
+  max-height: 64px;
+  margin: 1em auto 0;
+}
+
