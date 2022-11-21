@@ -15,7 +15,7 @@ indent_size = 2
 [*.{php}]
 indent_size = 4
 
-[codepoints.net/views/*.{php}]
+[codepoints.net/views/**.php]
 indent_size = 2
 
 [Makefile]
