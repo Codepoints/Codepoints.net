@@ -1,0 +1,33 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: dev/Dockerfile
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./codepoints.net:/var/www/html/codepoints.net
+      - ./config.ini:/var/www/html/config.ini
+      - ./composer.json:/var/www/html/composer.json
+      - ./composer.lock:/var/www/html/composer.lock
+    depends_on:
+      - db
+      - vite
+  db:
+    image: mariadb:10.3
+    volumes:
+      - ./dev/db_data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MARIADB_DATABASE=codepts
+      - MARIADB_USER=codepts
+      - MARIADB_PASSWORD=codepts
+  vite:
+    build:
+      context: .
+      dockerfile: dev/vite.Dockerfile
+    ports:
+      - 5173:5173
+    volumes:
+      - .:/app

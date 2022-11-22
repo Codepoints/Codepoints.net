@@ -10,6 +10,9 @@ export default defineConfig({
   plugins: [
     minifyLitTemplates(),
   ],
+  server: {
+    host: true,
+  },
   build: {
     manifest: true,
     outDir: 'codepoints.net/static/',

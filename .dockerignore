@@ -1,0 +1,3 @@
+*
+!dev/httpd.conf
+!dev/*.pem
