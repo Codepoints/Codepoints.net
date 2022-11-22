@@ -29,7 +29,7 @@ if ($next) {
 }
 
 include 'partials/header.php'; ?>
-<main class="main main--codepoint">
+<main class="main main--codepoint" data-cp="<?=q($codepoint->id)?>">
   <?php /* we need the wrapper div to have the figure not float to the absolute
          * left but remain close to the text */ ?>
   <div>
@@ -50,7 +50,7 @@ include 'partials/header.php'; ?>
         <dd><?=q($codepoint->id)?></dd>
         <?php foreach(['gc', 'sc', 'bc', 'dt'] as $cat):?>
           <dt><?=q($info->properties[$cat])?></dt>
-          <dd><a rel="nofollow" href="<?=q('search?'.$cat.'='.$props[$cat])?>"><?=q($info->getLegend($cat, $codepoint->properties[$cat]))?></a></dd>
+          <dd><a rel="nofollow" href="<?=q('search?'.$cat.'='.$codepoint->properties[$cat])?>"><?=q($info->getLegend($cat, $codepoint->properties[$cat]))?></a></dd>
         <?php endforeach?>
         <?php if($codepoint->properties['nt'] !== 'None'):?>
           <dt><?=_q('Numeric Value')?></dt>
@@ -59,7 +59,8 @@ include 'partials/header.php'; ?>
       </dl>
     </div>
     <div class="cp-toolbox cp-toolbox--tools">
-      <cp-copy content="<?= q(mb_chr($codepoint->id)) ?>"><button type="button"><?=_q('copy code point')?></button></cp-copy>
+      <cp-copy content="<?= q(mb_chr($codepoint->id)) ?>"><button type="button"><?=_q('copy to clipboard')?></button></cp-copy>
+      <cp-btn-embed><button type="button"><?=_q('embed this codepoint')?></button></cp-btn-embed>
     </div>
   </aside>
 

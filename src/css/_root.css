@@ -43,6 +43,8 @@
   --hsl-highlight: 0, 0%, 100%;
   --hsl-shadow: 40, 20%, 10%;
 
+  --dimmed: .75;
+
   color-scheme: light;
 }
 

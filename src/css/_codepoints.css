@@ -30,28 +30,37 @@
   overflow: hidden;
 }
 
-.cp-toolbox {
-  max-width: 15.625rem;
-}
-
 @media (--lte-mobile) {
   .main aside {
     display: flex;
-    gap: 2rem;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1rem 0;
   }
+}
+
+.cp-toolbox--tools {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
 }
 
 @media (--gt-mobile) {
   .cp-toolbox {
+    width: 13.625rem;
+    padding: 0 1rem;
+    margin: 1em;
+  }
+  .cp-toolbox--profile {
     float: inline-start;
     clear: inline-start;
-    margin: 1em;
   }
   .cp-toolbox--tools {
     float: inline-end;
     clear: inline-end;
   }
 }
+
 @media (--gt-content-and-figure) {
   .cp-toolbox--profile {
     margin-inline-start: -17.625rem;
@@ -59,6 +68,25 @@
   .cp-toolbox--tools {
     margin-inline-end: -17.625rem;
   }
+}
+
+.cp-toolbox dt {
+  opacity: var(--dimmed);
+  float: inline-start;
+  clear: inline-start;
+  margin: 0;
+  margin-inline-end: 1rem;
+  min-width: 3rem;
+}
+.cp-toolbox dt:after {
+  content: ":";
+}
+.cp-toolbox dd {
+  margin: 0;
+  margin-block-end: .5rem;
+}
+.cp-toolbox button {
+  width: 100%;
 }
 
 p .bl .meta,

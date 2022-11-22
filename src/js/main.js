@@ -4,6 +4,7 @@ import barba from '@barba/core';
 import { initGlossary } from './_glossary.js';
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
+import { CpBtnEmbed } from './components/cp-btn-embed.ts';
 import { CpCopy } from './components/cp-copy.ts';
 import { CpDarkmode } from './components/cp-darkmode.ts';
 import { CpGlossaryTerm } from './components/cp-glossary-term.ts';

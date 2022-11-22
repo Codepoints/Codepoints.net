@@ -91,6 +91,7 @@ h5 {
 .tiles .cp:before,
 .tiles .pl .meta,
 .tiles .bl .meta,
+.cp-toolbox,
 .page-footer,
 small, .text_small, figcaption {
   font-size: calc(1rem / var(--font-mod));
