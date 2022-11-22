@@ -8,6 +8,19 @@ import { intToHex } from '../_unicode-tools.ts';
 
 @customElement('cp-btn-embed')
 export class CpBtnEmbed extends LitElement {
+  static styles = css`
+  .close {
+    border: none;
+    background: none;
+    display: block;
+    width: 42px;
+    padding: 0;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+  `;
+
   render() {
     const cp = intToHex(parseInt(this.closest('[data-cp]').dataset.cp));
     return html`
