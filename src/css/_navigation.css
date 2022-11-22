@@ -15,6 +15,7 @@ cp-navigation {
   font-size: calc( 1em / var(--font-mod) );
   display: flex;
   gap: .5em;
+  padding-bottom: .5rem;
 }
 cp-navigation > * {
   width: 25%;
@@ -23,11 +24,13 @@ cp-navigation > * {
 @media (--lte-mobile) {
   cp-navigation {
     bottom: 0;
+    border-top: 1px solid var(--color-border-light);
   }
 }
 @media (--gt-mobile) {
   cp-navigation {
     top: 0;
+    border-bottom: 1px solid var(--color-border-light);
   }
 }
 

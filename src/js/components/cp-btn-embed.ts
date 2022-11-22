@@ -17,14 +17,15 @@ export class CpBtnEmbed extends LitElement {
           ${unsafeSVG(IconXMark.replace('<svg ', '<svg width="42px" height="42px" ').replace('<path ', '<path fill="currentColor" '))}
           <span>${_('close')}</span>
         </button>
-        <p>${_('Embed this codepoint in your own website by simply copy-and-pasting the following HTML snippet:')}</p>
+        <p>${_('Embed this codepoint in your own website by copy- and pasting the following HTML snippet:')}</p>
         <pre>&lt;iframe src="https://codepoints.net/U+${cp}?embed"
         style="width: 200px; height: 26px;
         border: 1px solid #444;">
 &lt;/iframe></pre>
         <p>${_('If you want, you can freely change width and height to meet your needs. The layout will adapt accordingly.')}</p>
         <p>${_('On platforms that support the oEmbed standard, e.g. WordPress, embedding is even easier:')}
-          ${_('Simply paste the web address of this page in the editor and the editor will do the rest.')}</p>
+          ${_('Simply paste the web address of this page in the editor and the editor will do the rest:')}</p>
+        <pre>${window.location}</pre>
       </dialog>
     `;
   }
