@@ -75,7 +75,7 @@
   float: inline-start;
   clear: inline-start;
   margin: 0;
-  margin-inline-end: 1rem;
+  margin-inline-end: .5rem;
   min-width: 3rem;
 }
 .cp-toolbox dt:after {

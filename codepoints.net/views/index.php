@@ -77,5 +77,23 @@ include 'partials/header.php'; ?>
     <h2><?=_q('The 20 most popular code points')?></h2>
     <cp-most-popular></cp-most-popular>
   </section>
+  <script type="application/ld+json">
+  {
+    "@context":"http://schema.org",
+    "@type":"WebSite",
+    "url":"https://codepoints.net/",
+    "name":"Codepoints",
+    "alternateName":"All Unicode characters from Hieroglyphs to Dingbats",
+    "image":"https://codepoints.net<?= static_url('src/public/images/icon.svg')?>",
+    "about": [
+        { "@type": "Thing", "name": "Unicode", "sameAs":"https://en.wikipedia.org/wiki/Unicode", },
+    ],
+    "potentialAction":{
+      "@type":"SearchAction",
+      "target":"https://codepoints.net/search?q={q}",
+      "query-input":"required name=q"
+    }
+  }
+  </script>
 </main>
 <?php include 'partials/footer.php'; ?>
