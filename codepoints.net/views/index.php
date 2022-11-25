@@ -67,5 +67,9 @@ include 'partials/header.php'; ?>
   )?>
     </p>
   </section>
+  <section class="bk">
+    <h2><?=_q('The 20 most popular code points')?></h2>
+    <cp-most-popular></cp-most-popular>
+  </section>
 </main>
 <?php include 'partials/footer.php'; ?>
