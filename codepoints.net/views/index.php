@@ -18,15 +18,21 @@ include 'partials/header.php'; ?>
       ">Codepoints</text>
     </svg>
   </h1>
-  <form method="get" action="/search" class="searchform">
-    <p><input type="text" name="q" placeholder="<?=_q('Search a Character')?>"
-       title="<?=_q('Enter a single character, like “丙” or “A”, or a term that describes the character, like “cyrillic” or “grass”')?>">
-       <button type="submit"><?=_q('search')?></button></p>
-  </form>
   <blockquote class="central">
     <p><?=__('<strong>Codepoint</strong>, <em>n.</em> the position of a character in
     an encoding system.')?></p>
   </blockquote>
+  <form method="get" action="/search" class="searchform">
+    <p><input type="text" name="q" placeholder="<?=_q('Search a Character')?>"
+       title="<?=_q('Enter a single character, like “丙” or “A”, or a term that describes the character, like “cyrillic” or “grass”')?>">
+       <button type="submit"><?=_q('search')?></button></p>
+    <p><small><em><?=_q('For example:')?></em>
+      <a href="/search?q=<?=urlencode(_q('heart'))?>"><?=_q('heart')?></a>,
+      <a href="/search?q=<?=urlencode(_q('parenthesis'))?>"><?=_q('parenthesis')?></a>,
+      <a href="/search?q=<?=urlencode(_q('shavian'))?>"><?=_q('shavian')?></a>,
+      <a href="/search?q=<?=urlencode(_q('emoji'))?>"><?=_q('emoji')?></a>
+    </small></p>
+  </form>
   <p class="action">
     <span class="desc"><?=_q('Start here:')?> <small><?=_q('Browse one by one through blocks of characters')?></small></span>
     <a class="button browse" href="<?=url('basic_latin')?>"><?=_q('Browse Codepoints')?></a>

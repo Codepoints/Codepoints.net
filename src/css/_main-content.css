@@ -18,6 +18,11 @@
   background: url(../images/front_light.webp) no-repeat center top;
   background-size: contain;
 }
+@media (--gt-desktop) {
+  .main--index {
+    background-size: 1536px 702px;
+  }
+}
 :root.force-dark .main--index {
   background-image: url(../images/front_dark.webp);
 }
@@ -28,8 +33,8 @@
 }
 
 .main--index > :not(h1) {
-  background: hsla(var(--hsl-backlight), .3);
-  box-shadow: 0 0 10px 10px hsla(var(--hsl-backlight), .3);
+  background: hsla(var(--hsl-backlight), .6);
+  box-shadow: 0 0 10px 10px hsla(var(--hsl-backlight), .6);
 }
 
 .main--index blockquote {
@@ -74,4 +79,14 @@
   position: absolute;
   width: 100%;
   top: 0;
+}
+
+.main--index .searchform {
+  text-align: center;
+}
+.main--index .searchform :is(input, button) {
+  font-size: calc(1rem * var(--font-mod) * var(--font-mod));
+}
+.main--index .searchform input {
+  width: 66%;
 }
