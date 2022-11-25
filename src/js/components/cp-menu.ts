@@ -64,8 +64,7 @@ export class CpMenu extends LitElement {
         <span>${_('close')}</span>
       </button>
       <a href="/">${_('go to the start page')}</a>
-      <cp-darkmode></cp-darkmode>
-      <cp-language></cp-language>
+      <a href="/random">${_('go to a random page')}</a>
 
       <form method="get" action="/search">
         <p>
@@ -76,6 +75,12 @@ export class CpMenu extends LitElement {
           <button type="submit">${_('search')}</button>
         </p>
       </form>
+
+      <section>
+        <h2>${_('Settings')}</h2>
+        <cp-darkmode></cp-darkmode>
+        <cp-language></cp-language>
+      </section>
     </dialog>
     `;
   }
