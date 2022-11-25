@@ -7,6 +7,7 @@ use Codepoints\Unicode\Codepoint;
  * @var ?Codepoint $next
  * @var ?\Codepoints\Unicode\Plane $plane
  * @var ?\Codepoints\Unicode\Block $block
+ * @var \Codepoints\Unicode\PropertyInfo $info
  * @var ?Array{ name: ?string } $csur
  * @var list<list<Codepoint>> $confusables
  * @var \Codepoints\Unicode\PropertyInfo $info
