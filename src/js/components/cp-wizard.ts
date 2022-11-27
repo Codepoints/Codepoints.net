@@ -393,7 +393,7 @@ export class CpWizard extends LitElement {
   finish() {
     const payload = { _wizard: 1, };
     let q = this.lastAnsweredQuestion;
-    let query = [];
+    const query = [];
     do {
       //payload[q.id] = q.selected;
       query.push(q.action(q.selected));
