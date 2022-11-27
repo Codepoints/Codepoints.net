@@ -4,8 +4,12 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 COPY dev/httpd.conf /etc/apache2/sites-available/httpd.conf
 COPY dev/*.pem /etc/certs/
 
-RUN docker-php-ext-install pdo_mysql && \
+RUN apt-get update && \
+    apt-get install libzip-dev -y && \
+    docker-php-ext-install pdo_mysql && \
     docker-php-ext-enable pdo_mysql && \
+    docker-php-ext-install zip && \
+    docker-php-ext-enable zip && \
     a2enmod rewrite && \
     a2enmod ssl && \
     a2enmod socache_shmcb && \
