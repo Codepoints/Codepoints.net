@@ -9,6 +9,7 @@ use Codepoints\Unicode\Codepoint;
  * @var ?\Codepoints\Unicode\Block $block
  * @var ?Array{ name: ?string } $csur
  * @var list<list<Codepoint>> $confusables
+ * @var \Codepoints\Unicode\PropertyInfo $info
  * @var Array $aliases
  * @var string $extra
  * @var ?Array $wikipedia
@@ -29,7 +30,7 @@ if ($next) {
 }
 
 include 'partials/header.php'; ?>
-<main class="main main--codepoint" data-cp="<?=q($codepoint->id)?>">
+<main class="main main--codepoint" data-cp="<?=q((string)$codepoint->id)?>">
   <?php /* we need the wrapper div to have the figure not float to the absolute
          * left but remain close to the text */ ?>
   <div>
@@ -47,7 +48,7 @@ include 'partials/header.php'; ?>
     <div class="cp-toolbox cp-toolbox--profile">
       <dl>
         <dt><?=_q('Nº')?></dt>
-        <dd><?=q($codepoint->id)?></dd>
+        <dd><?=q((string)$codepoint->id)?></dd>
         <?php foreach(['gc', 'sc', 'bc', 'dt'] as $cat):?>
           <dt><?=q($info->properties[$cat])?></dt>
           <dd><a rel="nofollow" href="<?=q('search?'.$cat.'='.$codepoint->properties[$cat])?>"><?=q($info->getLegend($cat, $codepoint->properties[$cat]))?></a></dd>
