@@ -1,9 +1,6 @@
 import { LitElement, css, html } from 'lit';
 import {customElement, property} from 'lit/decorators.js';
 import {unsafeSVG} from 'lit/directives/unsafe-svg.js';
-import IconXMark from '@fortawesome/fontawesome-free/svgs/solid/xmark.svg?raw';
-import { gettext as _ } from '../_i18n.ts';
-import { mixinBackdropClose } from '../_mixins.ts';
 import { intToHex } from '../_unicode-tools.ts';
 
 
