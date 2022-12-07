@@ -17,10 +17,6 @@ cp-navigation {
   gap: .5em;
   padding-bottom: .5rem;
 }
-cp-navigation > * {
-  width: 25%;
-  flex-grow: 1;
-}
 @media (--lte-mobile) {
   cp-navigation {
     bottom: 0;
@@ -32,6 +28,36 @@ cp-navigation > * {
     top: 0;
     border-bottom: 1px solid var(--color-border-light);
   }
+}
+
+cp-navigation > * {
+  width: 25%;
+  flex-grow: 1;
+}
+
+cp-navigation a {
+  display: block;
+  width: auto;
+  background: var(--color-back);
+  text-align: center;
+  color: var(--color-link);
+  text-decoration: none;
+}
+cp-navigation a svg {
+  display: block;
+  width: 80%;
+  height: 80%;
+  max-width: 64px;
+  max-height: 64px;
+  margin: 1em auto 0;
+  transition: transform .3s, color .3s;
+  vertical-align: top;
+  fill: currentColor;
+}
+
+cp-navigation a:focus > svg,
+cp-navigation a:hover > svg {
+  transform: scale(1.33);
 }
 
 cp-navigation .meta {
@@ -46,19 +72,3 @@ cp-navigation .title {
   white-space: nowrap;
   direction: rtl; /* cf. https://davidwalsh.name/css-ellipsis-left a hack to show the ellipsis on the beginning of the string. We do this to prevent unhelpful runs of "LATIN CAPITAL LETT...". */
 }
-
-cp-navigation a {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-}
-
-cp-navigation .ln svg {
-  display: block;
-  width: 80%;
-  height: 80%;
-  max-width: 64px;
-  max-height: 64px;
-  margin: 1em auto 0;
-}
-
