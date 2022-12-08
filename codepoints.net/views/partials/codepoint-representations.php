@@ -5,6 +5,7 @@
  */
 
 $repr = $codepoint->representation; ?>
+<cp-representations cp="<?=q((string)$codepoint->id)?>">
 <table class="props representations">
   <thead>
     <tr>
@@ -94,3 +95,4 @@ $typeMap = [
     <?php endif; endforeach?>
   </tbody>
 </table>
+</cp-representations>
