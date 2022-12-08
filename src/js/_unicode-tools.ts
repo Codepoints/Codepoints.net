@@ -3,7 +3,7 @@
  * beyond the BMP
  */
 export function codepointToUtf16(cp) {
-  var surrogates = [];
+  const surrogates = [];
   if (cp > 0xFFFF) {
     surrogates.push(Math.floor((cp - 0x10000) / 0x400) + 0xD800);
     surrogates.push((cp - 0x10000) % 0x400 + 0xDC00);

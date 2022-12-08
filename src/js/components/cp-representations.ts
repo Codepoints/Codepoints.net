@@ -1,5 +1,5 @@
 import {LitElement, html, css} from 'lit';
-import {customElement, property, state} from 'lit/decorators.js';
+import {customElement, property} from 'lit/decorators.js';
 import {gettext as _} from '../_i18n.ts';
 import {intToHex, codepointToUtf16} from '../_unicode-tools.ts';
 
@@ -19,7 +19,7 @@ const formatters = [
   }],
 
   [_('Python'), function(n) {
-    var str = n.toString(16).toUpperCase(),
+    let str = n.toString(16).toUpperCase(),
         pad = 4, chr = 'u';
     if (n > 0xFFFF) {
       pad = 8;
@@ -45,7 +45,7 @@ const formatters = [
   [_('Java'), jsonify],
 
   [_('C'), function(n) {
-    var str = n.toString(16).toUpperCase(),
+    let str = n.toString(16).toUpperCase(),
         pad = 4, chr = 'u';
     if (n > 0xFFFF) {
       pad = 8;
@@ -58,7 +58,7 @@ const formatters = [
   }],
 
   [_('CSS'), function(n) {
-    var str = n.toString(16).toUpperCase();
+    let str = n.toString(16).toUpperCase();
     while (str.length < 6) {
       str = "0" + str;
     }
@@ -112,8 +112,5 @@ export class CpRepresentations extends LitElement {
   </tbody>
 </table>
     `;
-  }
-
-  private _copy_content() {
   }
 }
