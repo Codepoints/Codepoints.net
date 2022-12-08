@@ -29,6 +29,9 @@ Analog::$default_level = Analog::DEBUG;
  */
 Analog::handler(Threshold::init(
     LevelName::init(Stderr::init()),
+    /**
+     * @psalm-suppress TypeDoesNotContainType
+     */
     ((defined('DEBUG') && DEBUG) || PHP_SAPI === 'cli')?
         Analog::DEBUG : Analog::ERROR
 ));
