@@ -26,12 +26,10 @@ Analog::$format = '[%2$s] [codepoints:%3$s] %4$s'."\n";
 Analog::$default_level = Analog::DEBUG;
 /**
  * @psalm-suppress RedundantCondition
+ * @psalm-suppress TypeDoesNotContainType
  */
 Analog::handler(Threshold::init(
     LevelName::init(Stderr::init()),
-    /**
-     * @psalm-suppress TypeDoesNotContainType
-     */
     ((defined('DEBUG') && DEBUG) || PHP_SAPI === 'cli')?
         Analog::DEBUG : Analog::ERROR
 ));
