@@ -10,6 +10,7 @@ use Codepoints\Unicode\Codepoint;
 use Codepoints\Unicode\SearchResult;
 use Codepoints\Router\NotFoundException;
 use Codepoints\Router\Pagination;
+use Codepoints\Router\Redirect;
 
 
 class Search extends Controller {
@@ -22,6 +23,11 @@ class Search extends Controller {
      * @param string $match
      */
     public function __invoke($match, Array $env) : string {
+        $single_cp = $this->detectSingleCodepointSearch();
+        if ($single_cp) {
+            throw new Redirect(sprintf('/U+%s', dechex(mb_ord($single_cp))));
+        }
+
         $query = rawurldecode(filter_input(INPUT_SERVER, 'QUERY_STRING'));
         try {
             list($search_result, $pagination) = $this->getSearchResult($query, $env);
@@ -109,6 +115,19 @@ class Search extends Controller {
         ];
 
         return parent::__invoke($match, $env);
+    }
+
+    /**
+     * @return ?string
+     */
+    private function detectSingleCodepointSearch() {
+        $filtered_get = array_filter($_GET, function(array|string $var) : bool {
+            return !(is_array($var) || strlen($var) === 0 || mb_strlen($var) > 1);
+        });
+        if (count($filtered_get) === 1 && isset($filtered_get['q'])) {
+            return $filtered_get['q'];
+        }
+        return null;
     }
 
     /**
