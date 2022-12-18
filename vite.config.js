@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import minifyLitTemplates from 'rollup-plugin-minify-html-literals';
 import postcssCustomMedia from 'postcss-custom-media';
+import postcssPresetEnv from 'postcss-preset-env';
 import { customMedia } from './src/js/media_queries.ts';
 
 
@@ -33,6 +34,7 @@ export default defineConfig({
             { customMedia },
           ],
         }),
+        postcssPresetEnv(),
       ],
     },
   },
