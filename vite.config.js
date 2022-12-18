@@ -20,7 +20,7 @@ export default defineConfig({
     rollupOptions: {
       input: ['src/js/main.js', 'src/css/main.css'],
       output: {
-        chunkFileNames: '[name]-[hash][extname]',
+        chunkFileNames: '[name]-[hash].js',
         entryFileNames: '[name]-[hash].js',
         assetFileNames: 'assets/[name]-[hash][extname]',
       },
