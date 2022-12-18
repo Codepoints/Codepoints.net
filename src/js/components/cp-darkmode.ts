@@ -2,6 +2,13 @@ import { LitElement, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { gettext as _ } from '../_i18n.ts';
 
+/**
+ * allow users to force-change the display mode
+ *
+ * the default is isDark==null. Any forced state will be persisted in a cookie,
+ * so that the server can add an appropriate class to its response. We do this
+ * to prevent a flash of dark/light content before JS can take over.
+ */
 @customElement('cp-darkmode')
 export class CpDarkmode extends LitElement {
   @property()
@@ -17,11 +24,18 @@ export class CpDarkmode extends LitElement {
   }
 
   render() {
+    const label = (
+      this.isDark?
+        _('switch to dark mode (currently active: light mode)'):
+      this.isDark === false?
+        _('switch to browser default (currently active: dark mode)'):
+        _('switch to light mode (currently active: browser default)')
+    );
     return html`
       <p>
         <label>
           <input type="checkbox" @click="${this.choose}" .checked="${this.isDark}" .indeterminate="${this.isDark === null}">
-          ${_('dark mode?')}
+          <strong>${_('dark / light mode:')}</strong> ${label}
         </label>
       </p>
     `;
