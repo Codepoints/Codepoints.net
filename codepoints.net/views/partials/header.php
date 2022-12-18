@@ -6,7 +6,7 @@
  */
 ?>
 <!DOCTYPE html>
-<html lang="<?=q($lang)?>" class="<?php
+<html lang="<?=q($lang)?>" dir="ltr" class="<?php
 if (isset($_COOKIE['force_mode'])) {
     if ($_COOKIE['force_mode'] === 'dark') {
         echo 'force-dark';
