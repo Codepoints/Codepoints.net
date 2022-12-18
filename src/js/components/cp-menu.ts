@@ -1,8 +1,10 @@
 import { LitElement, css, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import {unsafeSVG} from 'lit/directives/unsafe-svg.js';
+import IconCircleQuestion from '@fortawesome/fontawesome-free/svgs/solid/circle-question.svg?raw';
 import IconGear from '@fortawesome/fontawesome-free/svgs/solid/gear.svg?raw';
 import IconHouse from '@fortawesome/fontawesome-free/svgs/solid/house.svg?raw';
+import IconLightbulb from '@fortawesome/fontawesome-free/svgs/solid/lightbulb.svg?raw';
 import IconScroll from '@fortawesome/fontawesome-free/svgs/solid/scroll.svg?raw';
 import IconShuffle from '@fortawesome/fontawesome-free/svgs/solid/shuffle.svg?raw';
 import IconXMark from '@fortawesome/fontawesome-free/svgs/solid/xmark.svg?raw';
@@ -106,6 +108,12 @@ export class CpMenu extends LitElement {
         <a href="/random">
           ${unsafeSVG(IconShuffle)}
           ${_('random page')}</a>
+        <a href="/glossary">
+          ${unsafeSVG(IconLightbulb)}
+          ${_('glossary')}</a>
+        <a href="/about">
+          ${unsafeSVG(IconCircleQuestion)}
+          ${_('about this site')}</a>
       </nav>
 
       <form method="get" action="/search">
