@@ -4,7 +4,7 @@
  */
 ?>
 <cp-navigation>
-  <a href="<?=q(url(''))?>" rel="start" class="ln">
+  <a href="<?=q(url(''))?>" rel="start">
     <svg width="16" height="16"><use href="/static/images/icon.svg#icon"/></svg>
     <span class="title"><?=_q('Home')?></span>
   </a>

@@ -43,6 +43,7 @@ cp-navigation a {
   color: var(--color-link);
   text-decoration: none;
 }
+cp-navigation .ln svg,
 cp-navigation a svg {
   display: block;
   width: 80%;
