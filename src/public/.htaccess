@@ -11,7 +11,7 @@ AddEncoding x-gzip .svgz
 ExpiresActive On
 ExpiresDefault "access plus 1 hour"
 ExpiresByType text/css "access plus 1 month"
-ExpiresByType text/javascript "access plus 1 month"
+ExpiresByType application/javascript "access plus 1 month"
 ExpiresByType application/json "access plus 1 day"
 ExpiresByType image/avif "access plus 1 month"
 ExpiresByType image/gif "access plus 1 month"
