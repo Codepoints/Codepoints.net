@@ -34,7 +34,11 @@ export default defineConfig({
             { customMedia },
           ],
         }),
-        postcssPresetEnv(),
+        postcssPresetEnv({
+          features: {
+            'custom-properties': false,
+          },
+        }),
       ],
     },
   },
