@@ -16,6 +16,7 @@ export class CpDarkmode extends LitElement {
 
   constructor() {
     super();
+    this.isDark = null;
     if (document.documentElement.classList.contains('force-dark')) {
       this.isDark = true;
     } else if (document.documentElement.classList.contains('force-light')) {
@@ -26,10 +27,10 @@ export class CpDarkmode extends LitElement {
   render() {
     const label = (
       this.isDark?
-        _('switch to dark mode (currently active: light mode)'):
+        _('switch to light mode (currently active: dark mode)'):
       this.isDark === false?
-        _('switch to browser default (currently active: dark mode)'):
-        _('switch to light mode (currently active: browser default)')
+        _('switch to browser default (currently active: light mode)'):
+        _('switch to dark mode (currently active: browser default)')
     );
     return html`
       <p>
