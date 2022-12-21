@@ -6,14 +6,11 @@ jobs:
     env:
       NODE_ENV: production
     steps:
-      - run: php --version
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: "16"
       - run: "sed -i '/define..DEBUG/s/1/0/' codepoints.net/index.php"
-      - run: "ls -l"
-      - run: "cat composer.json"
       - uses: php-actions/composer@v6
         with:
           php_version: "8.1"
@@ -21,6 +18,8 @@ jobs:
           command: install
           args: --quiet
       - run: npm ci --silent --audit false --fund false
+      - run: "ls -l"
+      - run: "pwd"
       - run: ./node_modules/.bin/vite build
       - run: make test-js test-php
       - uses: php-actions/composer@v6
