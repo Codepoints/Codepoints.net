@@ -15,6 +15,10 @@ jobs:
       - uses: php-actions/composer@v6
         with:
           php_version: "8.1"
+          command: --version
+      - uses: php-actions/composer@v6
+        with:
+          php_version: "8.1"
           command: install
           args: --optimize-autoloader --quiet
       - run: npm ci --silent --audit false --fund false
