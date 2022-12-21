@@ -99,6 +99,10 @@ p .pl .meta {
   margin-right: auto;
 }
 
+.props th:first-child {
+  text-align: right;
+}
+
 .props .x {
   color: var(--color-neutral);
 }

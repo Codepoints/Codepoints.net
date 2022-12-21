@@ -73,6 +73,15 @@ export class CpRepresentations extends LitElement {
   margin-left: auto;
   margin-right: auto;
 }
+th, td {
+  padding: .2rem .5rem;
+}
+.props th:first-child {
+  text-align: right;
+}
+small {
+  font-weight: normal;
+}
   `;
 
   @property({ type: Number })
@@ -86,6 +95,8 @@ export class CpRepresentations extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this._thead = this.querySelector('thead');
+    this._thead.querySelector('th:last-child').insertAdjacentHTML('beforeend',
+      ` <small>${_('(click value to copy)')}</small>`);
     this.querySelectorAll('tbody tr').forEach(tr => {
       const label = tr.querySelector('th').textContent.trim();
       const value = tr.querySelector('td').textContent.trim();
@@ -106,7 +117,7 @@ export class CpRepresentations extends LitElement {
     ${this._representations.map(obj => html`
       <tr>
         <th scope="row">${obj.label}</th>
-        <td>${obj.value}</td>
+        <td><cp-copy content="${obj.value}">${obj.value}</cp-copy></td>
       </tr>
     `)}
   </tbody>
