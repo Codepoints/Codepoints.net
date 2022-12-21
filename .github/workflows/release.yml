@@ -46,13 +46,9 @@ jobs:
           command: install
           args: --optimize-autoloader --quiet --no-dev
 
-      - run: zip -r codepoints codepoints.net
-
-      - run: ls -la codepoints.zip
-
       - name: 'Upload Build'
         uses: actions/upload-artifact@v3
         with:
-          name: latest
-          path: codepoints.zip
+          name: codepoints
+          path: codepoints.net
           retention-days: 2
