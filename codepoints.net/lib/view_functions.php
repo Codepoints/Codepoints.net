@@ -34,7 +34,14 @@ function _q(string $s) : string {
 /**
  * return the representation for a code point link
  */
-function cp(Codepoint $codepoint, string $rel='', string $class='') : string {
+function cp(Codepoint|Array $codepoint, string $rel='', string $class='') : string {
+    if (is_array($codepoint)) {
+        $r = '';
+        foreach ($codepoint as $cp) {
+            $r .= cp($cp, $rel, $class);
+        }
+        return $r;
+    }
     if ($rel) {
         $rel = ' rel="'.q($rel).'"';
     }
