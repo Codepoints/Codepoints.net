@@ -18,10 +18,8 @@ jobs:
           command: install
           args: --quiet
       - run: npm ci --silent --audit false --fund false
-      - run: "ls -l"
-      - run: "pwd"
-      - run: "type make"
-      - run: node_modules/.bin/vite build
+      - run: "ls -l node_modules/.bin"
+      - run: "$(pwd)/node_modules/.bin/vite build"
       - run: make test-js test-php
       - uses: php-actions/composer@v6
         with:
