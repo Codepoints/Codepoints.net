@@ -17,20 +17,15 @@ jobs:
       - uses: php-actions/composer@v6
         with:
           php_version: "8.1"
-          command: --version
-      - uses: php-actions/composer@v6
-        with:
-          php_version: "8.1"
-          command: update
-      - uses: php-actions/composer@v6
-        with:
-          php_version: "8.1"
+          php_extensions: zip
           command: install
-          args: --optimize-autoloader --quiet
+          args: --quiet
       - run: npm ci --silent --audit false --fund false
       - run: ./node_modules/.bin/vite build
       - run: make test-js test-php
       - uses: php-actions/composer@v6
         with:
+          php_version: "8.1"
+          php_extensions: zip
           command: install
           args: --optimize-autoloader --quiet --no-dev
