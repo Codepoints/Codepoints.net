@@ -12,10 +12,16 @@ jobs:
         with:
           node-version: "16"
       - run: "sed -i '/define..DEBUG/s/1/0/' codepoints.net/index.php"
+      - run: "ls -l"
+      - run: "cat composer.json"
       - uses: php-actions/composer@v6
         with:
           php_version: "8.1"
           command: --version
+      - uses: php-actions/composer@v6
+        with:
+          php_version: "8.1"
+          command: update
       - uses: php-actions/composer@v6
         with:
           php_version: "8.1"
