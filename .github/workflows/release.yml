@@ -1,29 +1,58 @@
 name: create release
-on: [push]
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
 jobs:
   create-release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
       - uses: actions/setup-node@v3
         with:
           node-version: "16"
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v3
+        with:
+          path: /tmp/composer-cache
+          key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
+
       - run: "sed -i '/define..DEBUG/s/1/0/' codepoints.net/index.php"
+
       - uses: php-actions/composer@v6
         with:
           php_version: "8.1"
           php_extensions: zip
           command: install
           args: --quiet
+
       - run: npm ci --silent --audit false --fund false
-      - run: "ls -l node_modules/.bin"
+
       - run: "$(pwd)/node_modules/.bin/vite build"
         env:
           NODE_ENV: production
+
       - run: make test-js test-php
+
       - uses: php-actions/composer@v6
         with:
           php_version: "8.1"
           php_extensions: zip
           command: install
           args: --optimize-autoloader --quiet --no-dev
+
+      - run: zip -r codepoints codepoints.net
+
+      - run: ls -la codepoints.zip
+
+      - name: 'Upload Build'
+        uses: actions/upload-artifact@v3
+        with:
+          name: latest
+          path: codepoints.zip
+          retention-days: 2
