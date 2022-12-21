@@ -3,8 +3,6 @@ on: [push]
 jobs:
   create-release:
     runs-on: ubuntu-latest
-    env:
-      NODE_ENV: production
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -20,6 +18,8 @@ jobs:
       - run: npm ci --silent --audit false --fund false
       - run: "ls -l node_modules/.bin"
       - run: "$(pwd)/node_modules/.bin/vite build"
+        env:
+          NODE_ENV: production
       - run: make test-js test-php
       - uses: php-actions/composer@v6
         with:
