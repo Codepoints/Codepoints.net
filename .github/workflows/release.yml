@@ -12,36 +12,44 @@ jobs:
   create-release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: check out repository
+        uses: actions/checkout@v3
 
-      - uses: actions/setup-node@v3
+      - name: set up node v16
+        uses: actions/setup-node@v3
         with:
           node-version: "16"
 
-      - name: Cache Composer dependencies
+      - name: cache composer dependencies
         uses: actions/cache@v3
         with:
           path: /tmp/composer-cache
           key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
 
-      - run: "sed -i '/define..DEBUG/s/1/0/' codepoints.net/index.php"
+      - name: disable DEBUG
+        run: "sed -i '/define..DEBUG/s/1/0/' codepoints.net/index.php"
 
-      - uses: php-actions/composer@v6
+      - name: install composer packages
+        uses: php-actions/composer@v6
         with:
           php_version: "8.1"
           php_extensions: zip
           command: install
           args: --quiet
 
-      - run: npm ci --silent --audit false --fund false
+      - name: install npm packages
+        run: npm ci --silent --audit false --fund false
 
-      - run: "$(pwd)/node_modules/.bin/vite build"
+      - name: run vite
+        run: npm run build
         env:
           NODE_ENV: production
 
-      - run: make test-js test-php
+      - name: run tests
+        run: make test-js test-php
 
-      - uses: php-actions/composer@v6
+      - name: remove PHP dev packages again
+        uses: php-actions/composer@v6
         with:
           php_version: "8.1"
           php_extensions: zip
@@ -49,10 +57,11 @@ jobs:
           args: --optimize-autoloader --quiet --no-dev
         if: startsWith(github.ref, 'refs/tags/')
 
-      - run: zip -r codepoints codepoints.net
+      - name: create zip file for release
+        run: zip -r codepoints codepoints.net
         if: startsWith(github.ref, 'refs/tags/')
 
-      - name: Release
+      - name: create release
         uses: softprops/action-gh-release@v1
         with:
           files: codepoints.zip
