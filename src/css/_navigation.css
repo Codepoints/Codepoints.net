@@ -37,7 +37,6 @@ cp-navigation > * {
 
 cp-navigation a {
   display: block;
-  width: auto;
   background: var(--color-back);
   text-align: center;
   color: var(--color-link);
