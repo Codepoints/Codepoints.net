@@ -19,6 +19,7 @@ $categories = [
     'pua_astr' =>  ['U+10456A', 200], # Astral private-use code point
     'last' =>      ['U+10FFFF', 200],
     'beyond' =>    ['U+1123AF', 404], # Something beyond the last code point
+    'multi-cp uc' => ['U+1FC4', 200], # a code point that has two code points as upper-case variants
 ];
 
 foreach ($categories as $category => list($codepoint, $response_code)) {
