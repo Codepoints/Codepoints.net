@@ -1,0 +1,35 @@
+#!/bin/bash
+
+set -euo pipefail
+
+DATE="$(date +%Y-%m-%d-%H-%M-%S)"
+RELEASE_URL='https://github.com/codepoints/codepoints.net/releases/latest/download/codepoints.zip'
+SSH_HOST='codepts'
+
+echo "> create tag deploy-$DATE" >&2
+git tag "deploy-$DATE"
+
+echo "> start workflow" >&2
+git push --tags --quiet
+
+echo "> wait for new release to become available" >&2
+sleep 30 # give Github 30 seconds to run before polling
+
+LAST_AVAILABLE=
+CYCLES=0
+
+# poll the Github release page. If the "latest" release redirects to our tag
+# from above, we're ready to call the deployment script on the server.
+while [[ "$LAST_AVAILABLE" != "$DATE" ]]; do
+    sleep 3
+    LAST_AVAILABLE="$(curl -IsS "$RELEASE_URL" | sed -n '/^location:/s/location:.*download\/deploy-\(.*\)\/codepoints.zip\s*$/\1/p')"
+    CYCLES=$((CYCLES+1))
+    if [[ $CYCLES -gt 60 ]]; then
+        echo "! last available is: $LAST_AVAILABLE, looking for $DATE" >&2
+        echo '! release not available. Exiting.' >&2
+        exit 1
+    fi
+done
+
+echo "> run deployment on server" >&2
+ssh "$SSH_HOST" bin/cps-deploy
