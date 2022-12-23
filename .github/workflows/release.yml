@@ -6,6 +6,7 @@ on:
       - main
     tags:
       - '20*'
+      - 'deploy-*'
   workflow_dispatch:
 
 jobs:
@@ -56,6 +57,9 @@ jobs:
           command: install
           args: --optimize-autoloader --quiet --no-dev
         if: startsWith(github.ref, 'refs/tags/')
+
+      - name: publish current version
+        run: "echo '${{ github.ref_name }}' > codepoints.net/version.txt"
 
       - name: create zip file for release
         run: zip -r codepoints codepoints.net
