@@ -28,7 +28,7 @@ Router::add('planes', new Planes());
 Router::add('random', new Random());
 
 Router::add('search', new Search());
-Router::add('wizard', function(Array $match, Array $env) : void {
+Router::add('wizard', function(string $match, Array $env) : void {
     throw new Redirect('/search');
 });
 
