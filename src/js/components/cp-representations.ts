@@ -69,6 +69,11 @@ const formatters = [
 @customElement('cp-representations')
 export class CpRepresentations extends LitElement {
   static styles = css`
+:host > button {
+  display: block;
+  margin-top: .5rem;
+}
+:host > button,
 .props {
   margin-left: auto;
   margin-right: auto;
@@ -76,20 +81,30 @@ export class CpRepresentations extends LitElement {
 th, td {
   padding: .2rem .5rem;
 }
-.props th:first-child {
+th:first-child {
   text-align: right;
+}
+th:last-child {
+  text-align: left;
 }
 small {
   font-weight: normal;
+}
+tbody tr:not(.primary,.visible) {
+  display: none;
 }
   `;
 
   @property({ type: Number })
   declare cp = null;
 
+  @property({ type: Boolean })
+  declare allShown = false;
+
   constructor() {
     super();
     this._representations = [];
+    this.allShown = false;
   }
 
   connectedCallback() {
@@ -101,7 +116,7 @@ small {
       const label = tr.querySelector('th').textContent.trim();
       const value = tr.querySelector('td').textContent.trim();
       if (label && value) {
-        this._representations.push({label, value});
+        this._representations.push({label, value, primary: tr.classList.contains('primary')});
       }
     });
     formatters.forEach(formatter => {
@@ -115,13 +130,19 @@ small {
   ${this._thead}
   <tbody>
     ${this._representations.map(obj => html`
-      <tr>
+      <tr class="${obj.primary? 'primary' : ''}">
         <th scope="row">${obj.label}</th>
         <td><cp-copy content="${obj.value}">${obj.value}</cp-copy></td>
       </tr>
     `)}
   </tbody>
 </table>
+<button type="button" @click="${this.toggle}">${this.allShown? _('hide') : _('show more')}</button>
     `;
+  }
+
+  toggle() {
+    this.allShown = ! this.allShown;
+    this.renderRoot.querySelectorAll('tbody tr').forEach(tr => tr.classList.toggle('visible', this.allShown));
   }
 }
