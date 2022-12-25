@@ -23,6 +23,7 @@ export class CpLanguage extends LitElement {
   render() {
     return html`
     <label>
+      <cp-icon icon="language-icon" width="24px" height="24px"></cp-icon>&nbsp;
       ${_('choose language:')}
       <select @change="${this.choose}">
         ${this.languages.map(lang =>

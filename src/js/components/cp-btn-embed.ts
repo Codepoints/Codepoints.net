@@ -1,7 +1,5 @@
 import {LitElement, css, html} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import {unsafeSVG} from 'lit/directives/unsafe-svg.js';
-import IconXMark from '@fortawesome/fontawesome-free/svgs/solid/xmark.svg?raw';
 import {gettext as _} from '../_i18n.ts';
 import { mixinBackdropClose } from '../_mixins.ts';
 import { intToHex } from '../_unicode-tools.ts';
@@ -27,7 +25,7 @@ export class CpBtnEmbed extends LitElement {
       <slot @click="${this._show_instructions}">${_('embed this codepoint')}</slot>
       <dialog @click="${mixinBackdropClose(this.close.bind(this))}">
         <button type="button" class="close" @click="${this.close}">
-          ${unsafeSVG(IconXMark.replace('<svg ', '<svg width="42px" height="42px" ').replace('<path ', '<path fill="currentColor" '))}
+          <cp-icon icon="xmark" width="42px" height="42px"></cp-icon>
           <span>${_('close')}</span>
         </button>
         <p>${_('Embed this codepoint in your own website by copy- and pasting the following HTML snippet:')}</p>

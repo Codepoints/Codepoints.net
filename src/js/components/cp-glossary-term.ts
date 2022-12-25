@@ -1,8 +1,7 @@
 import {LitElement, css, html} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
-import {unsafeSVG} from 'lit/directives/unsafe-svg.js';
 import {gettext as _} from '../_i18n.ts';
-import IconCircleQuestion from '@fortawesome/fontawesome-free/svgs/regular/circle-question.svg?raw';
+
 
 let glossaryCache;
 
@@ -44,8 +43,6 @@ export class CpGlossaryTerm extends LitElement {
       width: 1.2em;
       height: 1.2em;
       vertical-align: top;
-    }
-    .icon path {
       fill: currentColor;
     }
     .info {
@@ -80,7 +77,7 @@ export class CpGlossaryTerm extends LitElement {
   render() {
     return html`
     <slot></slot>
-    <button type="button" @click=${this._toggleInfo} class="icon" tabindex="0" aria-label="${_('show definition')}">${unsafeSVG(IconCircleQuestion)}</button>
+    <button type="button" @click=${this._toggleInfo} class="icon" tabindex="0" aria-label="${_('show definition')}"><cp-icon icon="regular-circle-question"></cp-icon></button>
     <div hidden class="info"></div>`;
   }
 

@@ -3,6 +3,7 @@ import { CpBtnEmbed } from './components/cp-btn-embed.ts';
 import { CpCopy } from './components/cp-copy.ts';
 import { CpDarkmode } from './components/cp-darkmode.ts';
 import { CpGlossaryTerm } from './components/cp-glossary-term.ts';
+import { CpIcon } from './components/cp-icon.ts';
 import { CpLanguage } from './components/cp-language.ts';
 import { CpMostPopular } from './components/cp-most-popular.ts';
 import { CpNavigation } from './components/cp-navigation.ts';

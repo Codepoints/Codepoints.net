@@ -1,9 +1,5 @@
 import {LitElement, css, html} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
-import {unsafeSVG} from 'lit/directives/unsafe-svg.js';
-import IconPlus from '@fortawesome/fontawesome-free/svgs/solid/plus.svg?raw';
-import IconMinus from '@fortawesome/fontawesome-free/svgs/solid/minus.svg?raw';
-import IconAsterisk from '@fortawesome/fontawesome-free/svgs/solid/asterisk.svg?raw';
 import { gettext as _ } from '../_i18n.ts';
 
 @customElement('cp-search-boolean')
@@ -86,7 +82,7 @@ export class CpSearchBoolean extends LitElement {
         class="value value-${this.value}"
         @click="${this._toggle}"
         title="${_('click to include or exclude this property')}">
-        ${unsafeSVG(this.value === ''? IconAsterisk : this.value === '1'? IconPlus : IconMinus)}
+        <cp-icon icon="${this.value === ''? 'asterisk' : this.value === '1'? 'plus' : 'minus'}"></cp-icon>
         <slot name="desc"></slot>
       </button>
     `;

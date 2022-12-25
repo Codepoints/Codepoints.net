@@ -1,7 +1,5 @@
 import {LitElement, css, html} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
-import {unsafeSVG} from 'lit/directives/unsafe-svg.js';
-import IconBars from '@fortawesome/fontawesome-free/svgs/solid/bars.svg?raw';
 import { gettext as _ } from '../_i18n.ts';
 import { mixinBackdropClose } from '../_mixins.ts';
 
@@ -99,7 +97,7 @@ export class CpSearchProperty extends LitElement {
         class="${this.checked? 'selected' : ''}"
         @click="${this._choose}"
         title="${_('click to choose a value for this property')}">
-        ${unsafeSVG(IconBars)}
+        <cp-icon icon="bars"></cp-icon>
         <slot name="desc"></slot>
         &nbsp;(${this.checked}/${this.all})
       </button>

@@ -1,13 +1,5 @@
 import { LitElement, css, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import {unsafeSVG} from 'lit/directives/unsafe-svg.js';
-import IconCircleQuestion from '@fortawesome/fontawesome-free/svgs/solid/circle-question.svg?raw';
-import IconGear from '@fortawesome/fontawesome-free/svgs/solid/gear.svg?raw';
-import IconHouse from '@fortawesome/fontawesome-free/svgs/solid/house.svg?raw';
-import IconLightbulb from '@fortawesome/fontawesome-free/svgs/solid/lightbulb.svg?raw';
-import IconScroll from '@fortawesome/fontawesome-free/svgs/solid/scroll.svg?raw';
-import IconShuffle from '@fortawesome/fontawesome-free/svgs/solid/shuffle.svg?raw';
-import IconXMark from '@fortawesome/fontawesome-free/svgs/solid/xmark.svg?raw';
 import { gettext as _ } from '../_i18n.ts';
 import { mixinBackdropClose } from '../_mixins.ts';
 
@@ -78,6 +70,7 @@ export class CpMenu extends LitElement {
   }
   nav svg {
     height: 3rem;
+    width: 3rem;
     display: block;
     fill: currentColor;
     fill-opacity: .5;
@@ -95,24 +88,27 @@ export class CpMenu extends LitElement {
     return html`
     <dialog @click="${mixinBackdropClose(this.close.bind(this))}">
       <button type="button" class="close" @click="${this.close}">
-        ${unsafeSVG(IconXMark.replace('<svg ', '<svg width="42px" height="42px" ').replace('<path ', '<path fill="currentColor" '))}
+        <cp-icon icon="xmark" width="42px" height="42px"></cp-icon>
         <span>${_('close')}</span>
       </button>
       <nav>
         <a href="/">
-          ${unsafeSVG(IconHouse)}
+          <cp-icon icon="house"></cp-icon>
           ${_('start page')}</a>
         <a href="/scripts">
-          ${unsafeSVG(IconScroll)}
+          <cp-icon icon="scroll"></cp-icon>
           ${_('scripts')}</a>
+        <a href="/search">
+          <cp-icon icon="magnifying-glass"></cp-icon>
+          ${_('search')}</a>
         <a href="/random">
-          ${unsafeSVG(IconShuffle)}
+          <cp-icon icon="shuffle"></cp-icon>
           ${_('random page')}</a>
         <a href="/glossary">
-          ${unsafeSVG(IconLightbulb)}
+          <cp-icon icon="lightbulb"></cp-icon>
           ${_('glossary')}</a>
         <a href="/about">
-          ${unsafeSVG(IconCircleQuestion)}
+          <cp-icon icon="circle-question"></cp-icon>
           ${_('about this site')}</a>
       </nav>
 
@@ -128,7 +124,7 @@ export class CpMenu extends LitElement {
 
       <section>
         <h2>
-        ${unsafeSVG(IconGear.replace('<svg ', '<svg width="16px" height="16px" ').replace('<path ', '<path fill="currentColor" '))}
+        <cp-icon icon="gear" width="16px" height="16px"></cp-icon>&nbsp;
         ${_('Settings')}</h2>
         <cp-darkmode></cp-darkmode>
         <cp-language></cp-language>
