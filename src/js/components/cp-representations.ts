@@ -66,6 +66,40 @@ const formatters = [
   }],
 ];
 
+
+class FavoritesManager {
+  constructor() {
+    let personalized;
+    try {
+      personalized = JSON.parse(localStorage.getItem('cp-representations-favorites'));
+      if (! Array.isArray(personalized)) {
+        personalized = null;
+      }
+    } catch(e) {
+    }
+    this.favorites = personalized || ['nr', 'utf-8', 'utf-16'];
+  }
+  has(fav) {
+    return this.favorites.includes(fav);
+  }
+  add(fav) {
+    if (! this.favorites.includes(fav)) {
+      this.favorites.push(fav);
+    }
+    this._save();
+  }
+  remove(fav) {
+    if (this.favorites.includes(fav)) {
+      this.favorites = this.favorites.filter(item => item !== fav);
+    }
+    this._save();
+  }
+  _save() {
+    localStorage.setItem('cp-representations-favorites', JSON.stringify(this.favorites));
+  }
+}
+
+
 @customElement('cp-representations')
 export class CpRepresentations extends LitElement {
   static styles = css`
@@ -90,8 +124,17 @@ th:last-child {
 small {
   font-weight: normal;
 }
-tbody tr:not(.primary,.visible) {
+table:not(.show-all) tbody tr:not(.primary),
+table:not(.show-all) tfoot {
   display: none;
+}
+.props button {
+  opacity: .5;
+  margin-left: .25rem;
+}
+.props button:focus,
+.props button:hover {
+  opacity: 1;
 }
   `;
 
@@ -101,6 +144,12 @@ tbody tr:not(.primary,.visible) {
   @property({ type: Boolean })
   declare allShown = false;
 
+  @property({ type: FavoritesManager })
+  declare favorites = null;
+
+  @property({ type: Array })
+  declare _representations = null;
+
   constructor() {
     super();
     this._representations = [];
@@ -109,40 +158,80 @@ tbody tr:not(.primary,.visible) {
 
   connectedCallback() {
     super.connectedCallback();
+    this.favorites = new FavoritesManager();
     this._thead = this.querySelector('thead');
     this._thead.querySelector('th:last-child').insertAdjacentHTML('beforeend',
       ` <small>${_('(click value to copy)')}</small>`);
     this.querySelectorAll('tbody tr').forEach(tr => {
       const label = tr.querySelector('th').textContent.trim();
       const value = tr.querySelector('td').textContent.trim();
-      if (label && value) {
-        this._representations.push({label, value, primary: tr.classList.contains('primary')});
+      const system = tr.dataset.system;
+      if (system && value) {
+        this._representations.push({
+          system,
+          label,
+          value,
+          primary: this.favorites.has(system),
+        });
       }
     });
     formatters.forEach(formatter => {
-      this._representations.push({label: formatter[0], value: formatter[1](this.cp)});
+      this._representations.push({
+        system: formatter[0],
+        label: formatter[0],
+        value: formatter[1](this.cp),
+        primary: this.favorites.has(formatter[0]),
+      });
     });
   }
 
   render() {
     return html`
-<table class="props representations">
+<table class="props representations ${this.allShown? 'show-all' : ''}">
   ${this._thead}
   <tbody>
     ${this._representations.map(obj => html`
-      <tr class="${obj.primary? 'primary' : ''}">
-        <th scope="row">${obj.label}</th>
+      <tr class="${obj.primary? 'primary' : ''}" data-system="${obj.system}">
+        <th scope="row">${obj.label}
+          <button type="button" @click="${() => this.togglePrimary(obj)}" title="${
+            obj.primary?
+              _('remove from favorites'):
+              _('add to favorites (will be shown by default)')
+          }"><cp-icon icon="${obj.primary? '' : 'regular-'}star" width="1rem" height="1rem"></cp-icon></button>
+        </th>
         <td><cp-copy content="${obj.value}">${obj.value}</cp-copy></td>
       </tr>
     `)}
   </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="2">
+<small>${_('Click the star button next to each label to set this representation as favorite or remove it from the favorites.')}
+${_('Favorites will be shown initially.')}
+${_('(Favorites are stored locally on your computer and never sent over the internet.)')}</small>
+      </td>
+    </tr>
+  </tfoot>
 </table>
-<button type="button" @click="${this.toggle}">${this.allShown? _('hide') : _('show more')}</button>
+<button type="button" @click="${this.toggle}">${this.allShown? _('hide all but favorites') : _('show more')}</button>
     `;
   }
 
   toggle() {
     this.allShown = ! this.allShown;
-    this.renderRoot.querySelectorAll('tbody tr').forEach(tr => tr.classList.toggle('visible', this.allShown));
+  }
+
+  togglePrimary(obj) {
+    if (! obj.system) {
+      return;
+    }
+    if (this.favorites.has(obj.system)) {
+      this.favorites.remove(obj.system);
+      obj.primary = false;
+    } else {
+      this.favorites.add(obj.system);
+      obj.primary = true;
+    }
+    this.requestUpdate();
   }
 }

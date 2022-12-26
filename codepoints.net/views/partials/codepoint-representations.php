@@ -14,26 +14,26 @@ $repr = $codepoint->representation; ?>
     </tr>
   </thead>
   <tbody>
-    <tr class="primary">
+    <tr class="primary" data-system="nr">
       <th scope="row"><?=_q('Nº')?></th>
       <td class="repr-number"><?=$codepoint->id?></td>
     </tr>
-    <tr class="primary">
+    <tr class="primary" data-system="utf-8">
       <th scope="row"><?=_q('UTF-8')?></th>
       <td><?=q($repr('UTF-8'))?></td>
     </tr>
-    <tr class="primary">
+    <tr class="primary" data-system="utf-16">
       <th scope="row"><?=_q('UTF-16')?></th>
       <td><?=q($repr('UTF-16'))?></td>
     </tr>
-    <tr>
+    <tr data-system="utf-32">
       <th scope="row"><?=_q('UTF-32')?></th>
       <td><?=q($repr('UTF-32'))?></td>
     </tr>
-    <tr>
+    <tr data-system="url">
       <th scope="row"><?=_q('URL-Quoted')?></th>
       <td><?=q($repr('URL'))?></td>
-    <tr>
+    <tr data-system="html">
       <th scope="row"><?=_q('HTML-Escape')?></th>
       <td><?=q($repr('HTML'))?></td>
     </tr>
@@ -41,7 +41,7 @@ $repr = $codepoint->representation; ?>
     ini_set('mbstring.substitute_character', 'none');
     $moji = mb_convert_encoding($codepoint->chr(), 'UTF-8', 'ISO-8859-1');
     if ($moji && $moji !== $codepoint->chr()): ?>
-      <tr>
+      <tr data-system="mojibake">
         <th scope="row" title="<?=_q('approx. ISO-8859-1, Latin 1, “us-ascii”, ...')?>"><?=_q('Wrong windows-1252 Mojibake')?></th>
         <td><?php echo $moji; ?></td>
       </tr>
@@ -59,9 +59,7 @@ $typeMap = [
     'latex' => '<span class="latex">L<sup>A</sup>T<sub>E</sub>X</span>',
 ];
     foreach ($aliases as $alias):?>
-      <tr<?php if (in_array($alias['type'], ['html', 'abbreviation', 'alias'])):?>
-         class="primary"
-        <?php endif?>>
+      <tr data-system="<?=q($alias['type'])?>">
         <th scope="row"><?php if (array_key_exists($alias['type'], $typeMap)) {
             echo $typeMap[$alias['type']];
         } elseif (substr($alias['type'], 0, 4) === 'enc:') {
@@ -75,7 +73,7 @@ $typeMap = [
     <?php endforeach?>
     <?php $pronunciation = $codepoint->pronunciation;
     if ($pronunciation):?>
-      <tr>
+      <tr data-system="pinyin">
         <th scope="row">Pīnyīn</th>
         <td><?=q($pronunciation)?></td>
       </tr>
@@ -87,11 +85,11 @@ $typeMap = [
     'kHKSCS', 'kIBMJapan', 'kJis0', 'kJIS0213', 'kJis1', 'kKPS0', 'kKPS1',
     'kKSC0', 'kKSC1', 'kMainlandTelegraph', 'kPseudoGB1',
     'kTaiwanTelegraph', 'kXerox'] as $v):
-        if (isset($props[$v]) && $props[$v]):?>
-      <tr>
-        <th scope="row"><?=q(array_get($info->properties, $v, $v))?></th>
-        <td><?=q($props[$v])?></td>
-      </tr>
+      if (isset($props[$v]) && $props[$v]):?>
+        <tr data-system="<?=q($v)?>">
+          <th scope="row"><?=q(array_get($info->properties, $v, $v))?></th>
+          <td><?=q($props[$v])?></td>
+        </tr>
     <?php endif; endforeach?>
   </tbody>
 </table>
