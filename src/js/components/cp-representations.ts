@@ -76,6 +76,7 @@ class FavoritesManager {
         personalized = null;
       }
     } catch(e) {
+      // ignore parse errors, personalized remains undefined
     }
     this.favorites = personalized || ['nr', 'utf-8', 'utf-16'];
   }
