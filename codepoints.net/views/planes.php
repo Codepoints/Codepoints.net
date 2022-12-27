@@ -24,7 +24,7 @@ include 'partials/header.php'; ?>
     </p>
     <p><?php printf(
       __('The %s contains mostly ancient characters, like Egyptian Hieroglyphs, and graphic symbols, for example Mahjongg tiles or emoticons.').' '.
-      __(' Thirdly the %s hosts lots of East Asian characters, that didn’t find a place in the Basic Multilingual Plane.').' '.
+      __('Thirdly the %s hosts lots of East Asian characters, that didn’t find a place in the Basic Multilingual Plane.').' '.
       __('The third-to-last %s is almost completely empty and planned to contain non-character codepoints, like control characters, that define the language of a text.').' '.
       __('The last two planes are special purpose planes.').' '.
       __('Codepoints defined there are <em>private</em>, that is, they will never be specified by Unicode and can be freely assigned by third-party programs to whatever seems useful.'),

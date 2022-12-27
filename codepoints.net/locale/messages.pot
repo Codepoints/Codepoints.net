@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-14 20:40+0000\n"
+"POT-Creation-Date: 2022-12-27 00:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,42 +18,43 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: codepoints.net/views/plane.php:12
+#: codepoints.net/views/partials/main-navigation.php:20
 msgid "All Planes"
 msgstr ""
 
-#: codepoints.net/views/plane.php:24
+#: codepoints.net/views/plane.php:26
 #, php-format
 msgid "Plane from U+%04X to U+%04X."
 msgstr ""
 
-#: codepoints.net/views/block.php:30
+#: codepoints.net/views/block.php:32
 #, php-format
 msgid "Block from U+%04X to U+%04X."
 msgstr ""
 
-#: codepoints.net/views/block.php:31
+#: codepoints.net/views/block.php:33
 #, php-format
 msgid ""
 "This block was introduced in Unicode version %s (%s). It contains %s "
 "codepoints."
 msgstr ""
 
-#: codepoints.net/views/block.php:37
+#: codepoints.net/views/block.php:39
 #, php-format
 msgid "The %sWikipedia%s provides the following information on block %s:"
 msgstr ""
 
-#: codepoints.net/views/block.php:45
+#: codepoints.net/views/block.php:47
 #, php-format
 msgid "This block has not defined any codepoints between U+%04X and U+%04X."
 msgstr ""
 
-#: codepoints.net/views/codepoint.php:36
+#: codepoints.net/views/codepoint.php:41
 #, php-format
 msgid "Source: %s"
 msgstr ""
 
-#: codepoints.net/views/codepoint.php:46
+#: codepoints.net/views/codepoint.php:72
 #, php-format
 msgid ""
 "If it would, it’d be located in the Nirvana of Undefined Behaviour beyond "
@@ -61,53 +62,53 @@ msgid ""
 "has ever seen%s."
 msgstr ""
 
-#: codepoints.net/views/codepoint.php:68
+#: codepoints.net/views/codepoint.php:94
 #, php-format
 msgid "The %sWikipedia%s has the following information about this codepoint:"
 msgstr ""
 
-#: codepoints.net/views/codepoint.php:165
+#: codepoints.net/views/codepoint.php:191
 msgid "not a number"
 msgstr ""
 
-#: codepoints.net/views/planes.php:17
+#: codepoints.net/views/planes.php:19
 msgid ""
 "The Unicode standard arranges the characters in 17 so-called planes of a bit "
 "more than 65,000 codepoints (2<sup>16</sup> to be precise) each."
 msgstr ""
 
-#: codepoints.net/views/planes.php:18
+#: codepoints.net/views/planes.php:20
 msgid "It has thus theoretically place for <em>1,114,112 characters</em>."
 msgstr ""
 
-#: codepoints.net/views/planes.php:19
+#: codepoints.net/views/planes.php:21
 msgid "Some planes are still undefined and will be filled at a later date."
 msgstr ""
 
-#: codepoints.net/views/planes.php:20
+#: codepoints.net/views/planes.php:22
 #, php-format
 msgid "The most common characters live in the almost full %s."
 msgstr ""
 
-#: codepoints.net/views/planes.php:21
+#: codepoints.net/views/planes.php:23
 msgid "Basic Multilingual Plane"
 msgstr ""
 
-#: codepoints.net/views/planes.php:24
+#: codepoints.net/views/planes.php:26
 #, php-format
 msgid ""
 "The %s contains mostly ancient characters, like Egyptian Hieroglyphs, and "
 "graphic symbols, for example Mahjongg tiles or emoticons."
 msgstr ""
 
-#: codepoints.net/views/planes.php:25
+#: codepoints.net/views/planes.php:27
 #, php-format
 msgid ""
-" Thirdly the %s hosts lots of East Asian characters, that didn’t find a "
-"place in the Basic Multilingual Plane."
+"Thirdly the %s hosts lots of East Asian characters, that didn’t find a place "
+"in the Basic Multilingual Plane."
 msgstr ""
 
-#: codepoints.net/views/planes.php:26
+#: codepoints.net/views/planes.php:28
 #, php-format
 msgid ""
 "The third-to-last %s is almost completely empty and planned to contain non-"
@@ -115,36 +116,36 @@ msgid ""
 "text."
 msgstr ""
 
-#: codepoints.net/views/planes.php:27
+#: codepoints.net/views/planes.php:29
 msgid "The last two planes are special purpose planes."
 msgstr ""
 
-#: codepoints.net/views/planes.php:28
+#: codepoints.net/views/planes.php:30
 msgid ""
 "Codepoints defined there are <em>private</em>, that is, they will never be "
 "specified by Unicode and can be freely assigned by third-party programs to "
 "whatever seems useful."
 msgstr ""
 
-#: codepoints.net/views/planes.php:29
+#: codepoints.net/views/planes.php:31
 msgid "second plane"
 msgstr ""
 
-#: codepoints.net/views/planes.php:30
+#: codepoints.net/views/planes.php:32
 msgid "Supplementary Ideographic Plane"
 msgstr ""
 
-#: codepoints.net/views/planes.php:31
+#: codepoints.net/views/planes.php:33
 msgid "Supplementary Special Purpose Plane"
 msgstr ""
 
-#: codepoints.net/views/index.php:27
+#: codepoints.net/views/index.php:22
 msgid ""
 "<strong>Codepoint</strong>, <em>n.</em> the position of a character in\n"
 "    an encoding system."
 msgstr ""
 
-#: codepoints.net/views/index.php:44
+#: codepoints.net/views/index.php:50
 #, php-format
 msgid ""
 "Codepoints.net is dedicated to all the characters,\n"
@@ -154,20 +155,20 @@ msgid ""
 "          from %s to %s."
 msgstr ""
 
-#: codepoints.net/views/index.php:49
+#: codepoints.net/views/index.php:55
 msgid "Unicode Standard"
 msgstr ""
 
-#: codepoints.net/views/index.php:51
+#: codepoints.net/views/index.php:57
 #: codepoints.net/lib/Unicode/PropertyInfo/script.php:44
 msgid "Egyptian Hieroglyphs"
 msgstr ""
 
-#: codepoints.net/views/index.php:52
+#: codepoints.net/views/index.php:58
 msgid "Dingbats and Symbols"
 msgstr ""
 
-#: codepoints.net/views/index.php:55
+#: codepoints.net/views/index.php:61
 #, php-format
 msgid ""
 "All codepoints are arranged in 17 so-called\n"
@@ -178,23 +179,23 @@ msgid ""
 "      are more daring and want %s?"
 msgstr ""
 
-#: codepoints.net/views/index.php:61
+#: codepoints.net/views/index.php:67
 msgid "planes"
 msgstr ""
 
-#: codepoints.net/views/index.php:62
+#: codepoints.net/views/index.php:68
 msgid "Basic Latin"
 msgstr ""
 
-#: codepoints.net/views/index.php:64
+#: codepoints.net/views/index.php:70
 msgid "search"
 msgstr ""
 
-#: codepoints.net/views/index.php:65
+#: codepoints.net/views/index.php:71
 msgid "“Find My Codepoint”"
 msgstr ""
 
-#: codepoints.net/views/index.php:66
+#: codepoints.net/views/index.php:72
 msgid "a random codepoint"
 msgstr ""
 
@@ -484,39 +485,49 @@ msgstr ""
 msgid "The %s is %s."
 msgstr ""
 
-#: codepoints.net/views/partials/codepoint-representations.php:50
-msgid "abbreviation"
+#: codepoints.net/views/partials/main-navigation.php:17
+#: codepoints.net/lib/Controller/Search.php:86
+#: codepoints.net/lib/Unicode/SearchResult.php:22
+msgid "Search"
+msgstr ""
+
+#: codepoints.net/views/partials/main-navigation.php:23
+msgid "Random"
 msgstr ""
 
 #: codepoints.net/views/partials/codepoint-representations.php:51
-msgid "alias"
+msgid "abbreviation"
 msgstr ""
 
 #: codepoints.net/views/partials/codepoint-representations.php:52
-msgid "alternate"
+msgid "alias"
 msgstr ""
 
 #: codepoints.net/views/partials/codepoint-representations.php:53
-msgid "control"
+msgid "alternate"
 msgstr ""
 
 #: codepoints.net/views/partials/codepoint-representations.php:54
-msgid "correction"
+msgid "control"
 msgstr ""
 
 #: codepoints.net/views/partials/codepoint-representations.php:55
-msgid "digraph"
+msgid "correction"
 msgstr ""
 
 #: codepoints.net/views/partials/codepoint-representations.php:56
-msgid "figment"
+msgid "digraph"
 msgstr ""
 
 #: codepoints.net/views/partials/codepoint-representations.php:57
+msgid "figment"
+msgstr ""
+
+#: codepoints.net/views/partials/codepoint-representations.php:58
 msgid "HTML-Escape"
 msgstr ""
 
-#: codepoints.net/views/partials/codepoint-representations.php:67
+#: codepoints.net/views/partials/codepoint-representations.php:66
 #, php-format
 msgid "Encoding: %s (hex bytes)"
 msgstr ""
@@ -868,16 +879,6 @@ msgstr ""
 msgid "%s%s%d%s characters%s are encoded in this script."
 msgstr ""
 
-#: codepoints.net/lib/Controller/Wizard.php:18
-msgid "Find My Codepoint"
-msgstr ""
-
-#: codepoints.net/lib/Controller/Wizard.php:19
-msgid ""
-"Find a certain character by answering a set of questions. The questions will "
-"narrow down possible candidates in the wide range of Unicode codepoints."
-msgstr ""
-
 #: codepoints.net/lib/Controller/Api.php:37
 msgid "Ye?h, th?nks! You er?sed this codepoint. Are you h?ppy now?"
 msgstr ""
@@ -948,49 +949,44 @@ msgid ""
 "interesting ones."
 msgstr ""
 
-#: codepoints.net/lib/Controller/Search.php:81
-#: codepoints.net/lib/Unicode/SearchResult.php:22
-msgid "Search"
-msgstr ""
-
-#: codepoints.net/lib/Controller/Search.php:82
+#: codepoints.net/lib/Controller/Search.php:87
 msgid "Search Codepoints.net by specifying many different possible parameters."
-msgstr ""
-
-#: codepoints.net/lib/Controller/Search.php:88
-#, php-format
-msgid " and %s Blocks"
-msgstr ""
-
-#: codepoints.net/lib/Controller/Search.php:89
-msgid " and 1 Block"
 msgstr ""
 
 #: codepoints.net/lib/Controller/Search.php:93
 #, php-format
-msgid "%s Codepoints%s Found"
+msgid " and %s Blocks"
 msgstr ""
 
 #: codepoints.net/lib/Controller/Search.php:94
+msgid " and 1 Block"
+msgstr ""
+
+#: codepoints.net/lib/Controller/Search.php:98
+#, php-format
+msgid "%s Codepoints%s Found"
+msgstr ""
+
+#: codepoints.net/lib/Controller/Search.php:99
 #, php-format
 msgid "1 Codepoint%s Found"
 msgstr ""
 
-#: codepoints.net/lib/Controller/Search.php:95
+#: codepoints.net/lib/Controller/Search.php:100
 #, php-format
 msgid "No Codepoints%s Found"
 msgstr ""
 
-#: codepoints.net/lib/Controller/Search.php:97
+#: codepoints.net/lib/Controller/Search.php:102
 msgid "No codepoints match the given search."
 msgstr ""
 
-#: codepoints.net/lib/Controller/Search.php:100
+#: codepoints.net/lib/Controller/Search.php:105
 #, php-format
 msgid "%s codepoints match the given search for %s properties."
 msgstr ""
 
-#: codepoints.net/lib/Controller/Search.php:102
+#: codepoints.net/lib/Controller/Search.php:107
 #, php-format
 msgid "This is page %s of %s."
 msgstr ""
@@ -3947,8 +3943,8 @@ msgstr ""
 msgid "Not a plane name"
 msgstr ""
 
-#: codepoints.net/lib/view_functions.php:77
-#: codepoints.net/lib/view_functions.php:107
+#: codepoints.net/lib/view_functions.php:84
+#: codepoints.net/lib/view_functions.php:114
 #, php-format
 msgid "U+%04X to U+%04X"
 msgstr ""
