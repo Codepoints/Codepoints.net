@@ -1,4 +1,4 @@
-import {LitElement, html} from 'lit';
+import {LitElement, html, nothing} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
 import Icons from '../../images/icons.svg';
 
@@ -22,8 +22,6 @@ export class CpIcon extends LitElement {
   }
 
   render() {
-    const width = this.width.toString() || '';
-    const height = this.height.toString() || '';
-    return html`<svg width="${width}" height="${height}" fill="currentColor"><use href="${Icons}#${this.icon}"/></svg>`;
+    return html`<svg width="${this.width || nothing}" height="${this.height || nothing}" fill="currentColor"><use href="${Icons}#${this.icon}"/></svg>`;
   }
 }

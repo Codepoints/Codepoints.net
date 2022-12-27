@@ -198,7 +198,7 @@ table:not(.show-all) tfoot {
             obj.primary?
               _('remove from favorites'):
               _('add to favorites (will be shown by default)')
-          }"><cp-icon icon="${obj.primary? '' : 'regular-'}star" width="1rem" height="1rem"></cp-icon></button>
+          }"><cp-icon icon="${obj.primary? '' : 'regular-'}star" width="1em" height="1em"></cp-icon></button>
         </th>
         <td><cp-copy content="${obj.value}">${obj.value}</cp-copy></td>
       </tr>
