@@ -1,5 +1,6 @@
-import {LitElement, html, css} from 'lit';
+import {LitElement, html, css, nothing} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
+import {unsafeHTML} from 'lit/directives/unsafe-html.js';
 import {gettext as _} from '../_i18n.ts';
 import {intToHex, codepointToUtf16} from '../_unicode-tools.ts';
 
@@ -13,57 +14,56 @@ function backslash_u_curly(n) {
   return '\\u{'+n.toString(16).toLowerCase()+'}';
 }
 
+function backslash_u_U(n) {
+    let str = n.toString(16).toUpperCase(),
+        pad = 4, chr = 'u';
+    if (n > 0xFFFF) {
+      pad = 8;
+      chr = 'U';
+    }
+    while (str.length < pad) {
+      str = "0" + str;
+    }
+    return '\\'+chr+str;
+}
+
 const formatters = [
-  [_('RFC 5137'), function(n) {
+  ['rfc5137', _('RFC 5137'), function(n) {
     return '\\u\'' + intToHex(n) + '\'';
   }],
 
-  [_('Python'), function(n) {
-    let str = n.toString(16).toUpperCase(),
-        pad = 4, chr = 'u';
-    if (n > 0xFFFF) {
-      pad = 8;
-      chr = 'U';
-    }
-    while (str.length < pad) {
-      str = "0" + str;
-    }
-    return '\\'+chr+str;
-  }],
+  ['sh', _('Bash and Zsh'), backslash_u_U, _('inside <code>echo -e</code>')],
 
-  [_('Ruby'), backslash_u_curly],
+  ['c', _('C and C++'), backslash_u_U],
 
-  [_('PHP'), backslash_u_curly],
+  ['csharp', _('C#'), backslash_u_U],
 
-  [_('Perl'), function(n) {
-    return '"\\x{'+n.toString(16).toUpperCase()+'}"';
-  }],
-
-  [_('JavaScript'), jsonify],
-  [_('Modern JavaScript'), backslash_u_curly],
-  [_('JSON'), jsonify],
-  [_('Java'), jsonify],
-
-  [_('C'), function(n) {
-    let str = n.toString(16).toUpperCase(),
-        pad = 4, chr = 'u';
-    if (n > 0xFFFF) {
-      pad = 8;
-      chr = 'U';
-    }
-    while (str.length < pad) {
-      str = "0" + str;
-    }
-    return '\\'+chr+str;
-  }],
-
-  [_('CSS'), function(n) {
+  ['css', _('CSS'), function(n) {
     let str = n.toString(16).toUpperCase();
     while (str.length < 6) {
       str = "0" + str;
     }
     return '\\'+str;
   }],
+
+  ['go', _('Go'), backslash_u_U],
+
+  ['js', _('JavaScript'), jsonify],
+  ['mjs', _('Modern JavaScript'), backslash_u_curly, _('since ES6')],
+  ['json', _('JSON'), jsonify],
+  ['java', _('Java'), jsonify],
+
+  ['pl', _('Perl'), function(n) {
+    return '"\\x{'+n.toString(16).toUpperCase()+'}"';
+  }],
+
+  ['php', _('PHP'), backslash_u_curly],
+
+  ['py', _('Python'), backslash_u_U],
+
+  ['rb', _('Ruby'), backslash_u_curly],
+
+  ['rs', _('Rust'), backslash_u_curly],
 ];
 
 
@@ -115,6 +115,7 @@ export class CpRepresentations extends LitElement {
 }
 th, td {
   padding: .2rem .5rem;
+  vertical-align: top;
 }
 th:first-child {
   text-align: right;
@@ -124,6 +125,7 @@ th:last-child {
 }
 small {
   font-weight: normal;
+  font-size: calc(1rem / var(--font-mod));
 }
 table:not(.show-all) tbody tr:not(.primary),
 table:not(.show-all) tfoot {
@@ -136,6 +138,10 @@ table:not(.show-all) tfoot {
 .props button:focus,
 .props button:hover {
   opacity: 1;
+}
+tbody small {
+  display: block;
+  margin-right: calc(1.6em * var(--font-mod));
 }
   `;
 
@@ -173,15 +179,17 @@ table:not(.show-all) tfoot {
           label,
           value,
           primary: this.favorites.has(system),
+          description: null,
         });
       }
     });
     formatters.forEach(formatter => {
       this._representations.push({
         system: formatter[0],
-        label: formatter[0],
-        value: formatter[1](this.cp),
+        label: formatter[1],
+        value: formatter[2](this.cp),
         primary: this.favorites.has(formatter[0]),
+        description: formatter[3] ?? null,
       });
     });
   }
@@ -193,12 +201,14 @@ table:not(.show-all) tfoot {
   <tbody>
     ${this._representations.map(obj => html`
       <tr class="${obj.primary? 'primary' : ''}" data-system="${obj.system}">
-        <th scope="row">${obj.label}
+        <th scope="row">
+          ${obj.label}
           <button type="button" @click="${() => this.togglePrimary(obj)}" title="${
             obj.primary?
               _('remove from favorites'):
               _('add to favorites (will be shown by default)')
           }"><cp-icon icon="${obj.primary? '' : 'regular-'}star" width="1em" height="1em"></cp-icon></button>
+          <small>${unsafeHTML(obj.description || nothing)}</small>
         </th>
         <td><cp-copy content="${obj.value}">${obj.value}</cp-copy></td>
       </tr>
