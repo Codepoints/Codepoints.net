@@ -5,7 +5,10 @@
 ?>
 <?php
 function _get(string $name) : string {
-    return q($_GET[$name] ?? '');
+  if (! isset($_GET[$name]) || ! is_string($_GET[$name])) {
+    return '';
+  }
+  return q($_GET[$name]);
 }
 ?>
 <cp-searchform>

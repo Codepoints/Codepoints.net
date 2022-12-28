@@ -9,7 +9,7 @@ use Codepoints\Api\Exception as ApiException;
 class Oembed extends Runner {
 
     public function handle(string $data) : string {
-        if (! isset($_GET['url']) || ! $_GET['url']) {
+        if (! isset($_GET['url']) || ! $_GET['url'] || is_array($_GET['url'])) {
             header('Content-Type: application/json; charset=utf-8');
             return json_encode([
                 'description' => __('oEmbed API endpoint for URLs matching “codepoints.net”'),
@@ -31,12 +31,12 @@ class Oembed extends Runner {
         }
 
         $maxwidth = 640;
-        if (isset($_GET['maxwidth']) && ctype_digit($_GET['maxwidth'])) {
+        if (isset($_GET['maxwidth']) && is_string($_GET['maxwidth']) && ctype_digit($_GET['maxwidth'])) {
             $maxwidth = max(26, intval($_GET['maxwidth']));
         }
 
         $maxheight = 640;
-        if (isset($_GET['maxheight']) && ctype_digit($_GET['maxheight'])) {
+        if (isset($_GET['maxheight']) && is_string($_GET['maxheight']) && ctype_digit($_GET['maxheight'])) {
             $maxheight = max(40, intval($_GET['maxheight']));
         }
 

@@ -67,7 +67,7 @@ class Codepoint extends JsonRunner {
         new Wikipedia($this->env);
         $response = [ 'cp' => $codepoint->id ] + $codepoint->properties + [ '_' => [] ];
 
-        if (isset($_GET['property'])) {
+        if (isset($_GET['property']) && is_string($_GET['property'])) {
             $mask = array_filter(explode(',', $_GET['property']));
             if (count($mask)) {
                 $response = array_intersect_key($response, array_flip($mask));

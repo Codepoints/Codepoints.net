@@ -51,7 +51,7 @@ class Translator {
                 FILTER_FLAG_STRIP_LOW & FILTER_FLAG_STRIP_HIGH & FILTER_FLAG_STRIP_BACKTICK
             ) ?? 'en');
             $persist = false;
-            if (isset($_GET['lang']) && ctype_alpha($_GET['lang'])) {
+            if (isset($_GET['lang']) && is_string($_GET['lang']) && ctype_alpha($_GET['lang'])) {
                 $lang = $_GET['lang'];
                 $persist = true;
             } elseif (isset($_COOKIE['lang']) && ctype_alpha($_COOKIE['lang'])) {

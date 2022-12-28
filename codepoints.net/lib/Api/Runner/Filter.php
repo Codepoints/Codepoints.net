@@ -43,6 +43,9 @@ class Filter extends JsonRunner {
             if ($property === 'callback') {
                 continue;
             }
+            if (is_int($property)) {
+                $property = (string)$property;
+            }
             $not = '';
             if (substr($property, -1) === '!') {
                 $not = ' NOT ';

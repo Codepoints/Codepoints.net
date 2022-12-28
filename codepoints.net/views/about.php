@@ -33,7 +33,7 @@ include 'partials/header.php'; ?>
     <p><?php printf(__('If you know Unicode and also know the rough range, where the codepoint
     might be, you can give the range directly in the URL. <em>E. g.,</em> to
     inspect characters in the range U+0200 to U+0300, enter in the address bar
-    “%s”'), '<kbd><a href="'.url('U+0200..U+0300').'">'.q($_SERVER['HTTP_HOST']).'/U+0200..U+0300</a></kbd>')?>.</p>
+    “%s”'), '<kbd><a href="'.url('U+0200..U+0300').'">'.q(filter_input(INPUT_SERVER, 'HTTP_HOST')).'/U+0200..U+0300</a></kbd>')?>.</p>
   </section>
   <section id="unicode">
     <h1><?=_q('About Unicode')?></h1>
