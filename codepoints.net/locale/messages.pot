@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-27 00:15+0000\n"
+"POT-Creation-Date: 2022-12-28 21:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -321,19 +321,19 @@ msgstr ""
 msgid "%s blocks match %s:"
 msgstr ""
 
-#: codepoints.net/views/partials/form-fullsearch.php:20
+#: codepoints.net/views/partials/form-fullsearch.php:23
 msgid "Name:"
 msgstr ""
 
-#: codepoints.net/views/partials/form-fullsearch.php:36
+#: codepoints.net/views/partials/form-fullsearch.php:39
 msgid "any"
 msgstr ""
 
-#: codepoints.net/views/partials/form-fullsearch.php:37
+#: codepoints.net/views/partials/form-fullsearch.php:40
 msgid "yes"
 msgstr ""
 
-#: codepoints.net/views/partials/form-fullsearch.php:38
+#: codepoints.net/views/partials/form-fullsearch.php:41
 msgid "no"
 msgstr ""
 
@@ -3825,12 +3825,12 @@ msgid ""
 "“string” that were *not* added in Unicode 5.5."
 msgstr ""
 
-#: codepoints.net/lib/Api/Runner/Filter.php:52
+#: codepoints.net/lib/Api/Runner/Filter.php:55
 #, php-format
 msgid "Cannot filter for unknown property %s"
 msgstr ""
 
-#: codepoints.net/lib/Api/Runner/Filter.php:66
+#: codepoints.net/lib/Api/Runner/Filter.php:69
 msgid "Cannot filter."
 msgstr ""
 

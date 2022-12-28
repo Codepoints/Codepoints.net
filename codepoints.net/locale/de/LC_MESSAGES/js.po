@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: codepoints\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-26 23:50+0000\n"
-"PO-Revision-Date: 2022-12-27 01:25+0100\n"
+"POT-Creation-Date: 2022-12-28 21:08+0000\n"
+"PO-Revision-Date: 2022-12-28 22:09+0100\n"
 "Last-Translator: Manuel Strehl <translate@manuel-strehl.de>\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
@@ -238,63 +238,87 @@ msgstr ""
 msgid "Enough questions! Search now."
 msgstr "Genug Fragen! Jetzt suchen."
 
-#: src/js/components/cp-representations.ts:17
+#: src/js/components/cp-representations.ts:31
 msgid "RFC 5137"
 msgstr "RFC 5137"
 
-#: src/js/components/cp-representations.ts:21
-msgid "Python"
-msgstr "Python"
+#: src/js/components/cp-representations.ts:35
+msgid "Bash and Zsh"
+msgstr "Bash und Zsh"
 
-#: src/js/components/cp-representations.ts:34
-msgid "Ruby"
-msgstr "Ruby"
+#: src/js/components/cp-representations.ts:35
+msgid "inside <code>echo -e</code>"
+msgstr "innerhalb von <code>echo -e</code>"
 
-#: src/js/components/cp-representations.ts:36
-msgid "PHP"
-msgstr "PHP"
+#: src/js/components/cp-representations.ts:37
+msgid "C and C++"
+msgstr "C und C++"
 
-#: src/js/components/cp-representations.ts:38
-msgid "Perl"
-msgstr "Perl"
+#: src/js/components/cp-representations.ts:39
+msgid "C#"
+msgstr "C#"
 
-#: src/js/components/cp-representations.ts:42
-msgid "JavaScript"
-msgstr "JavaScript"
-
-#: src/js/components/cp-representations.ts:43
-msgid "Modern JavaScript"
-msgstr "Modernes JavaScript"
-
-#: src/js/components/cp-representations.ts:44
-msgid "JSON"
-msgstr "JSON"
-
-#: src/js/components/cp-representations.ts:45
-msgid "Java"
-msgstr "Java"
-
-#: src/js/components/cp-representations.ts:47
-msgid "C"
-msgstr "C"
-
-#: src/js/components/cp-representations.ts:60
+#: src/js/components/cp-representations.ts:41
 msgid "CSS"
 msgstr "CSS"
 
-#: src/js/components/cp-representations.ts:165
+#: src/js/components/cp-representations.ts:49
+msgid "Go"
+msgstr "Go"
+
+#: src/js/components/cp-representations.ts:51
+msgid "JavaScript"
+msgstr "JavaScript"
+
+#: src/js/components/cp-representations.ts:52
+msgid "Modern JavaScript"
+msgstr "Modernes JavaScript"
+
+#: src/js/components/cp-representations.ts:52
+msgid "since ES6"
+msgstr "ab ES6"
+
+#: src/js/components/cp-representations.ts:53
+msgid "JSON"
+msgstr "JSON"
+
+#: src/js/components/cp-representations.ts:54
+msgid "Java"
+msgstr "Java"
+
+#: src/js/components/cp-representations.ts:56
+msgid "Perl"
+msgstr "Perl"
+
+#: src/js/components/cp-representations.ts:60
+msgid "PHP"
+msgstr "PHP"
+
+#: src/js/components/cp-representations.ts:62
+msgid "Python"
+msgstr "Python"
+
+#: src/js/components/cp-representations.ts:64
+msgid "Ruby"
+msgstr "Ruby"
+
+#: src/js/components/cp-representations.ts:66
+msgid "Rust"
+msgstr "Rust"
+
+#: src/js/components/cp-representations.ts:171
 msgid "(click value to copy)"
 msgstr "(Wert klicken zum Kopieren)"
 
-#: src/js/components/cp-representations.ts:199
+#: src/js/components/cp-representations.ts:208
 msgid "remove from favorites"
 msgstr "aus Favoriten entfernen"
 
-#: src/js/components/cp-representations.ts:200
+#: src/js/components/cp-representations.ts:209
 msgid "add to favorites (will be shown by default)"
 msgstr "zu Favoriten hinzufügen (wird automatisch angezeigt)"
 
-#: src/js/components/cp-representations.ts:210
+#: src/js/components/cp-representations.ts:220
 msgid ""
 "Click the star button next to each label to set this representation as "
 "favorite or remove it from the favorites."
@@ -302,11 +326,11 @@ msgstr ""
 "Klicke den Sternknopf neben der Beschriftung, um diese Darstellung als "
 "Favorit zu markieren oder aus den Favoriten zu entfernen."
 
-#: src/js/components/cp-representations.ts:211
+#: src/js/components/cp-representations.ts:221
 msgid "Favorites will be shown initially."
 msgstr "Favoriten werden anfangs automatisch angezeigt."
 
-#: src/js/components/cp-representations.ts:212
+#: src/js/components/cp-representations.ts:222
 msgid ""
 "(Favorites are stored locally on your computer and never sent over the "
 "internet.)"
@@ -314,11 +338,11 @@ msgstr ""
 "(Favoriten werden auf deinem Computer gespeichert und niemals über das "
 "Internet übertragen.)"
 
-#: src/js/components/cp-representations.ts:217
+#: src/js/components/cp-representations.ts:227
 msgid "hide all but favorites"
 msgstr "alle außer Favoriten verstecken"
 
-#: src/js/components/cp-representations.ts:217
+#: src/js/components/cp-representations.ts:227
 msgid "show more"
 msgstr "mehr anzeigen"
 
