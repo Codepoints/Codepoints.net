@@ -23,7 +23,7 @@ class Api extends Controller {
                     ApiException::NOT_FOUND);
             }
         } catch (ApiException $error) {
-            http_response_code((int)$error->getCode());
+            http_response_code($error->getCode());
             header('Content-Type: text/plain; charset=UTF-8');
             $content = $error->getMessage();
         }

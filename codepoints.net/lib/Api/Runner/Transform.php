@@ -99,10 +99,10 @@ class Transform extends JsonRunner {
         $result = $stm->fetchAll(PDO::FETCH_ASSOC);
         $mapping = [];
         foreach ($result as $set) {
-            if (! array_key_exists($set['cp'], $mapping)) {
-                $mapping[$set['cp']] = [];
+            if (! array_key_exists((int)$set['cp'], $mapping)) {
+                $mapping[(int)$set['cp']] = [];
             }
-            $mapping[$set['cp']][(int)$set['order']] = $set['other'];
+            $mapping[(int)$set['cp']][(int)$set['order']] = (int)$set['other'];
         }
 
         $mapped_cps = [];

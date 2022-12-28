@@ -46,9 +46,12 @@ ini_set('zlib.output_compression', '1');
  * get global config values and the database connection ready
  */
 $config = parse_ini_file(dirname(__DIR__).'/config.ini', true);
-if (basename(__DIR__) === 'beta.codepoints.net' && array_key_exists('beta', $config)) {
+/** @var string */
+$basename = basename(__DIR__);
+if ($basename === 'beta.codepoints.net' && array_key_exists('beta', $config)) {
     $config = $config['beta'];
 }
+unset($basename);
 if (! is_array($config)) {
     return false;
 }

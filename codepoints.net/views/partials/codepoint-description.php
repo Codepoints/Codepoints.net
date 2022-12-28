@@ -58,7 +58,7 @@ use Codepoints\Unicode\Codepoint;
 
     $buf = [];
     foreach($props['scx'] as $sc) {
-        if ($sc !== $props['sc']) {
+        if (array_key_exists('sc', $props) && $sc !== $props['sc']) {
             $buf[] = '<a rel="nofollow" href="'.q(url('search?sc='.$sc)).'">'.
                     q(array_get($info->script, $sc, $sc)).'</a>';
         }

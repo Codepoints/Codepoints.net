@@ -11,6 +11,8 @@ use \Codepoints\Unicode\Codepoint;
  * a range of contiguous Unicode code points
  *
  * The range can contain unassigned code points.
+ *
+ * @template-implements \Iterator<int, Codepoint>
  */
 class Range implements \Iterator {
 

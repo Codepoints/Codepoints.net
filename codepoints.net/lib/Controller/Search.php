@@ -274,6 +274,9 @@ class Search extends Controller {
         return $result;
     }
 
+    /**
+     * @return list<string>
+     */
     private function _parseFreeText(string $q, Array $env) : Array {
         $r = [];
         $sc = array_map('strtolower', $env['info']->script);
@@ -290,7 +293,7 @@ class Search extends Controller {
 
             if (mb_strlen($v) === 1) {
                 /* seems to be one single character */
-                $r[] = mb_ord($v);
+                $r[] = (string)mb_ord($v);
             }
 
             if (preg_match('/^&#?[0-9a-z]+;$/i', $v)) {
@@ -302,7 +305,7 @@ class Search extends Controller {
                     } else {
                         $n = intval($v, 10);
                     }
-                    $r[] = $n;
+                    $r[] = (string)$n;
                 } else {
                     $r[] = substr($v, 1, -1);
                 }
@@ -312,31 +315,31 @@ class Search extends Controller {
 
             if (preg_match('/^(%[a-f0-9]{2})+$/i', $v)) {
                 /* an URL-encoded UTF-8 character */
-                $r[] = mb_ord(rawurldecode($v));
+                $r[] = (string)mb_ord(rawurldecode($v));
                 /* continue with next term, b/c this is a very specific search */
                 continue;
             }
 
             if (ctype_xdigit($v) && in_array(strlen($v), [4,5,6])) {
-                $r[] = hexdec($v);
+                $r[] = (string)hexdec($v);
             }
 
             if (substr($low_v, 0, 2) === 'u+' &&
                 ctype_xdigit(substr($v, 2)) &&
                 in_array(strlen($v), [6,7,8])) {
                 // U+1F456 escapes
-                $r[] = hexdec(substr($v, 2));
+                $r[] = (string)hexdec(substr($v, 2));
             }
 
             if (substr($low_v, 0, 1) === 'u' &&
                 ctype_xdigit(substr($v, 1)) &&
                 in_array(strlen($v), [5,6,7,8,9])) {
                 // U0001F456 escapes
-                $r[] = hexdec(substr($v, 1));
+                $r[] = (string)hexdec(substr($v, 1));
             }
 
             if (ctype_digit($v) && strlen($v) < 8) {
-                $r[] = intval($v);
+                $r[] = (string)intval($v);
             }
 
             if (preg_match('/\blowercase\b/', $low_v)) {

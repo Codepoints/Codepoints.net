@@ -38,7 +38,7 @@ class Block extends Range {
      * @param Array{name: string, first: int, last: int} $data
      */
     public function __construct(Array $data, Database $db) {
-        parent::__construct($data, $db);
+        parent::__construct(['first' => $data['first'], 'last' => $data['last']], $db);
         /* set the name to the canonical Unicode block name. Unicode themselves
          * say, that the block name is nothing more than an alias for a fixed
          * range. */
