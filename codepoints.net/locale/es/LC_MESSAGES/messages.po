@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: codepoints\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-29 15:08+0000\n"
-"PO-Revision-Date: 2022-12-29 16:00\n"
+"PO-Revision-Date: 2022-12-29 21:40\n"
 "Last-Translator: \n"
 "Language-Team: Spanish\n"
 "Language: es_ES\n"
@@ -792,7 +792,7 @@ msgstr "Inicio"
 
 #: codepoints.net/views/partials/main-navigation.php:23
 msgid "Random"
-msgstr "Aleatorio"
+msgstr "Al azar"
 
 #: codepoints.net/views/partials/codepoint-representations.php:12
 msgid "System"
