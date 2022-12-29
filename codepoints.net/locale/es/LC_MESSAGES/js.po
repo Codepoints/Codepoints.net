@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: codepoints\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-28 21:08+0000\n"
-"PO-Revision-Date: 2022-12-29 14:52\n"
+"POT-Creation-Date: 2022-12-29 15:09+0000\n"
+"PO-Revision-Date: 2022-12-29 16:00\n"
 "Last-Translator: \n"
 "Language-Team: Spanish\n"
 "Language: es_ES\n"
@@ -218,11 +218,11 @@ msgstr "No hablo ese idioma"
 
 #: src/js/components/cp-wizard.ts:375
 msgid "You search for a specific character?"
-msgstr ""
+msgstr "¿Buscas un carácter específico?"
 
 #: src/js/components/cp-wizard.ts:376
 msgid "Answer the following questions and we try to figure out candidates."
-msgstr ""
+msgstr "Responda las siguientes preguntas e intentaremos encontrar candidatos."
 
 #: src/js/components/cp-wizard.ts:389
 msgid "Enough questions! Search now."
@@ -298,7 +298,7 @@ msgstr "Rust"
 
 #: src/js/components/cp-representations.ts:171
 msgid "(click value to copy)"
-msgstr ""
+msgstr "(haga clic en el valor para copiar)"
 
 #: src/js/components/cp-representations.ts:208
 msgid "remove from favorites"
@@ -306,23 +306,23 @@ msgstr "quitar de favoritos"
 
 #: src/js/components/cp-representations.ts:209
 msgid "add to favorites (will be shown by default)"
-msgstr ""
+msgstr "agregar a favoritas (se mostrará por defecto)"
 
 #: src/js/components/cp-representations.ts:220
 msgid "Click the star button next to each label to set this representation as favorite or remove it from the favorites."
-msgstr ""
+msgstr "Haga clic en el botón de estrella junto a cada etiqueta para establecer esta representación como favorita o eliminarla de las favoritas."
 
 #: src/js/components/cp-representations.ts:221
 msgid "Favorites will be shown initially."
-msgstr ""
+msgstr "Las favoritas se mostrarán inicialmente."
 
 #: src/js/components/cp-representations.ts:222
 msgid "(Favorites are stored locally on your computer and never sent over the internet.)"
-msgstr ""
+msgstr "(Las favoritas se almacenan localmente en su computadora y nunca se envían a través de Internet)."
 
 #: src/js/components/cp-representations.ts:227
 msgid "hide all but favorites"
-msgstr ""
+msgstr "ocultar todo menos las favoritas"
 
 #: src/js/components/cp-representations.ts:227
 msgid "show more"
@@ -330,7 +330,7 @@ msgstr "mostrar más"
 
 #: src/js/components/cp-btn-embed.ts:25
 msgid "embed this codepoint"
-msgstr ""
+msgstr "empotrar este punto de código"
 
 #: src/js/components/cp-btn-embed.ts:29
 #: src/js/components/cp-search-property.ts:105 src/js/components/cp-menu.ts:92
@@ -355,27 +355,27 @@ msgstr ""
 
 #: src/js/components/cp-search-boolean.ts:84
 msgid "click to include or exclude this property"
-msgstr ""
+msgstr "haga clic para incluir o excluir esta propiedad"
 
 #: src/js/components/cp-search-property.ts:99
 msgid "click to choose a value for this property"
-msgstr ""
+msgstr "haga clic para elegir un valor para esta propiedad"
 
 #: src/js/components/cp-search-property.ts:106
 msgid "select all"
-msgstr ""
+msgstr "seleccionar todo"
 
 #: src/js/components/cp-search-property.ts:107
 msgid "deselect all"
-msgstr ""
+msgstr "deseleccionar todo"
 
 #: src/js/components/cp-glossary-term.ts:80
 msgid "show definition"
-msgstr ""
+msgstr "mostrar definición"
 
 #: src/js/components/cp-glossary-term.ts:103
 msgid "no information found for this term"
-msgstr ""
+msgstr "no se encontró información para este término"
 
 #: src/js/components/cp-darkmode.ts:30
 msgid "switch to light mode (currently active: dark mode)"
