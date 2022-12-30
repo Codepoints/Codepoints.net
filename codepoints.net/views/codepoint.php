@@ -51,7 +51,7 @@ include 'partials/header.php'; ?>
         <dt><?=_q('Nº')?></dt>
         <dd><?=q((string)$codepoint->id)?></dd>
         <?php foreach(['gc', 'sc', 'bc', 'dt'] as $cat):?>
-          <dt><?=q($info->properties[$cat])?></dt>
+          <dt><?=_q($info->properties[$cat])?></dt>
           <dd><a rel="nofollow" href="<?=q('search?'.$cat.'='.$codepoint->properties[$cat])?>"><?=q($info->getLegend($cat, $codepoint->properties[$cat]))?></a></dd>
         <?php endforeach?>
         <?php if($codepoint->properties['nt'] !== 'None'):?>
