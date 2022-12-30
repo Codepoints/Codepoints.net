@@ -24,26 +24,49 @@
 <link rel="alternate" type="application/json+oembed" href="https://codepoints.net/api/v1/oembed?url=https%3A%2F%2Fcodepoints.net<?=q(url($codepoint))?>&amp;format=json">
 <link rel="alternate" type="text/xml+oembed" href="https://codepoints.net/api/v1/oembed?url=https%3A%2F%2Fcodepoints.net<?=q(url($codepoint))?>&amp;format=xml">
 
-<script type="application/ld+json">
-{
-    "@context": "http://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-        {
-            "@type": "ListItem", "position": 1, "item": {"@id":"https://codepoints.net/planes","name":"Unicode"}
-        },
-<?php if ($plane): ?>
-        {
-            "@type": "ListItem", "position": 2, "item": {"@id":"<?=q(url($plane))?>","name":"<?=q($plane->name)?>"}
-        },
-<?php endif ?>
-<?php if ($block): ?>
-        {
-            "@type": "ListItem", "position": 3, "item": {"@id":"<?=q(url($block))?>","name":"<?=q($block->name)?>"}
-        },
-<?php endif ?>
-        {
-            "@type": "ListItem", "position": 4, "item": {"@id":"<?=q(url($codepoint))?>","name":"<?=q($title)?>"}
-        }
+<script type="application/ld+json"><?php
+$schema = [
+    "@context" => "http://schema.org",
+    "@type" => "BreadcrumbList",
+    "itemListElement" => [
+        [
+          "@type" => "ListItem",
+          "position" => 1,
+          "item" => [
+            "@id" => "https://codepoints.net/planes",
+            "name" => "Unicode",
+          ],
+        ],
+    ],
+];
+if ($plane):
+$schema['itemListElement'][] = [
+    "@type" => "ListItem",
+    "position" => 2,
+    "item" => [
+        "@id" => url($plane),
+        "name" => $plane->name,
     ]
-}</script>
+];
+endif;
+if ($block):
+$schema['itemListElement'][] = [
+    "@type" => "ListItem",
+    "position" => 3,
+    "item" => [
+        "@id" => url($block),
+        "name" => $block->name,
+    ]
+];
+endif;
+$schema['itemListElement'][] = [
+    "@type" => "ListItem",
+    "position" => 4,
+    "item" => [
+        "@id" => url($codepoint),
+        "name" => $title,
+    ]
+];
+echo q(json_encode($schema));
+unset($schema);
+?></script>
