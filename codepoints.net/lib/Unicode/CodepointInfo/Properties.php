@@ -222,7 +222,7 @@ class Properties extends CodepointInfo {
         $others = [];
         $k = [];
         foreach ($properties as $key => $value) {
-            if ($key[0] === 'k') {
+            if (substr($key, 0, 1) === 'k') {
                 $k[$key] = $value;
             } else {
                 $others[$key] = $value;
