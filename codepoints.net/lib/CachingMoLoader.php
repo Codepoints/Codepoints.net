@@ -15,7 +15,7 @@ class CachingMoLoader {
             $translations = $loader->loadFile($file);
             // phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
             if (! @file_put_contents($file_php,
-                '<?php return unserialize(\'' . serialize($translations) . '\');'."\n")) {
+                '<?php return unserialize(\'' . str_replace("'", "\\'", serialize($translations)) . '\');'."\n")) {
                 Analog::log('cannot create file '.$file_php);
             }
         } else {
