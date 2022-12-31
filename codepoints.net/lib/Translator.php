@@ -2,10 +2,10 @@
 
 namespace Codepoints;
 
-use \Analog\Analog;
-use \Gettext\Loader\MoLoader;
-use \Gettext\Translations;
-use \Negotiation\LanguageNegotiator;
+use Analog\Analog;
+use Gettext\Translations;
+use Negotiation\LanguageNegotiator;
+use Codepoints\CachingMoLoader;
 
 class Translator {
 
@@ -20,7 +20,7 @@ class Translator {
         if ($this->language) {
             $mofile = dirname(__DIR__).'/locale/'.$this->language.'/LC_MESSAGES/messages.mo';
             if (is_file($mofile)) {
-                $loader = new MoLoader();
+                $loader = new CachingMoLoader();
                 $this->translations = $loader->loadFile($mofile);
             }
         }

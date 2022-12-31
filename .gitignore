@@ -6,3 +6,4 @@
 /node_modules
 /codepoints.net/static/
 /dev/db_data
+/codepoints.net/locale/*/LC_MESSAGES/*.mo.php
