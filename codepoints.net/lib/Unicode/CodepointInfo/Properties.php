@@ -210,28 +210,27 @@ class Properties extends CodepointInfo {
      * properties.
      */
     private function sortProperties(Array $properties) : Array {
-        uksort($properties, function(string $a, string $b) : int {
-            $n = strcasecmp($a, $b);
-            if ($n === 0) {
-                return 0;
-            }
-            $priority = ['age', 'na', 'na1', 'blk', 'gc', 'sc', 'bc', 'ccc',
+        $prime = [];
+        foreach (['age', 'na', 'na1', 'blk', 'gc', 'sc', 'bc', 'ccc',
                 'dt', 'dm', 'Lower', 'slc', 'lc', 'Upper', 'suc', 'uc', 'stc',
-                'tc', 'cf'];
-            if (in_array($a, $priority) && in_array($b, $priority)) {
-                return array_search($a, $priority) <=> array_search($b, $priority);
-            } elseif (in_array($a, $priority)) {
-                return -1;
-            } elseif (in_array($b, $priority)) {
-                return 1;
-            } elseif ($a[0] === 'k' && $b[0] !== 'k') {
-                return 1;
-            } elseif ($a[0] !== 'k' && $b[0] === 'k') {
-                return -1;
+                'tc', 'cf'] as $key) {
+            if (array_key_exists($key, $properties)) {
+                $prime[$key] = $properties[$key];
+                unset($properties[$key]);
             }
-            return strcasecmp($a, $b);
-        });
-        return $properties;
+        }
+        $others = [];
+        $k = [];
+        foreach ($properties as $key => $value) {
+            if ($key[0] === 'k') {
+                $k[$key] = $value;
+            } else {
+                $others[$key] = $value;
+            }
+        }
+        ksort($others);
+        ksort($k);
+        return array_merge($prime, $others, $k);
     }
 
 }
