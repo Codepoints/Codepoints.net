@@ -32,4 +32,4 @@ while [[ "$LAST_AVAILABLE" != "$DATE" ]]; do
 done
 
 echo "> run deployment on server" >&2
-ssh "$SSH_HOST" bin/cps-deploy
+ssh "$SSH_HOST" bin/cps-deploy live "deploy-$DATE"
