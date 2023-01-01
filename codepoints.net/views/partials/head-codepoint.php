@@ -67,6 +67,6 @@ $schema['itemListElement'][] = [
         "name" => $title,
     ]
 ];
-echo q(json_encode($schema));
+echo str_replace('</', '&lt;/', json_encode($schema));
 unset($schema);
 ?></script>
