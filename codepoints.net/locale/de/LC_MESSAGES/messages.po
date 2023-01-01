@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: codepoints\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-29 15:08+0000\n"
-"PO-Revision-Date: 2022-12-29 16:29+0100\n"
+"PO-Revision-Date: 2023-01-01 02:31+0100\n"
 "Last-Translator: Manuel Strehl <translate@manuel-strehl.de>\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
@@ -372,7 +372,7 @@ msgstr "ägyptischen Hieroglyphen"
 
 #: codepoints.net/views/index.php:58
 msgid "Dingbats and Symbols"
-msgstr "Dingabts und Symbolen"
+msgstr "Dingbats und Symbolen"
 
 #: codepoints.net/views/index.php:61
 #, php-format
