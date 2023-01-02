@@ -142,6 +142,15 @@ class Search extends Controller {
         $pagination = null;
 
         if ($query) {
+            /* TODO remove when we've fixed search again */
+            $search_result = new SearchResult([
+                'count' => 0,
+                'items' => [],
+            ], $env['db']);
+            $pagination = new Pagination($search_result, get_page());
+            return [$search_result, $pagination];
+            /* end TODO */
+
             $transformed_query = join(' ', $this->parseQuery($query, $env));
 
             /**

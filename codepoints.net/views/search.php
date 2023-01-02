@@ -10,6 +10,11 @@ include 'partials/header.php' ?>
 <main class="main main--search"<?php if ($search_result):?> data-count="<?=q((string)$search_result->count())?>"<?php endif ?>>
   <h1><?=_q($title)?></h1>
 
+  <?php /* TODO remove again after fixing search */ if ($search_result): ?>
+    <p>Unfortunately, search is currently off-line due to technical problems.
+    We’re working on bringing it back as fast as possible. We apologize for the
+    inconvenience!</p>
+  <?php endif ?>
   <?php if ($search_result && $search_result->count()): ?>
     <?php if ($search_result->count() > 16): ?>
         <p><a href="#searchform"><?=_q('Jump to the search form')?></a></p>
