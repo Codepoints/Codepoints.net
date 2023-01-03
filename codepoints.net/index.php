@@ -1,5 +1,6 @@
 <?php
 
+use Analog\Analog;
 use Codepoints\Controller\NotFound;
 use Codepoints\Controller\Error as ErrorController;
 use Codepoints\Router;
@@ -52,6 +53,7 @@ try {
     exit();
 } catch (Exception $exc) {
     echo (new ErrorController())($url, Router::getDependencies());
+    Analog::error($exc->getMessage());
     exit(1);
 }
 
