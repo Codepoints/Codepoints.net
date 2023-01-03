@@ -21,9 +21,12 @@ class Sitemap extends Controller {
         if (! $match[1]) {
             $is_index = true;
             /* get counted batches of 0x100 code points as base for our
-             * sitemap */
+             * sitemap.
+             * MIN() is a hack to work around a potentially set
+             * ONLY_FULL_GROUP_BY in both MySQL and MariaDB. See
+             * https://stackoverflow.com/a/54173805/113195. */
             $data = $env['db']->getAll('
-                SELECT HEX(ANY_VALUE(cp - cp % 0x100)) first, COUNT(*) count
+                SELECT HEX(MIN(cp - cp % 0x100)) first, COUNT(*) count
                     FROM codepoints
                 GROUP BY (cp - cp % 0x100)');
             $this->context['data'][] = 'sitemap/static.xml';
