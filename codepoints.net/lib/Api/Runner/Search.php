@@ -5,6 +5,7 @@ namespace Codepoints\Api\Runner;
 use Codepoints\Api\JsonRunner;
 use Codepoints\Api\Exception as ApiException;
 use Codepoints\Controller\Search as SearchController;
+use Codepoints\Router\Redirect;
 
 
 class Search extends JsonRunner {
@@ -24,6 +25,11 @@ class Search extends JsonRunner {
         $query = filter_input(INPUT_SERVER, 'QUERY_STRING');
         $controller = new SearchController();
         list($search_result, $pagination) = $controller->getSearchResult($query, $this->env);
+        if (is_string($search_result)) {
+            /* TODO this might not be the best way to handle single-cp results
+             * in an API context. */
+            throw new Redirect(sprintf('/api/v1/codepoint/%s', mb_ord($search_result)));
+        }
 
         # TODO $limit is currently not yet respected by pagination
         $limit = isset($_GET['per_page'])? min(1000, intval($_GET['per_page'])) : 1000;
