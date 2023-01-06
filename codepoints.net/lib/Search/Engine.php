@@ -159,11 +159,19 @@ class Engine {
         /* this looks like an opportunity for an SQL injection attack, but
          * given that we run $prop against a kind of allow-list of defined
          * Unicode properties this should be safe :tm: . */
-        $count_statement = $this->env['db']->prepare('
-            SELECT COUNT(*) AS count
-            FROM codepoints
-            LEFT JOIN codepoint_props p USING (cp)
-            WHERE p.' . $prop .' = ?');
+        try {
+            $count_statement = $this->env['db']->prepare('
+                SELECT COUNT(*) AS count
+                FROM codepoints
+                LEFT JOIN codepoint_props p USING (cp)
+                WHERE p.' . $prop .' = ?');
+        } catch (\PDOException $e) {
+            /* but it is still possible, that we hit a property that we
+             * haven't got a db table column for. Guard against that problem
+             * by defaulting back to the fulltext search. Properties that
+             * are not columns are e.g., relations. */
+            return null;
+        }
 
         $count_statement->execute([$value]);
         Analog::debug(sprintf('search for single prop: %s=%s', $prop, $value));
