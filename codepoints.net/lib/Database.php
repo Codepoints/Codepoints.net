@@ -30,6 +30,7 @@ class Database extends \PDO {
     /**
      * helper method: get one result set as associative array
      *
+     * @param string $query_sql
      * @param Array $args
      * @return Array|false
      */
@@ -47,6 +48,7 @@ class Database extends \PDO {
     /**
      * helper method: get all result sets as associative array
      *
+     * @param string $query_sql
      * @param Array $args
      * @return Array|false
      */

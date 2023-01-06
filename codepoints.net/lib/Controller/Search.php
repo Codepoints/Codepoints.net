@@ -115,8 +115,7 @@ class Search extends Controller {
      * This method is public, because it is re-used in the API.
      *
      * @see \Codepoints\Api\Runner\Search
-     *
-     * @return Array{0: string|?SearchResult, 1: ?Pagination}
+     * @return Array{0: string|SearchResult|null, 1: ?Pagination}
      */
     public function getSearchResult(string $query, Array $env) : Array {
         $search_result = null;

@@ -182,6 +182,7 @@ class Engine {
         }
 
         $page = get_page();
+        /** @psalm-suppress PossiblyUndefinedArrayOffset */
         $query_statement = $this->env['db']->prepare(sprintf('
             SELECT c.cp, c.name, c.gc
             FROM codepoints c
