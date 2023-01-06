@@ -1,10 +1,13 @@
 <?php
 /**
  * @var bool $is_index
- * @var Array $data
  */
 
-if ($is_index): ?>
+if ($is_index):
+  /**
+   * @var string[] $data
+   */
+?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <?php foreach($data as $item):?>
   <sitemap>
@@ -12,7 +15,11 @@ if ($is_index): ?>
   </sitemap>
 <?php endforeach?>
 </sitemapindex>
-<?php else: ?>
+<?php else:
+  /**
+   * @var list<Array{loc: string, priority: string, changefreq?: string}> $data
+   */
+?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <?php foreach($data as $item):?>
     <url>

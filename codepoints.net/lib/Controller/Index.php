@@ -9,10 +9,12 @@ use Codepoints\Unicode\Codepoint;
 class Index extends Controller {
 
     public function __invoke($match, Array $env) : string {
+        /** @var array */
         $data = $env['db']->getOne('SELECT cp, name, gc
             FROM codepoints
             WHERE cp = 0');
         $cp0 = Codepoint::getCached($data, $env['db']);
+        /** @var array{c: string} */
         $data = $env['db']->getOne('SELECT COUNT(*) AS c FROM codepoints USE INDEX (PRIMARY)');
         $cp_count = $data['c'];
 

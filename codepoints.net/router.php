@@ -28,13 +28,13 @@ Router::add('planes', new Planes());
 Router::add('random', new Random());
 
 Router::add('search', new Search());
-Router::add('wizard', function(string $match, Array $env) : void {
+Router::add('wizard', /** @return never */ function(string $match, Array $env) : void {
     throw new Redirect('/search');
 });
 
 Router::add('scripts', new Scripts());
 
-Router::add(new URLMatcher('api(/(v1)?)?$'), function(Array $match, Array $env) : void {
+Router::add(new URLMatcher('api(/(v1)?)?$'), /** @return never */ function(Array $match, Array $env) : void {
     throw new Redirect('/api/v1/');
 });
 Router::add('api/v1/', function(string $match, Array $env) : string {
@@ -54,7 +54,7 @@ Router::add(new URLMatcher('U\\+([0-9a-fA-F]{4,6})$'), new Codepoint());
 /**
  * redirect to canonical 0-padded URL
  */
-Router::add(new URLMatcher('U\\+([0-9a-fA-F]{1,3})$'), function(Array $match, Array $env) : void {
+Router::add(new URLMatcher('U\\+([0-9a-fA-F]{1,3})$'), /** @return never */ function(Array $match, Array $env) : void {
     throw new Redirect(sprintf('/U+%04X', hexdec($match[1])));
 });
 
@@ -79,7 +79,7 @@ Router::add(function(string $url, Array $env) : ?Array {
  *
  * special case: API call to /api/v1/<cp> is redirected to canonical API URL.
  */
-Router::add(new URLMatcher('(api/v1/)?(.|(%[A-Fa-f0-9]{2}){1,4})$'), function(Array $match, Array $env) : ?string {
+Router::add(new URLMatcher('(api/v1/)?(.|(%[A-Fa-f0-9]{2}){1,4})$'), function(Array $match, Array $env) : null {
     $txt = rawurldecode($match[2]);
     if (mb_strlen($txt) !== 1) {
         return null;

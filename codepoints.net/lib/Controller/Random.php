@@ -16,6 +16,7 @@ use Codepoints\Router\Redirect;
 class Random extends Controller {
 
     public function __invoke($match, Array $env) : string {
+        /** @var Array{cp: string} */
         $data = $env['db']->getOne('
             SELECT cp
                 FROM codepoints
