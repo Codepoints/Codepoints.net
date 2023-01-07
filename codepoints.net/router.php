@@ -79,7 +79,7 @@ Router::add(function(string $url, Array $env) : ?Array {
  *
  * special case: API call to /api/v1/<cp> is redirected to canonical API URL.
  */
-Router::add(new URLMatcher('(api/v1/)?(.|(%[A-Fa-f0-9]{2}){1,4})$'), function(Array $match, Array $env) : null {
+Router::add(new URLMatcher('(api/v1/)?(.|(%[A-Fa-f0-9]{2}){1,4})$'), /** @return null */ function(Array $match, Array $env) {
     $txt = rawurldecode($match[2]);
     if (mb_strlen($txt) !== 1) {
         return null;
