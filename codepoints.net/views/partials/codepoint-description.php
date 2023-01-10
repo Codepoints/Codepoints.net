@@ -22,8 +22,8 @@ use Codepoints\Unicode\Codepoint;
         '<a rel="nofollow" href="'.q(url('search?age='.$props['age'])).'">'.
         q($props['age']).'</a>',
         array_get($info->age_to_year, $props['age'], $props['age']),
-        $block? bl($block):'-',
-        pl($plane));
+        $block? bl($block, 'up'):'-',
+        pl($plane, 'up'));
 
     if ($props['Dep']) {
         echo ' ';

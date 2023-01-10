@@ -20,7 +20,7 @@ include 'partials/header.php'; ?>
       __('It has thus theoretically place for <em>1,114,112 characters</em>.').' '.
       __('Some planes are still undefined and will be filled at a later date.').' '.
       __('The most common characters live in the almost full %s.'),
-      '<a href="'.q(url($planes[0])).'">'.__('Basic Multilingual Plane').'</a>')?>
+      '<a href="'.q(url($planes[0])).'" rel="child">'.__('Basic Multilingual Plane').'</a>')?>
     </p>
     <p><?php printf(
       __('The %s contains mostly ancient characters, like Egyptian Hieroglyphs, and graphic symbols, for example Mahjongg tiles or emoticons.').' '.
@@ -28,15 +28,15 @@ include 'partials/header.php'; ?>
       __('The third-to-last %s is almost completely empty and planned to contain non-character codepoints, like control characters, that define the language of a text.').' '.
       __('The last two planes are special purpose planes.').' '.
       __('Codepoints defined there are <em>private</em>, that is, they will never be specified by Unicode and can be freely assigned by third-party programs to whatever seems useful.'),
-      '<a href="'.q(url($planes[1])).'">'.__('second plane').'</a>',
-      '<a href="'.q(url($planes[2])).'">'.__('Supplementary Ideographic Plane').'</a>',
-      '<a href="'.q(url($planes[14])).'">'.__('Supplementary Special Purpose Plane').'</a>'
+      '<a href="'.q(url($planes[1])).'" rel="child">'.__('second plane').'</a>',
+      '<a href="'.q(url($planes[2])).'" rel="child">'.__('Supplementary Ideographic Plane').'</a>',
+      '<a href="'.q(url($planes[14])).'" rel="child">'.__('Supplementary Special Purpose Plane').'</a>'
   )?>
     </p>
   </section>
   <ol class="tiles">
     <?php foreach ($planes as $plane):?>
-      <li><?=pl($plane)?></li>
+      <li><?=pl($plane, 'child')?></li>
     <?php endforeach?>
   </ol>
 </main>

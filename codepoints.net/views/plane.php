@@ -24,18 +24,18 @@ include 'partials/header.php'; ?>
   </div>
   <h1><?=q($title)?></h1>
   <p><?php printf(__('Plane from U+%04X to U+%04X.'), $plane->first, $plane->last)?></p>
-  <p><a href="/planes"><?=_q('all planes')?></a></p>
+  <p><a href="/planes" rel="up"><?=_q('all planes')?></a></p>
 <?php if ($prev): ?>
-  <p>Prev: <?=pl($prev)?></p>
+  <p>Prev: <?=pl($prev, 'prev')?></p>
 <?php endif ?>
 <?php if ($next): ?>
-  <p>Next: <?=pl($next)?></p>
+  <p>Next: <?=pl($next, 'next')?></p>
 <?php endif ?>
   <?php if (count($plane->blocks)):?>
     <h2><?=_q('Blocks in this plane')?></h2>
     <ol class="tiles">
       <?php foreach ($plane->blocks as $block):?>
-        <li><?=bl($block)?></li>
+        <li><?=bl($block, 'child')?></li>
       <?php endforeach?>
     </ol>
   <?php else:?>

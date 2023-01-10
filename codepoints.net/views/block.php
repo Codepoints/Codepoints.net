@@ -55,7 +55,7 @@ include 'partials/header.php'; ?>
       <?php foreach ($pagination->slice() as $cp => $codepoint): ?>
         <li>
           <?php if ($codepoint): ?>
-            <?=cp($codepoint)?>
+            <?=cp($codepoint, 'child')?>
           <?php else: ?>
             <span class="missing-cp">U+<?=sprintf('%04X', $cp)?></span>
           <?php endif ?>
