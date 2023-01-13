@@ -66,6 +66,15 @@ class Engine {
     }
 
     /**
+     * access the currently handled query
+     *
+     * @return array<string, non-empty-list<string>>
+     */
+    public function getQuery() {
+        return $this->query;
+    }
+
+    /**
      * Parse a query into a structure we can use to search
      *
      * This method will throw away all parameters that are not relevant to

@@ -125,6 +125,7 @@ class Search extends Controller {
             $engine = new Engine($env);
             $search_result = $engine->search($query);
             if ($search_result instanceof SearchResult) {
+                $this->query = $engine->getQuery();
                 $pagination = new Pagination($search_result, get_page());
             }
         }
