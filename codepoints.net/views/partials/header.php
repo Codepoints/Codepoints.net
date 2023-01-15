@@ -42,6 +42,9 @@ case 'codepoint':
     include 'head-codepoint.php';
     break;
 case 'search': ?>
+    <?php /* prevent indexing of search pages. We do not want the crawlers
+    accessing this page due to the extra resources these renderings cost. */ ?>
+    <meta name="robots" content="noindex">
     <script>
     var script_age = <?=json_encode($env['info']->script_age)?>;
     var region_to_block = <?=json_encode($env['info']->region_to_block)?>;
