@@ -21,6 +21,7 @@ class Search extends Controller {
 
     /**
      * @param string $match
+     * @throws \Codepoints\Router\Redirect if it was detected, that the search was for a single code point
      */
     public function __invoke($match, Array $env) : string {
 

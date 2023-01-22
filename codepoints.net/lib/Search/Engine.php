@@ -49,7 +49,9 @@ class Engine {
 
     /**
      * @param string $query_string the query string with values still URL-encoded
-     * @return string|?SearchResult
+     * @return string|?SearchResult either a single code point (as the real
+     *         char) or a SearchResult object or null, if nothing was searched
+     *         or found
      */
     public function search(string $query_string) {
         $this->query = $this->parseQuery($query_string);
@@ -129,14 +131,20 @@ class Engine {
      * More concretely, make sure that no search parameter was given but the
      * "q" parameter, and the latter contains only a single character.
      *
+     * @param array<string, non-empty-list<string>> $query
      * @return ?string
      */
     private function detectSingleCodepointSearch(array $query) {
-        $filtered_get = array_filter($query, function(array|string $var) : bool {
-            return !(is_array($var) || strlen($var) === 0 || mb_strlen($var) > 1);
-        });
+        $filtered_get = array_filter(
+            $query,
+            /**
+             * @param non-empty-list<string> $var
+             */
+            function(array $var) : bool {
+                return mb_strlen($var[0]) === 1;
+            });
         if (count($filtered_get) === 1 && isset($filtered_get['q'])) {
-            return $filtered_get['q'];
+            return $filtered_get['q'][0];
         }
         return null;
     }
