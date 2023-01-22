@@ -155,6 +155,7 @@ class Engine {
      * In that case we bypass our fulltext index for performance reasons and
      * go straight after the property in the codepoint_props table.
      *
+     * @param array<string, non-empty-list<string>> $query
      * @return ?SearchResult
      */
     private function detectSinglePropertySearch(array $query) {
