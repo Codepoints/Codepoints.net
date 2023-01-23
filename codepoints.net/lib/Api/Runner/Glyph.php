@@ -30,7 +30,7 @@ class Glyph extends Runner {
         if ($img) {
             if (! DEBUG) {
                 /* extend caching to 1 week */
-                header('Cache-Control: public, mag-age=604800');
+                header('Cache-Control: public, max-age=604800');
                 header('Expires: ' . gmdate('D, d M Y H:i:s', time() + 604800) . ' GMT');
             }
             header('Content-Type: image/svg+xml');
