@@ -253,15 +253,20 @@ class Engine {
             }
 
             $page = get_page();
-            $query_statement = $this->env['db']->prepare(sprintf('
-                SELECT c.cp, c.name, c.gc
-                FROM search_index
-                LEFT JOIN codepoints c USING (cp)
-                WHERE MATCH(text) AGAINST (? IN BOOLEAN MODE)
-                LIMIT %s, %s',
-                ($page - 1) * Pagination::PAGE_SIZE, Pagination::PAGE_SIZE));
-            $query_statement->execute([$transformed_query]);
-            $items = $query_statement->fetchAll(\PDO::FETCH_ASSOC);
+            $items = [];
+            /* if $count is 0, it's no use searching again, when we
+             * already know that there is no result. */
+            if ($count) {
+                $query_statement = $this->env['db']->prepare(sprintf('
+                    SELECT c.cp, c.name, c.gc
+                    FROM search_index
+                    LEFT JOIN codepoints c USING (cp)
+                    WHERE MATCH(text) AGAINST (? IN BOOLEAN MODE)
+                    LIMIT %s, %s',
+                    ($page - 1) * Pagination::PAGE_SIZE, Pagination::PAGE_SIZE));
+                $query_statement->execute([$transformed_query]);
+                $items = $query_statement->fetchAll(\PDO::FETCH_ASSOC);
+            }
 
             $search_result = new SearchResult([
                 'count' => $count,
