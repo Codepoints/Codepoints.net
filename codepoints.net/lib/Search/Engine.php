@@ -227,7 +227,7 @@ class Engine {
             $transformed_query_arr = [];
             foreach ($this->query as $key => $values) {
                 foreach ($values as $value) {
-                    $transformed_query_arr += $this->getTransformedQuery($key, $value);
+                    array_push($transformed_query_arr, ...$this->getTransformedQuery($key, $value));
                 }
             }
             $transformed_query = join(' ', $transformed_query_arr);
