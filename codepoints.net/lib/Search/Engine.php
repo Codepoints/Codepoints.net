@@ -92,6 +92,7 @@ class Engine {
                 continue;
             }
             list($key, $value) = explode('=', $part, 2);
+            $key = rtrim(urldecode($key), '[]');
             if (in_array($key, ['lang', 'page'])) {
                 continue;
             }
@@ -112,7 +113,6 @@ class Engine {
             if ($value === '') {
                 continue;
             }
-            $key = rtrim($key, '[]');
             if (preg_match('/[^a-zA-Z0-9_]/', $key)) {
                 continue;
             }
