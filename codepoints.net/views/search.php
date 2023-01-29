@@ -1,7 +1,6 @@
 <?php
 /**
  * @var ?\Codepoints\Unicode\SearchResult $search_result
- * @var list<\Codepoints\Unicode\Codepoint> $alt_result
  * @var ?\Codepoints\Router\Pagination $pagination
  * @var string $q
  */
@@ -21,13 +20,6 @@ include 'partials/header.php' ?>
       <?php endforeach ?>
     </ol>
     <?=$pagination?>
-  <?php elseif (count($alt_result)): ?>
-    <p><?=_q('The following codepoints match:')?></p>
-    <ol class="tiles">
-      <?php foreach ($alt_result as $codepoint): ?>
-        <li><?=cp($codepoint)?></li>
-      <?php endforeach ?>
-    </ol>
   <?php endif ?>
 
   <?php if (isset($blocks) && $blocks): ?>

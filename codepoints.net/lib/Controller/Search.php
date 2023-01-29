@@ -45,7 +45,6 @@ class Search extends Controller {
             }
         }
 
-        $alt_result = null;
         if ($q && (! $search_result || ! $search_result->count())) {
             $alt_q = array_map('\\mb_ord', mb_str_split(substr($q, 0, 256)));
             $alt_result = $env['db']->getAll('
@@ -54,9 +53,11 @@ class Search extends Controller {
                 WHERE cp IN ('.str_repeat('?, ', count($alt_q) - 1).' ?)',
                 ...$alt_q);
             if ($alt_result) {
-                $alt_result = array_map(function (Array $item) use ($env) {
-                    return Codepoint::getCached($item, $env['db']);
-                }, $alt_result);
+                $search_result = new SearchResult([
+                    'count' => count($alt_result),
+                    'items' => $alt_result,
+                ], $env['db']);
+                $pagination = new Pagination($search_result, 1);
             }
         }
 
@@ -70,7 +71,6 @@ class Search extends Controller {
 
         $this->context += [
             'search_result' => $search_result,
-            'alt_result' => $alt_result ?: [],
             'pagination' => $pagination,
             'blocks' => $blocks,
             'all_block_names' => $all_block_names,
