@@ -11,6 +11,14 @@ document.documentElement.classList.add('js');
 
 function init(context) {
   initGlossary(context);
+
+  /* embedded context? Open the full view in a new tab when
+   * clicking on the image. */
+  if (window.parent !== window) {
+    document.querySelector('.sqfig').addEventListener('click', function() {
+      window.open(location.href.replace(/\?embed/, ''), '_blank');
+    });
+  }
 }
 
 init(document.querySelector('[data-barba="container"]'));

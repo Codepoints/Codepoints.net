@@ -1,0 +1,34 @@
+.embed cp-navigation,
+.embed .cp-toolbox--tools,
+.embed .cpdesc,
+.embed .sqfig figcaption,
+.embed .page-footer {
+  display: none;
+}
+@media (max-height: 100px) {
+  .main aside {
+    display: none;
+  }
+}
+@media (max-width: 100px) {
+  .main h1 {
+    display: none;
+  }
+}
+.embed .main {
+  padding-left: 0;
+  padding-right: 0;
+}
+.embed .sqfig {
+  margin: 0;
+}
+.embed .sqfig svg {
+  width: auto;
+  max-width: 100vw;
+  max-height: 100vh;
+  aspect-ratio: 1 / 1;
+}
+.embed h1 {
+  font-size: 1rem;
+  margin: 0;
+}
