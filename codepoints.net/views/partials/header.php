@@ -38,6 +38,9 @@ if (array_key_exists('embed', $_GET)) {
     <link rel="stylesheet" href="<?= static_url('src/css/main.css') ?>">
     <?php include 'head-multilang.php' ?>
 <?php switch($view):
+case 'block':
+    include 'head-block.php';
+    break;
 case 'codepoint':
     include 'head-codepoint.php';
     break;
