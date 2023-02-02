@@ -44,6 +44,9 @@ case 'block':
 case 'codepoint':
     include 'head-codepoint.php';
     break;
+case 'plane':
+    include 'head-plane.php';
+    break;
 case 'search': ?>
     <?php /* prevent indexing of search pages. We do not want the crawlers
     accessing this page due to the extra resources these renderings cost. */ ?>
