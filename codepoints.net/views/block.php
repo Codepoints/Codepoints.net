@@ -3,7 +3,6 @@
  * @var \Codepoints\Unicode\Block $block
  * @var ?\Codepoints\Unicode\Block $prev
  * @var ?\Codepoints\Unicode\Block $next
- * @var \Codepoints\Unicode\Plane $plane
  * @var \Codepoints\Unicode\PropertyInfo $info
  * @var \Codepoints\Router\Pagination $pagination
  * @var ?Array{lang: string, abstract: string, src: string} $abstract

@@ -1,3 +1,10 @@
+<?php
+/**
+ * @var \Codepoints\Unicode\Plane $plane
+ * @var ?\Codepoints\Unicode\Plane $prev
+ * @var ?\Codepoints\Unicode\Plane $next
+ */
+?>
 <link rel="up" href="<?=q(url('planes'))?>">
 <?php if ($prev): ?>
   <link rel="prev" href="<?=q(url($prev))?>">
