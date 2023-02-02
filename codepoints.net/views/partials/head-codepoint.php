@@ -32,10 +32,8 @@ $schema = [
         [
           "@type" => "ListItem",
           "position" => 1,
-          "item" => [
-            "@id" => "https://codepoints.net/planes",
-            "name" => "Unicode",
-          ],
+          "name" => "Unicode",
+          "item" => "https://codepoints.net/planes",
         ],
     ],
 ];
@@ -43,29 +41,23 @@ if ($plane):
 $schema['itemListElement'][] = [
     "@type" => "ListItem",
     "position" => 2,
-    "item" => [
-        "@id" => url($plane),
-        "name" => $plane->name,
-    ]
+    "name" => $plane->name,
+    "item" => url($plane),
 ];
 endif;
 if ($block):
 $schema['itemListElement'][] = [
     "@type" => "ListItem",
     "position" => 3,
-    "item" => [
-        "@id" => url($block),
-        "name" => $block->name,
-    ]
+    "name" => $block->name,
+    "item" => url($block),
 ];
 endif;
 $schema['itemListElement'][] = [
     "@type" => "ListItem",
     "position" => 4,
-    "item" => [
-        "@id" => url($codepoint),
-        "name" => $title,
-    ]
+    "name" => $title,
+    "item" => url($codepoint),
 ];
 echo str_replace('</', '&lt;/', json_encode($schema));
 unset($schema);
