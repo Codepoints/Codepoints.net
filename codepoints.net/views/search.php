@@ -68,7 +68,7 @@ include 'partials/header.php' ?>
     <?=_q('On code point detail pages you can click the values in the property description to be guided to a search page that shows code points with the same property.')?>
   </p>
 
-  <?php if (isset($q) && $q && isset($search_result)): ?>
+  <?php if ($q && isset($search_result)): ?>
   <script type="application/tracker+json">
     <?= str_replace('</', '&lt;/', json_encode(['trackSiteSearch', $q, false,
     (isset($is_fulltext_result) && $is_fulltext_result)?
