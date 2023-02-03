@@ -22,7 +22,7 @@ $schema = [
       "@type" => "ListItem",
       "position" => 1,
       "name" => "Unicode",
-      "item" => "https://codepoints.net/planes",
+      "item" => url('/planes', true),
     ],
     [
       "@type" => "ListItem",

@@ -148,9 +148,10 @@ function plimg(Plane $plane, int $width=16) : string {
  * generate an URL from any item (Codepoint, Block, ...)
  *
  * @param Codepoint|Block|Plane|string $item
+ * @param boolean $absolute whether to make the URL absolute
  */
-function url($item) : string {
-    $path = '/';
+function url($item, $absolute=false) : string {
+    $path = $absolute? 'https://codepoints.net/' : '/';
     if ($item instanceof Codepoint) {
         return $path.sprintf('U+%04X', $item->id);
     }

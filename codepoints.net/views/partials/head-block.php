@@ -22,19 +22,19 @@ $schema = [
       "@type" => "ListItem",
       "position" => 1,
       "name" => "Unicode",
-      "item" => "https://codepoints.net/planes",
+      "item" => url('/planes', true),
     ],
     [
       "@type" => "ListItem",
       "position" => 2,
       "name" => $block->plane->name,
-      "item" => url($block->plane),
+      "item" => url($block->plane, true),
     ],
     [
       "@type" => "ListItem",
       "position" => 3,
       "name" => $block->name,
-      "item" => url($block),
+      "item" => url($block, true),
     ],
   ],
 ];

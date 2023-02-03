@@ -10,7 +10,7 @@
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@codepointsnet">
-<meta name="twitter:url" content="https://codepoints.net/<?=q((string)$codepoint)?>">
+<meta name="twitter:url" content="<?=q(url($codepoint, true))?>">
 <meta name="twitter:title" content="<?=q($title)?>">
 <meta name="twitter:description" content="<?=q($page_description)?>">
 <meta name="twitter:image" content="https://codepoints.net/api/v1/glyph/<?=sprintf('%04X', $codepoint->id)?>">
@@ -33,7 +33,7 @@ $schema = [
           "@type" => "ListItem",
           "position" => 1,
           "name" => "Unicode",
-          "item" => "https://codepoints.net/planes",
+          "item" => url('/planes', true),
         ],
     ],
 ];
@@ -42,7 +42,7 @@ $schema['itemListElement'][] = [
     "@type" => "ListItem",
     "position" => 2,
     "name" => $plane->name,
-    "item" => url($plane),
+    "item" => url($plane, true),
 ];
 endif;
 if ($block):
@@ -50,14 +50,14 @@ $schema['itemListElement'][] = [
     "@type" => "ListItem",
     "position" => 3,
     "name" => $block->name,
-    "item" => url($block),
+    "item" => url($block, true),
 ];
 endif;
 $schema['itemListElement'][] = [
     "@type" => "ListItem",
     "position" => 4,
     "name" => $title,
-    "item" => url($codepoint),
+    "item" => url($codepoint, true),
 ];
 echo str_replace('</', '&lt;/', json_encode($schema));
 unset($schema);
