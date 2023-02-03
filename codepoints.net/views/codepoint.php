@@ -12,6 +12,8 @@ use Codepoints\Unicode\Codepoint;
  * @var list<list<Codepoint>> $confusables
  * @var \Codepoints\Unicode\PropertyInfo $info
  * @var Array $aliases
+ * @var string $title
+ * @var ?string $page_description
  * @var string $extra
  * @var ?Array $wikipedia
  * @var Array $othersites
@@ -30,6 +32,7 @@ if ($next) {
   $nav['next'] = cp($next, 'next');
 }
 
+$head_extra = (new \Codepoints\View('partials/head-codepoint'))(compact('codepoint', 'block', 'plane', 'prev', 'next', 'title', 'page_description'));
 include 'partials/header.php'; ?>
 <main class="main main--codepoint" data-cp="<?=q((string)$codepoint->id)?>">
   <?php /* we need the wrapper div to have the figure not float to the absolute

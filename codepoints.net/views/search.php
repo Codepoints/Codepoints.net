@@ -3,8 +3,20 @@
  * @var ?\Codepoints\Unicode\SearchResult $search_result
  * @var ?\Codepoints\Router\Pagination $pagination
  * @var string $q
+ * @var Array $env
  */
 
+$script_age = json_encode($env['info']->script_age);
+$region_to_block = json_encode($env['info']->region_to_block);
+/* prevent indexing of search pages. We do not want the crawlers
+ accessing this page due to the extra resources these renderings cost. */
+$head_extra = <<<HEAD_EXTRA
+    <meta name="robots" content="noindex">
+    <script>
+    var script_age = $script_age;
+    var region_to_block = $region_to_block;
+    </script>
+HEAD_EXTRA;
 include 'partials/header.php' ?>
 <main class="main main--search"<?php if ($search_result):?> data-count="<?=q((string)$search_result->count())?>"<?php endif ?>>
   <h1><?=_q($title)?></h1>

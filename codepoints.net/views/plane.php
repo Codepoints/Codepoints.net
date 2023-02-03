@@ -14,6 +14,7 @@ if ($next) {
   $nav['next'] = pl($next, 'next');
 }
 
+$head_extra = (new \Codepoints\View('partials/head-plane'))(compact('plane', 'prev', 'next'));
 include 'partials/header.php'; ?>
 <main class="main main--plane">
   <div>

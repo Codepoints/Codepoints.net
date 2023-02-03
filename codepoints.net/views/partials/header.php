@@ -2,7 +2,9 @@
 /**
  * @var string $lang
  * @var string $title
+ * @var ?string $page_description
  * @var string $view
+ * @var ?string $head_extra
  */
 ?>
 <!DOCTYPE html>
@@ -37,29 +39,7 @@ if (array_key_exists('embed', $_GET)) {
     <link rel="preload" href="<?= static_url('src/fonts/Literata-Italic.woff2') ?>" as="font" crossOrigin="anonymous">
     <link rel="stylesheet" href="<?= static_url('src/css/main.css') ?>">
     <?php include 'head-multilang.php' ?>
-<?php switch($view):
-case 'block':
-    include 'head-block.php';
-    break;
-case 'codepoint':
-    include 'head-codepoint.php';
-    break;
-case 'plane':
-    include 'head-plane.php';
-    break;
-case 'search': ?>
-    <?php /* prevent indexing of search pages. We do not want the crawlers
-    accessing this page due to the extra resources these renderings cost. */ ?>
-    <meta name="robots" content="noindex">
-    <script>
-    var script_age = <?=json_encode($env['info']->script_age)?>;
-    var region_to_block = <?=json_encode($env['info']->region_to_block)?>;
-    </script>
-    <?php break;
-case 'index': ?>
-    <link rel="preload" href="<?= static_url('src/images/front_light.webp') ?>" as="image" fetchPriority="high" crossOrigin="anonymous">
-    <?php break;
-endswitch ?>
+    <?php if (isset($head_extra)) { echo $head_extra; } ?>
   </head>
   <body>
     <div data-barba="wrapper">

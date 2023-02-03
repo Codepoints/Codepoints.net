@@ -18,6 +18,7 @@ if ($next) {
   $nav['next'] = bl($next, 'next');
 }
 
+$head_extra = (new \Codepoints\View('partials/head-block'))(compact('block', 'prev', 'next'));
 include 'partials/header.php'; ?>
 <main class="main main--block">
   <div>
