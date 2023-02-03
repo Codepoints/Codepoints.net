@@ -2,6 +2,7 @@ import 'vite/modulepreload-polyfill';
 
 import barba from '@barba/core';
 import { initGlossary } from './_glossary.js';
+import { trackByContent } from './_tracker.js';
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import * as components from './components.js';
@@ -93,3 +94,6 @@ barba.hooks.afterEnter((data) => {
   }
   window.scrollTo(0, 0);
 });
+
+barba.hooks.after(data => trackByContent(data.next.container));
+trackByContent(document);
