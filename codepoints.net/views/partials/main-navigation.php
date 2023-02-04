@@ -4,7 +4,7 @@
  */
 ?>
 <cp-navigation>
-  <a href="<?=q(url(''))?>" rel="start">
+  <a href="<?=q(url(''))?>" rel="start" aria-label="<?=q('go to the homepage')?>">
     <svg width="16" height="16"><use href="/static/images/icon.svg#icon"/></svg>
     <span class="title"><?=_q('Home')?></span>
   </a>
