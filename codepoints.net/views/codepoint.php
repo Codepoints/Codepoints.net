@@ -46,7 +46,7 @@ include 'partials/header.php'; ?>
     </figure>
   </div>
 
-  <h1><?=sprintf('%s %s', (string)$codepoint, format_codepoint_name($codepoint->name))?></h1>
+  <h1><?=sprintf('<span class="title__cp">%s</span> <span class="title__na">%s</span>', (string)$codepoint, format_codepoint_name($codepoint->name))?></h1>
 
   <aside>
     <div class="cp-toolbox cp-toolbox--profile">

@@ -181,9 +181,9 @@ function case_cp_name(string $name) : string {
         return strtoupper($match[0]);
     }, $name);
     $name = str_replace([
-        'Oclock', 'Of ', 'With ', 'And ', 'Ok ',
+        'Oclock', 'Of ', 'With ', 'And ', 'Ok ', 'For ', 'Ac Current', 'Fleur-De-Lis',
     ], [
-        'O’Clock', 'of ', 'with ', 'and ', 'OK '
+        'O’Clock', 'of ', 'with ', 'and ', 'OK ', 'for ', 'AC Current', 'Fleur-de-lis',
     ], $name);
     return $name;
 }
@@ -204,9 +204,9 @@ function static_url(string $path): string {
  */
 function format_codepoint_name(string $name): string {
   return str_replace(
-      ['IDEOGRAPH-', '*'],
-      ["IDEO\u{00AD}GRAPH-\u{200B}", ' <span tabindex="0" aria-description="'.q('This codepoint has no canonical name. The shown name is an alias defined by Unicode.').'" class="no-na tooltip">*</span>'],
-      q($name));
+      ['Ideograph-', '*'],
+      ["Ideo\u{00AD}graph-\u{200B}", ' <span tabindex="0" aria-description="'.q('This codepoint has no canonical name. The shown name is an alias defined by Unicode.').'" class="no-na tooltip">*</span>'],
+      q(case_cp_name($name)));
 }
 
 /**
