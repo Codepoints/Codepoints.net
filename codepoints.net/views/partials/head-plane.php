@@ -28,7 +28,7 @@ $schema = [
       "@type" => "ListItem",
       "position" => 2,
       "name" => $plane->name,
-      "item" => url($plane),
+      "item" => url($plane, true),
     ],
   ],
 ];
