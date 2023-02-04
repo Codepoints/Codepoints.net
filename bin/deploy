@@ -6,6 +6,11 @@ DATE="$(date +%Y-%m-%d-%H-%M-%S)"
 RELEASE_URL='https://github.com/codepoints/codepoints.net/releases/latest/download/codepoints.zip'
 SSH_HOST='codepts'
 
+if ! grep -q refs/heads/main .git/HEAD ; then
+    echo '! Please change to branch "main" first! Exiting.' >&2
+    exit 1
+fi
+
 echo "> create tag deploy-$DATE" >&2
 git tag "deploy-$DATE"
 
