@@ -2,6 +2,7 @@
 .embed .cp-toolbox--tools,
 .embed .cpdesc,
 .embed .sqfig figcaption,
+.embed .embed-info,
 .embed .page-footer {
   display: none;
 }
@@ -15,12 +16,19 @@
     display: none;
   }
 }
+@media (max-width: 200px) and (max-height: 40px) {
+  .main h1 .title__na {
+    display: none;
+  }
+}
 .embed .main {
   padding-left: 0;
   padding-right: 0;
 }
 .embed .sqfig {
-  margin: 0;
+  margin: 0 .5rem 0 0;
+  box-shadow: none;
+  border-radius: 0;
 }
 .embed .sqfig svg {
   width: auto;
@@ -31,4 +39,24 @@
 .embed h1 {
   font-size: 1rem;
   margin: 0;
+}
+@media (min-height: 200px) {
+  .embed .embed-info {
+    display: block;
+    margin: 0;
+    position: fixed;
+    inset: auto 0 0;
+  }
+}
+.embed-info a {
+  display: block;
+  background: #f4d19e;
+  color: var(--blue-green-color-wheel);
+  font-family: var(--font-family-alternate);
+  font-size: calc(1rem / var(--font-mod));
+}
+@media (min-height: 350px) {
+  .embed .embed-info a {
+    padding: .5rem;
+  }
 }

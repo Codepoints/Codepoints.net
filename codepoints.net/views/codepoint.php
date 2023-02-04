@@ -203,5 +203,8 @@ include 'partials/header.php'; ?>
     </tbody>
   </table>
 </section>
+<?php if (array_key_exists('embed', $_GET)): ?>
+  <p class="embed-info"><a href="<?=q(url($codepoint, true))?>" target="_blank"><?=_q('» View this character on Codepoints.net')?></a></p>
+<?php endif ?>
 </main>
 <?php include 'partials/footer.php'; ?>
