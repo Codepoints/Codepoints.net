@@ -1,27 +1,20 @@
 <?php
 /**
  * @var \Codepoints\Unicode\PropertyInfo $info
+ * @var array<array> $query
  */
-?>
-<?php
-function _get(string $name) : string {
-  if (! isset($_GET[$name]) || ! is_string($_GET[$name])) {
-    return '';
-  }
-  return q($_GET[$name]);
-}
 ?>
 <cp-searchform>
 <form method="get" action="<?=q(url('search'))?>"
       class="searchform searchform--ext">
   <cp-search-freeform>
     <label for="s_q"><?=_q('Free search:')?></label>
-    <input type="text" name="q" id="s_q" value="<?php echo _get('q')?>">
+    <input type="text" name="q" id="s_q" value="<?=q($query['q'][0] ?? '')?>">
     <small class="nt"><?=_q('Any information about the character, that doesn’t fit the categories below')?></small>
   </cp-search-freeform>
   <cp-search-freeform>
     <label for="s_na"><?=__('Name:')?></label>
-    <input type="text" name="na" id="s_na" value="<?php echo _get('na')?>">
+    <input type="text" name="na" id="s_na" value="<?=q($query['na'][0] ?? '')?>">
     <small class="nt"><?=_q('The Unicode name (or parts) of the character')?></small>
   </cp-search-freeform>
   <?php

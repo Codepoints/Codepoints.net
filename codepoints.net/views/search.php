@@ -4,14 +4,19 @@
  * @var ?\Codepoints\Router\Pagination $pagination
  * @var string $q
  * @var Array $env
+ * @var ?boolean $is_range
  */
 
-$script_age = json_encode($env['info']->script_age);
-$region_to_block = json_encode($env['info']->region_to_block);
 /* prevent indexing of search pages. We do not want the crawlers
  accessing this page due to the extra resources these renderings cost. */
+$noindex = isset($is_range)? '' : '<meta name="robots" content="noindex">';
+
+/* add some info needed by JS */
+$script_age = json_encode($env['info']->script_age);
+$region_to_block = json_encode($env['info']->region_to_block);
+
 $head_extra = <<<HEAD_EXTRA
-    <meta name="robots" content="noindex">
+    $noindex
     <script>
     var script_age = $script_age;
     var region_to_block = $region_to_block;
