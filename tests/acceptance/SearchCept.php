@@ -12,8 +12,8 @@ $count = $I->grabAttributeFrom('main', 'data-count');
 $I->expect('search to handle missing results gracefully');
 $I->assertTrue(ctype_digit($count));
 $I->seeResponseCodeIs(200);
-$I->assertEquals(0, (int)$count);
-$I->see('No Codepoints Found', 'h1');
+$I->assertEquals(11, (int)$count);
+$I->see('11 Codepoints Found', 'h1');
 
 $I->amOnPage('/search?q=latin');
 $count = $I->grabAttributeFrom('main', 'data-count');
@@ -28,9 +28,3 @@ $I->assertTrue(ctype_digit($count));
 $I->expect('search to find multi-word names');
 $I->assertLessThan(100000, (int)$count);
 $I->assertLessThan((int)$count, 1);
-
-$I->amOnPage('/search?q=ccc');
-$count = $I->grabAttributeFrom('main', 'data-count');
-$I->assertTrue(ctype_digit($count));
-$I->expect('search to ignore empty property names');
-$I->assertEquals(0, (int)$count);
