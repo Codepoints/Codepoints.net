@@ -1,3 +1,7 @@
+<link rel="canonical" href="<?=q(url($codepoint, true))?>?lang=<?=q($lang)?>">
+<link rel="alternate" type="application/json+oembed" href="https://codepoints.net/api/v1/oembed?url=https%3A%2F%2Fcodepoints.net<?=q(url($codepoint))?>&amp;format=json">
+<link rel="alternate" type="text/xml+oembed" href="https://codepoints.net/api/v1/oembed?url=https%3A%2F%2Fcodepoints.net<?=q(url($codepoint))?>&amp;format=xml">
+
 <?php if ($block): ?>
   <link rel="up" href="<?=q(url($block))?>">
 <?php endif ?>
@@ -20,9 +24,6 @@
 <meta property="og:title" content="<?=q($title)?>">
 <meta property="og:description" content="<?=q($page_description)?>">
 <meta property="og:image" content="https://codepoints.net/api/v1/glyph/<?=sprintf('%04X', $codepoint->id)?>">
-
-<link rel="alternate" type="application/json+oembed" href="https://codepoints.net/api/v1/oembed?url=https%3A%2F%2Fcodepoints.net<?=q(url($codepoint))?>&amp;format=json">
-<link rel="alternate" type="text/xml+oembed" href="https://codepoints.net/api/v1/oembed?url=https%3A%2F%2Fcodepoints.net<?=q(url($codepoint))?>&amp;format=xml">
 
 <script type="application/ld+json"><?php
 $schema = [
