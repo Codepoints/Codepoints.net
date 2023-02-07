@@ -9,7 +9,13 @@ let mostPopular;
 function getMostPopular() {
   if (! mostPopular) {
     mostPopular = fetch('/api/v1/popular')
-      .then(response => response.json());
+      .then(async (response) => {
+        try {
+          return await response.json();
+        } catch (e) {
+          return [];
+        }
+      }, () => []);
   }
   return mostPopular;
 }
