@@ -28,7 +28,9 @@ const noAnimationQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
 barba.init({
   prefetchIgnore: ['/search', '/random'],
-  prevent: ({ event }) => event.defaultPrevented,
+  prevent: ({ href, event }) => {
+    return event.defaultPrevented || /\/random$/.test(href);
+  },
   transitions: [{
     name: 'baseline',
     sync: true,
