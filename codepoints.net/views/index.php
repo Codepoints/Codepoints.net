@@ -4,7 +4,7 @@
  * @var \Codepoints\Unicode\Codepoint $cp0
  */
 
-$head_extra = sprintf('<link rel="preload" href="%s" as="image" fetchPriority="high" crossOrigin="anonymous">', static_url('src/images/front_light.webp'));
+$head_extra = sprintf('<link rel="preload" href="%s" as="image" fetchPriority="high" type="image/webp">', static_url('src/images/front_light.webp'));
 include 'partials/header.php'; ?>
 <main class="main main--index">
   <h1 aria-label="<?=_q('Codepoints')?>">
