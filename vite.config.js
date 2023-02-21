@@ -19,7 +19,7 @@ export default defineConfig({
     manifest: true,
     outDir: 'codepoints.net/static/',
     rollupOptions: {
-      input: ['src/js/main.js', 'src/css/main.css'],
+      input: ['src/js/main.js', 'src/css/main.css', 'src/css/print.css'],
       output: {
         chunkFileNames: '[name]-[hash].js',
         entryFileNames: '[name]-[hash].js',

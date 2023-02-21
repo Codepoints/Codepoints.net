@@ -108,6 +108,11 @@ export class CpRepresentations extends LitElement {
   display: block;
   margin-top: .5rem;
 }
+@media print {
+  :host button {
+    display: none;
+  }
+}
 :host > button,
 .props {
   margin-left: auto;

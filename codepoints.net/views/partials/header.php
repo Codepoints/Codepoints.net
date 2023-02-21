@@ -38,6 +38,7 @@ if (array_key_exists('embed', $_GET)) {
     <link rel="preload" href="<?= static_url('src/fonts/Literata.woff2') ?>" as="font" crossOrigin="anonymous">
     <link rel="preload" href="<?= static_url('src/fonts/Literata-Italic.woff2') ?>" as="font" crossOrigin="anonymous">
     <link rel="stylesheet" href="<?= static_url('src/css/main.css') ?>">
+    <link rel="stylesheet" media="print" href="<?= static_url('src/css/print.css') ?>">
     <?php include 'head-multilang.php' ?>
     <?php if (isset($head_extra)) { echo $head_extra; } ?>
   </head>
