@@ -4,9 +4,7 @@ import barba from '@barba/core';
 import { initGlossary } from './_glossary.js';
 import { trackByContent } from './_tracker.js';
 
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import * as components from './components.js';
-/* eslint-enable @typescript-eslint/no-unused-vars */
+import './components.js';
 
 document.documentElement.classList.add('js');
 
