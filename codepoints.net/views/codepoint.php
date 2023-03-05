@@ -66,6 +66,7 @@ include 'partials/header.php'; ?>
     </div>
     <div class="cp-toolbox cp-toolbox--tools">
       <cp-copy content="<?= q(mb_chr($codepoint->id)) ?>"><button type="button"><?=_q('copy to clipboard')?></button></cp-copy>
+      <cp-btn-share><a class="btn" href="mailto:?subject=<?=q(rawurlencode((string)$codepoint .' '. format_codepoint_name($codepoint->name)))?>&amp;body=<?=q(rawurlencode(url($codepoint, true)))?>"><cp-icon icon="share" width="16" height="16"></cp-icon> <?=_q('share this codepoint')?></a></cp-btn-share>
       <cp-btn-embed><button type="button"><?=_q('embed this codepoint')?></button></cp-btn-embed>
     </div>
   </aside>

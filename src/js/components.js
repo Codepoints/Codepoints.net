@@ -1,4 +1,5 @@
 import './components/cp-btn-embed.ts';
+import './components/cp-btn-share.ts';
 import './components/cp-copy.ts';
 import './components/cp-darkmode.ts';
 import './components/cp-glossary-term.ts';

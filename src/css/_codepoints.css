@@ -85,8 +85,13 @@
   margin: 0;
   margin-block-end: .5rem;
 }
+.cp-toolbox .btn,
 .cp-toolbox button {
   width: 100%;
+}
+
+.cp-toolbox .btn svg {
+  vertical-align: middle;
 }
 
 p .bl .meta,

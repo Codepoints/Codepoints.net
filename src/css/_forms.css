@@ -1,5 +1,11 @@
-button, input, select, textarea {
+.btn {
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+button, .btn, input, select, textarea {
   font-family: var(--font-family-alternate);
+  text-decoration: none;
   line-height: inherit;
   padding: .25em .5em;
   border-radius: 2px;
