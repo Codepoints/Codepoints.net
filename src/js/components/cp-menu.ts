@@ -1,7 +1,6 @@
 import { LitElement, css, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import { gettext as _ } from '../_i18n.ts';
-import { mixinBackdropClose } from '../_mixins.ts';
 
 @customElement('cp-menu')
 export class CpMenu extends LitElement {
@@ -13,51 +12,6 @@ export class CpMenu extends LitElement {
 
   a:focus, a:hover {
     color: var(--color-link-hover);
-  }
-  dialog {
-    margin: 0;
-    width: auto;
-    min-height: 50vh;
-    border: none;
-    padding: 2rem;
-    font-size: calc(1rem / var(--font-mod));
-    font-family: var(--font-family-alternate);
-  }
-  dialog[open] {
-    animation-name: cp-menu;
-    animation-duration: .5s;
-    animation-iteration-count: 1;
-    animation-timing-function: ease-out;
-  }
-  @keyframes cp-menu {
-    from {
-      top: -20vh;
-      opacity: .333;
-    }
-    to {
-      top: 0;
-      opacity: 1;
-    }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    @keyframes cp-menu {
-      from {
-        opacity: .5;
-      }
-      to {
-        opacity: 1;
-      }
-    }
-  }
-  .close {
-    border: none;
-    background: none;
-    display: block;
-    width: 42px;
-    padding: 0;
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
   }
   nav {
     display: flex;
@@ -86,11 +40,7 @@ export class CpMenu extends LitElement {
   render() {
     const query = (new URLSearchParams(location.search)).get('q') || '';
     return html`
-    <dialog @click="${mixinBackdropClose(this.close.bind(this))}">
-      <button type="button" class="close" @click="${this.close}">
-        <cp-icon icon="xmark" width="42px" height="42px"></cp-icon>
-        <span>${_('close')}</span>
-      </button>
+    <cp-dialog class="menu">
       <nav>
         <a href="/">
           <cp-icon icon="house"></cp-icon>
@@ -129,21 +79,15 @@ export class CpMenu extends LitElement {
         <cp-darkmode></cp-darkmode>
         <cp-language></cp-language>
       </section>
-    </dialog>
+    </cp-dialog>
     `;
   }
 
   show() {
-    this.renderRoot.querySelector('dialog').showModal();
-    this.animation = this.renderRoot.querySelector('dialog').getAnimations()?.[0];
+    this.renderRoot.querySelector('cp-dialog').open();
   }
 
   close() {
-    if (this.animation) {
-      this.animation.reverse();
-      window.setTimeout(() => this.renderRoot.querySelector('dialog').close(), 500);
-    } else {
-      this.renderRoot.querySelector('dialog').close();
-    }
+    this.renderRoot.querySelector('cp-dialog').close();
   }
 }
