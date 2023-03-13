@@ -25,7 +25,7 @@ export default defineConfig({
         entryFileNames: '[name]-[hash].js',
         assetFileNames: 'assets/[name]-[hash][extname]',
       },
-    }
+    },
   },
   css: {
     postcss: {

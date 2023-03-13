@@ -2,7 +2,6 @@ import {LitElement, css, html, unsafeCSS} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {gettext as _} from '../_i18n.ts';
 import {CpDialog} from './cp-dialog.ts';
-import ShadowCSS from '../../css/shadow.css?url';
 
 const services = {
   Whatsapp: 'whatsapp://send?text={title}%20{url}',
@@ -95,7 +94,7 @@ class CpShareContainer extends LitElement {
       s.push(html`<li><a class="btn" href="${url}" target="_blank">${service}</a></li>`);
     }
     return html`
-    <link rel="stylesheet" href="${ShadowCSS}">
+    <link rel="stylesheet" href="${document.getElementById('main-css').href}">
     <div class="preview">
       <span class="url">${this.url}</span>
       <span class="title">${this.title}</span>
