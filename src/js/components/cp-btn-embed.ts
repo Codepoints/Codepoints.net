@@ -1,4 +1,4 @@
-import {LitElement, css, html} from 'lit';
+import {LitElement, html} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {gettext as _} from '../_i18n.ts';
 import { intToHex } from '../_unicode-tools.ts';

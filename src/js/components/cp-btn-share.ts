@@ -1,4 +1,4 @@
-import {LitElement, css, html, unsafeCSS} from 'lit';
+import {LitElement, css, html} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {gettext as _} from '../_i18n.ts';
 import {CpDialog} from './cp-dialog.ts';
@@ -58,7 +58,7 @@ export class CpBtnShare extends LitElement {
       dialog.appendChild(cp_share_container);
       this.appendChild(dialog);
     }
-    const promise = new Promise((resolve, reject) => {
+    const promise = new Promise((resolve) => {
       window.requestAnimationFrame(() => resolve(dialog));
     });
     return promise;
