@@ -91,6 +91,7 @@ class Engine {
             if (strpos($part, '=') === false) {
                 continue;
             }
+            /** @psalm-suppress PossiblyUndefinedArrayOffset */
             list($key, $value) = explode('=', $part, 2);
             $key = rtrim(urldecode($key), '[]');
             if (in_array($key, ['lang', 'page'])) {

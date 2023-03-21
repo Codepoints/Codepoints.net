@@ -29,6 +29,7 @@ class Transform extends JsonRunner {
             return $possibilities;
         }
 
+        /** @psalm-suppress PossiblyUndefinedArrayOffset */
         list($action, $input) = explode('/', $data, 2);
         $input = rawurldecode($input);
 
