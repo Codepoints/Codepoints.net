@@ -139,6 +139,8 @@ table:not(.show-all) tfoot {
 .props button {
   opacity: .5;
   margin-left: .25rem;
+  border: none;
+  border-radius: 50%;
 }
 .props button:focus,
 .props button:hover {
