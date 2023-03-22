@@ -172,8 +172,13 @@ class Engine {
         if (in_array($prop, ['sc', 'scx']) || ! in_array($prop, $this->cp_properties)) {
             return null;
         }
+        $operator = '=';
 
         $value = $query[$prop][0];
+        if ($prop === 'gc' && strlen($value) === 1) {
+            $operator = 'LIKE';
+            $value .= '%';
+        }
 
         /* this looks like an opportunity for an SQL injection attack, but
          * given that we run $prop against a kind of allow-list of defined
@@ -183,7 +188,7 @@ class Engine {
                 SELECT COUNT(*) AS count
                 FROM codepoints
                 LEFT JOIN codepoint_props p USING (cp)
-                WHERE p.' . $prop .' = ?');
+                WHERE p.' . $prop .' ' . $operator . ' ?');
         } catch (\PDOException $e) {
             /* but it is still possible, that we hit a property that we
              * haven't got a db table column for. Guard against that problem
@@ -206,9 +211,9 @@ class Engine {
             SELECT c.cp, c.name, c.gc
             FROM codepoints c
             LEFT JOIN codepoint_props p USING (cp)
-            WHERE p.%s = ?
+            WHERE p.%s %s ?
             LIMIT %s, %s',
-            $prop, ($page - 1) * Pagination::PAGE_SIZE, Pagination::PAGE_SIZE));
+            $prop, $operator, ($page - 1) * Pagination::PAGE_SIZE, Pagination::PAGE_SIZE));
         $query_statement->execute([$value]);
         $items = $query_statement->fetchAll(\PDO::FETCH_ASSOC);
 
