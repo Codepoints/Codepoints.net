@@ -62,11 +62,11 @@ export class CpMenu extends LitElement {
           ${_('about this site')}</a>
       </nav>
 
-      <form method="get" action="/search">
+      <form method="get" action="/search" role="search">
         <p>
           <label>
             ${_('Search code points:')}
-            <input type="text" name="q" value="${query}">
+            <input type="text" name="q" value="${query}" inputmode="search">
           </label>
           <button type="submit">${_('search')}</button>
         </p>
