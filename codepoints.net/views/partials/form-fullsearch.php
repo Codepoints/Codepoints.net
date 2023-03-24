@@ -6,10 +6,10 @@
 ?>
 <cp-searchform>
 <form method="get" action="<?=q(url('search'))?>"
-      class="searchform searchform--ext">
+      class="searchform searchform--ext" role="search">
   <cp-search-freeform>
     <label for="s_q"><?=_q('Free search:')?></label>
-    <input type="text" name="q" id="s_q" value="<?=q($query['q'][0] ?? '')?>">
+    <input type="text" name="q" id="s_q" value="<?=q($query['q'][0] ?? '')?>" inputmode="search">
     <small class="nt"><?=_q('Any information about the character, that doesn’t fit the categories below')?></small>
   </cp-search-freeform>
   <cp-search-freeform>
