@@ -28,10 +28,15 @@ include 'partials/header.php'; ?>
        title="<?=_q('Enter a single character, like “丙” or “A”, or a term that describes the character, like “cyrillic” or “grass”')?>">
        <button type="submit"><?=_q('search')?></button></p>
     <p><small><em><?=_q('For example:')?></em>
-      <a href="/search?q=<?=urlencode(_q('heart'))?>"><?=_q('heart')?></a>,
-      <a href="/search?q=<?=urlencode(_q('parenthesis'))?>"><?=_q('parenthesis')?></a>,
-      <a href="/search?q=<?=urlencode(_q('shavian'))?>"><?=_q('shavian')?></a>,
-      <a href="/search?q=<?=urlencode(_q('emoji'))?>"><?=_q('emoji')?></a>
+      <?php
+      $terms = [
+        'heart', 'arrow', 'parenthesis', 'shavian', 'hieroglyph', 'roman numeral', 'cyrillic', 'mahjong', 'ornament',
+      ];
+      shuffle($terms);
+      foreach (array_slice($terms, 0, 3) as $term): ?>
+        <a href="/search?q=<?=urlencode($term)?>"><?=q($term)?></a>,
+      <?php endforeach ?>
+      <a href="/search?q=emoji">emoji</a>
     </small></p>
   </form>
   <p class="action">
