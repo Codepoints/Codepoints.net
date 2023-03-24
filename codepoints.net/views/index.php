@@ -23,8 +23,8 @@ include 'partials/header.php'; ?>
     <p><?=__('<strong>Codepoint</strong>, <em>n.</em> the position of a character in
     an encoding system.')?></p>
   </blockquote>
-  <form method="get" action="/search" class="searchform">
-    <p><input type="text" name="q" placeholder="<?=_q('Search a Character')?>"
+  <form method="get" action="/search" class="searchform" role="search">
+    <p><input type="text" name="q" placeholder="<?=_q('Search a Character')?>" inputmode="search"
        title="<?=_q('Enter a single character, like “丙” or “A”, or a term that describes the character, like “cyrillic” or “grass”')?>">
        <button type="submit"><?=_q('search')?></button></p>
     <p><small><em><?=_q('For example:')?></em>
