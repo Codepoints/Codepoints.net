@@ -10,9 +10,9 @@ on:
   workflow_dispatch:
 
 # stop if a second commit is pushed and a new action starts
-concurrency:
-  group: '${{ github.workflow }}-${{ github.ref }}'
-  cancel-in-progress: true
+#concurrency:
+#  group: '${{ github.workflow }}-${{ github.ref }}'
+#  cancel-in-progress: true
 
 jobs:
   create-release:
