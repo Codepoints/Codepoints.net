@@ -139,8 +139,8 @@ const q_region = new CpQuestion('region',
     '': _('I don’t know')
   },
   value => {
-    if (value in region_to_block) {
-      return region_to_block[value].map(blk => `"prop_blk_${blk}"`).join(' ');
+    if (value in window.region_to_block) {
+      return window.region_to_block[value].map(blk => `"prop_blk_${blk}"`).join(' ');
     }
   });
 
@@ -260,9 +260,9 @@ const q_archaic = new CpQuestion('archaic',
   },
   value => {
     if (value === '1') {
-      return script_age['archaic'].map(sc => `"sc_${sc}"`).join(' ');
+      return window.script_age['archaic'].map(sc => `"sc_${sc}"`).join(' ');
     } else if (value === '0') {
-      return script_age['recent'].map(sc => `"sc_${sc}"`).join(' ');
+      return window.script_age['recent'].map(sc => `"sc_${sc}"`).join(' ');
     }
   });
 
