@@ -30,22 +30,22 @@ include 'partials/header.php' ?>
     <?php if ($search_result->count() > 16): ?>
         <p><a href="#searchform"><?=_q('Jump to the search form')?></a></p>
     <?php endif ?>
-    <ol class="tiles">
+    <ul class="tiles">
       <?php foreach ($search_result as $codepoint): ?>
         <?php if (! $codepoint) { continue; } ?>
         <li><?=cp($codepoint)?></li>
       <?php endforeach ?>
-    </ol>
+    </ul>
     <?=$pagination?>
   <?php endif ?>
 
   <?php if (isset($blocks) && $blocks): ?>
     <p><?php printf(count($blocks) === 1? __('%s block matches %s:') : __('%s blocks match %s:'), '<strong>'.count($blocks).'</strong>', '<strong>'.q($q).'</strong>')?><p>
-    <ol class="tiles">
+    <ul class="tiles">
       <?php foreach ($blocks as $block): ?>
         <li><?=bl($block)?></li>
       <?php endforeach ?>
-    </ol>
+    </ul>
   <?php endif ?>
 
   <p id="searchform">
