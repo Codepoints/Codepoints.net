@@ -80,7 +80,9 @@ include 'partials/header.php'; ?>
 <?php elseif ($codepoint->gc === 'Cn' && $codepoint->name === '<reserved>'): ?>
   <p><?=_q('This codepoint doesn’t exist.')?>
   <?php
-    printf(__('If it would, it’d be located in the %s.'), pl($plane, 'up'));
+    if ($plane):
+      printf(__('If it would, it’d be located in the %s.'), pl($plane, 'up'));
+    endif;
     if ($block):
         printf(' '.q(__('You can find surrounding codepoints in the block %s.')), bl($block, ''));
     endif?>
