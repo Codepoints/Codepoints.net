@@ -151,3 +151,30 @@ function get_printable_codepoint(int $id, string $gc) {
     }
     return $id;
 }
+
+/**
+ * convert a string to a list of Codepoint objects
+ *
+ * @return list<Codepoint>
+ */
+function string_to_codepoints(string $string, Database $db) : Array {
+    $intlist = array_map(
+        function(string $c) : int { return mb_ord($c); },
+        preg_split('//u', $string, -1, PREG_SPLIT_NO_EMPTY));
+    $list = join(',', array_unique($intlist));
+    $data = $db->getAll('SELECT cp, name, gc FROM codepoints
+        WHERE cp IN ( '.$list.' ) ORDER BY FIELD( cp, '.$list.' )');
+    $cps = [];
+    if ($data) {
+        $tmpcps = [];
+        foreach ($data as $set) {
+            $tmpcps[$set['cp']] = Codepoint::getCached($set, $db);
+        }
+        foreach ($intlist as $int) {
+            if (array_key_exists($int, $tmpcps)) {
+                $cps[] = $tmpcps[$int];
+            }
+        }
+    }
+    return $cps;
+}
