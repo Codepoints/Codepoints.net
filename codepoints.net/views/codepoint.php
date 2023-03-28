@@ -77,6 +77,18 @@ include 'partials/header.php'; ?>
   <?=sprintf(__('If it would, it’d be located in the Nirvana of Undefined Behaviour beyond the 17<sup>th</sup> plane, a land %sno member of the Unicode mailing list has ever seen%s.'),
     '<a href="http://www.unicode.org/mail-arch/unicode-ml/y2003-m10/0234.html">', '</a>')?>
   </p>
+<?php elseif ($codepoint->gc === 'Cn' && $codepoint->name === '<reserved>'): ?>
+  <p><?=_q('This codepoint doesn’t exist.')?>
+  <?php
+    printf(__('If it would, it’d be located in the %s.'), pl($plane, 'up'));
+    if ($block):
+        printf(' '.q(__('You can find surrounding codepoints in the block %s.')), bl($block, ''));
+    endif?>
+  </p>
+  <p>
+    <?php printf(q(__('The Unicode Consortium adds new codepoints to the standard all the time. Visit %stheir website%s to find out about pending codepoints and whether this one is in the pipe.')), '<a href="http://www.unicode.org/alloc/Pipeline.html">', '</a>')?>
+    <?=_q('The following table shows typical representations of how the codepoint would look, if it existed. This may help you when debugging, but is not of real use otherwise.')?>
+  </p>
 <?php else: ?>
     <?=$codepoint->description?>
 <?php endif ?>
