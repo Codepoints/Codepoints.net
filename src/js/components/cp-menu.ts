@@ -51,6 +51,9 @@ export class CpMenu extends LitElement {
         <a href="/search">
           <cp-icon icon="magnifying-glass"></cp-icon>
           ${_('search')}</a>
+        <a href="/analyze">
+          <cp-icon icon="chart-pie"></cp-icon>
+          ${_('analyze')}</a>
         <a href="/random">
           <cp-icon icon="shuffle"></cp-icon>
           ${_('random page')}</a>

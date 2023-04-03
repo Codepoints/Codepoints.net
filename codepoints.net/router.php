@@ -3,6 +3,7 @@
 use \Codepoints\Router;
 use \Codepoints\Router\URLMatcher;
 use \Codepoints\Router\Redirect;
+use \Codepoints\Controller\Analyze;
 use \Codepoints\Controller\Api;
 use \Codepoints\Controller\Block;
 use \Codepoints\Controller\Codepoint;
@@ -31,6 +32,7 @@ Router::add('search', new Search());
 Router::add('wizard', /** @return never */ function(string $match, Array $env) : void {
     throw new Redirect('/search');
 });
+Router::add('analyze', new Analyze());
 
 Router::add('scripts', new Scripts());
 
