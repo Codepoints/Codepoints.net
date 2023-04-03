@@ -1,13 +1,14 @@
 <?php
 /**
  * @var list<\Codepoints\Unicode\Codepoint> $cps
+ * @var string $page_description
  * @var string $q
  */
 
 include 'partials/header.php'; ?>
 <main class="main main--404">
   <h1><?=q($title)?></h1>
-  <p><?=q($page_description)?></p>
+  <p><?=q((string)$page_description)?></p>
   <form>
     <p>
       <label>
