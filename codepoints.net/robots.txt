@@ -2,3 +2,4 @@ Sitemap: https://codepoints.net/sitemap.xml
 
 User-agent: *
 Disallow: /search
+Disallow: /random
