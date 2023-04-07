@@ -28,7 +28,7 @@ export class CpDialog extends LitElement {
     animation-name: cp-dialog-menu;
     animation-duration: .5s;
     animation-iteration-count: 1;
-    animation-timing-function: ease-out;
+    animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
   }
   @keyframes cp-dialog-menu {
     from {
