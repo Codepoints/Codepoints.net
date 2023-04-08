@@ -39,7 +39,7 @@ $repr = $codepoint->representation; ?>
     </tr>
     <?php
     ini_set('mbstring.substitute_character', 'none');
-    $moji = mb_convert_encoding($codepoint->chr(), 'UTF-8', 'ISO-8859-1');
+    $moji = mb_convert_encoding($codepoint->chr(), 'UTF-8', 'Windows-1252');
     if ($moji && $moji !== $codepoint->chr()): ?>
       <tr data-system="mojibake">
         <th scope="row" title="<?=_q('approx. ISO-8859-1, Latin 1, “us-ascii”, ...')?>"><?=_q('Wrong windows-1252 Mojibake')?></th>
