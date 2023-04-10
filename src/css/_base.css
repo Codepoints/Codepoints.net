@@ -20,6 +20,11 @@ body {
   scrollbar-gutter: stable;
 }
 
+:focus-visible {
+  outline: 2px solid var(--color-hilite);
+  outline-offset: 2px;
+}
+
 a {
   color: var(--color-link);
   transition: color .3s;
