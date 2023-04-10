@@ -2,6 +2,12 @@
   text-decoration: none;
 }
 
+.ln .meta {
+  text-decoration: none;
+  white-space: nowrap;
+  opacity: .75;
+}
+
 .ln > svg {
   transition: transform .3s, color .3s;
   vertical-align: top;
@@ -79,13 +85,6 @@
   hyphens: auto;
   font-size: 90%;
   flex-grow: 1;
-}
-
-.tiles .pl .meta,
-.tiles .bl .meta {
-  text-decoration: none;
-  white-space: nowrap;
-  opacity: .75;
 }
 
 .container--confusables {
