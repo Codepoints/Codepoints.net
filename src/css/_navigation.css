@@ -50,7 +50,9 @@ cp-navigation a svg {
   max-width: 64px;
   max-height: 64px;
   margin: 1em auto 0;
-  transition: transform .3s, color .3s;
+  transition-property: transform, color;
+  transition-duration: .3s;
+  transition-timing-function: var(--ease-in-out-quint);
   vertical-align: top;
   fill: currentColor;
 }

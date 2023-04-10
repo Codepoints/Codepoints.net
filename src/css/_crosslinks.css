@@ -9,7 +9,9 @@
 }
 
 .ln > svg {
-  transition: transform .3s, color .3s;
+  transition-property: transform, color;
+  transition-duration: .3s;
+  transition-timing-function: var(--ease-in-out-quint);
   vertical-align: top;
   margin-top: 2px;
 }
