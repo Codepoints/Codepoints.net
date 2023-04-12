@@ -3,6 +3,9 @@
  * @var ?array $nav
  */
 ?>
+<?php /* fix for mobile positioning problem. See
+  https://www.stevefenton.co.uk/blog/2022/12/mobile-position-sticky-issue/ */ ?>
+<div style="position: fixed;"></div>
 <cp-navigation>
   <a href="<?=q(url(''))?>" rel="start" aria-label="<?=q('go to the homepage')?>">
     <svg width="64" height="64"><use href="/static/images/icon.svg#icon"/></svg>
