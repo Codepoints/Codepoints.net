@@ -13,6 +13,11 @@ export class CpMenu extends LitElement {
   a:focus, a:hover {
     color: var(--color-link-hover);
   }
+
+  h2 {
+    margin: 0;
+    font-size: 1.5em;
+  }
   nav {
     display: flex;
     flex-wrap: wrap;
@@ -35,11 +40,44 @@ export class CpMenu extends LitElement {
   nav >*:hover svg {
     fill-opacity: 1;
   }
+  cp-dialog > * + * {
+    margin-top: 2rem;
+  }
+
+  .card {
+    min-height: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .75em;
+  }
+  section > * {
+    flex-grow: 1;
+    flex-basis: 40%;
+  }
+  section > h2 {
+    flex-grow: 0;
+    flex-basis: 100%;
+  }
+  @media (max-width: 999px) {
+    section {
+      flex-direction: column;
+    }
+    section > * {
+      flex-basis: 100%;
+    }
+  }
   `;
 
   render() {
     const query = (new URLSearchParams(location.search)).get('q') || '';
     return html`
+    <link rel="stylesheet" href="${document.getElementById('main-css').href}">
     <cp-dialog class="menu">
       <nav>
         <a href="/">
@@ -76,11 +114,13 @@ export class CpMenu extends LitElement {
       </form>
 
       <section>
-        <h2>
-        <cp-icon icon="gear" width="16px" height="16px"></cp-icon>&nbsp;
-        ${_('Settings')}</h2>
-        <cp-darkmode></cp-darkmode>
-        <cp-language></cp-language>
+        <h2><cp-icon icon="gear" width="16px" height="16px"></cp-icon>&nbsp;${_('Settings')}</h2>
+        <div class="card">
+          <cp-darkmode></cp-darkmode>
+        </div>
+        <div class="card">
+          <cp-language></cp-language>
+        </div>
       </section>
     </cp-dialog>
     `;

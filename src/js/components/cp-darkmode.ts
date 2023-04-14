@@ -33,12 +33,10 @@ export class CpDarkmode extends LitElement {
         _('switch to dark mode (currently active: browser default)')
     );
     return html`
-      <p>
-        <label>
-          <input type="checkbox" @click="${this.choose}" .checked="${this.isDark}" .indeterminate="${this.isDark === null}">
-          <strong>${_('dark / light mode:')}</strong> ${label}
-        </label>
-      </p>
+      <label>
+        <input type="checkbox" @click="${this.choose}" .checked="${this.isDark}" .indeterminate="${this.isDark === null}">
+        <strong>${_('dark / light mode:')}</strong> ${label}
+      </label>
     `;
   }
 

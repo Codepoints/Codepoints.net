@@ -1,9 +1,15 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { gettext as _ } from '../_i18n.ts';
 
 @customElement('cp-language')
 export class CpLanguage extends LitElement {
+  static styles = css`
+    label > * {
+      vertical-align: middle;
+    }
+  `;
+
   @property()
   declare currentLanguage : string;
 
@@ -22,6 +28,7 @@ export class CpLanguage extends LitElement {
 
   render() {
     return html`
+    <link rel="stylesheet" href="${document.getElementById('main-css').href}">
     <label>
       <cp-icon icon="language-icon" width="24px" height="24px"></cp-icon>&nbsp;
       ${_('choose language:')}
