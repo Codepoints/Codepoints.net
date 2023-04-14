@@ -41,14 +41,10 @@
   display: flex;
   flex-direction: column;
   gap: .75em;
-  width: 100%;
   padding: .75em .25em .75em;
+  width: 100%;
   text-align: center;
   box-sizing: border-box;
-  border-radius: 3px;
-  background: #0000000a;
-  box-shadow: 10px 10px 20px hsla(var(--hsl-shadow), .20),
-              -10px -10px 20px var(--color-input-back);
 }
 
 .tiles .missing-cp {

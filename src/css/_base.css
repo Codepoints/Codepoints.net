@@ -106,3 +106,25 @@ small, .text_small, figcaption {
 dd + dt {
   margin-top: 1em;
 }
+
+.tiles > li > *,
+.card {
+  border-radius: 3px;
+  background: #0000000a;
+  box-shadow: 2px 2px 5px hsla(var(--hsl-shadow), .20),
+              -2px -2px 5px var(--color-input-back);
+}
+
+.card {
+  padding: .75em;
+}
+
+.tiles > li > *:focus,
+.tiles > li > *:hover,
+.card:focus {
+  position: relative;
+  top: -1px;
+  left: -1px;
+  box-shadow: 10px 10px 20px hsla(var(--hsl-shadow), .20),
+              -10px -10px 20px var(--color-input-back);
+}
