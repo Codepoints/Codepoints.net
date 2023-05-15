@@ -1,6 +1,7 @@
 <?php
 /**
  * @var int $cp_count
+ * @var list<\Codepoints\Unicode\Codepoint> $most_popular
  * @var \Codepoints\Unicode\Codepoint $cp0
  */
 

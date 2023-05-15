@@ -6,6 +6,11 @@ use Codepoints\Unicode\Codepoint;
 use Codepoints\Database;
 
 
+/**
+ * fetch and cache a list of the most popular code points from our stats site
+ *
+ * @return list<Codepoint>
+ */
 function get_popular_codepoints(Database $db) : Array {
     $fetch_fresh = function() use ($db) : Array {
         $intlist = [];
