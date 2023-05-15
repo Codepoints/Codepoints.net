@@ -23,6 +23,7 @@ class Index extends Controller {
             'page_description' => __('Codepoints is a site dedicated to Unicode and all things related to codepoints, characters, glyphs and internationalization.'),
             'cp0' => $cp0,
             'cp_count' => $cp_count,
+            'most_popular' => array_slice(\get_popular_codepoints($env['db']), 0, 20),
         ];
         return parent::__invoke($match, $env);
     }

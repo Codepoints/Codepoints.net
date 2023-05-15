@@ -81,7 +81,13 @@ include 'partials/header.php'; ?>
   </section>
   <section class="bk">
     <h2><?=_q('The 20 most popular code points')?></h2>
-    <cp-most-popular></cp-most-popular>
+    <ol class="tiles">
+      <?php foreach($most_popular as $cp): ?>
+        <li>
+          <?=cp($cp)?>
+        </li>
+      <?php endforeach ?>
+    </ol>
   </section>
   <script type="application/ld+json">
   {
