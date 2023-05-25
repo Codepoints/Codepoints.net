@@ -10,7 +10,8 @@
 cp-navigation {
   position: sticky;
   z-index: 1;
-  background: var(--color-back);
+  background: rgba(var(--color-back-rgb), 0.85);
+  backdrop-filter: blur(2px);
   font-family: var(--font-family-alternate);
   font-size: calc( 1em / var(--font-mod) );
   display: flex;
@@ -37,7 +38,6 @@ cp-navigation > * {
 
 cp-navigation a {
   display: block;
-  background: var(--color-back);
   text-align: center;
   color: var(--color-link);
   text-decoration: none;

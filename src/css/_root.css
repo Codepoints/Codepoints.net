@@ -35,6 +35,7 @@
 
   --color-text: var(--raisin-black);
   --color-back: var(--mint-cream);
+  --color-back-rgb: 253, 253, 252;
   --color-link: var(--rosewood);
   --color-link-hover: var(--burgundy);
   --color-hilite: var(--generic-viridian);
@@ -70,6 +71,7 @@
 
   --color-text: var(--alabaster);
   --color-back: var(--eerie-black);
+  --color-back-rgb: 23, 24, 28;
   --color-link: var(--bottle-green);
   --color-link-hover: var(--generic-viridian);
 
@@ -102,6 +104,7 @@
 
     --color-text: var(--alabaster);
     --color-back: var(--eerie-black);
+    --color-back-rgb: 23, 24, 28;
     --color-link: var(--bottle-green);
     --color-link-hover: var(--generic-viridian);
 
