@@ -222,4 +222,11 @@ class Codepoint implements JsonSerializable {
         static::$info_providers[$name] = $provider;
     }
 
+    /**
+     * check the registration state of an information provider class
+     */
+    public static function hasInfoProvider(string $name) : bool {
+        return array_key_exists($name, static::$info_providers);
+    }
+
 }
