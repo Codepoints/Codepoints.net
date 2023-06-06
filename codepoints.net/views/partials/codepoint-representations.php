@@ -33,8 +33,8 @@ $repr = $codepoint->representation; ?>
     <tr data-system="url">
       <th scope="row"><?=_q('URL-Quoted')?></th>
       <td><?=q($repr('URL'))?></td>
-    <tr data-system="html">
-      <th scope="row"><?=_q('HTML-Escape')?></th>
+    <tr data-system="htmlhex">
+      <th scope="row"><?=_q('HTML hex reference')?></th>
       <td><?=q($repr('HTML'))?></td>
     </tr>
     <?php
@@ -55,7 +55,7 @@ $typeMap = [
     'correction' => __('correction'),
     'digraph' => __('digraph'),
     'figment' => __('figment'),
-    'html' => __('HTML-Escape'),
+    'html' => __('HTML named entity'),
     'latex' => '<span class="latex">L<sup>A</sup>T<sub>E</sub>X</span>',
 ];
     foreach ($aliases as $alias):?>
