@@ -35,7 +35,7 @@ if ($next) {
 
 $head_extra = (new \Codepoints\View('partials/head-codepoint'))(compact('codepoint', 'block', 'plane', 'prev', 'next', 'title', 'page_description', 'lang'));
 include 'partials/header.php'; ?>
-<main class="main main--codepoint" data-cp="<?=q((string)$codepoint->id)?>">
+<main class="main main--codepoint" data-cp="<?=q((string)$codepoint->id)?>" data-sensitivity="<?=q((string)$codepoint->sensitivity->value)?>">
   <?php /* we need the wrapper div to have the figure not float to the absolute
          * left but remain close to the text */ ?>
   <div>

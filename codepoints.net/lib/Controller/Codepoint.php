@@ -17,6 +17,7 @@ use Codepoints\Unicode\CodepointInfo\Pronunciation;
 use Codepoints\Unicode\CodepointInfo\Properties;
 use Codepoints\Unicode\CodepointInfo\Relatives;
 use Codepoints\Unicode\CodepointInfo\Representation;
+use Codepoints\Unicode\CodepointInfo\Sensitivity;
 use Codepoints\Unicode\CodepointInfo\Wikipedia;
 use Exception;
 
@@ -36,6 +37,7 @@ class Codepoint extends Controller {
         new Properties($env);
         new Relatives($env);
         new Representation($env);
+        new Sensitivity();
         new Wikipedia($env);
 
         $codepoint = get_codepoint(hexdec($match[1]), $env['db']);
