@@ -3,7 +3,6 @@
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use Symfony\Contracts\Cache\ItemInterface;
 use Codepoints\Unicode\Codepoint;
-use \Codepoints\Unicode\CodepointInfo\Sensitivity;
 use \Codepoints\Unicode\CodepointInfo\SENSITIVITY_LEVEL;
 use Codepoints\Database;
 
@@ -30,9 +29,6 @@ function get_popular_codepoints(Database $db) : Array {
         $data = $db->getAll('SELECT cp, name, gc FROM codepoints
             WHERE cp IN ( '.$list.' ) ORDER BY FIELD( cp, '.$list.' )');
         if ($data) {
-            if (! Codepoint::hasInfoProvider('sensitivity')) {
-                new Sensitivity();
-            }
             foreach ($data as $set) {
                 $candidate = Codepoint::getCached($set, $db);
                 if ($candidate->sensitivity->value > SENSITIVITY_LEVEL::RAISED->value) {

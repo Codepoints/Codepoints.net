@@ -18,7 +18,7 @@ enum SENSITIVITY_LEVEL: int {
  * this codepoint
  *
  * We do not extend CodepointInfo, because we do not set $env in the
- * constructor in all cases.
+ * constructor.
  */
 class Sensitivity {
 
@@ -41,7 +41,7 @@ class Sensitivity {
     ];
 
     /**
-     *
+     * register this info provider
      */
     public function __construct() {
         Codepoint::addInfoProvider('sensitivity', $this);

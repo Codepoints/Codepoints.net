@@ -48,10 +48,16 @@ function cp(Codepoint|Array $codepoint, string $rel='', string $class='') : stri
     if ($class) {
         $class = ' '.q($class);
     }
-    return sprintf('<a class="ln cp%s"%s href="%s" data-cp="%s">'.
+    return sprintf('<a class="ln cp%s"%s href="%s" data-cp="%s" data-sensitivity="%s">'.
             '%s <span class="title">%s</span>'.
         '</a>',
-        $class, $rel, q(url($codepoint)), q((string)$codepoint), cpimg($codepoint), q(case_cp_name($codepoint->name)));
+        $class,
+        $rel,
+        q(url($codepoint)),
+        q((string)$codepoint),
+        q((string)$codepoint->sensitivity->value),
+        cpimg($codepoint),
+        q(case_cp_name($codepoint->name)));
 }
 
 /**

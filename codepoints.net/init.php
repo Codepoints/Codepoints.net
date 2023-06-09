@@ -8,6 +8,7 @@ use Codepoints\Database;
 use Codepoints\Router;
 use Codepoints\Translator;
 use Codepoints\Unicode\CodepointInfo\Image;
+use Codepoints\Unicode\CodepointInfo\Sensitivity;
 use Codepoints\Unicode\PropertyInfo;
 
 require 'vendor/autoload.php';
@@ -81,8 +82,9 @@ Router::addDependency('lang', $lang = $translator->getLanguage());
 Router::addDependency('info', new PropertyInfo());
 
 /**
- * make sure, we can access codepoint images
+ * make sure, we can access codepoint images and sensitivity info
  */
 new Image(Router::getDependencies());
+new Sensitivity();
 
 return true;
