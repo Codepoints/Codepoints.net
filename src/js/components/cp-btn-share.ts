@@ -1,7 +1,8 @@
 import {LitElement, css, html} from 'lit';
-import {customElement} from 'lit/decorators.js';
+import {customElement, property} from 'lit/decorators.js';
 import {gettext as _} from '../_i18n.ts';
 import {CpDialog} from './cp-dialog.ts';
+import {getClosest, getMaxSensitivity} from '../_site-tools.ts';
 
 const services = {
   Whatsapp: 'whatsapp://send?text={title}%20{url}',
@@ -15,7 +16,15 @@ const services = {
 
 @customElement('cp-btn-share')
 export class CpBtnShare extends LitElement {
+
+  @property({ type: Boolean, reflect: true })
+  declare disabled = false;
+
   _doShare(event) {
+    if (this.disabled) {
+      event.preventDefault();
+      return;
+    }
     const data = event.target.closest('a').href?.split('?');
     if (! data || data.length !== 2) {
       return;
@@ -33,6 +42,10 @@ export class CpBtnShare extends LitElement {
     super.connectedCallback();
     this._doShare = this._doShare.bind(this);
     this.querySelector('a').addEventListener('click', this._doShare);
+    const sensitivity = Number(getClosest(this, '[data-sensitivity]')?.dataset.sensitivity);
+    if (sensitivity && sensitivity === getMaxSensitivity()) {
+      this.disabled = true;
+    }
   }
 
   disconnectedCallback() {

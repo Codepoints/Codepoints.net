@@ -1,11 +1,27 @@
 import {LitElement, html} from 'lit';
-import {customElement} from 'lit/decorators.js';
+import {customElement, property} from 'lit/decorators.js';
 import {gettext as _} from '../_i18n.ts';
 import { intToHex } from '../_unicode-tools.ts';
+import {getClosest, getMaxSensitivity} from '../_site-tools.ts';
 
 @customElement('cp-btn-embed')
 export class CpBtnEmbed extends LitElement {
+
+  @property({ type: Boolean, reflect: true })
+  declare disabled = false;
+
+  connectedCallback() {
+    super.connectedCallback();
+    const sensitivity = Number(getClosest(this, '[data-sensitivity]')?.dataset.sensitivity);
+    if (sensitivity && sensitivity === getMaxSensitivity()) {
+      this.disabled = true;
+    }
+  }
+
   render() {
+    if (this.disabled) {
+      return html`<slot></slot>`;
+    }
     const cp = intToHex(parseInt(this.closest('[data-cp]').dataset.cp));
     return html`
       <slot @click="${this._show_instructions}">${_('embed this codepoint')}</slot>

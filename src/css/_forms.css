@@ -55,7 +55,7 @@ button:active,
   border: 1px solid var(--color-border-light);
 }
 
-button[disabled], .btn-disabled {
+button[disabled], .btn-disabled, [disabled] > .btn {
   border-color: var(--color-input-bord);
   background: var(--color-back-dim);
   box-shadow: inset 0 1px hsla(var(--hsl-highlight), .67),
@@ -66,4 +66,5 @@ button[disabled], .btn-disabled {
   text-shadow: 0 1px var(--color-back-bright);
   color: var(--color-input-text);
   cursor: default;
+  opacity: .67;
 }
