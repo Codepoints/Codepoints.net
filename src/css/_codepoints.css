@@ -19,6 +19,11 @@
   width: 15.625rem;
 }
 
+main[data-sensitivity="3"] .sqfig svg > use {
+  opacity: .3;
+  filter: blur(16px);
+}
+
 .sqfig figcaption {
   padding: .25em;
   text-align: center;

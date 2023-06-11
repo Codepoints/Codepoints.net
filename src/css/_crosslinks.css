@@ -16,8 +16,12 @@
   margin-top: 2px;
 }
 
-.ln:focus > svg,
-.ln:hover > svg {
+.ln[data-sensitivity="3"] > svg > use {
+  opacity: .3;
+}
+
+.ln:not([data-sensitivity="3"]):focus > svg,
+.ln:not([data-sensitivity="3"]):hover > svg {
   transform: scale(1.33);
 }
 
