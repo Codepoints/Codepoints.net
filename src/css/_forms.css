@@ -32,19 +32,6 @@ button, .btn {
   text-shadow: 0 1px var(--color-back-bright);
 }
 
-button[disabled], .btn-disabled {
-  border-color: var(--color-input-bord);
-  background: var(--color-back-dim);
-  box-shadow: inset 0 1px hsla(var(--hsl-highlight), .67),
-              0 1px hsla(var(--hsl-highlight), .67),
-              inset 1px 0 hsla(var(--hsl-highlight), .33),
-              inset -1px 0 hsla(var(--hsl-highlight), .33),
-              0 -1px 1px hsla(var(--hsl-backlight), .05);
-  text-shadow: 0 1px var(--color-back-bright);
-  color: var(--color-input-text);
-  cursor: default;
-}
-
 button:hover,
 button:focus,
 .btn:hover,
@@ -66,4 +53,17 @@ button:active,
               inset 4px 0 4px -4px hsla(var(--hsl-backlight), .1),
               inset -4px 0 4px -4px hsla(var(--hsl-backlight), .1);
   border: 1px solid var(--color-border-light);
+}
+
+button[disabled], .btn-disabled {
+  border-color: var(--color-input-bord);
+  background: var(--color-back-dim);
+  box-shadow: inset 0 1px hsla(var(--hsl-highlight), .67),
+              0 1px hsla(var(--hsl-highlight), .67),
+              inset 1px 0 hsla(var(--hsl-highlight), .33),
+              inset -1px 0 hsla(var(--hsl-highlight), .33),
+              0 -1px 1px hsla(var(--hsl-backlight), .05);
+  text-shadow: 0 1px var(--color-back-bright);
+  color: var(--color-input-text);
+  cursor: default;
 }
