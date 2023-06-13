@@ -139,7 +139,10 @@ include 'partials/header.php'; ?>
       </p>
     </address>
     <figure class="other">
-      <img src="<?=url('/static/images/were_open.jpg')?>" alt="">
+      <picture>
+        <source src="<?=url('/static/images/were_open.webp')?>" type="image/webp">
+        <img src="<?=url('/static/images/were_open.jpg')?>" alt="<?=_q('a sign in the style of an old wood board reading “Come in. We’re Open Source.”')?>">
+      </picture>
     </figure>
     <h2><?=_q('The Content on this Site')?></h2>
     <p>
@@ -221,7 +224,8 @@ include 'partials/header.php'; ?>
       instructions:'), '<a href="http://piwik.org">Piwik</a>')?>
     </p>
     <iframe frameborder="no" width="100%" height="200px"
-            src="https://stats.codepoints.net/index.php?module=CoreAdminHome&action=optOut">
+            title="<?=_q('control pane for the visitor counter')?>"
+            src="https://stats.codepoints.net/index.php?module=CoreAdminHome&amp;action=optOut">
             <p><?php printf(__('Your Browser doesn’t support frames. Please visit %sthis page%s.'),
                 '<a href="https://stats.codepoints.net/index.php?module=CoreAdminHome&amp;action=optOut">', '</a>')?></p>
     </iframe>
