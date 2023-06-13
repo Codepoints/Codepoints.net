@@ -19,9 +19,10 @@
   width: 15.625rem;
 }
 
-main[data-sensitivity="3"] .sqfig svg > use {
+main[data-sensitivity="3"] .sqfig svg {
   opacity: .3;
-  filter: blur(16px);
+  filter: blur(8px);
+  transform: scale(0.3);
 }
 
 .sqfig figcaption {
