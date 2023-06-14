@@ -140,8 +140,9 @@ include 'partials/header.php'; ?>
     </address>
     <figure class="other">
       <picture>
-        <source src="<?=url('/static/images/were_open.webp')?>" type="image/webp">
-        <img src="<?=url('/static/images/were_open.jpg')?>" alt="<?=_q('a sign in the style of an old wood board reading “Come in. We’re Open Source.”')?>">
+        <source srcset="<?=url('/static/images/were_open.webp')?>" type="image/webp">
+        <img src="<?=url('/static/images/were_open.jpg')?>" alt="<?=_q('a sign in the style of an old wood board reading “Come in. We’re Open Source.”')?>"
+             width="320" height="320">
       </picture>
     </figure>
     <h2><?=_q('The Content on this Site')?></h2>
@@ -263,7 +264,7 @@ include 'partials/header.php'; ?>
         '</a>',
         '<a href="https://annevankesteren.nl/">Anne van Kesteren</a>')?></p>
     <figure class="other">
-      <a href="https://uberspace.de" rel="external"><img src="<?=url('/static/images/uberspace.png')?>" alt="Hosted on Asteroids"></a>
+      <a href="https://uberspace.de" rel="external"><img src="<?=url('/static/images/uberspace.png')?>" alt="Hosted on Asteroids" width="150" height="80"></a>
     </figure>
     <p><?=_q('The hosting is done on Uberspace, a phantastic provider with extremely
     helpful and flexible support.')?></p>
