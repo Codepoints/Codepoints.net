@@ -30,6 +30,6 @@ export class CpIcon extends LitElement {
   }
 
   render() {
-    return html`<svg width="${this.width || nothing}" height="${this.height || nothing}" fill="currentColor"><use href="${Icons}#${this.icon}"/></svg>`;
+    return html`<svg aria-hidden="true" width="${this.width || nothing}" height="${this.height || nothing}" fill="currentColor"><use href="${Icons}#${this.icon}"/></svg>`;
   }
 }

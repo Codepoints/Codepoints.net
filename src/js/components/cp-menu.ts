@@ -1,4 +1,4 @@
-import { LitElement, css, html } from 'lit';
+import { LitElement, css, html, nothing } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import { gettext as _ } from '../_i18n.ts';
 
@@ -76,29 +76,30 @@ export class CpMenu extends LitElement {
 
   render() {
     const query = (new URLSearchParams(location.search)).get('q') || '';
+    const path = location.pathname;
     return html`
     <link rel="stylesheet" href="${document.getElementById('main-css').href}">
     <cp-dialog class="menu">
       <nav>
-        <a href="/">
+        <a href="/" aria-current="${path === '/'? 'page' : nothing}">
           <cp-icon icon="house"></cp-icon>
           ${_('start page')}</a>
-        <a href="/scripts">
+        <a href="/scripts" aria-current="${path === '/scripts'? 'page' : nothing}">
           <cp-icon icon="scroll"></cp-icon>
           ${_('scripts')}</a>
-        <a href="/search">
+        <a href="/search" aria-current="${path === '/search'? 'page' : nothing}">
           <cp-icon icon="magnifying-glass"></cp-icon>
           ${_('search')}</a>
-        <a href="/analyze">
+        <a href="/analyze" aria-current="${path === '/analyze'? 'page' : nothing}">
           <cp-icon icon="chart-pie"></cp-icon>
           ${_('analyze')}</a>
         <a href="/random">
           <cp-icon icon="shuffle"></cp-icon>
           ${_('random page')}</a>
-        <a href="/glossary">
+        <a href="/glossary" aria-current="${path === '/glossary'? 'page' : nothing}">
           <cp-icon icon="lightbulb"></cp-icon>
           ${_('glossary')}</a>
-        <a href="/about">
+        <a href="/about" aria-current="${path === '/about'? 'page' : nothing}">
           <cp-icon icon="circle-question"></cp-icon>
           ${_('about this site')}</a>
       </nav>
