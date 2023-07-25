@@ -38,6 +38,7 @@ class Sensitivity {
         72816 => SENSITIVITY_LEVEL::HIGH,
         128076 => SENSITIVITY_LEVEL::RAISED,
         128328 => SENSITIVITY_LEVEL::RAISED,
+        128405 => SENSITIVITY_LEVEL::HIGH,
     ];
 
     /**
