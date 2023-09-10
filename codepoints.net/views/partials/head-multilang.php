@@ -6,7 +6,7 @@ use Codepoints\Translator;
  */
 ?>
 <?php if (array_key_exists('current_url', $env)):
-    $url = preg_replace('/(\\?lang=[^&]*$|(?<=\\?)lang=[^&]*&|&lang=[^&]*)/', '', $env['current_url']);
+    $url = preg_replace('/(\\?lang=[^&]*$|(?<=\\?)lang=[^&]*&|&lang=[^&]*)/', '', (string)$env['current_url']);
     foreach (Translator::SUPPORTED_LANGUAGES as $other_lang):
         /* Google says, that it wants a link element to the same language, too:
          * https://developers.google.com/search/docs/advanced/crawling/localized-versions */

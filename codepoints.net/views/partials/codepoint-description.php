@@ -71,7 +71,7 @@ use Codepoints\Unicode\Codepoint;
             join(', ', $buf));
     }
 
-    $defn = isset($codepoint->properties['kDefinition'])? $codepoint->properties['kDefinition'] : null;
+    $defn = isset($codepoint->properties['kDefinition'])? (string)$codepoint->properties['kDefinition'] : null;
     if ($defn) {
         echo ' ';
         printf(__('The Unihan Database defines it as <em>%s</em>.'),

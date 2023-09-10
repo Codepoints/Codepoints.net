@@ -23,16 +23,16 @@ class Pronunciation extends CodepointInfo {
         }
         if ($props['kHanyuPinlu']) {
             $pr = preg_replace('/^([\p{L}\p{N}]+).*/u', '$1',
-                               $props['kHanyuPinlu']);
+                               (string)$props['kHanyuPinlu']);
         } elseif ($props['kXHC1983']) {
             $pr = preg_replace('/^[0-9.*,]+:([^ ,]+)(?:[ ,].*)?$/', '$1',
-                               $props['kXHC1983']);
+                               (string)$props['kXHC1983']);
         } elseif ($props['kHanyuPinyin']) {
             $pr = preg_replace('/^[0-9.*,]+:([^ ,]+)(?:[ ,].*)?$/', '$1',
-                               $props['kHanyuPinyin']);
+                               (string)$props['kHanyuPinyin']);
         } elseif ($props['kMandarin']) {
             $pr = strtolower(preg_replace('/^([\p{L}\p{N}]+).*/', '$1',
-                               $props['kMandarin']));
+                               (string)$props['kMandarin']));
         }
         return $pr;
     }

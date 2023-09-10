@@ -8,6 +8,9 @@ namespace Codepoints\Router;
  */
 class URLMatcher {
 
+    /**
+     * @var non-empty-string
+     */
     public string $pattern;
 
     /**

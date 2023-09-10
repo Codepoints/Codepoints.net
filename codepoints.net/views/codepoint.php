@@ -201,7 +201,7 @@ include 'partials/header.php'; ?>
                   return cp($codepoint);
               }
               return cp(Codepoint::getCached(['cp' => hexdec($m[1]), 'name' => $m[0], 'gc' => 'Lo'], $db));
-            }, $value);
+            }, (string)$value);
           else:
             echo '<a rel="nofollow" href="';
             echo q(url('search?'.$key.'='.rawurlencode($value)));
