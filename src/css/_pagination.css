@@ -4,15 +4,15 @@
 }
 .pagination ol {
   list-style: none;
+  margin: 0;
   padding-left: 0;
   display: inline-flex;
-  margin: 0;
+  flex-wrap: wrap;
+  gap: 1em;
+  justify-content: center;
 }
 .pagination li {
   margin: 0;
-}
-.pagination li + li {
-  margin-left: 1em;
 }
 .pagination li > * {
   display: block;
