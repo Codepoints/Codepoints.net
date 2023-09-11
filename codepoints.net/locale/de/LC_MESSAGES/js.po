@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: codepoints\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-29 15:09+0000\n"
-"PO-Revision-Date: 2022-12-29 16:30+0100\n"
+"POT-Creation-Date: 2023-09-11 06:23+0000\n"
+"PO-Revision-Date: 2023-09-11 08:25+0200\n"
 "Last-Translator: Manuel Strehl <translate@manuel-strehl.de>\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
@@ -11,12 +11,17 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Crowdin-Project: codepoints\n"
 "X-Crowdin-Language: de\n"
 "X-Crowdin-File: js.pot\n"
 
-#: src/js/components/cp-copy.ts:17
+#: src/js/components/cp-dialog.ts:61
+#: src/js/components/cp-search-property.ts:105
+msgid "close"
+msgstr "schließen"
+
+#: src/js/components/cp-copy.ts:36
 msgid "copied"
 msgstr "kopiert"
 
@@ -306,19 +311,19 @@ msgstr "Ruby"
 msgid "Rust"
 msgstr "Rust"
 
-#: src/js/components/cp-representations.ts:171
+#: src/js/components/cp-representations.ts:178
 msgid "(click value to copy)"
 msgstr "(Wert klicken zum Kopieren)"
 
-#: src/js/components/cp-representations.ts:208
+#: src/js/components/cp-representations.ts:215
 msgid "remove from favorites"
 msgstr "aus Favoriten entfernen"
 
-#: src/js/components/cp-representations.ts:209
+#: src/js/components/cp-representations.ts:216
 msgid "add to favorites (will be shown by default)"
 msgstr "zu Favoriten hinzufügen (wird automatisch angezeigt)"
 
-#: src/js/components/cp-representations.ts:220
+#: src/js/components/cp-representations.ts:227
 msgid ""
 "Click the star button next to each label to set this representation as "
 "favorite or remove it from the favorites."
@@ -326,11 +331,11 @@ msgstr ""
 "Klicke den Sternknopf neben der Beschriftung, um diese Darstellung als "
 "Favorit zu markieren oder aus den Favoriten zu entfernen."
 
-#: src/js/components/cp-representations.ts:221
+#: src/js/components/cp-representations.ts:228
 msgid "Favorites will be shown initially."
 msgstr "Favoriten werden anfangs automatisch angezeigt."
 
-#: src/js/components/cp-representations.ts:222
+#: src/js/components/cp-representations.ts:229
 msgid ""
 "(Favorites are stored locally on your computer and never sent over the "
 "internet.)"
@@ -338,24 +343,19 @@ msgstr ""
 "(Favoriten werden auf deinem Computer gespeichert und niemals über das "
 "Internet übertragen.)"
 
-#: src/js/components/cp-representations.ts:227
+#: src/js/components/cp-representations.ts:234
 msgid "hide all but favorites"
 msgstr "alle außer Favoriten verstecken"
 
-#: src/js/components/cp-representations.ts:227
+#: src/js/components/cp-representations.ts:234
 msgid "show more"
 msgstr "mehr anzeigen"
 
-#: src/js/components/cp-btn-embed.ts:25
+#: src/js/components/cp-btn-embed.ts:27
 msgid "embed this codepoint"
 msgstr "diesen Codepunkt einbinden"
 
 #: src/js/components/cp-btn-embed.ts:29
-#: src/js/components/cp-search-property.ts:105 src/js/components/cp-menu.ts:92
-msgid "close"
-msgstr "schließen"
-
-#: src/js/components/cp-btn-embed.ts:31
 msgid ""
 "Embed this codepoint in your own website by copy- and pasting the following "
 "HTML snippet:"
@@ -363,7 +363,7 @@ msgstr ""
 "Bette diesen Codepunkt auf deiner eigenen Webseite ein, indem du das "
 "folgende HTML-Schnippsel kopierst:"
 
-#: src/js/components/cp-btn-embed.ts:36
+#: src/js/components/cp-btn-embed.ts:34
 msgid ""
 "If you want, you can freely change width and height to meet your needs. The "
 "layout will adapt accordingly."
@@ -371,7 +371,7 @@ msgstr ""
 "Wenn du möchtest, kannst du Höhe und Breite frei anpassen. Das Layout wird "
 "sich entsprechend anpassen."
 
-#: src/js/components/cp-btn-embed.ts:37
+#: src/js/components/cp-btn-embed.ts:35
 msgid ""
 "On platforms that support the oEmbed standard, e.g. WordPress, embedding is "
 "even easier:"
@@ -379,13 +379,17 @@ msgstr ""
 "Auf Plattformen, die den oEmbed-Standard unterstützen, z.B. WordPress, ist "
 "Einbetten sogar noch leichter:"
 
-#: src/js/components/cp-btn-embed.ts:38
+#: src/js/components/cp-btn-embed.ts:36
 msgid ""
 "Simply paste the web address of this page in the editor and the editor will "
 "do the rest:"
 msgstr ""
 "Füge einfach die Webadresse dieser Seite in den Editor ein, und der Editor "
 "wird den Rest erledigen:"
+
+#: src/js/components/cp-btn-share.ts:115
+msgid "Share on:"
+msgstr "Teilen auf:"
 
 #: src/js/components/cp-search-boolean.ts:84
 msgid "click to include or exclude this property"
@@ -423,43 +427,47 @@ msgstr "zur Browservorgabe wechseln (aktuell aktiv: helle Ansicht)"
 msgid "switch to dark mode (currently active: browser default)"
 msgstr "zur dunkeln Ansicht wechseln (aktuell aktiv: Browservorgabe)"
 
-#: src/js/components/cp-darkmode.ts:39
+#: src/js/components/cp-darkmode.ts:38
 msgid "dark / light mode:"
 msgstr "dunkle / helle Ansicht:"
 
-#: src/js/components/cp-language.ts:27
+#: src/js/components/cp-language.ts:34
 msgid "choose language:"
 msgstr "Sprache wählen:"
 
-#: src/js/components/cp-menu.ts:97
+#: src/js/components/cp-menu.ts:86
 msgid "start page"
 msgstr "Startseite"
 
-#: src/js/components/cp-menu.ts:100
+#: src/js/components/cp-menu.ts:89
 msgid "scripts"
 msgstr "Schriften"
 
-#: src/js/components/cp-menu.ts:103 src/js/components/cp-menu.ts:121
+#: src/js/components/cp-menu.ts:92 src/js/components/cp-menu.ts:113
 msgid "search"
 msgstr "suchen"
 
-#: src/js/components/cp-menu.ts:106
+#: src/js/components/cp-menu.ts:95
+msgid "analyze"
+msgstr "analysieren"
+
+#: src/js/components/cp-menu.ts:98
 msgid "random page"
 msgstr "zufällige Seite"
 
-#: src/js/components/cp-menu.ts:109
+#: src/js/components/cp-menu.ts:101
 msgid "glossary"
 msgstr "Glossar"
 
-#: src/js/components/cp-menu.ts:112
+#: src/js/components/cp-menu.ts:104
 msgid "about this site"
 msgstr "über diese Seite"
 
-#: src/js/components/cp-menu.ts:118
+#: src/js/components/cp-menu.ts:110
 msgid "Search code points:"
 msgstr "Codepunkte suchen:"
 
-#: src/js/components/cp-menu.ts:128
+#: src/js/components/cp-menu.ts:118
 msgid "Settings"
 msgstr "Einstellungen"
 
