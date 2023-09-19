@@ -21,16 +21,16 @@ class Pronunciation extends CodepointInfo {
             /* this code point is some non CJK code point, e.g. a PUA one */
             return $pr;
         }
-        if ($props['kHanyuPinlu']) {
+        if ($props['kHanyuPinlu'] ?? null) {
             $pr = preg_replace('/^([\p{L}\p{N}]+).*/u', '$1',
                                (string)$props['kHanyuPinlu']);
-        } elseif ($props['kXHC1983']) {
+        } elseif ($props['kXHC1983'] ?? null) {
             $pr = preg_replace('/^[0-9.*,]+:([^ ,]+)(?:[ ,].*)?$/', '$1',
                                (string)$props['kXHC1983']);
-        } elseif ($props['kHanyuPinyin']) {
+        } elseif ($props['kHanyuPinyin'] ?? null) {
             $pr = preg_replace('/^[0-9.*,]+:([^ ,]+)(?:[ ,].*)?$/', '$1',
                                (string)$props['kHanyuPinyin']);
-        } elseif ($props['kMandarin']) {
+        } elseif ($props['kMandarin'] ?? null) {
             $pr = strtolower(preg_replace('/^([\p{L}\p{N}]+).*/', '$1',
                                (string)$props['kMandarin']));
         }

@@ -25,6 +25,7 @@ class View {
      * @psalm-suppress UnresolvableInclude
      */
     public function __invoke(Array $params=[], Array $env=[]) : string {
+        $lang = 'en';
         extract($params, EXTR_PREFIX_INVALID, 'v');
         $view = $this->view;
         if ($env) {

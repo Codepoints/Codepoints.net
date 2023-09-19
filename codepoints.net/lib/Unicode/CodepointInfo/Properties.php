@@ -162,7 +162,13 @@ class Properties extends CodepointInfo {
             WHERE props.cp = ?
             LIMIT 1', $codepoint->id);
         if ($data) {
+            $unihan = [];
+            if ($data['unihan']) {
+                $unihan = json_decode($data['unihan'], true);
+            }
+            unset($data['unihan']);
             $properties += $data;
+            $properties += $unihan;
         }
 
         /* select all other scripts, where this code point might appear in
