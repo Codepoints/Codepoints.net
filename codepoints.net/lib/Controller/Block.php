@@ -31,7 +31,7 @@ class Block extends Controller {
                 FROM codepoint_props
             WHERE cp >= ?
                 AND cp <= ?
-            ORDER BY CAST(age AS FLOAT) DESC
+            ORDER BY CAST(age AS FLOAT) ASC
             LIMIT 1', $block->first, $block->last);
         if ($age) {
             $age = $age['age'];
