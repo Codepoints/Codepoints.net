@@ -27,6 +27,9 @@ use Codepoints\Unicode\SearchResult;
  *
  * Looking at logs of past searches this reduces fulltext queries by something
  * along the lines of 99.5%.
+ *
+ * @TODO check whether search still works as expected now that Unihan
+ * properties are a JSON blob in the DB.
  */
 class Engine {
 
