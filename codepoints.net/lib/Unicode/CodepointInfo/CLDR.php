@@ -34,18 +34,18 @@ class CLDR extends CodepointInfo {
             WHERE cp = ?
                 AND lang = ?', $codepoint->id, $this->lang);
         if ($data) {
-            $cldr_data['tags'] = array_map(
-                function(Array $item) : string {
-                    return $item['annotation'];
-                }, array_filter($data, function (Array $item) : bool {
-                    return $item['type'] === 'tag';
-                }));
             $tts = array_filter($data, function (Array $item) : bool {
                 return $item['type'] === 'tts';
             });
             if ($tts) {
                 $cldr_data['tts'] = (string)(reset($tts)['annotation']);
             }
+            $cldr_data['tags'] = array_map(
+                function(Array $item) : string {
+                    return $item['annotation'];
+                }, array_filter($data, function (Array $item) use ($cldr_data) : bool {
+                    return $item['type'] === 'tag' && $item['annotation'] !== $cldr_data['tts'];
+                }));
         }
         return $cldr_data;
     }
