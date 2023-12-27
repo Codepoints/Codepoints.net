@@ -8,6 +8,6 @@ actor: AcceptanceTester
 modules:
     enabled:
         - PhpBrowser:
-            url: https://codepoints.next
+            url: https://web
         - \Helper\Acceptance
         - Asserts

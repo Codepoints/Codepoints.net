@@ -68,7 +68,7 @@ test-js:
 .PHONY: test-js
 
 test-codeception:
-	@./codepoints.net/vendor/bin/codecept run
+	@docker compose run codeception run
 .PHONY: test-codeception
 
 vendor: $(DOCROOT)vendor/autoload.php

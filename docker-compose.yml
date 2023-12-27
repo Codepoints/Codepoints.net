@@ -1,4 +1,5 @@
 services:
+
   web:
     build:
       context: .
@@ -14,6 +15,7 @@ services:
     depends_on:
       - db
       - vite
+
   db:
     image: mariadb:10.3
     volumes:
@@ -23,6 +25,7 @@ services:
       - MARIADB_DATABASE=codepts
       - MARIADB_USER=codepts
       - MARIADB_PASSWORD=codepts
+
   vite:
     build:
       context: .
@@ -31,3 +34,10 @@ services:
       - 5173:5173
     volumes:
       - .:/app
+
+  codeception:
+    image: codeception/codeception
+    volumes:
+      - .:/project
+    profiles:
+      - test
