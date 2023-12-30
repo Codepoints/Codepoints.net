@@ -68,7 +68,7 @@ test-js:
 .PHONY: test-js
 
 test-codeception:
-	@docker compose run codeception run
+	@docker compose run --rm codeception run
 .PHONY: test-codeception
 
 vendor: $(DOCROOT)vendor/autoload.php

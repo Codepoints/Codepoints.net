@@ -1,6 +1,7 @@
 services:
 
   web:
+    container_name: codepoints-web
     build:
       context: .
       dockerfile: dev/Dockerfile
@@ -17,7 +18,8 @@ services:
       - vite
 
   db:
-    image: mariadb:10.3
+    container_name: codepoints-db
+    image: mariadb:10.6
     volumes:
       - ./dev/db_data:/var/lib/mysql
     environment:
@@ -27,15 +29,18 @@ services:
       - MARIADB_PASSWORD=codepts
 
   vite:
+    container_name: codepoints-vite
     build:
       context: .
       dockerfile: dev/vite.Dockerfile
+    init: true
     ports:
       - 5173:5173
     volumes:
       - .:/app
 
   codeception:
+    container_name: codepoints-codeception
     image: codeception/codeception
     volumes:
       - .:/project
