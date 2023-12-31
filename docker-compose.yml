@@ -13,6 +13,9 @@ services:
       - ./config.ini:/var/www/html/config.ini
       - ./composer.json:/var/www/html/composer.json
       - ./composer.lock:/var/www/html/composer.lock
+      - ./phpcs.xml:/var/www/html/phpcs.xml
+      - ./psalm.xml:/var/www/html/psalm.xml
+      - ./tests/psalm_stubs.php:/var/www/html/tests/psalm_stubs.php
     depends_on:
       - db
       - vite
