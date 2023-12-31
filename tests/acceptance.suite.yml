@@ -11,3 +11,6 @@ modules:
             url: https://web
         - \Helper\Acceptance
         - Asserts
+        - REST:
+            depends: PhpBrowser
+            url: https://web

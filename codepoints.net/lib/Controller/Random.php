@@ -49,7 +49,7 @@ class Random extends Controller {
                     )
                 ) ASC
                 LIMIT 1');
-        throw new Redirect(sprintf('U+%04X', $data['cp']), 303);
+        throw new Redirect(sprintf('/U+%04X', $data['cp']), 303);
         return '';
     }
 
