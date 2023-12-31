@@ -8,9 +8,12 @@ include 'partials/header.php'; ?>
 
   <h1><?=_q('Browse Codepoints by Script')?></h1>
   <section class="bk">
-  <p><?=_q('Scripts used around the world. Drag the globe to rotate it.
-  Click on a country to see scripts used there.')?></p>
-    <div id="space">
+    <p><?=_q('See writing scripts and systems how they are used around the world.')?>
+       <?=_q('Click on a script name for additional information.')?>
+       <?php #=_q('Drag the globe to rotate it.')?>
+       <?php #=_q('Click on a country to see scripts used there.')?>
+    </p>
+    <div id="space" hidden>
       <svg xmlns="http://www.w3.org/2000/svg" id="earth"
            width="100px" viewBox="0 0 800 800">
         <defs>
@@ -28,23 +31,47 @@ include 'partials/header.php'; ?>
     </div>
   </section>
   <section class="bk">
-    <dl id="sclist">
+    <ul class="bulletless">
       <?php foreach ($scripts as $sc): ?>
-        <dt id="<?=q($sc['iso'])?>" class="sc_<?=q($sc['iso'])?>">
-          <a href="#<?=q($sc['iso'])?>"><?=q(str_replace('_', ' ', $sc['name']))?></a>
-        </dt>
-        <dd>
-          <p><?php printf(__('%s%s%d%s characters%s are encoded in this script.'),
-            '<a rel="nofollow" href="/search?sc='.q($sc['iso']).'">',
-            '<span class="nchar">', $sc['count'], '</span>',
-            '</a>')?></p>
-          <?php if ($sc['abstract']): ?>
-            <blockquote cite="<?=q($sc['src'])?>" class="sc__abstract"><?=$sc['abstract']?></blockquote>
-          <?php endif ?>
-        </dd>
+        <li>
+          <details id="<?=q($sc['iso'])?>">
+            <summary>
+              <?=q(str_replace('_', ' ', $sc['name']))?><span class="visually-hidden">: </span>
+              <span class="badge"><?=$sc['count']?><span class="visually-hidden"> <?=_q('code points')?></span></span>
+            </summary>
+            <p><?php printf(__('%s%s%d%s characters%s are encoded in this script.'),
+              '<a rel="nofollow" href="/search?sc='.q($sc['iso']).'">',
+              '<span class="nchar">', $sc['count'], '</span>',
+              '</a>')?></p>
+            <?php if ($sc['abstract']): ?>
+              <blockquote cite="<?=q($sc['src'])?>" class="sc__abstract"><?=$sc['abstract']?></blockquote>
+            <?php endif ?>
+          </details>
+        </li>
       <?php endforeach?>
-    </dl>
+    </ul>
   </section>
+  <script>
+(function() {
+document.querySelectorAll('details[id] > summary').forEach(node => {
+  const id = node.parentNode.id;
+  const a = document.createElement('a');
+  a.href = '#'+id;
+  a.classList.add('direct-link');
+  a.textContent = '¶';
+  a.ariaLabel = '<?=_q("direct link to this script")?>';
+  a.addEventListener('click', () => node.parentNode.open = true);
+  node.appendChild(a);
+});
+const hash = location.hash.replace(/^#/, '');
+if (hash) {
+  const target = document.getElementById(hash);
+  if (target && ('open' in target)) {
+    target.open = true;
+  }
+}
+})();
+  </script>
 
 </main>
 <?php include 'partials/footer.php'; ?>

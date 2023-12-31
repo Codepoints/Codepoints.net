@@ -98,6 +98,8 @@ h5 {
 .cp-toolbox,
 .cp-toolbox button,
 .page-footer,
+.badge,
+.direct-link,
 small, .text_small, figcaption {
   font-size: calc(1rem / var(--font-mod));
   font-family: var(--font-family-alternate);
@@ -105,6 +107,43 @@ small, .text_small, figcaption {
 
 dd + dt {
   margin-top: 1em;
+}
+
+.visually-hidden:not(:focus):not(:active):not(:focus-within) {
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.badge {
+  display: inline-block;
+  padding: .3em .5em;
+  font-weight: normal;
+  line-height: 1;
+  background: var(--color-back-dim);
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  border-radius: 3px;
+}
+
+.bulletless {
+  padding-left: 0;
+  list-style: none;
+}
+
+.direct-link {
+  opacity: 0;
+  text-decoration: none;
+  transition: opacity .3s;
+}
+
+.direct-link:focus-within,
+:hover > .direct-link {
+  opacity: .75;
 }
 
 .tiles > li > *,
