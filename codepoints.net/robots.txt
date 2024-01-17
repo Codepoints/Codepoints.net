@@ -3,3 +3,11 @@ Sitemap: https://codepoints.net/sitemap.xml
 User-agent: *
 Disallow: /search
 Disallow: /random
+
+User-agent: search.marginalia.nu
+Disallow: /
+# sorry, but this bot created too much traffic
+
+User-agent: SemrushBot
+Disallow: /
+# same
