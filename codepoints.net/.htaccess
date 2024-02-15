@@ -37,6 +37,9 @@ ErrorDocument 404 /index.php
 ServerSignature Off
 Options -Indexes
 
+ExpiresActive On
+ExpiresDefault "access plus 1 hour"
+
 RewriteEngine On
 RewriteBase /
 
