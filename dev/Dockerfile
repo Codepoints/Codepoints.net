@@ -1,4 +1,4 @@
-FROM php:8.1-apache
+FROM php:8.3-apache
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 COPY dev/httpd.conf /etc/apache2/sites-available/httpd.conf
