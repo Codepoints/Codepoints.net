@@ -2,6 +2,7 @@ services:
 
   web:
     container_name: codepoints-web
+    hostname: codepoints.next
     build:
       context: .
       dockerfile: dev/Dockerfile
