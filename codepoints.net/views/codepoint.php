@@ -54,11 +54,12 @@ include 'partials/header.php'; ?>
       <dl>
         <dt><?=_q('Nº')?></dt>
         <dd><?=q((string)$codepoint->id)?></dd>
-        <?php foreach(['gc', 'sc', 'bc', 'dt'] as $cat):?>
+        <?php foreach(['gc', 'sc', 'bc', 'dt'] as $cat):
+          if (! $codepoint->properties) { continue; }?>
           <dt><?=q($info->properties[$cat])?></dt>
           <dd><a rel="nofollow" href="<?=q('search?'.$cat.'='.$codepoint->properties[$cat])?>"><?=q($info->getLegend($cat, $codepoint->properties[$cat]))?></a></dd>
         <?php endforeach?>
-        <?php if($codepoint->properties['nt'] !== 'None'):?>
+        <?php if ($codepoint->properties && $codepoint->properties['nt'] !== 'None'):?>
           <dt><?=_q('Numeric Value')?></dt>
           <dd><a rel="nofollow" href="<?=q('search?nt='.$codepoint->properties['nt'])?>"><?=q($info->getLegend('nt', $codepoint->properties['nt']).' '.$codepoint->properties['nv'])?></a></dd>
         <?php endif?>
@@ -122,7 +123,7 @@ include 'partials/header.php'; ?>
     <?php include 'partials/codepoint-representations.php' ?>
   </section>
 
-<?php if (count($relatives) + count($confusables)):?>
+<?php if (! is_null($relatives) && ! is_null($confusables) && count($relatives) + count($confusables)):?>
   <section class="cpdesc cpdesc--relatives">
     <h2><?=_q('Related Characters')?></h2>
     <?php if (count($relatives)):?>
@@ -168,7 +169,7 @@ include 'partials/header.php'; ?>
       </tr>
     </thead>
     <tbody>
-      <?php foreach ($codepoint->properties as $key => $value): ?>
+      <?php foreach ((array)$codepoint->properties as $key => $value): ?>
         <?php
           if (
             $key === 'cp' ||

@@ -4,7 +4,7 @@
  * @var \Codepoints\Unicode\PropertyInfo $info
  */
 
-$repr = $codepoint->representation; ?>
+$repr = $codepoint->representation; if ($repr): ?>
 <cp-representations cp="<?=q((string)$codepoint->id)?>">
 <table class="props representations">
   <thead>
@@ -94,3 +94,4 @@ $typeMap = [
   </tbody>
 </table>
 </cp-representations>
+<?php endif ?>
