@@ -22,7 +22,7 @@ class NotFound extends Controller {
         $cps = [];
 
         if (preg_match('/^U\+([0-9A-Fa-f]+)$/', $match, $match2)) {
-            $cp = hexdec($match2[1]);
+            $cp = min(hexdec($match2[1]), PHP_INT_MAX);
             $title = sprintf(__('Codepoint U+%04X not Found'), $cp);
             $page_description = sprintf(__('The point U+%04X is no valid Unicode codepoint.'), $cp);
             $codepoint = Codepoint::getCached([
