@@ -9,7 +9,7 @@ use Codepoints\Unicode\Codepoint;
  * @var ?\Codepoints\Unicode\Block $block
  * @var \Codepoints\Unicode\PropertyInfo $info
  * @var ?Array{ name: ?string } $csur
- * @var list<list<Codepoint>> $confusables
+ * @var ?list<list<Codepoint>> $confusables
  * @var \Codepoints\Unicode\PropertyInfo $info
  * @var Array $aliases
  * @var string $title
@@ -18,7 +18,7 @@ use Codepoints\Unicode\Codepoint;
  * @var string $lang
  * @var ?Array $wikipedia
  * @var Array $othersites
- * @var Array $relatives
+ * @var ?Array $relatives
  * @var \Codepoints\Database $db
  */
 
@@ -123,7 +123,7 @@ include 'partials/header.php'; ?>
     <?php include 'partials/codepoint-representations.php' ?>
   </section>
 
-<?php if ($relatives!== NULL && $confusables !== NULL && count($relatives) + count($confusables)):?>
+<?php if ($relatives!== null && $confusables !== null && count($relatives) + count($confusables)):?>
   <section class="cpdesc cpdesc--relatives">
     <h2><?=_q('Related Characters')?></h2>
     <?php if (count($relatives)):?>

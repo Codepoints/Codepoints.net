@@ -26,7 +26,7 @@ class Image extends Controller {
             '</svg>', join('', array_map(function(Array $image) : string { return $image['image']; }, $images)));
         /* let the web server take over by storing already created images in
          * their place in the docroot */
-        @file_put_contents(
+        file_put_contents(
             dirname(dirname(__DIR__)).'/image/'.$canonical.'.svg',
             $svg);
         return $svg;

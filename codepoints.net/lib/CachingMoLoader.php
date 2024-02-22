@@ -13,9 +13,8 @@ class CachingMoLoader {
         if (! is_file($file_php)) {
             $loader = new MoLoader();
             $translations = $loader->loadFile($file);
-            // phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
-            if (! @file_put_contents($file_php,
-                '<?php return unserialize(\'' . str_replace("'", "\\'", serialize($translations)) . '\');'."\n")) {
+            if (file_put_contents($file_php,
+                '<?php return unserialize(\'' . str_replace("'", "\\'", serialize($translations)) . '\');'."\n") === false) {
                 Analog::log('cannot create file '.$file_php);
             }
         } else {
