@@ -123,7 +123,7 @@ include 'partials/header.php'; ?>
     <?php include 'partials/codepoint-representations.php' ?>
   </section>
 
-<?php if (! is_null($relatives) && ! is_null($confusables) && count($relatives) + count($confusables)):?>
+<?php if ($relatives!== NULL && $confusables !== NULL && count($relatives) + count($confusables)):?>
   <section class="cpdesc cpdesc--relatives">
     <h2><?=_q('Related Characters')?></h2>
     <?php if (count($relatives)):?>
