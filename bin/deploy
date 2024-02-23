@@ -37,5 +37,5 @@ while [[ "$LAST_AVAILABLE" != "$DATE" ]]; do
 done
 
 echo "> run deployment on server" >&2
-curl -sS "$RELEASE_URL" | ssh "$SSH_HOST" 'cat > /tmp/codepoints.zip'
+curl -sSL "$RELEASE_URL" | ssh "$SSH_HOST" 'cat > /tmp/codepoints.zip'
 ssh "$SSH_HOST" cp-deploy live
