@@ -4,7 +4,7 @@ set -euo pipefail
 
 DATE="$(date +%Y-%m-%d-%H-%M-%S)"
 RELEASE_URL='https://github.com/codepoints/codepoints.net/releases/latest/download/codepoints.zip'
-SSH_HOST='codepts'
+SSH_HOST='codepoints-live'
 
 if ! grep -q refs/heads/main .git/HEAD ; then
     echo '! Please change to branch "main" first! Exiting.' >&2
@@ -14,10 +14,10 @@ fi
 echo "> create tag deploy-$DATE" >&2
 git tag "deploy-$DATE"
 
-echo "> start workflow" >&2
+echo '> start workflow' >&2
 git push --tags --quiet
 
-echo "> wait for new release to become available" >&2
+echo '> wait for new release to become available' >&2
 sleep 30 # give Github 30 seconds to run before polling
 
 LAST_AVAILABLE=
@@ -37,4 +37,5 @@ while [[ "$LAST_AVAILABLE" != "$DATE" ]]; do
 done
 
 echo "> run deployment on server" >&2
-ssh "$SSH_HOST" bin/cps-deploy live "deploy-$DATE"
+curl -sS "$RELEASE_URL" | ssh "$SSH_HOST" 'cat > /tmp/codepoints.zip'
+ssh "$SSH_HOST" cp-deploy live
