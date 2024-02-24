@@ -34,6 +34,7 @@ AddOutputFilterByType DEFLATE text/html text/css text/javascript application/jso
 </Files>
 
 ErrorDocument 404 /index.php
+ErrorDocument 500 /static/src/500.html
 ServerSignature Off
 Options -Indexes
 
