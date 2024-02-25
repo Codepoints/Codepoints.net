@@ -239,7 +239,7 @@ class Engine {
                     array_push($transformed_query_arr, ...$this->getTransformedQuery($key, $value));
                 }
             }
-            $transformed_query = join(' ', $transformed_query_arr);
+            $transformed_query = preg_replace('/[+\-><\(\)~*\"@]+/', ' ', join(' ', $transformed_query_arr));
 
             /**
              * We create two SQL queries (one for the paginated results, a second for
