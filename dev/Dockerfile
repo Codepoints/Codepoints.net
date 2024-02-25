@@ -2,6 +2,7 @@ FROM php:8.3-apache
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 COPY dev/httpd.conf /etc/apache2/sites-available/httpd.conf
+COPY ops/apache2/local-confs/codepoints.net.conf /etc/apache2/local-confs/
 COPY dev/*.pem /etc/certs/
 
 RUN apt-get update && \

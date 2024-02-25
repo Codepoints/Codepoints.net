@@ -10,13 +10,13 @@ services:
       - 80:80
       - 443:443
     volumes:
-      - ./codepoints.net:/var/www/html/codepoints.net
-      - ./config.ini:/var/www/html/config.ini
-      - ./composer.json:/var/www/html/composer.json
-      - ./composer.lock:/var/www/html/composer.lock
-      - ./phpcs.xml:/var/www/html/phpcs.xml
-      - ./psalm.xml:/var/www/html/psalm.xml
-      - ./tests/psalm_stubs.php:/var/www/html/tests/psalm_stubs.php
+      - ./codepoints.net:/var/www/codepoints.net
+      - ./config.ini:/var/www/config.ini
+      - ./composer.json:/var/www/composer.json
+      - ./composer.lock:/var/www/composer.lock
+      - ./phpcs.xml:/var/www/phpcs.xml
+      - ./psalm.xml:/var/www/psalm.xml
+      - ./tests/psalm_stubs.php:/var/www/tests/psalm_stubs.php
     depends_on:
       - db
       - vite

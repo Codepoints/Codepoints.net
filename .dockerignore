@@ -1,3 +1,4 @@
 *
 !dev/httpd.conf
 !dev/*.pem
+!ops/apache2/local-confs/codepoints.net.conf
