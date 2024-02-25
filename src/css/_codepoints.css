@@ -105,6 +105,13 @@ p .pl .meta {
   display: none;
 }
 
+.cpdesc--othersites {
+  a {
+    display: block;
+    padding: .4em .1em;
+  }
+}
+
 .props {
   margin-left: auto;
   margin-right: auto;
@@ -124,4 +131,13 @@ p .pl .meta {
 
 .props .n {
   color: var(--color-danger);
+}
+
+.props a {
+  display: block;
+}
+
+.props td > a {
+  margin: -0.2em -0.5em;
+  padding: 0.2em 0.5em;
 }
