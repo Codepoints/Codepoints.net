@@ -16,6 +16,11 @@ function get_popular_codepoints(Database $db) : Array {
     $fetch_fresh = function() use ($db) : Array {
         $intlist = [];
         $api_url = 'https://stats.codepoints.net/popular.php';
+        if (is_file('/var/cache/codepoints/popular.json')) {
+            /* this file is updated via cron job. If it is there, use this
+             * instead of doing our own HTTP request. */
+            $api_url = '/var/cache/codepoints/popular.json';
+        }
         $data = json_decode(file_get_contents($api_url), true);
         if ($data) {
             foreach ($data as $item) {
