@@ -19,7 +19,8 @@ RUN apt-get update && \
     a2enmod proxy && \
     a2enmod proxy_http && \
     a2enmod proxy_wstunnel && \
-    a2ensite httpd
+    a2ensite httpd && \
+    a2dissite 000-default
 
 # do not write access log to stdout
 RUN rm /var/log/apache2/access.log /var/log/apache2/other_vhosts_access.log
