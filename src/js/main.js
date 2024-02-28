@@ -18,6 +18,12 @@ function init(context) {
       window.open(location.href.replace(/\?embed/, ''), '_blank');
     });
   }
+
+  /* dynamically load other code, if necessary */
+  const main = context.querySelector('main');
+  if (main && main.classList.contains('main--scripts')) {
+    import('./modules/scripts.js').then((mod) => { mod.default(context); });
+  }
 }
 
 init(document.querySelector('[data-barba="container"]'));
