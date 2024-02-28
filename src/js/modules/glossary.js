@@ -1,9 +1,9 @@
-import {gettext as _} from './_i18n.ts';
+import {gettext as _} from '../_i18n.ts';
 
 /**
  * create the A-B-C jump bar at the top of the actual glossary
  */
-export function initGlossary(context) {
+export default function(context) {
   const glossary = context.querySelector('#glossary');
   if (!glossary || glossary.dataset.upgraded) {
     return;

@@ -17,12 +17,12 @@ $region_to_block = json_encode($env['info']->region_to_block);
 
 $head_extra = <<<HEAD_EXTRA
     $noindex
-    <script>
-    var script_age = $script_age;
-    var region_to_block = $region_to_block;
-    </script>
 HEAD_EXTRA;
 include 'partials/header.php' ?>
+    <script type="application/json" id="search_metadata">
+{ "script_age": <?=$script_age?>,
+"region_to_block": <?=$region_to_block?>}
+    </script>
 <main class="main main--search"<?php if ($search_result):?> data-count="<?=q((string)$search_result->count())?>"<?php endif ?>>
   <h1><?=_q($title)?></h1>
 

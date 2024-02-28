@@ -1,7 +1,6 @@
 import 'vite/modulepreload-polyfill';
 
 import barba from '@barba/core';
-import { initGlossary } from './_glossary.js';
 import { trackByContent } from './_tracker.js';
 
 import './components.js';
@@ -9,8 +8,6 @@ import './components.js';
 document.documentElement.classList.add('js');
 
 function init(context) {
-  initGlossary(context);
-
   /* embedded context? Open the full view in a new tab when
    * clicking on the image. */
   if (window.parent !== window) {
@@ -23,6 +20,10 @@ function init(context) {
   const main = context.querySelector('main');
   if (main && main.classList.contains('main--scripts')) {
     import('./modules/scripts.js').then((mod) => { mod.default(context); });
+  } else if (main && main.classList.contains('main--glossary')) {
+    import('./modules/glossary.js').then((mod) => { mod.default(context); });
+  } else if (main && main.classList.contains('main--search')) {
+    import('./modules/search.js').then((mod) => { mod.default(context); });
   }
 }
 
