@@ -38,8 +38,8 @@
   <?php endforeach?>
   <p class="submitset">
     <button type="submit"><?=_q('search')?></button>
-    <button type="reset" onclick="return confirm('<?=_q('Really remove all selected values?')?>')"><?=_q('reset all fields')?></button>
-    <button id="wizard" type="button" onclick="document.querySelector('cp-wizard').hidden = false">🧙 <?=_q('try the wizard')?></button>
+    <button type="reset"><?=_q('reset all fields')?></button>
+    <button id="wizard" type="button">🧙 <?=_q('try the wizard')?></button>
   </p>
   <cp-wizard hidden></cp-wizard>
 </form>
