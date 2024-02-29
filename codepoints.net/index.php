@@ -22,6 +22,17 @@ try {
 header('Permissions-Policy: interest-cohort=()');
 
 /**
+ * enable CSP protection (reporting only for now)
+ */
+header('Content-Security-Policy-Report-Only: '.
+    'default-src \'self\' https://stats.codepoints.net:443; '.
+    'style-src \'self\' \'unsafe-inline\'; '.
+    'font-src \'self\'; '.
+    (array_key_exists('embed', $_GET)? 'frame-ancestors *; ' : '').
+    'upgrade-insecure-requests; '.
+    'report-uri https://codepoints.report-uri.com/r/d/csp/reportOnly');
+
+/**
  * load the routes
  */
 require_once 'router.php';
