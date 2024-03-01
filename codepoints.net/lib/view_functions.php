@@ -96,7 +96,7 @@ function bl(Block $block, string $rel='', string $class='') : string {
  */
 function blimg(Block $block, int $width=16) : string {
     $name = str_replace([' ', '_', '-'], '', strtolower($block->name));
-    $url = sprintf('/static/images/LastResort.svg#%s', $name);
+    $url = sprintf('%s#%s', static_url('images/LastResort.svg'), $name);
     return sprintf('<svg width="%s" height="%s"><svg viewBox="194 97 1960 1960" width="100%%" height="100%%">'.
         '<use xlink:href="%s"/></svg></svg>', $width, $width, $url);
 }

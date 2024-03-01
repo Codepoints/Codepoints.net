@@ -3,6 +3,7 @@
 namespace Codepoints\Controller;
 
 use Codepoints\Controller;
+use Codepoints\Controller\TraitPreload;
 use Codepoints\Router\NotFoundException;
 use Codepoints\Unicode\Codepoint as UnicodeCodepoint;
 use Codepoints\Unicode\CodepointInfo\Aliases;
@@ -24,7 +25,10 @@ use Exception;
 
 class Codepoint extends Controller {
 
+    use TraitPreload;
+
     public function __invoke($match, Array $env) : string {
+        $this->sendPreloadHeaders();
         new Aliases($env);
         new CLDR($env);
         new CSUR($env);

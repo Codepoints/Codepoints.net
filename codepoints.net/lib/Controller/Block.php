@@ -3,6 +3,7 @@
 namespace Codepoints\Controller;
 
 use Codepoints\Controller;
+use Codepoints\Controller\TraitPreload;
 use Codepoints\Router\NotFoundException;
 use Codepoints\Router\Pagination;
 use Codepoints\Unicode\Block as UnicodeBlock;
@@ -10,10 +11,17 @@ use Codepoints\Unicode\Block as UnicodeBlock;
 
 class Block extends Controller {
 
+    use TraitPreload;
+
     /**
      * @param Array $data
      */
     public function __invoke($data, Array $env) : string {
+        $this->sendPreloadHeaders([
+            /* TODO preloading SVGs for <use> is not yet supported:
+             * https://github.com/whatwg/html/issues/8870 */
+            #sprintf('<%s>; rel=preload; as=image', static_url('images/LastResort.svg')),
+        ]);
         $block = new UnicodeBlock($data, $env['db']);
         $page = get_page();
 

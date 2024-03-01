@@ -3,12 +3,20 @@
 namespace Codepoints\Controller;
 
 use Codepoints\Controller;
+use Codepoints\Controller\TraitPreload;
 use Codepoints\Unicode\Codepoint;
+use Codepoints\View;
 
 
 class Index extends Controller {
 
+    use TraitPreload;
+
     public function __invoke($match, Array $env) : string {
+        $this->sendPreloadHeaders([
+            sprintf('<%s>; rel=preload; as=image', static_url('src/images/front_light.webp')),
+            sprintf('<%s>; rel=preload; as=image', static_url('src/images/front_dark.webp')),
+        ]);
         /** @var array */
         $data = $env['db']->getOne('SELECT cp, name, gc
             FROM codepoints

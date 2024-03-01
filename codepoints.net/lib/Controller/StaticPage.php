@@ -3,15 +3,20 @@
 namespace Codepoints\Controller;
 
 use Codepoints\Controller;
+use Codepoints\Controller\TraitPreload;
 use Codepoints\Router\NotFoundException;
 use Codepoints\View;
 
 
 class StaticPage extends Controller {
+
+    use TraitPreload;
+
     /**
      * @param string $view
      */
     public function __invoke($view, Array $env) : string {
+        $this->sendPreloadHeaders();
         switch ($view) {
         case 'about':
             $data = $env['db']->getOne('SELECT COUNT(*) AS c FROM codepoints USE INDEX (PRIMARY)');
