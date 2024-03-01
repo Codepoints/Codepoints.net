@@ -44,7 +44,9 @@ include 'partials/header.php'; ?>
               '<span class="nchar">', $sc['count'], '</span>',
               '</a>')?></p>
             <?php if ($sc['abstract']): ?>
-              <blockquote cite="<?=q($sc['src'])?>" class="sc__abstract"><?=$sc['abstract']?></blockquote>
+              <blockquote cite="<?=q($sc['src'])?>" class="sc__abstract"><?=
+                strip_tags($sc['abstract'],  '<p><b><strong class="selflink"><strong><em><i><var><sup><sub><tt><ul><ol><li><samp><small><hr><h2><h3><h4><h5><dfn><dl><dd><dt><u><abbr><big><blockquote><br><center><del><ins><kbd>')
+              ?></blockquote>
             <?php endif ?>
           </details>
         </li>
