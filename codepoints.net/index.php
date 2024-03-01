@@ -29,8 +29,9 @@ header('Content-Security-Policy-Report-Only: '.
     'style-src \'self\' \'unsafe-inline\'; '.
     'font-src \'self\'; '.
     (array_key_exists('embed', $_GET)? 'frame-ancestors *; ' : '').
-    'upgrade-insecure-requests; '.
-    'report-uri https://codepoints.report-uri.com/r/d/csp/reportOnly');
+    #'upgrade-insecure-requests; '.
+    #'report-uri https://codepoints.report-uri.com/r/d/csp/reportOnly');
+    '');
 
 /**
  * load the routes
