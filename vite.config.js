@@ -35,6 +35,7 @@ export default defineConfig({
         postcssPresetEnv({
           features: {
             'custom-properties': false,
+            'light-dark-function': false,
           },
         }),
       ],
