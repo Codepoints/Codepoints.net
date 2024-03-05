@@ -1,16 +1,17 @@
 const env = process.env.NODE_ENV || 'production';
 
-const global_revision = 'Feicheez5phe2am2';
+const global_revision = 'Feicheez5phe2am3';
 
 
 module.exports = {
   globDirectory: "codepoints.net/",
   globPatterns: [
-    "**/*.{webmanifest,css,woff2,js,html}"
+    "**/*.{webmanifest,css,woff2,js,html,svg,png,jpg,webp}"
   ],
   globIgnores: [
-    "**/vendor/**",
-    "**/views/**",
+    "vendor/**",
+    "views/**",
+    "image/**",
   ],
   swDest: "codepoints.net/sw.js",
   sourcemap: env !== 'production',
@@ -20,7 +21,7 @@ module.exports = {
       revision: global_revision,
     },
   ],
-  //navigateFallback: '/offline',
+  navigateFallback: '/offline.html',
   skipWaiting: true,
   clientsClaim: true,
 };
