@@ -20,6 +20,14 @@ module.exports = {
       url: '/offline.html',
       revision: global_revision,
     },
+    {
+      url: '/',
+      revision: global_revision,
+    },
+    {
+      url: '/planes',
+      revision: global_revision,
+    },
   ],
   navigateFallback: '/offline.html',
   skipWaiting: true,
