@@ -7,6 +7,8 @@ COPY dev/*.pem /etc/certs/
 
 RUN apt-get update && \
     apt-get install libzip-dev -y && \
+    pecl install xdebug && \
+    docker-php-ext-enable xdebug && \
     docker-php-ext-install pdo_mysql && \
     docker-php-ext-enable pdo_mysql && \
     docker-php-ext-install zip && \

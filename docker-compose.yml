@@ -9,6 +9,7 @@ services:
     ports:
       - 80:80
       - 443:443
+      - 9003:9003 # XDebug
     volumes:
       - ./codepoints.net:/var/www/codepoints.net
       - ./config.ini:/var/www/config.ini
