@@ -5,7 +5,12 @@
  * @var \Codepoints\Unicode\Codepoint $cp0
  */
 
-$head_extra = sprintf('<link rel="preload" href="%s" as="image" fetchPriority="high" type="image/webp">', static_url('src/images/front_light.webp'));
+$head_extra = sprintf(
+  '<link rel="preload" href="%s" as="image" fetchpriority="high" type="image/webp" media="(prefers-color-scheme: light)">'.
+  '<link rel="preload" href="%s" as="image" fetchpriority="high" type="image/webp" media="(prefers-color-scheme: dark)">',
+  static_url('src/images/front_light.webp'),
+  static_url('src/images/front_dark.webp')
+);
 include 'partials/header.php'; ?>
 <main class="main main--index">
   <h1 aria-label="<?=_q('Codepoints')?>">

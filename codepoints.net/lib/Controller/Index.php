@@ -14,8 +14,8 @@ class Index extends Controller {
 
     public function __invoke($match, Array $env) : string {
         $this->sendPreloadHeaders([
-            sprintf('<%s>; rel=preload; as=image', static_url('src/images/front_light.webp')),
-            sprintf('<%s>; rel=preload; as=image', static_url('src/images/front_dark.webp')),
+            sprintf('<%s>; rel=preload; as=image; fetchpriority=high; type=image/webp; media=(prefers-color-scheme: light)', static_url('src/images/front_light.webp')),
+            sprintf('<%s>; rel=preload; as=image; fetchpriority=high; type=image/webp; media=(prefers-color-scheme: dark)', static_url('src/images/front_dark.webp')),
         ]);
         /** @var array */
         $data = $env['db']->getOne('SELECT cp, name, gc
