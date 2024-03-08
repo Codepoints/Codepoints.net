@@ -33,6 +33,7 @@ $repr = $codepoint->representation; if ($repr): ?>
     <tr data-system="url">
       <th scope="row"><?=_q('URL-Quoted')?></th>
       <td><?=q($repr('URL'))?></td>
+    </tr>
     <tr data-system="htmlhex">
       <th scope="row"><?=_q('HTML hex reference')?></th>
       <td><?=q($repr('HTML'))?></td>
