@@ -24,12 +24,10 @@ class AssetHandler {
     }
 
     public function getUrl(string $path): string {
-        if (! DEBUG) {
-            if (array_key_exists($path, $this->manifest)) {
-                return '/static/' . $this->manifest[$path]['file'];
-            }
-            Analog::warning(sprintf('AssetHandler: asset not found: %s', $path));
+        if (array_key_exists($path, $this->manifest)) {
+            return '/static/' . $this->manifest[$path]['file'];
         }
+        Analog::warning(sprintf('AssetHandler: asset not found: %s', $path));
         return '/static/' . $path;
     }
 

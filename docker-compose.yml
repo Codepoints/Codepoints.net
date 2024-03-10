@@ -39,8 +39,6 @@ services:
       context: .
       dockerfile: dev/vite.Dockerfile
     init: true
-    ports:
-      - 5173:5173
     volumes:
       - .:/app
 
