@@ -24,5 +24,16 @@ RUN apt-get update && \
     a2ensite httpd && \
     a2dissite 000-default
 
+RUN <<EOT
+cat <<EOF > /usr/local/etc/php/conf.d/99-codepoints.ini
+xdebug.client_host=host.docker.internal
+xdebug.mode=debug
+xdebug.start_with_request=yes
+xdebug.discover_client_host=0
+xdebug.remote_handler = "dbgp"
+xdebug.client_port=9003
+EOF
+EOT
+
 # do not write access log to stdout
 RUN rm /var/log/apache2/access.log /var/log/apache2/other_vhosts_access.log
