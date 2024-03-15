@@ -15,7 +15,7 @@ class AssetHandler {
     private array $manifest = [];
 
     public function __construct() {
-        $manifest_path = dirname(dirname(__DIR__)).'/static/manifest.json';
+        $manifest_path = dirname(dirname(__DIR__)).'/static/.vite/manifest.json';
         if (! is_file($manifest_path)) {
             Analog::warning('AssetHandler: no manifest found');
             return;
