@@ -1,6 +1,7 @@
 [db]
-password=codepoints
-user=codepoints
-database=codepoints
+password=codepts
+user=codepts
+database=codepts
+host=db
 [stats]
 token=read_access_token
