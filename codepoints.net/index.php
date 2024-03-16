@@ -1,6 +1,7 @@
 <?php
 
 use Analog\Analog;
+use Codepoints\CommandLine;
 use Codepoints\Controller\NotFound;
 use Codepoints\Controller\Error as ErrorController;
 use Codepoints\Router;
@@ -8,11 +9,17 @@ use Codepoints\Router\NotFoundException;
 use Codepoints\Router\Redirect;
 
 define('DEBUG', 1);
+define('SOFTWARE_VERSION', '00000001');
 
 try {
     $init_successful = require 'init.php';
 } catch (Throwable $e) {
     $init_successful = false;
+}
+
+if (PHP_SAPI === 'cli') {
+    $cli = new CommandLine($argv, Router::getDependencies());
+    exit($cli->run());
 }
 
 /**
