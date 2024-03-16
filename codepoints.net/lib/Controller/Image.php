@@ -10,7 +10,9 @@ class Image extends Controller {
      * @param Array $match
      */
     public function __invoke($match, Array $env) : string {
-        $cache_duration = DEBUG? 10 : 24*60*60;
+        /* send an expiry of 1 year. This mirrors the Apache config for the
+         * cached files. */
+        $cache_duration = 365*24*60*60;
         $root = hexdec($match[1]);
         $canonical = str_pad(strtoupper(dechex($root)), 4, '0', STR_PAD_LEFT);
         header('Content-Type: image/svg+xml');

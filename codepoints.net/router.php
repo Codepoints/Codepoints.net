@@ -47,7 +47,7 @@ Router::add(new URLMatcher('api/v1/(?P<action>[a-z][a-z]+)(?:/(?P<data>.*))?$'),
 Router::add(new URLMatcher('plane_([a-zA-Z0-9()_-]+)$'), new Plane());
 Router::add(new URLMatcher('([a-zA-Z0-9()_-]+)_plane$'), new Plane());
 
-Router::add(new URLMatcher('image/([0-9A-F]{2,4}00).svg$'), new Image());
+Router::add(new URLMatcher('image/([0-9A-F]{2,4}00)(\\.[0-9a-f]{8})?\\.svg$'), new Image());
 
 Router::add(new URLMatcher('sitemap(|/(static|u[0-9A-F]+)).xml$'), new Sitemap());
 
