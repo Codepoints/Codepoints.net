@@ -3,21 +3,16 @@
 namespace Codepoints\Search;
 
 use Analog\Analog;
+use Codepoints\Database;
 use Codepoints\Unicode\Codepoint;
 use Codepoints\Unicode\CodepointInfo\Aliases;
 use Codepoints\Unicode\CodepointInfo\CLDR;
-use Codepoints\Unicode\CodepointInfo\CSUR;
 use Codepoints\Unicode\CodepointInfo\Confusables;
-use Codepoints\Unicode\CodepointInfo\Description;
 use Codepoints\Unicode\CodepointInfo\Extra;
-use Codepoints\Unicode\CodepointInfo\ImageSource;
-use Codepoints\Unicode\CodepointInfo\OtherSites;
-use Codepoints\Unicode\CodepointInfo\Pronunciation;
 use Codepoints\Unicode\CodepointInfo\Properties;
-use Codepoints\Unicode\CodepointInfo\Relatives;
 use Codepoints\Unicode\CodepointInfo\Representation;
-use Codepoints\Unicode\CodepointInfo\Sensitivity;
 use Codepoints\Unicode\CodepointInfo\Wikipedia;
+use Codepoints\Unicode\PropertyInfo;
 
 
 /**
@@ -37,7 +32,7 @@ use Codepoints\Unicode\CodepointInfo\Wikipedia;
 class Documenter {
 
     /**
-     *
+     * @param Array{db: Database, lang: string, info: PropertyInfo} $env
      */
     public function __construct(private Array $env) {
         /**
@@ -63,8 +58,10 @@ class Documenter {
         $props = [];
         foreach ($cp->properties as $key => $value) {
             $is_bool = in_array($key, $this->env['info']->booleans);
-            if (! $is_bool || ($is_bool && $value)) {
-                $props[] = $key; # note the property itself as present, e.g. "Emoji"
+            if (! $is_bool || $value) {
+                /* note the property itself as present, e.g. "Emoji", unless
+                 * it is a falsy boolean value */
+                $props[] = $key;
             }
             if (is_array($value)) {
                 foreach ($value as $subvalue) {
@@ -78,12 +75,12 @@ class Documenter {
 
         $chr = $cp->chr();
         $name = $cp->name;
-        $name_no_dash = str_replace('-', '', $cp->name);
+        $name_no_dash = str_replace('-', '', (string)$cp->name);
         $na1 = $cp->properties['na1'] ?? '';
         $kDefinition = $cp->properties['kDefinition'] ?? '';
         $hex = sprintf('%X', $cp->id);
         $zhex = sprintf('%04X', $cp->id);
-        $aliases = join(' ', array_map(fn($item) => $item['type'].': '.$item['alias'], $cp->aliases));
+        $aliases = join(' ', array_map(fn(Array $item) => $item['type'].': '.$item['alias'], $cp->aliases));
         $wikipedia = trim(preg_replace('/\s+/', ' ', strip_tags(str_replace('>', '> ', $cp->wikipedia['abstract'] ?? ''))));
         if ($wikipedia) {
             $wikipedia .= ' Wikipedia';
@@ -128,7 +125,7 @@ EOD;
      * Outdated entries are recognized by search_index.version being unequal
      * to the SOFTWARE_VERSION constant.
      */
-    public function buildNext() {
+    public function buildNext() : bool {
         $cp_list = $this->env['db']->getAll('
             SELECT c.cp AS cp, c.name AS name, c.gc AS gc
             FROM codepoints c
@@ -143,11 +140,15 @@ EOD;
                 text = VALUE(text),
                 version = VALUE(version)'
             );
+        if (! $insert || ! $cp_list) {
+            return false;
+        }
         foreach ($cp_list as $cp) {
             $doc = $this->create(Codepoint::getCached($cp, $this->env['db']));
             $insert->execute([$cp['cp'], $doc, SOFTWARE_VERSION]);
             Analog::log(sprintf('update search doc for U+%04X', $cp['cp']));
         }
+        return true;
     }
 
 }
