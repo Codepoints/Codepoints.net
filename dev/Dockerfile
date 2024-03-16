@@ -37,3 +37,5 @@ EOT
 
 # do not write access log to stdout
 RUN rm /var/log/apache2/access.log /var/log/apache2/other_vhosts_access.log
+
+WORKDIR /var/www/codepoints.net
