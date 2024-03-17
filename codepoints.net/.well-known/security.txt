@@ -1,0 +1,14 @@
+#
+# Hi and welcome to codepoints.net’s security.txt!
+#
+# Before you reach out  please note that this is a non-commercial project
+# with literally  no budget.  We are eternally grateful, if you notify us
+# about problems, but we will not be able to offer monitary compensation.
+# Thank you for your understanding!
+# If you still want to help and contribute,  you can find the source code
+# for this site on GitHub: <https://github.com/Codepoints/Codepoints.net>
+#
+Contact: https://manuel-strehl.de/contact
+Expires: 2035-01-01T00:00:00.000Z
+Preferred-Languages: en, de
+Canonical: https://codepoints.net/.well-known/security.txt
