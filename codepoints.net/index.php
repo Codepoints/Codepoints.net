@@ -9,7 +9,7 @@ use Codepoints\Router\NotFoundException;
 use Codepoints\Router\Redirect;
 
 define('DEBUG', 1);
-define('SOFTWARE_VERSION', '00000001');
+define('SOFTWARE_VERSION', '00000002');
 
 try {
     $init_successful = require 'init.php';
