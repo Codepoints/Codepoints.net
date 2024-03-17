@@ -10,7 +10,7 @@ include 'partials/header.php'; ?>
 <main class="main main--planes">
   <div>
     <figure class="sqfig plfig">
-      <svg width="250" height="250"><svg viewBox="194 97 1960 1960" width="100%" height="100%"><use xlink:href="/static/images/unicode-logo-framed.svg#unicode"/></svg></svg>
+      <svg width="250" height="250"><svg viewBox="194 97 1960 1960" width="100%" height="100%"><use xlink:href="<?=static_url('images/unicode-logo-framed.svg')?>#unicode"/></svg></svg>
     </figure>
   </div>
   <h1><?=q($title)?></h1>

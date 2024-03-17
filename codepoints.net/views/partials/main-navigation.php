@@ -8,7 +8,7 @@
 <div style="position: fixed;"></div>
 <cp-navigation>
   <a href="<?=q(url(''))?>" rel="start">
-    <svg width="64" height="64"><use href="/static/images/icon.svg#icon"/></svg>
+    <svg width="64" height="64"><use href="<?=static_url('images/icon.svg')?>#icon"/></svg>
     <span class="title"><?=_q('Home')?><span class="visually-hidden">: <?=q('go to the homepage')?></span></span>
   </a>
 <?php

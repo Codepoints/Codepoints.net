@@ -29,10 +29,10 @@ if (array_key_exists('embed', $_GET)) {
 <?php endif ?>
     <meta name="theme-color" content="#660000">
     <link rel="icon" href="/favicon.ico">
-    <link rel="icon" href="/static/images/icon.svg" type="image/svg+xml">
+    <link rel="icon" href="<?=static_url('images/icon.svg')?>" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <link rel="manifest" href="/manifest.webmanifest">
-    <link rel="mask-icon" href="/static/images/safari-pinned-tab.svg" color="#990000">
+    <link rel="mask-icon" href="<?=static_url('images/safari-pinned-tab.svg')?>" color="#990000">
     <link rel="search" href="/opensearch.xml" type="application/opensearchdescription+xml" title="Search Codepoints">
     <link rel="author" href="/humans.txt">
     <link rel="preload" href="<?= static_url('src/fonts/Literata.woff2') ?>" as="font" crossOrigin="anonymous">
