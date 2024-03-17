@@ -1,4 +1,7 @@
-<?php include 'partials/header.php'; ?>
+<?php
+$title = __('Glossary of Terms');
+$page_description = __('This glossary explains central terms of the Unicode standard and character encodings in general.');
+include 'partials/header.php'; ?>
 <main class="main main--glossary">
   <h1><?=q($title)?></h1>
   <p><?php
@@ -51,7 +54,7 @@ printf(
     <dd>Characters whose normalized forms are not stable under a toLowercase mapping. For more information, see D139 in <i>Section 3.13, Default Case Algorithms</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>].
       <p><i>Generated from: toLowercase(toNFD(X)) != toNFD(X)</i></p> <small><?=sprintf(__('(Source: %s)'), '<a href="http://unicode.org/reports/tr44/">UAX44</a>')?></small></dd>
     <dt id="CWKCF">Changes When NFKC Casefolded</dt>
-    <dd>Characters which are not identical to their NFKC_Casefold mapping. 
+    <dd>Characters which are not identical to their NFKC_Casefold mapping.
       <p><i>Generated from: (cp != NFKC_CaseFold(cp))</i></p> <small><?=sprintf(__('(Source: %s)'), '<a href="http://unicode.org/reports/tr44/">UAX44</a>')?></small></dd>
     <dt id="CWT">Changes When Titlecased</dt>
     <dd>Characters whose normalized forms are not stable under a toTitlecase mapping. For more information, see D141 in <i>Section 3.13, Default Case Algorithms</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>].
@@ -99,13 +102,13 @@ printf(
     <dt id="glyph">Glyph</dt>
     <dd>The representation of a codepoint under certain circumstances. For example, the letter “A” looks quite differently in latin and blackletter fonts. Both are different glyphs for the underlying character.</dd>
     <dt id="Gr_Base">Grapheme Base</dt>
-    <dd>Property used together with the definition of Standard Korean Syllable Block to define "Grapheme base". See D58 in <i>Chapter 3, Conformance</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>]. 
+    <dd>Property used together with the definition of Standard Korean Syllable Block to define "Grapheme base". See D58 in <i>Chapter 3, Conformance</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>].
       <p><i>Generated from: [0..10FFFF] - Cc - Cf - Cs - Co - Cn - Zl - Zp - <a href="#Gr_Ext">Grapheme Extend</a></i></p>
       <p><b>Note:</b> Grapheme_Base is a property of individual characters. That usage contrasts with "grapheme base", which is an attribute of Unicode strings; a grapheme base may consist of a Korean syllable which is itself represented by a sequence of conjoining jamos.</p> <small><?=sprintf(__('(Source: %s)'), '<a href="http://unicode.org/reports/tr44/">UAX44</a>')?></small></dd>
     <dt id="GCB">Grapheme Cluster Break</dt>
     <dd>See Unicode Standard Annex #29, "Unicode Text Segmentation" [<a href="http://unicode.org/reports/tr41/tr41-9.html#UAX29">UAX29</a>] <small><?=sprintf(__('(Source: %s)'), '<a href="http://unicode.org/reports/tr44/">UAX44</a>')?></small></dd>
     <dt id="Gr_Ext">Grapheme Extend</dt>
-    <dd>Property used to define "Grapheme extender". See D59 in <i>Chapter 3, Conformance</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>]. 
+    <dd>Property used to define "Grapheme extender". See D59 in <i>Chapter 3, Conformance</i> in [<a href="http://unicode.org/reports/tr41/tr41-9.html#Unicode">Unicode</a>].
       <p><i>Generated from:  Me + Mn + <a href="#OGr_Ext">Other Grapheme Extend</a></i></p>
       <p><b>Note:</b> The set of characters for which Grapheme_Extend=Yes is equivalent to the set of characters for which Grapheme_Cluster_Break=Extend.</p> <small><?=sprintf(__('(Source: %s)'), '<a href="http://unicode.org/reports/tr44/">UAX44</a>')?></small></dd>
     <dt id="Gr_Link">Grapheme Link (deprecated)</dt>

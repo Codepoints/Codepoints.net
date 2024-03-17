@@ -1,8 +1,7 @@
 <?php
-/**
- * @var int $cp_count
- */
-
+/** @var int $cp_count */
+$title = __('About Codepoints');
+$page_description = __('Codepoints is a site dedicated to Unicode. This page explains the concepts and possibilities to navigate Unicode on the site.');
 include 'partials/header.php'; ?>
 <main class="main main--about">
   <section id="finding_characters">
