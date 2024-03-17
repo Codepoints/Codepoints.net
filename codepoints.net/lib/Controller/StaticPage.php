@@ -25,6 +25,7 @@ class StaticPage extends Controller {
             break;
         case 'glossary':
         case 'offline.html':
+        case 'wp-login.php':
             break;
         default:
             throw new NotFoundException('This page is unknown');

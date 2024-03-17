@@ -22,7 +22,7 @@ use \Codepoints\Controller\StaticPage;
 
 Router::add('', new Index());
 
-Router::add(['about', 'glossary', 'offline.html'], new StaticPage());
+Router::add(['about', 'glossary', 'offline.html', 'wp-login.php'], new StaticPage());
 
 Router::add('planes', new Planes());
 
