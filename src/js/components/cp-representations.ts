@@ -46,6 +46,8 @@ const formatters = [
     return '\\'+str;
   }],
 
+  ['xls', _('Excel'), (n) => `=UNICHAR(${n})`],
+
   ['go', _('Go'), backslash_u_U],
 
   ['js', _('JavaScript'), jsonify],
@@ -53,11 +55,15 @@ const formatters = [
   ['json', _('JSON'), jsonify],
   ['java', _('Java'), jsonify],
 
-  ['pl', _('Perl'), function(n) {
-    return '"\\x{'+n.toString(16).toUpperCase()+'}"';
-  }],
+  ['lua', _('Lua'), (n) => `\\u{${n.toString(16).toUpperCase()}}`],
+
+  ['mat', _('Matlab'), (n) => `char(${n})`],
+
+  ['pl', _('Perl'), (n) => `"\\x{${n.toString(16).toUpperCase()}}"`],
 
   ['php', _('PHP'), backslash_u_curly],
+
+  ['ps1', _('PowerShell'), (n) => `\`u{${n.toString(16).toUpperCase()}}`],
 
   ['py', _('Python'), backslash_u_U],
 
