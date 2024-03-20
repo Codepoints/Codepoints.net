@@ -5,9 +5,11 @@ COPY dev/httpd.conf /etc/apache2/sites-available/httpd.conf
 COPY dev/*.pem /etc/certs/
 
 RUN apt-get update && \
-    apt-get install libzip-dev -y && \
+    apt-get install libzip-dev libicu-dev -y && \
     pecl install xdebug && \
     docker-php-ext-enable xdebug && \
+    docker-php-ext-install intl && \
+    docker-php-ext-enable intl && \
     docker-php-ext-install pdo_mysql && \
     docker-php-ext-enable pdo_mysql && \
     docker-php-ext-install zip && \

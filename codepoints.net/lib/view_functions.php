@@ -32,6 +32,14 @@ function _q(string $s) : string {
 }
 
 /**
+ * return gettext-translated MessageFormat patterns
+ */
+function _f(string $pattern, Array $values) : string {
+  global $lang;
+  return msgfmt_format_message($lang, __($pattern), $values);
+}
+
+/**
  * return the representation for a code point link
  */
 function cp(Codepoint|Array $codepoint, string $rel='', string $class='') : string {
