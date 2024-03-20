@@ -33,6 +33,7 @@ class OtherSites extends CodepointInfo {
         if (isset($codepoint->properties['kDefinition']) && $codepoint->properties['kDefinition']) {
             $other_sites[__('Unihan Database')] = 'https://www.unicode.org/cgi-bin/GetUnihanData.pl?codepoint='.rawurlencode($codepoint->chr());
             $other_sites[__('Chinese Text Project')] = 'https://ctext.org/dictionary.pl?if=en&amp;char='.rawurlencode($codepoint->chr());
+            $other_sites[__('zi.tools 字統网')] = 'https://zi.tools/zi/'.rawurlencode($codepoint->chr());
         }
         if ($codepoint->properties['Emoji'] || in_array($codepoint->id, [0x200D, 0xFE0F])) {
             $other_sites[__('Emojipedia')] = 'https://emojipedia.org/'.rawurlencode($codepoint->chr());
