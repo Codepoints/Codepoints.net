@@ -18,6 +18,7 @@ services:
       - ./phpcs.xml:/var/www/phpcs.xml
       - ./psalm.xml:/var/www/psalm.xml
       - ./tests/psalm_stubs.php:/var/www/tests/psalm_stubs.php
+      - ./ops/apache2/local-confs/codepoints.net.conf:/etc/apache2/local-confs/codepoints.net.conf
     depends_on:
       - db
       - vite
