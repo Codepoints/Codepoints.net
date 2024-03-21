@@ -9,7 +9,6 @@ services:
     ports:
       - 80:80
       - 443:443
-      - 9003:9003 # XDebug
     volumes:
       - ./codepoints.net:/var/www/codepoints.net
       - ./config.ini:/var/www/config.ini
@@ -19,9 +18,15 @@ services:
       - ./psalm.xml:/var/www/psalm.xml
       - ./tests/psalm_stubs.php:/var/www/tests/psalm_stubs.php
       - ./ops/apache2/local-confs/codepoints.net.conf:/etc/apache2/local-confs/codepoints.net.conf
+      - ./ops/php/8.3/mods-available/99-codepoints.ini:/usr/local/etc/php/conf.d/99-codepoints.ini
+      - ./ops/php/8.3/mods-available/99-develop.ini:/usr/local/etc/php/conf.d/99-develop.ini
+      - ./dev/xdebug_output:/tmp/xdebug_output
     depends_on:
       - db
       - vite
+    # https://stackoverflow.com/a/43541681/113195
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
   db:
     container_name: codepoints-db
