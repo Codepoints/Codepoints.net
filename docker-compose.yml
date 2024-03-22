@@ -21,6 +21,7 @@ services:
       - ./ops/php/8.3/mods-available/99-codepoints.ini:/usr/local/etc/php/conf.d/99-codepoints.ini
       - ./ops/php/8.3/mods-available/99-develop.ini:/usr/local/etc/php/conf.d/99-develop.ini
       - ./dev/xdebug_output:/tmp/xdebug_output
+      - ./dev/popular.json:/var/cache/codepoints/popular.json
     depends_on:
       - db
       - vite
