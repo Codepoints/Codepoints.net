@@ -39,7 +39,7 @@ class Image extends CodepointInfo {
             if (in_array($codepoint->gc, ['Cn', 'Co', 'Cs', 'Xx'])) {
                 /* special control characters and non-existing code points: Use
                  * our icon */
-                $url = static_url('images/icon.svg').'#icon';
+                $url = static_url('src/images/icon.svg').'#icon';
                 return sprintf($template, $width, $width, $codepoint->gc, $alt, '', $url);
             }
             $id = get_printable_codepoint($codepoint->id, $codepoint->gc);

@@ -20,7 +20,7 @@ class Block extends Controller {
         $this->sendPreloadHeaders([
             /* TODO preloading SVGs for <use> is not yet supported:
              * https://github.com/whatwg/html/issues/8870 */
-            #sprintf('<%s>; rel=preload; as=image', static_url('images/LastResort.svg')),
+            #sprintf('<%s>; rel=preload; as=image', static_url('src/images/LastResort.svg')),
         ]);
         $block = new UnicodeBlock($data, $env['db']);
         $page = get_page();

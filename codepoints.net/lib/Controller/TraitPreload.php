@@ -14,7 +14,7 @@ trait TraitPreload {
             /* TODO preloading SVGs for <use> is not yet supported:
              * https://github.com/whatwg/html/issues/8870 */
             # sprintf('<%s>; rel=preload; as=image', static_url('src/images/icons.svg')),
-            # sprintf('<%s>; rel=preload; as=image', static_url('images/unicode-logo-framed.svg')),
+            # sprintf('<%s>; rel=preload; as=image', static_url('src/images/unicode-logo-framed.svg')),
             sprintf('<%s>; rel=modulepreload; as=script', static_url('src/js/main.js')),
         ], $additional);
         header('Link:'.join(',', $headers), false);

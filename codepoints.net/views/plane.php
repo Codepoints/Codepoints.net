@@ -13,7 +13,7 @@ $nav['up'] = sprintf('<a class="ln pl" rel="up" href="%s">'.
   '<svg width="16" height="16">'.
   '<svg viewBox="194 97 1960 1960" width="100%%" height="100%%">'.
   '<use xlink:href="%s#unicode" width="16" height="16"/>'.
-  '</svg></svg> %s</a>', url('planes'), static_url('images/unicode-logo-framed.svg'), __('All Planes'));
+  '</svg></svg> %s</a>', url('planes'), static_url('src/images/unicode-logo-framed.svg'), __('All Planes'));
 if ($next) {
   $nav['next'] = pl($next, 'next');
 }
