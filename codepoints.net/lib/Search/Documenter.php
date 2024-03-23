@@ -90,7 +90,11 @@ class Documenter {
         $dm = $cp->properties['dt'] === 'none'? [] : (is_array($cp->properties['dm'] ?? null)? $cp->properties['dm'] : [$cp->properties['dm']]);
         $decomp = join(' ', array_map(function(Codepoint $item) : string { return $item->chr(); }, $dm));
         $confusables = $cp->confusables? '1' : '0';
-        $block = $cp->block;
+        try {
+            $block = $cp->block;
+        } catch(\Exception $e) {
+            $block = 'noblock';
+        }
 
         /* this document reads very cryptic, but it is somewhat
          * straight-forward. Take each information and repeat it based on its
