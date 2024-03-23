@@ -153,7 +153,7 @@ function plimg(Plane $plane, int $width=16) : string {
         'privateplane16',
     ];
     $name = $map[$plane->first / 0x10000];
-    $url = sprintf('/%s#%s', static_url('src/images/LastResort.svg'), $name);
+    $url = sprintf('%s#%s', static_url('src/images/LastResort.svg'), $name);
     return sprintf('<svg width="%s" height="%s"><svg viewBox="194 97 1960 1960" width="100%%" height="100%%">'.
         '<use xlink:href="%s"/></svg></svg>', $width, $width, $url);
 }
