@@ -1,5 +1,6 @@
 <?php
 
+use \Analog\Analog;
 use Codepoints\Unicode\Codepoint;
 use Codepoints\Unicode\Block;
 use Codepoints\Unicode\Plane;
@@ -35,8 +36,12 @@ function _q(string $s) : string {
  * return gettext-translated MessageFormat patterns
  */
 function _f(string $pattern, Array $values) : string {
-  global $lang;
-  return msgfmt_format_message($lang, __($pattern), $values);
+    global $lang;
+    $result = msgfmt_format_message($lang, __($pattern), $values);
+    if (! $result) {
+        Analog::log('MessageFormat: Empty result detected: '.$pattern);
+    }
+    return $result;
 }
 
 /**
