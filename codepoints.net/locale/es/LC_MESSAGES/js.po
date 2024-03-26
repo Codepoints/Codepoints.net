@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: codepoints\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-29 15:09+0000\n"
-"PO-Revision-Date: 2022-12-29 16:00\n"
-"Last-Translator: \n"
+"POT-Creation-Date: 2024-03-25 20:43+0000\n"
+"PO-Revision-Date: 2024-03-26 15:14+0100\n"
+"Last-Translator: Manuel Strehl <translate@manuel-strehl.de>\n"
 "Language-Team: Spanish\n"
 "Language: es_ES\n"
 "MIME-Version: 1.0\n"
@@ -16,26 +16,23 @@ msgstr ""
 "X-Crowdin-Language: es-ES\n"
 "X-Crowdin-File: js.pot\n"
 "X-Crowdin-File-ID: 7102\n"
-
-#: src/js/components/cp-copy.ts:17
-msgid "copied"
-msgstr "copiado"
+"X-Generator: Poedit 3.0.1\n"
 
 #: src/js/components/cp-wizard.ts:120
 msgid "What’s the airspeed velocity of an unladen swallow?"
-msgstr "¿Cuál es la velocidad de una golondrina sin carga?"
+msgstr "¿Cuál es la velocidad de vuelo de una golondrina sin carga?"
 
 #: src/js/components/cp-wizard.ts:121
 msgid "An African, or"
-msgstr "Un africano, o"
+msgstr "¿Una golondrina africana"
 
 #: src/js/components/cp-wizard.ts:122
 msgid "A European Swallow?"
-msgstr "Un trago del europeo?"
+msgstr "o una europea?"
 
 #: src/js/components/cp-wizard.ts:128
 msgid "Where does the character appear usually?"
-msgstr "¿Dónde aparece el carácter generalmente?"
+msgstr "¿Dónde aparece el carácter normalmente?"
 
 #: src/js/components/cp-wizard.ts:129
 msgid "Africa <small>(without Arabic)</small>"
@@ -43,11 +40,11 @@ msgstr "África <small>(sin árabe)</small>"
 
 #: src/js/components/cp-wizard.ts:130
 msgid "America <small>(originally, <i>e. g.</i> Cherokee, not Latin)</small>"
-msgstr "América <small>(originalmente, <i>p. ej.</i> Cherokee, no latino)</small>"
+msgstr "América <small>(originariamente, p. ej. cheroqui, no latino)</small>"
 
 #: src/js/components/cp-wizard.ts:131
 msgid "Europe <small>(Latin, Cyrillic, …)</small>"
-msgstr "Europa <small>(Latino, cirílico,...)</small>"
+msgstr "Europa <small>(latino, cirílico,...)</small>"
 
 #: src/js/components/cp-wizard.ts:132
 msgid "Middle East"
@@ -59,7 +56,7 @@ msgstr "Asia Central"
 
 #: src/js/components/cp-wizard.ts:134
 msgid "East Asia <small>(Chinese, Korean, Japanese, …)</small>"
-msgstr "Asia oriental <small>(Chino, Coreano, Japonés,...)</small>"
+msgstr "Asia oriental <small>(chino, coreano, japonés,...)</small>"
 
 #: src/js/components/cp-wizard.ts:135
 msgid "South Asia <small>(Indian)</small>"
@@ -67,7 +64,7 @@ msgstr "Asia del Sur <small>(India)</small>"
 
 #: src/js/components/cp-wizard.ts:136
 msgid "Southeast Asia <small>(Thai, Khmer, …)</small>"
-msgstr "Asia Sur-Oriental <small>(Tailandés, Khmer,...)</small>"
+msgstr "Asia suroriental <small>(tailandés, jemer,...)</small>"
 
 #: src/js/components/cp-wizard.ts:137
 msgid "Philippines, Indonesia, Oceania"
@@ -82,7 +79,7 @@ msgstr "En ninguna parte específica"
 #: src/js/components/cp-wizard.ts:205 src/js/components/cp-wizard.ts:219
 #: src/js/components/cp-wizard.ts:234 src/js/components/cp-wizard.ts:259
 msgid "I don’t know"
-msgstr "No sé"
+msgstr "No lo sé"
 
 #: src/js/components/cp-wizard.ts:148
 msgid "Is it a number of any kind?"
@@ -98,27 +95,27 @@ msgstr "No"
 
 #: src/js/components/cp-wizard.ts:162
 msgid "Has the character a case (upper, lower, title)?"
-msgstr "¿Tiene el carácter de un caso (mayúscula, minúscula, título)?"
+msgstr "¿El carácter tiene mayusculación (caja alta, baja, de título)?"
 
 #: src/js/components/cp-wizard.ts:163
 msgid "Yes, it’s lowercase"
-msgstr "Sí, es minúscula"
+msgstr "Sí, es minúsculo"
 
 #: src/js/components/cp-wizard.ts:164
 msgid "Yes, it’s uppercase"
-msgstr "Sí, es mayúscula"
+msgstr "Sí, es mayúsculo"
 
 #: src/js/components/cp-wizard.ts:165
 msgid "Yes, it’s titlecase"
-msgstr "Sí, es titulo"
+msgstr "Sí, es de título"
 
 #: src/js/components/cp-wizard.ts:166
 msgid "Yes, but I don’t know the case"
-msgstr "Sí, pero no sé la grafía"
+msgstr "Sí, pero no conozco la caja"
 
 #: src/js/components/cp-wizard.ts:167
 msgid "No, it’s uncased"
-msgstr "No, no tiene un caso"
+msgstr "No, no tiene caja"
 
 #: src/js/components/cp-wizard.ts:185
 msgid "Is the character some kind of symbol or dingbat?"
@@ -186,27 +183,27 @@ msgstr "¿Es un carácter arcaico o está en uso hoy en día?"
 
 #: src/js/components/cp-wizard.ts:257
 msgid "Yep, noone would use that anymore!"
-msgstr "Sí, nadie usaría eso ya!"
+msgstr "Sí, nadie lo utilizaría ya"
 
 #: src/js/components/cp-wizard.ts:258
 msgid "Nah, seen it yesterday in the newspaper"
-msgstr "No, lo visto ayer en el periódico"
+msgstr "No, lo he visto ayer en el periódico"
 
 #: src/js/components/cp-wizard.ts:270
 msgid "Do you know the number of strokes the character has?"
-msgstr "¿Conoces el número de trazos que el carácter tiene?"
+msgstr "¿Conoce el número de trazos que tiene el carácter?"
 
 #: src/js/components/cp-wizard.ts:271
 msgid "This much"
-msgstr "Tanto"
+msgstr "Estos"
 
 #: src/js/components/cp-wizard.ts:272
 msgid "Nope, never counted them"
-msgstr "No, nunca les contaron"
+msgstr "No, nunca los he contado"
 
 #: src/js/components/cp-wizard.ts:282
 msgid "Do you happen to know the meaning of the character?"
-msgstr "¿Le sucede a saber el significado del cáracter?"
+msgstr "¿Conoce el significado del carácter?"
 
 #: src/js/components/cp-wizard.ts:283
 msgid "This is (part of) what I’m looking for"
@@ -253,109 +250,197 @@ msgid "CSS"
 msgstr "CSS"
 
 #: src/js/components/cp-representations.ts:49
+msgid "Excel"
+msgstr ""
+
+#: src/js/components/cp-representations.ts:51
 msgid "Go"
 msgstr "Go"
 
-#: src/js/components/cp-representations.ts:51
+#: src/js/components/cp-representations.ts:53
 msgid "JavaScript"
 msgstr "JavaScript"
 
-#: src/js/components/cp-representations.ts:52
+#: src/js/components/cp-representations.ts:54
 msgid "Modern JavaScript"
 msgstr "JavaScript moderno"
 
-#: src/js/components/cp-representations.ts:52
+#: src/js/components/cp-representations.ts:54
 msgid "since ES6"
 msgstr "desde ES6"
 
-#: src/js/components/cp-representations.ts:53
+#: src/js/components/cp-representations.ts:55
 msgid "JSON"
 msgstr "JSON"
 
-#: src/js/components/cp-representations.ts:54
+#: src/js/components/cp-representations.ts:56
 msgid "Java"
 msgstr "Java"
 
-#: src/js/components/cp-representations.ts:56
+#: src/js/components/cp-representations.ts:58
+msgid "Lua"
+msgstr ""
+
+#: src/js/components/cp-representations.ts:60
+msgid "Matlab"
+msgstr ""
+
+#: src/js/components/cp-representations.ts:62
 msgid "Perl"
 msgstr "Perl"
 
-#: src/js/components/cp-representations.ts:60
+#: src/js/components/cp-representations.ts:64
 msgid "PHP"
 msgstr "PHP"
 
-#: src/js/components/cp-representations.ts:62
+#: src/js/components/cp-representations.ts:66
+msgid "PowerShell"
+msgstr ""
+
+#: src/js/components/cp-representations.ts:68
 msgid "Python"
 msgstr "Python"
 
-#: src/js/components/cp-representations.ts:64
+#: src/js/components/cp-representations.ts:70
 msgid "Ruby"
 msgstr "Ruby"
 
-#: src/js/components/cp-representations.ts:66
+#: src/js/components/cp-representations.ts:72
 msgid "Rust"
 msgstr "Rust"
 
-#: src/js/components/cp-representations.ts:171
+#: src/js/components/cp-representations.ts:184
 msgid "(click value to copy)"
 msgstr "(haga clic en el valor para copiar)"
 
-#: src/js/components/cp-representations.ts:208
+#: src/js/components/cp-representations.ts:221
 msgid "remove from favorites"
 msgstr "quitar de favoritos"
 
-#: src/js/components/cp-representations.ts:209
+#: src/js/components/cp-representations.ts:222
 msgid "add to favorites (will be shown by default)"
 msgstr "agregar a favoritas (se mostrará por defecto)"
 
-#: src/js/components/cp-representations.ts:220
+#: src/js/components/cp-representations.ts:233
 msgid "Click the star button next to each label to set this representation as favorite or remove it from the favorites."
 msgstr "Haga clic en el botón de estrella junto a cada etiqueta para establecer esta representación como favorita o eliminarla de las favoritas."
 
-#: src/js/components/cp-representations.ts:221
+#: src/js/components/cp-representations.ts:234
 msgid "Favorites will be shown initially."
 msgstr "Las favoritas se mostrarán inicialmente."
 
-#: src/js/components/cp-representations.ts:222
+#: src/js/components/cp-representations.ts:235
 msgid "(Favorites are stored locally on your computer and never sent over the internet.)"
-msgstr "(Las favoritas se almacenan localmente en su computadora y nunca se envían a través de Internet)."
+msgstr "(Los favoritos se almacenan localmente en su equipo y no se envían nunca por Internet)"
 
-#: src/js/components/cp-representations.ts:227
+#: src/js/components/cp-representations.ts:240
 msgid "hide all but favorites"
 msgstr "ocultar todo menos las favoritas"
 
-#: src/js/components/cp-representations.ts:227
+#: src/js/components/cp-representations.ts:240
 msgid "show more"
 msgstr "mostrar más"
 
-#: src/js/components/cp-btn-embed.ts:25
+#: src/js/components/cp-btn-embed.ts:27
 msgid "embed this codepoint"
 msgstr "empotrar este punto de código"
 
 #: src/js/components/cp-btn-embed.ts:29
-#: src/js/components/cp-search-property.ts:105 src/js/components/cp-menu.ts:92
-msgid "close"
-msgstr "cerrar"
-
-#: src/js/components/cp-btn-embed.ts:31
 msgid "Embed this codepoint in your own website by copy- and pasting the following HTML snippet:"
 msgstr ""
 
-#: src/js/components/cp-btn-embed.ts:36
+#: src/js/components/cp-btn-embed.ts:34
 msgid "If you want, you can freely change width and height to meet your needs. The layout will adapt accordingly."
 msgstr ""
 
-#: src/js/components/cp-btn-embed.ts:37
+#: src/js/components/cp-btn-embed.ts:35
 msgid "On platforms that support the oEmbed standard, e.g. WordPress, embedding is even easier:"
 msgstr ""
 
-#: src/js/components/cp-btn-embed.ts:38
+#: src/js/components/cp-btn-embed.ts:36
 msgid "Simply paste the web address of this page in the editor and the editor will do the rest:"
-msgstr ""
+msgstr "Simplemente pegue la dirección web de esta página en el editor y este se encargará del resto:"
+
+#: src/js/components/cp-dialog.ts:61
+#: src/js/components/cp-search-property.ts:105
+msgid "close"
+msgstr "cerrar"
 
 #: src/js/components/cp-search-boolean.ts:84
 msgid "click to include or exclude this property"
 msgstr "haga clic para incluir o excluir esta propiedad"
+
+#: src/js/components/cp-menu.ts:86
+msgid "start page"
+msgstr "página de inicio"
+
+#: src/js/components/cp-menu.ts:89
+msgid "scripts"
+msgstr "escrituras"
+
+#: src/js/components/cp-menu.ts:92 src/js/components/cp-menu.ts:113
+msgid "search"
+msgstr "buscar"
+
+#: src/js/components/cp-menu.ts:95
+msgid "analyze"
+msgstr ""
+
+#: src/js/components/cp-menu.ts:98
+msgid "random page"
+msgstr "página aleatoria"
+
+#: src/js/components/cp-menu.ts:101
+msgid "glossary"
+msgstr "glosario"
+
+#: src/js/components/cp-menu.ts:104
+msgid "about this site"
+msgstr "acerca de este sitio"
+
+#: src/js/components/cp-menu.ts:110
+msgid "Search code points:"
+msgstr "Busca puntos de código:"
+
+#: src/js/components/cp-menu.ts:118
+msgid "Settings"
+msgstr "Configuración"
+
+#: src/js/components/cp-glossary-term.ts:80
+msgid "show definition"
+msgstr "mostrar definición"
+
+#: src/js/components/cp-glossary-term.ts:103
+msgid "no information found for this term"
+msgstr "no se encontró información para este término"
+
+#: src/js/components/cp-language.ts:34
+msgid "choose language:"
+msgstr "elija un idioma:"
+
+#: src/js/components/cp-darkmode.ts:30
+msgid "switch to light mode (currently active: dark mode)"
+msgstr "cambiar a modo claro (actualmente activo: modo oscuro)"
+
+#: src/js/components/cp-darkmode.ts:32
+msgid "switch to browser default (currently active: light mode)"
+msgstr "cambiar a valor predeterminado del navegador (actualmente activo: modo claro)"
+
+#: src/js/components/cp-darkmode.ts:33
+msgid "switch to dark mode (currently active: browser default)"
+msgstr "cambiar a modo oscuro (actualmente activo: valor predeterminado del navegador)"
+
+#: src/js/components/cp-darkmode.ts:38
+msgid "dark / light mode:"
+msgstr "modo oscuro / claro:"
+
+#: src/js/components/cp-btn-share.ts:115
+msgid "Share on:"
+msgstr ""
+
+#: src/js/components/cp-copy.ts:36
+msgid "copied"
+msgstr "copiado"
 
 #: src/js/components/cp-search-property.ts:99
 msgid "click to choose a value for this property"
@@ -369,67 +454,10 @@ msgstr "seleccionar todo"
 msgid "deselect all"
 msgstr "deseleccionar todo"
 
-#: src/js/components/cp-glossary-term.ts:80
-msgid "show definition"
-msgstr "mostrar definición"
-
-#: src/js/components/cp-glossary-term.ts:103
-msgid "no information found for this term"
-msgstr "no se encontró información para este término"
-
-#: src/js/components/cp-darkmode.ts:30
-msgid "switch to light mode (currently active: dark mode)"
+#: src/js/modules/search.js:16
+msgid "Really remove all selected values?"
 msgstr ""
 
-#: src/js/components/cp-darkmode.ts:32
-msgid "switch to browser default (currently active: light mode)"
-msgstr ""
-
-#: src/js/components/cp-darkmode.ts:33
-msgid "switch to dark mode (currently active: browser default)"
-msgstr ""
-
-#: src/js/components/cp-darkmode.ts:39
-msgid "dark / light mode:"
-msgstr "modo oscuro / claro:"
-
-#: src/js/components/cp-language.ts:27
-msgid "choose language:"
-msgstr "elige lengua:"
-
-#: src/js/components/cp-menu.ts:97
-msgid "start page"
-msgstr "página de inicio"
-
-#: src/js/components/cp-menu.ts:100
-msgid "scripts"
-msgstr "escrituras"
-
-#: src/js/components/cp-menu.ts:103 src/js/components/cp-menu.ts:121
-msgid "search"
-msgstr "buscar"
-
-#: src/js/components/cp-menu.ts:106
-msgid "random page"
-msgstr "página aleatoria"
-
-#: src/js/components/cp-menu.ts:109
-msgid "glossary"
-msgstr "glosario"
-
-#: src/js/components/cp-menu.ts:112
-msgid "about this site"
-msgstr "acerca de este sitio"
-
-#: src/js/components/cp-menu.ts:118
-msgid "Search code points:"
-msgstr "Busca puntos de código:"
-
-#: src/js/components/cp-menu.ts:128
-msgid "Settings"
-msgstr "Configuración"
-
-#: src/js/_glossary.js:14
+#: src/js/modules/glossary.js:14
 msgid "top"
 msgstr "primera posición"
-

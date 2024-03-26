@@ -1,345 +1,463 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: codepoints\n"
-"Language-Team: Polish\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2016-06-16 03:54-0400\n"
+"POT-Creation-Date: 2024-03-25 20:43+0000\n"
+"PO-Revision-Date: 2024-03-26 15:13+0100\n"
+"Last-Translator: Manuel Strehl <translate@manuel-strehl.de>\n"
+"Language-Team: Polish\n"
 "Language: pl_PL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2016-03-22 20:31+0000\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: crowdin.com\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 "X-Crowdin-Project: codepoints\n"
+"X-Crowdin-Project-ID: 9546\n"
 "X-Crowdin-Language: pl\n"
 "X-Crowdin-File: js.pot\n"
-"Last-Translator: boldewyn <net.crowdin@manuel-strehl.de>\n"
+"X-Crowdin-File-ID: 7102\n"
+"X-Generator: Poedit 3.0.1\n"
 
-#: src/js/components/back_to_search.js:18
-msgid "Back to search results"
-msgstr ""
-
-#: src/js/components/cp_representations.js:28
-#: src/js/components/cp_representations.js:31
-msgid "show more"
-msgstr "pokaż więcej"
-
-#: src/js/components/cp_representations.js:31
-msgid "hide"
-msgstr "ukryj"
-
-#: src/js/components/cp_representations.js:36
-msgid "RFC 5137"
-msgstr "RFC 5137"
-
-#: src/js/components/cp_representations.js:40
-msgid "Python"
-msgstr "Python"
-
-#: src/js/components/cp_representations.js:53
-msgid "Ruby"
-msgstr "Ruby"
-
-#: src/js/components/cp_representations.js:57
-msgid "Perl"
-msgstr "Perl"
-
-#: src/js/components/cp_representations.js:61
-msgid "JavaScript, JSON and Java"
-msgstr "JavaScript, JSON i Java"
-
-#: src/js/components/cp_representations.js:67
-msgid "C"
-msgstr "C"
-
-#: src/js/components/cp_representations.js:80
-msgid "CSS"
-msgstr "CSS"
-
-#: src/js/components/cp_font.js:31
-msgid "Font used above"
-msgstr "Font użyty powyżej"
-
-#: src/js/wizard.js:118
-msgid "Finished!"
-msgstr "Gotowe!"
-
-#: src/js/wizard.js:131
-msgid "Please wait a second, we’re making those %s answers productive."
-msgstr "Proszę zaczekać, robimy te odpowiedzi %s produktywne."
-
-#: src/js/wizard.js:153
-msgid "Enough questions! Search now."
-msgstr "Wystarczy pytań! Teraz szukaj."
-
-#: src/js/wizard.js:179
+#: src/js/components/cp-wizard.ts:120
 msgid "What’s the airspeed velocity of an unladen swallow?"
 msgstr "Jaka jest prękość w powietrzu nieobciążonej jaskółki?"
 
-#: src/js/wizard.js:180
+#: src/js/components/cp-wizard.ts:121
 msgid "An African, or"
 msgstr "Afrykańska, czy"
 
-#: src/js/wizard.js:181
+#: src/js/components/cp-wizard.ts:122
 msgid "A European Swallow?"
 msgstr "Jaskółka europejska?"
 
-#: src/js/wizard.js:185
+#: src/js/components/cp-wizard.ts:128
 msgid "Where does the character appear usually?"
 msgstr "Gdzie ten znak zwykle występuje?"
 
-#: src/js/wizard.js:186
+#: src/js/components/cp-wizard.ts:129
 msgid "Africa <small>(without Arabic)</small>"
 msgstr "Afryka <small>(bez Arabii)</small>"
 
-#: src/js/wizard.js:187
+#: src/js/components/cp-wizard.ts:130
 msgid "America <small>(originally, <i>e. g.</i> Cherokee, not Latin)</small>"
 msgstr "America <small>(pierwotna, <i>n. p.</i> Czirokezi, nie Łacińska)</small>"
 
-#: src/js/wizard.js:188
+#: src/js/components/cp-wizard.ts:131
 msgid "Europe <small>(Latin, Cyrillic, …)</small>"
 msgstr "Europa <small>(alfabet łaciński, cyrylica …)</small>"
 
-#: src/js/wizard.js:189
+#: src/js/components/cp-wizard.ts:132
 msgid "Middle East"
 msgstr "Środkowy Wschód"
 
-#: src/js/wizard.js:190
+#: src/js/components/cp-wizard.ts:133
 msgid "Central Asia"
 msgstr "Azja Centralna"
 
-#: src/js/wizard.js:191
+#: src/js/components/cp-wizard.ts:134
 msgid "East Asia <small>(Chinese, Korean, Japanese, …)</small>"
 msgstr "Azja Wschodnia <small>(chiński, koreański, japoński, …)</small>"
 
-#: src/js/wizard.js:192
+#: src/js/components/cp-wizard.ts:135
 msgid "South Asia <small>(Indian)</small>"
 msgstr "Azja Południowa <small>(indyjskie)</small>"
 
-#: src/js/wizard.js:193
+#: src/js/components/cp-wizard.ts:136
 msgid "Southeast Asia <small>(Thai, Khmer, …)</small>"
 msgstr "Południowowschodnia Azja <small>(tajski, kmerski, …)</small>"
 
-#: src/js/wizard.js:194
+#: src/js/components/cp-wizard.ts:137
 msgid "Philippines, Indonesia, Oceania"
 msgstr "Filipiny, Indonezja, Oceania"
 
-#: src/js/wizard.js:195
+#: src/js/components/cp-wizard.ts:138
 msgid "Nowhere specific"
 msgstr "Nigdzie konkretnie"
 
-#: src/js/wizard.js:196
-#: src/js/wizard.js:203
-#: src/js/wizard.js:213
-#: src/js/wizard.js:221
-#: src/js/wizard.js:228
-#: src/js/wizard.js:235
-#: src/js/wizard.js:243
-#: src/js/wizard.js:256
+#: src/js/components/cp-wizard.ts:139 src/js/components/cp-wizard.ts:151
+#: src/js/components/cp-wizard.ts:168 src/js/components/cp-wizard.ts:189
+#: src/js/components/cp-wizard.ts:205 src/js/components/cp-wizard.ts:219
+#: src/js/components/cp-wizard.ts:234 src/js/components/cp-wizard.ts:259
 msgid "I don’t know"
 msgstr "Nie wiem"
 
-#: src/js/wizard.js:200
+#: src/js/components/cp-wizard.ts:148
 msgid "Is it a number of any kind?"
 msgstr "Czy to jest jakiegoś rodzaju cyfra?"
 
-#: src/js/wizard.js:201
-#: src/js/wizard.js:226
+#: src/js/components/cp-wizard.ts:149 src/js/components/cp-wizard.ts:203
 msgid "Yes"
 msgstr "Tak"
 
-#: src/js/wizard.js:202
-#: src/js/wizard.js:227
+#: src/js/components/cp-wizard.ts:150 src/js/components/cp-wizard.ts:204
 msgid "No"
 msgstr "Nie"
 
-#: src/js/wizard.js:207
+#: src/js/components/cp-wizard.ts:162
 msgid "Has the character a case (upper, lower, title)?"
 msgstr "Czy znak ma kasztowość (dolna, górna, tytułowa kaszta)?"
 
-#: src/js/wizard.js:208
+#: src/js/components/cp-wizard.ts:163
 msgid "Yes, it’s lowercase"
 msgstr "Tak, to jest dolna kaszta"
 
-#: src/js/wizard.js:209
+#: src/js/components/cp-wizard.ts:164
 msgid "Yes, it’s uppercase"
 msgstr "Tak, to jest górna kaszta"
 
-#: src/js/wizard.js:210
+#: src/js/components/cp-wizard.ts:165
 msgid "Yes, it’s titlecase"
 msgstr "Tak, to jest kaszta tytułowa"
 
-#: src/js/wizard.js:211
+#: src/js/components/cp-wizard.ts:166
 msgid "Yes, but I don’t know the case"
 msgstr "Tak, ale nie wiem, jaka kaszta"
 
-#: src/js/wizard.js:212
+#: src/js/components/cp-wizard.ts:167
 msgid "No, it’s uncased"
 msgstr "Nie, znak nie ma kaszty"
 
-#: src/js/wizard.js:217
+#: src/js/components/cp-wizard.ts:185
 msgid "Is the character some kind of symbol or dingbat?"
 msgstr "Czy znak jest jakimś symbolem lub ornamentem?"
 
-#: src/js/wizard.js:218
+#: src/js/components/cp-wizard.ts:186
 msgid "Yes <small>(It isn’t part of usually written text)</small>"
 msgstr "Tak <small>(Izwykle nie występuje w tekstach)</small>"
 
-#: src/js/wizard.js:219
+#: src/js/components/cp-wizard.ts:187
 msgid "No <small>(But it is some kind of control character)</small>"
 msgstr "Nie <small>(ale to jest pewnego rodzaju znak sterujący)</small>"
 
-#: src/js/wizard.js:220
+#: src/js/components/cp-wizard.ts:188
 msgid "No <small>(It may appear in text, like letters or punctuation)</small>"
 msgstr "Nie <small>( pojawić się w tekście, jak litery lub znaki interpunkcyjne)</small>"
 
-#: src/js/wizard.js:225
+#: src/js/components/cp-wizard.ts:202
 msgid "Is the character some kind of punctuation?"
 msgstr "Czy znak jest jakimś znakiem interpunkcyjnym?"
 
-#: src/js/wizard.js:232
+#: src/js/components/cp-wizard.ts:216
 msgid "Is the character incomplete on its own, like a diacritic sign?"
 msgstr "Czy znak jest niesamodzielny, np. jest znakiem diakrytycznym?"
 
-#: src/js/wizard.js:233
+#: src/js/components/cp-wizard.ts:217
 msgid "Yes <small>(It’s usually found together with another character)</small>"
 msgstr "Tak <small>(zazwyczaj występuje razem z innym znakiem)</small>"
 
-#: src/js/wizard.js:234
+#: src/js/components/cp-wizard.ts:218
 msgid "No <small>(It stands on its own)</small>"
 msgstr "Nie <small>(występuje samodzielnie)</small>"
 
-#: src/js/wizard.js:239
+#: src/js/components/cp-wizard.ts:230
 msgid "Is the character composed of two others?"
 msgstr "Czy znak jest złożony z dwóch innych znaków?"
 
-#: src/js/wizard.js:240
+#: src/js/components/cp-wizard.ts:231
 msgid "Yes <small>(It is based on two or more other characters)</small>"
 msgstr "Tak <small>(Jest utworzony z dwóch lub więcej innych znaków)</small>"
 
-#: src/js/wizard.js:241
+#: src/js/components/cp-wizard.ts:232
 msgid "Sort of <small>(It’s got some quiggly lines or dots, like “Ä” or “ٷ”)</small>"
 msgstr "W pewnym sensie <small>(zawiera faliste linie lub lub kropki, jak \"Ä\" lub \"ٷ\")</small>"
 
-#: src/js/wizard.js:242
+#: src/js/components/cp-wizard.ts:233
 msgid "No <small>(It is a genuine character)</small>"
 msgstr "Nie <small>(jest to prawdziwy znak)</small>"
 
-#: src/js/wizard.js:247
+#: src/js/components/cp-wizard.ts:245
 msgid "Off the top of your head, can the character be confused with another one?"
 msgstr "Bez zastanowienia, czy znak może być mylony z innym?"
 
-#: src/js/wizard.js:248
+#: src/js/components/cp-wizard.ts:246
 msgid "Yes <small>(Like latin “A” and greek “Α”, alpha)</small>"
 msgstr "Tak <small>(jak łacińskie \"A\" i greckie \"Α\", alfa)</small>"
 
-#: src/js/wizard.js:249
+#: src/js/components/cp-wizard.ts:247
 msgid "No <small>(I have no such pair in mind)</small>"
 msgstr "Nie <small>(żadna taka para nie przychodzi mi do głowy)</small>"
 
-#: src/js/wizard.js:253
+#: src/js/components/cp-wizard.ts:256
 msgid "Is it an archaic character or is it in use today?"
 msgstr "Jest to znak archaiczny czy nadal jest w użyciu?"
 
-#: src/js/wizard.js:254
+#: src/js/components/cp-wizard.ts:257
 msgid "Yep, noone would use that anymore!"
 msgstr "Tak, nikt go już teraz nie używa!"
 
-#: src/js/wizard.js:255
+#: src/js/components/cp-wizard.ts:258
 msgid "Nah, seen it yesterday in the newspaper"
 msgstr "Tak, widziałem go wczoraj w gazecie"
 
-#: src/js/wizard.js:260
+#: src/js/components/cp-wizard.ts:270
 msgid "Do you know the number of strokes the character has?"
 msgstr "Czy wiesz, z ilu kresek składa się znak?"
 
-#: src/js/wizard.js:261
+#: src/js/components/cp-wizard.ts:271
 msgid "This much"
 msgstr "Z tylu"
 
-#: src/js/wizard.js:262
+#: src/js/components/cp-wizard.ts:272
 msgid "Nope, never counted them"
 msgstr "Nie,"
 
-#: src/js/wizard.js:266
+#: src/js/components/cp-wizard.ts:282
 msgid "Do you happen to know the meaning of the character?"
 msgstr "Czy może znasz znaczenie znaku?"
 
-#: src/js/wizard.js:267
+#: src/js/components/cp-wizard.ts:283
 msgid "This is (part of) what I’m looking for"
 msgstr "To jest (częściowo) to, czego szukam"
 
-#: src/js/wizard.js:268
+#: src/js/components/cp-wizard.ts:284
 msgid "I don’t speak that language"
 msgstr "Nie mówię w tym języku"
 
-#: src/js/about.js:24
-msgid "Read on:"
-msgstr "Czytaj dalej:"
-
-#: src/js/codepoint.js:15
-msgid "Copy to Clipboard"
+#: src/js/components/cp-wizard.ts:375
+msgid "You search for a specific character?"
 msgstr ""
 
-#: src/js/codepoint.js:32
-msgid "Done!"
+#: src/js/components/cp-wizard.ts:376
+msgid "Answer the following questions and we try to figure out candidates."
 msgstr ""
 
-#: src/js/codepoint.js:57
-msgid "Embed this codepoint"
-msgstr "Osadź tę współrzędną kodową"
+#: src/js/components/cp-wizard.ts:389
+msgid "Enough questions! Search now."
+msgstr "Wystarczy pytań! Teraz szukaj."
 
-#: src/js/effects/add_to_top_link.js:17
+#: src/js/components/cp-representations.ts:31
+msgid "RFC 5137"
+msgstr "RFC 5137"
+
+#: src/js/components/cp-representations.ts:35
+msgid "Bash and Zsh"
+msgstr ""
+
+#: src/js/components/cp-representations.ts:35
+msgid "inside <code>echo -e</code>"
+msgstr ""
+
+#: src/js/components/cp-representations.ts:37
+msgid "C and C++"
+msgstr ""
+
+#: src/js/components/cp-representations.ts:39
+msgid "C#"
+msgstr ""
+
+#: src/js/components/cp-representations.ts:41
+msgid "CSS"
+msgstr "CSS"
+
+#: src/js/components/cp-representations.ts:49
+msgid "Excel"
+msgstr ""
+
+#: src/js/components/cp-representations.ts:51
+msgid "Go"
+msgstr ""
+
+#: src/js/components/cp-representations.ts:53
+msgid "JavaScript"
+msgstr ""
+
+#: src/js/components/cp-representations.ts:54
+msgid "Modern JavaScript"
+msgstr ""
+
+#: src/js/components/cp-representations.ts:54
+msgid "since ES6"
+msgstr ""
+
+#: src/js/components/cp-representations.ts:55
+msgid "JSON"
+msgstr ""
+
+#: src/js/components/cp-representations.ts:56
+msgid "Java"
+msgstr ""
+
+#: src/js/components/cp-representations.ts:58
+msgid "Lua"
+msgstr ""
+
+#: src/js/components/cp-representations.ts:60
+msgid "Matlab"
+msgstr ""
+
+#: src/js/components/cp-representations.ts:62
+msgid "Perl"
+msgstr "Perl"
+
+#: src/js/components/cp-representations.ts:64
+msgid "PHP"
+msgstr ""
+
+#: src/js/components/cp-representations.ts:66
+msgid "PowerShell"
+msgstr ""
+
+#: src/js/components/cp-representations.ts:68
+msgid "Python"
+msgstr "Python"
+
+#: src/js/components/cp-representations.ts:70
+msgid "Ruby"
+msgstr "Ruby"
+
+#: src/js/components/cp-representations.ts:72
+msgid "Rust"
+msgstr ""
+
+#: src/js/components/cp-representations.ts:184
+msgid "(click value to copy)"
+msgstr ""
+
+#: src/js/components/cp-representations.ts:221
+msgid "remove from favorites"
+msgstr ""
+
+#: src/js/components/cp-representations.ts:222
+msgid "add to favorites (will be shown by default)"
+msgstr ""
+
+#: src/js/components/cp-representations.ts:233
+msgid "Click the star button next to each label to set this representation as favorite or remove it from the favorites."
+msgstr ""
+
+#: src/js/components/cp-representations.ts:234
+msgid "Favorites will be shown initially."
+msgstr ""
+
+#: src/js/components/cp-representations.ts:235
+msgid "(Favorites are stored locally on your computer and never sent over the internet.)"
+msgstr ""
+
+#: src/js/components/cp-representations.ts:240
+msgid "hide all but favorites"
+msgstr ""
+
+#: src/js/components/cp-representations.ts:240
+msgid "show more"
+msgstr "pokaż więcej"
+
+#: src/js/components/cp-btn-embed.ts:27
+msgid "embed this codepoint"
+msgstr ""
+
+#: src/js/components/cp-btn-embed.ts:29
+msgid "Embed this codepoint in your own website by copy- and pasting the following HTML snippet:"
+msgstr ""
+
+#: src/js/components/cp-btn-embed.ts:34
+msgid "If you want, you can freely change width and height to meet your needs. The layout will adapt accordingly."
+msgstr ""
+
+#: src/js/components/cp-btn-embed.ts:35
+msgid "On platforms that support the oEmbed standard, e.g. WordPress, embedding is even easier:"
+msgstr ""
+
+#: src/js/components/cp-btn-embed.ts:36
+msgid "Simply paste the web address of this page in the editor and the editor will do the rest:"
+msgstr ""
+
+#: src/js/components/cp-dialog.ts:61
+#: src/js/components/cp-search-property.ts:105
+msgid "close"
+msgstr ""
+
+#: src/js/components/cp-search-boolean.ts:84
+msgid "click to include or exclude this property"
+msgstr ""
+
+#: src/js/components/cp-menu.ts:86
+msgid "start page"
+msgstr ""
+
+#: src/js/components/cp-menu.ts:89
+msgid "scripts"
+msgstr ""
+
+#: src/js/components/cp-menu.ts:92 src/js/components/cp-menu.ts:113
+msgid "search"
+msgstr ""
+
+#: src/js/components/cp-menu.ts:95
+msgid "analyze"
+msgstr ""
+
+#: src/js/components/cp-menu.ts:98
+msgid "random page"
+msgstr ""
+
+#: src/js/components/cp-menu.ts:101
+msgid "glossary"
+msgstr ""
+
+#: src/js/components/cp-menu.ts:104
+msgid "about this site"
+msgstr ""
+
+#: src/js/components/cp-menu.ts:110
+msgid "Search code points:"
+msgstr ""
+
+#: src/js/components/cp-menu.ts:118
+msgid "Settings"
+msgstr ""
+
+#: src/js/components/cp-glossary-term.ts:80
+msgid "show definition"
+msgstr ""
+
+#: src/js/components/cp-glossary-term.ts:103
+msgid "no information found for this term"
+msgstr ""
+
+#: src/js/components/cp-language.ts:34
+msgid "choose language:"
+msgstr ""
+
+#: src/js/components/cp-darkmode.ts:30
+msgid "switch to light mode (currently active: dark mode)"
+msgstr ""
+
+#: src/js/components/cp-darkmode.ts:32
+msgid "switch to browser default (currently active: light mode)"
+msgstr ""
+
+#: src/js/components/cp-darkmode.ts:33
+msgid "switch to dark mode (currently active: browser default)"
+msgstr ""
+
+#: src/js/components/cp-darkmode.ts:38
+msgid "dark / light mode:"
+msgstr ""
+
+#: src/js/components/cp-btn-share.ts:115
+msgid "Share on:"
+msgstr ""
+
+#: src/js/components/cp-copy.ts:36
+msgid "copied"
+msgstr ""
+
+#: src/js/components/cp-search-property.ts:99
+msgid "click to choose a value for this property"
+msgstr ""
+
+#: src/js/components/cp-search-property.ts:106
+msgid "select all"
+msgstr ""
+
+#: src/js/components/cp-search-property.ts:107
+msgid "deselect all"
+msgstr ""
+
+#: src/js/modules/search.js:16
+msgid "Really remove all selected values?"
+msgstr ""
+
+#: src/js/modules/glossary.js:14
 msgid "top"
 msgstr "do góry"
-
-#: src/js/effects/add_dropdown_search.js:19
-msgid "Extended Search"
-msgstr "Zaawansowane szukanie"
-
-#: src/js/effects/add_dropdown_search.js:25
-msgid "Find My Codepoint"
-msgstr "Znajdź moją współrzędną kodową"
-
-#: src/js/main.js:66
-msgid "Hide this message."
-msgstr "Ukryj ten komunikat."
-
-#: src/js/searchform.js:13
-msgid "+ add new query"
-msgstr "+ Dodaj nową kwerendę"
-
-#: src/js/searchform.js:71
-msgid "click to change"
-msgstr "kliknij, aby zmienić"
-
-#: src/js/searchform.js:72
-msgid "remove"
-msgstr "usuń"
-
-#: src/js/scripts.js:26
-msgid "(%s codepoints)"
-msgstr "(%s współrzędnych)"
-
-#: src/js/scripts.js:28
-#: src/js/scripts.js:172
-msgid "Source: %s"
-msgstr "Źródło: %s"
-
-#: src/js/scripts.js:68
-msgid "Native, Rare and Historic Scripts"
-msgstr "Rdzenne, rzadkie i historyczne skrypty"
-
-#: src/js/scripts.js:72
-msgid "Scripts used in %s"
-msgstr "Skrypty używane w %s"
-
-#: src/js/scripts.js:82
-msgid "We don’t know about %s’s scripts, sorry!"
-msgstr "Nie wiemy o %s skryptów, przepraszamy!"
-
-#: src/js/scripts.js:84
-msgid "Nothing Found for %s"
-msgstr "Nic nie znaleziono dla %s"
-

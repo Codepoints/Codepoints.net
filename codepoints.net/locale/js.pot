@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-11 06:23+0000\n"
+"POT-Creation-Date: 2024-03-25 20:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,15 +16,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: src/js/components/cp-dialog.ts:61
-#: src/js/components/cp-search-property.ts:105
-msgid "close"
-msgstr ""
-
-#: src/js/components/cp-copy.ts:36
-msgid "copied"
-msgstr ""
 
 #: src/js/components/cp-wizard.ts:120
 msgid "What’s the airspeed velocity of an unladen swallow?"
@@ -260,82 +251,98 @@ msgid "CSS"
 msgstr ""
 
 #: src/js/components/cp-representations.ts:49
-msgid "Go"
+msgid "Excel"
 msgstr ""
 
 #: src/js/components/cp-representations.ts:51
-msgid "JavaScript"
-msgstr ""
-
-#: src/js/components/cp-representations.ts:52
-msgid "Modern JavaScript"
-msgstr ""
-
-#: src/js/components/cp-representations.ts:52
-msgid "since ES6"
+msgid "Go"
 msgstr ""
 
 #: src/js/components/cp-representations.ts:53
-msgid "JSON"
+msgid "JavaScript"
 msgstr ""
 
 #: src/js/components/cp-representations.ts:54
-msgid "Java"
+msgid "Modern JavaScript"
+msgstr ""
+
+#: src/js/components/cp-representations.ts:54
+msgid "since ES6"
+msgstr ""
+
+#: src/js/components/cp-representations.ts:55
+msgid "JSON"
 msgstr ""
 
 #: src/js/components/cp-representations.ts:56
-msgid "Perl"
+msgid "Java"
+msgstr ""
+
+#: src/js/components/cp-representations.ts:58
+msgid "Lua"
 msgstr ""
 
 #: src/js/components/cp-representations.ts:60
-msgid "PHP"
+msgid "Matlab"
 msgstr ""
 
 #: src/js/components/cp-representations.ts:62
-msgid "Python"
+msgid "Perl"
 msgstr ""
 
 #: src/js/components/cp-representations.ts:64
-msgid "Ruby"
+msgid "PHP"
 msgstr ""
 
 #: src/js/components/cp-representations.ts:66
+msgid "PowerShell"
+msgstr ""
+
+#: src/js/components/cp-representations.ts:68
+msgid "Python"
+msgstr ""
+
+#: src/js/components/cp-representations.ts:70
+msgid "Ruby"
+msgstr ""
+
+#: src/js/components/cp-representations.ts:72
 msgid "Rust"
 msgstr ""
 
-#: src/js/components/cp-representations.ts:178
+#: src/js/components/cp-representations.ts:184
 msgid "(click value to copy)"
 msgstr ""
 
-#: src/js/components/cp-representations.ts:215
+#: src/js/components/cp-representations.ts:221
 msgid "remove from favorites"
 msgstr ""
 
-#: src/js/components/cp-representations.ts:216
+#: src/js/components/cp-representations.ts:222
 msgid "add to favorites (will be shown by default)"
 msgstr ""
 
-#: src/js/components/cp-representations.ts:227
+#: src/js/components/cp-representations.ts:233
 msgid ""
 "Click the star button next to each label to set this representation as "
 "favorite or remove it from the favorites."
 msgstr ""
 
-#: src/js/components/cp-representations.ts:228
+#: src/js/components/cp-representations.ts:234
 msgid "Favorites will be shown initially."
 msgstr ""
 
-#: src/js/components/cp-representations.ts:229
+#: src/js/components/cp-representations.ts:235
 msgid ""
 "(Favorites are stored locally on your computer and never sent over the "
 "internet.)"
 msgstr ""
 
-#: src/js/components/cp-representations.ts:234
+#: src/js/components/cp-representations.ts:240
 msgid "hide all but favorites"
 msgstr ""
 
-#: src/js/components/cp-representations.ts:234
+#: src/js/components/cp-representations.ts:240
 msgid "show more"
 msgstr ""
 
@@ -367,52 +374,13 @@ msgid ""
 "do the rest:"
 msgstr ""
 
-#: src/js/components/cp-btn-share.ts:115
-msgid "Share on:"
+#: src/js/components/cp-dialog.ts:61
+#: src/js/components/cp-search-property.ts:105
+msgid "close"
 msgstr ""
 
 #: src/js/components/cp-search-boolean.ts:84
 msgid "click to include or exclude this property"
-msgstr ""
-
-#: src/js/components/cp-search-property.ts:99
-msgid "click to choose a value for this property"
-msgstr ""
-
-#: src/js/components/cp-search-property.ts:106
-msgid "select all"
-msgstr ""
-
-#: src/js/components/cp-search-property.ts:107
-msgid "deselect all"
-msgstr ""
-
-#: src/js/components/cp-glossary-term.ts:80
-msgid "show definition"
-msgstr ""
-
-#: src/js/components/cp-glossary-term.ts:103
-msgid "no information found for this term"
-msgstr ""
-
-#: src/js/components/cp-darkmode.ts:30
-msgid "switch to light mode (currently active: dark mode)"
-msgstr ""
-
-#: src/js/components/cp-darkmode.ts:32
-msgid "switch to browser default (currently active: light mode)"
-msgstr ""
-
-#: src/js/components/cp-darkmode.ts:33
-msgid "switch to dark mode (currently active: browser default)"
-msgstr ""
-
-#: src/js/components/cp-darkmode.ts:38
-msgid "dark / light mode:"
-msgstr ""
-
-#: src/js/components/cp-language.ts:34
-msgid "choose language:"
 msgstr ""
 
 #: src/js/components/cp-menu.ts:86
@@ -451,6 +419,58 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: src/js/_glossary.js:14
+#: src/js/components/cp-glossary-term.ts:80
+msgid "show definition"
+msgstr ""
+
+#: src/js/components/cp-glossary-term.ts:103
+msgid "no information found for this term"
+msgstr ""
+
+#: src/js/components/cp-language.ts:34
+msgid "choose language:"
+msgstr ""
+
+#: src/js/components/cp-darkmode.ts:30
+msgid "switch to light mode (currently active: dark mode)"
+msgstr ""
+
+#: src/js/components/cp-darkmode.ts:32
+msgid "switch to browser default (currently active: light mode)"
+msgstr ""
+
+#: src/js/components/cp-darkmode.ts:33
+msgid "switch to dark mode (currently active: browser default)"
+msgstr ""
+
+#: src/js/components/cp-darkmode.ts:38
+msgid "dark / light mode:"
+msgstr ""
+
+#: src/js/components/cp-btn-share.ts:115
+msgid "Share on:"
+msgstr ""
+
+#: src/js/components/cp-copy.ts:36
+msgid "copied"
+msgstr ""
+
+#: src/js/components/cp-search-property.ts:99
+msgid "click to choose a value for this property"
+msgstr ""
+
+#: src/js/components/cp-search-property.ts:106
+msgid "select all"
+msgstr ""
+
+#: src/js/components/cp-search-property.ts:107
+msgid "deselect all"
+msgstr ""
+
+#: src/js/modules/search.js:16
+msgid "Really remove all selected values?"
+msgstr ""
+
+#: src/js/modules/glossary.js:14
 msgid "top"
 msgstr ""
