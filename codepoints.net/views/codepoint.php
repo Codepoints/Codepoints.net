@@ -176,7 +176,7 @@ include 'partials/header.php'; ?>
             /* empty Unihan properties: skip, b/c unnecessary for most cps */
             (substr($key, 0, 1) === 'k' && ! $value)) { continue; } ?>
         <tr>
-          <th scope="row"><cp-glossary-term term="<?=q($key)?>"><?=q(array_get($info->properties, $key, $key))?></cp-glossary-term></th>
+          <th scope="row"><cp-glossary-term term="<?=q($key)?>"><?=q(array_get($info->properties, $key, $key))?> <small>(<?=q($key)?>)</cp-glossary-term></small></th>
           <td>
           <?php if ($value === '' || $value === null):?>
             <span class="x">—</span>
