@@ -203,7 +203,10 @@ use Codepoints\Unicode\Codepoint;
     _f('{bc, select,
         AL {In bidirectional text it is written as Arabic letter {b_start}from right to left{b_end}.}
         AN {In bidirectional text it is written as Arabic number {b_start}from right to left{b_end}.}
-        EN {In bidirectional text it is written as European number {b_start}from right to left{b_end}.}
+        CS {In bidirectional text it is written as number separator {b_start}according to the number it separates{b_end}.}
+        EN {In bidirectional text it is written as European number {b_start}from left to right{b_end}.}
+        ES {In bidirectional text it is written as European number separator {b_start}from left to right{b_end}.}
+        ET {In bidirectional text it is written as end of a European number, e.g., a currency symbol, {b_start}from left to right{b_end}.}
         FSI {In bidirectional text it sets the {b_start}direction{b_end} of the following text snippet based on its first character.}
         L {In bidirectional text it is written {b_start}from left to right{b_end}.}
         LRE {In bidirectional text it marks the following text snippet as {b_start}left-to-right{b_end}.}

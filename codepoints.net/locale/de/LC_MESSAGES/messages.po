@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: codepoints\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-25 20:43+0000\n"
-"PO-Revision-Date: 2024-03-26 22:55+0100\n"
+"POT-Creation-Date: 2024-03-26 22:06+0000\n"
+"PO-Revision-Date: 2024-03-26 23:08+0100\n"
 "Last-Translator: Manuel Strehl <translate@manuel-strehl.de>\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
@@ -207,7 +207,6 @@ msgid "Yes"
 msgstr "Ja"
 
 #: codepoints.net/lib/Unicode/PropertyInfo/legend_nt.php:4
-#| msgid "Decimal"
 msgid "decimal"
 msgstr "decimal"
 
@@ -221,7 +220,6 @@ msgid "none"
 msgstr ""
 
 #: codepoints.net/lib/Unicode/PropertyInfo/legend_nt.php:7
-#| msgid "Numeric"
 msgid "numeric"
 msgstr "numeric"
 
@@ -3386,7 +3384,6 @@ msgid "copy to clipboard"
 msgstr "in die Zwischenablage kopieren"
 
 #: codepoints.net/views/codepoint.php:70
-#| msgid "embed this codepoint"
 msgid "share this codepoint"
 msgstr "share this codepoint"
 
@@ -4784,8 +4781,14 @@ msgid ""
 "from right to left{b_end}.}\n"
 "        AN {In bidirectional text it is written as Arabic number {b_start}"
 "from right to left{b_end}.}\n"
+"        CS {In bidirectional text it is written as number separator {b_start}"
+"according to the number it separates{b_end}.}\n"
 "        EN {In bidirectional text it is written as European number {b_start}"
-"from right to left{b_end}.}\n"
+"from left to right{b_end}.}\n"
+"        ES {In bidirectional text it is written as European number separator "
+"{b_start}from left to right{b_end}.}\n"
+"        ET {In bidirectional text it is written as end of a European number, "
+"e.g., a currency symbol, {b_start}from left to right{b_end}.}\n"
 "        FSI {In bidirectional text it sets the {b_start}direction{b_end} of "
 "the following text snippet based on its first character.}\n"
 "        L {In bidirectional text it is written {b_start}from left to "
@@ -4817,8 +4820,14 @@ msgstr ""
 "{b_start}von rechts nach links{b_end} geschrieben.}\n"
 "        AN {In bidirektionalem Text wird es als arabische Nummer {b_start}"
 "von rechts nach links{b_end} geschrieben.}\n"
+"        CS {In bidirektionalem Text wird es als Nummerntrenner {b_start}so "
+"geschrieben wie die Nummer, die es trennt{b_end}.}\n"
 "        EN {In bidirektionalem Text wird es als europäische Nummer {b_start}"
-"von rechts nach links{b_end} geschrieben.}\n"
+"von links nach rechts{b_end} geschrieben.}\n"
+"        ES {In bidirektionalem Text wird es als europäischer Nummerntrenner "
+"{b_start}von links nach rechts{b_end} geschrieben.}\n"
+"        ET {In bidirektionalem Text wird es als europäisches Nummernende, z."
+"B. ein Währungssymbol, {b_start}von links nach rechts{b_end} geschrieben.}\n"
 "        FSI {In bidirektionalem Text setzt es die {b_start}"
 "Schreibrichtung{b_end} des folgenden Textschnippsels anhand dessen ersten "
 "Zeichens.}\n"
@@ -4846,7 +4855,7 @@ msgstr ""
 "{b_end}.}\n"
 "    }"
 
-#: codepoints.net/views/partials/codepoint-description.php:226
+#: codepoints.net/views/partials/codepoint-description.php:229
 msgid ""
 "{Bidi_M, select,\n"
 "        1 {{bmg, select,\n"
@@ -4868,7 +4877,7 @@ msgstr ""
 "gespiegelt{b_end}.}\n"
 "    }"
 
-#: codepoints.net/views/partials/codepoint-description.php:239
+#: codepoints.net/views/partials/codepoint-description.php:242
 msgid ""
 "{lb, select,\n"
 "        \n"
@@ -5063,7 +5072,7 @@ msgstr ""
 "bezüglich Zeilenumbrüchen.}\n"
 "    }"
 
-#: codepoints.net/views/partials/codepoint-description.php:302
+#: codepoints.net/views/partials/codepoint-description.php:305
 msgid ""
 "{WB, select,\n"
 "        AL {This letter joins with other adjacent letters and numbers to "
@@ -5084,7 +5093,7 @@ msgid ""
 "    }"
 msgstr ""
 
-#: codepoints.net/views/partials/codepoint-description.php:317
+#: codepoints.net/views/partials/codepoint-description.php:320
 msgid ""
 "{SB, select,\n"
 "        AT {It can end {b_start}sentences{b_end} at appropriate places.}\n"
@@ -5108,7 +5117,7 @@ msgstr ""
 "        other {}\n"
 "    }"
 
-#: codepoints.net/views/partials/codepoint-description.php:331
+#: codepoints.net/views/partials/codepoint-description.php:334
 msgid ""
 "{confusables, plural,\n"
 "        =0 {}\n"
@@ -5126,7 +5135,7 @@ msgstr ""
 "anderen Zeichen{link_end} verwechselt werden.}\n"
 "    }"
 
-#: codepoints.net/views/partials/codepoint-description.php:344
+#: codepoints.net/views/partials/codepoint-description.php:347
 #, php-format
 msgid ""
 "The %sCLDR project%s calls this character “%s” for use in screen reading "
@@ -5135,40 +5144,40 @@ msgstr ""
 "Das %sCLDR-Projekt%s bezeichnet dieses Zeichen mit „%s“ für die Verwendung "
 "in Screenreader-Software."
 
-#: codepoints.net/views/partials/codepoint-description.php:347
+#: codepoints.net/views/partials/codepoint-description.php:350
 #, php-format
 msgid ""
 "It assigns these additional labels, e.g. for search in emoji pickers: %s."
 msgstr ""
 "Es weist zusätzliche Namen zu, z.B. für die Suche in Emoji-Auswahlboxen: %s."
 
-#: codepoints.net/views/partials/codepoint-description.php:355
+#: codepoints.net/views/partials/codepoint-description.php:358
 msgid "This character is designated as an emoji."
 msgstr "Dieses Schriftzeichen ist als Emoji ausgezeichnet."
 
-#: codepoints.net/views/partials/codepoint-description.php:357
+#: codepoints.net/views/partials/codepoint-description.php:360
 msgid "It will be rendered as colorful emoji on conforming platforms."
 msgstr "Es wird als buntes Emoji auf unterstützenden Plattformen angezeigt."
 
-#: codepoints.net/views/partials/codepoint-description.php:358
+#: codepoints.net/views/partials/codepoint-description.php:361
 #, php-format
 msgid "To reduce it to a monochrome character, you can combine it with %s: %s"
 msgstr ""
 "Um es auf schwarz-weiße Ansicht zu reduzieren, kannst du es mit %s "
 "kombinieren: %s"
 
-#: codepoints.net/views/partials/codepoint-description.php:360
+#: codepoints.net/views/partials/codepoint-description.php:363
 msgid "It will be rendered as monochrome character on conforming platforms."
 msgstr ""
 "Es wird als schwarz-weißes Zeichen auf unterstützenden Systemen angezeigt."
 
-#: codepoints.net/views/partials/codepoint-description.php:361
+#: codepoints.net/views/partials/codepoint-description.php:364
 #, php-format
 msgid "To enable colorful emoji display, you can combine it with %s: %s"
 msgstr ""
 "Um es auf bunte Ansicht umzustellen, kannst du es mit %s kombinieren: %s"
 
-#: codepoints.net/views/partials/codepoint-description.php:364
+#: codepoints.net/views/partials/codepoint-description.php:367
 #, php-format
 msgid ""
 "The character can be changed in appearance, if it is followed by %san emoji "
@@ -5177,7 +5186,7 @@ msgstr ""
 "Das Zeichen kann seine Erscheinung ändern, wenn ihm ein %sEmoji-"
 "Modifikator%s folgt."
 
-#: codepoints.net/views/partials/codepoint-description.php:366
+#: codepoints.net/views/partials/codepoint-description.php:369
 #, php-format
 msgid ""
 "See the %sEmojipedia%s for more details on this character’s emoji properties."
