@@ -102,7 +102,7 @@ include 'partials/header.php'; ?>
     "url":"https://codepoints.net/",
     "name":"Codepoints",
     "alternateName":"All Unicode characters from Hieroglyphs to Dingbats",
-    "image":"https://codepoints.net<?= static_url('src/public/images/icon.svg')?>",
+    "image":"https://codepoints.net<?= static_url('src/images/icon.svg')?>",
     "about": [
         { "@type": "Thing", "name": "Unicode", "sameAs":"https://en.wikipedia.org/wiki/Unicode" }
     ],
