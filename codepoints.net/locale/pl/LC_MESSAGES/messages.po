@@ -14,8 +14,10 @@ msgstr ""
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 1.6.10\n"
 "X-Crowdin-Project: codepoints\n"
+"X-Crowdin-Project-ID: 9546\n"
 "X-Crowdin-Language: pl\n"
 "X-Crowdin-File: messages.pot\n"
+"X-Crowdin-File-ID: 7101\n"
 
 #: codepoints.net/controllers/manifest.php:28
 msgid "All of Unicode at Codepoints.net"

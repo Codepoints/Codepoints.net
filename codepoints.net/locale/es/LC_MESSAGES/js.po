@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: codepoints\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-25 20:43+0000\n"
-"PO-Revision-Date: 2024-03-26 15:14+0100\n"
+"PO-Revision-Date: 2024-03-26 22:56+0100\n"
 "Last-Translator: Manuel Strehl <translate@manuel-strehl.de>\n"
 "Language-Team: Spanish\n"
 "Language: es_ES\n"
@@ -251,7 +251,7 @@ msgstr "CSS"
 
 #: src/js/components/cp-representations.ts:49
 msgid "Excel"
-msgstr ""
+msgstr "Excel"
 
 #: src/js/components/cp-representations.ts:51
 msgid "Go"
@@ -279,11 +279,11 @@ msgstr "Java"
 
 #: src/js/components/cp-representations.ts:58
 msgid "Lua"
-msgstr ""
+msgstr "Lua"
 
 #: src/js/components/cp-representations.ts:60
 msgid "Matlab"
-msgstr ""
+msgstr "Matlab"
 
 #: src/js/components/cp-representations.ts:62
 msgid "Perl"
@@ -295,7 +295,7 @@ msgstr "PHP"
 
 #: src/js/components/cp-representations.ts:66
 msgid "PowerShell"
-msgstr ""
+msgstr "PowerShell"
 
 #: src/js/components/cp-representations.ts:68
 msgid "Python"

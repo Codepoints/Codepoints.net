@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: codepoints\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-25 20:43+0000\n"
-"PO-Revision-Date: 2024-03-26 15:12+0100\n"
+"PO-Revision-Date: 2024-03-26 22:56+0100\n"
 "Last-Translator: Manuel Strehl <translate@manuel-strehl.de>\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
@@ -40,7 +40,8 @@ msgstr "Afrika <small>(ohne Arabisch)</small>"
 
 #: src/js/components/cp-wizard.ts:130
 msgid "America <small>(originally, <i>e. g.</i> Cherokee, not Latin)</small>"
-msgstr "Amerika <small>(ursprünglich, <i>z.B.</i> Cherokee, nicht lateinisch)</small>"
+msgstr ""
+"Amerika <small>(ursprünglich, <i>z.B.</i> Cherokee, nicht lateinisch)</small>"
 
 #: src/js/components/cp-wizard.ts:131
 msgid "Europe <small>(Latin, Cyrillic, …)</small>"
@@ -123,7 +124,8 @@ msgstr "Ist das Zeichen eine Art Symbol oder Dingbat?"
 
 #: src/js/components/cp-wizard.ts:186
 msgid "Yes <small>(It isn’t part of usually written text)</small>"
-msgstr "Ja <small>(es taucht üblicherweise nicht in Schriftstücken auf)</small>"
+msgstr ""
+"Ja <small>(es taucht üblicherweise nicht in Schriftstücken auf)</small>"
 
 #: src/js/components/cp-wizard.ts:187
 msgid "No <small>(But it is some kind of control character)</small>"
@@ -131,7 +133,9 @@ msgstr "Nein <small>(aber es ist eine Art Steuerzeichen)</small>"
 
 #: src/js/components/cp-wizard.ts:188
 msgid "No <small>(It may appear in text, like letters or punctuation)</small>"
-msgstr "Nein <small>(es taucht auch in Text auf, wie Buchstaben oder Interpunktion)</small>"
+msgstr ""
+"Nein <small>(es taucht auch in Text auf, wie Buchstaben oder Interpunktion)</"
+"small>"
 
 #: src/js/components/cp-wizard.ts:202
 msgid "Is the character some kind of punctuation?"
@@ -143,7 +147,8 @@ msgstr "Ist das Zeichen für sich allein unvollständig, wie Umlaut-Punkte?"
 
 #: src/js/components/cp-wizard.ts:217
 msgid "Yes <small>(It’s usually found together with another character)</small>"
-msgstr "Ja <small>(es findet sich üblicherweise zusammen mit anderen Zeichen)</small>"
+msgstr ""
+"Ja <small>(es findet sich üblicherweise zusammen mit anderen Zeichen)</small>"
 
 #: src/js/components/cp-wizard.ts:218
 msgid "No <small>(It stands on its own)</small>"
@@ -158,16 +163,21 @@ msgid "Yes <small>(It is based on two or more other characters)</small>"
 msgstr "Ja <small>(es basiert auf zwei oder mehr anderen Zeichen)</small>"
 
 #: src/js/components/cp-wizard.ts:232
-msgid "Sort of <small>(It’s got some quiggly lines or dots, like “Ä” or “ٷ”)</small>"
-msgstr "So ungefähr <small>(es hat so komische Haken und Punkte wie „Ä“ oder „ٷ“)</small>"
+msgid ""
+"Sort of <small>(It’s got some quiggly lines or dots, like “Ä” or “ٷ”)</small>"
+msgstr ""
+"So ungefähr <small>(es hat so komische Haken und Punkte wie „Ä“ oder „ٷ“)</"
+"small>"
 
 #: src/js/components/cp-wizard.ts:233
 msgid "No <small>(It is a genuine character)</small>"
 msgstr "Nein <small>(es ist ein lupenreines Zeichen)</small>"
 
 #: src/js/components/cp-wizard.ts:245
-msgid "Off the top of your head, can the character be confused with another one?"
-msgstr "Aus dem Bauch raus, kann das Zeichen mit anderen Zeichen verwechselt werden?"
+msgid ""
+"Off the top of your head, can the character be confused with another one?"
+msgstr ""
+"Aus dem Bauch raus, kann das Zeichen mit anderen Zeichen verwechselt werden?"
 
 #: src/js/components/cp-wizard.ts:246
 msgid "Yes <small>(Like latin “A” and greek “Α”, alpha)</small>"
@@ -219,7 +229,8 @@ msgstr "Du suchst nach einem speziellen Zeichen?"
 
 #: src/js/components/cp-wizard.ts:376
 msgid "Answer the following questions and we try to figure out candidates."
-msgstr "Beantworte die folgenden Fragen und wir versuchen, Kandidaten zu finden."
+msgstr ""
+"Beantworte die folgenden Fragen und wir versuchen, Kandidaten zu finden."
 
 #: src/js/components/cp-wizard.ts:389
 msgid "Enough questions! Search now."
@@ -251,7 +262,7 @@ msgstr "CSS"
 
 #: src/js/components/cp-representations.ts:49
 msgid "Excel"
-msgstr ""
+msgstr "Excel"
 
 #: src/js/components/cp-representations.ts:51
 msgid "Go"
@@ -279,11 +290,11 @@ msgstr "Java"
 
 #: src/js/components/cp-representations.ts:58
 msgid "Lua"
-msgstr ""
+msgstr "Lua"
 
 #: src/js/components/cp-representations.ts:60
 msgid "Matlab"
-msgstr ""
+msgstr "Matlab"
 
 #: src/js/components/cp-representations.ts:62
 msgid "Perl"
@@ -295,7 +306,7 @@ msgstr "PHP"
 
 #: src/js/components/cp-representations.ts:66
 msgid "PowerShell"
-msgstr ""
+msgstr "PowerShell"
 
 #: src/js/components/cp-representations.ts:68
 msgid "Python"
@@ -322,16 +333,24 @@ msgid "add to favorites (will be shown by default)"
 msgstr "zu Favoriten hinzufügen (wird automatisch angezeigt)"
 
 #: src/js/components/cp-representations.ts:233
-msgid "Click the star button next to each label to set this representation as favorite or remove it from the favorites."
-msgstr "Klicke den Sternknopf neben der Beschriftung, um diese Darstellung als Favorit zu markieren oder aus den Favoriten zu entfernen."
+msgid ""
+"Click the star button next to each label to set this representation as "
+"favorite or remove it from the favorites."
+msgstr ""
+"Klicke den Sternknopf neben der Beschriftung, um diese Darstellung als "
+"Favorit zu markieren oder aus den Favoriten zu entfernen."
 
 #: src/js/components/cp-representations.ts:234
 msgid "Favorites will be shown initially."
 msgstr "Favoriten werden anfangs automatisch angezeigt."
 
 #: src/js/components/cp-representations.ts:235
-msgid "(Favorites are stored locally on your computer and never sent over the internet.)"
-msgstr "(Favoriten werden auf deinem Computer gespeichert und niemals über das Internet übertragen.)"
+msgid ""
+"(Favorites are stored locally on your computer and never sent over the "
+"internet.)"
+msgstr ""
+"(Favoriten werden auf deinem Computer gespeichert und niemals über das "
+"Internet übertragen.)"
 
 #: src/js/components/cp-representations.ts:240
 msgid "hide all but favorites"
@@ -346,20 +365,36 @@ msgid "embed this codepoint"
 msgstr "diesen Codepunkt einbinden"
 
 #: src/js/components/cp-btn-embed.ts:29
-msgid "Embed this codepoint in your own website by copy- and pasting the following HTML snippet:"
-msgstr "Bette diesen Codepunkt auf deiner eigenen Webseite ein, indem du das folgende HTML-Schnippsel kopierst:"
+msgid ""
+"Embed this codepoint in your own website by copy- and pasting the following "
+"HTML snippet:"
+msgstr ""
+"Bette diesen Codepunkt auf deiner eigenen Webseite ein, indem du das "
+"folgende HTML-Schnippsel kopierst:"
 
 #: src/js/components/cp-btn-embed.ts:34
-msgid "If you want, you can freely change width and height to meet your needs. The layout will adapt accordingly."
-msgstr "Wenn du möchtest, kannst du Höhe und Breite frei anpassen. Das Layout wird sich entsprechend anpassen."
+msgid ""
+"If you want, you can freely change width and height to meet your needs. The "
+"layout will adapt accordingly."
+msgstr ""
+"Wenn du möchtest, kannst du Höhe und Breite frei anpassen. Das Layout wird "
+"sich entsprechend anpassen."
 
 #: src/js/components/cp-btn-embed.ts:35
-msgid "On platforms that support the oEmbed standard, e.g. WordPress, embedding is even easier:"
-msgstr "Auf Plattformen, die den oEmbed-Standard unterstützen, z.B. WordPress, ist Einbetten sogar noch leichter:"
+msgid ""
+"On platforms that support the oEmbed standard, e.g. WordPress, embedding is "
+"even easier:"
+msgstr ""
+"Auf Plattformen, die den oEmbed-Standard unterstützen, z.B. WordPress, ist "
+"Einbetten sogar noch leichter:"
 
 #: src/js/components/cp-btn-embed.ts:36
-msgid "Simply paste the web address of this page in the editor and the editor will do the rest:"
-msgstr "Füge einfach die Webadresse dieser Seite in den Editor ein, und der Editor wird den Rest erledigen:"
+msgid ""
+"Simply paste the web address of this page in the editor and the editor will "
+"do the rest:"
+msgstr ""
+"Füge einfach die Webadresse dieser Seite in den Editor ein, und der Editor "
+"wird den Rest erledigen:"
 
 #: src/js/components/cp-dialog.ts:61
 #: src/js/components/cp-search-property.ts:105

@@ -3,14 +3,16 @@ msgstr ""
 "Project-Id-Version: codepoints\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-25 20:43+0000\n"
-"PO-Revision-Date: 2024-03-26 15:13+0100\n"
+"PO-Revision-Date: 2024-03-26 22:57+0100\n"
 "Last-Translator: Manuel Strehl <translate@manuel-strehl.de>\n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && "
+"(n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && "
+"n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 "X-Crowdin-Project: codepoints\n"
 "X-Crowdin-Project-ID: 9546\n"
 "X-Crowdin-Language: pl\n"
@@ -40,7 +42,8 @@ msgstr "Afryka <small>(bez Arabii)</small>"
 
 #: src/js/components/cp-wizard.ts:130
 msgid "America <small>(originally, <i>e. g.</i> Cherokee, not Latin)</small>"
-msgstr "America <small>(pierwotna, <i>n. p.</i> Czirokezi, nie Łacińska)</small>"
+msgstr ""
+"America <small>(pierwotna, <i>n. p.</i> Czirokezi, nie Łacińska)</small>"
 
 #: src/js/components/cp-wizard.ts:131
 msgid "Europe <small>(Latin, Cyrillic, …)</small>"
@@ -131,7 +134,9 @@ msgstr "Nie <small>(ale to jest pewnego rodzaju znak sterujący)</small>"
 
 #: src/js/components/cp-wizard.ts:188
 msgid "No <small>(It may appear in text, like letters or punctuation)</small>"
-msgstr "Nie <small>( pojawić się w tekście, jak litery lub znaki interpunkcyjne)</small>"
+msgstr ""
+"Nie <small>( pojawić się w tekście, jak litery lub znaki interpunkcyjne)</"
+"small>"
 
 #: src/js/components/cp-wizard.ts:202
 msgid "Is the character some kind of punctuation?"
@@ -158,15 +163,19 @@ msgid "Yes <small>(It is based on two or more other characters)</small>"
 msgstr "Tak <small>(Jest utworzony z dwóch lub więcej innych znaków)</small>"
 
 #: src/js/components/cp-wizard.ts:232
-msgid "Sort of <small>(It’s got some quiggly lines or dots, like “Ä” or “ٷ”)</small>"
-msgstr "W pewnym sensie <small>(zawiera faliste linie lub lub kropki, jak \"Ä\" lub \"ٷ\")</small>"
+msgid ""
+"Sort of <small>(It’s got some quiggly lines or dots, like “Ä” or “ٷ”)</small>"
+msgstr ""
+"W pewnym sensie <small>(zawiera faliste linie lub lub kropki, jak \"Ä\" lub "
+"\"ٷ\")</small>"
 
 #: src/js/components/cp-wizard.ts:233
 msgid "No <small>(It is a genuine character)</small>"
 msgstr "Nie <small>(jest to prawdziwy znak)</small>"
 
 #: src/js/components/cp-wizard.ts:245
-msgid "Off the top of your head, can the character be confused with another one?"
+msgid ""
+"Off the top of your head, can the character be confused with another one?"
 msgstr "Bez zastanowienia, czy znak może być mylony z innym?"
 
 #: src/js/components/cp-wizard.ts:246
@@ -218,8 +227,11 @@ msgid "You search for a specific character?"
 msgstr ""
 
 #: src/js/components/cp-wizard.ts:376
+#, fuzzy
 msgid "Answer the following questions and we try to figure out candidates."
 msgstr ""
+"Szukasz konkretnego znaku? Odpowiedz na następujace pytania, to spróbujemy "
+"znaleźć odpowiednie kandydatury."
 
 #: src/js/components/cp-wizard.ts:389
 msgid "Enough questions! Search now."
@@ -258,8 +270,9 @@ msgid "Go"
 msgstr ""
 
 #: src/js/components/cp-representations.ts:53
+#, fuzzy
 msgid "JavaScript"
-msgstr ""
+msgstr "Przykro nam, ale dla Kreatora wymagany jest Javascript."
 
 #: src/js/components/cp-representations.ts:54
 msgid "Modern JavaScript"
@@ -322,7 +335,9 @@ msgid "add to favorites (will be shown by default)"
 msgstr ""
 
 #: src/js/components/cp-representations.ts:233
-msgid "Click the star button next to each label to set this representation as favorite or remove it from the favorites."
+msgid ""
+"Click the star button next to each label to set this representation as "
+"favorite or remove it from the favorites."
 msgstr ""
 
 #: src/js/components/cp-representations.ts:234
@@ -330,7 +345,9 @@ msgid "Favorites will be shown initially."
 msgstr ""
 
 #: src/js/components/cp-representations.ts:235
-msgid "(Favorites are stored locally on your computer and never sent over the internet.)"
+msgid ""
+"(Favorites are stored locally on your computer and never sent over the "
+"internet.)"
 msgstr ""
 
 #: src/js/components/cp-representations.ts:240
@@ -342,23 +359,38 @@ msgid "show more"
 msgstr "pokaż więcej"
 
 #: src/js/components/cp-btn-embed.ts:27
+#, fuzzy
 msgid "embed this codepoint"
-msgstr ""
+msgstr "Osadź tę współrzędną kodową"
 
 #: src/js/components/cp-btn-embed.ts:29
-msgid "Embed this codepoint in your own website by copy- and pasting the following HTML snippet:"
+#, fuzzy
+msgid ""
+"Embed this codepoint in your own website by copy- and pasting the following "
+"HTML snippet:"
 msgstr ""
+"Osadź tę współrzędną kodową na swojej witrynie\n"
+" kopiując i wklejając następujący fragment  HTML:"
 
 #: src/js/components/cp-btn-embed.ts:34
-msgid "If you want, you can freely change width and height to meet your needs. The layout will adapt accordingly."
+#, fuzzy
+msgid ""
+"If you want, you can freely change width and height to meet your needs. The "
+"layout will adapt accordingly."
 msgstr ""
+"Jeśli chcesz, możesz dowolnie zmieniać szerokość i wysokość dostosowując ją\n"
+" do swoich potrzeb. Układ strony będzie odpowiednio dostosowany."
 
 #: src/js/components/cp-btn-embed.ts:35
-msgid "On platforms that support the oEmbed standard, e.g. WordPress, embedding is even easier:"
+msgid ""
+"On platforms that support the oEmbed standard, e.g. WordPress, embedding is "
+"even easier:"
 msgstr ""
 
 #: src/js/components/cp-btn-embed.ts:36
-msgid "Simply paste the web address of this page in the editor and the editor will do the rest:"
+msgid ""
+"Simply paste the web address of this page in the editor and the editor will "
+"do the rest:"
 msgstr ""
 
 #: src/js/components/cp-dialog.ts:61
@@ -375,12 +407,14 @@ msgid "start page"
 msgstr ""
 
 #: src/js/components/cp-menu.ts:89
+#, fuzzy
 msgid "scripts"
-msgstr ""
+msgstr "Skrypty"
 
 #: src/js/components/cp-menu.ts:92 src/js/components/cp-menu.ts:113
+#, fuzzy
 msgid "search"
-msgstr ""
+msgstr "szukaj"
 
 #: src/js/components/cp-menu.ts:95
 msgid "analyze"
@@ -391,12 +425,14 @@ msgid "random page"
 msgstr ""
 
 #: src/js/components/cp-menu.ts:101
+#, fuzzy
 msgid "glossary"
-msgstr ""
+msgstr "Słownik"
 
 #: src/js/components/cp-menu.ts:104
+#, fuzzy
 msgid "about this site"
-msgstr ""
+msgstr "O tej witrynie"
 
 #: src/js/components/cp-menu.ts:110
 msgid "Search code points:"
@@ -415,8 +451,9 @@ msgid "no information found for this term"
 msgstr ""
 
 #: src/js/components/cp-language.ts:34
+#, fuzzy
 msgid "choose language:"
-msgstr ""
+msgstr "wybierz język"
 
 #: src/js/components/cp-darkmode.ts:30
 msgid "switch to light mode (currently active: dark mode)"
@@ -435,8 +472,16 @@ msgid "dark / light mode:"
 msgstr ""
 
 #: src/js/components/cp-btn-share.ts:115
+#, fuzzy
 msgid "Share on:"
 msgstr ""
+"Przede wszystkim chcielibyśmy podziękować uczestnikom konsorcjum Unicode, \n"
+" których pracują nad standaryzacją istotnej części obliczeń, mianowicie "
+"wyswietlania\n"
+" znaków. To samo dotyczy autorówWikipedii, który gromadzą\n"
+" wiedzę na temat wielu aspektów świata liternictwa. Ich wkład jest ważną "
+"częścią \n"
+" tej witryny."
 
 #: src/js/components/cp-copy.ts:36
 msgid "copied"

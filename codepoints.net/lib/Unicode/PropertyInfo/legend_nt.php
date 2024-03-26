@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'De' => __('Decimal'),
-    'Di' => __('Digit'),
-    'None' => __('None'),
-    'Nu' => __('Numeric'),
+    'De' => __('decimal'),
+    'Di' => __('digit'),
+    'None' => __('none'),
+    'Nu' => __('numeric'),
 ];
