@@ -73,7 +73,12 @@ class Translator {
                 $this->language = $bestLanguage->getType();
             }
             if ($persist) {
-                setcookie('lang', (string)$this->language, time()+60*60*24*365, '/');
+                setcookie('lang', (string)$this->language, [
+                    'expires' => time()+60*60*24*365,
+                    'path' =>  '/',
+                    'samesite' => 'Lax',
+                    'secure' => true,
+                ]);
             }
         }
 
