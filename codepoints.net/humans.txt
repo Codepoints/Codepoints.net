@@ -60,11 +60,11 @@ Fonts: Thanks to:
 Images:
     - The background image on the front page is released under the Creative
       Commons Attribution license by Flickr user Willi Heidelbach:
-      <http://www.flickr.com/photos/wilhei/109404349/>
+      <https://www.flickr.com/photos/wilhei/109404349/>
     - The button backgrounds on the front page are in the public domain:
-      <http://commons.wikimedia.org/wiki/File:1657_Jansson_Map_of_the_Empire_of_Charlemagne_-_Geographicus_-_CaroliMagni-jansson-1657.jpg>
-      <http://commons.wikimedia.org/wiki/File:18th_century_dowser.jpg>
-      <http://commons.wikimedia.org/wiki/File:NASA_Mars_Rover.jpg>
+      <https://commons.wikimedia.org/wiki/File:1657_Jansson_Map_of_the_Empire_of_Charlemagne_-_Geographicus_-_CaroliMagni-jansson-1657.jpg>
+      <https://commons.wikimedia.org/wiki/File:18th_century_dowser.jpg>
+      <https://commons.wikimedia.org/wiki/File:NASA_Mars_Rover.jpg>
     - The icons are part of the Font Awesome icon set
 
 Texts:

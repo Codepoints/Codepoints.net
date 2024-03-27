@@ -3,7 +3,7 @@
   <ShortName>Codepoints</ShortName>
   <Description>Search Codepoints.net for Unicode characters</Description>
   <Tags>Unicode codepoint character glyph block plane encoding</Tags>
-  <Developer>Manuel Strehl, http://www.manuel-strehl.de</Developer>
+  <Developer>Manuel Strehl, https://manuel-strehl.de</Developer>
   <Attribution>The provided data is part of the Unicode Standard, © The Unicode Consortium</Attribution>
   <InputEncoding>UTF-8</InputEncoding>
   <Image width="16" height="16" type="image/x-icon">https://codepoints.net/static/images/favicon.ico</Image>

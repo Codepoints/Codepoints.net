@@ -119,7 +119,7 @@ class Property extends Runner {
     /**
      * a continuous color generator for usage in the API
      *
-     * @see http://krazydad.com/tutorials/makecolors.php for the maths
+     * @see https://krazydad.com/tutorials/makecolors.php for the maths
      */
     private function getNextColor(float $frequency1, float $frequency2, float $frequency3,
         float $phase1, float $phase2, float $phase3) : Array {

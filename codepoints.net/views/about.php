@@ -27,7 +27,7 @@ include 'partials/header.php'; ?>
     <p><?php printf(__('You don’t know the name or any properties of a codepoint but its general
     look? Fear not, on %s
     you can draw the character and get it recognized. This works remarkably
-    well for many characters.'), '<a href="http://shapecatcher.com/">Shapecatcher</a>')?></p>
+    well for many characters.'), '<a href="https://shapecatcher.com/">Shapecatcher</a>')?></p>
     <h2><?=_q('Advanced Options')?></h2>
     <p><?php printf(__('If you know Unicode and also know the rough range, where the codepoint
     might be, you can give the range directly in the URL. <em>E. g.,</em> to
@@ -43,7 +43,7 @@ include 'partials/header.php'; ?>
       encoding was ASCII, which basically assigns simple Latin upper- and lowercase letters
       as well as numbers and some punctuation, all in all 128 positions.
       The W3C has published a %svery good introduction%s to the topic of character encodings.'),
-      '<a href="http://www.w3.org/International/questions/qa-what-is-encoding">', '</a>')?>
+      '<a href="https://www.w3.org/International/questions/qa-what-is-encoding">', '</a>')?>
     </p>
     <aside class="other">
       <p><?php printf(__('The %s is intentionally identical to ASCII.'),
@@ -67,7 +67,7 @@ include 'partials/header.php'; ?>
       the Unicode standard was deliberately choosen.</i>) Meanwhile the
       %sUnicode Consortium%s began to form in
       order to guide the further development of the standard.'),
-      '<a href="http://unicode.org">', '</a>')?>
+      '<a href="https://unicode.org">', '</a>')?>
     </p>
     <p>
       <?php printf(__('The most recent version of Unicode is %s,
@@ -83,7 +83,7 @@ include 'partials/header.php'; ?>
       them. For example, the letter “A” has the codepoint 65 assigned, the
       chinese character “㐭” the codepoint 13357. Codepoints are usually
       represented in %shexadecimal
-      notation%s, where “A” to “F” represent the numbers 10 to 16.'), '<a href="http://en.wikipedia.org/wiki/Hexadecimal">', '</a>')?>
+      notation%s, where “A” to “F” represent the numbers 10 to 16.'), '<a href="https://en.wikipedia.org/wiki/Hexadecimal">', '</a>')?>
     </p>
     <p>
       <?=_q('To bring the sheer mass of the possible 1,114,111 codepoints in a useful
@@ -179,19 +179,19 @@ include 'partials/header.php'; ?>
       The JavaScript part contains libraries under different licenses, mostly the
       GPL and/or the MIT license. See the page source for details.
       The graphical representations use glyphs from the following fonts:'),
-      '<a href="http://www.unicode.org/terms_of_use.html">',
+      '<a href="https://www.unicode.org/terms_of_use.html">',
       '</a>')?>
     </p>
     <ul>
       <li><?php printf(__('%sGNU Unifont%s, released
           mainly under the GNU Public License, partly under a liberal re-use
-          license'), '<a href="http://unifoundry.com/unifont.html">', '</a>')?>
+          license'), '<a href="https://unifoundry.com/unifont.html">', '</a>')?>
       <li><?php printf(__('%sHistoric Fonts by George Douros%s,
-          released free for re-use'), '<a href="http://users.teilar.gr/~g1951d/">', '</a>')?>
+          released free for re-use'), '<a href="https://dn-works.com/ufas/">', '</a>')?>
       <li><?php printf(__('%sMPH 2B Damase%s,
-          released under the GPL'), '<a href="http://www.wazu.jp/gallery/views/View_MPH2BDamase.html">', '</a>')?>
+          released under the GPL'), '<a href="https://www.wazu.jp/gallery/views/View_MPH2BDamase.html">', '</a>')?>
       <li><?php printf(__('%sDeja Vu%s, released
-          under the Bitstream Vera license'), '<a href="http://dejavu-fonts.org/wiki/Main_Page">', '</a>')?>
+          under the Bitstream Vera license'), '<a href="https://dejavu-fonts.org/wiki/Main_Page">', '</a>')?>
     </ul>
     <p>
       <?php printf(__('The images representing single Unicode blocks are taken from the
@@ -202,8 +202,8 @@ include 'partials/header.php'; ?>
       The geographic localization of blocks (used in the “Find My Codepoint”
       wizard) is based on the categorization on %sdecodeunicode.org%s,
       published under the CC BY NC license.'),
-      '<a href="http://users.teilar.gr/~g1951d/">', '</a>',
-      '<a href="http://www.decodeunicode.org">', '</a>'
+      '<a href="https://dn-works.com/ufas/">', '</a>',
+      '<a href="https://www.decodeunicode.org">', '</a>'
     )?>
     </p>
     <p>
@@ -213,7 +213,7 @@ include 'partials/header.php'; ?>
       %sCreative Commons Attribution 3.0 Germany%s.
       Attribution in this case is a simple backlink, optionally with the link
       text “Based on information from Codepoints.net”.'),
-      '<a rel="license" href="http://creativecommons.org/licenses/by/3.0/de/">',
+      '<a rel="license" href="https://creativecommons.org/licenses/by/3.0/de/">',
       '</a>')?>
     </p>
     <h2><?=_q('Privacy, Statistics')?></h2>
@@ -221,7 +221,7 @@ include 'partials/header.php'; ?>
       <?php printf(__('This site uses %s to gather statistics
       about page views. The sole purpose is to enhance this site.
       If you don’t want your visits to be tracked at all, please follow these
-      instructions:'), '<a href="http://piwik.org">Piwik</a>')?>
+      instructions:'), '<a href="https://matomo.org">Matomo</a>')?>
     </p>
     <iframe frameborder="no" width="100%" height="200px"
             title="<?=_q('control pane for the visitor counter')?>"
@@ -241,8 +241,8 @@ include 'partials/header.php'; ?>
       Janusz S. Bień, utilizing the terminology introduced in his paper
       %s“Standard Unicode 4.0. Wybrane pojęcia i terminy”%s and %ssubsequent
       publications%s.'),
-      '<a href="http://bc.klf.uw.edu.pl/114/">', '</a>',
-      '<a href="http://bc.klf.uw.edu.pl/view/creators/Bie==0144=3AJanusz_S=2E=3A=3A.html">', '</a>'
+      '<a href="https://bc.klf.uw.edu.pl/114/">', '</a>',
+      '<a href="https://bc.klf.uw.edu.pl/view/creators/Bie==0144=3AJanusz_S=2E=3A=3A.html">', '</a>'
       )?></p>
     <p><?=_q('The developers supporting this site with their knowledge, bug
       reports and input take a fair share in keeping it awesome. We want to
@@ -254,8 +254,8 @@ include 'partials/header.php'; ?>
     </ul>
     <p><?php printf(__('Many thanks go to two sites with a similar goal but other emphasis in
       the presentation of the Unicode standard: %s and %s.'),
-      '<a href="http://decodeunicode.org">Decode Unicode</a>',
-      '<a href="http://graphemica.com">Graphemica</a>')?>
+      '<a href="https://decodeunicode.org">Decode Unicode</a>',
+      '<a href="https://graphemica.com">Graphemica</a>')?>
     </p>
     <p><?php printf(__('The WHATWG publishes an %sencoding standard%s, that is used
         here for additional encoding information for codepoints. Its main editor is %s.'),
@@ -270,19 +270,19 @@ include 'partials/header.php'; ?>
     <p><?php printf(__('The %s names are derived from %s, which is curated by
     David Carlisle and provided together with the MathML specification of the
     W3C.'), '<span class="latex">L<sup>A</sup>T<sub>E</sub>X</span>',
-    '<a href="http://www.w3.org/Math/characters/unicode.xml">www.w3.org/Math/characters/unicode.xml</a>')?></p>
+    '<a href="https://www.w3.org/Math/characters/unicode.xml">www.w3.org/Math/characters/unicode.xml</a>')?></p>
     <h2><?=_q('Fonts')?></h2>
     <p><?=_q('Many people base their work on Unicode. We want to thank the authors of
     these fonts, that they made it possible to re-use them for this project:')?>
     </p>
     <ul>
     <li><?php printf(__('Roman Czyborra, David Starner, Qianqian Fang, Changwoo Ryu and Paul
-    Hardy for %sGNU Unifont%s'), '<a href="http://unifoundry.com/unifont.html">', '</a>')?>
+    Hardy for %sGNU Unifont%s'), '<a href="https://unifoundry.com/unifont.html">', '</a>')?>
           </li>
-      <li><a href="http://users.teilar.gr/~g1951d/">George Douros</a></li>
-      <li><a href="http://www.wazu.jp/gallery/views/View_MPH2BDamase.html">Mark Williamson</a></li>
-      <li><a href="http://dejavu-fonts.org/wiki/Main_Page"><?=_q('The Deja Vu Project')?></a></li>
-      <li><?php printf(__('%sMichael Everson%s for the Last Resort font'), '<a href="http://www.evertype.com/">', '</a>')?></li>
+      <li><a href="https://dn-works.com/ufas/">George Douros</a></li>
+      <li><a href="https://www.wazu.jp/gallery/views/View_MPH2BDamase.html">Mark Williamson</a></li>
+      <li><a href="https://dejavu-fonts.org/wiki/Main_Page"><?=_q('The Deja Vu Project')?></a></li>
+      <li><?php printf(__('%sMichael Everson%s for the Last Resort font'), '<a href="https://www.evertype.com/">', '</a>')?></li>
     </ul>
     <h2><?=_q('Image Attribution')?></h2>
     <p><?php printf(__('The background image on the front page is released under the Creative
@@ -290,26 +290,26 @@ include 'partials/header.php'; ?>
        The button backgrounds on the front page are in the public domain:
        %smap of Charlemagne’s empire%s, %s18<sup>th</sup> century dowser%s, and
        %sNASA Mars Rover%s.'),
-        '<a href="http://www.flickr.com/photos/wilhei/109404349/">',
+        '<a href="https://www.flickr.com/photos/wilhei/109404349/">',
         '</a>',
-        '<a href="http://commons.wikimedia.org/wiki/File:1657_Jansson_Map_of_the_Empire_of_Charlemagne_-_Geographicus_-_CaroliMagni-jansson-1657.jpg">',
+        '<a href="https://commons.wikimedia.org/wiki/File:1657_Jansson_Map_of_the_Empire_of_Charlemagne_-_Geographicus_-_CaroliMagni-jansson-1657.jpg">',
         '</a>',
-        '<a href="http://commons.wikimedia.org/wiki/File:18th_century_dowser.jpg">',
+        '<a href="https://commons.wikimedia.org/wiki/File:18th_century_dowser.jpg">',
         '</a>',
-        '<a href="http://commons.wikimedia.org/wiki/File:NASA_Mars_Rover.jpg">',
+        '<a href="https://commons.wikimedia.org/wiki/File:NASA_Mars_Rover.jpg">',
         '</a>'
     )?>
     </p>
     <p><?php printf(__('The “We’re Open Source” image is released under the Creative Commons
        Attribution Non-Commercial No-Derivations license by %sFlickr user tima%s.'),
-       '<a href="http://www.flickr.com/photos/tappnel/5798812875/">', '</a>')?>
+       '<a href="https://www.flickr.com/photos/tappnel/5798812875/">', '</a>')?>
     </p>
     <p><?php printf(__('The icons are part of the %sFont Awesome%s icon set.'),
-        '<a href="http://fortawesome.github.com/Font-Awesome">', '</a>')?></p>
+        '<a href="https://fortawesome.github.com/Font-Awesome">', '</a>')?></p>
     <hr>
     <p><?php printf(__('Finally I’d like to thank %sMathias Bynens%s
     for pushing me to publish this site at last.'),
-    '<a href="http://mathiasbynens.be">', '</a>')?></p>
+    '<a href="https://mathiasbynens.be">', '</a>')?></p>
   </section>
 </main>
 <?php include 'partials/footer.php'; ?>

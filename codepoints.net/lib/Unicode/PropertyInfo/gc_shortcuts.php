@@ -2,7 +2,7 @@
 
 /**
  * shortcuts for general categories
- * See <http://www.unicode.org/reports/tr44/#General_Category_Values>
+ * See <https://www.unicode.org/reports/tr44/#General_Category_Values>
  */
 return [
     'LC' => ['Lu', 'Ll', 'Lt'],

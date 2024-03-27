@@ -64,7 +64,7 @@ include 'partials/header.php'; ?>
           <em>all characters ever used</em>. In practice Unicode has
           <em>%s codepoints</em> defined at the moment, mapping characters
           from %s to %s.'),
-      '<a href="http://unicode.org">'.__('Unicode Standard').'</a>',
+      '<a href="https://unicode.org">'.__('Unicode Standard').'</a>',
       $cp_count,
       '<a href="'.url('egyptian_hieroglyphs').'">'.__('Egyptian Hieroglyphs').'</a>',
       '<a href="'.url('dingbats').'">'.__('Dingbats and Symbols').'</a>'

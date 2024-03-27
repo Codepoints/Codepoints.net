@@ -46,7 +46,7 @@ include 'partials/header.php'; ?>
   <?php if (! $block->count()):?>
     <p><?php printf(__('This block has not defined any codepoints between U+%04X and U+%04X.'), $block->first, $block->last)?></p>
   <?php else:?>
-    <p><a href="http://www.unicode.org/charts/PDF/U<?php printf('%04X', $block->first)?>.pdf"><?=_q('Chart at Unicode.org')?></a> <?=_q('(PDF)')?><br>
+    <p><a href="https://www.unicode.org/charts/PDF/U<?php printf('%04X', $block->first)?>.pdf"><?=_q('Chart at Unicode.org')?></a> <?=_q('(PDF)')?><br>
     <a href="https://decodeunicode.org/en/blocks/<?=q(str_replace(' ', '_', strtolower($block->name)))?>"><?=_q('Block at Decode Unicode')?></a></p>
   <?php if ($pagination->getNumberOfPages() > 1):?>
     <h2><?=sprintf(_q('Page %s'), $pagination->page)?></h2>

@@ -10,13 +10,13 @@ need a GitHub account.
 1. Navigate to [github.com/Codepoints/.../data](https://github.com/Codepoints/Codepoints.net/tree/master/codepoints.net/data)
 
 2. Click the small “+” in the line below the header<br>
-    ![Screenshot where to click](http://i.imgur.com/QthNPnX.png)
+    ![Screenshot where to click](https://i.imgur.com/QthNPnX.png)
 
 3. As filename use "U+", the hex value of the codepoint, the language (“en” for english) and `.md` as file extension, for example:
     * `U+0067.en.md` → codepoint U+0067 (small “g”), english information
     * `U+1F675.de.md` → codepoint “Swash Ampersand”, german information
 
-4. Add your content in [Markdown](http://daringfireball.net/projects/markdown/) syntax
+4. Add your content in [Markdown](https://daringfireball.net/projects/markdown/) syntax
 
 5. Commit the file below, add a short description of what you added and which codepoint is involved. Finish with clicking “Propose new file”.
 
