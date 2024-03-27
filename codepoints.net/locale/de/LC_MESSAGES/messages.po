@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: codepoints\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-26 22:06+0000\n"
-"PO-Revision-Date: 2024-03-26 23:08+0100\n"
+"PO-Revision-Date: 2024-03-27 22:41+0100\n"
 "Last-Translator: Manuel Strehl <translate@manuel-strehl.de>\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
@@ -3523,7 +3523,7 @@ msgstr ""
 
 #: codepoints.net/views/scripts.php:12
 msgid "Click on a script name for additional information."
-msgstr ""
+msgstr "Klicke auf den Namen eines Schriftsystems für weitere Informationen."
 
 #: codepoints.net/views/scripts.php:40
 msgid "code points"
@@ -4221,7 +4221,7 @@ msgstr ""
 
 #: codepoints.net/views/about.php:227
 msgid "control pane for the visitor counter"
-msgstr ""
+msgstr "Kontrolpanel für den Besucherzähler"
 
 #: codepoints.net/views/about.php:229
 #, php-format
@@ -5092,6 +5092,23 @@ msgid ""
 "        other {}\n"
 "    }"
 msgstr ""
+"{WB, select,\n"
+"        AL {Dieser Buchstabe verbindet sich mit umliegenden Buchstaben und "
+"Nummern zu einem {b_start}Wort{b_end}.}\n"
+"        CR {Wenn es vor U+000A LINE FEED erscheint, bilden die beiden ein "
+"{b_start}nicht-umbrechendes Paar{b_end}.}\n"
+"        HL {Dieser Buchstabe verbindet sich mit umliegenden Buchstaben und "
+"Nummern zu einem {b_start}Wort{b_end}.}\n"
+"        KA {Dieses Katakana verbindet sich mit umliegenden Katakana zu einem "
+"{b_start}Wort{b_end}.}\n"
+"        NU {Dieses Nummernzeichen verbindet sich mit umliegenden Buchstaben "
+"und Nummern zu einem {b_start}Wort{b_end}.}\n"
+"        RI {Wenn ihm ein weiteres Regional-Indicator-Zeichen folgt, bilden "
+"sie ein {b_start}nicht-umbrechendes Paar{b_end}.}\n"
+"        SQ {In hebräischem Text bildet dieses einfache Anführungszeichen "
+"zusammen mit weiteren hebräischen Buchstaben ein {b_start}Wort{b_end}.}\n"
+"        other {}\n"
+"    }"
 
 #: codepoints.net/views/partials/codepoint-description.php:320
 msgid ""
