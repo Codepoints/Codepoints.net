@@ -34,6 +34,24 @@ a:focus, a:hover {
   color: var(--color-link-hover);
 }
 
+/* external links: add icon after them */
+a[href^="https://"]:after {
+  content: "";
+  display: inline-block;
+  width: 1.2ex;
+  height: 1.2ex;
+  vertical-align: baseline;
+  background: var(--color-link);
+  mask: url(../images/ext_link.svg);
+  mask-size: cover;
+  margin-left: .2em;
+}
+
+a[href^="https://"]:focus:after,
+a[href^="https://"]:hover:after {
+  background-color: var(--color-link-hover);
+}
+
 svg {
   fill: currentColor;
   overflow: visible; /* TODO quick fix for glyphs getting cut off */

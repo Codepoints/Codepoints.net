@@ -33,6 +33,7 @@ header('Permissions-Policy: interest-cohort=()');
  */
 header('Content-Security-Policy-Report-Only: '.
     'default-src \'self\' https://stats.codepoints.net:443; '.
+    'img-src \'self\' data: https://stats.codepoints.net:443; '.
     'style-src \'self\' \'unsafe-inline\'; '.
     'font-src \'self\'; '.
     (array_key_exists('embed', $_GET)? 'frame-ancestors *; ' : '').
