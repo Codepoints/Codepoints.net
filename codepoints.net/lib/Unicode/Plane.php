@@ -95,7 +95,7 @@ class Plane {
                 $this->first,
                 $this->last);
             $this->blocks = [];
-            if ($sets) {
+            if (is_array($sets)) {
                 foreach ($sets as $data) {
                     $this->blocks[] = new Block($data, $this->db);
                 }
@@ -117,6 +117,7 @@ class Plane {
                 WHERE last < ?
                 ORDER BY first DESC
                 LIMIT 1', $this->first);
+            /** @psalm-suppress RiskyTruthyFalsyComparison */
             if ($data) {
                 $this->prev = new self($data, $this->db);
             }
@@ -137,6 +138,7 @@ class Plane {
                 WHERE first > ?
                 ORDER BY first ASC
                 LIMIT 1', $this->last);
+            /** @psalm-suppress RiskyTruthyFalsyComparison */
             if ($data) {
                 $this->next = new self($data, $this->db);
             }
@@ -152,6 +154,7 @@ class Plane {
             SELECT name, first, last FROM planes
              WHERE first <= ? AND last >= ?
              LIMIT 1', $cp, $cp);
+        /** @psalm-suppress RiskyTruthyFalsyComparison */
         if (! $data) {
             throw new \Exception('No plane contains this code point: ' . $cp);
         }
@@ -166,7 +169,7 @@ class Plane {
     public static function getAll(Database $db) : Array {
         $sets = $db->getAll('SELECT name, first, last FROM planes');
         $planes = [];
-        if ($sets) {
+        if (is_array($sets)) {
             foreach ($sets as $data) {
                 $planes[] = new self($data, $db);
             }

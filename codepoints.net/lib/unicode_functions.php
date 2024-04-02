@@ -98,6 +98,7 @@ function get_codepoint(int $cp, Database $db) : ?Codepoint {
         $data = $db->getOne('SELECT cp, name, gc FROM codepoints WHERE cp = ?',
             $cp);
     }
+    /** @psalm-suppress RiskyTruthyFalsyComparison */
     if ($data) {
         return Codepoint::getCached($data, $db);
     }
@@ -165,7 +166,7 @@ function string_to_codepoints(string $string, Database $db) : Array {
     $data = $db->getAll('SELECT cp, name, gc FROM codepoints
         WHERE cp IN ( '.$list.' ) ORDER BY FIELD( cp, '.$list.' )');
     $cps = [];
-    if ($data) {
+    if (is_array($data) && count($data)) {
         $tmpcps = [];
         foreach ($data as $set) {
             $tmpcps[$set['cp']] = Codepoint::getCached($set, $db);

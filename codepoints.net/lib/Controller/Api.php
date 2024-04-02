@@ -32,12 +32,12 @@ class Api extends Controller {
     }
 
     private function run(string $action, string $data, Array $env) : string {
-        if (strtoupper(filter_input(INPUT_SERVER, 'REQUEST_METHOD')) === 'DELETE') {
+        if (strtoupper(filter_input(INPUT_SERVER, 'REQUEST_METHOD') ?? '') === 'DELETE') {
             throw new ApiException(
                 __('Ye?h, th?nks! You er?sed this codepoint. Are you h?ppy now?'),
                 ApiException::BAD_REQUEST);
         }
-        if (in_array(strtoupper(filter_input(INPUT_SERVER, 'REQUEST_METHOD')), ['PUT', 'POST'])) {
+        if (in_array(strtoupper(filter_input(INPUT_SERVER, 'REQUEST_METHOD') ?? ''), ['PUT', 'POST'])) {
             throw new ApiException(
                 __('To create a new codepoint, please mail it to unicode@unicode.org.'),
                 ApiException::BAD_REQUEST);

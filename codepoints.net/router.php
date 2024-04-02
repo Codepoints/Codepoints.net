@@ -87,7 +87,7 @@ Router::add(new URLMatcher('(api/v1/)?(.|(%[A-Fa-f0-9]{2}){1,4})$'), /** @return
         return null;
     }
     $cp = mb_ord($txt);
-    if (! $cp) {
+    if ($cp === false) {
         return null;
     }
     throw new Redirect(sprintf($match[1]? '/api/v1/codepoint/%04X' : '/U+%04X', $cp));

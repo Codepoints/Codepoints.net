@@ -59,10 +59,12 @@ class Engine {
     public function search(string $query_string) {
         $this->query = $this->parseQuery($query_string);
         $single_cp = $this->detectSingleCodepointSearch($this->query);
+        /** @psalm-suppress RiskyTruthyFalsyComparison */
         if ($single_cp) {
             return $single_cp;
         }
         $single_prop_result = $this->detectSinglePropertySearch($this->query);
+        /** @psalm-suppress RiskyTruthyFalsyComparison */
         if ($single_prop_result) {
             return $single_prop_result;
         }
@@ -258,14 +260,14 @@ class Engine {
             $count = 0;
             $counter = $count_statement->fetch(\PDO::FETCH_ASSOC);
             if ($counter) {
-                $count = $counter['count'];
+                $count = (int)$counter['count'];
             }
 
             $page = get_page();
             $items = [];
             /* if $count is 0, it's no use searching again, when we
              * already know that there is no result. */
-            if ($count) {
+            if ($count !== 0) {
                 $query_statement = $this->env['db']->prepare(sprintf('
                     SELECT c.cp, c.name, c.gc
                     FROM search_index

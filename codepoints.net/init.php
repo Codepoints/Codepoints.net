@@ -56,6 +56,7 @@ unset($basename);
 if (! is_array($config)) {
     return false;
 }
+/** @psalm-suppress UndefinedConstant */
 Router::addDependency('db', $db = new Database(
     'mysql:host='.($config['db']['host'] ?? 'localhost').';dbname='.$config['db']['database'],
     $config['db']['user'],

@@ -144,6 +144,7 @@ EOD;
                 text = VALUE(text),
                 version = VALUE(version)'
             );
+        /** @psalm-suppress RiskyTruthyFalsyComparison */
         if (! $insert || ! $cp_list) {
             return false;
         }

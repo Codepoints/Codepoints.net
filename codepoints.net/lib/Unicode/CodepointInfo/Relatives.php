@@ -25,7 +25,7 @@ class Relatives extends CodepointInfo {
                 ON (codepoints.cp = codepoint_relation.cp)
             WHERE other = ? AND codepoints.cp != ? GROUP BY cp',
             $codepoint->id, $codepoint->id);
-        if ($data) {
+        if (is_array($data)) {
             foreach ($data as $v) {
                 $relatives[] = Codepoint::getCached($v, $this->db);
             }

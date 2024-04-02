@@ -29,7 +29,7 @@ class CSUR extends CodepointInfo {
             SELECT name
                 FROM csur
             WHERE cp = ?', $codepoint->id);
-        if ($data && isset($data['name'])) {
+        if (is_array($data) && isset($data['name'])) {
             $csur_data['name'] = (string)$data['name'];
         }
         return $csur_data;

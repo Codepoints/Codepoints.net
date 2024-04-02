@@ -20,11 +20,11 @@ abstract class CodepointInfo {
      * @param Array{db: Database, lang: string, info: PropertyInfo} $env
      */
     public function __construct(Array $env) {
-        $name = strtolower(preg_replace('/.*\\\\/', '', get_class($this)));
-        Codepoint::addInfoProvider($name, $this);
         $this->db = $env['db'];
         $this->lang = $env['lang'];
         $this->info = $env['info'];
+        $name = strtolower(preg_replace('/.*\\\\/', '', get_class($this)));
+        Codepoint::addInfoProvider($name, $this);
     }
 
     /**

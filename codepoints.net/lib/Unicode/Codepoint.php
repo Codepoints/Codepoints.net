@@ -178,6 +178,7 @@ class Codepoint implements JsonSerializable {
                 WHERE cp < ?
                 ORDER BY cp DESC
                 LIMIT 1', $this->id);
+            /** @psalm-suppress RiskyTruthyFalsyComparison */
             if ($other) {
                 $this->prev = self::getCached($other, $this->db);
             }
@@ -197,6 +198,7 @@ class Codepoint implements JsonSerializable {
                 WHERE cp > ?
                 ORDER BY cp ASC
                 LIMIT 1', $this->id);
+            /** @psalm-suppress RiskyTruthyFalsyComparison */
             if ($other) {
                 $this->next = self::getCached($other, $this->db);
             }

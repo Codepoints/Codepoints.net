@@ -17,6 +17,7 @@ class Translator {
 
     public function __construct() {
         $this->getLanguage();
+        /** @psalm-suppress RiskyTruthyFalsyComparison */
         if ($this->language) {
             $mofile = dirname(__DIR__).'/locale/'.$this->language.'/LC_MESSAGES/messages.mo';
             if (is_file($mofile)) {
@@ -36,6 +37,7 @@ class Translator {
             return $original;
         }
         $text = $text->getTranslation();
+        /** @psalm-suppress RiskyTruthyFalsyComparison */
         if (! $text) {
             return $original;
         }
@@ -43,6 +45,7 @@ class Translator {
     }
 
     public function getLanguage() : string {
+        /** @psalm-suppress RiskyTruthyFalsyComparison */
         if (! $this->language) {
             $lang = preg_replace('/\s*([A-Za-z0-9_-]{2,32})?.*$/', '$1', filter_input(
                 INPUT_SERVER,

@@ -35,5 +35,14 @@
         <file name="codepoints.net/views/partials/head-codepoint.php" />
       </errorLevel>
     </RedundantConditionGivenDocblockType>
+    <RiskyTruthyFalsyComparison>
+      <errorLevel type="suppress">
+        <!-- in views we're mostly fine with ignoring falsy strings -->
+        <directory name="codepoints.net/views" />
+      </errorLevel>
+      <errorLevel type="info">
+        <directory name="codepoints.net" />
+      </errorLevel>
+    </RiskyTruthyFalsyComparison>
   </issueHandlers>
 </psalm>

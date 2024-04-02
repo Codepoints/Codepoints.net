@@ -37,9 +37,10 @@ function _q(string $s) : string {
  */
 function _f(string $pattern, Array $values) : string {
     global $lang;
-    $result = msgfmt_format_message($lang, __($pattern), $values);
-    if (! $result && strpos($pattern, '{}') === false) {
-        Analog::log('MessageFormat: Empty result detected: '.$pattern);
+    $formatter = new MessageFormatter($lang, __($pattern));
+    $result = $formatter->format($values);
+    if ($result === false) {
+        Analog::log('MessageFormat error: '.$formatter->getErrorMessage()."\n".'for pattern '.$pattern);
     }
     return $result;
 }

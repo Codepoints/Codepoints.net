@@ -25,7 +25,7 @@ class Search extends Controller {
      */
     public function __invoke($match, Array $env) : string {
 
-        $query = filter_input(INPUT_SERVER, 'QUERY_STRING');
+        $query = filter_input(INPUT_SERVER, 'QUERY_STRING') ?? '';
         list($search_result, $pagination) = $this->getSearchResult($query, $env);
         if (is_string($search_result)) {
             throw new Redirect(sprintf('/U+%s', dechex(mb_ord($search_result))));

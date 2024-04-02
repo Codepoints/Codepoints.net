@@ -22,6 +22,7 @@ class ImageSource extends CodepointInfo {
                 FROM codepoint_image
             WHERE codepoint_image.cp = ?
             LIMIT 1', get_printable_codepoint($codepoint->id, $codepoint->gc));
+        /** @psalm-suppress RiskyTruthyFalsyComparison */
         if ($data) {
             $source = $data['font'];
         }

@@ -161,6 +161,7 @@ class Properties extends CodepointInfo {
                     AND script.`primary` = 1)
             WHERE props.cp = ?
             LIMIT 1', $codepoint->id);
+        /** @psalm-suppress RiskyTruthyFalsyComparison */
         if ($data) {
             $unihan = [];
             if ($data['unihan']) {
@@ -179,7 +180,7 @@ class Properties extends CodepointInfo {
             WHERE cp = ?
                 AND `primary` = 0', $codepoint->id);
         $properties['scx'] = [];
-        if ($data) {
+        if (is_array($data)) {
             $properties['scx'] = array_map(function(Array $item) : string { return $item['scx']; }, $data);
         }
 
@@ -191,7 +192,7 @@ class Properties extends CodepointInfo {
                 ON (codepoints.cp = codepoint_relation.other)
             WHERE codepoint_relation.cp = ?
             ORDER BY `order`', $codepoint->id);
-        if ($data) {
+        if (is_array($data)) {
             foreach ($data as $v) {
                 $rel = $v['relation'];
                 if ($v['order'] == 0) {

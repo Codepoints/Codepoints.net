@@ -10,13 +10,11 @@ use \Analog\Analog;
 class Database extends \PDO {
 
     /**
-     * @param string $query
-     * @param Array $params
-     * @return \PDOStatement|false
+     *
      */
-    public function prepare($query, $params=[]): \PDOStatement|false {
+    public function prepare(string $query, Array $options=[]): \PDOStatement|false {
         $this->_log($query);
-        return parent::prepare($query, $params);
+        return parent::prepare($query, $options);
     }
 
     /**

@@ -16,6 +16,7 @@ class Aliases extends CodepointInfo {
      * return the official Unicode properties for a code point
      */
     public function __invoke(Codepoint $codepoint) : Array {
+        /** @psalm-suppress RiskyTruthyFalsyComparison */
         return $this->db->getAll('
             SELECT cp, alias, `type`
             FROM codepoint_alias

@@ -33,6 +33,7 @@ class CLDR extends CodepointInfo {
                 FROM codepoint_annotation
             WHERE cp = ?
                 AND lang = ?', $codepoint->id, $this->lang);
+        /** @psalm-suppress RiskyTruthyFalsyComparison */
         if ($data) {
             $tts = array_filter($data, function (Array $item) : bool {
                 return $item['type'] === 'tts';

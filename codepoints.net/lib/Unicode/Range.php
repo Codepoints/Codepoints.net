@@ -99,6 +99,7 @@ class Range implements \Iterator {
                 FROM codepoints
                 WHERE cp >= ? AND cp <= ?', $this->first, $this->last);
             $this->count = 0;
+            /** @psalm-suppress RiskyTruthyFalsyComparison */
             if ($data) {
                 $this->count = $data['c'];
             }
@@ -138,6 +139,7 @@ class Range implements \Iterator {
             $items = $this->db->getAll('SELECT cp, name, gc
                 FROM codepoints
                 WHERE cp >= ? AND cp <= ?', $first, $last);
+            /** @psalm-suppress RiskyTruthyFalsyComparison */
             if (! $items) {
                 /* something went wrong. We return early. */
                 return null;
@@ -157,6 +159,7 @@ class Range implements \Iterator {
                 }
             }
         }
+        /** @psalm-suppress RiskyTruthyFalsyComparison */
         return $data? Codepoint::getCached($data, $this->db) : null;
     }
 
@@ -192,7 +195,7 @@ class Range implements \Iterator {
             return new self(['first' => 0x110000, 'last' => 0x110000], $this->db);
         }
         $new_last = $this->last;
-        if ($length && $new_first + $length - 1 <= $this->last) {
+        if (is_int($length) && $new_first + $length - 1 <= $this->last) {
             $new_last = $new_first + $length - 1;
         }
         return new self(['first' => $new_first, 'last' => $new_last], $this->db);

@@ -37,6 +37,7 @@ class SearchResult extends Range {
         if (array_key_exists($codepoint, $this->cp_cache)) {
             $data = $this->cp_cache[$codepoint];
         }
+        /** @psalm-suppress RiskyTruthyFalsyComparison */
         return $data? Codepoint::getCached($data, $this->db) : null;
     }
 
@@ -60,6 +61,7 @@ class SearchResult extends Range {
      * parameter.
      */
     public function slice(int $offset, ?int $length = null) : self {
+        /** @psalm-suppress RiskyTruthyFalsyComparison */
         return new self([
             'name' => $this->name,
             'count' => $length?: Pagination::PAGE_SIZE,

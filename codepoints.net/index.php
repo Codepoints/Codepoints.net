@@ -49,8 +49,8 @@ require_once 'router.php';
  * run this thing!
  */
 $url = rawurldecode(preg_replace('/\?.*/', '', substr(
-            filter_input(INPUT_SERVER, 'REQUEST_URI'),
-            strlen(rtrim(dirname(filter_input(INPUT_SERVER, 'PHP_SELF')), '/').'/'))));
+            filter_input(INPUT_SERVER, 'REQUEST_URI') ?? '',
+            strlen(rtrim(dirname(filter_input(INPUT_SERVER, 'PHP_SELF') ?? ''), '/').'/'))));
 try {
     if (! $init_successful) {
         throw new RuntimeException();
@@ -76,7 +76,7 @@ try {
     exit(1);
 }
 
-if ($content) {
+if (is_string($content)) {
     echo $content;
 } else {
     echo (new NotFound())($url, Router::getDependencies());

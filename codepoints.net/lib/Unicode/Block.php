@@ -76,6 +76,7 @@ class Block extends Range {
                 WHERE last < ?
                 ORDER BY last DESC
                 LIMIT 1', $this->first);
+            /** @psalm-suppress RiskyTruthyFalsyComparison */
             if ($data) {
                 $this->prev = new self($data, $this->db);
             }
@@ -96,6 +97,7 @@ class Block extends Range {
                 WHERE first > ?
                 ORDER BY first ASC
                 LIMIT 1', $this->last);
+            /** @psalm-suppress RiskyTruthyFalsyComparison */
             if ($data) {
                 $this->next = new self($data, $this->db);
             }
@@ -121,6 +123,7 @@ class Block extends Range {
             SELECT name, first, last FROM blocks
              WHERE first <= ? AND last >= ?
              LIMIT 1', $id, $id);
+        /** @psalm-suppress RiskyTruthyFalsyComparison */
         if (! $data) {
             throw new \Exception('no block contains this code point: '.$id);
         }

@@ -45,7 +45,7 @@ class Confusables extends CodepointInfo {
 
             ORDER BY id, `order`
             ', $codepoint->id, $codepoint->id);
-        if ($data) {
+        if (is_array($data)) {
             foreach ($data as $v) {
                 $id = $v['id'];
                 unset($v['id']);

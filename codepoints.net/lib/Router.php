@@ -71,12 +71,14 @@ class Router {
                 $match = $current_url;
             }
             /* empty string: home page */
+            /** @psalm-suppress RiskyTruthyFalsyComparison */
             if ($match || $match === '') {
                 $current_handler = $handler;
                 break;
             }
         }
 
+        /** @psalm-suppress RiskyTruthyFalsyComparison */
         if ($current_handler) {
             static::$env['current_url'] = $current_url;
             $query = http_build_query($_GET);

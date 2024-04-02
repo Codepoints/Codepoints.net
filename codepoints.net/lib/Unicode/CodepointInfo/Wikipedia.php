@@ -29,6 +29,7 @@ class Wikipedia extends CodepointInfo {
                 AND (lang = ? OR lang = "en")
             ORDER BY lang = ? DESC, cp = ? DESC
             LIMIT 1', $codepoint->id, $uc, $this->lang, $this->lang, $codepoint->id);
+        /** @psalm-suppress RiskyTruthyFalsyComparison */
         if (! $data) {
             return null;
         }

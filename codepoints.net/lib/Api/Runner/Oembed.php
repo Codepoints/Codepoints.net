@@ -9,6 +9,7 @@ use Codepoints\Api\Exception as ApiException;
 class Oembed extends Runner {
 
     public function handle(string $data) : string {
+        /** @psalm-suppress RiskyTruthyFalsyComparison */
         if (! isset($_GET['url']) || ! $_GET['url'] || is_array($_GET['url'])) {
             header('Content-Type: application/json; charset=utf-8');
             return json_encode([

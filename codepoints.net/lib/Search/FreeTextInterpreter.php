@@ -115,13 +115,14 @@ class FreeTextInterpreter {
             }
 
             $v_sc = array_search($low_v, $this->scripts);
-            if ($v_sc) {
+            if (is_string($v_sc)) {
                 $r[] = 'sc_'.$v_sc;
             }
 
+            /** @psalm-suppress RiskyTruthyFalsyComparison */
             if ($next_term) {
                 $v_sc = array_search($low_v.' '.strtolower($next_term), $this->scripts);
-                if ($v_sc) {
+                if (is_string($v_sc)) {
                     $r[] = 'sc_'.$v_sc;
                 }
             }

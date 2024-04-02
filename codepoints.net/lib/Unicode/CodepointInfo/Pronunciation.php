@@ -13,6 +13,8 @@ class Pronunciation extends CodepointInfo {
 
     /**
      * get the pinyin pronunciation of a code point
+     *
+     * @psalm-suppress RiskyTruthyFalsyComparison
      */
     public function __invoke(Codepoint $codepoint) : ?string {
         $props = $codepoint->properties;

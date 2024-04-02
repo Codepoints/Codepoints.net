@@ -22,7 +22,7 @@ class Search extends JsonRunner {
             ];
         }
 
-        $query = filter_input(INPUT_SERVER, 'QUERY_STRING');
+        $query = filter_input(INPUT_SERVER, 'QUERY_STRING') ?? '';
         $controller = new SearchController();
         list($search_result, $pagination) = $controller->getSearchResult($query, $this->env);
         if (is_string($search_result)) {
