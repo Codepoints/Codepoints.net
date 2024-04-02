@@ -31,7 +31,7 @@ Analog::$default_level = Analog::DEBUG;
  */
 Analog::handler(Threshold::init(
     LevelName::init(Stderr::init()),
-    ((defined('DEBUG') && DEBUG) || PHP_SAPI === 'cli')?
+    (($_ENV['CODEPTS_LOG_LEVEL'] ?? '') === 'DEBUG' || PHP_SAPI === 'cli')?
         Analog::DEBUG : Analog::ERROR
 ));
 

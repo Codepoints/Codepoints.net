@@ -32,9 +32,6 @@ jobs:
           path: /tmp/composer-cache
           key: "${{ runner.os }}-${{ hashFiles('**/composer.lock') }}"
 
-      - name: disable DEBUG
-        run: "sed -i '/define..DEBUG/s/1/0/' codepoints.net/index.php"
-
       - name: install composer packages
         uses: php-actions/composer@v6
         with:

@@ -8,7 +8,6 @@ use Codepoints\Router;
 use Codepoints\Router\NotFoundException;
 use Codepoints\Router\Redirect;
 
-define('DEBUG', 1);
 define('SOFTWARE_VERSION', '00000002');
 
 try {

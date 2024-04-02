@@ -25,6 +25,8 @@ services:
     depends_on:
       - db
       - vite
+    environment:
+      - CODEPTS_LOG_LEVEL=DEBUG
     # https://stackoverflow.com/a/43541681/113195
     extra_hosts:
       - "host.docker.internal:host-gateway"
