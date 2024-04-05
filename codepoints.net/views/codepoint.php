@@ -109,7 +109,7 @@ include 'partials/header.php'; ?>
   </section>
 <?php endif ?>
 
-<?php if ($wikipedia): ?>
+<?php if (isset($wikipedia['abstract']) && trim($wikipedia['abstract'])): ?>
   <section class="cpdesc cpdesc--wikipedia">
     <p><?php printf(__('The %sWikipedia%s has the following information about this codepoint:'), '<a href="'.q($wikipedia['src']).'">', '</a>')?></p>
     <blockquote>
