@@ -113,7 +113,8 @@ include 'partials/header.php'; ?>
   <section class="cpdesc cpdesc--wikipedia">
     <p><?php printf(__('The %sWikipedia%s has the following information about this codepoint:'), '<a href="'.q($wikipedia['src']).'">', '</a>')?></p>
     <blockquote>
-      <?php echo strip_tags($wikipedia['abstract'], '<p><b><strong class="selflink"><strong><em><i><var><sup><sub><tt><ul><ol><li><samp><small><hr><h2><h3><h4><h5><dfn><dl><dd><dt><u><abbr><big><blockquote><br><center><del><ins><kbd>')?>
+      <?= /* we rely on our import script to scrub away all unwanted markup */
+          $wikipedia['abstract'] ?>
     </blockquote>
   </section>
 <?php endif ?>
