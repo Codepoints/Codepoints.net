@@ -239,6 +239,35 @@ use Codepoints\Unicode\Codepoint;
         'b_end' => '</strong>',
     ]).
     ' '.
+    _f('{WB, select,
+        AL {This letter joins with other adjacent letters and numbers to form a {b_start}word{b_end}.}
+        CR {If it is followed by U+000A LINE FEED, these two form a {b_start}non-breaking pair{b_end}.}
+        HL {This letter joins with other adjacent letters and numbers to form a {b_start}word{b_end}.}
+        KA {This katakana joins with other adjacent katakana to form a {b_start}word{b_end}.}
+        NU {This number joins with other adjacent letters and numbers to form a {b_start}word{b_end}.}
+        RI {If it is followed by another Regional Indicator character, they form a {b_start}non-breaking pair{b_end}.}
+        SQ {In Hebrew text this single quote joins with other Hebrew letters to form a {b_start}word{b_end}.}
+        other {}
+    }', [
+        'WB' => $props['WB'],
+        'b_start' => '<strong>',
+        'b_end' => '</strong>',
+    ]).
+    ' '.
+    _f('{SB, select,
+        AT {It can end {b_start}sentences{b_end} at appropriate places.}
+        CR {It can end {b_start}sentences{b_end} at appropriate places, unless followed by U+000A LINE FEED.}
+        LF {It can end {b_start}sentences{b_end} at appropriate places.}
+        SC {It will not end a {b_start}sentence{b_end}.}
+        SE {It can end {b_start}sentences{b_end} at appropriate places.}
+        ST {It can end {b_start}sentences{b_end} at appropriate places.}
+        other {}
+    }', [
+        'SB' => $props['SB'],
+        'b_start' => '<strong>',
+        'b_end' => '</strong>',
+    ]).
+    ' '.
     _f('{lb, select,
         './* TR14 Non-tailorable Line Breaking Classes */'
         BK {{cp} forces a {b_start}line break{b_end} after it.}
@@ -275,7 +304,7 @@ use Codepoints\Unicode\Codepoint;
         './* TR14 Other Characters */'
         AI {If its East Asian Width is “narrow”, {cp} forms a word with similar characters, which prevents a {b_start}line break{b_end} inside it. Otherwise it allows line breaks around it, except in some numeric contexts.}
         AK {{cp} forms an orthographic syllable in Brahmic scripts with similar characters, which prevents a {b_start}line break{b_end} inside it.}
-        AL {{cp} forms a word with similar characters, which prevents a {b_start}line break{b_end} inside it.}
+        AL {The word that {cp} forms with similar adjacent characters prevents a {b_start}line break{b_end} inside it.}
         AP {{cp} forms an orthographic syllable in Brahmic scripts with similar characters, which prevents a {b_start}line break{b_end} inside it.}
         AS {{cp} forms an orthographic syllable in Brahmic scripts with similar characters, which prevents a {b_start}line break{b_end} inside it.}
         CJ {{cp} prohibits {b_start}line breaks{b_end} before its position. There are some exceptions, though.}
@@ -283,7 +312,7 @@ use Codepoints\Unicode\Codepoint;
         EM {{cp} prohibits a {b_start}line break{b_end} before it, if it’s preceded by an emoji base character.}
         H2 {{cp} forms a Korean syllable block with similar characters, which prevents a {b_start}line break{b_end} inside it.}
         H3 {{cp} forms a Korean syllable block with similar characters, which prevents a {b_start}line break{b_end} inside it.}
-        HL {{cp} forms a word with similar characters and the hyphen, which prevents a {b_start}line break{b_end} inside it.}
+        HL {The word that {cp} forms with similar adjacent characters and the hyphen prevents a {b_start}line break{b_end} inside it.}
         ID {{cp} offers a {b_start}line break{b_end} opportunity at its position, except in some numeric contexts.}
         JL {{cp} forms a Korean syllable block with similar characters, which prevents a {b_start}line break{b_end} inside it.}
         JV {{cp} forms a Korean syllable block with similar characters, which prevents a {b_start}line break{b_end} inside it.}
@@ -298,35 +327,6 @@ use Codepoints\Unicode\Codepoint;
         'cp' => $codepoint,
         'lb' => $props['lb'],
         'lb_legend' => q($info->getLegend('lb', $props['lb'])),
-        'b_start' => '<strong>',
-        'b_end' => '</strong>',
-    ]).
-    ' '.
-    _f('{WB, select,
-        AL {This letter joins with other adjacent letters and numbers to form a {b_start}word{b_end}.}
-        CR {If it is followed by U+000A LINE FEED, these two form a {b_start}non-breaking pair{b_end}.}
-        HL {This letter joins with other adjacent letters and numbers to form a {b_start}word{b_end}.}
-        KA {This katakana joins with other adjacent katakana to form a {b_start}word{b_end}.}
-        NU {This number joins with other adjacent letters and numbers to form a {b_start}word{b_end}.}
-        RI {If it is followed by another Regional Indicator character, they form a {b_start}non-breaking pair{b_end}.}
-        SQ {In Hebrew text this single quote joins with other Hebrew letters to form a {b_start}word{b_end}.}
-        other {}
-    }', [
-        'WB' => $props['WB'],
-        'b_start' => '<strong>',
-        'b_end' => '</strong>',
-    ]).
-    ' '.
-    _f('{SB, select,
-        AT {It can end {b_start}sentences{b_end} at appropriate places.}
-        CR {It can end {b_start}sentences{b_end} at appropriate places, unless followed by U+000A LINE FEED.}
-        LF {It can end {b_start}sentences{b_end} at appropriate places.}
-        SC {It will not end a {b_start}sentence{b_end}.}
-        SE {It can end {b_start}sentences{b_end} at appropriate places.}
-        ST {It can end {b_start}sentences{b_end} at appropriate places.}
-        other {}
-    }', [
-        'SB' => $props['SB'],
         'b_start' => '<strong>',
         'b_end' => '</strong>',
     ]).

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-26 22:06+0000\n"
+"POT-Creation-Date: 2024-04-03 09:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -164,8 +164,8 @@ msgstr ""
 msgid "The point U+%04X is no valid Unicode codepoint."
 msgstr ""
 
-#: codepoints.net/lib/view_functions.php:103
-#: codepoints.net/lib/view_functions.php:133
+#: codepoints.net/lib/view_functions.php:104
+#: codepoints.net/lib/view_functions.php:134
 #, php-format
 msgid "U+%04X to U+%04X"
 msgstr ""
@@ -2894,24 +2894,24 @@ msgstr ""
 msgid "Not a block name"
 msgstr ""
 
-#: codepoints.net/lib/Api/Runner/Oembed.php:15
+#: codepoints.net/lib/Api/Runner/Oembed.php:16
 msgid "oEmbed API endpoint for URLs matching “codepoints.net”"
 msgstr ""
 
-#: codepoints.net/lib/Api/Runner/Oembed.php:29
+#: codepoints.net/lib/Api/Runner/Oembed.php:30
 msgid "Unknown format parameter"
 msgstr ""
 
-#: codepoints.net/lib/Api/Runner/Oembed.php:45
+#: codepoints.net/lib/Api/Runner/Oembed.php:46
 msgid "Invalid URL"
 msgstr ""
 
-#: codepoints.net/lib/Api/Runner/Oembed.php:54
+#: codepoints.net/lib/Api/Runner/Oembed.php:55
 msgid ""
 "URL path must be single character (UTF-8 encoded) or match /U+[A-F0-9]{4,6}/."
 msgstr ""
 
-#: codepoints.net/lib/Api/Runner/Oembed.php:59
+#: codepoints.net/lib/Api/Runner/Oembed.php:60
 msgid "Not a valid codepoint URL"
 msgstr ""
 
@@ -4484,6 +4484,41 @@ msgstr ""
 
 #: codepoints.net/views/partials/codepoint-description.php:242
 msgid ""
+"{WB, select,\n"
+"        AL {This letter joins with other adjacent letters and numbers to "
+"form a {b_start}word{b_end}.}\n"
+"        CR {If it is followed by U+000A LINE FEED, these two form a {b_start}"
+"non-breaking pair{b_end}.}\n"
+"        HL {This letter joins with other adjacent letters and numbers to "
+"form a {b_start}word{b_end}.}\n"
+"        KA {This katakana joins with other adjacent katakana to form a "
+"{b_start}word{b_end}.}\n"
+"        NU {This number joins with other adjacent letters and numbers to "
+"form a {b_start}word{b_end}.}\n"
+"        RI {If it is followed by another Regional Indicator character, they "
+"form a {b_start}non-breaking pair{b_end}.}\n"
+"        SQ {In Hebrew text this single quote joins with other Hebrew letters "
+"to form a {b_start}word{b_end}.}\n"
+"        other {}\n"
+"    }"
+msgstr ""
+
+#: codepoints.net/views/partials/codepoint-description.php:257
+msgid ""
+"{SB, select,\n"
+"        AT {It can end {b_start}sentences{b_end} at appropriate places.}\n"
+"        CR {It can end {b_start}sentences{b_end} at appropriate places, "
+"unless followed by U+000A LINE FEED.}\n"
+"        LF {It can end {b_start}sentences{b_end} at appropriate places.}\n"
+"        SC {It will not end a {b_start}sentence{b_end}.}\n"
+"        SE {It can end {b_start}sentences{b_end} at appropriate places.}\n"
+"        ST {It can end {b_start}sentences{b_end} at appropriate places.}\n"
+"        other {}\n"
+"    }"
+msgstr ""
+
+#: codepoints.net/views/partials/codepoint-description.php:271
+msgid ""
 "{lb, select,\n"
 "        \n"
 "        BK {{cp} forces a {b_start}line break{b_end} after it.}\n"
@@ -4538,8 +4573,8 @@ msgid ""
 "contexts.}\n"
 "        AK {{cp} forms an orthographic syllable in Brahmic scripts with "
 "similar characters, which prevents a {b_start}line break{b_end} inside it.}\n"
-"        AL {{cp} forms a word with similar characters, which prevents a "
-"{b_start}line break{b_end} inside it.}\n"
+"        AL {The word that {cp} forms with similar adjacent characters "
+"prevents a {b_start}line break{b_end} inside it.}\n"
 "        AP {{cp} forms an orthographic syllable in Brahmic scripts with "
 "similar characters, which prevents a {b_start}line break{b_end} inside it.}\n"
 "        AS {{cp} forms an orthographic syllable in Brahmic scripts with "
@@ -4554,8 +4589,8 @@ msgid ""
 "which prevents a {b_start}line break{b_end} inside it.}\n"
 "        H3 {{cp} forms a Korean syllable block with similar characters, "
 "which prevents a {b_start}line break{b_end} inside it.}\n"
-"        HL {{cp} forms a word with similar characters and the hyphen, which "
-"prevents a {b_start}line break{b_end} inside it.}\n"
+"        HL {The word that {cp} forms with similar adjacent characters and "
+"the hyphen prevents a {b_start}line break{b_end} inside it.}\n"
 "        ID {{cp} offers a {b_start}line break{b_end} opportunity at its "
 "position, except in some numeric contexts.}\n"
 "        JL {{cp} forms a Korean syllable block with similar characters, "
@@ -4576,41 +4611,6 @@ msgid ""
 "calculations.}\n"
 "        other {In text {cp} behaves as {b_start}{lb_legend}{b_end} regarding "
 "line breaks.}\n"
-"    }"
-msgstr ""
-
-#: codepoints.net/views/partials/codepoint-description.php:305
-msgid ""
-"{WB, select,\n"
-"        AL {This letter joins with other adjacent letters and numbers to "
-"form a {b_start}word{b_end}.}\n"
-"        CR {If it is followed by U+000A LINE FEED, these two form a {b_start}"
-"non-breaking pair{b_end}.}\n"
-"        HL {This letter joins with other adjacent letters and numbers to "
-"form a {b_start}word{b_end}.}\n"
-"        KA {This katakana joins with other adjacent katakana to form a "
-"{b_start}word{b_end}.}\n"
-"        NU {This number joins with other adjacent letters and numbers to "
-"form a {b_start}word{b_end}.}\n"
-"        RI {If it is followed by another Regional Indicator character, they "
-"form a {b_start}non-breaking pair{b_end}.}\n"
-"        SQ {In Hebrew text this single quote joins with other Hebrew letters "
-"to form a {b_start}word{b_end}.}\n"
-"        other {}\n"
-"    }"
-msgstr ""
-
-#: codepoints.net/views/partials/codepoint-description.php:320
-msgid ""
-"{SB, select,\n"
-"        AT {It can end {b_start}sentences{b_end} at appropriate places.}\n"
-"        CR {It can end {b_start}sentences{b_end} at appropriate places, "
-"unless followed by U+000A LINE FEED.}\n"
-"        LF {It can end {b_start}sentences{b_end} at appropriate places.}\n"
-"        SC {It will not end a {b_start}sentence{b_end}.}\n"
-"        SE {It can end {b_start}sentences{b_end} at appropriate places.}\n"
-"        ST {It can end {b_start}sentences{b_end} at appropriate places.}\n"
-"        other {}\n"
 "    }"
 msgstr ""
 
