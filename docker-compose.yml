@@ -57,3 +57,5 @@ services:
       - .:/project
     profiles:
       - test
+    depends_on:
+      - web
