@@ -38,9 +38,9 @@ export class CpQuestion extends LitElement {
 
   constructor(id, text, answers, action) {
     super();
-    /* eslint-disable wc/no-constructor-attributes */
+    /* x-eslint-disable wc/no-constructor-attributes */
     this.id = id;
-    /* eslint-enable wc/no-constructor-attributes */
+    /* x-eslint-enable wc/no-constructor-attributes */
     this.text = text;
     this.prev = null;
     this.next = {};

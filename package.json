@@ -2,6 +2,7 @@
   "name": "codepoints.net",
   "version": "2.0.0",
   "description": "",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -27,9 +28,7 @@
   },
   "homepage": "https://github.com/Codepoints/Codepoints.net#readme",
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^7.1.0",
-    "@typescript-eslint/parser": "^7.1.0",
-    "eslint": "^8.26.0",
+    "eslint": "^8.57.0",
     "eslint-plugin-lit": "^1.6.1",
     "eslint-plugin-wc": "^2.0.4",
     "patch-package": "^8.0.0",
@@ -39,6 +38,7 @@
     "postcss-preset-env": "^9.1.3",
     "redoc-cli": "^0.13.8",
     "rollup-plugin-minify-html-literals": "^1.2.6",
+    "typescript-eslint": "^7.7.0",
     "vite": "^5.1.5",
     "workbox-cli": "^7.0.0"
   },
