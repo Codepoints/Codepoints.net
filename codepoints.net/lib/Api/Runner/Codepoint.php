@@ -76,7 +76,7 @@ class Codepoint extends JsonRunner {
         if (array_key_exists('_', $response)) {
             $response['_']['description'] = $codepoint->description;
             $response['_']['image'] = ($codepoint->image)();
-            $response['_']['imagesource'] = $codepoint->imagesource;
+            $response['_']['imagesource'] = $codepoint->imagesource['font'] ?? null;
             $response['_']['wikipedia'] = $codepoint->wikipedia;
         }
         return $response;

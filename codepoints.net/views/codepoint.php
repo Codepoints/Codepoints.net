@@ -41,8 +41,8 @@ include 'partials/header.php'; ?>
   <div>
     <figure class="sqfig cpfig">
       <cp-copy content="<?= q(mb_chr($codepoint->id)) ?>"><?=cpimg($codepoint, 250)?></cp-copy>
-      <?php if ($codepoint->imagesource): ?>
-        <figcaption><?=q(sprintf(__('Source: %s'), $codepoint->imagesource))?></figcaption>
+      <?php if (isset($codepoint->imagesource['font'])): ?>
+        <figcaption><?=q(sprintf(__('Source: %s'), $codepoint->imagesource['font']))?></figcaption>
       <?php endif ?>
     </figure>
   </div>
