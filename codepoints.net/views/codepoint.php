@@ -40,7 +40,7 @@ include 'partials/header.php'; ?>
          * left but remain close to the text */ ?>
   <div>
     <figure class="sqfig cpfig">
-      <cp-copy content="<?= q(mb_chr($codepoint->id)) ?>"><?=cpimg($codepoint, 250)?></cp-copy>
+      <cp-copy content="<?= q(mb_chr($codepoint->id)) ?>"><?=cpimg($codepoint, 250, $codepoint->imagesource ?? null)?></cp-copy>
       <?php if (isset($codepoint->imagesource['font'])): ?>
         <figcaption><?=q(sprintf(__('Source: %s'), $codepoint->imagesource['font']))?></figcaption>
       <?php endif ?>

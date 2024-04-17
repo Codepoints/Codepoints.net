@@ -80,9 +80,9 @@ function cp(Codepoint|Array $codepoint, string $rel='', string $class='') : stri
  * When https://bugzilla.mozilla.org/show_bug.cgi?id=1027106 is fixed, we
  * can switch back to good ol' <img> again.
  */
-function cpimg(Codepoint $codepoint, int $width=16) : string {
+function cpimg(Codepoint $codepoint, int $width=16, ?array $src=null) : string {
     $image_generator = $codepoint->image;
-    return $image_generator($width);
+    return $image_generator($width, $src);
 }
 
 /**
