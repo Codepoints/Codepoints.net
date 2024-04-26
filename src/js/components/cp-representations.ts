@@ -63,6 +63,19 @@ const formatters = [
 
   ['php', _('PHP'), backslash_u_curly],
 
+  ['postgresql', _('PostgreSQL'), function(n) {
+    let prefix = '', len = 4;
+    if (n > 0xFFFF) {
+      prefix = '+';
+      len = 6;
+    }
+    let str = n.toString(16).toUpperCase();
+    while (str.length < len) {
+      str = "0" + str;
+    }
+    return `U&'\\${prefix}${str}'`;
+  }],
+
   ['ps1', _('PowerShell'), (n) => `\`u{${n.toString(16).toUpperCase()}}`],
 
   ['py', _('Python'), backslash_u_U],
