@@ -4,81 +4,19 @@ import { gettext as _ } from '../_i18n.ts';
 
 @customElement('cp-menu')
 export class CpMenu extends LitElement {
-  static styles = css`
-  a {
-    color: var(--color-link);
-    transition: color .3s;
+  connectedCallback() {
+    super.connectedCallback();
+    document.addEventListener('locale-ready', () => this.requestUpdate());
   }
 
-  a:focus, a:hover {
-    color: var(--color-link-hover);
+  createRenderRoot() {
+    return this;
   }
-
-  h2 {
-    margin: 0;
-    font-size: 1.5em;
-  }
-  nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: .5rem;
-  }
-  nav > * {
-    min-width: 8rem;
-    text-align: center;
-  }
-  nav svg {
-    height: 3rem;
-    width: 3rem;
-    display: block;
-    fill: currentColor;
-    fill-opacity: .5;
-    margin: 0 auto .5rem;
-    transition: fill-opacity .3s;
-  }
-  nav >*:focus svg,
-  nav >*:hover svg {
-    fill-opacity: 1;
-  }
-  cp-dialog > * + * {
-    margin-top: 2rem;
-  }
-
-  .card {
-    min-height: 2em;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  section {
-    display: flex;
-    flex-wrap: wrap;
-    gap: .75em;
-  }
-  section > * {
-    flex-grow: 1;
-    flex-basis: 40%;
-  }
-  section > h2 {
-    flex-grow: 0;
-    flex-basis: 100%;
-  }
-  @media (max-width: 999px) {
-    section {
-      flex-direction: column;
-    }
-    section > * {
-      flex-basis: 100%;
-    }
-  }
-  `;
 
   render() {
     const query = (new URLSearchParams(location.search)).get('q') || '';
     const path = location.pathname;
     return html`
-    <link rel="stylesheet" href="${document.getElementById('main-css').href}">
     <cp-dialog class="menu">
       <nav>
         <a href="/" aria-current="${path === '/'? 'page' : nothing}">
@@ -128,10 +66,10 @@ export class CpMenu extends LitElement {
   }
 
   show() {
-    this.renderRoot.querySelector('cp-dialog').open();
+    this.querySelector('cp-dialog').open();
   }
 
   close() {
-    this.renderRoot.querySelector('cp-dialog').close();
+    this.querySelector('cp-dialog').close();
   }
 }

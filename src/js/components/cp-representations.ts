@@ -191,6 +191,7 @@ tbody small {
 
   connectedCallback() {
     super.connectedCallback();
+    document.addEventListener('locale-ready', () => this.requestUpdate());
     this.favorites = new FavoritesManager();
     this._thead = this.querySelector('thead');
     this._thead.querySelector('th:last-child').insertAdjacentHTML('beforeend',

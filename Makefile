@@ -113,4 +113,9 @@ mo:
 		while IFS= read -r -d '' po; do \
 			msgfmt "$$po" -o "$${po/.po/.mo}"; \
 		done
+	@mkdir -p codepoints.net/static/locale
+	@find codepoints.net/locale -type f -name 'js.po' -print0 | \
+		while IFS= read -r -d '' po; do \
+			./node_modules/.bin/po2json --format mf "$$po" "src/public/locale/$$(basename $$(dirname $$(dirname "$$po"))).json"; \
+		done
 .PHONY: mo

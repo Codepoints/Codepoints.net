@@ -1,8 +1,6 @@
 /codepoints.net/cache
 /codepoints.net/vendor
 /config.ini
-/codepoints.net/static/css
-/codepoints.net/static/fonts
 /node_modules
 /codepoints.net/static/
 /dev/db_data
