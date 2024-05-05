@@ -1,4 +1,4 @@
-import { LitElement, css, html, nothing } from 'lit';
+import { LitElement, html, nothing } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import { gettext as _ } from '../_i18n.ts';
 
