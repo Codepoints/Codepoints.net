@@ -1,4 +1,4 @@
-import {LitElement, html, css, nothing} from 'lit';
+import {LitElement, html, nothing} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
 import {unsafeHTML} from 'lit/directives/unsafe-html.js';
 import {gettext as _} from '../_i18n.ts';
@@ -122,54 +122,6 @@ class FavoritesManager {
 
 @customElement('cp-representations')
 export class CpRepresentations extends LitElement {
-  static styles = css`
-:host > button {
-  display: block;
-  margin-top: .5rem;
-}
-@media print {
-  :host button {
-    display: none;
-  }
-}
-:host > button,
-.props {
-  margin-left: auto;
-  margin-right: auto;
-}
-th, td {
-  padding: .2rem .5rem;
-  vertical-align: top;
-}
-th:first-child {
-  text-align: right;
-}
-th:last-child {
-  text-align: left;
-}
-small {
-  font-weight: normal;
-  font-size: calc(1rem / var(--font-mod));
-}
-table:not(.show-all) tbody tr:not(.primary),
-table:not(.show-all) tfoot {
-  display: none;
-}
-.props button {
-  opacity: .5;
-  margin-left: .25rem;
-  border: none;
-  border-radius: 50%;
-}
-.props button:focus,
-.props button:hover {
-  opacity: 1;
-}
-tbody small {
-  display: block;
-  margin-right: calc(1.6em * var(--font-mod));
-}
-  `;
 
   @property({ type: Number })
   declare cp = null;
@@ -219,6 +171,11 @@ tbody small {
         description: formatter[3] ?? null,
       });
     });
+    this.innerHTML = '';
+  }
+
+  createRenderRoot() {
+    return this;
   }
 
   render() {

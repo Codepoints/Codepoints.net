@@ -1,16 +1,15 @@
-import { LitElement, css, html } from 'lit';
+import { LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
 
 @customElement('cp-searchform')
 export class CpSearchform extends LitElement {
-  static styles = css`
-    :host {
-      display: block;
-    }
-  `;
+  constructor() {
+    super();
+    this.addEventListener('reset', this.reset.bind(this));
+  }
 
-  render() {
-    return html`<slot @reset="${this.reset}"></slot>`;
+  createRenderRoot() {
+    return this;
   }
 
   reset() {

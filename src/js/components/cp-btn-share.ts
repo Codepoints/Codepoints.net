@@ -1,4 +1,4 @@
-import {LitElement, css, html} from 'lit';
+import {LitElement, html} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
 import {gettext as _} from '../_i18n.ts';
 import {CpDialog} from './cp-dialog.ts';
@@ -80,25 +80,9 @@ export class CpBtnShare extends LitElement {
 
 @customElement('cp-share-container')
 class CpShareContainer extends LitElement {
-  static styles = css`
-    .preview {
-      padding: 1rem;
-      border-bottom: 1px solid;
-    }
-    .preview span {
-      display: block;
-    }
-    .preview .title {
-      font-size: 1.25rem;
-    }
-    ul {
-      padding-left: 0;
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-  `;
+  createRenderRoot() {
+    return this;
+  }
 
   render() {
     const s = [];
@@ -107,7 +91,6 @@ class CpShareContainer extends LitElement {
       s.push(html`<li><a class="btn" href="${url}" target="_blank">${service}</a></li>`);
     }
     return html`
-    <link rel="stylesheet" href="${document.getElementById('main-css').href}">
     <div class="preview">
       <span class="url">${this.url}</span>
       <span class="title">${this.title}</span>

@@ -1,3 +1,23 @@
+@keyframes cp-success {
+  from {
+    margin-top: -2em;
+    opacity: 1;
+  }
+  to {
+    margin-top: -4em;
+    opacity: 0;
+  }
+}
+
+@keyframes cp-question {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 cp-menu {
   a {
     color: var(--color-link);
@@ -65,5 +85,118 @@ cp-menu {
     section > * {
       flex-basis: 100%;
     }
+  }
+}
+
+cp-success {
+  pointer-events: none;
+  display: block;
+  padding: .2em .8em;
+  position: absolute;
+  line-height: 1.6;
+  z-index: 2;
+  background: #000c;
+  border-radius: .2em;
+  box-shadow: 1px 1px 2px rgba(0,0,0,.4);
+  color: white;
+  text-shadow: 1px  1px 0 #000,
+               1px -1px 0 #000,
+              -1px  1px 0 #000,
+              -1px -1px 0 #000;
+  animation-name: cp-success;
+}
+
+cp-language label > * {
+  vertical-align: middle;
+}
+
+cp-share-container {
+  .preview {
+    padding: 1rem;
+    border-bottom: 1px solid;
+  }
+  .preview span {
+    display: block;
+  }
+  .preview .title {
+    font-size: 1.25rem;
+  }
+  ul {
+    padding-left: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+}
+
+cp-searchform {
+  display: block;
+}
+
+cp-question {
+  display: block;
+  animation-name: cp-question;
+  animation-duration: .3s;
+  animation-iteration-count: 1;
+  animation-timing-function: cubic-bezier(0.455, 0.030, 0.015, 0.955);
+}
+
+cp-wizard {
+  display: block;
+}
+cp-wizard[hidden] {
+  display: none;
+}
+
+cp-representations {
+  & > button {
+    display: block;
+    margin-top: .5rem;
+  }
+  @media print {
+    & button {
+      display: none;
+    }
+  }
+  & > button,
+  .props {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  th, td {
+    padding: .2rem .5rem;
+    vertical-align: top;
+  }
+  th:first-child {
+    text-align: right;
+  }
+  th:last-child {
+    text-align: left;
+  }
+  td {
+    font-family: var(--font-family-monospace);
+  }
+  small {
+    font-weight: normal;
+    font-size: calc(1rem / var(--font-mod));
+  }
+  table:not(.show-all) tbody tr:not(.primary),
+  table:not(.show-all) tfoot {
+    display: none;
+  }
+  .props button {
+    opacity: .5;
+    margin-left: .25rem;
+    border: none;
+    border-radius: 50%;
+  }
+  .props button:focus,
+  .props button:hover {
+    opacity: 1;
+  }
+  tbody small {
+    display: block;
+    margin-right: calc(1.6em * var(--font-mod));
   }
 }

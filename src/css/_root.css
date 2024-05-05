@@ -2,6 +2,7 @@
   --font-mod: 1.25;
   --font-family: Literata, Noto Serif, Droid Serif, Georgia, Times New Roman, Times, serif;
   --font-family-alternate: Noto Sans, Droid Sans, Verdana, sans-serif;
+  --font-family-monospace: monospace;
 
   --color-danger: #901;
   --color-danger-muted: #eadadc;

@@ -1,4 +1,4 @@
-import {LitElement, css, html} from 'lit';
+import {LitElement, html} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
 import {ref, createRef} from 'lit/directives/ref.js';
 import {unsafeHTML} from 'lit/directives/unsafe-html.js';
@@ -10,25 +10,6 @@ import {gettext as _} from '../_i18n.ts';
  */
 @customElement('cp-question')
 export class CpQuestion extends LitElement {
-
-  static styles = css`
-    :host {
-      display: block;
-      animation-name: cp-question;
-      animation-duration: .3s;
-      animation-iteration-count: 1;
-      animation-timing-function: cubic-bezier(0.455, 0.030, 0.015, 0.955);
-    }
-
-    @keyframes cp-question {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
-    }
-  `;
 
   static current: null;
 
@@ -56,6 +37,10 @@ export class CpQuestion extends LitElement {
 
   setNextForAnswer(id, next) {
     this.next[id] = next;
+  }
+
+  createRenderRoot() {
+    return this;
   }
 
   render() {
@@ -341,15 +326,6 @@ q_archaic.setNextForAnswer('', q_confuse);
 
 @customElement('cp-wizard')
 export class CpWizard extends LitElement {
-  static styles = css`
-    :host {
-      display: block;
-    }
-    :host([hidden]) {
-      display: none;
-    }
-  `;
-
   @property()
   declare lastAnsweredQuestion = null;
 
@@ -362,6 +338,10 @@ export class CpWizard extends LitElement {
       this.lastAnsweredQuestion = event.question;
     });
     this.addEventListener('question-finished', this.finish);
+  }
+
+  createRenderRoot() {
+    return this;
   }
 
   render() {
