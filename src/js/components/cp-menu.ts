@@ -7,6 +7,11 @@ export class CpMenu extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     document.addEventListener('locale-ready', () => this.requestUpdate());
+    document.addEventListener('click', (event) => {
+      if (event.target.closest('cp-menu a')) {
+        this.close();
+      }
+    });
   }
 
   createRenderRoot() {
