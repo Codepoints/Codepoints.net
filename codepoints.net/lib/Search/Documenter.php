@@ -86,7 +86,8 @@ class Documenter {
             $wikipedia .= ' Wikipedia';
         }
         $tags = join(' ', $cp->cldr['tags']);
-        $sc = ($cp->properties['sc']??'') . join(' ', $cp->properties['scx']??[]);
+        $sc = ($cp->properties['sc']??'') . ' ' . join(' ', $cp->properties['scx']??[]).
+              'sc_' .($cp->properties['sc']??'') . ' sc_' . join(' sc_', $cp->properties['scx']??[]);
         $dm = $cp->properties['dt'] === 'none'? [] : (is_array($cp->properties['dm'] ?? null)? $cp->properties['dm'] : [$cp->properties['dm']]);
         $decomp = join(' ', array_map(function(Codepoint $item) : string { return $item->chr(); }, $dm));
         $confusables = $cp->confusables? '1' : '0';
