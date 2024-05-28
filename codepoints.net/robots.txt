@@ -4,10 +4,22 @@ User-agent: *
 Disallow: /search
 Disallow: /random
 
+# sorry, but this bot created too much traffic
 User-agent: search.marginalia.nu
 Disallow: /
-# sorry, but this bot created too much traffic
 
+# same
 User-agent: SemrushBot
 Disallow: /
-# same
+
+# creating ~50% of all requests is not nice, Amazon. Sorry.
+User-agent: Amazonbot
+Disallow: /
+
+# Yep, .... nope.
+User-agent: GPTBot
+Disallow: /
+
+# try to speed down this one a bit
+User-agent: AhrefsBot
+Crawl-Delay: 20
