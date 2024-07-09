@@ -35,7 +35,7 @@ jobs:
       - name: install composer packages
         uses: php-actions/composer@v6
         with:
-          php_version: "8.1"
+          php_version: "8.2"
           php_extensions: zip
           command: install
           args: --quiet
@@ -57,7 +57,7 @@ jobs:
       - name: remove PHP dev packages again
         uses: php-actions/composer@v6
         with:
-          php_version: "8.1"
+          php_version: "8.2"
           php_extensions: zip
           command: install
           args: --optimize-autoloader --quiet --no-dev
