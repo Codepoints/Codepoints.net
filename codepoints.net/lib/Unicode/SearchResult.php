@@ -69,4 +69,11 @@ class SearchResult extends Range {
         ], $this->db);
     }
 
+    /**
+     * return our pre-calculated count
+     */
+    public function count() : int {
+        return $this->count ?? 0;
+    }
+
 }

@@ -48,7 +48,7 @@ function _f(string $pattern, Array $values) : string {
 /**
  * return the representation for a code point link
  */
-function cp(Codepoint|Array $codepoint, string $rel='', string $class='') : string {
+function cp(Codepoint|Array $codepoint, string $rel='', string $class='', ?string $alt_title=null) : string {
     if (is_array($codepoint)) {
         $r = '';
         foreach ($codepoint as $cp) {
@@ -68,7 +68,7 @@ function cp(Codepoint|Array $codepoint, string $rel='', string $class='') : stri
         $class,
         $rel,
         q(url($codepoint)),
-        q((string)$codepoint),
+        q($alt_title ?? (string)$codepoint),
         q((string)$codepoint->sensitivity->value),
         cpimg($codepoint),
         q(case_cp_name($codepoint->name)));

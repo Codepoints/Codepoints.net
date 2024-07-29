@@ -7,6 +7,8 @@ use \Codepoints\Controller\Analyze;
 use \Codepoints\Controller\Api;
 use \Codepoints\Controller\Block;
 use \Codepoints\Controller\Codepoint;
+use \Codepoints\Controller\Encodings;
+use \Codepoints\Controller\Encoding;
 use \Codepoints\Controller\Image;
 use \Codepoints\Controller\Index;
 use \Codepoints\Controller\Plane;
@@ -35,6 +37,10 @@ Router::add('wizard', /** @return never */ function(string $match, Array $env) :
 Router::add('analyze', new Analyze());
 
 Router::add('scripts', new Scripts());
+
+Router::add('encoding', new Encodings());
+
+Router::add(new URLMatcher('encoding/([a-zA-Z0-9_-]+)$'), new Encoding());
 
 Router::add(new URLMatcher('api(/(v1)?)?$'), /** @return never */ function(Array $match, Array $env) : void {
     throw new Redirect('/api/v1/');

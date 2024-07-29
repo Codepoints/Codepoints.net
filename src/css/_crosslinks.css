@@ -1,3 +1,4 @@
+.tiles a,
 .ln {
   text-decoration: none;
 }
@@ -114,4 +115,12 @@
   border-left-width: 0;
   width: 6px;
   display: block;
+}
+
+.table {
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  & > li {
+    width: auto;
+  }
 }
