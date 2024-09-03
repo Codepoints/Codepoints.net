@@ -241,8 +241,8 @@ include 'partials/header.php'; ?>
       Janusz S. Bień, utilizing the terminology introduced in his paper
       %s“Standard Unicode 4.0. Wybrane pojęcia i terminy”%s and %ssubsequent
       publications%s.'),
-      '<a href="https://bc.klf.uw.edu.pl/114/">', '</a>',
-      '<a href="https://bc.klf.uw.edu.pl/view/creators/Bie==0144=3AJanusz_S=2E=3A=3A.html">', '</a>'
+      '<a href="https://www.researchgate.net/publication/37686764">', '</a>',
+      '<a href="https://www.zotero.org/jsbien">', '</a>'
       )?></p>
     <p><?=_q('The developers supporting this site with their knowledge, bug
       reports and input take a fair share in keeping it awesome. We want to
