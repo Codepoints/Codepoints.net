@@ -174,6 +174,7 @@ include 'partials/header.php'; ?>
         <?php
           if (
             $key === 'cp' ||
+            $key === 'unikemet' ||
             /* empty Unihan properties: skip, b/c unnecessary for most cps */
             (substr($key, 0, 1) === 'k' && ! $value)) { continue; } ?>
         <tr>
@@ -220,6 +221,9 @@ include 'partials/header.php'; ?>
       <?php endforeach?>
     </tbody>
   </table>
+  <?php if (! empty((array)$codepoint->properties['unikemet'])): ?>
+    <cp-unikemet data="<?=q($codepoint->properties['unikemet'])?>"></cp-unikemet>
+  <?php endif?>
 </section>
 <?php if (array_key_exists('embed', $_GET)): ?>
   <p class="embed-info"><a href="<?=q(url($codepoint, true))?>" target="_blank"><?=_q('» View this character on Codepoints.net')?></a></p>

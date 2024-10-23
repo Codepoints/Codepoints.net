@@ -127,6 +127,7 @@ return [
     'kDaeJaweon' => __('kDaeJaweon'),
     'kDefinition' => __('Unihan Definition'),
     'kEACC' => __('kEACC'),
+    'kFanqie' => __('kFanqie'),
     'kFenn' => __('kFenn'),
     'kFennIndex' => __('kFennIndex'),
     'kFourCornerCode' => __('kFourCornerCode'),
@@ -220,6 +221,7 @@ return [
     'kTGT_MergedSrc' => __('kTGT_MergedSrc'),
     'kSrc_NushuDuben' => __('kSrc_NushuDuben'),
     'kReading' => __('kReading'),
+    'kZhuang' => __('kZhuang'),
     'Emoji' => __('Emoji'),
     'EPres' => __('Emoji Presentation'),
     'EMod' => __('Emoji Modifier'),
@@ -227,4 +229,5 @@ return [
     'EComp' => __('Emoji Component'),
     'ExtPict' => __('Extended Pictographic'),
     'blk' => __('Block'),
+    'MCM' => __('Modifier Combining Mark'),
 ];

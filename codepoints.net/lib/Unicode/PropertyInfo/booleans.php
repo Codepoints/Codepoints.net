@@ -68,4 +68,5 @@ return [
     'EBase',
     'EComp',
     'ExtPict',
+    'MCM',
 ];
