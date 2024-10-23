@@ -36,6 +36,7 @@ services:
     image: mariadb:10.6
     volumes:
       - ./dev/db_data:/var/lib/mysql
+      - ./dev/db_init.d:/docker-entrypoint-initdb.d
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MARIADB_DATABASE=codepts
