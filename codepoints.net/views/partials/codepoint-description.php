@@ -369,3 +369,12 @@ use Codepoints\Unicode\Codepoint;
   <?=sprintf(_q('See the %sEmojipedia%s for more details on this character’s emoji properties.'), '<a href="https://emojipedia.org/'.rawurlencode($codepoint->chr()).'">', '</a>')?>
 </p>
 <?php endif ?>
+
+<?php if ($props['unikemet']): ?>
+<p>
+  <?=sprintf(_q('The %sUnikemet database%s provides additional information about this hieroglyph.'), '<a href="https://www.unicode.org/reports/tr57/">', '</a>')?>
+  <?php if (isset($props['unikemet']['kEH_Desc'])): ?>
+    <?=sprintf(_q('It is described there as “%s”.'), sprintf('<em>%s</em>', q($props['unikemet']['kEH_Desc'])))?>
+  <?php endif ?>
+</p>
+<?php endif ?>

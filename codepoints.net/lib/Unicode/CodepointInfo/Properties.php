@@ -168,6 +168,9 @@ class Properties extends CodepointInfo {
                 $unihan = json_decode($data['unihan'], true);
             }
             unset($data['unihan']);
+            if ($data['unikemet']) {
+                $data['unikemet'] = json_decode($data['unikemet'], true);
+            }
             $properties += $data;
             $properties += $unihan;
         }

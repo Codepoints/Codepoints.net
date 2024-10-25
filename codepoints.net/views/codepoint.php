@@ -219,11 +219,16 @@ include 'partials/header.php'; ?>
           </td>
         </tr>
       <?php endforeach?>
+      <?php if (! empty((array)$codepoint->properties['unikemet'])): ?>
+        <?php foreach ((array)$codepoint->properties['unikemet'] as $key => $value): ?>
+          <tr>
+            <th scope="row"><?=q($key)?></th>
+            <td><?=_q($value)?></td>
+          </tr>
+        <?php endforeach?>
+      <?php endif?>
     </tbody>
   </table>
-  <?php if (! empty((array)$codepoint->properties['unikemet'])): ?>
-    <cp-unikemet data="<?=q($codepoint->properties['unikemet'])?>"></cp-unikemet>
-  <?php endif?>
 </section>
 <?php if (array_key_exists('embed', $_GET)): ?>
   <p class="embed-info"><a href="<?=q(url($codepoint, true))?>" target="_blank"><?=_q('» View this character on Codepoints.net')?></a></p>
