@@ -48,6 +48,11 @@ EOF;
         return 0;
     }
 
+    private function get_search_doc(string $cp) : int {
+        echo (new Documenter($this->env))->create(get_codepoint(hexdec($cp), $this->env['db']));
+        return 0;
+    }
+
     private function describe(string $cp) : int {
         new Aliases($this->env);
         new CLDR($this->env);

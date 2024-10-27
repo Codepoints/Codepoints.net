@@ -63,7 +63,19 @@ class Documenter {
                  * it is a falsy boolean value */
                 $props[] = $key;
             }
-            if (is_array($value)) {
+            if ($key === 'unikemet') {
+                foreach ($value as $subkey => $subvalue) {
+                    if ($subkey === 'kEH_Desc') {
+                        /* add the hieroglyph plain-text description
+                         * without the property prefix, but note that we do
+                         * have the property set. */
+                        $props[] = "prop_{$subkey}";
+                        $props[] = $subvalue;
+                    } else {
+                        $props[] = "prop_{$subkey}_{$subvalue}";
+                    }
+                }
+            } elseif (is_array($value)) {
                 foreach ($value as $subvalue) {
                     $props[] = "prop_{$key}_{$subvalue}";
                 }
