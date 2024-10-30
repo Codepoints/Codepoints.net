@@ -30,7 +30,7 @@ class CommandLine {
         if (method_exists($this, $method)) {
             return call_user_func([$this, $method], ...array_slice($this->argv, 2));
         }
-        echo "no matching method found\n";
+        file_put_contents('php://stderr', "no matching method found\n");
         $this->help();
         return 1;
     }
@@ -49,6 +49,14 @@ EOF;
     }
 
     private function get_search_doc(string $cp) : int {
+        if (! $cp) {
+            file_put_contents('php://stderr', "no codepoint given\n");
+            return 1;
+        }
+        if (! ctype_xdigit($cp)) {
+            file_put_contents('php://stderr', "not a valid codepoint\n");
+            return 2;
+        }
         echo (new Documenter($this->env))->create(get_codepoint(hexdec($cp), $this->env['db']));
         return 0;
     }
