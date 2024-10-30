@@ -37,7 +37,7 @@ class CommandLine {
 
     private function help() : int {
         echo <<<EOF
-usage: index.php [build-search|help]
+usage: index.php [build-search|get_search_doc|describe|help]
 
 EOF;
         return 0;
@@ -48,8 +48,8 @@ EOF;
         return 0;
     }
 
-    private function get_search_doc(string $cp) : int {
-        if (! $cp) {
+    private function get_search_doc(?string $cp) : int {
+        if ($cp === null) {
             file_put_contents('php://stderr', "no codepoint given\n");
             return 1;
         }
@@ -57,7 +57,12 @@ EOF;
             file_put_contents('php://stderr', "not a valid codepoint\n");
             return 2;
         }
-        echo (new Documenter($this->env))->create(get_codepoint(hexdec($cp), $this->env['db']));
+        $cp_obj = get_codepoint(hexdec($cp), $this->env['db']);
+        if (! $cp_obj) {
+            file_put_contents('php://stderr', "not an existing codepoint\n");
+            return 3;
+        }
+        echo (new Documenter($this->env))->create($cp_obj);
         return 0;
     }
 
