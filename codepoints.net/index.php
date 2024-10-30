@@ -35,10 +35,7 @@ header('Content-Security-Policy-Report-Only: '.
     'img-src \'self\' data: https://stats.codepoints.net:443; '.
     'style-src \'self\' \'unsafe-inline\'; '.
     'font-src \'self\'; '.
-    (array_key_exists('embed', $_GET)? 'frame-ancestors *; ' : '').
-    #'upgrade-insecure-requests; '.
-    #'report-uri https://codepoints.report-uri.com/r/d/csp/reportOnly');
-    '');
+    (array_key_exists('embed', $_GET)? 'frame-ancestors *; ' : ''));
 
 /**
  * load the routes
