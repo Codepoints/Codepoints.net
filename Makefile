@@ -119,3 +119,8 @@ mo:
 			./node_modules/.bin/po2json --format mf "$$po" "src/public/locale/$$(basename $$(dirname $$(dirname "$$po"))).json"; \
 		done
 .PHONY: mo
+
+check:
+	cd ops/playbook && \
+	ansible-playbook --check --diff --inventory ./inventory ./playbook.yml
+.PHONY: check

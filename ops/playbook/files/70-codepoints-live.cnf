@@ -1,0 +1,9 @@
+[mariadb]
+skip-name-resolve=ON
+performance_schema=ON
+
+[mysqld]
+slow_query_log_file    = /var/log/mysql/mariadb-slow.log
+innodb_buffer_pool_size = 1200M
+# enable short queries like "pi". Fixes #125
+innodb_ft_min_token_size = 1

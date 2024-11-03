@@ -1,0 +1,150 @@
+---
+-
+    name: web services are running
+    hosts: webservers
+    remote_user: root
+
+    tasks:
+    -
+        name: web server is running
+        ansible.builtin.service:
+            name: apache2
+            state: started
+    -
+        name: db is running
+        ansible.builtin.service:
+            name: mariadb
+            state: started
+    -
+        name: PHP FPM is running
+        ansible.builtin.service:
+            name: php8.3-fpm
+            state: started
+    -
+        name: Sphinx search is stopped for now
+        ansible.builtin.service:
+            name: sphinxsearch
+            state: stopped
+
+-
+    name: set up modifications
+    hosts: webservers
+    remote_user: root
+
+    tasks:
+    -
+        name: add PHP mod
+        ansible.builtin.copy:
+            src: ./files/99-codepoints.ini
+            dest: /etc/php/8.3/mods-available/99-codepoints.ini
+            owner: root
+            group: root
+            mode: '0644'
+    -
+        name: add MariaDB systemd override
+        ansible.builtin.copy:
+            src: ./files/override.conf
+            dest: /etc/systemd/system/mariadb.service.d/override.conf
+            owner: root
+            group: root
+            mode: '0644'
+    -
+        name: add MariaDB config
+        ansible.builtin.copy:
+            src: ./files/70-codepoints-live.cnf
+            dest: /etc/mysql/mariadb.conf.d/70-codepoints-live.cnf
+            owner: root
+            group: root
+            mode: '0644'
+    -
+        name: add deploy script
+        ansible.builtin.copy:
+            src: ./files/cp-deploy
+            dest: /usr/local/bin/cp-deploy
+            owner: root
+            group: root
+            mode: '0755'
+
+-
+    name: set up database
+    hosts: webservers
+    remote_user: root
+
+    tasks:
+    -
+        name: assure existence of database “codepts”
+        community.mysql.mysql_db:
+            name: codepts
+            state: present
+            login_unix_socket: /var/run/mysqld/mysqld.sock
+
+-
+    name: set up cron jobs
+    hosts: webservers
+    remote_user: root
+    vars:
+        ansible_remote_tmp: /tmp
+
+    tasks:
+    -
+        name: Create cache directory
+        ansible.builtin.file:
+            path: /var/cache/codepoints
+            state: directory
+            owner: root
+            group: www-data
+            mode: '0775'
+    -
+        name: build popularity cache
+        ansible.builtin.cron:
+            name: "fetch popularity"
+            minute: "5"
+            job: "curl -sS -o /var/cache/codepoints/popular.json 'https://stats.codepoints.net/popular.php'"
+        become: true
+        become_user: www-data
+    -
+        name: build search index
+        ansible.builtin.cron:
+            name: "build search index"
+            minute: "*/10"
+            job: "php /var/www/codepoints.net/index.php build-search"
+        become: true
+        become_user: www-data
+
+-
+    name: check health
+    hosts: webservers
+    remote_user: root
+    tags: ["health"]
+
+    tasks:
+    -
+        name: check disks
+        assert:
+            that:
+                - "item.size_available > 0.2 * item.size_total"
+                - "item.inode_available > 50000"
+            quiet: true
+            fail_msg: "check disk space and inodes on {{ item.mount }}! (space left: {{ item.size_available / 1000000 }}MB, inodes left: {{ item.inode_available }})"
+            success_msg: null
+        when: >
+            (item.mount or 'NO MOUNTPOINT') == '/'
+        loop: "{{ ansible_mounts }}"
+        loop_control:
+            label: "{{ item.mount }}"
+    -
+        name: check system load
+        assert:
+            that:
+                - "ansible_loadavg['5m'] < ansible_processor_count"
+            quiet: true
+            fail_msg: "system CPU load too high! ({{ ansible_loadavg['5m'] }})"
+            success_msg: null
+    -
+        name: check memory usage
+        assert:
+            that:
+                - "ansible_memfree_mb > 50 or ansible_swapfree_mb > 200"
+            quiet: true
+            fail_msg: "memory usage too high! (mem: {{ansible_memfree_mb}}, swap: {{ansible_swapfree_mb}})"
+            success_msg: null

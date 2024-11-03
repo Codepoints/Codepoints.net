@@ -1,0 +1,51 @@
+#!/bin/bash
+
+set -euo pipefail
+
+TARGET="${1:-help}"
+
+function run_update {
+    ZIPNAME="$1"
+    NAME="$2"
+    BEACON="${3:-}"
+    cd /tmp
+    if [[ ! -f ./$ZIPNAME ]]; then
+        echo "no data file /tmp/$ZIPNAME found. Exiting." >&2
+        exit 1
+    fi
+    /bin/rm -fr "./$NAME"
+    echo "* extract file"
+    unzip -qq "./$ZIPNAME"
+    if [[ ! -f $NAME/$BEACON ]]; then
+        echo "no docroot found in zip file $ZIPNAME. Exiting." >&2
+        exit 2
+    fi
+    echo "* set rights"
+    chown -R www-data:www-data "$NAME"
+    echo "* backup docroot"
+    /bin/rm -fr "/var/www/$NAME.bak"
+    mv "/var/www/$NAME" "/var/www/$NAME.bak"
+    echo "* copy to docroot"
+    mv "$NAME" /var/www/
+    /bin/rm -fr "./$ZIPNAME"
+}
+
+case "$TARGET" in
+    "live" )
+        run_update codepoints.zip codepoints.net index.php
+        exit 0
+        ;;
+    "blog" )
+        run_update blog-codepoints.zip blog.codepoints.net index.html
+        exit 0
+        ;;
+    "help" | "--help" | "-h" )
+        echo "usage: $(basename "$0") [live|blog|help]"
+        exit 0
+        ;;
+    * )
+        echo "unknown parameter" >&2
+        echo "usage: $(basename "$0") [live|blog|help]"
+        exit 0
+        ;;
+esac
