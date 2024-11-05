@@ -10,6 +10,7 @@ use Codepoints\Translator;
 use Codepoints\Unicode\CodepointInfo\Image;
 use Codepoints\Unicode\CodepointInfo\Sensitivity;
 use Codepoints\Unicode\PropertyInfo;
+use Codepoints\View;
 
 require 'vendor/autoload.php';
 
@@ -42,6 +43,12 @@ date_default_timezone_set('Europe/Berlin');
 
 /* enable gzip compression of HTML */
 ini_set('zlib.output_compression', '1');
+
+/* quick exit into maintenance mode */
+if (file_exists(__DIR__.'/maintenance') && PHP_SAPI !== 'cli') {
+    http_response_code(503);
+    die((new View('maintenance'))(['title' => 'Maintenance', 'no_navigation' => true]));
+}
 
 /**
  * get global config values and the database connection ready
