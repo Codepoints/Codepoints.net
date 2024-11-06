@@ -45,4 +45,4 @@ if (array_key_exists('embed', $_GET)) {
   <body>
     <div data-barba="wrapper">
       <div data-barba="container">
-        <?php if (! isset($no_navigation) || ! $no_navigation) include 'main-navigation.php' ?>
+        <?php if (! isset($no_navigation) || ! $no_navigation) { include 'main-navigation.php'; } ?>
