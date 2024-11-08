@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-25 20:43+0000\n"
+"POT-Creation-Date: 2024-11-08 23:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,212 +17,212 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/js/components/cp-wizard.ts:120
+#: src/js/components/cp-wizard.ts:105
 msgid "What’s the airspeed velocity of an unladen swallow?"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:121
+#: src/js/components/cp-wizard.ts:106
 msgid "An African, or"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:122
+#: src/js/components/cp-wizard.ts:107
 msgid "A European Swallow?"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:128
+#: src/js/components/cp-wizard.ts:113
 msgid "Where does the character appear usually?"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:129
+#: src/js/components/cp-wizard.ts:114
 msgid "Africa <small>(without Arabic)</small>"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:130
+#: src/js/components/cp-wizard.ts:115
 msgid "America <small>(originally, <i>e. g.</i> Cherokee, not Latin)</small>"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:131
+#: src/js/components/cp-wizard.ts:116
 msgid "Europe <small>(Latin, Cyrillic, …)</small>"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:132
+#: src/js/components/cp-wizard.ts:117
 msgid "Middle East"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:133
+#: src/js/components/cp-wizard.ts:118
 msgid "Central Asia"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:134
+#: src/js/components/cp-wizard.ts:119
 msgid "East Asia <small>(Chinese, Korean, Japanese, …)</small>"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:135
+#: src/js/components/cp-wizard.ts:120
 msgid "South Asia <small>(Indian)</small>"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:136
+#: src/js/components/cp-wizard.ts:121
 msgid "Southeast Asia <small>(Thai, Khmer, …)</small>"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:137
+#: src/js/components/cp-wizard.ts:122
 msgid "Philippines, Indonesia, Oceania"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:138
+#: src/js/components/cp-wizard.ts:123
 msgid "Nowhere specific"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:139 src/js/components/cp-wizard.ts:151
-#: src/js/components/cp-wizard.ts:168 src/js/components/cp-wizard.ts:189
-#: src/js/components/cp-wizard.ts:205 src/js/components/cp-wizard.ts:219
-#: src/js/components/cp-wizard.ts:234 src/js/components/cp-wizard.ts:259
+#: src/js/components/cp-wizard.ts:124 src/js/components/cp-wizard.ts:136
+#: src/js/components/cp-wizard.ts:153 src/js/components/cp-wizard.ts:174
+#: src/js/components/cp-wizard.ts:190 src/js/components/cp-wizard.ts:204
+#: src/js/components/cp-wizard.ts:219 src/js/components/cp-wizard.ts:244
 msgid "I don’t know"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:148
+#: src/js/components/cp-wizard.ts:133
 msgid "Is it a number of any kind?"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:149 src/js/components/cp-wizard.ts:203
+#: src/js/components/cp-wizard.ts:134 src/js/components/cp-wizard.ts:188
 msgid "Yes"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:150 src/js/components/cp-wizard.ts:204
+#: src/js/components/cp-wizard.ts:135 src/js/components/cp-wizard.ts:189
 msgid "No"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:162
+#: src/js/components/cp-wizard.ts:147
 msgid "Has the character a case (upper, lower, title)?"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:163
+#: src/js/components/cp-wizard.ts:148
 msgid "Yes, it’s lowercase"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:164
+#: src/js/components/cp-wizard.ts:149
 msgid "Yes, it’s uppercase"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:165
+#: src/js/components/cp-wizard.ts:150
 msgid "Yes, it’s titlecase"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:166
+#: src/js/components/cp-wizard.ts:151
 msgid "Yes, but I don’t know the case"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:167
+#: src/js/components/cp-wizard.ts:152
 msgid "No, it’s uncased"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:185
+#: src/js/components/cp-wizard.ts:170
 msgid "Is the character some kind of symbol or dingbat?"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:186
+#: src/js/components/cp-wizard.ts:171
 msgid "Yes <small>(It isn’t part of usually written text)</small>"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:187
+#: src/js/components/cp-wizard.ts:172
 msgid "No <small>(But it is some kind of control character)</small>"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:188
+#: src/js/components/cp-wizard.ts:173
 msgid "No <small>(It may appear in text, like letters or punctuation)</small>"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:202
+#: src/js/components/cp-wizard.ts:187
 msgid "Is the character some kind of punctuation?"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:216
+#: src/js/components/cp-wizard.ts:201
 msgid "Is the character incomplete on its own, like a diacritic sign?"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:217
+#: src/js/components/cp-wizard.ts:202
 msgid "Yes <small>(It’s usually found together with another character)</small>"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:218
+#: src/js/components/cp-wizard.ts:203
 msgid "No <small>(It stands on its own)</small>"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:230
+#: src/js/components/cp-wizard.ts:215
 msgid "Is the character composed of two others?"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:231
+#: src/js/components/cp-wizard.ts:216
 msgid "Yes <small>(It is based on two or more other characters)</small>"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:232
+#: src/js/components/cp-wizard.ts:217
 msgid ""
 "Sort of <small>(It’s got some quiggly lines or dots, like “Ä” or “ٷ”)</small>"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:233
+#: src/js/components/cp-wizard.ts:218
 msgid "No <small>(It is a genuine character)</small>"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:245
+#: src/js/components/cp-wizard.ts:230
 msgid ""
 "Off the top of your head, can the character be confused with another one?"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:246
+#: src/js/components/cp-wizard.ts:231
 msgid "Yes <small>(Like latin “A” and greek “Α”, alpha)</small>"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:247
+#: src/js/components/cp-wizard.ts:232
 msgid "No <small>(I have no such pair in mind)</small>"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:256
+#: src/js/components/cp-wizard.ts:241
 msgid "Is it an archaic character or is it in use today?"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:257
+#: src/js/components/cp-wizard.ts:242
 msgid "Yep, noone would use that anymore!"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:258
+#: src/js/components/cp-wizard.ts:243
 msgid "Nah, seen it yesterday in the newspaper"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:270
+#: src/js/components/cp-wizard.ts:255
 msgid "Do you know the number of strokes the character has?"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:271
+#: src/js/components/cp-wizard.ts:256
 msgid "This much"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:272
+#: src/js/components/cp-wizard.ts:257
 msgid "Nope, never counted them"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:282
+#: src/js/components/cp-wizard.ts:267
 msgid "Do you happen to know the meaning of the character?"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:283
+#: src/js/components/cp-wizard.ts:268
 msgid "This is (part of) what I’m looking for"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:284
+#: src/js/components/cp-wizard.ts:269
 msgid "I don’t speak that language"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:375
+#: src/js/components/cp-wizard.ts:355
 msgid "You search for a specific character?"
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:376
+#: src/js/components/cp-wizard.ts:356
 msgid "Answer the following questions and we try to figure out candidates."
 msgstr ""
 
-#: src/js/components/cp-wizard.ts:389
+#: src/js/components/cp-wizard.ts:369
 msgid "Enough questions! Search now."
 msgstr ""
 
@@ -295,54 +295,58 @@ msgid "PHP"
 msgstr ""
 
 #: src/js/components/cp-representations.ts:66
+msgid "PostgreSQL"
+msgstr ""
+
+#: src/js/components/cp-representations.ts:79
 msgid "PowerShell"
 msgstr ""
 
-#: src/js/components/cp-representations.ts:68
+#: src/js/components/cp-representations.ts:81
 msgid "Python"
 msgstr ""
 
-#: src/js/components/cp-representations.ts:70
+#: src/js/components/cp-representations.ts:83
 msgid "Ruby"
 msgstr ""
 
-#: src/js/components/cp-representations.ts:72
+#: src/js/components/cp-representations.ts:85
 msgid "Rust"
 msgstr ""
 
-#: src/js/components/cp-representations.ts:184
+#: src/js/components/cp-representations.ts:150
 msgid "(click value to copy)"
 msgstr ""
 
-#: src/js/components/cp-representations.ts:221
+#: src/js/components/cp-representations.ts:192
 msgid "remove from favorites"
 msgstr ""
 
-#: src/js/components/cp-representations.ts:222
+#: src/js/components/cp-representations.ts:193
 msgid "add to favorites (will be shown by default)"
 msgstr ""
 
-#: src/js/components/cp-representations.ts:233
+#: src/js/components/cp-representations.ts:204
 msgid ""
 "Click the star button next to each label to set this representation as "
 "favorite or remove it from the favorites."
 msgstr ""
 
-#: src/js/components/cp-representations.ts:234
+#: src/js/components/cp-representations.ts:205
 msgid "Favorites will be shown initially."
 msgstr ""
 
-#: src/js/components/cp-representations.ts:235
+#: src/js/components/cp-representations.ts:206
 msgid ""
 "(Favorites are stored locally on your computer and never sent over the "
 "internet.)"
 msgstr ""
 
-#: src/js/components/cp-representations.ts:240
+#: src/js/components/cp-representations.ts:211
 msgid "hide all but favorites"
 msgstr ""
 
-#: src/js/components/cp-representations.ts:240
+#: src/js/components/cp-representations.ts:211
 msgid "show more"
 msgstr ""
 
@@ -383,39 +387,39 @@ msgstr ""
 msgid "click to include or exclude this property"
 msgstr ""
 
-#: src/js/components/cp-menu.ts:86
+#: src/js/components/cp-menu.ts:29
 msgid "start page"
 msgstr ""
 
-#: src/js/components/cp-menu.ts:89
+#: src/js/components/cp-menu.ts:32
 msgid "scripts"
 msgstr ""
 
-#: src/js/components/cp-menu.ts:92 src/js/components/cp-menu.ts:113
+#: src/js/components/cp-menu.ts:35 src/js/components/cp-menu.ts:56
 msgid "search"
 msgstr ""
 
-#: src/js/components/cp-menu.ts:95
+#: src/js/components/cp-menu.ts:38
 msgid "analyze"
 msgstr ""
 
-#: src/js/components/cp-menu.ts:98
+#: src/js/components/cp-menu.ts:41
 msgid "random page"
 msgstr ""
 
-#: src/js/components/cp-menu.ts:101
+#: src/js/components/cp-menu.ts:44
 msgid "glossary"
 msgstr ""
 
-#: src/js/components/cp-menu.ts:104
+#: src/js/components/cp-menu.ts:47
 msgid "about this site"
 msgstr ""
 
-#: src/js/components/cp-menu.ts:110
+#: src/js/components/cp-menu.ts:53
 msgid "Search code points:"
 msgstr ""
 
-#: src/js/components/cp-menu.ts:118
+#: src/js/components/cp-menu.ts:61
 msgid "Settings"
 msgstr ""
 
@@ -427,7 +431,7 @@ msgstr ""
 msgid "no information found for this term"
 msgstr ""
 
-#: src/js/components/cp-language.ts:34
+#: src/js/components/cp-language.ts:31
 msgid "choose language:"
 msgstr ""
 
@@ -447,7 +451,7 @@ msgstr ""
 msgid "dark / light mode:"
 msgstr ""
 
-#: src/js/components/cp-btn-share.ts:115
+#: src/js/components/cp-btn-share.ts:98
 msgid "Share on:"
 msgstr ""
 
