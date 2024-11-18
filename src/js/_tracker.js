@@ -21,7 +21,7 @@ export function trackByContent(node) {
   if (trackingContainer) {
     try {
       track(JSON.parse(trackingContainer.textContent));
-    } catch (e) {
+    } catch {
       track(['trackPageView', document.title]);
       track(['trackEvent', 'error', 'malformed_trackingdata']);
     }

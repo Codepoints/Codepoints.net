@@ -94,7 +94,7 @@ class FavoritesManager {
       if (! Array.isArray(personalized)) {
         personalized = null;
       }
-    } catch(e) {
+    } catch {
       // ignore parse errors, personalized remains undefined
     }
     this.favorites = personalized || ['nr', 'utf-8', 'utf-16'];
