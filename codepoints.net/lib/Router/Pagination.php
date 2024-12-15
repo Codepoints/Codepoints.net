@@ -16,7 +16,7 @@ class Pagination {
 
     private int $page = 1;
 
-    public const PAGE_SIZE = 0x100;
+    public const int PAGE_SIZE = 0x100;
 
     private string $urlTemplate;
 
