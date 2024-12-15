@@ -7,11 +7,11 @@
     },
     "require": {
         "michelf/php-markdown": "^2.0",
-        "analog/analog": "^1.0",
+        "analog/analog": "1.0.21-stable",
         "willdurand/negotiation": "^3.0",
         "gettext/gettext": "^5.5",
         "matomo/matomo-php-tracker": "^3.0",
-        "symfony/cache": "^6.2"
+        "symfony/cache": "^7.2"
     },
     "autoload": {
         "files": [
