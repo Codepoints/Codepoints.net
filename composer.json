@@ -7,7 +7,7 @@
     },
     "require": {
         "michelf/php-markdown": "^2.0",
-        "analog/analog": "1.0.21-stable",
+        "analog/analog": "1.0.20-stable",
         "willdurand/negotiation": "^3.0",
         "gettext/gettext": "^5.5",
         "matomo/matomo-php-tracker": "^3.0",

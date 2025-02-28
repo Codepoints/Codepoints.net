@@ -4,25 +4,25 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "53de67daaf5e208bc5aad5e50c456824",
+    "content-hash": "71ba3ad4347e5cf04c27968b5a1b247e",
     "packages": [
         {
             "name": "analog/analog",
-            "version": "1.0.21-stable",
+            "version": "1.0.20-stable",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jbroadway/analog.git",
-                "reference": "9ec168a8fcc42b0a27022e41e89e8e2bc6c127c2"
+                "reference": "c0e16a986f5fbdd0b80372735d2b7be495f754d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jbroadway/analog/zipball/9ec168a8fcc42b0a27022e41e89e8e2bc6c127c2",
-                "reference": "9ec168a8fcc42b0a27022e41e89e8e2bc6c127c2",
+                "url": "https://api.github.com/repos/jbroadway/analog/zipball/c0e16a986f5fbdd0b80372735d2b7be495f754d7",
+                "reference": "c0e16a986f5fbdd0b80372735d2b7be495f754d7",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
-                "psr/log": "^3.0"
+                "psr/log": "^1.0.1"
             },
             "require-dev": {
                 "phpunit/phpunit": "^8.5"
@@ -71,9 +71,9 @@
             ],
             "support": {
                 "issues": "https://github.com/jbroadway/analog/issues",
-                "source": "https://github.com/jbroadway/analog/tree/1.0.21-stable"
+                "source": "https://github.com/jbroadway/analog/tree/1.0.20-stable"
             },
-            "time": "2023-12-10T23:00:00+00:00"
+            "time": "2023-11-02T02:07:02+00:00"
         },
         {
             "name": "gettext/gettext",
@@ -439,30 +439,30 @@
         },
         {
             "name": "psr/log",
-            "version": "3.0.2",
+            "version": "1.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "f16e1d5863e37f8d8c2a01719f5b34baa2b714d3"
+                "reference": "d49695b909c3b7628b6289db5479a1c204601f11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/f16e1d5863e37f8d8c2a01719f5b34baa2b714d3",
-                "reference": "f16e1d5863e37f8d8c2a01719f5b34baa2b714d3",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/d49695b909c3b7628b6289db5479a1c204601f11",
+                "reference": "d49695b909c3b7628b6289db5479a1c204601f11",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.0.0"
+                "php": ">=5.3.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.x-dev"
+                    "dev-master": "1.1.x-dev"
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "Psr\\Log\\": "src"
+                    "Psr\\Log\\": "Psr/Log/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -483,9 +483,9 @@
                 "psr-3"
             ],
             "support": {
-                "source": "https://github.com/php-fig/log/tree/3.0.2"
+                "source": "https://github.com/php-fig/log/tree/1.1.4"
             },
-            "time": "2024-09-11T13:17:53+00:00"
+            "time": "2021-05-03T11:20:27+00:00"
         },
         {
             "name": "symfony/cache",
