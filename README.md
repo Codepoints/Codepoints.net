@@ -1,14 +1,10 @@
 Codepoints.net
 ==============
 
-This is the code that powers [Codepoints.net](https://codepoints.net). You can
-find a short primer in the [`codepoints.net/index.php`
-file](https://github.com/Boldewyn/Codepoints.net/blob/master/codepoints.net/index.php)
-on how the code flows.
+This is the code that powers [Codepoints.net](https://codepoints.net).
 
 Feel free to open issues at the [bug
 tracker](https://github.com/Boldewyn/Codepoints.net/issues) or contact us via
-Twitter: [@CodepointsNet](https://twitter.com/CodepointsNet) or
 Mastodon: <a href="https://typo.social/@codepoints" rel="me">@codepoints@typo.social</a>.
 
 See [the re-use statement on
@@ -18,32 +14,53 @@ attribution information.
 Setting up your own local instance
 ----------------------------------
 
+You need [Docker Compose](https://docs.docker.com/compose/install/) installed
+on your system.
+
 Get the latest database dump from
-[dumps.codepoints.net](https://dumps.codepoints.net) and feed it in a MySQL
-database. Then create in this folder (next to this `README.md`) a file
-`db.conf` with this content (replace values with your database credentials):
+[dumps.codepoints.net](https://dumps.codepoints.net) and place it in
+`./dev/db_init.d/`.
+Then create in this folder (next to this `README.md`) a file
+`config.ini` with this content:
 
-    [clientreadonly]
-    password=mysql-password
-    user=mysql-user
-    database=mysql-database
+    [db]
+    password=codepts
+    user=codepts
+    database=codepts
+    host=db
 
-Install the dependencies using Composer ([click here to learn how to get
-Composer](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-macos)):
+Start the Docker containers:
 
-    composer install
+    docker compose up
 
-Presto! Your local copy of codepoints.net is ready! To get the site running,
-you can use PHP’s built in development server:
+Presto! Your local copy of codepoints.net is ready under
+[https://localhost](https://localhost/). (You will need to click away an
+“untrusted certificate” error in the browser. This is expected.)
 
-    php -S localhost:8000 -t codepoints.net bin/devrouter.php
+Code Flow
+---------
 
-or, if you like, alternatively
+All requests are routed to `index.php` which loads `init.php`. The URL routes
+are defined in `router.php`. Single views have their logic stored in
+`lib/Controller/*.php` and the output generated via `views/*.php`.
 
-    make serve
+Unicode data is processed in `lib/Unicode` with `lib/Unicode/Codepoint.php` as
+central class for single code points.
 
-In both cases, your local codepoints.net clone is reachable under
-[localhost:8000](http://localhost:8000).
+Static Files
+------------
+
+If you use the Docker Compose setup a Vite container is automatically spawned
+that takes care of building static files as soon as you change them in
+`src/js` and `src/css`. The update should be picked up automatically by the
+server container.
+
+There is no <abbr title="Hot Module Reloading">HMR</abbr> in the frontend,
+though. You need to refresh the page to see effects.
+
+We use web components with [lit](https://lit.dev/) as framework for common
+tasks. This is a classic “MPA”. Interactivity is currently handled with the
+barba.js library but will perspectively replaced with the View Transition API.
 
 Development Shell
 -----------------
