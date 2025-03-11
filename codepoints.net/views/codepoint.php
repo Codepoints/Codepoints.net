@@ -183,7 +183,7 @@ include 'partials/header.php'; ?>
           <?php if ($value === '' || $value === null):?>
             <span class="x">—</span>
           <?php elseif (in_array($key, $info->booleans)):?>
-            <span class="<?=($value)?'y':'n'?>"><?=($value)?'✔':'✘'?></span>
+            <span class="<?=($value)?'y':'n'?>"><?=($value)?'✔':'✘'?>&#xfe0e;</span>
           <?php elseif ($value instanceof \Codepoints\Unicode\Codepoint):?>
             <?=cp($value)?>
           <?php elseif (is_array($value)):?>
