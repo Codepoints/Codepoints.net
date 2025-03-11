@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -euo pipefail
+
+cd "$(dirname "$0")"
+
+curl -sSL 'https://github.com/unicode-org/last-resort-font/releases/latest/download/LastResortHE-Regular.ttf' > LastResortHE-Regular.ttf
+
+python - <<PY
+import fontforge
+orig = fontforge.open('LastResortHE-Regular.ttf')
+orig.generate('LastResortHE-Regular.svg')
+PY
+
+/bin/rm LastResortHE-Regular.ttf
+saxonb-xslt -s LastResortHE-Regular.svg -xsl last_resort_to_image.xslt > ../src/images/LastResort.svg
+/bin/rm LastResortHE-Regular.svg
