@@ -2,6 +2,11 @@
 
 set -euo pipefail
 
+if ! which -s curl saxonb-xslt fontforge; then
+    echo "this script needs curl, saxonb-xslt and fontforge (python bindings) installed." >&2
+    exit 1
+fi
+
 cd "$(dirname "$0")"
 
 curl -sSL 'https://github.com/unicode-org/last-resort-font/releases/latest/download/LastResortHE-Regular.ttf' > LastResortHE-Regular.ttf
