@@ -56,6 +56,7 @@ export class CpSearchProperty extends LitElement {
     }
     dialog[open] {
       width: max-content;
+      background: var(--color-back-bright);
     }
     dialog[open] > div {
       display: flex;
@@ -68,6 +69,27 @@ export class CpSearchProperty extends LitElement {
     }
     dialog[open]::backdrop {
       backdrop-filter: blur(1px) grayscale(100%);
+    }
+    label:has(>input[type="checkbox"]):before {
+      content: "";
+      display: inline-block;
+      width: .9em;
+      aspect-ratio: 1;
+      background: var(--color-back);
+      border: 1px solid var(--color-border);
+      border-radius: 1px;
+      line-height: .9;
+      text-align: center;
+      margin-inline-end: .3em;
+    }
+    label:has(>input[type="checkbox"]:checked):before {
+      content: "✔\\00FE0E";
+      background: var(--color-accent);
+    }
+    label > input[type="checkbox"] {
+      opacity: 0;
+      width: 0;
+      margin: 0;
     }
   `;
 

@@ -10,7 +10,7 @@
 cp-navigation {
   position: sticky;
   z-index: 1;
-  background: rgba(var(--color-back-rgb), 0.85);
+  background: rgba(from var(--color-back) r g b / 0.85);
   backdrop-filter: blur(2px);
   font-family: var(--font-family-alternate);
   font-size: calc( 1em / var(--font-mod) );

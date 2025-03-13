@@ -4,7 +4,7 @@
   padding: 0;
   border-radius: 21px;
   background: #0000000a;
-  box-shadow: 10px 10px 20px hsla(var(--hsl-shadow), .20),
+  box-shadow: 10px 10px 20px hsla(from var(--color-shadow) h s l / .20),
               -10px -10px 20px var(--color-input-back);
 }
 

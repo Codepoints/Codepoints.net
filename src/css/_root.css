@@ -4,46 +4,80 @@
   --font-family-alternate: Noto Sans, Droid Sans, Verdana, sans-serif;
   --font-family-monospace: monospace;
 
-  --color-danger: #901;
-  --color-danger-muted: #eadadc;
-  --color-success: #190;
-  --color-success-muted: #dceada;
-  --color-neutral: #0007;
+  --color-red-50: oklch(0.971 0.013 17.38);
+  --color-red-100: oklch(0.936 0.032 17.717);
+  --color-red-200: oklch(0.885 0.062 18.334);
+  --color-red-300: oklch(0.808 0.114 19.571);
+  --color-red-400: oklch(0.704 0.191 22.216);
+  --color-red-500: oklch(0.637 0.237 25.331);
+  --color-red-600: oklch(0.577 0.245 27.325);
+  --color-red-700: oklch(0.505 0.213 27.518);
+  --color-red-800: oklch(0.444 0.177 26.899);
+  --color-red-900: oklch(0.396 0.141 25.723);
+  --color-red-950: oklch(0.258 0.092 26.042);
 
-  --color-input-text: #403c37;
-  --color-input-back: #ffffff;
-  --color-input-bord: #bbbbbb;
+  --color-green-50: oklch(0.982 0.018 155.826);
+  --color-green-100: oklch(0.962 0.044 156.743);
+  --color-green-200: oklch(0.925 0.084 155.995);
+  --color-green-300: oklch(0.871 0.15 154.449);
+  --color-green-400: oklch(0.792 0.209 151.711);
+  --color-green-500: oklch(0.723 0.219 149.579);
+  --color-green-600: oklch(0.627 0.194 149.214);
+  --color-green-700: oklch(0.527 0.154 150.069);
+  --color-green-800: oklch(0.448 0.119 151.328);
+  --color-green-900: oklch(0.393 0.095 152.535);
+  --color-green-950: oklch(0.266 0.065 152.934);
 
-  --color-back-bright: #ffffff;
-  --color-back-dim: #eeeeee;
+   --color-teal-50: oklch(0.984 0.014 180.72);
+  --color-teal-100: oklch(0.953 0.051 180.801);
+  --color-teal-200: oklch(0.91 0.096 180.426);
+  --color-teal-300: oklch(0.855 0.138 181.071);
+  --color-teal-400: oklch(0.777 0.152 181.912);
+  --color-teal-500: oklch(0.704 0.14 182.503);
+  --color-teal-600: oklch(0.6 0.118 184.704);
+  --color-teal-700: oklch(0.511 0.096 186.391);
+  --color-teal-800: oklch(0.437 0.078 188.216);
+  --color-teal-900: oklch(0.386 0.063 188.416);
+  --color-teal-950: oklch(0.277 0.046 192.524);
 
-  --color-border: #dddddd;
-  --color-border-light: #eeeeee;
-  --color-border-medium: #bbbbbb;
-  --color-border-dark: #333333;
+  --color-stone-50: oklch(0.985 0.001 106.423);
+  --color-stone-100: oklch(0.97 0.001 106.424);
+  --color-stone-200: oklch(0.923 0.003 48.717);
+  --color-stone-300: oklch(0.869 0.005 56.366);
+  --color-stone-400: oklch(0.709 0.01 56.259);
+  --color-stone-500: oklch(0.553 0.013 58.071);
+  --color-stone-600: oklch(0.444 0.011 73.639);
+  --color-stone-700: oklch(0.374 0.01 67.558);
+  --color-stone-800: oklch(0.268 0.007 34.298);
+  --color-stone-900: oklch(0.216 0.006 56.043);
+  --color-stone-950: oklch(0.147 0.004 49.25);
 
-  /* https://coolors.co/1b171c-ebf1e9-7f0a1e-670415-480410-17181c-f1f0e9-0a7f6c-046757-04483c */
-  --raisin-black: hsl(290, 10%, 10%);
-  --mint-cream: hsl(40, 37%, 99%);
-  --burgundy: hsl(350, 85%, 52%);
-  --rosewood: hsl(350, 93%, 36%);
-  --dark-sienna: hsl(350, 89%, 15%);
-  --eerie-black: hsl(230, 10%, 10%);
-  --alabaster: hsl(50, 22%, 93%);
-  --generic-viridian: hsl(170, 85%, 47%);
-  --bottle-green: hsl(170, 93%, 31%);
-  --blue-green-color-wheel: hsl(170, 89%, 15%);
+  --color-danger: var(--color-red-700);
+  --color-success: var(--color-green-600);
+  --color-neutral: var(--color-stone-500);
 
-  --color-text: var(--raisin-black);
-  --color-back: var(--mint-cream);
-  --color-back-rgb: 253, 253, 252;
-  --color-link: var(--rosewood);
-  --color-link-hover: var(--burgundy);
-  --color-hilite: var(--generic-viridian);
+  --color-input-text: var(--color-stone-800);
+  --color-input-back: var(--color-stone-50);
+  --color-input-bord: var(--color-stone-400);
 
+  --color-back-bright: var(--color-stone-50);
+  --color-back-dim: var(--color-stone-200);
+
+  --color-border: var(--color-stone-300);
+  --color-border-light: var(--color-stone-200);
+  --color-border-medium: var(--color-stone-500);
+
+  --color-text: var(--color-stone-900);
+  --color-back: var(--color-stone-100);
+  --color-link: var(--color-red-700);
+  --color-link-hover: var(--color-red-600);
+  --color-hilite: var(--color-teal-600);
+  --color-accent: var(--color-red-500);
+  --color-on-accent: white;
+
+  --color-shadow: var(--color-red-950);
   --hsl-backlight: 0, 0%, 100%;
   --hsl-highlight: 0, 0%, 100%;
-  --hsl-shadow: 40, 20%, 10%;
 
   --dimmed: .75;
 
@@ -53,30 +87,29 @@
 }
 
 :root[data-scheme="dark"] {
-  --color-danger: #b02;
-  --color-danger-muted: #3c1a20;
-  --color-success: #2b0;
-  --color-success-muted: #203c1a;
-  --color-neutral: #fff8;
+  --color-danger: var(--color-red-500);
+  --color-success: var(--color-green-400);
+  --color-neutral: var(--color-stone-400);
 
-  --color-input-text: #e8edf2;
-  --color-input-back: #242424;
-  --color-input-bord: #777777;
+  --color-input-text: var(--color-stone-100);
+  --color-input-back: var(--color-stone-950);
+  --color-input-bord: var(--color-stone-600);
 
-  --color-back-bright: #000000;
-  --color-back-dim: #272529;
+  --color-back-bright: var(--color-stone-950);
+  --color-back-dim: var(--color-stone-800);
 
-  --color-border: #444444;
-  --color-border-medium: #555555;
-  --color-border-light: var(--color-back-dim);
+  --color-border: var(--color-stone-700);
+  --color-border-light: var(--color-stone-800);
+  --color-border-medium: var(--color-stone-600);
 
-  --color-text: var(--alabaster);
-  --color-back: var(--eerie-black);
-  --color-back-rgb: 23, 24, 28;
-  --color-link: var(--bottle-green);
-  --color-link-hover: var(--generic-viridian);
+  --color-text: var(--color-stone-100);
+  --color-back: var(--color-stone-900);
+  --color-link: hsl(from var(--color-teal-400) h 60 l);
+  --color-link-hover: var(--color-teal-500);
+  --color-hilite: var(--color-red-600);
+  --color-accent: var(--color-teal-600);
 
-  --color-shadow: #fff3;
+  --color-shadow: hsl(from var(--color-teal-900) h 40 l);
 
   --hsl-backlight: 0, 0%, 0%;
   --hsl-highlight: 40,20%, 10%;
