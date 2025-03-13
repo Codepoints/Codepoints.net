@@ -20,6 +20,7 @@ export class CpDialog extends LitElement {
     width: auto;
     min-height: 50vh;
     border: none;
+    background: var(--color-back-bright);
     padding: 2rem;
     font-size: calc(1rem / var(--font-mod));
     font-family: var(--font-family-alternate);
