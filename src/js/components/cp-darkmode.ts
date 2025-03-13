@@ -17,9 +17,9 @@ export class CpDarkmode extends LitElement {
   constructor() {
     super();
     this.isDark = null;
-    if (document.documentElement.classList.contains('force-dark')) {
+    if (localStorage.getItem('scheme') === 'dark') {
       this.isDark = true;
-    } else if (document.documentElement.classList.contains('force-light')) {
+    } else if (localStorage.getItem('scheme') === 'light') {
       this.isDark = false;
     }
   }
@@ -45,16 +45,16 @@ export class CpDarkmode extends LitElement {
 
     if (this.isDark) {
       this.isDark = false;
-      root.classList.replace('force-dark', 'force-light');
-      document.cookie = 'force_mode=light;SameSite=Lax';
+      root.dataset.scheme = 'light';
+      localStorage.setItem('scheme', 'light');
     } else if (this.isDark === false) {
       this.isDark = null;
-      root.classList.remove('force-light');
-      document.cookie = 'force_mode=;expires=Thu, 01 Jan 1970 00:00:00 GMT;SameSite=Lax';
+      root.dataset.scheme = (window.matchMedia('(prefers-color-scheme: dark)').matches? 'dark' : 'light');
+      localStorage.removeItem('scheme');
     } else {
       this.isDark = true;
-      root.classList.add('force-dark');
-      document.cookie = 'force_mode=dark;SameSite=Lax';
+      root.dataset.scheme = 'dark';
+      localStorage.setItem('scheme', 'dark');
     }
   }
 }

@@ -23,13 +23,8 @@
     background-size: 1536px 702px;
   }
 }
-:root.force-dark .main--index {
+:root[data-scheme="dark"] .main--index {
   background-image: url(../images/front_dark.webp);
-}
-@media (prefers-color-scheme: dark) {
-  :root:not(.force-light) .main--index {
-    background-image: url(../images/front_dark.webp);
-  }
 }
 
 .main--index > :not(h1) {

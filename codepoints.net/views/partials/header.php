@@ -8,22 +8,12 @@
  */
 ?>
 <!DOCTYPE html>
-<html lang="<?=q($lang)?>" dir="ltr" class="<?php
-if (isset($_COOKIE['force_mode'])) {
-    if ($_COOKIE['force_mode'] === 'dark') {
-        echo 'force-dark';
-    } elseif ($_COOKIE['force_mode'] === 'light') {
-        echo 'force-light';
-    }
-}
-if (array_key_exists('embed', $_GET)) {
-    echo ' embed';
-}
-?>">
+<html lang="<?=q($lang)?>" dir="ltr" class="<?= array_key_exists('embed', $_GET)? 'embed' : '' ?>">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title><?=q($title)?> – Codepoints</title>
+    <script>document.documentElement.dataset.scheme = localStorage.getItem('scheme') || (window.matchMedia('(prefers-color-scheme: dark)').matches? 'dark' : 'light');</script>
 <?php if(isset($page_description)): ?>
     <meta name="description" content="<?=q($page_description)?>">
 <?php endif ?>
