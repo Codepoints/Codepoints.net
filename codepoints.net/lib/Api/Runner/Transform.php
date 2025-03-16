@@ -10,9 +10,9 @@ use Codepoints\Api\Exception as ApiException;
 
 class Transform extends JsonRunner {
 
-    private const MAXLENGTH = 1024;
+    private const int MAXLENGTH = 1024;
 
-    private const SUBACTIONS = ['lower', 'upper', 'title', 'mirror', 'nfc', 'nfd', 'nfkc', 'nfkd'];
+    private const array SUBACTIONS = ['lower', 'upper', 'title', 'mirror', 'nfc', 'nfd', 'nfkc', 'nfkd'];
 
     /**
      * @return string|Array

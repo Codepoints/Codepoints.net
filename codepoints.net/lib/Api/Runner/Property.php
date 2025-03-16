@@ -10,7 +10,7 @@ class Property extends Runner {
 
     private int $colormod = 0;
 
-    private const FIELDS = [
+    private const array FIELDS = [
         'cp', 'age', 'gc', 'ccc', 'bc', 'Bidi_M', 'Bidi_C', 'dt', 'CE',
         'Comp_Ex', 'NFC_QC', 'NFD_QC', 'NFKC_QC', 'NFKD_QC', 'XO_NFC',
         'XO_NFD', 'XO_NFKC', 'XO_NFKD', 'nt', 'nv', 'jt', 'jg', 'Join_C',

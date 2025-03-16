@@ -9,7 +9,7 @@ use Codepoints\Api\Exception as ApiException;
 
 class Filter extends JsonRunner {
 
-    private const MAXLENGTH = 1024;
+    private const int MAXLENGTH = 1024;
 
     /**
      * @return string|Array

@@ -10,13 +10,7 @@ services:
       - 80:80
       - 443:443
     volumes:
-      - ./codepoints.net:/var/www/codepoints.net
-      - ./config.ini:/var/www/config.ini
-      - ./composer.json:/var/www/composer.json
-      - ./composer.lock:/var/www/composer.lock
-      - ./phpcs.xml:/var/www/phpcs.xml
-      - ./psalm.xml:/var/www/psalm.xml
-      - ./tests/psalm_stubs.php:/var/www/tests/psalm_stubs.php
+      - .:/var/www
       - ./ops/apache2/local-confs/codepoints.net.conf:/etc/apache2/local-confs/codepoints.net.conf
       - ./ops/php/8.3/mods-available/99-codepoints.ini:/usr/local/etc/php/conf.d/99-codepoints.ini
       - ./ops/php/8.3/mods-available/99-develop.ini:/usr/local/etc/php/conf.d/99-develop.ini
