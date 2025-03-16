@@ -44,7 +44,7 @@ class Property extends Runner {
             ]), ApiException::BAD_REQUEST);
         }
 
-        $gd = imagecreatetruecolor($width, $height);
+        $gd = \imagecreatetruecolor($width, $height);
         if (!($gd instanceof \GdImage)) {
             throw new ApiException((string)json_encode([
                 'title' => 'Internal Image Creation Error',

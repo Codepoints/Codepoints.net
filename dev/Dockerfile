@@ -5,11 +5,13 @@ COPY dev/httpd.conf /etc/apache2/sites-available/httpd.conf
 COPY dev/*.pem /etc/certs/
 
 RUN apt-get update && \
-    apt-get install libzip-dev libicu-dev -y && \
+    apt-get install libzip-dev libicu-dev libfreetype6-dev libjpeg62-turbo-dev libpng-dev -y && \
     pecl install xdebug && \
     docker-php-ext-enable xdebug && \
     docker-php-ext-install intl && \
     docker-php-ext-enable intl && \
+    docker-php-ext-install gd && \
+    docker-php-ext-enable gd && \
     docker-php-ext-install opcache && \
     docker-php-ext-enable opcache && \
     docker-php-ext-install pdo_mysql && \
