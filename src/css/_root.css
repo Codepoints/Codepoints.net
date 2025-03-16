@@ -71,11 +71,13 @@
   --color-back: var(--color-stone-100);
   --color-link: var(--color-red-700);
   --color-link-hover: var(--color-red-600);
-  --color-hilite: var(--color-teal-600);
-  --color-accent: var(--color-red-500);
+
+  --color-hilite: var(--color-teal-500);
+  --color-accent: var(--color-teal-600);
   --color-on-accent: white;
 
   --color-shadow: var(--color-red-950);
+
   --hsl-backlight: 0, 0%, 100%;
   --hsl-highlight: 0, 0%, 100%;
 
@@ -106,8 +108,10 @@
   --color-back: var(--color-stone-900);
   --color-link: hsl(from var(--color-teal-400) h 60 l);
   --color-link-hover: var(--color-teal-500);
-  --color-hilite: var(--color-red-600);
+
+  --color-hilite: var(--color-teal-600);
   --color-accent: var(--color-teal-600);
+  --color-on-accent: white;
 
   --color-shadow: hsl(from var(--color-teal-900) h 40 l);
 

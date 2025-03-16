@@ -27,12 +27,13 @@ export class CpSearchProperty extends LitElement {
       text-shadow: 0 1px var(--color-back-bright);
     }
     button:hover,
-    button:focus {
+    button:focus-visible {
       border-color: var(--color-border-medium);
       background: var(--color-back-bright);
       background: linear-gradient(to bottom, var(--color-back-bright), var(--color-back));
       box-shadow: inset 0 1px hsla(var(--hsl-highlight), .67),
                   0 0 3px 0px var(--color-hilite);
+      outline: none;
     }
     button:active {
       text-shadow: 0 1px hsl(var(--hsl-highlight));
@@ -71,20 +72,26 @@ export class CpSearchProperty extends LitElement {
       backdrop-filter: blur(1px) grayscale(100%);
     }
     label:has(>input[type="checkbox"]):before {
-      content: "";
+      content: "\\00A0";
       display: inline-block;
-      width: .9em;
+      width: 1.111em;
       aspect-ratio: 1;
       background: var(--color-back);
       border: 1px solid var(--color-border);
       border-radius: 1px;
-      line-height: .9;
+      line-height: 1;
+      font-size: .9em;
       text-align: center;
       margin-inline-end: .3em;
     }
     label:has(>input[type="checkbox"]:checked):before {
       content: "✔\\00FE0E";
       background: var(--color-accent);
+      color: var(--color-on-accent);
+    }
+    label:has(>input[type="checkbox"]:focus-visible):before {
+      box-shadow: 0 0 0 1px var(--color-hilite),
+                  0 0 3px 1px var(--color-hilite);
     }
     label > input[type="checkbox"] {
       opacity: 0;
