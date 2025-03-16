@@ -33,7 +33,7 @@ class Filter extends JsonRunner {
         }
 
         $codepoints = array_map(function (string $c) : int {
-            return mb_ord($c);
+            return (int)mb_ord($c);
         }, mb_str_split($data));
 
         $sql_filter = [];
@@ -77,7 +77,7 @@ class Filter extends JsonRunner {
         });
 
         return join('', array_map(function (int $i) : string {
-            return mb_chr($i);
+            return (string)mb_chr($i);
         }, $codepoints));
     }
 

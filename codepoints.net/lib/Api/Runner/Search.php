@@ -28,7 +28,7 @@ class Search extends JsonRunner {
         if (is_string($search_result)) {
             /* TODO this might not be the best way to handle single-cp results
              * in an API context. */
-            throw new Redirect(sprintf('/api/v1/codepoint/%s', mb_ord($search_result)));
+            throw new Redirect(sprintf('/api/v1/codepoint/%s', (int)mb_ord($search_result)));
         }
 
         # TODO $limit is currently not yet respected by pagination

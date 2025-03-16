@@ -93,7 +93,7 @@ class Documenter {
         $hex = sprintf('%X', $cp->id);
         $zhex = sprintf('%04X', $cp->id);
         $aliases = join(' ', array_map(fn(Array $item) => $item['type'].': '.$item['alias'], $cp->aliases));
-        $wikipedia = trim(preg_replace('/\s+/', ' ', strip_tags(str_replace('>', '> ', $cp->wikipedia['abstract'] ?? ''))));
+        $wikipedia = trim((string)preg_replace('/\s+/', ' ', strip_tags(str_replace('>', '> ', $cp->wikipedia['abstract'] ?? ''))));
         if ($wikipedia) {
             $wikipedia .= ' Wikipedia';
         }

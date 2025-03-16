@@ -33,7 +33,7 @@ class Name extends Runner {
             throw new ApiException(__('Not a codepoint'), ApiException::NOT_FOUND);
         }
 
-        return $mime === 'text/plain'? $cp->name : json_encode($cp->name);
+        return $mime === 'text/plain'? $cp->name : (string)json_encode($cp->name);
     }
 
 }

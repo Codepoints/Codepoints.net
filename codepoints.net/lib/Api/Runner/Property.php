@@ -36,7 +36,7 @@ class Property extends Runner {
         }
         if (! in_array($data, self::FIELDS)) {
             header('Content-Type: application/json;charset=UTF-8');
-            throw new ApiException(json_encode([
+            throw new ApiException((string)json_encode([
                 'title' => $data ? __('Unknown property') : __('Please specify a property to display'),
                 'detail' => __('show a PNG image where every codepoint is represented by one pixel. The pixel color determines the value.'),
                 'property_url' => 'https://codepoints.net/api/v1/property/{property}',
@@ -45,6 +45,11 @@ class Property extends Runner {
         }
 
         $gd = imagecreatetruecolor($width, $height);
+        if (!($gd instanceof \GdImage)) {
+            throw new ApiException((string)json_encode([
+                'title' => 'Internal Image Creation Error',
+            ]), ApiException::INTERNAL_SERVER_ERROR);
+        }
         imagecolortransparent($gd, imagecolorallocate($gd, 0, 0, 0));
 
         switch ($data) {
@@ -113,7 +118,7 @@ class Property extends Runner {
         ob_start();
         imagepng($gd);
         imagedestroy($gd);
-        return ob_get_clean();
+        return (string)ob_get_clean();
     }
 
     /**

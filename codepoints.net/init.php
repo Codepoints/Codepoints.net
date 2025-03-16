@@ -53,7 +53,7 @@ if (file_exists(__DIR__.'/maintenance') && PHP_SAPI !== 'cli') {
 /**
  * get global config values and the database connection ready
  */
-$config = parse_ini_file(dirname(__DIR__).'/config.ini', true);
+$config = (array)parse_ini_file(dirname(__DIR__).'/config.ini', true);
 /** @var string */
 $basename = basename(__DIR__);
 if ($basename === 'beta.codepoints.net' && array_key_exists('beta', $config)) {

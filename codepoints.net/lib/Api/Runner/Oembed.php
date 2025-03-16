@@ -12,7 +12,7 @@ class Oembed extends Runner {
         /** @psalm-suppress RiskyTruthyFalsyComparison */
         if (! isset($_GET['url']) || ! $_GET['url'] || is_array($_GET['url'])) {
             header('Content-Type: application/json; charset=utf-8');
-            return json_encode([
+            return (string)json_encode([
                 'description' => __('oEmbed API endpoint for URLs matching “codepoints.net”'),
                 'oembed_url' => 'https://codepoints.net/api/v1/oembed{?url}{?format*}{?maxwidth*}{?maxheight*}',
                 'url' => 'https://codepoints.net/*',
@@ -46,11 +46,15 @@ class Oembed extends Runner {
             throw new ApiException(__('Invalid URL'), ApiException::NOT_FOUND);
         }
 
-        $path = preg_replace('/^https?:\/\/(www\.)?codepoints\.[a-z]+\//', '', $url);
+        $path = (string)preg_replace('/^https?:\/\/(www\.)?codepoints\.[a-z]+\//', '', $url);
         if (preg_match('/^[Uu](?:\\+| |%20)([A-Fa-f0-9]{1,6})$/', $path, $matches)) {
             $dec = hexdec($matches[1]);
         } elseif (mb_strlen($path, 'UTF-8') === 1) {
-            $dec = unpack('N', mb_convert_encoding($path, 'UCS-4BE', 'UTF-8'))[1];
+            $dec_arr = unpack('N', (string)mb_convert_encoding($path, 'UCS-4BE', 'UTF-8'));
+            if (!is_array($dec_arr)) {
+                throw new ApiException(__('Internal error converting the queried URL.'), ApiException::INTERNAL_SERVER_ERROR);
+            }
+            $dec = $dec_arr[1];
         } else {
             throw new ApiException(__('URL path must be single character (UTF-8 encoded) or match /U+[A-F0-9]{4,6}/.'), ApiException::NOT_FOUND);
         }
@@ -87,7 +91,7 @@ class Oembed extends Runner {
             return $xml.'</oembed>';
         } else {
             header('Content-Type: application/json; charset=utf-8');
-            return json_encode($data);
+            return (string)json_encode($data);
         }
     }
 

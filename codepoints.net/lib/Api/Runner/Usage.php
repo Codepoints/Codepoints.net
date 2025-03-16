@@ -17,7 +17,7 @@ class Usage extends Runner {
         $host = 'https://codepoints.net/api/v1';
 
         header('Content-Type: application/json; charset=utf-8');
-        return json_encode([
+        return (string)json_encode([
             'description' => __('Welcome to codepoint.net’s Unicode API. Most requests are JSON-based. The API supports for those requests JSONP via the `callback` GET parameter. The `glyph` and `property` methods return PNG images. When problems appear, the API response conforms to <https://tools.ietf.org/html/draft-ietf-appsawg-http-problem-02>. Documentation is published at <https://github.com/Codepoints/codepoints.net/wiki/API>.'),
             'codepoint_url' => "$host/codepoint/{codepoint}{?property*}{?callback}",
             'block_url' => "$host/block/{block}{?callback}",

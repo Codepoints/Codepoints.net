@@ -46,7 +46,7 @@ class Transform extends JsonRunner {
         }
 
         $codepoints = array_map(function (string $c) : int {
-            return mb_ord($c);
+            return (int)mb_ord($c);
         }, mb_str_split($input));
 
         $mapped_cps = [];
@@ -64,16 +64,16 @@ class Transform extends JsonRunner {
                 $mapped_cps = $this->unicode_to_utf8($this->map_by_db($codepoints, 'bmg'));
                 break;
             case 'nfc':
-                $mapped_cps = normalizer_normalize($input, Normalizer::FORM_C);
+                $mapped_cps = (string)normalizer_normalize($input, Normalizer::FORM_C);
                 break;
             case 'nfd':
-                $mapped_cps = normalizer_normalize($input, Normalizer::FORM_D);
+                $mapped_cps = (string)normalizer_normalize($input, Normalizer::FORM_D);
                 break;
             case 'nfkc':
-                $mapped_cps = normalizer_normalize($input, Normalizer::FORM_KC);
+                $mapped_cps = (string)normalizer_normalize($input, Normalizer::FORM_KC);
                 break;
             case 'nfkd':
-                $mapped_cps = normalizer_normalize($input, Normalizer::FORM_KD);
+                $mapped_cps = (string)normalizer_normalize($input, Normalizer::FORM_KD);
                 break;
         }
 

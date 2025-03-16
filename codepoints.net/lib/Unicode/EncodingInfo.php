@@ -61,7 +61,7 @@ class EncodingInfo {
             'shift_jis' => 'Shift JIS',
             'shift_jis_2004' => 'Shift JIS 2004',
             'shift_jisx0213' => 'Shift JIS X 0213',
-            default => preg_replace_callback('/^cp([0-9]+)(ms)?$/', function($m) {
+            default => (string)preg_replace_callback('/^cp([0-9]+)(ms)?$/', function($m) {
                 return 'Codepage '.$m[1].(count($m) > 2? ' (Microsoft)' : '');
             }, $id),
         };

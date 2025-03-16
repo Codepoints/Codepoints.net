@@ -46,7 +46,7 @@ require_once 'router.php';
 /**
  * run this thing!
  */
-$url = rawurldecode(preg_replace('/\?.*/', '', substr(
+$url = rawurldecode((string)preg_replace('/\?.*/', '', substr(
             filter_input(INPUT_SERVER, 'REQUEST_URI') ?? '',
             strlen(rtrim(dirname(filter_input(INPUT_SERVER, 'PHP_SELF') ?? ''), '/').'/'))));
 try {
