@@ -8,7 +8,6 @@
     "build": "vite build",
     "watch": "vite build --watch",
     "preview": "vite preview",
-    "postinstall": "patch-package",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -31,7 +30,6 @@
     "eslint": "^9.15.0",
     "eslint-plugin-lit": "^1.6.1",
     "eslint-plugin-wc": "^2.0.4",
-    "patch-package": "^8.0.0",
     "po2json": "^0.4.5",
     "postcss": "^8.4.16",
     "postcss-custom-media": "^11.0.5",
