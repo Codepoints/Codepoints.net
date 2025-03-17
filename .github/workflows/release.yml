@@ -43,9 +43,6 @@ jobs:
       - name: install npm packages
         run: npm ci --silent --audit false --fund false
 
-      - name: patch npm packages
-        run: npm run postinstall
-
       - name: run vite
         run: npm run build
         env:
