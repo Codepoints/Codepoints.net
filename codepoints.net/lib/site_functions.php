@@ -31,11 +31,14 @@ function get_popular_codepoints(Database $db) : Array {
             }
         }
         $cps = [];
-        $list = join(',', array_unique($intlist));
-        $data = $db->getAll('SELECT cp, name, gc FROM codepoints
-            WHERE cp IN ( '.$list.' ) ORDER BY FIELD( cp, '.$list.' )');
-        if (is_array($data)) {
-            foreach ($data as $set) {
+        $db_data = null;
+        if ($intlist) {
+            $list = join(',', array_unique($intlist));
+            $db_data = $db->getAll('SELECT cp, name, gc FROM codepoints
+                WHERE cp IN ( '.$list.' ) ORDER BY FIELD( cp, '.$list.' )');
+        }
+        if (is_array($db_data)) {
+            foreach ($db_data as $set) {
                 $candidate = Codepoint::getCached($set, $db);
                 if ($candidate->sensitivity->value > SENSITIVITY_LEVEL::RAISED->value) {
                     continue;
