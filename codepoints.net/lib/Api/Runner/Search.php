@@ -5,12 +5,15 @@ namespace Codepoints\Api\Runner;
 use Codepoints\Api\JsonRunner;
 use Codepoints\Api\Exception as ApiException;
 use Codepoints\Controller\Search as SearchController;
+use Codepoints\Router\RateLimiter;
 use Codepoints\Router\Redirect;
 
 
 class Search extends JsonRunner {
 
     protected function handle_request(string $data) : Array {
+        new RateLimiter(5, 60, $this->env['db']);
+
         if (! count($_GET)) {
             return [
                 'description' => __('search for codepoints by their properties'),

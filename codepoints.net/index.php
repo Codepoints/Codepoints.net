@@ -7,6 +7,7 @@ use Codepoints\Controller\Error as ErrorController;
 use Codepoints\Router;
 use Codepoints\Router\NotFoundException;
 use Codepoints\Router\Redirect;
+use Codepoints\Router\RateLimitReached;
 
 define('SOFTWARE_VERSION', '00000004');
 
@@ -56,6 +57,14 @@ try {
     $content = Router::serve($url);
 } catch (NotFoundException $e) {
     $content = null;
+} catch (RateLimitReached $e) {
+    http_response_code(429);
+    die('It seems that you sent a lot of requests in a short amount of time.
+         This is a non-profit site. Its resource limits prohibit this excessive use.
+         Please come back again later!
+         If you think this is an error, please reach out to us on Mastodon:
+         <a href="https://typo.social/@codepoints">@codepoints@typo.social</a>.
+         Thank you!');
 } catch (Redirect $redirect) {
     $code = 303;
     if (is_int($redirect->getCode()) && $redirect->getCode() >= 300 && $redirect->getCode() <= 399) {

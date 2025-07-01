@@ -9,6 +9,7 @@ use Codepoints\Unicode\Block;
 use Codepoints\Unicode\Codepoint;
 use Codepoints\Unicode\SearchResult;
 use Codepoints\Router\Pagination;
+use Codepoints\Router\RateLimiter;
 use Codepoints\Router\Redirect;
 use Codepoints\Search\Engine;
 
@@ -24,6 +25,7 @@ class Search extends Controller {
      * @throws \Codepoints\Router\Redirect if it was detected, that the search was for a single code point
      */
     public function __invoke($match, Array $env) : string {
+        new RateLimiter(5, 60, $env['db']);
 
         $query = filter_input(INPUT_SERVER, 'QUERY_STRING') ?? '';
         list($search_result, $pagination) = $this->getSearchResult($query, $env);

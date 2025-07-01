@@ -18,6 +18,7 @@ use Codepoints\Unicode\CodepointInfo\Relatives;
 use Codepoints\Unicode\CodepointInfo\Representation;
 use Codepoints\Unicode\CodepointInfo\Sensitivity;
 use Codepoints\Unicode\CodepointInfo\Wikipedia;
+use Codepoints\Router\RateLimiter;
 
 
 class CommandLine {
@@ -37,7 +38,7 @@ class CommandLine {
 
     private function help() : int {
         echo <<<EOF
-usage: index.php [build-search|get_search_doc|describe|help]
+usage: index.php [build-search|get_search_doc|describe|clear-rate-limit|help]
 
 EOF;
         return 0;
@@ -84,6 +85,11 @@ EOF;
         $cp = preg_replace('/^u\+/i', '', $cp);
         $cpo = get_codepoint(hexdec($cp), $this->env['db']);
         echo preg_replace('/\s*\n\n\s+/', "\n\n", preg_replace('/[ \t]+/', ' ', strip_tags($cpo->description ?? "- no description -\n")));
+        return 0;
+    }
+
+    private function clear_rate_limit() : int {
+        RateLimiter::clearStale($this->env['db']);
         return 0;
     }
 

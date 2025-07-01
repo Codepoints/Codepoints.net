@@ -110,6 +110,14 @@
             job: "php /var/www/codepoints.net/index.php build-search"
         become: true
         become_user: www-data
+    -
+        name: clear rate limit cache
+        ansible.builtin.cron:
+            name: "clear rate limit cache"
+            minute: "*"
+            job: "php /var/www/codepoints.net/index.php clear-rate-limit"
+        become: true
+        become_user: www-data
 
 -
     name: check health
