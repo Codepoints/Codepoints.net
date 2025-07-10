@@ -31,7 +31,9 @@ class RateLimiter {
 
         $data = $this->db->getOne('SELECT hits
             FROM rate_limit
-            WHERE ip = ? AND timerange = ?', $this->ip, $this->timerange);
+            WHERE ip = ?
+            AND timerange = ?
+            AND last_seen >= DATE_SUB(now(), INTERVAL timerange SECOND)', $this->ip, $this->timerange);
         /** @psalm-suppress RiskyTruthyFalsyComparison */
         if ($data && $data['hits'] > $this->limit) {
             $this->dbExec(
