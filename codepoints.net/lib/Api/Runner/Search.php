@@ -29,7 +29,7 @@ class Search extends JsonRunner {
         if (substr($query, 0, 1) === 'k') {
             /* see lib/Controller/Search.php for an explanation for this
              * rate limiter. */
-            new RateLimiter(20, 60*60*24, $env['db']);
+            new RateLimiter(20, 60*60*24, $this->env['db']);
         }
         $controller = new SearchController();
         list($search_result, $pagination) = $controller->getSearchResult($query, $this->env);
