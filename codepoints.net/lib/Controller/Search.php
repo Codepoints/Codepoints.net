@@ -28,6 +28,12 @@ class Search extends Controller {
         new RateLimiter(5, 60, $env['db']);
 
         $query = filter_input(INPUT_SERVER, 'QUERY_STRING') ?? '';
+        if (substr($query, 0, 1) === 'k') {
+            /* we see an extreme amount of traffic searching only for obscure
+             * CJK properties. Reduce the amount of traffic for these specific
+             * queries to 20 requests per day. */
+            new RateLimiter(20, 60*60*24, $env['db']);
+        }
         list($search_result, $pagination) = $this->getSearchResult($query, $env);
         if (is_string($search_result)) {
             throw new Redirect(sprintf('/U+%s', dechex(mb_ord($search_result))));

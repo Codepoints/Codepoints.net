@@ -26,6 +26,11 @@ class Search extends JsonRunner {
         }
 
         $query = filter_input(INPUT_SERVER, 'QUERY_STRING') ?? '';
+        if (substr($query, 0, 1) === 'k') {
+            /* see lib/Controller/Search.php for an explanation for this
+             * rate limiter. */
+            new RateLimiter(20, 60*60*24, $env['db']);
+        }
         $controller = new SearchController();
         list($search_result, $pagination) = $controller->getSearchResult($query, $this->env);
         if (is_string($search_result)) {
