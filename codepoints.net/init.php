@@ -70,7 +70,7 @@ Router::addDependency('db', $db = new Database(
     $config['db']['password'],
     [
         # make sure, we communicate with the real UTF-8 everywhere
-        PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8mb4 COLLATE utf8mb4_unicode_ci',
+        Pdo\Mysql::ATTR_INIT_COMMAND => 'SET NAMES utf8mb4 COLLATE utf8mb4_unicode_ci',
         # make sure we get ints and floats back where appropriate. See
         # https://stackoverflow.com/a/58830039/113195
         PDO::ATTR_EMULATE_PREPARES => false,

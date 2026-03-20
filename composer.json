@@ -11,7 +11,7 @@
         "willdurand/negotiation": "^3.0",
         "gettext/gettext": "^5.5",
         "matomo/matomo-php-tracker": "^3.0",
-        "symfony/cache": "^7.2"
+        "symfony/cache": "^8.0"
     },
     "autoload": {
         "files": [
@@ -26,11 +26,11 @@
         }
     },
     "require-dev": {
-        "vimeo/psalm": "^5.4.0",
-        "squizlabs/php_codesniffer": "^3.5",
-        "codeception/codeception": "^5.0",
-        "codeception/module-asserts": "^3.0",
-        "codeception/module-phpbrowser": "^3.0",
+        "vimeo/psalm": "^6.16",
+        "squizlabs/php_codesniffer": "^4.0",
+        "codeception/codeception": "^5.3",
+        "codeception/module-asserts": "^3.3",
+        "codeception/module-phpbrowser": "^4.0",
         "codeception/module-rest": "^3.3",
         "codeception/module-webdriver": "^4.0"
     }
