@@ -21,10 +21,11 @@ jobs:
       - name: check out repository
         uses: actions/checkout@v4
 
-      - name: use PHP 8.5
-        uses: nanasess/setup-php@v4
-        with:
-          php-version: '8.5'
+      - name: use PHP 8.5 (1/2)
+        run: add-apt-repository ppa:ondrej/php
+
+      - name: use PHP 8.5 (2/2)
+        run: apt install -y php8.5 php8.5-cli php8.5-zip
 
       - name: set up node v20
         uses: actions/setup-node@v4
