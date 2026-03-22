@@ -25,7 +25,7 @@ jobs:
         run: sudo add-apt-repository ppa:ondrej/php
 
       - name: use PHP 8.5 (2/2)
-        run: sudo apt install -y php8.5 php8.5-cli php8.5-zip
+        run: sudo apt install -y php8.5 php8.5-cli php8.5-zip php8.5-xml
 
       - name: set up node v20
         uses: actions/setup-node@v4
