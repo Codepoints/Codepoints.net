@@ -19,6 +19,7 @@ return [ # tr14
     'GL' => [__('Non-breaking (“Glue”)'), __('Prohibit line breaks before and after')],
     'H2' => [__('Hangul LV Syllable'), __('Form Korean syllable blocks')],
     'H3' => [__('Hangul LVT Syllable'), __('Form Korean syllable blocks')],
+    'HH' => [__('Unambiguous Hyphen'), __('Generally provide a line break opportunity after the character, except word-initially.')],
     'HL' => [__('Hebrew Letter'), __('Do not break around a following hyphen; otherwise act as Alphabetic')],
     'HY' => [__('Hyphen'), __('Provide a line break opportunity after the character, except in numeric context')],
     'ID' => [__('Ideographic'), __('Break before or after, except in some numeric context')],
