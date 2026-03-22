@@ -60,7 +60,7 @@ test-phpcs:
 .PHONY: test-phpcs
 
 test-php-psalm:
-	@./codepoints.net/vendor/bin/psalm --show-info=true --php-version=8.3
+	@./codepoints.net/vendor/bin/psalm --show-info=true --php-version=8.5
 .PHONY: test-php-psalm
 
 test-js:

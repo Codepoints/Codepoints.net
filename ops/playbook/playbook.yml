@@ -18,13 +18,8 @@
     -
         name: PHP FPM is running
         ansible.builtin.service:
-            name: php8.3-fpm
+            name: php8.5-fpm
             state: started
-    -
-        name: Sphinx search is stopped for now
-        ansible.builtin.service:
-            name: sphinxsearch
-            state: stopped
 
 -
     name: set up modifications
@@ -36,7 +31,7 @@
         name: add PHP mod
         ansible.builtin.copy:
             src: ./files/99-codepoints.ini
-            dest: /etc/php/8.3/mods-available/99-codepoints.ini
+            dest: /etc/php/8.5/mods-available/99-codepoints.ini
             owner: root
             group: root
             mode: '0644'
