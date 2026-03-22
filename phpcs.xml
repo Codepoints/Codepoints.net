@@ -93,8 +93,6 @@
     <exclude-pattern>./codepoints.net/views/*</exclude-pattern>
   </rule>
 
-  <rule ref="Zend.Debug.CodeAnalyzer"/>
-
   <rule ref="Squiz.ControlStructures.ForEachLoopDeclaration"/>
   <rule ref="Squiz.ControlStructures.ForLoopDeclaration"/>
   <rule ref="Squiz.ControlStructures.LowercaseDeclaration"/>
