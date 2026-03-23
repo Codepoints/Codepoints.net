@@ -9,13 +9,14 @@ use Codepoints\Router\Pagination;
 use Codepoints\Unicode\Block as UnicodeBlock;
 
 
-class Block extends Controller {
+final class Block extends Controller {
 
     use TraitPreload;
 
     /**
      * @param Array $data
      */
+    #[\Override]
     public function __invoke($data, Array $env) : string {
         $this->sendPreloadHeaders([
             /* TODO preloading SVGs for <use> is not yet supported:

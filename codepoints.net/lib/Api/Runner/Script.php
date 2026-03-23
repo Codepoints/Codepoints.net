@@ -6,8 +6,9 @@ use Codepoints\Api\JsonRunner;
 use Codepoints\Api\Exception as ApiException;
 
 
-class Script extends JsonRunner {
+final class Script extends JsonRunner {
 
+    #[\Override]
     protected function handle_request(string $data) : Array {
         $all_scripts = $this->env['db']->getAll('SELECT iso, name FROM scripts');
         if (! $data) {

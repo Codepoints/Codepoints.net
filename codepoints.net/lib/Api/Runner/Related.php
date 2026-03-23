@@ -6,8 +6,9 @@ use Codepoints\Api\JsonRunner;
 use Codepoints\Api\Exception as ApiException;
 
 
-class Related extends JsonRunner {
+final class Related extends JsonRunner {
 
+    #[\Override]
     protected function handle_request(string $data) : Array {
         if (! $data) {
             return [

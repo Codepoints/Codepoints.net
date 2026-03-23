@@ -6,11 +6,12 @@ use Codepoints\Api\Runner;
 use Codepoints\Api\Exception as ApiException;
 
 
-class Glyph extends Runner {
+final class Glyph extends Runner {
 
     /**
      * return an example glyph for the requested code point
      */
+    #[\Override]
     public function handle(string $data) : string {
         if (! $data || strlen($data) > 6 || ctype_xdigit($data) === false) {
             throw new ApiException(__('No codepoint'), ApiException::BAD_REQUEST);

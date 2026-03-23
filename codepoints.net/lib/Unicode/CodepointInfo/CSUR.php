@@ -10,13 +10,14 @@ use \Codepoints\Unicode\CodepointInfo;
 /**
  * fetch CSUR data for the current PUA code point
  */
-class CSUR extends CodepointInfo {
+final class CSUR extends CodepointInfo {
 
     /**
      * return the CSUR data for this code point
      *
      * @return Array{ name: ?string }
      */
+    #[\Override]
     public function __invoke(Codepoint $codepoint) : Array {
         $csur_data = [ 'name' => null, ];
 

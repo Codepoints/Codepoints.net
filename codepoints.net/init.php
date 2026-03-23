@@ -26,10 +26,6 @@ mb_internal_encoding('UTF-8');
  */
 Analog::$format = '[%2$s] [codepoints:%3$s] %4$s'."\n";
 Analog::$default_level = Analog::DEBUG;
-/**
- * @psalm-suppress RedundantCondition
- * @psalm-suppress TypeDoesNotContainType
- */
 Analog::handler(Threshold::init(
     LevelName::init(Stderr::init()),
     (($_ENV['CODEPTS_LOG_LEVEL'] ?? '') === 'DEBUG' || PHP_SAPI === 'cli')?
@@ -63,7 +59,6 @@ unset($basename);
 if (! is_array($config)) {
     return false;
 }
-/** @psalm-suppress UndefinedConstant */
 Router::addDependency('db', $db = new Database(
     'mysql:host='.($config['db']['host'] ?? 'localhost').';dbname='.$config['db']['database'],
     $config['db']['user'],

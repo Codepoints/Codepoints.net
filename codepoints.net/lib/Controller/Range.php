@@ -11,11 +11,12 @@ use Codepoints\Unicode\SearchResult;
 use Codepoints\View;
 
 
-class Range extends Controller {
+final class Range extends Controller {
 
     /**
      * @param Array $match
      */
+    #[\Override]
     public function __invoke($match, Array $env) : string {
         if (substr_count($match[0], ',') > 128) {
             throw new NotFoundException('only up to 128 individual code points allowed');

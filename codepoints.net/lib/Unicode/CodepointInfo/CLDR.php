@@ -10,13 +10,14 @@ use \Codepoints\Unicode\CodepointInfo;
 /**
  * fetch CLDR properties for the current code point
  */
-class CLDR extends CodepointInfo {
+final class CLDR extends CodepointInfo {
 
     /**
      * return the CLDR data for this code point
      *
      * @return Array{ tts: ?string, tags: Array<string> }
      */
+    #[\Override]
     public function __invoke(Codepoint $codepoint) : Array {
         /* tts = "text to speech" */
         $cldr_data = [ 'tts' => null, 'tags' => [], ];

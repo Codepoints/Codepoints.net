@@ -86,7 +86,7 @@ use Codepoints\Unicode\Codepoint;
         printf(__('The Unihan Database defines it as <em>%s</em>.'),
             preg_replace_callback('/U\+([0-9A-F]{4,6})/', function(Array $m) use ($db) : string {
                 return cp(Codepoint::getCached(['cp' => hexdec($m[1]), 'name' => $m[0], 'gc' => 'Lo'], $db));
-            }, $defn));
+            }, $defn) ?? '');
     }
 
     if ($pronunciation) {

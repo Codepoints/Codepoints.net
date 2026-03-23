@@ -8,7 +8,7 @@ use \Analog\Analog;
 /**
  * try to extract what people might have meant in search queries
  */
-class FreeTextInterpreter {
+final class FreeTextInterpreter {
 
     private array $scripts;
 
@@ -26,6 +26,9 @@ class FreeTextInterpreter {
         $r = [];
 
         $terms = preg_split('/\s+/', $q);
+        if ($terms === false) {
+            return $r;
+        }
         $i = 0;
         foreach ($terms as $v) {
             $i += 1;

@@ -13,6 +13,9 @@ use \Codepoints\Unicode\Codepoint;
  * The range can contain unassigned code points.
  *
  * @template-implements \Iterator<int, Codepoint>
+ * @property-read int $first
+ * @property-read int $last
+ * @property-read string $name
  */
 class Range implements \Iterator {
 
@@ -33,8 +36,8 @@ class Range implements \Iterator {
     /**
      * the limits of the range and current pointer
      */
-    protected int $first;
-    protected int $last;
+    public readonly int $first;
+    public readonly int $last;
     protected int $current;
 
     /**
@@ -78,10 +81,6 @@ class Range implements \Iterator {
         switch ($name) {
         case 'name':
             return $this->name;
-        case 'first':
-            return $this->first;
-        case 'last':
-            return $this->last;
         }
     }
 
@@ -107,6 +106,7 @@ class Range implements \Iterator {
         return $this->count;
     }
 
+    #[\Override]
     public function rewind() : void {
         $this->current = $this->first;
     }
@@ -120,6 +120,7 @@ class Range implements \Iterator {
      * For performance reasons we fetch a set of up to 256 code points around
      * this code point, too.
      */
+    #[\Override]
     public function current() : ?Codepoint {
         $codepoint = $this->current;
         if (array_key_exists($codepoint, $this->cp_cache)) {
@@ -166,10 +167,12 @@ class Range implements \Iterator {
     /**
      * @psalm-mutation-free
      */
+    #[\Override]
     public function key() : int {
         return $this->current;
     }
 
+    #[\Override]
     public function next() : void {
         $this->current += 1;
     }
@@ -177,6 +180,7 @@ class Range implements \Iterator {
     /**
      * @psalm-mutation-free
      */
+    #[\Override]
     public function valid() : bool {
         return $this->current >= $this->first && $this->current <= $this->last;
     }

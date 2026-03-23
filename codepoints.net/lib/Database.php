@@ -7,11 +7,12 @@ use \Analog\Analog;
 /**
  * a PDO extension that supports basic logging
  */
-class Database extends \PDO {
+final class Database extends \PDO {
 
     /**
      *
      */
+    #[\Override]
     public function prepare(string $query, Array $options=[]): \PDOStatement|false {
         $this->_log($query);
         return parent::prepare($query, $options);
@@ -20,6 +21,7 @@ class Database extends \PDO {
     /**
      * @param mixed $fetchModeArgs
      */
+    #[\Override]
     public function query(string $query, ?int $fetchMode = null, ...$fetchModeArgs) : \PDOStatement {
         $this->_log($query);
         return parent::query(...func_get_args());

@@ -75,7 +75,7 @@ include 'partials/header.php' ?>
 
   <?php if ($q && isset($search_result)): ?>
   <script type="application/tracker+json">
-    <?= str_replace('</', '&lt;/', json_encode(['trackSiteSearch', $q, false,
+    <?= str_replace('</', '&lt;/', (string)json_encode(['trackSiteSearch', $q, false,
     (isset($is_fulltext_result) && $is_fulltext_result)?
       $search_result->count() :
       0 /* make sure that we know in the analytics view, that this search term

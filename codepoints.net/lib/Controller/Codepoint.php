@@ -23,10 +23,11 @@ use Codepoints\Unicode\CodepointInfo\Wikipedia;
 use Exception;
 
 
-class Codepoint extends Controller {
+final class Codepoint extends Controller {
 
     use TraitPreload;
 
+    #[\Override]
     public function __invoke($match, Array $env) : string {
         $this->sendPreloadHeaders();
         new Aliases($env);

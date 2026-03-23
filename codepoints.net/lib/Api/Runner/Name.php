@@ -6,7 +6,7 @@ use Codepoints\Api\Runner;
 use Codepoints\Api\Exception as ApiException;
 
 
-class Name extends Runner {
+final class Name extends Runner {
 
     /**
      * return the name of the given code point
@@ -15,6 +15,7 @@ class Name extends Runner {
      * without JSON suppoert (e.g., directly in the browser), the response
      * will be plain text.
      */
+    #[\Override]
     public function handle(string $data) : string {
         $mime = 'application/json';
         if (isset($_SERVER['HTTP_ACCEPT']) &&

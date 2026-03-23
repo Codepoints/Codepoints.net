@@ -9,32 +9,47 @@ use \Codepoints\Database;
 
 /**
  * a single Unicode code point
+ * @property-read Codepoint|false $prev
+ * @property-read Codepoint|false $next
+ * @property-read Block $block
+ * @property-read Plane $plane
+ * @property-read mixed $aliases
+ * @property-read mixed $cldr
+ * @property-read mixed $confusables
+ * @property-read mixed $csur
+ * @property-read mixed $description
+ * @property-read mixed $extra
+ * @property-read mixed $image
+ * @property-read mixed $othersites
+ * @property-read mixed $pronunciation
+ * @property-read mixed $properties
+ * @property-read mixed $relatives
+ * @property-read mixed $representation
+ * @property-read mixed $sensitivity
+ * @property-read ?Array{abstract: string, lang: string, src: string} $wikipedia
  */
-class Codepoint implements JsonSerializable {
+final class Codepoint implements JsonSerializable {
 
     /**
      * the Unicode code point as integer
-     * @readonly
      */
-    private int $id;
+    public readonly int $id;
 
     /**
      * the official name
      *
      * Possibly some other value, like na1 field or a correction from the
      * aliases list.
-     * @readonly
      */
-    private string $name;
+    public readonly string $name;
 
     /**
      * the Unicode General Category
      *
      * Needed for rendering purposes ("is it a control char?", "is it a
      * combining char?")
-     * @readonly
      */
-    private string $gc;
+    public readonly string $gc;
 
     /**
      * @readonly
@@ -46,14 +61,14 @@ class Codepoint implements JsonSerializable {
      *
      * @var self|false|null
      */
-    private $prev = null;
+    private $_prev = null;
 
     /**
      * the next code point or false for U+10FFFF
      *
      * @var self|false|null
      */
-    private $next = null;
+    private $_next = null;
 
     /**
      * @var Array<int, self>
@@ -105,12 +120,6 @@ class Codepoint implements JsonSerializable {
      */
     public function __get(string $name) {
         switch ($name) {
-        case 'id':
-            return $this->id;
-        case 'name':
-            return $this->name;
-        case 'gc':
-            return $this->gc;
         case 'prev':
             return $this->getPrev();
         case 'next':
@@ -135,9 +144,9 @@ class Codepoint implements JsonSerializable {
      */
     public function chr() : string {
         if (in_array($this->gc, ['Mn', 'Me', 'Lm', 'Sk'])) {
-            return mb_chr(0x25CC) . mb_chr($this->id);
+            return (string)mb_chr(0x25CC) . (string)mb_chr($this->id);
         }
-        return mb_chr(get_printable_codepoint($this->id, $this->gc));
+        return (string)mb_chr(get_printable_codepoint($this->id, $this->gc));
     }
 
     /**
@@ -145,6 +154,7 @@ class Codepoint implements JsonSerializable {
      *
      * @psalm-mutation-free
      */
+    #[\Override]
     public function jsonSerialize(): int {
         return $this->id;
     }
@@ -172,18 +182,18 @@ class Codepoint implements JsonSerializable {
      * @return self|false
      */
     private function getPrev() {
-        if ($this->prev === null) {
-            $this->prev = false;
+        if ($this->_prev === null) {
+            $this->_prev = false;
             $other = $this->db->getOne('SELECT cp, name, gc FROM codepoints
                 WHERE cp < ?
                 ORDER BY cp DESC
                 LIMIT 1', $this->id);
             /** @psalm-suppress RiskyTruthyFalsyComparison */
             if ($other) {
-                $this->prev = self::getCached($other, $this->db);
+                $this->_prev = self::getCached($other, $this->db);
             }
         }
-        return $this->prev;
+        return $this->_prev;
     }
 
     /**
@@ -192,18 +202,18 @@ class Codepoint implements JsonSerializable {
      * @return self|false
      */
     private function getNext() {
-        if ($this->next === null) {
-            $this->next = false;
+        if ($this->_next === null) {
+            $this->_next = false;
             $other = $this->db->getOne('SELECT cp, name, gc FROM codepoints
                 WHERE cp > ?
                 ORDER BY cp ASC
                 LIMIT 1', $this->id);
             /** @psalm-suppress RiskyTruthyFalsyComparison */
             if ($other) {
-                $this->next = self::getCached($other, $this->db);
+                $this->_next = self::getCached($other, $this->db);
             }
         }
-        return $this->next;
+        return $this->_next;
     }
 
     /**

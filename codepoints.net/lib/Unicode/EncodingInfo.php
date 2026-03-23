@@ -6,7 +6,7 @@ namespace Codepoints\Unicode;
 /**
  * base class for info providers for code points
  */
-class EncodingInfo {
+final class EncodingInfo {
 
     /**
      * @return string

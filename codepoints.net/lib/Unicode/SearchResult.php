@@ -12,7 +12,7 @@ use \Codepoints\Unicode\Range;
 /**
  * a list of code points from a search query
  */
-class SearchResult extends Range {
+final class SearchResult extends Range {
 
     /**
      * construct a new search result
@@ -31,6 +31,7 @@ class SearchResult extends Range {
      * return a Codepoint object from the current position of the internal
      * array
      */
+    #[\Override]
     public function current() : ?Codepoint {
         $codepoint = $this->current;
         $data = null;
@@ -49,6 +50,7 @@ class SearchResult extends Range {
      *
      * @psalm-mutation-free
      */
+    #[\Override]
     public function valid() : bool {
         return array_key_exists($this->current, $this->cp_cache);
     }
@@ -60,6 +62,7 @@ class SearchResult extends Range {
      * keep the pagination class happy, we need to play with the "last"
      * parameter.
      */
+    #[\Override]
     public function slice(int $offset, ?int $length = null) : self {
         /** @psalm-suppress RiskyTruthyFalsyComparison */
         return new self([
@@ -72,6 +75,7 @@ class SearchResult extends Range {
     /**
      * return our pre-calculated count
      */
+    #[\Override]
     public function count() : int {
         return $this->count ?? 0;
     }

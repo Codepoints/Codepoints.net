@@ -6,9 +6,9 @@ use Codepoints\Api\Runner;
 use Codepoints\Api\Exception as ApiException;
 
 
-class Property extends Runner {
+final class Property extends Runner {
 
-    private int $colormod = 0;
+    private float $colormod = 0;
 
     private const array FIELDS = [
         'cp', 'age', 'gc', 'ccc', 'bc', 'Bidi_M', 'Bidi_C', 'dt', 'CE',
@@ -27,6 +27,7 @@ class Property extends Runner {
     /**
      * render a PNG where each pixel represents a code point
      */
+    #[\Override]
     public function handle(string $data) : string {
         $width = 256;
         $height = 256 * 3; // three planes high
@@ -50,7 +51,8 @@ class Property extends Runner {
                 'title' => 'Internal Image Creation Error',
             ]), ApiException::INTERNAL_SERVER_ERROR);
         }
-        imagecolortransparent($gd, imagecolorallocate($gd, 0, 0, 0));
+        $black = imagecolorallocate($gd, 0, 0, 0);
+        imagecolortransparent($gd, $black !== false? $black : null);
 
         switch ($data) {
             case 'confusables':
@@ -117,7 +119,6 @@ class Property extends Runner {
 
         ob_start();
         imagepng($gd);
-        imagedestroy($gd);
         return (string)ob_get_clean();
     }
 
@@ -128,13 +129,13 @@ class Property extends Runner {
      */
     private function getNextColor(float $frequency1, float $frequency2, float $frequency3,
         float $phase1, float $phase2, float $phase3) : Array {
-        $center = 128;
-        $width = 127;
+        $center = 128.0;
+        $width = 127.0;
 
         $red = min(255, max(0, round( sin($frequency1*$this->colormod + $phase1) * $width + $center)));
         $grn = min(255, max(0, round( sin($frequency2*$this->colormod + $phase2) * $width + $center)));
         $blu = min(255, max(0, round( sin($frequency3*$this->colormod + $phase3) * $width + $center)));
-        $this->colormod += 1;
+        $this->colormod += 1.0;
         return [$red, $grn, $blu];
     }
 

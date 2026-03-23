@@ -6,12 +6,13 @@ use Codepoints\Api\Runner;
 use Codepoints\View;
 
 
-class Usage extends Runner {
+final class Usage extends Runner {
 
+    #[\Override]
     public function handle(string $data) : string {
         if (isset($_SERVER['HTTP_ACCEPT']) &&
             strpos($_SERVER['HTTP_ACCEPT'], 'text/html') !== false) {
-            return file_get_contents(dirname(dirname(dirname(__DIR__))).'/views/api.html');
+            return (string)file_get_contents(dirname(dirname(dirname(__DIR__))).'/views/api.html');
         }
 
         $host = 'https://codepoints.net/api/v1';

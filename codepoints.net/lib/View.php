@@ -6,7 +6,7 @@ namespace Codepoints;
 /**
  * render a view file with appropriate context
  */
-class View {
+final class View {
 
     private string $view;
 
@@ -36,7 +36,7 @@ class View {
         include($this->file);
         $out = ob_get_contents();
         ob_end_clean();
-        return $out;
+        return $out !== false? $out : '';
     }
 
 }

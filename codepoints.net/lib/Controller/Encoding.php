@@ -10,11 +10,12 @@ use Codepoints\Unicode\SearchResult;
 use Codepoints\Unicode\EncodingInfo;
 
 
-class Encoding extends Controller {
+final class Encoding extends Controller {
 
     /**
      * @param string $match
      */
+    #[\Override]
     public function __invoke($match, Array $env) : string {
         $page = get_page();
 

@@ -29,7 +29,7 @@ use Codepoints\Unicode\PropertyInfo;
  * for "ox" finds U+1F402 OX before any other codepoint that happens to
  * relate to oxen.
  */
-class Documenter {
+final class Documenter {
 
     /**
      * @param Array{db: Database, lang: string, info: PropertyInfo} $env
@@ -87,7 +87,7 @@ class Documenter {
 
         $chr = $cp->chr();
         $name = $cp->name;
-        $name_no_dash = str_replace('-', '', (string)$cp->name);
+        $name_no_dash = str_replace('-', '', $cp->name);
         $na1 = $cp->properties['na1'] ?? '';
         $kDefinition = $cp->properties['kDefinition'] ?? '';
         $hex = sprintf('%X', $cp->id);

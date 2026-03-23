@@ -9,7 +9,7 @@ use \Codepoints\Router\RateLimitReached;
 /**
  * handle rate limits
  */
-class RateLimiter {
+final class RateLimiter {
 
     private ?string $ip;
 

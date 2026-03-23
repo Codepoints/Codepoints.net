@@ -20,7 +20,7 @@ enum SENSITIVITY_LEVEL: int {
  * We do not extend CodepointInfo, because we do not set $env in the
  * constructor.
  */
-class Sensitivity {
+final class Sensitivity {
 
     private array $sensitivity_map = [
         4053 => SENSITIVITY_LEVEL::MAX,

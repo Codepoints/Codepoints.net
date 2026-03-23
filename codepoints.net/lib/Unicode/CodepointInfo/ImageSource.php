@@ -10,11 +10,12 @@ use \Codepoints\Unicode\CodepointInfo;
 /**
  * determine the font name used to render a given code point
  */
-class ImageSource extends CodepointInfo {
+final class ImageSource extends CodepointInfo {
 
     /**
      * return the font name, if any, for the shown glyph
      */
+    #[\Override]
     public function __invoke(Codepoint $codepoint) : ?array {
         $source = null;
         $data = $this->db->getOne('

@@ -4,7 +4,7 @@ namespace Codepoints\Router;
 
 use Exception;
 
-class Redirect extends Exception {
+final class Redirect extends Exception {
 
     /**
      * @param string $message the location to redirect to

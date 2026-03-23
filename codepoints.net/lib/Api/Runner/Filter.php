@@ -7,13 +7,14 @@ use Codepoints\Api\JsonRunner;
 use Codepoints\Api\Exception as ApiException;
 
 
-class Filter extends JsonRunner {
+final class Filter extends JsonRunner {
 
     private const int MAXLENGTH = 1024;
 
     /**
      * @return string|Array
      */
+    #[\Override]
     protected function handle_request(string $data) {
         $properties = array_keys($this->env['info']->properties);
 

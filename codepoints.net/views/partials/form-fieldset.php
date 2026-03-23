@@ -25,7 +25,7 @@
                  name="<?= q($cat)?>[]"
                  value="<?= q($value)?>"
                  <?php if (in_array($value, $query_values)):?> checked<?php endif?>>
-          <?= q(is_array($label)? end($label) : $label) ?>
+          <?= q((string)(is_array($label)? end($label) : $label)) ?>
         </label>
       </p>
     <?php endforeach?>

@@ -10,22 +10,26 @@ use \Codepoints\Unicode\Range;
 
 /**
  * A block of characters as defined by Unicode
+ *
+ * @property-read Block|false $prev
+ * @property-read Block|false $next
+ * @property-read Plane $plane
  */
-class Block extends Range {
+final class Block extends Range {
 
     /**
      * the previous block
      *
      * @var self|false|null
      */
-    private $prev = null;
+    private $_prev = null;
 
     /**
      * the next block
      *
      * @var self|false|null
      */
-    private $next = null;
+    private $_next = null;
 
     /**
      * cache of already fetched blocks
@@ -50,6 +54,7 @@ class Block extends Range {
      *
      * @return mixed
      */
+    #[\Override]
     public function __get(string $name) {
         switch ($name) {
         case 'prev':
@@ -69,8 +74,8 @@ class Block extends Range {
      * @return self|false
      */
     private function getPrev() {
-        if ($this->prev === null) {
-            $this->prev = false;
+        if ($this->_prev === null) {
+            $this->_prev = false;
             $data = $this->db->getOne('
                 SELECT name, first, last FROM blocks
                 WHERE last < ?
@@ -78,10 +83,10 @@ class Block extends Range {
                 LIMIT 1', $this->first);
             /** @psalm-suppress RiskyTruthyFalsyComparison */
             if ($data) {
-                $this->prev = new self($data, $this->db);
+                $this->_prev = new self($data, $this->db);
             }
         }
-        return $this->prev;
+        return $this->_prev;
     }
 
     /**
@@ -90,8 +95,8 @@ class Block extends Range {
      * @return self|false
      */
     private function getNext() {
-        if ($this->next === null) {
-            $this->next = false;
+        if ($this->_next === null) {
+            $this->_next = false;
             $data = $this->db->getOne('
                 SELECT name, first, last FROM blocks
                 WHERE first > ?
@@ -99,10 +104,10 @@ class Block extends Range {
                 LIMIT 1', $this->last);
             /** @psalm-suppress RiskyTruthyFalsyComparison */
             if ($data) {
-                $this->next = new self($data, $this->db);
+                $this->_next = new self($data, $this->db);
             }
         }
-        return $this->next;
+        return $this->_next;
     }
 
     /**

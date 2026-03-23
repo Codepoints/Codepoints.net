@@ -31,7 +31,7 @@ use Codepoints\Unicode\SearchResult;
  * @TODO check whether search still works as expected now that Unihan
  * properties are a JSON blob in the DB.
  */
-class Engine {
+final class Engine {
 
     private Array $query = [];
 
@@ -64,7 +64,6 @@ class Engine {
             return $single_cp;
         }
         $single_prop_result = $this->detectSinglePropertySearch($this->query);
-        /** @psalm-suppress RiskyTruthyFalsyComparison */
         if ($single_prop_result) {
             return $single_prop_result;
         }
@@ -256,7 +255,7 @@ class Engine {
                 WHERE MATCH(text) AGAINST (? IN BOOLEAN MODE)');
 
             $count_statement->execute([$transformed_query]);
-            Analog::debug(sprintf('search for: %s', $transformed_query));
+            Analog::debug(sprintf('search for: %s', (string)$transformed_query));
             $count = 0;
             $counter = $count_statement->fetch(\PDO::FETCH_ASSOC);
             if ($counter) {
@@ -318,9 +317,11 @@ class Engine {
 
         } elseif ($key === 'int') {
             $value = preg_split('/\s+/', $value);
-            foreach($value as $v2) {
-                if (ctype_digit($v2)) {
-                    $result[] = sprintf('"int_%s"', $v2);
+            if ($value) {
+                foreach($value as $v2) {
+                    if (ctype_digit($v2)) {
+                        $result[] = sprintf('"int_%s"', $v2);
+                    }
                 }
             }
 

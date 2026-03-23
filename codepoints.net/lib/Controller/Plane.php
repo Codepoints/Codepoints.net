@@ -7,11 +7,12 @@ use Codepoints\Router\NotFoundException;
 use Codepoints\Unicode\Plane as UnicodePlane;
 
 
-class Plane extends Controller {
+final class Plane extends Controller {
 
     /**
      * @param Array $match
      */
+    #[\Override]
     public function __invoke($match, Array $env) : string {
         if (strpos($match[0], 'private_use') !== false) {
             $match[0] = substr($match[0], 0, -6);

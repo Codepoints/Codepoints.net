@@ -6,11 +6,12 @@ use Codepoints\Controller;
 use Codepoints\Unicode\EncodingInfo;
 
 
-class Encodings extends Controller {
+final class Encodings extends Controller {
 
     /**
      * @param string $match
      */
+    #[\Override]
     public function __invoke($match, Array $env) : string {
         $encodings = array_map(/** @param array{"type": string} $enc */ function($enc) {
             $slug = str_replace('enc:', '', $enc['type']);

@@ -291,7 +291,7 @@ function case_cp_name(string $name) : string {
     $name = ucwords(strtolower($name), ' ()-');
     $name = preg_replace_callback('/(Dvd\\b|Nk(?=o)|Ipa\\b|Cjk|Dna\\b|Lf\\b|Ff\\b|Cr\\b|Nel\\b|(?<=Ideograph-|U\\+)[0-9a-f]+)/', function(Array $match) : string {
         return strtoupper($match[0]);
-    }, $name);
+    }, $name) ?? $name;
     $name = str_replace([
         'Oclock', 'Of ', 'With ', 'And ', 'Ok ', 'For ', 'Ac Current', 'Fleur-De-Lis',
     ], [

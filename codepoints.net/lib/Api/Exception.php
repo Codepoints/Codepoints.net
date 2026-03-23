@@ -4,7 +4,7 @@ namespace Codepoints\Api;
 
 use Exception as BaseException;
 
-class Exception extends BaseException {
+final class Exception extends BaseException {
 
     public const int BAD_REQUEST = 400;
     public const int NOT_FOUND = 404;

@@ -10,11 +10,12 @@ use \Codepoints\Unicode\CodepointInfo;
 /**
  * fetch alias names for a code point
  */
-class Aliases extends CodepointInfo {
+final class Aliases extends CodepointInfo {
 
     /**
      * return the official Unicode properties for a code point
      */
+    #[\Override]
     public function __invoke(Codepoint $codepoint) : Array {
         /** @psalm-suppress RiskyTruthyFalsyComparison */
         return $this->db->getAll('

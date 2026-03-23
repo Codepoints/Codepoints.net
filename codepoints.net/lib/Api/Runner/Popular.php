@@ -5,10 +5,11 @@ namespace Codepoints\Api\Runner;
 use Codepoints\Api\JsonRunner;
 
 
-class Popular extends JsonRunner {
+final class Popular extends JsonRunner {
 
     private int $count = 20;
 
+    #[\Override]
     protected function handle_request(string $data) : Array {
         return array_map(
             function ($cp) {

@@ -7,7 +7,7 @@ use Gettext\Translations;
 use Negotiation\LanguageNegotiator;
 use Codepoints\CachingMoLoader;
 
-class Translator {
+final class Translator {
 
     private ?string $language = null;
 

@@ -10,11 +10,12 @@ use \Codepoints\Unicode\CodepointInfo;
 /**
  * fetch code points possibly confusable with this one
  */
-class Confusables extends CodepointInfo {
+final class Confusables extends CodepointInfo {
 
     /**
      * return a list of confusable characters
      */
+    #[\Override]
     public function __invoke(Codepoint $codepoint) : Array {
         $confusables = [];
 

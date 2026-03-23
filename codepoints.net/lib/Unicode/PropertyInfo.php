@@ -5,8 +5,33 @@ namespace Codepoints\Unicode;
 
 /**
  * get Unicode labels, abbreviations and other informative static data
+ *
+ * @property-read Array $age_to_year
+ * @property-read Array $booleans
+ * @property-read Array $gc_shortcuts
+ * @property-read Array $properties
+ * @property-read Array $region_to_block
+ * @property-read Array $script
+ * @property-read Array $script_age
+ * @property-read Array $legend_bc
+ * @property-read Array $legend_bpt
+ * @property-read Array $legend_ccc
+ * @property-read Array $legend_dt
+ * @property-read Array $legend_ea
+ * @property-read Array $legend_GCB
+ * @property-read Array $legend_gc
+ * @property-read Array $legend_hst
+ * @property-read Array $legend_jt
+ * @property-read Array $legend_lb
+ * @property-read Array $legend_nt
+ * @property-read Array $legend_SB
+ * @property-read Array $legend_WB
+ * @property-read Array $legend_NFC_QC
+ * @property-read Array $legend_NFD_QC
+ * @property-read Array $legend_NFKC_QC
+ * @property-read Array $legend_NFKD_QC
  */
-class PropertyInfo {
+final class PropertyInfo {
     private ?Array $age_to_year = null;
     private ?Array $booleans = null;
     private ?Array $gc_shortcuts = null;

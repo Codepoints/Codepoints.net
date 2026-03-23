@@ -5,8 +5,9 @@ namespace Codepoints\Api\Runner;
 use Codepoints\Api\JsonRunner;
 
 
-class Problem extends JsonRunner {
+final class Problem extends JsonRunner {
 
+    #[\Override]
     protected function handle_request(string $data) : Array {
         switch ($data) {
             case 'precondition_failed':

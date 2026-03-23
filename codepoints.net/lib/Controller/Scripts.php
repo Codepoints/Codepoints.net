@@ -5,11 +5,12 @@ namespace Codepoints\Controller;
 use Codepoints\Controller;
 
 
-class Scripts extends Controller {
+final class Scripts extends Controller {
 
     /**
      * @param string $match
      */
+    #[\Override]
     public function __invoke($match, Array $env) : string {
         $scripts = $env['db']->getAll('SELECT iso, name, abstract, src,
             (SELECT COUNT(*) FROM codepoint_script

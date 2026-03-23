@@ -19,7 +19,7 @@ class Controller {
      * @param string|array $match
      */
     public function __invoke($match, Array $env) : string {
-        $view = strtolower(preg_replace('/.*\\\\/', '', get_class($this)));
+        $view = strtolower((string)preg_replace('/.*\\\\/', '', get_class($this)));
         return (new View($view))($this->context + [
             'match' => $match,
         ], $env);

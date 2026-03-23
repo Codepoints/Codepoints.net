@@ -6,8 +6,9 @@ use Codepoints\Api\Runner;
 use Codepoints\Api\Exception as ApiException;
 
 
-class Oembed extends Runner {
+final class Oembed extends Runner {
 
+    #[\Override]
     public function handle(string $data) : string {
         /** @psalm-suppress RiskyTruthyFalsyComparison */
         if (! isset($_GET['url']) || ! $_GET['url'] || is_array($_GET['url'])) {
@@ -77,7 +78,7 @@ class Oembed extends Runner {
             'thumbnail_url' => sprintf('https://codepoints.net/api/v1/glyph/%04X', $cp->id),
             'html' => sprintf(
                 '<iframe src="https://codepoints.net/U+%04X?embed" style="width:%dpx;height:%dpx;border:1px solid #444"></iframe>',
-                q($cp->id), $maxwidth, $maxheight),
+                $cp->id, $maxwidth, $maxheight),
             'width' => $maxwidth,
             'height' => $maxheight,
         ];

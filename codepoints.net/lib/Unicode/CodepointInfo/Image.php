@@ -10,7 +10,7 @@ use \Codepoints\Unicode\CodepointInfo;
 /**
  * provide images for a given code point
  */
-class Image extends CodepointInfo {
+final class Image extends CodepointInfo {
 
     private string $altText;
 
@@ -28,6 +28,7 @@ class Image extends CodepointInfo {
      * now stick with <svg>, because this allows us to color the glyphs
      * dynamically.
      */
+    #[\Override]
     public function __invoke(Codepoint $codepoint) : callable {
         $altText = $this->altText;
         $template = '<svg width="%s" height="%s" class="cpfig__img cpfig__img--%s">'.

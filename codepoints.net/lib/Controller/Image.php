@@ -4,11 +4,12 @@ namespace Codepoints\Controller;
 
 use Codepoints\Controller;
 
-class Image extends Controller {
+final class Image extends Controller {
 
     /**
      * @param Array $match
      */
+    #[\Override]
     public function __invoke($match, Array $env) : string {
         /* send an expiry of 1 year. This mirrors the Apache config for the
          * cached files. */

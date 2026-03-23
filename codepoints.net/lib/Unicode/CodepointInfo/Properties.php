@@ -10,7 +10,7 @@ use \Codepoints\Unicode\CodepointInfo;
 /**
  * fetch Unicode properties for a given code point
  */
-class Properties extends CodepointInfo {
+final class Properties extends CodepointInfo {
 
     private Array $private_use_properties = [
         'na' =>      '',
@@ -131,6 +131,7 @@ class Properties extends CodepointInfo {
     /**
      * return the official Unicode properties for a code point
      */
+    #[\Override]
     public function __invoke(Codepoint $codepoint) : Array {
         $properties = [];
 

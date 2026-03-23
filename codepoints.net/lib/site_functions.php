@@ -22,7 +22,7 @@ function get_popular_codepoints(Database $db) : Array {
              * instead of doing our own HTTP request. */
             $api_url = '/var/cache/codepoints/popular.json';
         }
-        $data = json_decode(file_get_contents($api_url), true);
+        $data = json_decode((string)file_get_contents($api_url), true);
         if ($data) {
             foreach ($data as $item) {
                 if (preg_match('#^/U ([a-fA-F0-9]{4,6})(?:\?.*)?$#', $item['label'], $match)) {

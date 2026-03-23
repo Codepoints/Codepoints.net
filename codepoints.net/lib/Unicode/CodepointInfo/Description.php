@@ -10,11 +10,12 @@ use Codepoints\View;
 /**
  * provide a descriptive text about this code point
  */
-class Description extends CodepointInfo {
+final class Description extends CodepointInfo {
 
     /**
      *
      */
+    #[\Override]
     public function __invoke(Codepoint $codepoint) : string {
         try {
             $block = $codepoint->block;

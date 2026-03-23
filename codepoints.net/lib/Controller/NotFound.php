@@ -8,8 +8,9 @@ use Codepoints\View;
 use Exception;
 
 
-class NotFound extends Controller {
+final class NotFound extends Controller {
 
+    #[\Override]
     public function __invoke($match, Array $env) : string {
         if (! is_string($match)) {
             return '';

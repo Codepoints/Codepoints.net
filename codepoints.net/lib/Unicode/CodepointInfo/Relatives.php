@@ -10,11 +10,12 @@ use \Codepoints\Unicode\CodepointInfo;
 /**
  * fetch code points related with this one
  */
-class Relatives extends CodepointInfo {
+final class Relatives extends CodepointInfo {
 
     /**
      * return a list of related characters
      */
+    #[\Override]
     public function __invoke(Codepoint $codepoint) : Array {
         $relatives = [];
 

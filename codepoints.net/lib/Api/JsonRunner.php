@@ -7,6 +7,7 @@ use Codepoints\Api\Runner;
 
 abstract class JsonRunner extends Runner {
 
+    #[\Override]
     public function handle(string $data) : string {
         $content = $this->handle_request($data);
         header('Content-Type: application/json; charset=utf-8');

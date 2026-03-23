@@ -8,8 +8,9 @@ use Codepoints\Unicode\Block;
 use Codepoints\Unicode\Plane as UnicodePlane;
 
 
-class Plane extends JsonRunner {
+final class Plane extends JsonRunner {
 
+    #[\Override]
     protected function handle_request(string $data) : Array {
         if (! $data) {
             return [

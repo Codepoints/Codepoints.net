@@ -8,13 +8,14 @@ use Codepoints\Router\NotFoundException;
 use Codepoints\View;
 
 
-class StaticPage extends Controller {
+final class StaticPage extends Controller {
 
     use TraitPreload;
 
     /**
      * @param string $view
      */
+    #[\Override]
     public function __invoke($view, Array $env) : string {
         $this->sendPreloadHeaders();
         $context = [];

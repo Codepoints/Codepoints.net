@@ -8,18 +8,20 @@ use \Codepoints\Unicode\Block;
 
 /**
  * a Unicode plane, consisting of several Blocks
+ *
+ * @property-read Plane|false $prev
+ * @property-read Plane|false $next
+ * @property-read Array $blocks
  */
-class Plane {
+final class Plane {
 
     /**
      * the plane's name
-     *
-     * @readonly
      */
-    private string $name;
+    public readonly string $name;
 
-    private int $first;
-    private int $last;
+    public readonly int $first;
+    public readonly int $last;
 
     /**
      * the database from which CP info is fetched
@@ -27,21 +29,21 @@ class Plane {
      * @readonly
      */
     private Database $db;
-    private ?Array $blocks = null;
+    private ?Array $_blocks = null;
 
     /**
      * The previous plane (if any)
      *
      * @var self|false|null
      */
-    private $prev = null;
+    private $_prev = null;
 
     /**
      * The next plane (if any)
      *
      * @var self|false|null
      */
-    private $next = null;
+    private $_next = null;
 
     /**
      * create a new plane instance
@@ -69,12 +71,6 @@ class Plane {
      */
     public function __get(string $name) {
         switch ($name) {
-        case 'name':
-            return $this->name;
-        case 'first':
-            return $this->first;
-        case 'last':
-            return $this->last;
         case 'prev':
             return $this->getPrev();
         case 'next':
@@ -88,20 +84,20 @@ class Plane {
      * get all blocks belonging to this plane
      */
     private function getBlocks() : Array {
-        if ($this->blocks === null) {
+        if ($this->_blocks === null) {
             $sets = $this->db->getAll('
                 SELECT name, first, last FROM blocks
                 WHERE first >= ? AND last <= ?',
                 $this->first,
                 $this->last);
-            $this->blocks = [];
+            $this->_blocks = [];
             if (is_array($sets)) {
                 foreach ($sets as $data) {
-                    $this->blocks[] = new Block($data, $this->db);
+                    $this->_blocks[] = new Block($data, $this->db);
                 }
             }
         }
-        return $this->blocks;
+        return $this->_blocks;
     }
 
     /**
@@ -110,8 +106,8 @@ class Plane {
      * @return self|false
      */
     private function getPrev() {
-        if ($this->prev === null) {
-            $this->prev = false;
+        if ($this->_prev === null) {
+            $this->_prev = false;
             $data = $this->db->getOne('SELECT name, first, last
                 FROM planes
                 WHERE last < ?
@@ -119,10 +115,10 @@ class Plane {
                 LIMIT 1', $this->first);
             /** @psalm-suppress RiskyTruthyFalsyComparison */
             if ($data) {
-                $this->prev = new self($data, $this->db);
+                $this->_prev = new self($data, $this->db);
             }
         }
-        return $this->prev;
+        return $this->_prev;
     }
 
     /**
@@ -131,8 +127,8 @@ class Plane {
      * @return self|false
      */
     private function getNext() {
-        if ($this->next === null) {
-            $this->next = false;
+        if ($this->_next === null) {
+            $this->_next = false;
             $data = $this->db->getOne('SELECT name, first, last
                 FROM planes
                 WHERE first > ?
@@ -140,10 +136,10 @@ class Plane {
                 LIMIT 1', $this->last);
             /** @psalm-suppress RiskyTruthyFalsyComparison */
             if ($data) {
-                $this->next = new self($data, $this->db);
+                $this->_next = new self($data, $this->db);
             }
         }
-        return $this->next;
+        return $this->_next;
     }
 
     /**

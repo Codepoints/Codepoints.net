@@ -14,7 +14,7 @@ use Codepoints\Router\Redirect;
 use Codepoints\Search\Engine;
 
 
-class Search extends Controller {
+final class Search extends Controller {
 
     private int $query_count = 0;
 
@@ -24,6 +24,7 @@ class Search extends Controller {
      * @param string $match
      * @throws \Codepoints\Router\Redirect if it was detected, that the search was for a single code point
      */
+    #[\Override]
     public function __invoke($match, Array $env) : string {
         new RateLimiter(5, 60, $env['db']);
 
@@ -36,7 +37,7 @@ class Search extends Controller {
         }
         list($search_result, $pagination) = $this->getSearchResult($query, $env);
         if (is_string($search_result)) {
-            throw new Redirect(sprintf('/U+%s', dechex(mb_ord($search_result))));
+            throw new Redirect(sprintf('/U+%s', dechex((int)mb_ord($search_result))));
         }
 
         /* needed in view to fill the <input> again */

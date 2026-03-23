@@ -8,10 +8,11 @@ use Codepoints\Unicode\Codepoint;
 use Codepoints\View;
 
 
-class Index extends Controller {
+final class Index extends Controller {
 
     use TraitPreload;
 
+    #[\Override]
     public function __invoke($match, Array $env) : string {
         $this->sendPreloadHeaders([
             sprintf('<%s>; rel=preload; as=image; fetchpriority=high; type=image/webp; media=(prefers-color-scheme: light)', static_url('src/images/front_light.webp')),

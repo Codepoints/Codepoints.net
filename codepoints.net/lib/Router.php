@@ -9,7 +9,7 @@ use Codepoints\Router\URLMatcher;
 /**
  * request router
  */
-class Router {
+final class Router {
 
     private static Array $routes = [];
 

@@ -10,11 +10,12 @@ use \Codepoints\Unicode\CodepointInfo;
 /**
  * provide links to other sites for a given code point
  */
-class OtherSites extends CodepointInfo {
+final class OtherSites extends CodepointInfo {
 
     /**
      * return a list of links to other sites for a code point
      */
+    #[\Override]
     public function __invoke(Codepoint $codepoint) : Array {
         $other_sites = [];
         $hex = sprintf('%04X', $codepoint->id);

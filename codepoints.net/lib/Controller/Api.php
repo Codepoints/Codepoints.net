@@ -7,11 +7,12 @@ use Codepoints\Api\Exception as ApiException;
 use MatomoTracker;
 
 
-class Api extends Controller {
+final class Api extends Controller {
 
     /**
      * @param Array{action: string, data?: string, 0?: string, 1?: string, 2?: string} $match
      */
+    #[\Override]
     public function __invoke($match, Array $env) : string {
         try {
             $content = $this->run(

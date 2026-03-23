@@ -6,7 +6,7 @@ namespace Codepoints\Router;
 /**
  * helper class to signal the router, that this is a regexp
  */
-class URLMatcher {
+final class URLMatcher {
 
     /**
      * @var non-empty-string

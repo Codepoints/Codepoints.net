@@ -7,11 +7,12 @@ use Codepoints\Unicode\Block;
 use Codepoints\Unicode\Codepoint;
 
 
-class Sitemap extends Controller {
+final class Sitemap extends Controller {
 
     /**
      * @param Array $match
      */
+    #[\Override]
     public function __invoke($match, Array $env) : string {
         header('Content-Type: application/xml; charset=utf-8');
 

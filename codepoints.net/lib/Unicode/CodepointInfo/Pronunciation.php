@@ -9,13 +9,14 @@ use \Codepoints\Unicode\CodepointInfo;
 /**
  * get a code point's pronunciation information, if any
  */
-class Pronunciation extends CodepointInfo {
+final class Pronunciation extends CodepointInfo {
 
     /**
      * get the pinyin pronunciation of a code point
      *
      * @psalm-suppress RiskyTruthyFalsyComparison
      */
+    #[\Override]
     public function __invoke(Codepoint $codepoint) : ?string {
         $props = $codepoint->properties;
         $pr = null;
@@ -33,7 +34,7 @@ class Pronunciation extends CodepointInfo {
             $pr = preg_replace('/^[0-9.*,]+:([^ ,]+)(?:[ ,].*)?$/u', '$1',
                                (string)$props['kHanyuPinyin']);
         } elseif ($props['kMandarin'] ?? null) {
-            $pr = strtolower(preg_replace('/^([\p{L}\p{N}]+).*/u', '$1',
+            $pr = strtolower((string)preg_replace('/^([\p{L}\p{N}]+).*/u', '$1',
                                (string)$props['kMandarin']));
         }
         return $pr;

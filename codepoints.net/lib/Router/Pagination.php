@@ -9,10 +9,10 @@ use Codepoints\View;
 /**
  * handle pagination
  *
- * @property int $page
+ * @property-read int $page
  * @psalm-seal-properties
  */
-class Pagination {
+final class Pagination {
 
     private int $page = 1;
 
@@ -32,7 +32,7 @@ class Pagination {
             $urlTemplate .= (strpos($urlTemplate, '?') === false? '?' : '&') .
                 'page=%s';
         }
-        $this->urlTemplate = $urlTemplate;
+        $this->urlTemplate = (string)$urlTemplate;
     }
 
     public function slice() : Range {

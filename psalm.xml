@@ -29,12 +29,6 @@
         <file name="codepoints.net/views/partials/head-codepoint.php" />
       </errorLevel>
     </UndefinedGlobalVariable>
-    <RedundantConditionGivenDocblockType>
-      <errorLevel type="suppress">
-        <!-- same -->
-        <file name="codepoints.net/views/partials/head-codepoint.php" />
-      </errorLevel>
-    </RedundantConditionGivenDocblockType>
     <RiskyTruthyFalsyComparison>
       <errorLevel type="suppress">
         <!-- in views we're mostly fine with ignoring falsy strings -->

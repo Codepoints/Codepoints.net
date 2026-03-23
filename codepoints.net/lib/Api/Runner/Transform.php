@@ -8,7 +8,7 @@ use Codepoints\Api\JsonRunner;
 use Codepoints\Api\Exception as ApiException;
 
 
-class Transform extends JsonRunner {
+final class Transform extends JsonRunner {
 
     private const int MAXLENGTH = 1024;
 
@@ -17,6 +17,7 @@ class Transform extends JsonRunner {
     /**
      * @return string|Array
      */
+    #[\Override]
     protected function handle_request(string $data) {
         if (strpos($data, '/') === false) {
             $possibilities = [
@@ -120,7 +121,7 @@ class Transform extends JsonRunner {
 
     private function unicode_to_utf8(Array $codepoints) : string {
         return join('', array_map(function (int $i) : string {
-            return mb_chr($i);
+            return (string)mb_chr($i);
         }, $codepoints));
     }
 

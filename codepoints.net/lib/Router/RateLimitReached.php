@@ -2,4 +2,4 @@
 
 namespace Codepoints\Router;
 
-class RateLimitReached extends \Exception {}
+final class RateLimitReached extends \Exception {}

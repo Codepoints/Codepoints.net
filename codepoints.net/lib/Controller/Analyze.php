@@ -8,8 +8,9 @@ use Codepoints\View;
 use Exception;
 
 
-class Analyze extends Controller {
+final class Analyze extends Controller {
 
+    #[\Override]
     public function __invoke($match, Array $env) : string {
         $title = __('Analyze');
         $page_description = __('Look under the hood of a string of text and find out what it is made of.');

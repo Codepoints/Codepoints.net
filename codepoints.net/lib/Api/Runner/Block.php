@@ -7,8 +7,9 @@ use Codepoints\Api\Exception as ApiException;
 use Codepoints\Unicode\Block as UnicodeBlock;
 
 
-class Block extends JsonRunner {
+final class Block extends JsonRunner {
 
+    #[\Override]
     protected function handle_request(string $data) : Array {
         if (! $data) {
             return [
@@ -41,9 +42,7 @@ class Block extends JsonRunner {
 
         header(sprintf('Link: <https://codepoints.net%s>; rel=alternate', url($block)), false);
         $plane = $block->plane;
-        if ($plane) {
-            header(sprintf('Link: <https://codepoints.net/api/v1/plane%s>; rel=up', url($plane)), false);
-        }
+        header(sprintf('Link: <https://codepoints.net/api/v1/plane%s>; rel=up', url($plane)), false);
         $next = $block->next;
         if ($next) {
             header(sprintf('Link: <https://codepoints.net/api/v1/block%s>; rel=next', url($next)), false);

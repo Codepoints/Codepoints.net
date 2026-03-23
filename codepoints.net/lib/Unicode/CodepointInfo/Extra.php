@@ -11,11 +11,12 @@ use \Michelf\Markdown;
 /**
  * provide extra information for a given code point
  */
-class Extra extends CodepointInfo {
+final class Extra extends CodepointInfo {
 
     /**
      * return extra information for a code point from the /data/* files
      */
+    #[\Override]
     public function __invoke(Codepoint $codepoint) : string {
         $root = dirname(dirname(dirname(__DIR__))) . sprintf('/data/U+%04X.%%s.md', $codepoint->id);
         $ext_file = sprintf($root, $this->lang);
@@ -37,7 +38,7 @@ class Extra extends CodepointInfo {
             }
             return $url;
         };
-        return $parser->transform(file_get_contents($ext_file));
+        return $parser->transform((string)file_get_contents($ext_file));
     }
 
 }

@@ -6,7 +6,7 @@ use Analog\Analog;
 use Gettext\Loader\MoLoader;
 use Gettext\Translations;
 
-class CachingMoLoader {
+final class CachingMoLoader {
 
     public function loadFile(string $file) : Translations {
         $file_php = $file . '.php';

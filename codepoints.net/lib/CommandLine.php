@@ -21,13 +21,14 @@ use Codepoints\Unicode\CodepointInfo\Wikipedia;
 use Codepoints\Router\RateLimiter;
 
 
-class CommandLine {
+final class CommandLine {
 
     public function __construct(public readonly Array $argv, private readonly Array $env) {
     }
 
     public function run() : int {
-        $method = str_replace('-', '_', $this->argv[1] ?? 'help');
+        $command = (string)($this->argv[1] ?? 'help');
+        $method = str_replace('-', '_', $command);
         if (method_exists($this, $method)) {
             return call_user_func([$this, $method], ...array_slice($this->argv, 2));
         }
@@ -82,9 +83,9 @@ EOF;
         new Representation($this->env);
         new Sensitivity();
         new Wikipedia($this->env);
-        $cp = preg_replace('/^u\+/i', '', $cp);
+        $cp = (string)preg_replace('/^u\+/i', '', $cp);
         $cpo = get_codepoint(hexdec($cp), $this->env['db']);
-        echo preg_replace('/\s*\n\n\s+/', "\n\n", preg_replace('/[ \t]+/', ' ', strip_tags($cpo->description ?? "- no description -\n")));
+        echo preg_replace('/\s*\n\n\s+/', "\n\n", (string)preg_replace('/[ \t]+/', ' ', strip_tags($cpo->description ?? "- no description -\n")));
         return 0;
     }
 

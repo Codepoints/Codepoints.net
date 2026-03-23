@@ -6,11 +6,12 @@ use Codepoints\Controller;
 use Codepoints\Unicode\Plane;
 
 
-class Planes extends Controller {
+final class Planes extends Controller {
 
     /**
      * @param string $match
      */
+    #[\Override]
     public function __invoke($match, Array $env) : string {
         $this->context += [
             'title' => __('Unicode Planes'),

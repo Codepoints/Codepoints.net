@@ -38,6 +38,6 @@ $schema = [
     ],
   ],
 ];
-echo str_replace('</', '&lt;/', json_encode($schema));
+echo str_replace('</', '&lt;/', (string)json_encode($schema));
 unset($schema);
 ?></script>

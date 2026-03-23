@@ -9,7 +9,7 @@ use \Codepoints\Unicode\CodepointInfo;
 /**
  * get representations in other systems for the current code point
  */
-class Representation extends CodepointInfo {
+final class Representation extends CodepointInfo {
 
     private Array $formats = [
         'C' => '\\U%08X',
@@ -32,6 +32,7 @@ class Representation extends CodepointInfo {
     /**
      * get a function to fetch representations of the current code point
      */
+    #[\Override]
     public function __invoke(Codepoint $codepoint) : callable {
         $formats = $this->formats;
         return function (string $in) use ($codepoint, $formats) : string {
@@ -42,18 +43,18 @@ class Representation extends CodepointInfo {
                     return join(' ',
                         str_split(
                             strtoupper(
-                                bin2hex(mb_chr($codepoint->id, $in))), 2));
+                                bin2hex((string)mb_chr($codepoint->id, $in))), 2));
                 case 'URL':
                     return '%' . join('%',
                         str_split(
                             strtoupper(
-                                bin2hex(mb_chr($codepoint->id, 'utf-8'))), 2));
+                                bin2hex((string)mb_chr($codepoint->id, 'utf-8'))), 2));
                 case 'JS':
                 case 'JSON':
                 case 'Java':
                 case 'YAML':
                     return '\\u' . join('\\u',
-                        str_split(strtoupper(bin2hex(mb_chr($codepoint->id, 'UTF-16'))), 4));
+                        str_split(strtoupper(bin2hex((string)mb_chr($codepoint->id, 'UTF-16'))), 4));
                 default:
                     if ($codepoint->id < 0x10000 && array_key_exists($in.'_low', $formats)) {
                         return sprintf($formats[$in.'_low'], $codepoint->id);

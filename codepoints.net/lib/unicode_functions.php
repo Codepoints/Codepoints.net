@@ -13,11 +13,15 @@ use Codepoints\Unicode\Range;
 function parse_range(string $str, Database $db) {
     $set = [];
     $junks = preg_split('/\s*(?:,\s*)+/', trim($str));
+    if ($junks === false) {
+        return $set;
+    }
     foreach ($junks as $j) {
         $ranges = preg_split('/\s*(?:-|\.\.|:)\s*/', $j);
+        if ($ranges === false) {
+            break;
+        }
         switch (count($ranges)) {
-            case 0:
-                break;
             case 1:
                 $tmp = parse_codepoint($ranges[0], true);
                 if (is_int($tmp)) {
@@ -159,9 +163,15 @@ function get_printable_codepoint(int $id, string $gc) {
  * @return list<Codepoint>
  */
 function string_to_codepoints(string $string, Database $db) : Array {
-    $intlist = array_map(
-        function(string $c) : int { return mb_ord($c); },
-        preg_split('//u', $string, -1, PREG_SPLIT_NO_EMPTY));
+    $splitted_string = preg_split('//u', $string, -1, PREG_SPLIT_NO_EMPTY);
+    if ($splitted_string === false) {
+        $splitted_string = [];
+    }
+    $intlist = array_filter(
+        array_map(
+            function(string $c) : int|false { return mb_ord($c); },
+            $splitted_string),
+        function(int|false $i) { return $i !== false; });
     $list = join(',', array_unique($intlist));
     $data = $db->getAll('SELECT cp, name, gc FROM codepoints
         WHERE cp IN ( '.$list.' ) ORDER BY FIELD( cp, '.$list.' )');

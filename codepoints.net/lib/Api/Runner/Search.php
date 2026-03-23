@@ -9,8 +9,9 @@ use Codepoints\Router\RateLimiter;
 use Codepoints\Router\Redirect;
 
 
-class Search extends JsonRunner {
+final class Search extends JsonRunner {
 
+    #[\Override]
     protected function handle_request(string $data) : Array {
         new RateLimiter(5, 60, $this->env['db']);
 
