@@ -27,7 +27,7 @@ final class OGImage extends Controller {
         header('Cache-Control: public, max-age='.$cache_duration);
         header('Expires: '.gmdate('D, d M Y H:i:s \G\M\T', time() + $cache_duration));
 
-        /** @var Array{width: int, height: int, image: string} */
+        /** @var ?Array{width: int, height: int, image: string} */
         $dbimage = $env['db']->getOne('SELECT width, height, image
             FROM codepoint_image
             WHERE cp = ?', get_printable_codepoint($cp->id, $cp->gc));
@@ -35,7 +35,7 @@ final class OGImage extends Controller {
             http_response_code(404);
             return '';
         }
-        $svg = preg_replace(
+        $svg = (string)preg_replace(
             '/viewBox="[^"]+"/',
             sprintf('viewBox="-50 0 %s %s"', $dbimage['width'] + 100, $dbimage['height'] + 100),
             $dbimage['image']);
@@ -58,7 +58,7 @@ final class OGImage extends Controller {
             };
             $svgimg->blurImage($blur, $blur);
         }
-        $svgimg->resizeImage((int)ceil(min(400, 400 * $ratio)), (int)ceil(min(400, 400 / $ratio)), imagick::FILTER_LANCZOS, 1);
+        $svgimg->resizeImage((int)ceil(min(400.0, 400.0 * $ratio)), (int)ceil(min(400.0, 400.0 / $ratio)), imagick::FILTER_LANCZOS, 1);
         $img->compositeImage($svgimg, Imagick::COMPOSITE_DEFAULT, 50 + (int)((400 - $svgimg->getImageWidth()) / 2), 50);
 
         $name = case_cp_name($cp->name);
