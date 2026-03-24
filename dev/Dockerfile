@@ -5,7 +5,7 @@ COPY dev/httpd.conf /etc/apache2/sites-available/httpd.conf
 COPY dev/*.pem /etc/certs/
 
 RUN apt-get update
-RUN apt-get install libzip-dev libicu-dev libfreetype6-dev libjpeg62-turbo-dev libpng-dev -y
+RUN apt-get install libzip-dev libicu-dev libfreetype6-dev libjpeg62-turbo-dev libpng-dev libmagickwand-dev -y
 RUN pecl install xdebug
 RUN docker-php-ext-enable xdebug
 RUN docker-php-ext-install intl
@@ -16,6 +16,8 @@ RUN docker-php-ext-install pdo_mysql
 RUN docker-php-ext-enable pdo_mysql
 RUN docker-php-ext-install zip
 RUN docker-php-ext-enable zip
+RUN pecl install imagick
+RUN docker-php-ext-enable imagick
 RUN a2enmod rewrite
 RUN a2enmod ssl
 RUN a2enmod socache_shmcb

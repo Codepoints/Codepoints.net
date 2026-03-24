@@ -11,6 +11,7 @@ use \Codepoints\Controller\Encodings;
 use \Codepoints\Controller\Encoding;
 use \Codepoints\Controller\Image;
 use \Codepoints\Controller\Index;
+use \Codepoints\Controller\OGImage;
 use \Codepoints\Controller\Plane;
 use \Codepoints\Controller\Planes;
 use \Codepoints\Controller\PossibleName;
@@ -58,6 +59,8 @@ Router::add(new URLMatcher('image/([0-9A-F]{2,4}00)(\\.[0-9a-f]{8})?\\.svg$'), n
 Router::add(new URLMatcher('sitemap(|/(static|u[0-9A-F]+)).xml$'), new Sitemap());
 
 Router::add(new URLMatcher('U\\+([0-9a-fA-F]{4,6})$'), new Codepoint());
+
+Router::add(new URLMatcher('image/og-([0-9A-F]{4,6})(\\.[0-9a-f]{8})?\\.png$'), new OGImage());
 
 /**
  * redirect to canonical 0-padded URL

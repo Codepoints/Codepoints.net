@@ -17,13 +17,13 @@
 <meta name="twitter:url" content="<?=q(url($codepoint, true))?>">
 <meta name="twitter:title" content="<?=q($title)?>">
 <meta name="twitter:description" content="<?=q($page_description)?>">
-<meta name="twitter:image" content="https://codepoints.net/api/v1/glyph/<?=sprintf('%04X', $codepoint->id)?>">
+<meta name="twitter:image" content="https://codepoints.net/image/og-<?=sprintf('%04X', $codepoint->id)?>.png">
 
 <meta property="og:site_name" content="Codepoints.net">
 <meta property="og:type" content="article">
 <meta property="og:title" content="<?=q($title)?>">
 <meta property="og:description" content="<?=q($page_description)?>">
-<meta property="og:image" content="https://codepoints.net/api/v1/glyph/<?=sprintf('%04X', $codepoint->id)?>">
+<meta property="og:image" content="https://codepoints.net/image/og-<?=sprintf('%04X', $codepoint->id)?>.png">
 
 <script type="application/ld+json"><?php
 $schema = [
