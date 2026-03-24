@@ -219,7 +219,7 @@ include 'partials/header.php'; ?>
           </td>
         </tr>
       <?php endforeach?>
-      <?php if (! empty((array)$codepoint->properties['unikemet'])): ?>
+      <?php if (! empty($codepoint->properties['unikemet'])): ?>
         <?php foreach ((array)$codepoint->properties['unikemet'] as $key => $value): ?>
           <tr>
             <th scope="row"><?=q($key)?></th>

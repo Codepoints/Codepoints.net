@@ -370,7 +370,7 @@ use Codepoints\Unicode\Codepoint;
 </p>
 <?php endif ?>
 
-<?php if ($props['unikemet']): ?>
+<?php if (!empty($props['unikemet'])): ?>
 <p>
   <?=sprintf(_q('The %sUnikemet database%s provides additional information about this hieroglyph.'), '<a href="https://www.unicode.org/reports/tr57/">', '</a>')?>
   <?php if (! empty($props['unikemet']['kEH_Desc'])): ?>
