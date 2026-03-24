@@ -34,7 +34,7 @@ final class OGImage extends Controller {
             http_response_code(404);
             return '';
         }
-        $svg = preg_replace(
+        $svg = (string)preg_replace(
             '/viewBox="[^"]+"/',
             sprintf('viewBox="-50 0 %s %s"', $dbimage['width'] + 100, $dbimage['height'] + 100),
             $dbimage['image']);
@@ -57,7 +57,7 @@ final class OGImage extends Controller {
             };
             $svgimg->blurImage($blur, $blur);
         }
-        $svgimg->resizeImage(ceil(min(400, 400 * $ratio)), ceil(min(400, 400 / $ratio)), imagick::FILTER_LANCZOS, 1);
+        $svgimg->resizeImage((int)ceil(min(400, 400 * $ratio)), (int)ceil(min(400, 400 / $ratio)), imagick::FILTER_LANCZOS, 1);
         $img->compositeImage($svgimg, Imagick::COMPOSITE_DEFAULT, 50 + (int)((400 - $svgimg->getImageWidth()) / 2), 50);
 
         $name = case_cp_name($cp->name);
