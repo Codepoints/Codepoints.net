@@ -3,7 +3,10 @@
     "description": "A visual guide to the wonders of Unicode",
     "license": "proprietary",
     "config": {
-        "vendor-dir": "codepoints.net/vendor"
+        "vendor-dir": "codepoints.net/vendor",
+        "platform": {
+          "php": "8.5"
+        }
     },
     "require": {
         "michelf/php-markdown": "^2.0",
