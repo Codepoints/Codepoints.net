@@ -58,6 +58,7 @@ final class OGImage extends Controller {
             };
             $svgimg->blurImage($blur, $blur);
         }
+        /** @psalm-suppress InvalidOperand */
         $svgimg->resizeImage((int)ceil(min(400.0, 400.0 * $ratio)), (int)ceil(min(400.0, 400.0 / $ratio)), imagick::FILTER_LANCZOS, 1);
         $img->compositeImage($svgimg, Imagick::COMPOSITE_DEFAULT, 50 + (int)((400 - $svgimg->getImageWidth()) / 2), 50);
 
