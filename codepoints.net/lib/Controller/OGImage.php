@@ -39,8 +39,32 @@ final class OGImage extends Controller {
         }
         $svg = (string)preg_replace(
             '/viewBox="[^"]+"/',
-            sprintf('viewBox="-50 0 %s %s"', $dbimage['width'] + 100, $dbimage['height'] + 100),
-            $dbimage['image']);
+            sprintf('xmlns="http://www.w3.org/2000/svg" viewBox="-50 0 %s %s"', $dbimage['width'] + 100, $dbimage['height'] + 100),
+            $dbimage['image'],
+            1);
+        $svg = (string)preg_replace_callback(
+            '/<svg id="([^"]+(hk|jp|kr|sc|tc))" viewBox="([^"]+)"/',
+            function($matches) use ($dbimage) {
+                $xy = match($matches[2]) {
+                    'sc' => [0, 0],
+                    'tc' => [0, $dbimage['height'] / 2],
+                    'jp' => [$dbimage['width'] / 2, 0],
+                    'hk' => [$dbimage['width'] / 2, $dbimage['height'] / 2],
+                    'kr' => [$dbimage['width'] / 2, $dbimage['height'] / 2],
+                    default => [0, 0],
+                };
+                return sprintf('<text x="%s" y="%s" text-anchor="end" font-size="90" fill-opacity=".3333">%s</text><svg id="%s" width="%s" height="%s" transform="translate(%s, %s)" viewBox="%s"',
+                    $xy[0] + 500,
+                    $xy[1] + 100,
+                    strtoupper($matches[2]),
+                    $matches[1],
+                    $dbimage['width'] / 2,
+                    $dbimage['height'] / 2,
+                    $xy[0],
+                    $xy[1],
+                    $matches[3]);
+            },
+            $svg);
         $ratio = ($dbimage['width'] + 100) / ($dbimage['height'] + 100);
 
         $img = new Imagick();
