@@ -46,12 +46,12 @@ final class OGImage extends Controller {
             '/<svg id="([^"]+(hk|jp|kr|sc|tc))" viewBox="([^"]+)"/',
             function($matches) use ($dbimage) {
                 $xy = match($matches[2]) {
-                    'sc' => [0, 0],
-                    'tc' => [0, $dbimage['height'] / 2],
-                    'jp' => [$dbimage['width'] / 2, 0],
+                    'sc' => [                  0.0,                    0.0],
+                    'tc' => [                  0.0, $dbimage['height'] / 2],
+                    'jp' => [$dbimage['width'] / 2,                    0.0],
                     'hk' => [$dbimage['width'] / 2, $dbimage['height'] / 2],
                     'kr' => [$dbimage['width'] / 2, $dbimage['height'] / 2],
-                    default => [0, 0],
+                    default => [               0.0,                    0.0],
                 };
                 return sprintf('<text x="%s" y="%s" text-anchor="end" font-size="90" fill-opacity=".3333">%s</text><svg id="%s" width="%s" height="%s" transform="translate(%s, %s)" viewBox="%s"',
                     $xy[0] + 500.0,
