@@ -54,8 +54,8 @@ final class OGImage extends Controller {
                     default => [0, 0],
                 };
                 return sprintf('<text x="%s" y="%s" text-anchor="end" font-size="90" fill-opacity=".3333">%s</text><svg id="%s" width="%s" height="%s" transform="translate(%s, %s)" viewBox="%s"',
-                    $xy[0] + 500,
-                    $xy[1] + 100,
+                    $xy[0] + 500.0,
+                    $xy[1] + 100.0,
                     strtoupper($matches[2]),
                     $matches[1],
                     $dbimage['width'] / 2,
