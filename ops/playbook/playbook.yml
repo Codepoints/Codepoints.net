@@ -113,6 +113,15 @@
             job: "php /var/www/codepoints.net/index.php clear-rate-limit"
         become: true
         become_user: www-data
+    -
+        name: clear generated images
+        ansible.builtin.cron:
+            name: "clear generated images"
+            minute: "44"
+            hour: "4"
+            job: "find /var/www/codepoints.net/image -depth -type f -name 'og-*.png' -atime +2 -delete"
+        become: true
+        become_user: www-data
 
 -
     name: check health
