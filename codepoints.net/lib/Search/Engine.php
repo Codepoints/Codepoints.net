@@ -176,12 +176,18 @@ final class Engine {
         if (in_array($prop, ['sc', 'scx']) || ! in_array($prop, $this->cp_properties)) {
             return null;
         }
-        $operator = '=';
 
+        $operator = '=';
         $value = $query[$prop][0];
+
         if ($prop === 'gc' && strlen($value) === 1) {
             $operator = 'LIKE';
             $value .= '%';
+        }
+
+        $where = sprintf('p.%s %s ?', $prop, $operator);
+        if (substr($prop, 0, 1) === 'k') {
+            $where = $this->getWhereForUnihanUnikemet($prop);
         }
 
         /* this looks like an opportunity for an SQL injection attack, but
@@ -192,7 +198,7 @@ final class Engine {
                 SELECT COUNT(*) AS count
                 FROM codepoints
                 LEFT JOIN codepoint_props p USING (cp)
-                WHERE p.' . $prop .' ' . $operator . ' ?');
+                WHERE ' . $where);
         } catch (\PDOException $e) {
             /* but it is still possible, that we hit a property that we
              * haven't got a db table column for. Guard against that problem
@@ -215,9 +221,9 @@ final class Engine {
             SELECT c.cp, c.name, c.gc
             FROM codepoints c
             LEFT JOIN codepoint_props p USING (cp)
-            WHERE p.%s %s ?
+            WHERE %s
             LIMIT %s, %s',
-            $prop, $operator, ($page - 1) * Pagination::PAGE_SIZE, Pagination::PAGE_SIZE));
+            $where, ($page - 1) * Pagination::PAGE_SIZE, Pagination::PAGE_SIZE));
         $query_statement->execute([$value]);
         $items = $query_statement->fetchAll(\PDO::FETCH_ASSOC);
 
@@ -225,6 +231,14 @@ final class Engine {
             'count' => $count,
             'items' => $items,
         ], $this->env['db']);
+    }
+
+    private function getWhereForUnihanUnikemet($prop) {
+        $field = 'unihan';
+        if (str_starts_with($prop, 'kEH'))  {
+            $field = 'unikemet';
+        }
+        return sprintf('JSON_EXTRACT(%s, \'$.%s\') = ?', $field, $prop);
     }
 
     /**
