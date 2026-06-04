@@ -233,7 +233,7 @@ final class Engine {
         ], $this->env['db']);
     }
 
-    private function getWhereForUnihanUnikemet($prop) {
+    private function getWhereForUnihanUnikemet(string $prop) : string {
         $field = 'unihan';
         if (str_starts_with($prop, 'kEH'))  {
             $field = 'unikemet';
