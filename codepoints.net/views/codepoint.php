@@ -207,7 +207,7 @@ include 'partials/header.php'; ?>
             }, (string)$value);
           else:
             echo '<a rel="nofollow" href="';
-            echo q(url('search?'.$key.'='.rawurlencode($value)));
+            echo q(url('search?'.$key.'='.$value));
             echo '">';
             if ($key === 'nv' && $value === 'NaN') {
                 echo __('not a number');
