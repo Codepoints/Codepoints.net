@@ -197,6 +197,8 @@ function blimg(Block $block, int $width=16) : string {
         'cjkcompatibilityideographssupplement'        => 'cjkideocompatsup',
         'supplementaryprivateuseareaa'                => 'privateplane15',
         'supplementaryprivateuseareab'                => 'privateplane16',
+        // v18.0
+        'miscellaneoussymbolsandarrowsext' => 'miscsymbolsarrowsext',
     ];
     $name = str_replace(['latin extended', 'extended', 'cjk unified ideographs extension', ' ', '_', '-'], ['latin', 'ext', 'cjkext'], strtolower($block->name));
     if (array_key_exists($name, $block_to_last_resort_map)) {
