@@ -14,7 +14,7 @@ use Codepoints\View;
 
 require 'vendor/autoload.php';
 
-define('UNICODE_VERSION', '16.0.0');
+define('UNICODE_VERSION', '18.0.0');
 
 /**
  * set mb encoding globally

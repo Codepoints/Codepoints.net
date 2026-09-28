@@ -209,4 +209,14 @@ return [
     'Zxxx' => __('Unwritten'),
     'Zyyy' => __('Common'),
     'Zzzz' => __('Unknown'),
+    // v17.0
+    'Berf' => __('Beria Erfe'),
+    'Sidt' => __('Sidetic'),
+    'Tayo' => __('Tai Yo'),
+    'Tols' => __('Tolong Siki'),
+    // v18.0
+    'Jurc' => __('Jurchen'),
+    'Pcun' => __('Proto-Cuneiform'),
+    'Seal' => __('(Small) Seal'),
+
 ];

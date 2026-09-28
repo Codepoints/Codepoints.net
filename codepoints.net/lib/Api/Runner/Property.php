@@ -12,14 +12,14 @@ final class Property extends Runner {
 
     private const array FIELDS = [
         'cp', 'age', 'gc', 'ccc', 'bc', 'Bidi_M', 'Bidi_C', 'dt', 'CE',
-        'Comp_Ex', 'NFC_QC', 'NFD_QC', 'NFKC_QC', 'NFKD_QC', 'XO_NFC',
-        'XO_NFD', 'XO_NFKC', 'XO_NFKD', 'nt', 'nv', 'jt', 'jg', 'Join_C',
+        'Comp_Ex', 'NFC_QC', 'NFD_QC', 'NFKC_QC', 'NFKD_QC',
+        'nt', 'nv', 'jt', 'jg', 'Join_C',
         'lb', 'ea', 'Upper', 'Lower', 'OUpper', 'OLower', 'CI', 'Cased',
         'CWCF', 'CWCM', 'CWL', 'CWKCF', 'CWT', 'CWU', 'hst', 'JSN', 'IDS',
         'OIDS', 'XIDS', 'IDC', 'OIDC', 'XIDC', 'Pat_Syn', 'Pat_WS', 'Dash',
-        'Hyphen', 'QMark', 'Term', 'STerm', 'Dia', 'Ext', 'SD', 'Alpha',
+        'QMark', 'Term', 'STerm', 'Dia', 'Ext', 'SD', 'Alpha',
         'OAlpha', 'Math', 'OMath', 'Hex', 'AHex', 'DI', 'ODI', 'LOE',
-        'WSpace', 'Gr_Base', 'Gr_Ext', 'OGr_Ext', 'Gr_Link', 'GCB', 'WB',
+        'WSpace', 'Gr_Base', 'Gr_Ext', 'OGr_Ext', 'GCB', 'WB',
         'SB', 'Ideo', 'UIdeo', 'IDSB', 'IDST', 'Radical', 'Dep', 'VS',
         'NChar', 'kTotalStrokes', 'blk', 'scx', 'sc', 'confusables', 'block',
     ];

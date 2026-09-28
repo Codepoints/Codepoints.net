@@ -21,11 +21,11 @@ return [
     'NFD_QC' => __('NFD Quick Check'),
     'NFKC_QC' => __('NFKC Quick Check'),
     'NFKD_QC' => __('NFKD Quick Check'),
-    'XO_NFC' => __('Expands On NFC'),
-    'XO_NFD' => __('Expands On NFD'),
-    'XO_NFKC' => __('Expands On NFKC'),
-    'XO_NFKD' => __('Expands On NFKD'),
-    'FC_NFKC' => __('FC NFKC Closure'),
+    // 'XO_NFC' => __('Expands On NFC'), // removed in v17.0
+    // 'XO_NFD' => __('Expands On NFD'), // removed in v17.0
+    // 'XO_NFKC' => __('Expands On NFKC'), // removed in v17.0
+    // 'XO_NFKD' => __('Expands On NFKD'), // removed in v17.0
+    // 'FC_NFKC' => __('FC NFKC Closure'), // removed in v17.0
     'nt' => __('Numeric Type'),
     'nv' => __('Numeric Value'),
     'jt' => __('Joining Type'),
@@ -56,7 +56,7 @@ return [
     'NFKC_CF' => __('NFKC Casefold'),
     'sc' => __('Script'),
     'scx' => __('Script Extension'),
-    'isc' => __('ISO 10646 Comment'),
+    // 'isc' => __('ISO 10646 Comment'), // removed in v17.0
     'hst' => __('Hangul Syllable Type'),
     'JSN' => __('Jamo Short Name'),
     'InSC' => __('Indic Syllabic Category'),
@@ -71,7 +71,7 @@ return [
     'Pat_Syn' => __('Pattern Syntax'),
     'Pat_WS' => __('Pattern White Space'),
     'Dash' => __('Dash'),
-    'Hyphen' => __('Hyphen'),
+    // 'Hyphen' => __('Hyphen'), // removed in v17.0
     'QMark' => __('Quotation Mark'),
     'Term' => __('Terminal Punctuation'),
     'STerm' => __('Sentence Terminal'),
@@ -94,7 +94,7 @@ return [
     'Gr_Base' => __('Grapheme Base'),
     'Gr_Ext' => __('Grapheme Extend'),
     'OGr_Ext' => __('Other Grapheme Extend'),
-    'Gr_Link' => __('Grapheme Link'),
+    // 'Gr_Link' => __('Grapheme Link'), // removed in v17.0
     'GCB' => __('Grapheme Cluster Break'),
     'WB' => __('Word Break'),
     'SB' => __('Sentence Break'),
@@ -136,7 +136,7 @@ return [
     'kGB1' => __('kGB1'),
     'kGB3' => __('kGB3'),
     'kGB5' => __('kGB5'),
-    'kGB7' => __('kGB7'),
+    // 'kGB7' => __('kGB7'), // removed in v17.0
     'kGB8' => __('kGB8'),
     'kGradeLevel' => __('kGradeLevel'),
     'kGSR' => __('kGSR'),
@@ -149,10 +149,10 @@ return [
     'kHKSCS' => __('kHKSCS'),
     'kIBMJapan' => __('kIBMJapan'),
     'kIICore' => __('kIICore'),
-    'kIRGDaeJaweon' => __('kIRGDaeJaweon'),
+    // 'kIRGDaeJaweon' => __('kIRGDaeJaweon'), // removed in v18.0
     'kIRGDaiKanwaZiten' => __('kIRGDaiKanwaZiten'),
     'kIRGHanyuDaZidian' => __('kIRGHanyuDaZidian'),
-    'kIRGKangXi' => __('kIRGKangXi'),
+    // 'kIRGKangXi' => __('kIRGKangXi'), // removed in v18.0
     'kIRG_GSource' => __('kIRG_GSource'),
     'kIRG_HSource' => __('kIRG_HSource'),
     'kIRG_JSource' => __('kIRG_JSource'),
@@ -164,7 +164,7 @@ return [
     'kIRG_USource' => __('kIRG_USource'),
     'kIRG_UKSource' => __('kIRG_UKSource'),
     'kIRG_VSource' => __('kIRG_VSource'),
-    'kJa' => __('kJa'),
+    // 'kJa' => __('kJa'), // removed in v17.0
     'kJHJ' => __('kJHJ'),
     'kJinmeiyoKanji' => __('kJinmeiyoKanji'),
     'kJoyoKanji' => __('kJoyoKanji'),
@@ -217,10 +217,6 @@ return [
     'kXHC1983' => __('kXHC1983'),
     'kXerox' => __('Xerox Code'),
     'kZVariant' => __('z Variant'),
-    'kRSTUnicode' => __('kRSTUnicode'),
-    'kTGT_MergedSrc' => __('kTGT_MergedSrc'),
-    'kSrc_NushuDuben' => __('kSrc_NushuDuben'),
-    'kReading' => __('kReading'),
     'kZhuang' => __('kZhuang'),
     'Emoji' => __('Emoji'),
     'EPres' => __('Emoji Presentation'),
@@ -230,4 +226,36 @@ return [
     'ExtPict' => __('Extended Pictographic'),
     'blk' => __('Block'),
     'MCM' => __('Modifier Combining Mark'),
+    // v17.0
+    'kTGT_RSUnicode' => __('kTGT_RSUnicode'),
+    'kTGT_MergedSrc' => __('kTGT_MergedSrc'),
+    'kNSHU_DubenSrc' => __('kNSHU_DubenSrc'),
+    'kNSHU_Reading' => __('kNSHU_Reading'),
+    'kTayNumeric' => __('kTayNumeric'),
+    'kEH_AltSeq' => __('kEH_AltSeq'),
+    'kEH_Cat' => __('kEH_Cat'),
+    'kEH_Core' => __('kEH_Core'),
+    'kEH_Desc' => __('kEH_Desc'),
+    'kEH_Func' => __('kEH_Func'),
+    'kEH_FVal' => __('kEH_FVal'),
+    'kEH_HG' => __('kEH_HG'),
+    'kEH_IFAO' => __('kEH_IFAO'),
+    'kEH_JSesh' => __('kEH_JSesh'),
+    'kEH_NoMirror' => __('kEH_NoMirror'),
+    'kEH_NoRotate' => __('kEH_NoRotate'),
+    'kEH_UniK' => __('kEH_UniK'),
+    // v18.0
+    'kJURC_NCReading' => __('kJURC_NCReading'),
+    'kJURC_Numeric' => __('kJURC_Numeric'),
+    'kJURC_RSUnicode' => __('kJURC_RSUnicode'),
+    'kJURC_Src' => __('kJURC_Src'),
+    'kSEAL_CCZSrc' => __('kSEAL_CCZSrc'),
+    'kSEAL_DYCSrc' => __('kSEAL_DYCSrc'),
+    'kSEAL_MCJK' => __('kSEAL_MCJK'),
+    'kSEAL_QJZSrc' => __('kSEAL_QJZSrc'),
+    'kSEAL_Rad' => __('kSEAL_Rad'),
+    'kSEAL_THXSrc' => __('kSEAL_THXSrc'),
+    'kTGT_Numeric' => __('kTGT_Numeric'),
+    'kJapaneseNewVariant' => __('kJapaneseNewVariant'),
+    'kJapaneseOldVariant' => __('kJapaneseOldVariant'),
 ];

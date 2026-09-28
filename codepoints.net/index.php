@@ -9,7 +9,7 @@ use Codepoints\Router\NotFoundException;
 use Codepoints\Router\Redirect;
 use Codepoints\Router\RateLimitReached;
 
-define('SOFTWARE_VERSION', '00000004');
+define('SOFTWARE_VERSION', '00000005');
 
 try {
     $init_successful = require 'init.php';
